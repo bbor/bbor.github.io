@@ -8,7 +8,7 @@ These in-product tutorials are designed to accompany a new user through all the 
 
 I designed the content, wrote the UI text, and programmed the JavaScript framework on top of an open-source module and our editor's plug-in system.
 
-<a id="training_images" href="javascript:void(0)"><img src="images/marker_light_2d.png"></a>
+<a id="training_images" href="javascript:;"><img src="images/marker_light_2d.png"></a>
 <script>
 $(document).ready( function () {
 	$("a#training_images").fancybox([
