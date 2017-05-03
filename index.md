@@ -16,7 +16,9 @@ $(document).ready( function () {
 			'/images/lighting_combined.jpg',
 			'/images/lighting_emissive_on_off.jpg',
 			'/images/lighting_sky.jpg'
-			]);
+			], {
+				type:"image"
+			});
 });
 </script>
 
