@@ -11,15 +11,19 @@ I designed the content, wrote the UI text, and programmed the JavaScript framewo
 <a id="training_images" href="javascript:;"><img src="/images/marker_light_2d.png"></a>
 <script>
 $(document).ready( function () {
-	$("a#training_images").fancybox([
-			'/images/lighting_direct_only.jpg',
-			'/images/lighting_combined.jpg',
-			'/images/lighting_emissive_on_off.jpg',
-			'/images/lighting_sky.jpg'
-			], {
-				'type':'image'
-			});
-});
+	$("a#training_images").click(
+		function() {
+			$.fancybox([
+				'/images/lighting_direct_only.jpg',
+				'/images/lighting_combined.jpg',
+				'/images/lighting_emissive_on_off.jpg',
+				'/images/lighting_sky.jpg'
+				], {
+					'type':'image'
+				}
+			);
+		});
+	});
 </script>
 
 To try it out, you can [install a trial](https://www.autodesk.com/products/stingray/overview) and choose **Help > Hands-on Training Mission** from the main menu.
