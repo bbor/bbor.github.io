@@ -14,13 +14,11 @@ $(document).ready( function () {
 	$("a#training_images").click(
 		function() {
 			$.fancybox.open([
-				'/images/lighting_direct_only.jpg',
-				'/images/lighting_combined.jpg',
-				'/images/lighting_emissive_on_off.jpg',
-				'/images/lighting_sky.jpg'
-				], {
-					'type':'image'
-				}
+				{src:'/images/lighting_direct_only.jpg'},
+				{src:'/images/lighting_combined.jpg'},
+				{src:'/images/lighting_emissive_on_off.jpg'},
+				{src:'/images/lighting_sky.jpg'}
+				]
 			);
 		});
 	});
