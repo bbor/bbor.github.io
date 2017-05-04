@@ -1,6 +1,7 @@
 theme: jekyll-theme-minimal
 title: "Robb Surridge"
 description: "A wee portfolio of recent writing and design projects."
+short_description: "portfolio"
 cv_url: "/docs/robb_surridge_cv.pdf"
 github_url: "https://github.com/bbor/"
 linkedin_url: "https://www.linkedin.com/in/robb-surridge-6547533/"
