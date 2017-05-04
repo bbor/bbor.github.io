@@ -13,7 +13,7 @@ I designed the content, wrote the UI text, and programmed the JavaScript framewo
 $(document).ready( function () {
 	$("a#training_images").click(
 		function() {
-			$.fancybox([
+			$.fancybox.open([
 				'/images/lighting_direct_only.jpg',
 				'/images/lighting_combined.jpg',
 				'/images/lighting_emissive_on_off.jpg',
