@@ -39,8 +39,6 @@ $(document).ready( function () {
 	});
 </script>
 
-To try it out for realz, you can [install a trial](https://www.autodesk.com/products/stingray/overview) and choose **Help > Hands-on Training Mission** from the main menu.
-
 # Stingray SDK Help
 
 Customers use the SDK to write plugins that extend the Stingray environment to work with custom kinds of content and third-party software.
