@@ -8,7 +8,7 @@ I've started an open-source project called [Mixtape](http://www.github.com/bbor/
 
 ![Mixtape preview](images/preview.gif)
 
-Accompanying this project is [typesmith](http://www.github.com/bbor/typesmith), which helps you pre-process your data records into the form expected by Mixtape.
+Accompanying this project is [typesmith](http://www.github.com/bbor/typesmith): a data processing pipeline (inspired by [Metalsmith](http://www.github.com/bbor/mixtape)!) that helps you pre-process your data records into the form expected by Mixtape.
 
 # Stingray hands-on training mission
 
