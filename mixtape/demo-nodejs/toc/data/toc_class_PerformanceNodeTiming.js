@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_subgroup_PerformanceNodeTiming_Properties","target":"module_performance_timing_api.html#subgroup_PerformanceNodeTiming_Properties","text":"PerformanceNodeTiming.Properties","icon":false,"autoexpand":true,"children":true}],"ancestry":["toc_module_performance_timing_api","toc_class_PerformanceNodeTiming"]}; });

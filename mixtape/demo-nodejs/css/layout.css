@@ -1,0 +1,206 @@
+body {
+  margin:0px;
+}
+
+/*
+div {
+  border:1px solid black;
+}
+*/
+
+#content {
+  margin:10px 10px 60px 10px;
+  max-width:750px;
+}
+
+#control-panel {
+  position:fixed;
+  bottom:0px; left:0px; right:0px;
+  height:40px;
+  background-color:#FFFFFF;
+  overflow:hidden;
+  margin:0;
+  background-color:#FFFFFF;
+  z-index:500;
+}
+
+#control-strip-v {
+  position:fixed;
+  background-color:#FFFFFF;
+  z-index:1000;
+  display:none;
+  padding:0px 40px;
+}
+.control-strip-v-open {
+  border-right:2px solid orange;
+}
+
+#control-strip-h {
+  position:absolute;
+  top:0px; left:0px; right:0px;
+  border-top: 1px solid orange;
+  border-bottom:1px solid orange;
+  background-color:#FFFFFF;
+  z-index:1000;
+}
+#control-strip-h-find, #control-strip-h-toc {
+  width:50%;
+  float:left;
+  margin:0;
+  padding:0;
+  text-align:center;
+  height:40px;
+  background-color: #bbbbbb;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: rgba(255,255,255,0.5) 0px 3px 3px;
+}
+
+#controls {
+  position:absolute;
+  top:50px;
+  left:10px;
+  right:10px;
+  bottom:0px;
+  margin:auto;
+}
+
+#control-find {
+  display:none;
+}
+input#find {
+  border-radius:5px;
+  font-size:14px;
+  padding:10px 10px;
+  font-family: Lato;
+  width:520px;
+}
+
+#control-toc {
+  display:none;
+  position:relative;
+  height:100%;
+  overflow:auto;
+}
+
+
+/* Tablets portrait ----------- */
+
+@media only screen and (min-width : 600px) {
+
+  #control-strip-h-find, #control-strip-h-toc {
+    height:60px;
+    font-size:30px;
+  }
+  #control-panel {
+    height:60px;
+  }
+  #controls {
+    top:75px;
+    left:30px;
+    right:30px;
+  }
+  #content {
+    margin:20px 20px 80px 20px;
+  }
+
+}
+
+/* Tablets landscape ----------- */
+
+@media only screen and (min-width : 900px) {
+  #control-strip-h {
+    display:none;
+  }
+  #control-strip-v {
+    display:block;
+    height:100%;
+    width:80px;
+    top:0px;
+    left:0px;
+  }
+  #content {
+    margin-left:160px;
+    margin-top:10px;
+    margin-bottom:10px;
+  }
+  #control-panel {
+    width:120px;
+    display:none;
+    height:100%;
+  }
+
+  #control-strip-v-find {
+    display:block;
+    background-color:#FFFFFF;
+    z-index:200;
+    font-size:80px;
+    color:#cacaca;
+    position:absolute;
+    margin:auto;
+    top:55px; left:0; right:0;
+    width:80px; height:80px;
+    background-color: #bbbbbb;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: rgba(255,255,255,0.5) 0px 3px 3px;
+    line-height:0;
+  }
+  #control-strip-v-toc {
+    display:block;
+    background-color:#FFFFFF;
+    z-index:200;
+    font-size:80px;
+    color:#cacaca;
+    position:absolute;
+    margin:auto;
+    top:55px; left:0; right:0; bottom:0;
+    width:80px;height:80px;
+    line-height:0;
+    background-color: #bbbbbb;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: rgba(255,255,255,0.5) 0px 3px 3px;
+  }
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width : 1050px) {
+  #content {
+    margin-left:260px;
+    min-width:300px;
+  }
+  #control-strip-v {
+    margin-left:50px
+  }
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width : 1200px) {
+  #content {
+    margin-left:360px;
+  }
+  #control-strip-v {
+    margin-left:100px
+  }
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width : 1350px) {
+  #content {
+    margin-left:460px;
+  }
+  #control-strip-v {
+    margin-left:150px
+  }
+}
+
+
+
+

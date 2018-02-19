@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_misc_Error_first_callbacks","target":"misc_Errors.html#misc_Error_first_callbacks","text":"Error-first callbacks","icon":false}],"ancestry":["toc_misc_Errors","toc_misc_Error_Propagation_and_Interception"]}; });

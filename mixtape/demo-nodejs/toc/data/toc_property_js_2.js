@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_subgroup_js_Modules","target":"module_internationalization_support.html#subgroup_js_Modules","text":"js.Modules","icon":false,"autoexpand":true,"children":true}],"ancestry":["toc_module_internationalization_support","toc_property_js_2"]}; });

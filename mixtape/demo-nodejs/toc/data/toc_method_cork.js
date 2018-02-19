@@ -1,0 +1,1 @@
+define([], function() { return {"children":[],"ancestry":["toc_module_stream","toc_misc_API_for_Stream_Consumers","toc_misc_writable_streams","toc_class_stream_Writable","toc_subgroup_stream_Writable_Methods","toc_method_cork"]}; });

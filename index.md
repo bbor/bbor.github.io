@@ -4,11 +4,13 @@ title: "selected  portfolio"
 
 # Mixtape and typesmith
 
-I've started an open-source project called [Mixtape](http://www.github.com/bbor/mixtape). It's essentially a static site generation tool for documentation content, especially useful when you have some kind of typed hierarchical data. For example, you could use it for an API, or a set of visual programming nodes. You feed Maxtape with your data objects, each of which typically has some content in HTML or Markdown, and it generates for you a help system with autocomplete search, TOC, full-text search, etc. 
+I've started an open-source project called [Mixtape](http://www.github.com/bbor/mixtape). It's essentially a static site generation tool for documentation content, especially useful when you have some kind of typed hierarchical data. For example, you could use it for an API, or a set of visual programming nodes. You feed Maxtape with your data objects, each of which typically has some content in HTML or Markdown, and it generates for you a help system with autocomplete search, TOC, full-text search, etc.
 
 ![Mixtape preview](images/preview.gif)
 
 Accompanying this project is [typesmith](http://www.github.com/bbor/typesmith): a data processing pipeline (inspired by [Metalsmith](http://www.github.com/bbor/mixtape)!) that helps you pre-process your data records into the form expected by Mixtape.
+
+Here's a **very early** [sample of some mixtape output](./mixtape/demo-nodejs/misc_About_this_Documentation.html), generated from the nodejs.org documentation using the pipeline you can find in the [typesmith-testing](http://www.github.com/bbor/typesmith-testing) repo.
 
 # Stingray hands-on training mission
 

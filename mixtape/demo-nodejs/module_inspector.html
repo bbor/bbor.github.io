@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>mixtape page for inspector</title>
+    <script data-main="js/setup" src="js/require.js"></script>
+    <link rel="stylesheet" href="fonts/fonts.css" />
+    <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="toc/themes/default/style.min.css" />
+    <link rel="stylesheet" href="css/design.css" />
+  </head>
+  <body>
+
+  <div id="control-panel">
+    <div id="control-strip-h">
+      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
+      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    </div>
+    <div id="controls">
+      <div id="control-find">
+        <div id="control-find-content"><input id="find" class="typeahead" placeholder="Find something..."></div>
+      </div>
+      <div id="control-toc">
+        <div id="control-toc-content"><div id="toc"></div></div>
+      </div>
+    </div>
+  </div>
+  <div id="control-strip-v">
+    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
+    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  </div>
+
+  <div id="content">
+
+  
+       <div class="heading">
+          <h1>
+            <a name="module_inspector" id="module_inspector"></a>
+            <div class="permalink"><a href="#module_inspector" class="permalink fas fa-link"></a></div>
+            <p>Inspector</p>
+
+          </h1>
+        </div><p><p>The <code>inspector</code> module provides an API for interacting with the V8 inspector.</p></p>
+<p><p>It can be accessed using:</p></p>
+<pre class="prettyprint"><code class="lang-js">const inspector = require(&#39;inspector&#39;);
+</code></pre>
+
+       <div class="heading">
+          <h2>
+            <a name="class_inspector_Session" id="class_inspector_Session"></a>
+            <div class="permalink"><a href="#class_inspector_Session" class="permalink fas fa-link"></a></div>
+            <p>Class: inspector.Session</p>
+
+          </h1>
+        </div><section><p>The <code>inspector.Session</code> is used for dispatching messages to the V8 inspector
+back-end and receiving message responses and notifications.</p>
+<section>
+       <div class="heading">
+          <h4>
+            <a name="method_Session" id="method_Session"></a>
+            <div class="permalink"><a href="#method_Session" class="permalink fas fa-link"></a></div>
+            <p>Constructor: new inspector.Session()</p>
+
+          </h1>
+        </div><section><p>Create a new instance of the <code>inspector.Session</code> class. The inspector session
+needs to be connected through <a href="#inspector_session_connect"><code>session.connect()</code></a> before the messages
+can be dispatched to the inspector backend.</p>
+<p><code>inspector.Session</code> is an <a href="events.html"><code>EventEmitter</code></a> with the following events:</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_connect_1" id="method_connect_1"></a>
+            <div class="permalink"><a href="#method_connect_1" class="permalink fas fa-link"></a></div>
+            <p>session.connect()</p>
+
+          </h1>
+        </div><section><p>Connects a session to the inspector back-end. An exception will be thrown
+if there is already a connected session established either through the API or by
+a front-end connected to the Inspector WebSocket port.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_post" id="method_post"></a>
+            <div class="permalink"><a href="#method_post" class="permalink fas fa-link"></a></div>
+            <p>session.post(method[, params][, callback])</p>
+
+          </h1>
+        </div><section><p>Posts a message to the inspector back-end. <code>callback</code> will be notified when
+a response is received. <code>callback</code> is a function that accepts two optional
+arguments - error and message-specific result.</p>
+<pre class="prettyprint"><code class="lang-js">session.post(&#39;Runtime.evaluate&#39;, { expression: &#39;2 + 2&#39; },
+             (error, { result }) =&gt; console.log(result));
+// Output: { type: &#39;number&#39;, value: 4, description: &#39;4&#39; }
+</code></pre>
+<p>The latest version of the V8 inspector protocol is published on the
+<a href="https://chromedevtools.github.io/devtools-protocol/v8/">Chrome DevTools Protocol Viewer</a>.</p>
+<p>Node inspector supports all the Chrome DevTools Protocol domains declared
+by V8. Chrome DevTools Protocol domain provides an interface for interacting
+with one of the runtime agents used to inspect the application state and listen
+to the run-time events.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_disconnect_4" id="method_disconnect_4"></a>
+            <div class="permalink"><a href="#method_disconnect_4" class="permalink fas fa-link"></a></div>
+            <p>session.disconnect()</p>
+
+          </h1>
+        </div><section><p><p>Immediately close the session. All pending message callbacks will be called
+with an error. <a href="#inspector_session_connect"><code>session.connect()</code></a> will need to be called to be able to send
+messages again. Reconnected session will lose all inspector state, such as
+enabled agents or configured breakpoints.</p>
+<!-- [end-include:inspector.md] -->
+<!-- [start-include:intl.md] --></p>
+</section></section></section>
+       <div class="heading">
+          <h2>
+            <a name="method_open_1" id="method_open_1"></a>
+            <div class="permalink"><a href="#method_open_1" class="permalink fas fa-link"></a></div>
+            <p>inspector.open([port[, host[, wait]]])</p>
+
+          </h1>
+        </div><section><p>Activate inspector on host and port. Equivalent to <code>node
+--inspect=[[host:]port]</code>, but can be done programmatically after node has
+started.</p>
+<p>If wait is <code>true</code>, will block until a client has connected to the inspect port
+and flow control has been passed to the debugger client.</p>
+<section>
+       <div class="heading">
+          <h4>
+            <a name="method_close_7" id="method_close_7"></a>
+            <div class="permalink"><a href="#method_close_7" class="permalink fas fa-link"></a></div>
+            <p>inspector.close()</p>
+
+          </h1>
+        </div><section><p>Deactivate the inspector. Blocks until there are no active connections.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_url" id="method_url"></a>
+            <div class="permalink"><a href="#method_url" class="permalink fas fa-link"></a></div>
+            <p>inspector.url()</p>
+
+          </h1>
+        </div><section><p>Return the URL of the active inspector, or <code>undefined</code> if there is none.</p>
+</section></section></section>
+
+  <div class="footer">
+    <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>
+    <p>Dubbed by <img src="images/mixtape.png" title="Dubbed by mixtape." style="width:40px;position:relative;top:8px"></img> mixtape.</p>
+  </div>
+
+  </div>
+  </body>
+</html>

@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_subgroup_v8_Serializer_Methods","target":"module_v8.html#subgroup_v8_Serializer_Methods","text":"v8.Serializer.Methods","icon":false,"autoexpand":true,"children":true}],"ancestry":["toc_module_v8","toc_module_serialization_api","toc_class_v8_Serializer"]}; });

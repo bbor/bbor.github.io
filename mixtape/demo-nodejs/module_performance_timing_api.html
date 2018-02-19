@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>mixtape page for performance_timing_api</title>
+    <script data-main="js/setup" src="js/require.js"></script>
+    <link rel="stylesheet" href="fonts/fonts.css" />
+    <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="toc/themes/default/style.min.css" />
+    <link rel="stylesheet" href="css/design.css" />
+  </head>
+  <body>
+
+  <div id="control-panel">
+    <div id="control-strip-h">
+      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
+      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    </div>
+    <div id="controls">
+      <div id="control-find">
+        <div id="control-find-content"><input id="find" class="typeahead" placeholder="Find something..."></div>
+      </div>
+      <div id="control-toc">
+        <div id="control-toc-content"><div id="toc"></div></div>
+      </div>
+    </div>
+  </div>
+  <div id="control-strip-v">
+    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
+    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  </div>
+
+  <div id="content">
+
+  
+       <div class="heading">
+          <h1>
+            <a name="module_performance_timing_api" id="module_performance_timing_api"></a>
+            <div class="permalink"><a href="#module_performance_timing_api" class="permalink fas fa-link"></a></div>
+            <p>Performance Timing API</p>
+
+          </h1>
+        </div><p><p>The Performance Timing API provides an implementation of the
+<a href="https://w3c.github.io/performance-timeline/">W3C Performance Timeline</a> specification. The purpose of the API
+is to support collection of high resolution performance metrics.
+This is the same Performance API as implemented in modern Web browsers.</p></p>
+<pre class="prettyprint"><code class="lang-js">const { performance } = require(&#39;perf_hooks&#39;);
+performance.mark(&#39;A&#39;);
+doSomeLongRunningProcess(() =&gt; {
+  performance.mark(&#39;B&#39;);
+  performance.measure(&#39;A to B&#39;, &#39;A&#39;, &#39;B&#39;);
+  const measure = performance.getEntriesByName(&#39;A to B&#39;)[0];
+  console.log(measure.duration);
+  // Prints the number of milliseconds between Mark &#39;A&#39; and Mark &#39;B&#39;
+});
+</code></pre>
+
+       <div class="heading">
+          <h2>
+            <a name="class_Performance" id="class_Performance"></a>
+            <div class="permalink"><a href="#class_Performance" class="permalink fas fa-link"></a></div>
+            <p>Class: Performance</p>
+
+          </h1>
+        </div><section><p>The <code>Performance</code> provides access to performance metric data. A single
+instance of this class is provided via the <code>performance</code> property.</p>
+<section>
+       <div class="heading">
+          <h4>
+            <a name="property_nodeTiming" id="property_nodeTiming"></a>
+            <div class="permalink"><a href="#property_nodeTiming" class="permalink fas fa-link"></a></div>
+            <p><code>nodeTiming</code> {PerformanceNodeTiming} </p>
+
+          </h1>
+        </div><section><p>An instance of the <code>PerformanceNodeTiming</code> class that provides performance
+metrics for specific Node.js operational milestones.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_timeOrigin" id="property_timeOrigin"></a>
+            <div class="permalink"><a href="#property_timeOrigin" class="permalink fas fa-link"></a></div>
+            <p><code>timeOrigin</code> {number} </p>
+
+          </h1>
+        </div><section><p>The <a href="https://w3c.github.io/hr-time/#dom-performance-timeorigin"><code>timeOrigin</code></a> specifies the high resolution millisecond timestamp from
+which all performance metric durations are measured.</p>
+</section></section><section>
+       <div class="heading">
+          <h4>
+            <a name="method_clearEntries" id="method_clearEntries"></a>
+            <div class="permalink"><a href="#method_clearEntries" class="permalink fas fa-link"></a></div>
+            <p>performance.clearEntries(name)</p>
+
+          </h1>
+        </div><section><p>Remove all performance entry objects with <code>entryType</code> equal to <code>name</code> from the
+Performance Timeline.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_clearFunctions" id="method_clearFunctions"></a>
+            <div class="permalink"><a href="#method_clearFunctions" class="permalink fas fa-link"></a></div>
+            <p>performance.clearFunctions([name])</p>
+
+          </h1>
+        </div><section><p>If <code>name</code> is not provided, removes all <code>PerformanceFunction</code> objects from the
+Performance Timeline. If <code>name</code> is provided, removes entries with <code>name</code>.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_clearGC" id="method_clearGC"></a>
+            <div class="permalink"><a href="#method_clearGC" class="permalink fas fa-link"></a></div>
+            <p>performance.clearGC()</p>
+
+          </h1>
+        </div><section><p>Remove all performance entry objects with <code>entryType</code> equal to <code>gc</code> from the
+Performance Timeline.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_clearMarks" id="method_clearMarks"></a>
+            <div class="permalink"><a href="#method_clearMarks" class="permalink fas fa-link"></a></div>
+            <p>performance.clearMarks([name])</p>
+
+          </h1>
+        </div><section><p>If <code>name</code> is not provided, removes all <code>PerformanceMark</code> objects from the
+Performance Timeline. If <code>name</code> is provided, removes only the named mark.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_clearMeasures" id="method_clearMeasures"></a>
+            <div class="permalink"><a href="#method_clearMeasures" class="permalink fas fa-link"></a></div>
+            <p>performance.clearMeasures([name])</p>
+
+          </h1>
+        </div><section><p>If <code>name</code> is not provided, removes all <code>PerformanceMeasure</code> objects from the
+Performance Timeline. If <code>name</code> is provided, removes only objects whose
+<code>performanceEntry.name</code> matches <code>name</code>.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_getEntries" id="method_getEntries"></a>
+            <div class="permalink"><a href="#method_getEntries" class="permalink fas fa-link"></a></div>
+            <p>performance.getEntries()</p>
+
+          </h1>
+        </div><section><p>Returns a list of all <code>PerformanceEntry</code> objects in chronological order
+with respect to <code>performanceEntry.startTime</code>.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_getEntriesByName" id="method_getEntriesByName"></a>
+            <div class="permalink"><a href="#method_getEntriesByName" class="permalink fas fa-link"></a></div>
+            <p>performance.getEntriesByName(name[, type])</p>
+
+          </h1>
+        </div><section><p>Returns a list of all <code>PerformanceEntry</code> objects in chronological order
+with respect to <code>performanceEntry.startTime</code> whose <code>performanceEntry.name</code> is
+equal to <code>name</code>, and optionally, whose <code>performanceEntry.entryType</code> is equal to
+<code>type</code>.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_getEntriesByType" id="method_getEntriesByType"></a>
+            <div class="permalink"><a href="#method_getEntriesByType" class="permalink fas fa-link"></a></div>
+            <p>performance.getEntriesByType(type)</p>
+
+          </h1>
+        </div><section><p>Returns a list of all <code>PerformanceEntry</code> objects in chronological order
+with respect to <code>performanceEntry.startTime</code> whose <code>performanceEntry.entryType</code>
+is equal to <code>type</code>.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_mark" id="method_mark"></a>
+            <div class="permalink"><a href="#method_mark" class="permalink fas fa-link"></a></div>
+            <p>performance.mark([name])</p>
+
+          </h1>
+        </div><section><p>Creates a new <code>PerformanceMark</code> entry in the Performance Timeline. A
+<code>PerformanceMark</code> is a subclass of <code>PerformanceEntry</code> whose
+<code>performanceEntry.entryType</code> is always <code>&#39;mark&#39;</code>, and whose
+<code>performanceEntry.duration</code> is always <code>0</code>. Performance marks are used
+to mark specific significant moments in the Performance Timeline.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_measure" id="method_measure"></a>
+            <div class="permalink"><a href="#method_measure" class="permalink fas fa-link"></a></div>
+            <p>performance.measure(name, startMark, endMark)</p>
+
+          </h1>
+        </div><section><p>Creates a new <code>PerformanceMeasure</code> entry in the Performance Timeline. A
+<code>PerformanceMeasure</code> is a subclass of <code>PerformanceEntry</code> whose
+<code>performanceEntry.entryType</code> is always <code>&#39;measure&#39;</code>, and whose
+<code>performanceEntry.duration</code> measures the number of milliseconds elapsed since
+<code>startMark</code> and <code>endMark</code>.</p>
+<p>The <code>startMark</code> argument may identify any <em>existing</em> <code>PerformanceMark</code> in the
+Performance Timeline, or <em>may</em> identify any of the timestamp properties
+provided by the <code>PerformanceNodeTiming</code> class. If the named <code>startMark</code> does
+not exist, then <code>startMark</code> is set to <a href="https://w3c.github.io/hr-time/#dom-performance-timeorigin"><code>timeOrigin</code></a> by default.</p>
+<p>The <code>endMark</code> argument must identify any <em>existing</em> <code>PerformanceMark</code> in the
+Performance Timeline or any of the timestamp properties provided by the
+<code>PerformanceNodeTiming</code> class. If the named <code>endMark</code> does not exist, an
+error will be thrown.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_now" id="method_now"></a>
+            <div class="permalink"><a href="#method_now" class="permalink fas fa-link"></a></div>
+            <p>performance.now()</p>
+
+          </h1>
+        </div><section><p>Returns the current high resolution millisecond timestamp.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_timerify" id="method_timerify"></a>
+            <div class="permalink"><a href="#method_timerify" class="permalink fas fa-link"></a></div>
+            <p>performance.timerify(fn)</p>
+
+          </h1>
+        </div><section><p><p>Wraps a function within a new function that measures the running time of the
+wrapped function. A <code>PerformanceObserver</code> must be subscribed to the <code>&#39;function&#39;</code>
+event type in order for the timing details to be accessed.</p></p>
+<pre class="prettyprint"><code class="lang-js">const {
+  performance,
+  PerformanceObserver
+} = require(&#39;perf_hooks&#39;);
+
+function someFunction() {
+  console.log(&#39;hello world&#39;);
+}
+
+const wrapped = performance.timerify(someFunction);
+
+const obs = new PerformanceObserver((list) =&gt; {
+  console.log(list.getEntries()[0].duration);
+  obs.disconnect();
+  performance.clearFunctions();
+});
+obs.observe({ entryTypes: [&#39;function&#39;] });
+
+// A performance timeline entry will be created
+wrapped();
+</code></pre>
+</section></section></section>
+       <div class="heading">
+          <h2>
+            <a name="class_PerformanceEntry" id="class_PerformanceEntry"></a>
+            <div class="permalink"><a href="#class_PerformanceEntry" class="permalink fas fa-link"></a></div>
+            <p>Class: PerformanceEntry</p>
+
+          </h1>
+        </div><section><section>
+       <div class="heading">
+          <h4>
+            <a name="property_duration" id="property_duration"></a>
+            <div class="permalink"><a href="#property_duration" class="permalink fas fa-link"></a></div>
+            <p><code>duration</code> {number} </p>
+
+          </h1>
+        </div><section><p>The total number of milliseconds elapsed for this entry. This value will not
+be meaningful for all Performance Entry types.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_name" id="property_name"></a>
+            <div class="permalink"><a href="#property_name" class="permalink fas fa-link"></a></div>
+            <p><code>name</code> {string} </p>
+
+          </h1>
+        </div><section><p>The name of the performance entry.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_startTime" id="property_startTime"></a>
+            <div class="permalink"><a href="#property_startTime" class="permalink fas fa-link"></a></div>
+            <p><code>startTime</code> {number} </p>
+
+          </h1>
+        </div><section><p>The high resolution millisecond timestamp marking the starting time of the
+Performance Entry.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_entryType" id="property_entryType"></a>
+            <div class="permalink"><a href="#property_entryType" class="permalink fas fa-link"></a></div>
+            <p><code>entryType</code> {string} </p>
+
+          </h1>
+        </div><section><p>The type of the performance entry. Current it may be one of: <code>&#39;node&#39;</code>, <code>&#39;mark&#39;</code>,
+<code>&#39;measure&#39;</code>, <code>&#39;gc&#39;</code>, or <code>&#39;function&#39;</code>.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_kind" id="property_kind"></a>
+            <div class="permalink"><a href="#property_kind" class="permalink fas fa-link"></a></div>
+            <p><code>kind</code> {number} </p>
+
+          </h1>
+        </div><section><p><p>When <code>performanceEntry.entryType</code> is equal to <code>&#39;gc&#39;</code>, the <code>performance.kind</code>
+property identifies the type of garbage collection operation that occurred.
+The value may be one of:</p></p>
+<ul>
+<li><code>perf_hooks.constants.NODE_PERFORMANCE_GC_MAJOR</code></li>
+<li><code>perf_hooks.constants.NODE_PERFORMANCE_GC_MINOR</code></li>
+<li><code>perf_hooks.constants.NODE_PERFORMANCE_GC_INCREMENTAL</code></li>
+<li><code>perf_hooks.constants.NODE_PERFORMANCE_GC_WEAKCB</code></li>
+</ul>
+</section></section></section>
+       <div class="heading">
+          <h2>
+            <a name="class_PerformanceNodeTiming" id="class_PerformanceNodeTiming"></a>
+            <div class="permalink"><a href="#class_PerformanceNodeTiming" class="permalink fas fa-link"></a></div>
+            <p>Class: PerformanceNodeTiming extends PerformanceEntry</p>
+
+          </h1>
+        </div><section><p>Provides timing details for Node.js itself.</p>
+<section>
+       <div class="heading">
+          <h4>
+            <a name="property_bootstrapComplete" id="property_bootstrapComplete"></a>
+            <div class="permalink"><a href="#property_bootstrapComplete" class="permalink fas fa-link"></a></div>
+            <p><code>bootstrapComplete</code> {number} </p>
+
+          </h1>
+        </div><section><p>The high resolution millisecond timestamp at which the Node.js process
+completed bootstrap.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_clusterSetupEnd" id="property_clusterSetupEnd"></a>
+            <div class="permalink"><a href="#property_clusterSetupEnd" class="permalink fas fa-link"></a></div>
+            <p><code>clusterSetupEnd</code> {number} </p>
+
+          </h1>
+        </div><section><p>The high resolution millisecond timestamp at which cluster processing ended.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_clusterSetupStart" id="property_clusterSetupStart"></a>
+            <div class="permalink"><a href="#property_clusterSetupStart" class="permalink fas fa-link"></a></div>
+            <p><code>clusterSetupStart</code> {number} </p>
+
+          </h1>
+        </div><section><p>The high resolution millisecond timestamp at which cluster processing started.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_loopExit" id="property_loopExit"></a>
+            <div class="permalink"><a href="#property_loopExit" class="permalink fas fa-link"></a></div>
+            <p><code>loopExit</code> {number} </p>
+
+          </h1>
+        </div><section><p>The high resolution millisecond timestamp at which the Node.js event loop
+exited.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_loopStart" id="property_loopStart"></a>
+            <div class="permalink"><a href="#property_loopStart" class="permalink fas fa-link"></a></div>
+            <p><code>loopStart</code> {number} </p>
+
+          </h1>
+        </div><section><p>The high resolution millisecond timestamp at which the Node.js event loop
+started.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_moduleLoadEnd" id="property_moduleLoadEnd"></a>
+            <div class="permalink"><a href="#property_moduleLoadEnd" class="permalink fas fa-link"></a></div>
+            <p><code>moduleLoadEnd</code> {number} </p>
+
+          </h1>
+        </div><section><p>The high resolution millisecond timestamp at which main module load ended.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_moduleLoadStart" id="property_moduleLoadStart"></a>
+            <div class="permalink"><a href="#property_moduleLoadStart" class="permalink fas fa-link"></a></div>
+            <p><code>moduleLoadStart</code> {number} </p>
+
+          </h1>
+        </div><section><p>The high resolution millisecond timestamp at which main module load started.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_nodeStart" id="property_nodeStart"></a>
+            <div class="permalink"><a href="#property_nodeStart" class="permalink fas fa-link"></a></div>
+            <p><code>nodeStart</code> {number} </p>
+
+          </h1>
+        </div><section><p>The high resolution millisecond timestamp at which the Node.js process was
+initialized.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_preloadModuleLoadEnd" id="property_preloadModuleLoadEnd"></a>
+            <div class="permalink"><a href="#property_preloadModuleLoadEnd" class="permalink fas fa-link"></a></div>
+            <p><code>preloadModuleLoadEnd</code> {number} </p>
+
+          </h1>
+        </div><section><p>The high resolution millisecond timestamp at which preload module load ended.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_preloadModuleLoadStart" id="property_preloadModuleLoadStart"></a>
+            <div class="permalink"><a href="#property_preloadModuleLoadStart" class="permalink fas fa-link"></a></div>
+            <p><code>preloadModuleLoadStart</code> {number} </p>
+
+          </h1>
+        </div><section><p>The high resolution millisecond timestamp at which preload module load started.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_thirdPartyMainEnd" id="property_thirdPartyMainEnd"></a>
+            <div class="permalink"><a href="#property_thirdPartyMainEnd" class="permalink fas fa-link"></a></div>
+            <p><code>thirdPartyMainEnd</code> {number} </p>
+
+          </h1>
+        </div><section><p>The high resolution millisecond timestamp at which third_party_main processing
+ended.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_thirdPartyMainStart" id="property_thirdPartyMainStart"></a>
+            <div class="permalink"><a href="#property_thirdPartyMainStart" class="permalink fas fa-link"></a></div>
+            <p><code>thirdPartyMainStart</code> {number} </p>
+
+          </h1>
+        </div><section><p>The high resolution millisecond timestamp at which third_party_main processing
+started.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_v8Start" id="property_v8Start"></a>
+            <div class="permalink"><a href="#property_v8Start" class="permalink fas fa-link"></a></div>
+            <p><code>v8Start</code> {number} </p>
+
+          </h1>
+        </div><section><p>The high resolution millisecond timestamp at which the V8 platform was
+initialized.</p>
+</section></section></section>
+       <div class="heading">
+          <h2>
+            <a name="class_PerformanceObserver_callback_" id="class_PerformanceObserver_callback_"></a>
+            <div class="permalink"><a href="#class_PerformanceObserver_callback_" class="permalink fas fa-link"></a></div>
+            <p>Class: PerformanceObserver(callback)</p>
+
+          </h1>
+        </div><section><p><ul></p>
+<p><li><code>callback</code> {Function} A <code>PerformanceObserverCallback</code> callback function.</li>
+</ul></p>
+<p><code>PerformanceObserver</code> objects provide notifications when new
+<code>PerformanceEntry</code> instances have been added to the Performance Timeline.</p>
+<pre class="prettyprint"><code class="lang-js">const {
+  performance,
+  PerformanceObserver
+} = require(&#39;perf_hooks&#39;);
+
+const obs = new PerformanceObserver((list, observer) =&gt; {
+  console.log(list.getEntries());
+  observer.disconnect();
+});
+obs.observe({ entryTypes: [&#39;mark&#39;], buffered: true });
+
+performance.mark(&#39;test&#39;);
+</code></pre>
+<p>Because <code>PerformanceObserver</code> instances introduce their own additional
+performance overhead, instances should not be left subscribed to notifications
+indefinitely. Users should disconnect observers as soon as they are no
+longer needed.</p>
+<section>
+       <div class="heading">
+          <h4>
+            <a name="module_callback__performanceobservercallback_list__observer_" id="module_callback__performanceobservercallback_list__observer_"></a>
+            <div class="permalink"><a href="#module_callback__performanceobservercallback_list__observer_" class="permalink fas fa-link"></a></div>
+            <p>Callback: PerformanceObserverCallback(list, observer)</p>
+
+          </h1>
+        </div><section><p><ul></p>
+<p><li><code>list</code> {PerformanceObserverEntryList}</li></p>
+<p><li><code>observer</code> {PerformanceObserver}</li>
+</ul></p>
+<p>The <code>PerformanceObserverCallback</code> is invoked when a <code>PerformanceObserver</code> is
+notified about new <code>PerformanceEntry</code> instances. The callback receives a
+<code>PerformanceObserverEntryList</code> instance and a reference to the
+<code>PerformanceObserver</code>.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="module_measuring_the_duration_of_async_operations" id="module_measuring_the_duration_of_async_operations"></a>
+            <div class="permalink"><a href="#module_measuring_the_duration_of_async_operations" class="permalink fas fa-link"></a></div>
+            <p>Measuring the duration of async operations</p>
+
+          </h1>
+        </div><section><p><p>The following example uses the <a href="async_hooks.html">Async Hooks</a> and Performance APIs to measure
+the actual duration of a Timeout operation (including the amount of time it
+to execute the callback).</p></p>
+<pre class="prettyprint"><code class="lang-js">&#39;use strict&#39;;
+const async_hooks = require(&#39;async_hooks&#39;);
+const {
+  performance,
+  PerformanceObserver
+} = require(&#39;perf_hooks&#39;);
+
+const set = new Set();
+const hook = async_hooks.createHook({
+  init(id, type) {
+    if (type === &#39;Timeout&#39;) {
+      performance.mark(`Timeout-${id}-Init`);
+      set.add(id);
+    }
+  },
+  destroy(id) {
+    if (set.has(id)) {
+      set.delete(id);
+      performance.mark(`Timeout-${id}-Destroy`);
+      performance.measure(`Timeout-${id}`,
+                          `Timeout-${id}-Init`,
+                          `Timeout-${id}-Destroy`);
+    }
+  }
+});
+hook.enable();
+
+const obs = new PerformanceObserver((list, observer) =&gt; {
+  console.log(list.getEntries()[0]);
+  performance.clearMarks();
+  performance.clearMeasures();
+  observer.disconnect();
+});
+obs.observe({ entryTypes: [&#39;measure&#39;], buffered: true });
+
+setTimeout(() =&gt; {}, 1000);
+</code></pre>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="module_measuring_how_long_it_takes_to_load_dependencies" id="module_measuring_how_long_it_takes_to_load_dependencies"></a>
+            <div class="permalink"><a href="#module_measuring_how_long_it_takes_to_load_dependencies" class="permalink fas fa-link"></a></div>
+            <p>Measuring how long it takes to load dependencies</p>
+
+          </h1>
+        </div><section><p><p>The following example measures the duration of <code>require()</code> operations to load
+dependencies:</p>
+<!-- eslint-disable no-global-assign --></p>
+<p><pre class="prettyprint"><code class="lang-js">&#39;use strict&#39;;
+const {
+  performance,
+  PerformanceObserver
+} = require(&#39;perf_hooks&#39;);
+const mod = require(&#39;module&#39;);</p>
+<p>// Monkey patch the require function
+mod.Module.prototype.require =
+  performance.timerify(mod.Module.prototype.require);
+require = performance.timerify(require);</p>
+<p>// Activate the observer
+const obs = new PerformanceObserver((list) =&gt; {
+  const entries = list.getEntries();
+  entries.forEach((entry) =&gt; {
+    console.log(<code>require(&amp;#39;${entry[0]}&amp;#39;)</code>, entry.duration);
+  });
+  obs.disconnect();
+  // Free memory
+  performance.clearFunctions();
+});
+obs.observe({ entryTypes: [&#39;function&#39;], buffered: true });</p>
+<p>require(&#39;some-module&#39;);
+</code></pre>
+<!-- [end-include:perf_hooks.md] -->
+<!-- [start-include:process.md] --></p>
+</section></section><section>
+       <div class="heading">
+          <h4>
+            <a name="class_PerformanceObserverEntryList" id="class_PerformanceObserverEntryList"></a>
+            <div class="permalink"><a href="#class_PerformanceObserverEntryList" class="permalink fas fa-link"></a></div>
+            <p>Class: PerformanceObserverEntryList</p>
+
+          </h1>
+        </div><section><p>The <code>PerformanceObserverEntryList</code> class is used to provide access to the
+<code>PerformanceEntry</code> instances passed to a <code>PerformanceObserver</code>.</p>
+<section>
+       <div class="heading">
+          <h6>
+            <a name="method_getEntries_1" id="method_getEntries_1"></a>
+            <div class="permalink"><a href="#method_getEntries_1" class="permalink fas fa-link"></a></div>
+            <p>performanceObserverEntryList.getEntries()</p>
+
+          </h1>
+        </div><section><p>Returns a list of <code>PerformanceEntry</code> objects in chronological order
+with respect to <code>performanceEntry.startTime</code>.</p>
+</section>
+       <div class="heading">
+          <h6>
+            <a name="method_getEntriesByName_1" id="method_getEntriesByName_1"></a>
+            <div class="permalink"><a href="#method_getEntriesByName_1" class="permalink fas fa-link"></a></div>
+            <p>performanceObserverEntryList.getEntriesByName(name[, type])</p>
+
+          </h1>
+        </div><section><p>Returns a list of <code>PerformanceEntry</code> objects in chronological order
+with respect to <code>performanceEntry.startTime</code> whose <code>performanceEntry.name</code> is
+equal to <code>name</code>, and optionally, whose <code>performanceEntry.entryType</code> is equal to
+<code>type</code>.</p>
+</section>
+       <div class="heading">
+          <h6>
+            <a name="method_getEntriesByType_1" id="method_getEntriesByType_1"></a>
+            <div class="permalink"><a href="#method_getEntriesByType_1" class="permalink fas fa-link"></a></div>
+            <p>performanceObserverEntryList.getEntriesByType(type)</p>
+
+          </h1>
+        </div><section><p>Returns a list of <code>PerformanceEntry</code> objects in chronological order
+with respect to <code>performanceEntry.startTime</code> whose <code>performanceEntry.entryType</code>
+is equal to <code>type</code>.</p>
+</section></section></section></section><section>
+       <div class="heading">
+          <h4>
+            <a name="method_disconnect_5" id="method_disconnect_5"></a>
+            <div class="permalink"><a href="#method_disconnect_5" class="permalink fas fa-link"></a></div>
+            <p>performanceObserver.disconnect()</p>
+
+          </h1>
+        </div><section><p>Disconnects the <code>PerformanceObserver</code> instance from all notifications.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_observe" id="method_observe"></a>
+            <div class="permalink"><a href="#method_observe" class="permalink fas fa-link"></a></div>
+            <p>performanceObserver.observe(options)</p>
+
+          </h1>
+        </div><section><p><p>Subscribes the <code>PerformanceObserver</code> instance to notifications of new
+<code>PerformanceEntry</code> instances identified by <code>options.entryTypes</code>.</p></p>
+<p><p>When <code>options.buffered</code> is <code>false</code>, the <code>callback</code> will be invoked once for
+every <code>PerformanceEntry</code> instance:</p></p>
+<p><pre class="prettyprint"><code class="lang-js">const {
+  performance,
+  PerformanceObserver
+} = require(&#39;perf_hooks&#39;);</p>
+<p>const obs = new PerformanceObserver((list, observer) =&gt; {
+  // called three times synchronously. list contains one item
+});
+obs.observe({ entryTypes: [&#39;mark&#39;] });</p>
+<p>for (let n = 0; n &lt; 3; n++)
+  performance.mark(<code>test${n}</code>);
+</code></pre></p>
+<p><pre class="prettyprint"><code class="lang-js">const {
+  performance,
+  PerformanceObserver
+} = require(&#39;perf_hooks&#39;);</p>
+<p>const obs = new PerformanceObserver((list, observer) =&gt; {
+  // called once. list contains three items
+});
+obs.observe({ entryTypes: [&#39;mark&#39;], buffered: true });</p>
+<p>for (let n = 0; n &lt; 3; n++)
+  performance.mark(<code>test${n}</code>);
+</code></pre></p>
+<h2>Examples</h2>
+</section></section></section>
+
+  <div class="footer">
+    <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>
+    <p>Dubbed by <img src="images/mixtape.png" title="Dubbed by mixtape." style="width:40px;position:relative;top:8px"></img> mixtape.</p>
+  </div>
+
+  </div>
+  </body>
+</html>

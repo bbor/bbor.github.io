@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_subgroup_tty_WriteStream_Properties","target":"module_tty.html#subgroup_tty_WriteStream_Properties","text":"tty.WriteStream.Properties","icon":false,"autoexpand":true,"children":true}],"ancestry":["toc_module_tty","toc_class_tty_WriteStream"]}; });

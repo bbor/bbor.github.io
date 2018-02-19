@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_module_file_modes","target":"module_fs.html#module_file_modes","text":"File modes","icon":false}],"ancestry":["toc_module_fs","toc_method_chmod","toc_subgroup_chmod_Modules"]}; });

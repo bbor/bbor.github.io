@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_module_napi_adjust_external_memory","target":"module_n_api_1.html#module_napi_adjust_external_memory","text":"napi_adjust_external_memory","icon":false}],"ancestry":["toc_module_n_api_1","toc_module_memory_management"]}; });

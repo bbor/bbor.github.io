@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_subgroup_spawn_Properties","target":"module_child_process.html#subgroup_spawn_Properties","text":"spawn.Properties","icon":false,"autoexpand":true,"children":true}],"ancestry":["toc_module_child_process","toc_module_asynchronous_process_creation","toc_method_spawn"]}; });

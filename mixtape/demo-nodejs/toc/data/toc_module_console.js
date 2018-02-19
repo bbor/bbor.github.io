@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_module_inspector_only_methods","target":"module_console.html#module_inspector_only_methods","text":"Inspector only methods","icon":false,"children":true},{"id":"toc_class_Console","target":"module_console.html#class_Console","text":"Class: Console","icon":false,"children":true}],"ancestry":["toc_module_console"]}; });

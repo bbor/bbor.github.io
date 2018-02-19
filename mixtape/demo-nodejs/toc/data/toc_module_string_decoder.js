@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_class_new","target":"module_string_decoder.html#class_new","text":"Class: new StringDecoder([encoding])","icon":false,"children":true}],"ancestry":["toc_module_string_decoder"]}; });

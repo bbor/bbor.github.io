@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_property_isRaw","target":"module_tty.html#property_isRaw","text":"readStream.isRaw","icon":false},{"id":"toc_property_isTTY","target":"module_tty.html#property_isTTY","text":"readStream.isTTY","icon":false}],"ancestry":["toc_module_tty","toc_class_tty_ReadStream","toc_subgroup_tty_ReadStream_Properties"]}; });

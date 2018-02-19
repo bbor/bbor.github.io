@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_subgroup_fs_ReadStream_Properties","target":"module_fs.html#subgroup_fs_ReadStream_Properties","text":"fs.ReadStream.Properties","icon":false,"autoexpand":true,"children":true}],"ancestry":["toc_module_fs","toc_class_fs_ReadStream"]}; });

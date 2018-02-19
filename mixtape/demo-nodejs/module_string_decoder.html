@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>mixtape page for string_decoder</title>
+    <script data-main="js/setup" src="js/require.js"></script>
+    <link rel="stylesheet" href="fonts/fonts.css" />
+    <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="toc/themes/default/style.min.css" />
+    <link rel="stylesheet" href="css/design.css" />
+  </head>
+  <body>
+
+  <div id="control-panel">
+    <div id="control-strip-h">
+      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
+      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    </div>
+    <div id="controls">
+      <div id="control-find">
+        <div id="control-find-content"><input id="find" class="typeahead" placeholder="Find something..."></div>
+      </div>
+      <div id="control-toc">
+        <div id="control-toc-content"><div id="toc"></div></div>
+      </div>
+    </div>
+  </div>
+  <div id="control-strip-v">
+    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
+    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  </div>
+
+  <div id="content">
+
+  
+       <div class="heading">
+          <h1>
+            <a name="module_string_decoder" id="module_string_decoder"></a>
+            <div class="permalink"><a href="#module_string_decoder" class="permalink fas fa-link"></a></div>
+            <p>String Decoder</p>
+
+          </h1>
+        </div><p><p>The <code>string_decoder</code> module provides an API for decoding <code>Buffer</code> objects into
+strings in a manner that preserves encoded multi-byte UTF-8 and UTF-16
+characters. It can be accessed using:</p></p>
+<pre class="prettyprint"><code class="lang-js">const { StringDecoder } = require(&#39;string_decoder&#39;);
+</code></pre>
+<p>The following example shows the basic use of the <code>StringDecoder</code> class.</p>
+<pre class="prettyprint"><code class="lang-js">const { StringDecoder } = require(&#39;string_decoder&#39;);
+const decoder = new StringDecoder(&#39;utf8&#39;);
+
+const cent = Buffer.from([0xC2, 0xA2]);
+console.log(decoder.write(cent));
+
+const euro = Buffer.from([0xE2, 0x82, 0xAC]);
+console.log(decoder.write(euro));
+</code></pre>
+<p>When a <code>Buffer</code> instance is written to the <code>StringDecoder</code> instance, an
+internal buffer is used to ensure that the decoded string does not contain
+any incomplete multibyte characters. These are held in the buffer until the
+next call to <code>stringDecoder.write()</code> or until <code>stringDecoder.end()</code> is called.</p>
+<p>In the following example, the three UTF-8 encoded bytes of the European Euro
+symbol (<code>€</code>) are written over three separate operations:</p>
+<pre class="prettyprint"><code class="lang-js">const { StringDecoder } = require(&#39;string_decoder&#39;);
+const decoder = new StringDecoder(&#39;utf8&#39;);
+
+decoder.write(Buffer.from([0xE2]));
+decoder.write(Buffer.from([0x82]));
+console.log(decoder.end(Buffer.from([0xAC])));
+</code></pre>
+
+       <div class="heading">
+          <h2>
+            <a name="class_new" id="class_new"></a>
+            <div class="permalink"><a href="#class_new" class="permalink fas fa-link"></a></div>
+            <p>Class: new StringDecoder([encoding])</p>
+
+          </h1>
+        </div><section><p><ul></p>
+<p><li><code>encoding</code> {string} The character encoding the <code>StringDecoder</code> will use.
+Defaults to <code>&#39;utf8&#39;</code>.</li>
+</ul></p>
+<p>Creates a new <code>StringDecoder</code> instance.</p>
+<section>
+       <div class="heading">
+          <h4>
+            <a name="method_end_5" id="method_end_5"></a>
+            <div class="permalink"><a href="#method_end_5" class="permalink fas fa-link"></a></div>
+            <p>stringDecoder.end([buffer])</p>
+
+          </h1>
+        </div><section><p>Returns any remaining input stored in the internal buffer as a string. Bytes
+representing incomplete UTF-8 and UTF-16 characters will be replaced with
+substitution characters appropriate for the character encoding.</p>
+<p>If the <code>buffer</code> argument is provided, one final call to <code>stringDecoder.write()</code>
+is performed before returning the remaining input.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_write_9" id="method_write_9"></a>
+            <div class="permalink"><a href="#method_write_9" class="permalink fas fa-link"></a></div>
+            <p>stringDecoder.write(buffer)</p>
+
+          </h1>
+        </div><section><p><p>Returns a decoded string, ensuring that any incomplete multibyte characters at
+the end of the <code>Buffer</code> are omitted from the returned string and stored in an
+internal buffer for the next call to <code>stringDecoder.write()</code> or
+<code>stringDecoder.end()</code>.</p>
+<!-- [end-include:string_decoder.md] -->
+<!-- [start-include:timers.md] --></p>
+</section></section></section>
+
+  <div class="footer">
+    <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>
+    <p>Dubbed by <img src="images/mixtape.png" title="Dubbed by mixtape." style="width:40px;position:relative;top:8px"></img> mixtape.</p>
+  </div>
+
+  </div>
+  </body>
+</html>

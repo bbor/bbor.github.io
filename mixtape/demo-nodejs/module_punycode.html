@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>mixtape page for punycode</title>
+    <script data-main="js/setup" src="js/require.js"></script>
+    <link rel="stylesheet" href="fonts/fonts.css" />
+    <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="toc/themes/default/style.min.css" />
+    <link rel="stylesheet" href="css/design.css" />
+  </head>
+  <body>
+
+  <div id="control-panel">
+    <div id="control-strip-h">
+      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
+      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    </div>
+    <div id="controls">
+      <div id="control-find">
+        <div id="control-find-content"><input id="find" class="typeahead" placeholder="Find something..."></div>
+      </div>
+      <div id="control-toc">
+        <div id="control-toc-content"><div id="toc"></div></div>
+      </div>
+    </div>
+  </div>
+  <div id="control-strip-v">
+    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
+    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  </div>
+
+  <div id="content">
+
+  
+       <div class="heading">
+          <h1>
+            <a name="module_punycode" id="module_punycode"></a>
+            <div class="permalink"><a href="#module_punycode" class="permalink fas fa-link"></a></div>
+            <p>Punycode</p>
+
+          </h1>
+        </div><p><strong>The version of the punycode module bundled in Node.js is being deprecated</strong>.
+In a future major version of Node.js this module will be removed. Users
+currently depending on the <code>punycode</code> module should switch to using the
+userland-provided <a href="https://mths.be/punycode">Punycode.js</a> module instead.</p>
+<p>The <code>punycode</code> module is a bundled version of the <a href="https://mths.be/punycode">Punycode.js</a> module. It
+can be accessed using:</p>
+<pre class="prettyprint"><code class="lang-js">const punycode = require(&#39;punycode&#39;);
+</code></pre>
+<p><a href="https://tools.ietf.org/html/rfc5891#section-4.4">Punycode</a> is a character encoding scheme defined by RFC 3492 that is
+primarily intended for use in Internationalized Domain Names. Because host
+names in URLs are limited to ASCII characters only, Domain Names that contain
+non-ASCII characters must be converted into ASCII using the Punycode scheme.
+For instance, the Japanese character that translates into the English word,
+<code>&#39;example&#39;</code> is <code>&#39;例&#39;</code>. The Internationalized Domain Name, <code>&#39;例.com&#39;</code> (equivalent
+to <code>&#39;example.com&#39;</code>) is represented by Punycode as the ASCII string
+<code>&#39;xn--fsq.com&#39;</code>.</p>
+<p>The <code>punycode</code> module provides a simple implementation of the Punycode standard.</p>
+<p><em>Note</em>: The <code>punycode</code> module is a third-party dependency used by Node.js and
+made available to developers as a convenience. Fixes or other modifications to
+the module must be directed to the <a href="https://mths.be/punycode">Punycode.js</a> project.</p>
+
+       <div class="heading">
+          <h2>
+            <a name="property_ucs2" id="property_ucs2"></a>
+            <div class="permalink"><a href="#property_ucs2" class="permalink fas fa-link"></a></div>
+            <p>punycode.ucs2</p>
+
+          </h1>
+        </div><section><section>
+       <div class="heading">
+          <h4>
+            <a name="module_punycode_ucs2_decode_string_" id="module_punycode_ucs2_decode_string_"></a>
+            <div class="permalink"><a href="#module_punycode_ucs2_decode_string_" class="permalink fas fa-link"></a></div>
+            <p>punycode.ucs2.decode(string)</p>
+
+          </h1>
+        </div><section><p><ul></p>
+<p><li><code>string</code> {string}</li>
+</ul></p>
+<p><p>The <code>punycode.ucs2.decode()</code> method returns an array containing the numeric
+codepoint values of each Unicode symbol in the string.</p></p>
+<pre class="prettyprint"><code class="lang-js">punycode.ucs2.decode(&#39;abc&#39;); // [0x61, 0x62, 0x63]
+// surrogate pair for U+1D306 tetragram for centre:
+punycode.ucs2.decode(&#39;\uD834\uDF06&#39;); // [0x1D306]
+</code></pre>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="module_punycode_ucs2_encode_codepoints_" id="module_punycode_ucs2_encode_codepoints_"></a>
+            <div class="permalink"><a href="#module_punycode_ucs2_encode_codepoints_" class="permalink fas fa-link"></a></div>
+            <p>punycode.ucs2.encode(codePoints)</p>
+
+          </h1>
+        </div><section><p><ul></p>
+<p><li><code>codePoints</code> {Array}</li>
+</ul></p>
+<p><p>The <code>punycode.ucs2.encode()</code> method returns a string based on an array of
+numeric code point values.</p></p>
+<pre class="prettyprint"><code class="lang-js">punycode.ucs2.encode([0x61, 0x62, 0x63]); // &#39;abc&#39;
+punycode.ucs2.encode([0x1D306]); // &#39;\uD834\uDF06&#39;
+</code></pre>
+</section></section></section>
+       <div class="heading">
+          <h2>
+            <a name="property_version_1" id="property_version_1"></a>
+            <div class="permalink"><a href="#property_version_1" class="permalink fas fa-link"></a></div>
+            <p>punycode.version</p>
+
+          </h1>
+        </div><section><p><p>Returns a string identifying the current <a href="https://mths.be/punycode">Punycode.js</a> version number.</p>
+<!-- [end-include:punycode.md] -->
+<!-- [start-include:querystring.md] --></p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_decode" id="method_decode"></a>
+            <div class="permalink"><a href="#method_decode" class="permalink fas fa-link"></a></div>
+            <p>punycode.decode(string)</p>
+
+          </h1>
+        </div><section><p><p>The <code>punycode.decode()</code> method converts a <a href="https://tools.ietf.org/html/rfc5891#section-4.4">Punycode</a> string of ASCII-only
+characters to the equivalent string of Unicode codepoints.</p></p>
+<pre class="prettyprint"><code class="lang-js">punycode.decode(&#39;maana-pta&#39;); // &#39;mañana&#39;
+punycode.decode(&#39;--dqo34k&#39;); // &#39;☃-⌘&#39;
+</code></pre>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_encode" id="method_encode"></a>
+            <div class="permalink"><a href="#method_encode" class="permalink fas fa-link"></a></div>
+            <p>punycode.encode(string)</p>
+
+          </h1>
+        </div><section><p><p>The <code>punycode.encode()</code> method converts a string of Unicode codepoints to a
+<a href="https://tools.ietf.org/html/rfc5891#section-4.4">Punycode</a> string of ASCII-only characters.</p></p>
+<pre class="prettyprint"><code class="lang-js">punycode.encode(&#39;mañana&#39;); // &#39;maana-pta&#39;
+punycode.encode(&#39;☃-⌘&#39;); // &#39;--dqo34k&#39;
+</code></pre>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_toASCII" id="method_toASCII"></a>
+            <div class="permalink"><a href="#method_toASCII" class="permalink fas fa-link"></a></div>
+            <p>punycode.toASCII(domain)</p>
+
+          </h1>
+        </div><section><p><p>The <code>punycode.toASCII()</code> method converts a Unicode string representing an
+Internationalized Domain Name to <a href="https://tools.ietf.org/html/rfc5891#section-4.4">Punycode</a>. Only the non-ASCII parts of the
+domain name will be converted. Calling <code>punycode.toASCII()</code> on a string that
+already only contains ASCII characters will have no effect.</p></p>
+<pre class="prettyprint"><code class="lang-js">// encode domain names
+punycode.toASCII(&#39;mañana.com&#39;);  // &#39;xn--maana-pta.com&#39;
+punycode.toASCII(&#39;☃-⌘.com&#39;);   // &#39;xn----dqo34k.com&#39;
+punycode.toASCII(&#39;example.com&#39;); // &#39;example.com&#39;
+</code></pre>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_toUnicode" id="method_toUnicode"></a>
+            <div class="permalink"><a href="#method_toUnicode" class="permalink fas fa-link"></a></div>
+            <p>punycode.toUnicode(domain)</p>
+
+          </h1>
+        </div><section><p><p>The <code>punycode.toUnicode()</code> method converts a string representing a domain name
+containing <a href="https://tools.ietf.org/html/rfc5891#section-4.4">Punycode</a> encoded characters into Unicode. Only the <a href="https://tools.ietf.org/html/rfc5891#section-4.4">Punycode</a>
+encoded parts of the domain name are be converted.</p></p>
+<pre class="prettyprint"><code class="lang-js">// decode domain names
+punycode.toUnicode(&#39;xn--maana-pta.com&#39;); // &#39;mañana.com&#39;
+punycode.toUnicode(&#39;xn----dqo34k.com&#39;);  // &#39;☃-⌘.com&#39;
+punycode.toUnicode(&#39;example.com&#39;);       // &#39;example.com&#39;
+</code></pre>
+</section>
+
+  <div class="footer">
+    <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>
+    <p>Dubbed by <img src="images/mixtape.png" title="Dubbed by mixtape." style="width:40px;position:relative;top:8px"></img> mixtape.</p>
+  </div>
+
+  </div>
+  </body>
+</html>

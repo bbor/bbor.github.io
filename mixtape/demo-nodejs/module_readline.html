@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>mixtape page for readline</title>
+    <script data-main="js/setup" src="js/require.js"></script>
+    <link rel="stylesheet" href="fonts/fonts.css" />
+    <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="toc/themes/default/style.min.css" />
+    <link rel="stylesheet" href="css/design.css" />
+  </head>
+  <body>
+
+  <div id="control-panel">
+    <div id="control-strip-h">
+      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
+      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    </div>
+    <div id="controls">
+      <div id="control-find">
+        <div id="control-find-content"><input id="find" class="typeahead" placeholder="Find something..."></div>
+      </div>
+      <div id="control-toc">
+        <div id="control-toc-content"><div id="toc"></div></div>
+      </div>
+    </div>
+  </div>
+  <div id="control-strip-v">
+    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
+    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  </div>
+
+  <div id="content">
+
+  
+       <div class="heading">
+          <h1>
+            <a name="module_readline" id="module_readline"></a>
+            <div class="permalink"><a href="#module_readline" class="permalink fas fa-link"></a></div>
+            <p>Readline</p>
+
+          </h1>
+        </div><p>The <code>readline</code> module provides an interface for reading data from a <a href="#stream_class_stream_readable">Readable</a>
+stream (such as <a href="process.html#process_process_stdin"><code>process.stdin</code></a>) one line at a time. It can be accessed using:</p>
+<pre class="prettyprint"><code class="lang-js">const readline = require(&#39;readline&#39;);
+</code></pre>
+<p>The following simple example illustrates the basic use of the <code>readline</code> module.</p>
+<pre class="prettyprint"><code class="lang-js">const readline = require(&#39;readline&#39;);
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+rl.question(&#39;What do you think of Node.js? &#39;, (answer) =&gt; {
+  // TODO: Log the answer in a database
+  console.log(<code>Thank you for your valuable feedback: ${answer}</code>);
+
+  rl.close();
+});
+</code></pre>
+<p><em>Note</em>: Once this code is invoked, the Node.js application will not
+terminate until the <code>readline.Interface</code> is closed because the interface
+waits for data to be received on the <code>input</code> stream.</p>
+
+       <div class="heading">
+          <h2>
+            <a name="class_Interface" id="class_Interface"></a>
+            <div class="permalink"><a href="#class_Interface" class="permalink fas fa-link"></a></div>
+            <p>Class: Interface</p>
+
+          </h1>
+        </div><section><p>Instances of the <code>readline.Interface</code> class are constructed using the
+<code>readline.createInterface()</code> method. Every instance is associated with a
+single <code>input</code> <a href="#stream_class_stream_readable">Readable</a> stream and a single <code>output</code> <a href="#stream_class_stream_writable">Writable</a> stream.
+The <code>output</code> stream is used to print prompts for user input that arrives on,
+and is read from, the <code>input</code> stream.</p>
+<section>
+       <div class="heading">
+          <h4>
+            <a name="method_close_9" id="method_close_9"></a>
+            <div class="permalink"><a href="#method_close_9" class="permalink fas fa-link"></a></div>
+            <p>rl.close()</p>
+
+          </h1>
+        </div><section><p>The <code>rl.close()</code> method closes the <code>readline.Interface</code> instance and
+relinquishes control over the <code>input</code> and <code>output</code> streams. When called,
+the <code>&#39;close&#39;</code> event will be emitted.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_pause_1" id="method_pause_1"></a>
+            <div class="permalink"><a href="#method_pause_1" class="permalink fas fa-link"></a></div>
+            <p>rl.pause()</p>
+
+          </h1>
+        </div><section><p>The <code>rl.pause()</code> method pauses the <code>input</code> stream, allowing it to be resumed
+later if necessary.</p>
+<p>Calling <code>rl.pause()</code> does not immediately pause other events (including
+<code>&#39;line&#39;</code>) from being emitted by the <code>readline.Interface</code> instance.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_prompt" id="method_prompt"></a>
+            <div class="permalink"><a href="#method_prompt" class="permalink fas fa-link"></a></div>
+            <p>rl.prompt([preserveCursor])</p>
+
+          </h1>
+        </div><section><p>The <code>rl.prompt()</code> method writes the <code>readline.Interface</code> instances configured
+<code>prompt</code> to a new line in <code>output</code> in order to provide a user with a new
+location at which to provide input.</p>
+<p>When called, <code>rl.prompt()</code> will resume the <code>input</code> stream if it has been
+paused.</p>
+<p>If the <code>readline.Interface</code> was created with <code>output</code> set to <code>null</code> or
+<code>undefined</code> the prompt is not written.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_question" id="method_question"></a>
+            <div class="permalink"><a href="#method_question" class="permalink fas fa-link"></a></div>
+            <p>rl.question(query, callback)</p>
+
+          </h1>
+        </div><section><p>The <code>rl.question()</code> method displays the <code>query</code> by writing it to the <code>output</code>,
+waits for user input to be provided on <code>input</code>, then invokes the <code>callback</code>
+function passing the provided input as the first argument.</p>
+<p>When called, <code>rl.question()</code> will resume the <code>input</code> stream if it has been
+paused.</p>
+<p>If the <code>readline.Interface</code> was created with <code>output</code> set to <code>null</code> or
+<code>undefined</code> the <code>query</code> is not written.</p>
+<p>Example usage:</p>
+<pre class="prettyprint"><code class="lang-js">rl.question(&#39;What is your favorite food? &#39;, (answer) =&gt; {
+  console.log(<code>Oh, so your favorite food is ${answer}</code>);
+});
+</code></pre>
+<p><em>Note</em>: The <code>callback</code> function passed to <code>rl.question()</code> does not follow the
+typical pattern of accepting an <code>Error</code> object or <code>null</code> as the first argument.
+The <code>callback</code> is called with the provided answer as the only argument.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_resume_1" id="method_resume_1"></a>
+            <div class="permalink"><a href="#method_resume_1" class="permalink fas fa-link"></a></div>
+            <p>rl.resume()</p>
+
+          </h1>
+        </div><section><p>The <code>rl.resume()</code> method resumes the <code>input</code> stream if it has been paused.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_setPrompt" id="method_setPrompt"></a>
+            <div class="permalink"><a href="#method_setPrompt" class="permalink fas fa-link"></a></div>
+            <p>rl.setPrompt(prompt)</p>
+
+          </h1>
+        </div><section><p>The <code>rl.setPrompt()</code> method sets the prompt that will be written to <code>output</code>
+whenever <code>rl.prompt()</code> is called.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_write_7" id="method_write_7"></a>
+            <div class="permalink"><a href="#method_write_7" class="permalink fas fa-link"></a></div>
+            <p>rl.write(data[, key])</p>
+
+          </h1>
+        </div><section><p>The <code>rl.write()</code> method will write either <code>data</code> or a key sequence  identified
+by <code>key</code> to the <code>output</code>. The <code>key</code> argument is supported only if <code>output</code> is
+a <a href="tty.html">TTY</a> text terminal.</p>
+<p>If <code>key</code> is specified, <code>data</code> is ignored.</p>
+<p>When called, <code>rl.write()</code> will resume the <code>input</code> stream if it has been
+paused.</p>
+<p>If the <code>readline.Interface</code> was created with <code>output</code> set to <code>null</code> or
+<code>undefined</code> the <code>data</code> and <code>key</code> are not written.</p>
+<p>For example:</p>
+<pre class="prettyprint"><code class="lang-js">rl.write(&#39;Delete this!&#39;);
+// Simulate Ctrl+u to delete the line written previously
+rl.write(null, { ctrl: true, name: &#39;u&#39; });
+</code></pre>
+<p><em>Note</em>: The <code>rl.write()</code> method will write the data to the <code>readline</code>
+Interface&#39;s <code>input</code> <em>as if it were provided by the user</em>.</p>
+</section></section></section>
+       <div class="heading">
+          <h2>
+            <a name="method_clearLine" id="method_clearLine"></a>
+            <div class="permalink"><a href="#method_clearLine" class="permalink fas fa-link"></a></div>
+            <p>readline.clearLine(stream, dir)</p>
+
+          </h1>
+        </div><section><p>The <code>readline.clearLine()</code> method clears current line of given <a href="tty.html">TTY</a> stream
+in a specified direction identified by <code>dir</code>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_clearScreenDown" id="method_clearScreenDown"></a>
+            <div class="permalink"><a href="#method_clearScreenDown" class="permalink fas fa-link"></a></div>
+            <p>readline.clearScreenDown(stream)</p>
+
+          </h1>
+        </div><section><p>The <code>readline.clearScreenDown()</code> method clears the given <a href="tty.html">TTY</a> stream from
+the current position of the cursor down.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_createInterface" id="method_createInterface"></a>
+            <div class="permalink"><a href="#method_createInterface" class="permalink fas fa-link"></a></div>
+            <p>readline.createInterface(options)</p>
+
+          </h1>
+        </div><section><p>The <code>readline.createInterface()</code> method creates a new <code>readline.Interface</code>
+instance.</p>
+<p>For example:</p>
+<pre class="prettyprint"><code class="lang-js">const readline = require(&#39;readline&#39;);
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+</code></pre>
+<p>Once the <code>readline.Interface</code> instance is created, the most common case is to
+listen for the <code>&#39;line&#39;</code> event:</p>
+<pre class="prettyprint"><code class="lang-js">rl.on(&#39;line&#39;, (line) =&gt; {
+  console.log(<code>Received: ${line}</code>);
+});
+</code></pre>
+<p>If <code>terminal</code> is <code>true</code> for this instance then the <code>output</code> stream will get
+the best compatibility if it defines an <code>output.columns</code> property and emits
+a <code>&#39;resize&#39;</code> event on the <code>output</code> if or when the columns ever change
+(<a href="process.html#process_process_stdout"><code>process.stdout</code></a> does this automatically when it is a TTY).</p>
+<section>
+       <div class="heading">
+          <h4>
+            <a name="module_use_of_the__completer__function" id="module_use_of_the__completer__function"></a>
+            <div class="permalink"><a href="#module_use_of_the__completer__function" class="permalink fas fa-link"></a></div>
+            <p>Use of the <code>completer</code> Function</p>
+
+          </h1>
+        </div><section><p><p>The <code>completer</code> function takes the current line entered by the user
+as an argument, and returns an Array with 2 entries:</p></p>
+<p><ul></p>
+<p><li>An Array with matching entries for the completion.</li></p>
+<p><li>The substring that was used for the matching.</li>
+</ul></p>
+<p><p>For instance: <code>[[substr1, substr2, ...], originalsubstring]</code>.</p></p>
+<pre class="prettyprint"><code class="lang-js">function completer(line) {
+  const completions = &#39;.help .error .exit .quit .q&#39;.split(&#39; &#39;);
+  const hits = completions.filter((c) =&gt; c.startsWith(line));
+  // show all completions if none found
+  return [hits.length ? hits : completions, line];
+}
+</code></pre>
+<p>The <code>completer</code> function can be called asynchronously if it accepts two
+arguments:</p>
+<pre class="prettyprint"><code class="lang-js">function completer(linePartial, callback) {
+  callback(null, [[&#39;123&#39;], linePartial]);
+}
+</code></pre>
+</section></section></section>
+       <div class="heading">
+          <h2>
+            <a name="method_cursorTo" id="method_cursorTo"></a>
+            <div class="permalink"><a href="#method_cursorTo" class="permalink fas fa-link"></a></div>
+            <p>readline.cursorTo(stream, x, y)</p>
+
+          </h1>
+        </div><section><p>The <code>readline.cursorTo()</code> method moves cursor to the specified position in a
+given <a href="tty.html">TTY</a> <code>stream</code>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_emitKeypressEvents" id="method_emitKeypressEvents"></a>
+            <div class="permalink"><a href="#method_emitKeypressEvents" class="permalink fas fa-link"></a></div>
+            <p>readline.emitKeypressEvents(stream[, interface])</p>
+
+          </h1>
+        </div><section><p><p>The <code>readline.emitKeypressEvents()</code> method causes the given <a href="#stream_class_stream_readable">Readable</a>
+<code>stream</code> to begin emitting <code>&#39;keypress&#39;</code> events corresponding to received input.</p></p>
+<p><p>Optionally, <code>interface</code> specifies a <code>readline.Interface</code> instance for which
+autocompletion is disabled when copy-pasted input is detected.</p></p>
+<p><p>If the <code>stream</code> is a <a href="tty.html">TTY</a>, then it must be in raw mode.</p></p>
+<p><p><em>Note</em>: This is automatically called by any readline instance on its <code>input</code>
+if the <code>input</code> is a terminal. Closing the <code>readline</code> instance does not stop
+the <code>input</code> from emitting <code>&#39;keypress&#39;</code> events.</p></p>
+<pre class="prettyprint"><code class="lang-js">readline.emitKeypressEvents(process.stdin);
+if (process.stdin.isTTY)
+  process.stdin.setRawMode(true);
+</code></pre>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_moveCursor" id="method_moveCursor"></a>
+            <div class="permalink"><a href="#method_moveCursor" class="permalink fas fa-link"></a></div>
+            <p>readline.moveCursor(stream, dx, dy)</p>
+
+          </h1>
+        </div><section><p><p>The <code>readline.moveCursor()</code> method moves the cursor <em>relative</em> to its current
+position in a given <a href="tty.html">TTY</a> <code>stream</code>.</p></p>
+<p><h2>Example: Tiny CLI</h2></p>
+<p><p>The following example illustrates the use of <code>readline.Interface</code> class to
+implement a small command-line interface:</p></p>
+<p><pre class="prettyprint"><code class="lang-js">const readline = require(&#39;readline&#39;);
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+  prompt: &#39;OHAI&gt; &#39;
+});</p>
+<p>rl.prompt();</p>
+<p>rl.on(&#39;line&#39;, (line) =&gt; {
+  switch (line.trim()) {
+    case &#39;hello&#39;:
+      console.log(&#39;world!&#39;);
+      break;
+    default:
+      console.log(<code>Say what? I might have heard &amp;#39;${line.trim()}&amp;#39;</code>);
+      break;
+  }
+  rl.prompt();
+}).on(&#39;close&#39;, () =&gt; {
+  console.log(&#39;Have a great day!&#39;);
+  process.exit(0);
+});
+</code></pre></p>
+<p><h2>Example: Read File Stream Line-by-Line</h2></p>
+<p><p>A common use case for <code>readline</code> is to consume input from a filesystem
+<a href="#stream_class_stream_readable">Readable</a> stream one line at a time, as illustrated in the following
+example:</p></p>
+<p><pre class="prettyprint"><code class="lang-js">const readline = require(&#39;readline&#39;);
+const fs = require(&#39;fs&#39;);</p>
+<p>const rl = readline.createInterface({
+  input: fs.createReadStream(&#39;sample.txt&#39;),
+  crlfDelay: Infinity
+});</p>
+<p>rl.on(&#39;line&#39;, (line) =&gt; {
+  console.log(<code>Line from file: ${line}</code>);
+});
+</code></pre>
+<!-- [end-include:readline.md] -->
+<!-- [start-include:repl.md] --></p>
+</section>
+
+  <div class="footer">
+    <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>
+    <p>Dubbed by <img src="images/mixtape.png" title="Dubbed by mixtape." style="width:40px;position:relative;top:8px"></img> mixtape.</p>
+  </div>
+
+  </div>
+  </body>
+</html>
