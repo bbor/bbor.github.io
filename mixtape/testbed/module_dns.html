@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>mixtape page for dns</title>
+    <script data-main="js/setup" src="js/require.js"></script>
+    <link rel="stylesheet" href="fonts/fonts.css" />
+    <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="toc/themes/default/style.min.css" />
+    <link rel="stylesheet" href="css/design.css" />
+  </head>
+  <body>
+
+  <div id="control-panel">
+    <div id="control-strip-h">
+      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
+      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    </div>
+    <div id="controls">
+      <div id="control-find">
+        <div id="control-find-content"><input id="find" class="typeahead" placeholder="Find something..."></div>
+      </div>
+      <div id="control-toc">
+        <div id="control-toc-content"><div id="toc"></div></div>
+      </div>
+    </div>
+  </div>
+  <div id="control-strip-v">
+    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
+    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  </div>
+
+  <div id="content">
+
+  
+       <div class="heading">
+          <h1>
+            <a name="module_dns" id="module_dns"></a>
+            <div class="permalink"><a href="#module_dns" class="permalink fas fa-link"></a></div>
+            <p>DNS</p>
+
+          </h1>
+        </div><p>The <code>dns</code> module contains functions belonging to two different categories:</p>
+<p>1) Functions that use the underlying operating system facilities to perform
+name resolution, and that do not necessarily perform any network communication.
+This category contains only one function: <a href="dns.html#dns_dns_lookup_hostname_options_callback"><code>dns.lookup()</code></a>. <strong>Developers
+looking to perform name resolution in the same way that other applications on
+the same operating system behave should use <a href="dns.html#dns_dns_lookup_hostname_options_callback"><code>dns.lookup()</code></a>.</strong></p>
+<p>For example, looking up <code>iana.org</code>.</p>
+<pre class="prettyprint"><code class="lang-js">const dns = require(&#39;dns&#39;);
+
+dns.lookup(&#39;iana.org&#39;, (err, address, family) =&gt; {
+  console.log(&#39;address: %j family: IPv%s&#39;, address, family);
+});
+// address: &quot;192.0.43.8&quot; family: IPv4
+</code></pre>
+<p>2) Functions that connect to an actual DNS server to perform name resolution,
+and that <em>always</em> use the network to perform DNS queries. This category
+contains all functions in the <code>dns</code> module <em>except</em> <a href="dns.html#dns_dns_lookup_hostname_options_callback"><code>dns.lookup()</code></a>. These
+functions do not use the same set of configuration files used by
+<a href="dns.html#dns_dns_lookup_hostname_options_callback"><code>dns.lookup()</code></a> (e.g. <code>/etc/hosts</code>). These functions should be used by
+developers who do not want to use the underlying operating system&#39;s facilities
+for name resolution, and instead want to <em>always</em> perform DNS queries.</p>
+<p>Below is an example that resolves <code>&#39;archive.org&#39;</code> then reverse resolves the IP
+addresses that are returned.</p>
+<pre class="prettyprint"><code class="lang-js">const dns = require(&#39;dns&#39;);
+
+dns.resolve4(&#39;archive.org&#39;, (err, addresses) =&gt; {
+  if (err) throw err;
+
+  console.log(<code>addresses: ${JSON.stringify(addresses)}</code>);
+
+  addresses.forEach((a) =&gt; {
+    dns.reverse(a, (err, hostnames) =&gt; {
+      if (err) {
+        throw err;
+      }
+      console.log(<code>reverse for ${a}: ${JSON.stringify(hostnames)}</code>);
+    });
+  });
+});
+</code></pre>
+<p>There are subtle consequences in choosing one over the other, please consult
+the <a href="#dns_implementation_considerations">Implementation considerations section</a> for more information.</p>
+
+       <div class="heading">
+          <h2>
+            <a name="module_error_codes" id="module_error_codes"></a>
+            <div class="permalink"><a href="#module_error_codes" class="permalink fas fa-link"></a></div>
+            <p>Error codes</p>
+
+          </h1>
+        </div><section><p><p>Each DNS query can return one of the following error codes:</p></p>
+<ul>
+<li><code>dns.NODATA</code>: DNS server returned answer with no data.</li>
+<li><code>dns.FORMERR</code>: DNS server claims query was misformatted.</li>
+<li><code>dns.SERVFAIL</code>: DNS server returned general failure.</li>
+<li><code>dns.NOTFOUND</code>: Domain name not found.</li>
+<li><code>dns.NOTIMP</code>: DNS server does not implement requested operation.</li>
+<li><code>dns.REFUSED</code>: DNS server refused query.</li>
+<li><code>dns.BADQUERY</code>: Misformatted DNS query.</li>
+<li><code>dns.BADNAME</code>: Misformatted hostname.</li>
+<li><code>dns.BADFAMILY</code>: Unsupported address family.</li>
+<li><code>dns.BADRESP</code>: Misformatted DNS reply.</li>
+<li><code>dns.CONNREFUSED</code>: Could not contact DNS servers.</li>
+<li><code>dns.TIMEOUT</code>: Timeout while contacting DNS servers.</li>
+<li><code>dns.EOF</code>: End of file.</li>
+<li><code>dns.FILE</code>: Error reading file.</li>
+<li><code>dns.NOMEM</code>: Out of memory.</li>
+<li><code>dns.DESTRUCTION</code>: Channel is being destroyed.</li>
+<li><code>dns.BADSTR</code>: Misformatted string.</li>
+<li><code>dns.BADFLAGS</code>: Illegal flags specified.</li>
+<li><code>dns.NONAME</code>: Given hostname is not numeric.</li>
+<li><code>dns.BADHINTS</code>: Illegal hints flags specified.</li>
+<li><code>dns.NOTINITIALIZED</code>: c-ares library initialization not yet performed.</li>
+<li><code>dns.LOADIPHLPAPI</code>: Error loading iphlpapi.dll.</li>
+<li><code>dns.ADDRGETNETWORKPARAMS</code>: Could not find GetNetworkParams function.</li>
+<li><code>dns.CANCELLED</code>: DNS query cancelled.</li>
+</ul>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="module_implementation_considerations" id="module_implementation_considerations"></a>
+            <div class="permalink"><a href="#module_implementation_considerations" class="permalink fas fa-link"></a></div>
+            <p>Implementation considerations</p>
+
+          </h1>
+        </div><section><p>Although <a href="dns.html#dns_dns_lookup_hostname_options_callback"><code>dns.lookup()</code></a> and the various <code>dns.resolve*()/dns.reverse()</code>
+functions have the same goal of associating a network name with a network
+address (or vice versa), their behavior is quite different. These differences
+can have subtle but significant consequences on the behavior of Node.js
+programs.</p>
+
+       <div class="heading">
+          <h3>
+            <a name="module__dns_lookup___" id="module__dns_lookup___"></a>
+            <div class="permalink"><a href="#module__dns_lookup___" class="permalink fas fa-link"></a></div>
+            <p><code>dns.lookup()</code></p>
+
+          </h1>
+        </div><section><p>Under the hood, <a href="dns.html#dns_dns_lookup_hostname_options_callback"><code>dns.lookup()</code></a> uses the same operating system facilities
+as most other programs. For instance, <a href="dns.html#dns_dns_lookup_hostname_options_callback"><code>dns.lookup()</code></a> will almost always
+resolve a given name the same way as the <code>ping</code> command. On most POSIX-like
+operating systems, the behavior of the <a href="dns.html#dns_dns_lookup_hostname_options_callback"><code>dns.lookup()</code></a> function can be
+modified by changing settings in nsswitch.conf(5) and/or resolv.conf(5),
+but note that changing these files will change the behavior of <em>all other
+programs running on the same operating system</em>.</p>
+<p>Though the call to <code>dns.lookup()</code> will be asynchronous from JavaScript&#39;s
+perspective, it is implemented as a synchronous call to getaddrinfo(3) that runs
+on libuv&#39;s threadpool. This can have surprising negative performance
+implications for some applications, see the <a href="cli.html#cli_uv_threadpool_size_size"><code>UV_THREADPOOL_SIZE</code></a>
+documentation for more information.</p>
+<p>Note that various networking APIs will call <code>dns.lookup()</code> internally to resolve
+host names. If that is an issue, consider resolving the hostname to and address
+using <code>dns.resolve()</code> and using the address instead of a host name. Also, some
+networking APIs (such as <a href="#net_socket_connect"><code>socket.connect()</code></a> and <a href="#dgram_dgram_createsocket_options_callback"><code>dgram.createSocket()</code></a>)
+allow the default resolver, <code>dns.lookup()</code>, to be replaced.</p>
+</section>
+       <div class="heading">
+          <h3>
+            <a name="module__dns_resolve______dns_resolve_____and__dns_reverse___" id="module__dns_resolve______dns_resolve_____and__dns_reverse___"></a>
+            <div class="permalink"><a href="#module__dns_resolve______dns_resolve_____and__dns_reverse___" class="permalink fas fa-link"></a></div>
+            <p><code>dns.resolve()</code>, <code>dns.resolve*()</code> and <code>dns.reverse()</code></p>
+
+          </h1>
+        </div><section><p><p>These functions are implemented quite differently than <a href="dns.html#dns_dns_lookup_hostname_options_callback"><code>dns.lookup()</code></a>. They
+do not use getaddrinfo(3) and they <em>always</em> perform a DNS query on the
+network. This network communication is always done asynchronously, and does not
+use libuv&#39;s threadpool.</p></p>
+<p><p>As a result, these functions cannot have the same negative impact on other
+processing that happens on libuv&#39;s threadpool that <a href="dns.html#dns_dns_lookup_hostname_options_callback"><code>dns.lookup()</code></a> can have.</p></p>
+<p><p>They do not use the same set of configuration files than what <a href="dns.html#dns_dns_lookup_hostname_options_callback"><code>dns.lookup()</code></a>
+uses. For instance, <em>they do not use the configuration from <code>/etc/hosts</code></em>.</p>
+<!-- [end-include:dns.md] -->
+<!-- [start-include:domain.md] --></p>
+</section></section>
+       <div class="heading">
+          <h2>
+            <a name="property_Resolver" id="property_Resolver"></a>
+            <div class="permalink"><a href="#property_Resolver" class="permalink fas fa-link"></a></div>
+            <p>Class dns.Resolver</p>
+
+          </h1>
+        </div><section><p><p>An independent resolver for DNS requests.</p></p>
+<p><p>Note that creating a new resolver uses the default server settings. Setting
+the servers used for a resolver using
+<a href="#dns_dns_setservers_servers"><code>resolver.setServers()</code></a> does not affect
+other resolver:</p></p>
+<p><pre class="prettyprint"><code class="lang-js">const { Resolver } = require(&#39;dns&#39;);
+const resolver = new Resolver();
+resolver.setServers([&#39;4.4.4.4&#39;]);</p>
+<p>// This request will use the server at 4.4.4.4, independent of global settings.
+resolver.resolve4(&#39;example.org&#39;, (err, addresses) =&gt; {
+  // ...
+});
+</code></pre></p>
+<p><p>The following methods from the <code>dns</code> module are available:</p></p>
+<ul>
+<li><a href="#dns_dns_getservers"><code>resolver.getServers()</code></a></li>
+<li><a href="#dns_dns_setservers_servers"><code>resolver.setServers()</code></a></li>
+<li><a href="#dns_dns_resolve_hostname_rrtype_callback"><code>resolver.resolve()</code></a></li>
+<li><a href="#dns_dns_resolve4_hostname_options_callback"><code>resolver.resolve4()</code></a></li>
+<li><a href="#dns_dns_resolve6_hostname_options_callback"><code>resolver.resolve6()</code></a></li>
+<li><a href="#dns_dns_resolveany_hostname_callback"><code>resolver.resolveAny()</code></a></li>
+<li><a href="#dns_dns_resolvecname_hostname_callback"><code>resolver.resolveCname()</code></a></li>
+<li><a href="#dns_dns_resolvemx_hostname_callback"><code>resolver.resolveMx()</code></a></li>
+<li><a href="#dns_dns_resolvenaptr_hostname_callback"><code>resolver.resolveNaptr()</code></a></li>
+<li><a href="#dns_dns_resolvens_hostname_callback"><code>resolver.resolveNs()</code></a></li>
+<li><a href="#dns_dns_resolveptr_hostname_callback"><code>resolver.resolvePtr()</code></a></li>
+<li><a href="#dns_dns_resolvesoa_hostname_callback"><code>resolver.resolveSoa()</code></a></li>
+<li><a href="#dns_dns_resolvesrv_hostname_callback"><code>resolver.resolveSrv()</code></a></li>
+<li><a href="#dns_dns_resolvetxt_hostname_callback"><code>resolver.resolveTxt()</code></a></li>
+<li><a href="#dns_dns_reverse_ip_callback"><code>resolver.reverse()</code></a></li>
+</ul>
+<section>
+       <div class="heading">
+          <h4>
+            <a name="method_cancel" id="method_cancel"></a>
+            <div class="permalink"><a href="#method_cancel" class="permalink fas fa-link"></a></div>
+            <p>resolver.cancel()</p>
+
+          </h1>
+        </div><section><p>Cancel all outstanding DNS queries made by this resolver. The corresponding
+callbacks will be called with an error with code <code>ECANCELLED</code>.</p>
+</section></section></section>
+       <div class="heading">
+          <h2>
+            <a name="method_getServers" id="method_getServers"></a>
+            <div class="permalink"><a href="#method_getServers" class="permalink fas fa-link"></a></div>
+            <p>dns.getServers()</p>
+
+          </h1>
+        </div><section><p><p>Returns an array of IP address strings, formatted according to <a href="https://tools.ietf.org/html/rfc5952#section-6">rfc5952</a>,
+that are currently configured for DNS resolution. A string will include a port
+section if a custom port is used.</p></p>
+<p><p>For example:</p>
+<!-- eslint-disable semi--></p>
+<pre class="prettyprint"><code class="lang-js">[
+  &#39;4.4.4.4&#39;,
+  &#39;2001:4860:4860::8888&#39;,
+  &#39;4.4.4.4:1053&#39;,
+  &#39;[2001:4860:4860::8888]:1053&#39;
+]
+</code></pre>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_lookup" id="method_lookup"></a>
+            <div class="permalink"><a href="#method_lookup" class="permalink fas fa-link"></a></div>
+            <p>dns.lookup(hostname[, options], callback)</p>
+
+          </h1>
+        </div><section><p>Resolves a hostname (e.g. <code>&#39;nodejs.org&#39;</code>) into the first found A (IPv4) or
+AAAA (IPv6) record. All <code>option</code> properties are optional. If <code>options</code> is an
+integer, then it must be <code>4</code> or <code>6</code> – if <code>options</code> is not provided, then IPv4
+and IPv6 addresses are both returned if found.</p>
+<p>With the <code>all</code> option set to <code>true</code>, the arguments for <code>callback</code> change to
+<code>(err, addresses)</code>, with <code>addresses</code> being an array of objects with the
+properties <code>address</code> and <code>family</code>.</p>
+<p>On error, <code>err</code> is an <a href="errors.html#errors_class_error"><code>Error</code></a> object, where <code>err.code</code> is the error code.
+Keep in mind that <code>err.code</code> will be set to <code>&#39;ENOENT&#39;</code> not only when
+the hostname does not exist but also when the lookup fails in other ways
+such as no available file descriptors.</p>
+<p><code>dns.lookup()</code> does not necessarily have anything to do with the DNS protocol.
+The implementation uses an operating system facility that can associate names
+with addresses, and vice versa. This implementation can have subtle but
+important consequences on the behavior of any Node.js program. Please take some
+time to consult the <a href="#dns_implementation_considerations">Implementation considerations section</a> before using
+<code>dns.lookup()</code>.</p>
+<p>Example usage:</p>
+<pre class="prettyprint"><code class="lang-js">const dns = require(&#39;dns&#39;);
+const options = {
+  family: 6,
+  hints: dns.ADDRCONFIG | dns.V4MAPPED,
+};
+dns.lookup(&#39;example.com&#39;, options, (err, address, family) =&gt;
+  console.log(&#39;address: %j family: IPv%s&#39;, address, family));
+// address: &quot;2606:2800:220:1:248:1893:25c8:1946&quot; family: IPv6
+
+// When options.all is true, the result will be an Array.
+options.all = true;
+dns.lookup(&#39;example.com&#39;, options, (err, addresses) =&gt;
+  console.log(&#39;addresses: %j&#39;, addresses));
+// addresses: [{&quot;address&quot;:&quot;2606:2800:220:1:248:1893:25c8:1946&quot;,&quot;family&quot;:6}]
+</code></pre>
+<p>If this method is invoked as its <a href="#util_util_promisify_original"><code>util.promisify()</code></a>ed version, and <code>all</code>
+is not set to <code>true</code>, it returns a Promise for an object with <code>address</code> and
+<code>family</code> properties.</p>
+<section>
+       <div class="heading">
+          <h4>
+            <a name="module_supported_getaddrinfo_flags" id="module_supported_getaddrinfo_flags"></a>
+            <div class="permalink"><a href="#module_supported_getaddrinfo_flags" class="permalink fas fa-link"></a></div>
+            <p>Supported getaddrinfo flags</p>
+
+          </h1>
+        </div><section><p><p>The following flags can be passed as hints to <a href="dns.html#dns_dns_lookup_hostname_options_callback"><code>dns.lookup()</code></a>.</p></p>
+<ul>
+<li><code>dns.ADDRCONFIG</code>: Returned address types are determined by the types
+of addresses supported by the current system. For example, IPv4 addresses
+are only returned if the current system has at least one IPv4 address
+configured. Loopback addresses are not considered.</li>
+<li><code>dns.V4MAPPED</code>: If the IPv6 family was specified, but no IPv6 addresses were
+found, then return IPv4 mapped IPv6 addresses. Note that it is not supported
+on some operating systems (e.g FreeBSD 10.1).</li>
+</ul>
+</section></section></section>
+       <div class="heading">
+          <h2>
+            <a name="method_lookupService" id="method_lookupService"></a>
+            <div class="permalink"><a href="#method_lookupService" class="permalink fas fa-link"></a></div>
+            <p>dns.lookupService(address, port, callback)</p>
+
+          </h1>
+        </div><section><p>Resolves the given <code>address</code> and <code>port</code> into a hostname and service using
+the operating system&#39;s underlying <code>getnameinfo</code> implementation.</p>
+<p>If <code>address</code> is not a valid IP address, a <code>TypeError</code> will be thrown.
+The <code>port</code> will be coerced to a number. If it is not a legal port, a <code>TypeError</code>
+will be thrown.</p>
+<p>On an error, <code>err</code> is an <a href="errors.html#errors_class_error"><code>Error</code></a> object, where <code>err.code</code> is the error code.</p>
+<pre class="prettyprint"><code class="lang-js">const dns = require(&#39;dns&#39;);
+dns.lookupService(&#39;127.0.0.1&#39;, 22, (err, hostname, service) =&gt; {
+  console.log(hostname, service);
+  // Prints: localhost ssh
+});
+</code></pre>
+<p>If this method is invoked as its <a href="#util_util_promisify_original"><code>util.promisify()</code></a>ed version, it returns a
+Promise for an object with <code>hostname</code> and <code>service</code> properties.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_resolve" id="method_resolve"></a>
+            <div class="permalink"><a href="#method_resolve" class="permalink fas fa-link"></a></div>
+            <p>dns.resolve(hostname[, rrtype], callback)</p>
+
+          </h1>
+        </div><section><p>Uses the DNS protocol to resolve a hostname (e.g. <code>&#39;nodejs.org&#39;</code>) into an array
+of the resource records. The <code>callback</code> function has arguments
+<code>(err, records)</code>. When successful, <code>records</code> will be an array of resource
+records. The type and structure of individual results varies based on <code>rrtype</code>:</p>
+<table>
+<thead>
+<tr>
+<th><code>rrtype</code></th>
+<th><code>records</code> contains</th>
+<th>Result type</th>
+<th>Shorthand method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&#39;A&#39;</code></td>
+<td>IPv4 addresses (default)</td>
+<td>{string}</td>
+<td><a href="#dns_dns_resolve4_hostname_options_callback"><code>dns.resolve4()</code></a></td>
+</tr>
+<tr>
+<td><code>&#39;AAAA&#39;</code></td>
+<td>IPv6 addresses</td>
+<td>{string}</td>
+<td><a href="#dns_dns_resolve6_hostname_options_callback"><code>dns.resolve6()</code></a></td>
+</tr>
+<tr>
+<td><code>&#39;CNAME&#39;</code></td>
+<td>canonical name records</td>
+<td>{string}</td>
+<td><a href="#dns_dns_resolvecname_hostname_callback"><code>dns.resolveCname()</code></a></td>
+</tr>
+<tr>
+<td><code>&#39;MX&#39;</code></td>
+<td>mail exchange records</td>
+<td>{Object}</td>
+<td><a href="#dns_dns_resolvemx_hostname_callback"><code>dns.resolveMx()</code></a></td>
+</tr>
+<tr>
+<td><code>&#39;NAPTR&#39;</code></td>
+<td>name authority pointer records</td>
+<td>{Object}</td>
+<td><a href="#dns_dns_resolvenaptr_hostname_callback"><code>dns.resolveNaptr()</code></a></td>
+</tr>
+<tr>
+<td><code>&#39;NS&#39;</code></td>
+<td>name server records</td>
+<td>{string}</td>
+<td><a href="#dns_dns_resolvens_hostname_callback"><code>dns.resolveNs()</code></a></td>
+</tr>
+<tr>
+<td><code>&#39;PTR&#39;</code></td>
+<td>pointer records</td>
+<td>{string}</td>
+<td><a href="#dns_dns_resolveptr_hostname_callback"><code>dns.resolvePtr()</code></a></td>
+</tr>
+<tr>
+<td><code>&#39;SOA&#39;</code></td>
+<td>start of authority records</td>
+<td>{Object}</td>
+<td><a href="#dns_dns_resolvesoa_hostname_callback"><code>dns.resolveSoa()</code></a></td>
+</tr>
+<tr>
+<td><code>&#39;SRV&#39;</code></td>
+<td>service records</td>
+<td>{Object}</td>
+<td><a href="#dns_dns_resolvesrv_hostname_callback"><code>dns.resolveSrv()</code></a></td>
+</tr>
+<tr>
+<td><code>&#39;TXT&#39;</code></td>
+<td>text records</td>
+<td>{string[]}</td>
+<td><a href="#dns_dns_resolvetxt_hostname_callback"><code>dns.resolveTxt()</code></a></td>
+</tr>
+<tr>
+<td><code>&#39;ANY&#39;</code></td>
+<td>any records</td>
+<td>{Object}</td>
+<td><a href="#dns_dns_resolveany_hostname_callback"><code>dns.resolveAny()</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>On error, <code>err</code> is an <a href="errors.html#errors_class_error"><code>Error</code></a> object, where <code>err.code</code> is one of the
+<a href="#dns_error_codes">DNS error codes</a>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_resolve4" id="method_resolve4"></a>
+            <div class="permalink"><a href="#method_resolve4" class="permalink fas fa-link"></a></div>
+            <p>dns.resolve4(hostname[, options], callback)</p>
+
+          </h1>
+        </div><section><p>Uses the DNS protocol to resolve a IPv4 addresses (<code>A</code> records) for the
+<code>hostname</code>. The <code>addresses</code> argument passed to the <code>callback</code> function
+will contain an array of IPv4 addresses (e.g.
+<code>[&#39;74.125.79.104&#39;, &#39;74.125.79.105&#39;, &#39;74.125.79.106&#39;]</code>).</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_resolve6" id="method_resolve6"></a>
+            <div class="permalink"><a href="#method_resolve6" class="permalink fas fa-link"></a></div>
+            <p>dns.resolve6(hostname[, options], callback)</p>
+
+          </h1>
+        </div><section><p>Uses the DNS protocol to resolve a IPv6 addresses (<code>AAAA</code> records) for the
+<code>hostname</code>. The <code>addresses</code> argument passed to the <code>callback</code> function
+will contain an array of IPv6 addresses.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_resolveCname" id="method_resolveCname"></a>
+            <div class="permalink"><a href="#method_resolveCname" class="permalink fas fa-link"></a></div>
+            <p>dns.resolveCname(hostname, callback)</p>
+
+          </h1>
+        </div><section><p>Uses the DNS protocol to resolve <code>CNAME</code> records for the <code>hostname</code>. The
+<code>addresses</code> argument passed to the <code>callback</code> function
+will contain an array of canonical name records available for the <code>hostname</code>
+(e.g. <code>[&#39;bar.example.com&#39;]</code>).</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_resolveMx" id="method_resolveMx"></a>
+            <div class="permalink"><a href="#method_resolveMx" class="permalink fas fa-link"></a></div>
+            <p>dns.resolveMx(hostname, callback)</p>
+
+          </h1>
+        </div><section><p>Uses the DNS protocol to resolve mail exchange records (<code>MX</code> records) for the
+<code>hostname</code>. The <code>addresses</code> argument passed to the <code>callback</code> function will
+contain an array of objects containing both a <code>priority</code> and <code>exchange</code>
+property (e.g. <code>[{priority: 10, exchange: &#39;mx.example.com&#39;}, ...]</code>).</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_resolveNaptr" id="method_resolveNaptr"></a>
+            <div class="permalink"><a href="#method_resolveNaptr" class="permalink fas fa-link"></a></div>
+            <p>dns.resolveNaptr(hostname, callback)</p>
+
+          </h1>
+        </div><section><p><p>Uses the DNS protocol to resolve regular expression based records (<code>NAPTR</code>
+records) for the <code>hostname</code>. The <code>addresses</code> argument passed to the <code>callback</code>
+function will contain an array of objects with the following properties:</p></p>
+<p><ul></p>
+<p><li><code>flags</code></li></p>
+<p><li><code>service</code></li></p>
+<p><li><code>regexp</code></li></p>
+<p><li><code>replacement</code></li></p>
+<p><li><code>order</code></li></p>
+<p><li><code>preference</code></li>
+</ul></p>
+<p><p>For example:</p>
+<!-- eslint-skip --></p>
+<pre class="prettyprint"><code class="lang-js">{
+  flags: &#39;s&#39;,
+  service: &#39;SIP+D2U&#39;,
+  regexp: &#39;&#39;,
+  replacement: &#39;_sip._udp.example.com&#39;,
+  order: 30,
+  preference: 100
+}
+</code></pre>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_resolveNs" id="method_resolveNs"></a>
+            <div class="permalink"><a href="#method_resolveNs" class="permalink fas fa-link"></a></div>
+            <p>dns.resolveNs(hostname, callback)</p>
+
+          </h1>
+        </div><section><p>Uses the DNS protocol to resolve name server records (<code>NS</code> records) for the
+<code>hostname</code>. The <code>addresses</code> argument passed to the <code>callback</code> function will
+contain an array of name server records available for <code>hostname</code>
+(e.g. <code>[&#39;ns1.example.com&#39;, &#39;ns2.example.com&#39;]</code>).</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_resolvePtr" id="method_resolvePtr"></a>
+            <div class="permalink"><a href="#method_resolvePtr" class="permalink fas fa-link"></a></div>
+            <p>dns.resolvePtr(hostname, callback)</p>
+
+          </h1>
+        </div><section><p>Uses the DNS protocol to resolve pointer records (<code>PTR</code> records) for the
+<code>hostname</code>. The <code>addresses</code> argument passed to the <code>callback</code> function will
+be an array of strings containing the reply records.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_resolveSoa" id="method_resolveSoa"></a>
+            <div class="permalink"><a href="#method_resolveSoa" class="permalink fas fa-link"></a></div>
+            <p>dns.resolveSoa(hostname, callback)</p>
+
+          </h1>
+        </div><section><p><p>Uses the DNS protocol to resolve a start of authority record (<code>SOA</code> record) for
+the <code>hostname</code>. The <code>address</code> argument passed to the <code>callback</code> function will
+be an object with the following properties:</p></p>
+<p><ul></p>
+<p><li><code>nsname</code></li></p>
+<p><li><code>hostmaster</code></li></p>
+<p><li><code>serial</code></li></p>
+<p><li><code>refresh</code></li></p>
+<p><li><code>retry</code></li></p>
+<p><li><code>expire</code></li></p>
+<p><li><code>minttl</code></li>
+</ul>
+<!-- eslint-skip --></p>
+<pre class="prettyprint"><code class="lang-js">{
+  nsname: &#39;ns.example.com&#39;,
+  hostmaster: &#39;root.example.com&#39;,
+  serial: 2013101809,
+  refresh: 10000,
+  retry: 2400,
+  expire: 604800,
+  minttl: 3600
+}
+</code></pre>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_resolveSrv" id="method_resolveSrv"></a>
+            <div class="permalink"><a href="#method_resolveSrv" class="permalink fas fa-link"></a></div>
+            <p>dns.resolveSrv(hostname, callback)</p>
+
+          </h1>
+        </div><section><p><p>Uses the DNS protocol to resolve service records (<code>SRV</code> records) for the
+<code>hostname</code>. The <code>addresses</code> argument passed to the <code>callback</code> function will
+be an array of objects with the following properties:</p></p>
+<p><ul></p>
+<p><li><code>priority</code></li></p>
+<p><li><code>weight</code></li></p>
+<p><li><code>port</code></li></p>
+<p><li><code>name</code></li>
+</ul>
+<!-- eslint-skip --></p>
+<pre class="prettyprint"><code class="lang-js">{
+  priority: 10,
+  weight: 5,
+  port: 21223,
+  name: &#39;service.example.com&#39;
+}
+</code></pre>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_resolveTxt" id="method_resolveTxt"></a>
+            <div class="permalink"><a href="#method_resolveTxt" class="permalink fas fa-link"></a></div>
+            <p>dns.resolveTxt(hostname, callback)</p>
+
+          </h1>
+        </div><section><p>Uses the DNS protocol to resolve text queries (<code>TXT</code> records) for the
+<code>hostname</code>. The <code>records</code> argument passed to the <code>callback</code> function is a
+two-dimensional array of the text records available for <code>hostname</code> (e.g.
+<code>[ [&#39;v=spf1 ip4:0.0.0.0 &#39;, &#39;~all&#39; ] ]</code>). Each sub-array contains TXT chunks of
+one record. Depending on the use case, these could be either joined together or
+treated separately.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_resolveAny" id="method_resolveAny"></a>
+            <div class="permalink"><a href="#method_resolveAny" class="permalink fas fa-link"></a></div>
+            <p>dns.resolveAny(hostname, callback)</p>
+
+          </h1>
+        </div><section><p><p>Uses the DNS protocol to resolve all records (also known as <code>ANY</code> or <code>*</code> query).
+The <code>ret</code> argument passed to the <code>callback</code> function will be an array containing
+various types of records. Each object has a property <code>type</code> that indicates the
+type of the current record. And depending on the <code>type</code>, additional properties
+will be present on the object:</p></p>
+<p><table></p>
+<p><thead></p>
+<p><tr></p>
+<p><th>Type</th></p>
+<p><th>Properties</th>
+</tr>
+</thead></p>
+<p><tbody></p>
+<p><tr></p>
+<p><td><code>&quot;A&quot;</code></td></p>
+<p><td><code>address</code> / <code>ttl</code></td>
+</tr></p>
+<p><tr></p>
+<p><td><code>&quot;AAAA&quot;</code></td></p>
+<p><td><code>address</code> / <code>ttl</code></td>
+</tr></p>
+<p><tr></p>
+<p><td><code>&quot;CNAME&quot;</code></td></p>
+<p><td><code>value</code></td>
+</tr></p>
+<p><tr></p>
+<p><td><code>&quot;MX&quot;</code></td></p>
+<p><td>Refer to <a href="#dns_dns_resolvemx_hostname_callback"><code>dns.resolveMx()</code></a></td>
+</tr></p>
+<p><tr></p>
+<p><td><code>&quot;NAPTR&quot;</code></td></p>
+<p><td>Refer to <a href="#dns_dns_resolvenaptr_hostname_callback"><code>dns.resolveNaptr()</code></a></td>
+</tr></p>
+<p><tr></p>
+<p><td><code>&quot;NS&quot;</code></td></p>
+<p><td><code>value</code></td>
+</tr></p>
+<p><tr></p>
+<p><td><code>&quot;PTR&quot;</code></td></p>
+<p><td><code>value</code></td>
+</tr></p>
+<p><tr></p>
+<p><td><code>&quot;SOA&quot;</code></td></p>
+<p><td>Refer to <a href="#dns_dns_resolvesoa_hostname_callback"><code>dns.resolveSoa()</code></a></td>
+</tr></p>
+<p><tr></p>
+<p><td><code>&quot;SRV&quot;</code></td></p>
+<p><td>Refer to <a href="#dns_dns_resolvesrv_hostname_callback"><code>dns.resolveSrv()</code></a></td>
+</tr></p>
+<p><tr></p>
+<p><td><code>&quot;TXT&quot;</code></td></p>
+<p><td>This type of record contains an array property called <code>entries</code> which refers to <a href="#dns_dns_resolvetxt_hostname_callback"><code>dns.resolveTxt()</code></a>, eg. <code>{ entries: [&#39;...&#39;], type: &#39;TXT&#39; }</code></td>
+</tr>
+</tbody>
+</table></p>
+<p><p>Here is an example of the <code>ret</code> object passed to the callback:</p>
+<!-- eslint-disable semi --></p>
+<pre class="prettyprint"><code class="lang-js">[ { type: &#39;A&#39;, address: &#39;127.0.0.1&#39;, ttl: 299 },
+  { type: &#39;CNAME&#39;, value: &#39;example.com&#39; },
+  { type: &#39;MX&#39;, exchange: &#39;alt4.aspmx.l.example.com&#39;, priority: 50 },
+  { type: &#39;NS&#39;, value: &#39;ns1.example.com&#39; },
+  { type: &#39;TXT&#39;, entries: [ &#39;v=spf1 include:_spf.example.com ~all&#39; ] },
+  { type: &#39;SOA&#39;,
+    nsname: &#39;ns1.example.com&#39;,
+    hostmaster: &#39;admin.example.com&#39;,
+    serial: 156696742,
+    refresh: 900,
+    retry: 900,
+    expire: 1800,
+    minttl: 60 } ]
+</code></pre>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_reverse" id="method_reverse"></a>
+            <div class="permalink"><a href="#method_reverse" class="permalink fas fa-link"></a></div>
+            <p>dns.reverse(ip, callback)</p>
+
+          </h1>
+        </div><section><p>Performs a reverse DNS query that resolves an IPv4 or IPv6 address to an
+array of hostnames.</p>
+<p>On error, <code>err</code> is an <a href="errors.html#errors_class_error"><code>Error</code></a> object, where <code>err.code</code> is
+one of the <a href="#dns_error_codes">DNS error codes</a>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_setServers" id="method_setServers"></a>
+            <div class="permalink"><a href="#method_setServers" class="permalink fas fa-link"></a></div>
+            <p>dns.setServers(servers)</p>
+
+          </h1>
+        </div><section><p>Sets the IP address and port of servers to be used when performing DNS
+resolution. The <code>servers</code> argument is an array of <a href="https://tools.ietf.org/html/rfc5952#section-6">rfc5952</a> formatted
+addresses. If the port is the IANA default DNS port (53) it can be omitted.</p>
+<p>For example:</p>
+<pre class="prettyprint"><code class="lang-js">dns.setServers([
+  &#39;4.4.4.4&#39;,
+  &#39;[2001:4860:4860::8888]&#39;,
+  &#39;4.4.4.4:1053&#39;,
+  &#39;[2001:4860:4860::8888]:1053&#39;
+]);
+</code></pre>
+<p>An error will be thrown if an invalid address is provided.</p>
+<p>The <code>dns.setServers()</code> method must not be called while a DNS query is in
+progress.</p>
+</section>
+
+  <div class="footer">
+    <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>
+    <p>Dubbed by <img src="images/mixtape.png" title="Dubbed by mixtape." style="width:40px;position:relative;top:8px"></img> mixtape.</p>
+  </div>
+
+  </div>
+  </body>
+</html>

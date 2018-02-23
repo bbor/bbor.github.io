@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_subgroup_ClientHttp2Session_Methods","target":"module_http2.html#subgroup_ClientHttp2Session_Methods","text":"ClientHttp2Session.Methods","icon":false,"autoexpand":true,"children":true}],"ancestry":["toc_module_http2","toc_module_core_api","toc_class_ClientHttp2Session"]}; });

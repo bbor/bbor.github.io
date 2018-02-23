@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>mixtape page for esm</title>
+    <script data-main="js/setup" src="js/require.js"></script>
+    <link rel="stylesheet" href="fonts/fonts.css" />
+    <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="toc/themes/default/style.min.css" />
+    <link rel="stylesheet" href="css/design.css" />
+  </head>
+  <body>
+
+  <div id="control-panel">
+    <div id="control-strip-h">
+      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
+      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    </div>
+    <div id="controls">
+      <div id="control-find">
+        <div id="control-find-content"><input id="find" class="typeahead" placeholder="Find something..."></div>
+      </div>
+      <div id="control-toc">
+        <div id="control-toc-content"><div id="toc"></div></div>
+      </div>
+    </div>
+  </div>
+  <div id="control-strip-v">
+    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
+    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  </div>
+
+  <div id="content">
+
+  
+       <div class="heading">
+          <h1>
+            <a name="module_esm" id="module_esm"></a>
+            <div class="permalink"><a href="#module_esm" class="permalink fas fa-link"></a></div>
+            <p>esm</p>
+
+          </h1>
+        </div><p>Node.js contains support for ES Modules based upon the
+<a href="https://github.com/nodejs/node-eps/blob/master/002-es-modules.md">Node.js EP for ES Modules</a>.</p>
+<p>Not all features of the EP are complete and will be landing as both VM support
+and implementation is ready. Error messages are still being polished.</p>
+
+       <div class="heading">
+          <h2>
+            <a name="misc_Enabling" id="misc_Enabling"></a>
+            <div class="permalink"><a href="#misc_Enabling" class="permalink fas fa-link"></a></div>
+            <p>Enabling</p>
+
+          </h1>
+        </div><section><p><p>The <code>--experimental-modules</code> flag can be used to enable features for loading
+ESM modules.</p></p>
+<p><p>Once this has been set, files ending with <code>.mjs</code> will be able to be loaded
+as ES Modules.</p></p>
+<pre class="prettyprint"><code class="lang-sh">node --experimental-modules my-app.mjs
+</code></pre>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="misc_Features" id="misc_Features"></a>
+            <div class="permalink"><a href="#misc_Features" class="permalink fas fa-link"></a></div>
+            <p>Features</p>
+
+          </h1>
+        </div><section>
+       <div class="heading">
+          <h3>
+            <a name="misc_supported" id="misc_supported"></a>
+            <div class="permalink"><a href="#misc_supported" class="permalink fas fa-link"></a></div>
+            <p>Supported</p>
+
+          </h1>
+        </div><section><p>Only the CLI argument for the main entry point to the program can be an entry
+point into an ESM graph. In the future <code>import()</code> can be used to create entry
+points into ESM graphs at run time.</p>
+</section>
+       <div class="heading">
+          <h3>
+            <a name="misc_unsupported" id="misc_unsupported"></a>
+            <div class="permalink"><a href="#misc_unsupported" class="permalink fas fa-link"></a></div>
+            <p>Unsupported</p>
+
+          </h1>
+        </div><section><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>require(&#39;./foo.mjs&#39;)</code></td>
+<td>ES Modules have differing resolution and timing, use language standard <code>import()</code></td>
+</tr>
+<tr>
+<td><code>import()</code></td>
+<td>pending newer V8 release used in Node.js</td>
+</tr>
+<tr>
+<td><code>import.meta</code></td>
+<td>pending V8 implementation</td>
+</tr>
+</tbody>
+</table>
+</section></section>
+       <div class="heading">
+          <h2>
+            <a name="misc_Loader_hooks" id="misc_Loader_hooks"></a>
+            <div class="permalink"><a href="#misc_Loader_hooks" class="permalink fas fa-link"></a></div>
+            <p>Loader hooks</p>
+
+          </h1>
+        </div><section><p>To customize the default module resolution, loader hooks can optionally be
+provided via a <code>--loader ./loader-name.mjs</code> argument to Node.</p>
+<p>When hooks are used they only apply to ES module loading and not to any
+CommonJS modules loaded.</p>
+
+       <div class="heading">
+          <h3>
+            <a name="misc_resolve_hook" id="misc_resolve_hook"></a>
+            <div class="permalink"><a href="#misc_resolve_hook" class="permalink fas fa-link"></a></div>
+            <p>Resolve hook</p>
+
+          </h1>
+        </div><section><p>The resolve hook returns the resolved file URL and module format for a
+given module specifier and parent file URL:</p>
+<pre class="prettyprint"><code class="lang-js">import url from &#39;url&#39;;
+
+export async function resolve(specifier, parentModuleURL, defaultResolver) {
+  return {
+    url: new URL(specifier, parentModuleURL).href,
+    format: &#39;esm&#39;
+  };
+}
+</code></pre>
+<p>The default NodeJS ES module resolution function is provided as a third
+argument to the resolver for easy compatibility workflows.</p>
+<p>In addition to returning the resolved file URL value, the resolve hook also
+returns a <code>format</code> property specifying the module format of the resolved
+module. This can be one of the following:</p>
+<table>
+<thead>
+<tr>
+<th><code>format</code></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&quot;esm&quot;</code></td>
+<td>Load a standard JavaScript module</td>
+</tr>
+<tr>
+<td><code>&quot;commonjs&quot;</code></td>
+<td>Load a node-style CommonJS module</td>
+</tr>
+<tr>
+<td><code>&quot;builtin&quot;</code></td>
+<td>Load a node builtin CommonJS module</td>
+</tr>
+<tr>
+<td><code>&quot;json&quot;</code></td>
+<td>Load a JSON file</td>
+</tr>
+<tr>
+<td><code>&quot;addon&quot;</code></td>
+<td>Load a <a href="addons.html">C++ Addon</a></td>
+</tr>
+<tr>
+<td><code>&quot;dynamic&quot;</code></td>
+<td>Use a <a href="#esm_dynamic_instantiate_hook">dynamic instantiate hook</a></td>
+</tr>
+</tbody>
+</table>
+<p>For example, a dummy loader to load JavaScript restricted to browser resolution
+rules with only JS file extension and Node builtin modules support could
+be written:</p>
+<pre class="prettyprint"><code class="lang-js">import url from &#39;url&#39;;
+import path from &#39;path&#39;;
+import process from &#39;process&#39;;
+import Module from &#39;module&#39;;
+
+const builtins = Module.builtinModules;
+const JS_EXTENSIONS = new Set([&#39;.js&#39;, &#39;.mjs&#39;]);
+
+export function resolve(specifier, parentModuleURL/<em>, defaultResolve </em>/) {
+  if (builtins.includes(specifier)) {
+    return {
+      url: specifier,
+      format: &#39;builtin&#39;
+    };
+  }
+  if (/^.{0,2}[/]/.test(specifier) !== true &amp;&amp; !specifier.startsWith(&#39;file:&#39;)) {
+    // For node_modules support:
+    // return defaultResolve(specifier, parentModuleURL);
+    throw new Error(
+      <code>imports must begin with &amp;#39;/&amp;#39;, &amp;#39;./&amp;#39;, or &amp;#39;../&amp;#39;; &amp;#39;${specifier}&amp;#39; does not</code>);
+  }
+  const resolved = new url.URL(specifier, parentModuleURL);
+  const ext = path.extname(resolved.pathname);
+  if (!JS_EXTENSIONS.has(ext)) {
+    throw new Error(
+      <code>Cannot load file with non-JavaScript file extension ${ext}.</code>);
+  }
+  return {
+    url: resolved.href,
+    format: &#39;esm&#39;
+  };
+}
+</code></pre>
+<p>With this loader, running:</p>
+<pre class="prettyprint"><code class="lang-console">NODE_OPTIONS=&#39;--experimental-modules --loader ./custom-loader.mjs&#39; node x.js
+</code></pre>
+<p>would load the module <code>x.js</code> as an ES module with relative resolution support
+(with <code>node_modules</code> loading skipped in this example).</p>
+</section>
+       <div class="heading">
+          <h3>
+            <a name="misc_dynamic_instantiate_hook" id="misc_dynamic_instantiate_hook"></a>
+            <div class="permalink"><a href="#misc_dynamic_instantiate_hook" class="permalink fas fa-link"></a></div>
+            <p>Dynamic instantiate hook</p>
+
+          </h1>
+        </div><section><p><p>To create a custom dynamic module that doesn&#39;t correspond to one of the
+existing <code>format</code> interpretations, the <code>dynamicInstantiate</code> hook can be used.
+This hook is called only for modules that return <code>format: &quot;dynamic&quot;</code> from
+the <code>resolve</code> hook.</p></p>
+<p><pre class="prettyprint"><code class="lang-js">export async function dynamicInstantiate(url) {
+  return {
+    exports: [&#39;customExportName&#39;],
+    execute: (exports) =&gt; {
+      // get and set functions provided for pre-allocated export names
+      exports.customExportName.set(&#39;value&#39;);
+    }
+  };
+}
+</code></pre></p>
+<p><p>With the list of module exports provided upfront, the <code>execute</code> function will
+then be called at the exact point of module evaluation order for that module
+in the import tree.</p>
+<!-- [end-include:esm.md] -->
+<!-- [start-include:errors.md] --></p>
+</section></section>
+       <div class="heading">
+          <h2>
+            <a name="module_notable_differences_between__import__and__require_" id="module_notable_differences_between__import__and__require_"></a>
+            <div class="permalink"><a href="#module_notable_differences_between__import__and__require_" class="permalink fas fa-link"></a></div>
+            <p>Notable differences between <code>import</code> and <code>require</code></p>
+
+          </h1>
+        </div><section>
+       <div class="heading">
+          <h3>
+            <a name="module_no_node_path" id="module_no_node_path"></a>
+            <div class="permalink"><a href="#module_no_node_path" class="permalink fas fa-link"></a></div>
+            <p>No NODE_PATH</p>
+
+          </h1>
+        </div><section><p><code>NODE_PATH</code> is not part of resolving <code>import</code> specifiers. Please use symlinks
+if this behavior is desired.</p>
+</section>
+       <div class="heading">
+          <h3>
+            <a name="module_url_based_paths" id="module_url_based_paths"></a>
+            <div class="permalink"><a href="#module_url_based_paths" class="permalink fas fa-link"></a></div>
+            <p>URL based paths</p>
+
+          </h1>
+        </div><section><p>ESM are resolved and cached based upon <a href="https://url.spec.whatwg.org/">URL</a>
+semantics. This means that files containing special characters such as <code>#</code> and
+<code>?</code> need to be escaped.</p>
+<p>Modules will be loaded multiple times if the <code>import</code> specifier used to resolve
+them have a different query or fragment.</p>
+<pre class="prettyprint"><code class="lang-js">import &#39;./foo?query=1&#39;; // loads ./foo with query of &quot;?query=1&quot;
+import &#39;./foo?query=2&#39;; // loads ./foo with query of &quot;?query=2&quot;
+</code></pre>
+<p>For now, only modules using the <code>file:</code> protocol can be loaded.</p>
+</section>
+       <div class="heading">
+          <h3>
+            <a name="property_extensions_" id="property_extensions_"></a>
+            <div class="permalink"><a href="#property_extensions_" class="permalink fas fa-link"></a></div>
+            <p>No <code>require.extensions</code></p>
+
+          </h1>
+        </div><section><p><code>require.extensions</code> is not used by <code>import</code>. The expectation is that loader
+hooks can provide this workflow in the future.</p>
+</section>
+       <div class="heading">
+          <h3>
+            <a name="property_cache_" id="property_cache_"></a>
+            <div class="permalink"><a href="#property_cache_" class="permalink fas fa-link"></a></div>
+            <p>No <code>require.cache</code></p>
+
+          </h1>
+        </div><section><p><code>require.cache</code> is not used by <code>import</code>. It has a separate cache.</p>
+</section></section>
+       <div class="heading">
+          <h2>
+            <a name="module_interop_with_existing_modules" id="module_interop_with_existing_modules"></a>
+            <div class="permalink"><a href="#module_interop_with_existing_modules" class="permalink fas fa-link"></a></div>
+            <p>Interop with existing modules</p>
+
+          </h1>
+        </div><section><p><p>All CommonJS, JSON, and C++ modules can be used with <code>import</code>.</p></p>
+<p><p>Modules loaded this way will only be loaded once, even if their query
+or fragment string differs between <code>import</code> statements.</p></p>
+<p><p>When loaded via <code>import</code> these modules will provide a single <code>default</code> export
+representing the value of <code>module.exports</code> at the time they finished evaluating.</p></p>
+<pre class="prettyprint"><code class="lang-js">import fs from &#39;fs&#39;;
+fs.readFile(&#39;./foo.txt&#39;, (err, body) =&gt; {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log(body);
+  }
+});
+</code></pre>
+</section>
+
+  <div class="footer">
+    <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>
+    <p>Dubbed by <img src="images/mixtape.png" title="Dubbed by mixtape." style="width:40px;position:relative;top:8px"></img> mixtape.</p>
+  </div>
+
+  </div>
+  </body>
+</html>

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>mixtape page for Events</title>
+    <script data-main="js/setup" src="js/require.js"></script>
+    <link rel="stylesheet" href="fonts/fonts.css" />
+    <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="toc/themes/default/style.min.css" />
+    <link rel="stylesheet" href="css/design.css" />
+  </head>
+  <body>
+
+  <div id="control-panel">
+    <div id="control-strip-h">
+      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
+      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    </div>
+    <div id="controls">
+      <div id="control-find">
+        <div id="control-find-content"><input id="find" class="typeahead" placeholder="Find something..."></div>
+      </div>
+      <div id="control-toc">
+        <div id="control-toc-content"><div id="toc"></div></div>
+      </div>
+    </div>
+  </div>
+  <div id="control-strip-v">
+    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
+    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  </div>
+
+  <div id="content">
+
+  
+       <div class="heading">
+          <h1>
+            <a name="module_Events" id="module_Events"></a>
+            <div class="permalink"><a href="#module_Events" class="permalink fas fa-link"></a></div>
+            <p>Events</p>
+
+          </h1>
+        </div><p><p>Much of the Node.js core API is built around an idiomatic asynchronous
+event-driven architecture in which certain kinds of objects (called &quot;emitters&quot;)
+periodically emit named events that cause Function objects (&quot;listeners&quot;) to be
+called.</p></p>
+<p><p>For instance: a <a href="net.html#net_class_net_server"><code>net.Server</code></a> object emits an event each time a peer
+connects to it; a <a href="fs.html#fs_class_fs_readstream"><code>fs.ReadStream</code></a> emits an event when the file is opened;
+a <a href="stream.html#stream_stream">stream</a> emits an event whenever data is available to be read.</p></p>
+<p><p>All objects that emit events are instances of the <code>EventEmitter</code> class. These
+objects expose an <code>eventEmitter.on()</code> function that allows one or more
+functions to be attached to named events emitted by the object. Typically,
+event names are camel-cased strings but any valid JavaScript property key
+can be used.</p></p>
+<p><p>When the <code>EventEmitter</code> object emits an event, all of the functions attached
+to that specific event are called <em>synchronously</em>. Any values returned by the
+called listeners are <em>ignored</em> and will be discarded.</p></p>
+<p><p>The following example shows a simple <code>EventEmitter</code> instance with a single
+listener. The <code>eventEmitter.on()</code> method is used to register listeners, while
+the <code>eventEmitter.emit()</code> method is used to trigger the event.</p></p>
+<pre class="prettyprint"><code class="lang-js">const EventEmitter = require(&#39;events&#39;);
+
+class MyEmitter extends EventEmitter {}
+
+const myEmitter = new MyEmitter();
+myEmitter.on(&#39;event&#39;, () =&gt; {
+  console.log(&#39;an event occurred!&#39;);
+});
+myEmitter.emit(&#39;event&#39;);
+</code></pre>
+
+       <div class="heading">
+          <h2>
+            <a name="module_passing_arguments_and__this__to_listeners" id="module_passing_arguments_and__this__to_listeners"></a>
+            <div class="permalink"><a href="#module_passing_arguments_and__this__to_listeners" class="permalink fas fa-link"></a></div>
+            <p>Passing arguments and <code>this</code> to listeners</p>
+
+          </h1>
+        </div><section><p><p>The <code>eventEmitter.emit()</code> method allows an arbitrary set of arguments to be
+passed to the listener functions. It is important to keep in mind that when an
+ordinary listener function is called by the <code>EventEmitter</code>, the standard <code>this</code>
+keyword is intentionally set to reference the <code>EventEmitter</code> to which the
+listener is attached.</p></p>
+<pre class="prettyprint"><code class="lang-js">const myEmitter = new MyEmitter();
+myEmitter.on(&#39;event&#39;, function(a, b) {
+  console.log(a, b, this);
+  // Prints:
+  //   a b MyEmitter {
+  //     domain: null,
+  //     _events: { event: [Function] },
+  //     _eventsCount: 1,
+  //     _maxListeners: undefined }
+});
+myEmitter.emit(&#39;event&#39;, &#39;a&#39;, &#39;b&#39;);
+</code></pre>
+<p>It is possible to use ES6 Arrow Functions as listeners, however, when doing so,
+the <code>this</code> keyword will no longer reference the <code>EventEmitter</code> instance:</p>
+<pre class="prettyprint"><code class="lang-js">const myEmitter = new MyEmitter();
+myEmitter.on(&#39;event&#39;, (a, b) =&gt; {
+  console.log(a, b, this);
+  // Prints: a b {}
+});
+myEmitter.emit(&#39;event&#39;, &#39;a&#39;, &#39;b&#39;);
+</code></pre>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="module_asynchronous_vs__synchronous" id="module_asynchronous_vs__synchronous"></a>
+            <div class="permalink"><a href="#module_asynchronous_vs__synchronous" class="permalink fas fa-link"></a></div>
+            <p>Asynchronous vs. Synchronous</p>
+
+          </h1>
+        </div><section><p><p>The <code>EventEmitter</code> calls all listeners synchronously in the order in which
+they were registered. This is important to ensure the proper sequencing of
+events and to avoid race conditions or logic errors. When appropriate,
+listener functions can switch to an asynchronous mode of operation using
+the <code>setImmediate()</code> or <code>process.nextTick()</code> methods:</p></p>
+<pre class="prettyprint"><code class="lang-js">const myEmitter = new MyEmitter();
+myEmitter.on(&#39;event&#39;, (a, b) =&gt; {
+  setImmediate(() =&gt; {
+    console.log(&#39;this happens asynchronously&#39;);
+  });
+});
+myEmitter.emit(&#39;event&#39;, &#39;a&#39;, &#39;b&#39;);
+</code></pre>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="module_handling_events_only_once" id="module_handling_events_only_once"></a>
+            <div class="permalink"><a href="#module_handling_events_only_once" class="permalink fas fa-link"></a></div>
+            <p>Handling events only once</p>
+
+          </h1>
+        </div><section><p><p>When a listener is registered using the <code>eventEmitter.on()</code> method, that
+listener will be invoked <em>every time</em> the named event is emitted.</p></p>
+<pre class="prettyprint"><code class="lang-js">const myEmitter = new MyEmitter();
+let m = 0;
+myEmitter.on(&#39;event&#39;, () =&gt; {
+  console.log(++m);
+});
+myEmitter.emit(&#39;event&#39;);
+// Prints: 1
+myEmitter.emit(&#39;event&#39;);
+// Prints: 2
+</code></pre>
+<p>Using the <code>eventEmitter.once()</code> method, it is possible to register a listener
+that is called at most once for a particular event. Once the event is emitted,
+the listener is unregistered and <em>then</em> called.</p>
+<pre class="prettyprint"><code class="lang-js">const myEmitter = new MyEmitter();
+let m = 0;
+myEmitter.once(&#39;event&#39;, () =&gt; {
+  console.log(++m);
+});
+myEmitter.emit(&#39;event&#39;);
+// Prints: 1
+myEmitter.emit(&#39;event&#39;);
+// Ignored
+</code></pre>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="module_error_events" id="module_error_events"></a>
+            <div class="permalink"><a href="#module_error_events" class="permalink fas fa-link"></a></div>
+            <p>Error events</p>
+
+          </h1>
+        </div><section><p><p>When an error occurs within an <code>EventEmitter</code> instance, the typical action is
+for an <code>&#39;error&#39;</code> event to be emitted. These are treated as special cases
+within Node.js.</p></p>
+<p><p>If an <code>EventEmitter</code> does <em>not</em> have at least one listener registered for the
+<code>&#39;error&#39;</code> event, and an <code>&#39;error&#39;</code> event is emitted, the error is thrown, a
+stack trace is printed, and the Node.js process exits.</p></p>
+<pre class="prettyprint"><code class="lang-js">const myEmitter = new MyEmitter();
+myEmitter.emit(&#39;error&#39;, new Error(&#39;whoops!&#39;));
+// Throws and crashes Node.js
+</code></pre>
+<p>To guard against crashing the Node.js process the <a href="domain.html"><code>domain</code></a> module can be
+used. (Note, however, that the <code>domain</code> module has been deprecated.)</p>
+<p>As a best practice, listeners should always be added for the <code>&#39;error&#39;</code> events.</p>
+<pre class="prettyprint"><code class="lang-js">const myEmitter = new MyEmitter();
+myEmitter.on(&#39;error&#39;, (err) =&gt; {
+  console.error(&#39;whoops! there was an error&#39;);
+});
+myEmitter.emit(&#39;error&#39;, new Error(&#39;whoops!&#39;));
+// Prints: whoops! there was an error
+</code></pre>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="class_EventEmitter" id="class_EventEmitter"></a>
+            <div class="permalink"><a href="#class_EventEmitter" class="permalink fas fa-link"></a></div>
+            <p>Class: EventEmitter</p>
+
+          </h1>
+        </div><section><p>The <code>EventEmitter</code> class is defined and exposed by the <code>events</code> module:</p>
+<pre class="prettyprint"><code class="lang-js">const EventEmitter = require(&#39;events&#39;);
+</code></pre>
+<p>All EventEmitters emit the event <code>&#39;newListener&#39;</code> when new listeners are
+added and <code>&#39;removeListener&#39;</code> when existing listeners are removed.</p>
+<section>
+       <div class="heading">
+          <h4>
+            <a name="property_defaultMaxListeners" id="property_defaultMaxListeners"></a>
+            <div class="permalink"><a href="#property_defaultMaxListeners" class="permalink fas fa-link"></a></div>
+            <p>EventEmitter.defaultMaxListeners</p>
+
+          </h1>
+        </div><section><p>By default, a maximum of <code>10</code> listeners can be registered for any single
+event. This limit can be changed for individual <code>EventEmitter</code> instances
+using the <a href="#events_emitter_setmaxlisteners_n"><code>emitter.setMaxListeners(n)</code></a> method. To change the default
+for <em>all</em> <code>EventEmitter</code> instances, the <code>EventEmitter.defaultMaxListeners</code>
+property can be used. If this value is not a positive number, a <code>TypeError</code>
+will be thrown.</p>
+<p>Take caution when setting the <code>EventEmitter.defaultMaxListeners</code> because the
+change affects <em>all</em> <code>EventEmitter</code> instances, including those created before
+the change is made. However, calling <a href="#events_emitter_setmaxlisteners_n"><code>emitter.setMaxListeners(n)</code></a> still has
+precedence over <code>EventEmitter.defaultMaxListeners</code>.</p>
+<p>Note that this is not a hard limit. The <code>EventEmitter</code> instance will allow
+more listeners to be added but will output a trace warning to stderr indicating
+that a &quot;possible EventEmitter memory leak&quot; has been detected. For any single
+<code>EventEmitter</code>, the <code>emitter.getMaxListeners()</code> and <code>emitter.setMaxListeners()</code>
+methods can be used to temporarily avoid this warning:</p>
+<pre class="prettyprint"><code class="lang-js">emitter.setMaxListeners(emitter.getMaxListeners() + 1);
+emitter.once(&#39;event&#39;, () =&gt; {
+  // do stuff
+  emitter.setMaxListeners(Math.max(emitter.getMaxListeners() - 1, 0));
+});
+</code></pre>
+<p>The <a href="cli.html#cli_trace_warnings"><code>--trace-warnings</code></a> command line flag can be used to display the
+stack trace for such warnings.</p>
+<p>The emitted warning can be inspected with <a href="process.html#process_event_warning"><code>process.on(&#39;warning&#39;)</code></a> and will
+have the additional <code>emitter</code>, <code>type</code> and <code>count</code> properties, referring to
+the event emitter instance, the event’s name and the number of attached
+listeners, respectively.
+Its <code>name</code> property is set to <code>&#39;MaxListenersExceededWarning&#39;</code>.</p>
+</section></section><section>
+       <div class="heading">
+          <h4>
+            <a name="method_listenerCount_1" id="method_listenerCount_1"></a>
+            <div class="permalink"><a href="#method_listenerCount_1" class="permalink fas fa-link"></a></div>
+            <p>EventEmitter.listenerCount(emitter, eventName)</p>
+
+          </h1>
+        </div><section><p><p>A class method that returns the number of listeners for the given <code>eventName</code>
+registered on the given <code>emitter</code>.</p></p>
+<pre class="prettyprint"><code class="lang-js">const myEmitter = new MyEmitter();
+myEmitter.on(&#39;event&#39;, () =&gt; {});
+myEmitter.on(&#39;event&#39;, () =&gt; {});
+console.log(EventEmitter.listenerCount(myEmitter, &#39;event&#39;));
+// Prints: 2
+</code></pre>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_addListener" id="method_addListener"></a>
+            <div class="permalink"><a href="#method_addListener" class="permalink fas fa-link"></a></div>
+            <p>emitter.addListener(eventName, listener)</p>
+
+          </h1>
+        </div><section><p>Alias for <code>emitter.on(eventName, listener)</code>.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_emit" id="method_emit"></a>
+            <div class="permalink"><a href="#method_emit" class="permalink fas fa-link"></a></div>
+            <p>emitter.emit(eventName[, ...args])</p>
+
+          </h1>
+        </div><section><p>Synchronously calls each of the listeners registered for the event named
+<code>eventName</code>, in the order they were registered, passing the supplied arguments
+to each.</p>
+<p>Returns <code>true</code> if the event had listeners, <code>false</code> otherwise.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_eventNames" id="method_eventNames"></a>
+            <div class="permalink"><a href="#method_eventNames" class="permalink fas fa-link"></a></div>
+            <p>emitter.eventNames()</p>
+
+          </h1>
+        </div><section><p><p>Returns an array listing the events for which the emitter has registered
+listeners. The values in the array will be strings or Symbols.</p></p>
+<pre class="prettyprint"><code class="lang-js">const EventEmitter = require(&#39;events&#39;);
+const myEE = new EventEmitter();
+myEE.on(&#39;foo&#39;, () =&gt; {});
+myEE.on(&#39;bar&#39;, () =&gt; {});
+
+const sym = Symbol(&#39;symbol&#39;);
+myEE.on(sym, () =&gt; {});
+
+console.log(myEE.eventNames());
+// Prints: [ &#39;foo&#39;, &#39;bar&#39;, Symbol(symbol) ]
+</code></pre>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_getMaxListeners" id="method_getMaxListeners"></a>
+            <div class="permalink"><a href="#method_getMaxListeners" class="permalink fas fa-link"></a></div>
+            <p>emitter.getMaxListeners()</p>
+
+          </h1>
+        </div><section><p>Returns the current max listener value for the <code>EventEmitter</code> which is either
+set by <a href="#events_emitter_setmaxlisteners_n"><code>emitter.setMaxListeners(n)</code></a> or defaults to
+<a href="#events_eventemitter_defaultmaxlisteners"><code>EventEmitter.defaultMaxListeners</code></a>.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_listenerCount_2" id="method_listenerCount_2"></a>
+            <div class="permalink"><a href="#method_listenerCount_2" class="permalink fas fa-link"></a></div>
+            <p>emitter.listenerCount(eventName)</p>
+
+          </h1>
+        </div><section><p>Returns the number of listeners listening to the event named <code>eventName</code>.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_listeners" id="method_listeners"></a>
+            <div class="permalink"><a href="#method_listeners" class="permalink fas fa-link"></a></div>
+            <p>emitter.listeners(eventName)</p>
+
+          </h1>
+        </div><section><p><p>Returns a copy of the array of listeners for the event named <code>eventName</code>.</p></p>
+<pre class="prettyprint"><code class="lang-js">server.on(&#39;connection&#39;, (stream) =&gt; {
+  console.log(&#39;someone connected!&#39;);
+});
+console.log(util.inspect(server.listeners(&#39;connection&#39;)));
+// Prints: [ [Function] ]
+</code></pre>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_on" id="method_on"></a>
+            <div class="permalink"><a href="#method_on" class="permalink fas fa-link"></a></div>
+            <p>emitter.on(eventName, listener)</p>
+
+          </h1>
+        </div><section><p><p>Adds the <code>listener</code> function to the end of the listeners array for the
+event named <code>eventName</code>. No checks are made to see if the <code>listener</code> has
+already been added. Multiple calls passing the same combination of <code>eventName</code>
+and <code>listener</code> will result in the <code>listener</code> being added, and called, multiple
+times.</p></p>
+<pre class="prettyprint"><code class="lang-js">server.on(&#39;connection&#39;, (stream) =&gt; {
+  console.log(&#39;someone connected!&#39;);
+});
+</code></pre>
+<p>Returns a reference to the <code>EventEmitter</code>, so that calls can be chained.</p>
+<p>By default, event listeners are invoked in the order they are added. The
+<code>emitter.prependListener()</code> method can be used as an alternative to add the
+event listener to the beginning of the listeners array.</p>
+<pre class="prettyprint"><code class="lang-js">const myEE = new EventEmitter();
+myEE.on(&#39;foo&#39;, () =&gt; console.log(&#39;a&#39;));
+myEE.prependListener(&#39;foo&#39;, () =&gt; console.log(&#39;b&#39;));
+myEE.emit(&#39;foo&#39;);
+// Prints:
+//   b
+//   a
+</code></pre>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_once" id="method_once"></a>
+            <div class="permalink"><a href="#method_once" class="permalink fas fa-link"></a></div>
+            <p>emitter.once(eventName, listener)</p>
+
+          </h1>
+        </div><section><p><p>Adds a <strong>one-time</strong> <code>listener</code> function for the event named <code>eventName</code>. The
+next time <code>eventName</code> is triggered, this listener is removed and then invoked.</p></p>
+<pre class="prettyprint"><code class="lang-js">server.once(&#39;connection&#39;, (stream) =&gt; {
+  console.log(&#39;Ah, we have our first user!&#39;);
+});
+</code></pre>
+<p>Returns a reference to the <code>EventEmitter</code>, so that calls can be chained.</p>
+<p>By default, event listeners are invoked in the order they are added. The
+<code>emitter.prependOnceListener()</code> method can be used as an alternative to add the
+event listener to the beginning of the listeners array.</p>
+<pre class="prettyprint"><code class="lang-js">const myEE = new EventEmitter();
+myEE.once(&#39;foo&#39;, () =&gt; console.log(&#39;a&#39;));
+myEE.prependOnceListener(&#39;foo&#39;, () =&gt; console.log(&#39;b&#39;));
+myEE.emit(&#39;foo&#39;);
+// Prints:
+//   b
+//   a
+</code></pre>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_prependListener" id="method_prependListener"></a>
+            <div class="permalink"><a href="#method_prependListener" class="permalink fas fa-link"></a></div>
+            <p>emitter.prependListener(eventName, listener)</p>
+
+          </h1>
+        </div><section><p>Adds the <code>listener</code> function to the <em>beginning</em> of the listeners array for the
+event named <code>eventName</code>. No checks are made to see if the <code>listener</code> has
+already been added. Multiple calls passing the same combination of <code>eventName</code>
+and <code>listener</code> will result in the <code>listener</code> being added, and called, multiple
+times.</p>
+<pre class="prettyprint"><code class="lang-js">server.prependListener(&#39;connection&#39;, (stream) =&gt; {
+  console.log(&#39;someone connected!&#39;);
+});
+</code></pre>
+<p>Returns a reference to the <code>EventEmitter</code>, so that calls can be chained.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_prependOnceListener" id="method_prependOnceListener"></a>
+            <div class="permalink"><a href="#method_prependOnceListener" class="permalink fas fa-link"></a></div>
+            <p>emitter.prependOnceListener(eventName, listener)</p>
+
+          </h1>
+        </div><section><p>Adds a <strong>one-time</strong> <code>listener</code> function for the event named <code>eventName</code> to the
+<em>beginning</em> of the listeners array. The next time <code>eventName</code> is triggered, this
+listener is removed, and then invoked.</p>
+<pre class="prettyprint"><code class="lang-js">server.prependOnceListener(&#39;connection&#39;, (stream) =&gt; {
+  console.log(&#39;Ah, we have our first user!&#39;);
+});
+</code></pre>
+<p>Returns a reference to the <code>EventEmitter</code>, so that calls can be chained.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_removeAllListeners" id="method_removeAllListeners"></a>
+            <div class="permalink"><a href="#method_removeAllListeners" class="permalink fas fa-link"></a></div>
+            <p>emitter.removeAllListeners([eventName])</p>
+
+          </h1>
+        </div><section><p>Removes all listeners, or those of the specified <code>eventName</code>.</p>
+<p>Note that it is bad practice to remove listeners added elsewhere in the code,
+particularly when the <code>EventEmitter</code> instance was created by some other
+component or module (e.g. sockets or file streams).</p>
+<p>Returns a reference to the <code>EventEmitter</code>, so that calls can be chained.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_removeListener" id="method_removeListener"></a>
+            <div class="permalink"><a href="#method_removeListener" class="permalink fas fa-link"></a></div>
+            <p>emitter.removeListener(eventName, listener)</p>
+
+          </h1>
+        </div><section><p>Removes the specified <code>listener</code> from the listener array for the event named
+<code>eventName</code>.</p>
+<pre class="prettyprint"><code class="lang-js">const callback = (stream) =&gt; {
+  console.log(&#39;someone connected!&#39;);
+};
+server.on(&#39;connection&#39;, callback);
+// ...
+server.removeListener(&#39;connection&#39;, callback);
+</code></pre>
+<p><code>removeListener</code> will remove, at most, one instance of a listener from the
+listener array. If any single listener has been added multiple times to the
+listener array for the specified <code>eventName</code>, then <code>removeListener</code> must be
+called multiple times to remove each instance.</p>
+<p>Note that once an event has been emitted, all listeners attached to it at the
+time of emitting will be called in order. This implies that any <code>removeListener()</code>
+or <code>removeAllListeners()</code> calls <em>after</em> emitting and <em>before</em> the last listener
+finishes execution will not remove them from <code>emit()</code> in progress. Subsequent
+events will behave as expected.</p>
+<pre class="prettyprint"><code class="lang-js">const myEmitter = new MyEmitter();
+
+const callbackA = () =&gt; {
+  console.log(&#39;A&#39;);
+  myEmitter.removeListener(&#39;event&#39;, callbackB);
+};
+
+const callbackB = () =&gt; {
+  console.log(&#39;B&#39;);
+};
+
+myEmitter.on(&#39;event&#39;, callbackA);
+
+myEmitter.on(&#39;event&#39;, callbackB);
+
+// callbackA removes listener callbackB but it will still be called.
+// Internal listener array at time of emit [callbackA, callbackB]
+myEmitter.emit(&#39;event&#39;);
+// Prints:
+//   A
+//   B
+
+// callbackB is now removed.
+// Internal listener array [callbackA]
+myEmitter.emit(&#39;event&#39;);
+// Prints:
+//   A
+</code></pre>
+<p>Because listeners are managed using an internal array, calling this will
+change the position indices of any listener registered <em>after</em> the listener
+being removed. This will not impact the order in which listeners are called,
+but it means that any copies of the listener array as returned by
+the <code>emitter.listeners()</code> method will need to be recreated.</p>
+<p>Returns a reference to the <code>EventEmitter</code>, so that calls can be chained.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_setMaxListeners" id="method_setMaxListeners"></a>
+            <div class="permalink"><a href="#method_setMaxListeners" class="permalink fas fa-link"></a></div>
+            <p>emitter.setMaxListeners(n)</p>
+
+          </h1>
+        </div><section><p>By default EventEmitters will print a warning if more than <code>10</code> listeners are
+added for a particular event. This is a useful default that helps finding
+memory leaks. Obviously, not all events should be limited to just 10 listeners.
+The <code>emitter.setMaxListeners()</code> method allows the limit to be modified for this
+specific <code>EventEmitter</code> instance. The value can be set to <code>Infinity</code> (or <code>0</code>)
+to indicate an unlimited number of listeners.</p>
+<p>Returns a reference to the <code>EventEmitter</code>, so that calls can be chained.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_rawListeners" id="method_rawListeners"></a>
+            <div class="permalink"><a href="#method_rawListeners" class="permalink fas fa-link"></a></div>
+            <p>emitter.rawListeners(eventName)</p>
+
+          </h1>
+        </div><section><p><p>Returns a copy of the array of listeners for the event named <code>eventName</code>,
+including any wrappers (such as those created by <code>.once</code>).</p></p>
+<p><pre class="prettyprint"><code class="lang-js">const emitter = new EventEmitter();
+emitter.once(&#39;log&#39;, () =&gt; console.log(&#39;log once&#39;));</p>
+<p>// Returns a new Array with a function <code>onceWrapper</code> which has a property
+// <code>listener</code> which contains the original listener bound above
+const listeners = emitter.rawListeners(&#39;log&#39;);
+const logFnWrapper = listeners[0];</p>
+<p>// logs &quot;log once&quot; to the console and does not unbind the <code>once</code> event
+logFnWrapper.listener();</p>
+<p>// logs &quot;log once&quot; to the console and removes the listener
+logFnWrapper();</p>
+<p>emitter.on(&#39;log&#39;, () =&gt; console.log(&#39;log persistently&#39;));
+// will return a new Array with a single function bound by <code>on</code> above
+const newListeners = emitter.rawListeners(&#39;log&#39;);</p>
+<p>// logs &quot;log persistently&quot; twice
+newListeners<a href="">0</a>;
+emitter.emit(&#39;log&#39;);
+</code></pre>
+<!-- [end-include:events.md] -->
+<!-- [start-include:fs.md] --></p>
+</section></section></section>
+
+  <div class="footer">
+    <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>
+    <p>Dubbed by <img src="images/mixtape.png" title="Dubbed by mixtape." style="width:40px;position:relative;top:8px"></img> mixtape.</p>
+  </div>
+
+  </div>
+  </body>
+</html>

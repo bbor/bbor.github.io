@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>mixtape page for https</title>
+    <script data-main="js/setup" src="js/require.js"></script>
+    <link rel="stylesheet" href="fonts/fonts.css" />
+    <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="toc/themes/default/style.min.css" />
+    <link rel="stylesheet" href="css/design.css" />
+  </head>
+  <body>
+
+  <div id="control-panel">
+    <div id="control-strip-h">
+      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
+      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    </div>
+    <div id="controls">
+      <div id="control-find">
+        <div id="control-find-content"><input id="find" class="typeahead" placeholder="Find something..."></div>
+      </div>
+      <div id="control-toc">
+        <div id="control-toc-content"><div id="toc"></div></div>
+      </div>
+    </div>
+  </div>
+  <div id="control-strip-v">
+    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
+    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  </div>
+
+  <div id="content">
+
+  
+       <div class="heading">
+          <h1>
+            <a name="module_https" id="module_https"></a>
+            <div class="permalink"><a href="#module_https" class="permalink fas fa-link"></a></div>
+            <p>HTTPS</p>
+
+          </h1>
+        </div><p>HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a
+separate module.</p>
+
+       <div class="heading">
+          <h2>
+            <a name="class_https_Agent" id="class_https_Agent"></a>
+            <div class="permalink"><a href="#class_https_Agent" class="permalink fas fa-link"></a></div>
+            <p>Class: https.Agent</p>
+
+          </h1>
+        </div><section><p>An Agent object for HTTPS similar to <a href="http.html#http_class_http_agent"><code>http.Agent</code></a>.  See <a href="#https_https_request_options_callback"><code>https.request()</code></a>
+for more information.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="class_https_Server" id="class_https_Server"></a>
+            <div class="permalink"><a href="#class_https_Server" class="permalink fas fa-link"></a></div>
+            <p>Class: https.Server</p>
+
+          </h1>
+        </div><section><p>This class is a subclass of <code>tls.Server</code> and emits events same as
+<a href="http.html#http_class_http_server"><code>http.Server</code></a>. See <a href="http.html#http_class_http_server"><code>http.Server</code></a> for more information.</p>
+<section>
+       <div class="heading">
+          <h4>
+            <a name="property_timeout_1" id="property_timeout_1"></a>
+            <div class="permalink"><a href="#property_timeout_1" class="permalink fas fa-link"></a></div>
+            <p><code>timeout</code> {number} Defaults to 120000 (2 minutes). </p>
+
+          </h1>
+        </div><section><p>See <a href="http.html#http_server_timeout"><code>http.Server#timeout</code></a>.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_keepAliveTimeout_1" id="property_keepAliveTimeout_1"></a>
+            <div class="permalink"><a href="#property_keepAliveTimeout_1" class="permalink fas fa-link"></a></div>
+            <p><code>keepAliveTimeout</code> {number} Defaults to 5000 (5 seconds). </p>
+
+          </h1>
+        </div><section><p>See <a href="http.html#http_server_keepalivetimeout"><code>http.Server#keepAliveTimeout</code></a>.</p>
+</section></section><section>
+       <div class="heading">
+          <h4>
+            <a name="method_close_6" id="method_close_6"></a>
+            <div class="permalink"><a href="#method_close_6" class="permalink fas fa-link"></a></div>
+            <p>server.close([callback])</p>
+
+          </h1>
+        </div><section><p>See <a href="http.html#http_server_close_callback"><code>server.close()</code></a> from the HTTP module for details.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_listen_1" id="method_listen_1"></a>
+            <div class="permalink"><a href="#method_listen_1" class="permalink fas fa-link"></a></div>
+            <p>server.listen()</p>
+
+          </h1>
+        </div><section><p>Starts the HTTPS server listening for encrypted connections.
+This method is identical to <a href="net.html#net_server_listen"><code>server.listen()</code></a> from <a href="net.html#net_class_net_server"><code>net.Server</code></a>.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_setTimeout_8" id="method_setTimeout_8"></a>
+            <div class="permalink"><a href="#method_setTimeout_8" class="permalink fas fa-link"></a></div>
+            <p>server.setTimeout([msecs][, callback])</p>
+
+          </h1>
+        </div><section><p>See <a href="http.html#http_server_settimeout_msecs_callback"><code>http.Server#setTimeout()</code></a>.</p>
+</section></section></section>
+       <div class="heading">
+          <h2>
+            <a name="property_globalAgent_1" id="property_globalAgent_1"></a>
+            <div class="permalink"><a href="#property_globalAgent_1" class="permalink fas fa-link"></a></div>
+            <p>https.globalAgent</p>
+
+          </h1>
+        </div><section><p>Global instance of <a href="#https_class_https_agent"><code>https.Agent</code></a> for all HTTPS client requests.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_createServer_2" id="method_createServer_2"></a>
+            <div class="permalink"><a href="#method_createServer_2" class="permalink fas fa-link"></a></div>
+            <p>https.createServer([options][, requestListener])</p>
+
+          </h1>
+        </div><section><p><p>Example:</p></p>
+<pre class="prettyprint"><code class="lang-js">// curl -k https://localhost:8000/
+const https = require(&#39;https&#39;);
+const fs = require(&#39;fs&#39;);
+
+const options = {
+  key: fs.readFileSync(&#39;test/fixtures/keys/agent2-key.pem&#39;),
+  cert: fs.readFileSync(&#39;test/fixtures/keys/agent2-cert.pem&#39;)
+};
+
+https.createServer(options, (req, res) =&gt; {
+  res.writeHead(200);
+  res.end(&#39;hello world\n&#39;);
+}).listen(8000);
+</code></pre>
+<p>Or</p>
+<pre class="prettyprint"><code class="lang-js">const https = require(&#39;https&#39;);
+const fs = require(&#39;fs&#39;);
+
+const options = {
+  pfx: fs.readFileSync(&#39;test/fixtures/test_cert.pfx&#39;),
+  passphrase: &#39;sample&#39;
+};
+
+https.createServer(options, (req, res) =&gt; {
+  res.writeHead(200);
+  res.end(&#39;hello world\n&#39;);
+}).listen(8000);
+</code></pre>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_get_1" id="method_get_1"></a>
+            <div class="permalink"><a href="#method_get_1" class="permalink fas fa-link"></a></div>
+            <p>https.get(options[, callback])</p>
+
+          </h1>
+        </div><section><p><p>Like <a href="http.html#http_http_get_options_callback"><code>http.get()</code></a> but for HTTPS.</p></p>
+<p><p><code>options</code> can be an object, a string, or a <a href="url.html#url_class_url"><code>URL</code></a> object. If <code>options</code> is a
+string, it is automatically parsed with <a href="#url_url_parse_urlstring_parsequerystring_slashesdenotehost"><code>url.parse()</code></a>. If it is a <a href="url.html#url_class_url"><code>URL</code></a>
+object, it will be automatically converted to an ordinary <code>options</code> object.</p></p>
+<p><p>Example:</p></p>
+<pre class="prettyprint"><code class="lang-js">const https = require(&#39;https&#39;);
+
+https.get(&#39;https://encrypted.google.com/&#39;, (res) =&gt; {
+  console.log(&#39;statusCode:&#39;, res.statusCode);
+  console.log(&#39;headers:&#39;, res.headers);
+
+  res.on(&#39;data&#39;, (d) =&gt; {
+    process.stdout.write(d);
+  });
+
+}).on(&#39;error&#39;, (e) =&gt; {
+  console.error(e);
+});
+</code></pre>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_request_2" id="method_request_2"></a>
+            <div class="permalink"><a href="#method_request_2" class="permalink fas fa-link"></a></div>
+            <p>https.request(options[, callback])</p>
+
+          </h1>
+        </div><section><p><p>Makes a request to a secure web server.</p></p>
+<p><p>The following additional <code>options</code> from <a href="#tls_tls_connect_options_callback"><code>tls.connect()</code></a> are also accepted
+when using a custom <a href="#https_class_https_agent"><code>Agent</code></a>: <code>ca</code>, <code>cert</code>, <code>ciphers</code>, <code>clientCertEngine</code>,
+<code>key</code>, <code>passphrase</code>, <code>pfx</code>, <code>rejectUnauthorized</code>, <code>secureProtocol</code>, <code>servername</code></p></p>
+<p><p><code>options</code> can be an object, a string, or a <a href="url.html#url_class_url"><code>URL</code></a> object. If <code>options</code> is a
+string, it is automatically parsed with <a href="#url_url_parse_urlstring_parsequerystring_slashesdenotehost"><code>url.parse()</code></a>. If it is a <a href="url.html#url_class_url"><code>URL</code></a>
+object, it will be automatically converted to an ordinary <code>options</code> object.</p></p>
+<p><p>Example:</p></p>
+<p><pre class="prettyprint"><code class="lang-js">const https = require(&#39;https&#39;);</p>
+<p>const options = {
+  hostname: &#39;encrypted.google.com&#39;,
+  port: 443,
+  path: &#39;/&#39;,
+  method: &#39;GET&#39;
+};</p>
+<p>const req = https.request(options, (res) =&gt; {
+  console.log(&#39;statusCode:&#39;, res.statusCode);
+  console.log(&#39;headers:&#39;, res.headers);</p>
+<p>  res.on(&#39;data&#39;, (d) =&gt; {
+    process.stdout.write(d);
+  });
+});</p>
+<p>req.on(&#39;error&#39;, (e) =&gt; {
+  console.error(e);
+});
+req.end();
+</code></pre></p>
+<p><p>Example using options from <a href="#tls_tls_connect_options_callback"><code>tls.connect()</code></a>:</p></p>
+<p><pre class="prettyprint"><code class="lang-js">const options = {
+  hostname: &#39;encrypted.google.com&#39;,
+  port: 443,
+  path: &#39;/&#39;,
+  method: &#39;GET&#39;,
+  key: fs.readFileSync(&#39;test/fixtures/keys/agent2-key.pem&#39;),
+  cert: fs.readFileSync(&#39;test/fixtures/keys/agent2-cert.pem&#39;)
+};
+options.agent = new https.Agent(options);</p>
+<p>const req = https.request(options, (res) =&gt; {
+  // ...
+});
+</code></pre></p>
+<p><p>Alternatively, opt out of connection pooling by not using an <code>Agent</code>.</p></p>
+<p><p>Example:</p></p>
+<p><pre class="prettyprint"><code class="lang-js">const options = {
+  hostname: &#39;encrypted.google.com&#39;,
+  port: 443,
+  path: &#39;/&#39;,
+  method: &#39;GET&#39;,
+  key: fs.readFileSync(&#39;test/fixtures/keys/agent2-key.pem&#39;),
+  cert: fs.readFileSync(&#39;test/fixtures/keys/agent2-cert.pem&#39;),
+  agent: false
+};</p>
+<p>const req = https.request(options, (res) =&gt; {
+  // ...
+});
+</code></pre></p>
+<p><p>Example using a <a href="url.html#url_class_url"><code>URL</code></a> as <code>options</code>:</p></p>
+<p><pre class="prettyprint"><code class="lang-js">const { URL } = require(&#39;url&#39;);</p>
+<p>const options = new URL(&#39;<a href="https://abc:xyz@example.com&amp;#39">https://abc:xyz@example.com&amp;#39</a>;);</p>
+<p>const req = https.request(options, (res) =&gt; {
+  // ...
+});
+</code></pre>
+<!-- [end-include:https.md] -->
+<!-- [start-include:inspector.md] --></p>
+</section>
+
+  <div class="footer">
+    <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>
+    <p>Dubbed by <img src="images/mixtape.png" title="Dubbed by mixtape." style="width:40px;position:relative;top:8px"></img> mixtape.</p>
+  </div>
+
+  </div>
+  </body>
+</html>

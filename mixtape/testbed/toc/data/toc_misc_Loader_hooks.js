@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_misc_resolve_hook","target":"module_esm.html#misc_resolve_hook","text":"Resolve hook","icon":false},{"id":"toc_misc_dynamic_instantiate_hook","target":"module_esm.html#misc_dynamic_instantiate_hook","text":"Dynamic instantiate hook","icon":false}],"ancestry":["toc_module_esm","toc_misc_Loader_hooks"]}; });

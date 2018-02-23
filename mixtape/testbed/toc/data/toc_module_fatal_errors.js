@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_module_napi_fatal_error","target":"module_n_api_1.html#module_napi_fatal_error","text":"napi_fatal_error","icon":false}],"ancestry":["toc_module_n_api_1","toc_module_error_handling_1","toc_module_fatal_errors"]}; });

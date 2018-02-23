@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_class_stream_Writable","target":"module_stream.html#class_stream_Writable","text":"Class: stream.Writable","icon":false,"children":true}],"ancestry":["toc_module_stream","toc_misc_API_for_Stream_Consumers","toc_misc_writable_streams"]}; });

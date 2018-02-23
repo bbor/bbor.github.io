@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_module_legacy_api","target":"module_crypto.html#module_legacy_api","text":"Legacy API","icon":false,"children":true}],"ancestry":["toc_module_crypto","toc_class_Certificate","toc_subgroup_Certificate_Modules"]}; });

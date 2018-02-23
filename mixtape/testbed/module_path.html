@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>mixtape page for path</title>
+    <script data-main="js/setup" src="js/require.js"></script>
+    <link rel="stylesheet" href="fonts/fonts.css" />
+    <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="toc/themes/default/style.min.css" />
+    <link rel="stylesheet" href="css/design.css" />
+  </head>
+  <body>
+
+  <div id="control-panel">
+    <div id="control-strip-h">
+      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
+      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    </div>
+    <div id="controls">
+      <div id="control-find">
+        <div id="control-find-content"><input id="find" class="typeahead" placeholder="Find something..."></div>
+      </div>
+      <div id="control-toc">
+        <div id="control-toc-content"><div id="toc"></div></div>
+      </div>
+    </div>
+  </div>
+  <div id="control-strip-v">
+    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
+    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  </div>
+
+  <div id="content">
+
+  
+       <div class="heading">
+          <h1>
+            <a name="module_path" id="module_path"></a>
+            <div class="permalink"><a href="#module_path" class="permalink fas fa-link"></a></div>
+            <p>Path</p>
+
+          </h1>
+        </div><p><p>The <code>path</code> module provides utilities for working with file and directory paths.
+It can be accessed using:</p></p>
+<pre class="prettyprint"><code class="lang-js">const path = require(&#39;path&#39;);
+</code></pre>
+
+       <div class="heading">
+          <h2>
+            <a name="module_windows_vs__posix" id="module_windows_vs__posix"></a>
+            <div class="permalink"><a href="#module_windows_vs__posix" class="permalink fas fa-link"></a></div>
+            <p>Windows vs. POSIX</p>
+
+          </h1>
+        </div><section><p>The default operation of the <code>path</code> module varies based on the operating system
+on which a Node.js application is running. Specifically, when running on a
+Windows operating system, the <code>path</code> module will assume that Windows-style
+paths are being used.</p>
+<p>For example, using the <code>path.basename()</code> function with the Windows file path
+<code>C:\temp\myfile.html</code>, will yield different results when running on POSIX than
+when run on Windows:</p>
+<p>On POSIX:</p>
+<pre class="prettyprint"><code class="lang-js">path.basename(&#39;C:\temp\myfile.html&#39;);
+// Returns: &#39;C:\temp\myfile.html&#39;
+</code></pre>
+<p>On Windows:</p>
+<pre class="prettyprint"><code class="lang-js">path.basename(&#39;C:\temp\myfile.html&#39;);
+// Returns: &#39;myfile.html&#39;
+</code></pre>
+<p>To achieve consistent results when working with Windows file paths on any
+operating system, use <a href="#path_path_win32"><code>path.win32</code></a>:</p>
+<p>On POSIX and Windows:</p>
+<pre class="prettyprint"><code class="lang-js">path.win32.basename(&#39;C:\temp\myfile.html&#39;);
+// Returns: &#39;myfile.html&#39;
+</code></pre>
+<p>To achieve consistent results when working with POSIX file paths on any
+operating system, use <a href="#path_path_posix"><code>path.posix</code></a>:</p>
+<p>On POSIX and Windows:</p>
+<pre class="prettyprint"><code class="lang-js">path.posix.basename(&#39;/tmp/myfile.html&#39;);
+// Returns: &#39;myfile.html&#39;
+</code></pre>
+<p><em>Note:</em> On Windows Node.js follows the concept of per-drive working directory.
+This behavior can be observed when using a drive path without a backslash. For
+example <code>path.resolve(&#39;c:\&#39;)</code> can potentially return a different result than
+<code>path.resolve(&#39;c:&#39;)</code>. For more information, see
+<a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths">this MSDN page</a>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="property_delimiter" id="property_delimiter"></a>
+            <div class="permalink"><a href="#property_delimiter" class="permalink fas fa-link"></a></div>
+            <p><code>delimiter</code> {string} </p>
+
+          </h1>
+        </div><section><p><p>Provides the platform-specific path delimiter:</p></p>
+<p><ul></p>
+<p><li><code>;</code> for Windows</li></p>
+<p><li><code>:</code> for POSIX</li>
+</ul></p>
+<p><p>For example, on POSIX:</p></p>
+<pre class="prettyprint"><code class="lang-js">console.log(process.env.PATH);
+// Prints: &#39;/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin&#39;
+
+process.env.PATH.split(path.delimiter);
+// Returns: [&#39;/usr/bin&#39;, &#39;/bin&#39;, &#39;/usr/sbin&#39;, &#39;/sbin&#39;, &#39;/usr/local/bin&#39;]
+</code></pre>
+<p>On Windows:</p>
+<pre class="prettyprint"><code class="lang-js">console.log(process.env.PATH);
+// Prints: &#39;C:\Windows\system32;C:\Windows;C:\Program Files\node\&#39;
+
+process.env.PATH.split(path.delimiter);
+// Returns [&#39;C:\\Windows\\system32&#39;, &#39;C:\\Windows&#39;, &#39;C:\\Program Files\\node\\&#39;]
+</code></pre>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="property_posix" id="property_posix"></a>
+            <div class="permalink"><a href="#property_posix" class="permalink fas fa-link"></a></div>
+            <p><code>posix</code> {Object} </p>
+
+          </h1>
+        </div><section><p>The <code>path.posix</code> property provides access to POSIX specific implementations
+of the <code>path</code> methods.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="property_sep" id="property_sep"></a>
+            <div class="permalink"><a href="#property_sep" class="permalink fas fa-link"></a></div>
+            <p><code>sep</code> {string} </p>
+
+          </h1>
+        </div><section><p>Provides the platform-specific path segment separator:</p>
+<ul>
+<li><code>\</code> on Windows</li>
+<li><code>/</code> on POSIX</li>
+</ul>
+<p>For example on POSIX:</p>
+<pre class="prettyprint"><code class="lang-js">&#39;foo/bar/baz&#39;.split(path.sep);
+// Returns: [&#39;foo&#39;, &#39;bar&#39;, &#39;baz&#39;]
+</code></pre>
+<p>On Windows:</p>
+<pre class="prettyprint"><code class="lang-js">&#39;foo\bar\baz&#39;.split(path.sep);
+// Returns: [&#39;foo&#39;, &#39;bar&#39;, &#39;baz&#39;]
+</code></pre>
+<p><em>Note</em>: On Windows, both the forward slash (<code>/</code>) and backward slash (<code>\</code>) are
+accepted as path segment separators; however, the <code>path</code> methods only add
+backward slashes (<code>\</code>).</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="property_win32" id="property_win32"></a>
+            <div class="permalink"><a href="#property_win32" class="permalink fas fa-link"></a></div>
+            <p><code>win32</code> {Object} </p>
+
+          </h1>
+        </div><section><p><p>The <code>path.win32</code> property provides access to Windows-specific implementations
+of the <code>path</code> methods.</p>
+<!-- [end-include:path.md] -->
+<!-- [start-include:perf_hooks.md] --></p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_basename" id="method_basename"></a>
+            <div class="permalink"><a href="#method_basename" class="permalink fas fa-link"></a></div>
+            <p>path.basename(path[, ext])</p>
+
+          </h1>
+        </div><section><p>The <code>path.basename()</code> methods returns the last portion of a <code>path</code>, similar to
+the Unix <code>basename</code> command. Trailing directory separators are ignored, see
+<a href="#path_path_sep"><code>path.sep</code></a>.</p>
+<p>For example:</p>
+<pre class="prettyprint"><code class="lang-js">path.basename(&#39;/foo/bar/baz/asdf/quux.html&#39;);
+// Returns: &#39;quux.html&#39;
+
+path.basename(&#39;/foo/bar/baz/asdf/quux.html&#39;, &#39;.html&#39;);
+// Returns: &#39;quux&#39;
+</code></pre>
+<p>A <a href="errors.html#errors_class_typeerror"><code>TypeError</code></a> is thrown if <code>path</code> is not a string or if <code>ext</code> is given
+and is not a string.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_dirname" id="method_dirname"></a>
+            <div class="permalink"><a href="#method_dirname" class="permalink fas fa-link"></a></div>
+            <p>path.dirname(path)</p>
+
+          </h1>
+        </div><section><p>The <code>path.dirname()</code> method returns the directory name of a <code>path</code>, similar to
+the Unix <code>dirname</code> command. Trailing directory separators are ignored, see
+<a href="#path_path_sep"><code>path.sep</code></a>.</p>
+<p>For example:</p>
+<pre class="prettyprint"><code class="lang-js">path.dirname(&#39;/foo/bar/baz/asdf/quux&#39;);
+// Returns: &#39;/foo/bar/baz/asdf&#39;
+</code></pre>
+<p>A <a href="errors.html#errors_class_typeerror"><code>TypeError</code></a> is thrown if <code>path</code> is not a string.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_extname" id="method_extname"></a>
+            <div class="permalink"><a href="#method_extname" class="permalink fas fa-link"></a></div>
+            <p>path.extname(path)</p>
+
+          </h1>
+        </div><section><p>The <code>path.extname()</code> method returns the extension of the <code>path</code>, from the last
+occurrence of the <code>.</code> (period) character to end of string in the last portion of
+the <code>path</code>.  If there is no <code>.</code> in the last portion of the <code>path</code>, or if the
+first character of the basename of <code>path</code> (see <code>path.basename()</code>) is <code>.</code>, then
+an empty string is returned.</p>
+<p>For example:</p>
+<pre class="prettyprint"><code class="lang-js">path.extname(&#39;index.html&#39;);
+// Returns: &#39;.html&#39;
+
+path.extname(&#39;index.coffee.md&#39;);
+// Returns: &#39;.md&#39;
+
+path.extname(&#39;index.&#39;);
+// Returns: &#39;.&#39;
+
+path.extname(&#39;index&#39;);
+// Returns: &#39;&#39;
+
+path.extname(&#39;.index&#39;);
+// Returns: &#39;&#39;
+</code></pre>
+<p>A <a href="errors.html#errors_class_typeerror"><code>TypeError</code></a> is thrown if <code>path</code> is not a string.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_format" id="method_format"></a>
+            <div class="permalink"><a href="#method_format" class="permalink fas fa-link"></a></div>
+            <p>path.format(pathObject)</p>
+
+          </h1>
+        </div><section><p><p>The <code>path.format()</code> method returns a path string from an object. This is the
+opposite of <a href="#path_path_parse_path"><code>path.parse()</code></a>.</p></p>
+<p><p>When providing properties to the <code>pathObject</code> remember that there are
+combinations where one property has priority over another:</p></p>
+<p><ul></p>
+<p><li><code>pathObject.root</code> is ignored if <code>pathObject.dir</code> is provided</li></p>
+<p><li><code>pathObject.ext</code> and <code>pathObject.name</code> are ignored if <code>pathObject.base</code> exists</li>
+</ul></p>
+<p><p>For example, on POSIX:</p></p>
+<pre class="prettyprint"><code class="lang-js">// If `dir`, `root` and `base` are provided,
+// `${dir}${path.sep}${base}`
+// will be returned. `root` is ignored.
+path.format({
+  root: &#39;/ignored&#39;,
+  dir: &#39;/home/user/dir&#39;,
+  base: &#39;file.txt&#39;
+});
+// Returns: &#39;/home/user/dir/file.txt&#39;
+
+// `root` will be used if `dir` is not specified.
+// If only `root` is provided or `dir` is equal to `root` then the
+// platform separator will not be included. `ext` will be ignored.
+path.format({
+  root: &#39;/&#39;,
+  base: &#39;file.txt&#39;,
+  ext: &#39;ignored&#39;
+});
+// Returns: &#39;/file.txt&#39;
+
+// `name` + `ext` will be used if `base` is not specified.
+path.format({
+  root: &#39;/&#39;,
+  name: &#39;file&#39;,
+  ext: &#39;.txt&#39;
+});
+// Returns: &#39;/file.txt&#39;
+</code></pre>
+<p>On Windows:</p>
+<pre class="prettyprint"><code class="lang-js">path.format({
+  dir: &#39;C:\\path\\dir&#39;,
+  base: &#39;file.txt&#39;
+});
+// Returns: &#39;C:\\path\\dir\\file.txt&#39;
+</code></pre>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_isAbsolute" id="method_isAbsolute"></a>
+            <div class="permalink"><a href="#method_isAbsolute" class="permalink fas fa-link"></a></div>
+            <p>path.isAbsolute(path)</p>
+
+          </h1>
+        </div><section><p>The <code>path.isAbsolute()</code> method determines if <code>path</code> is an absolute path.</p>
+<p>If the given <code>path</code> is a zero-length string, <code>false</code> will be returned.</p>
+<p>For example on POSIX:</p>
+<pre class="prettyprint"><code class="lang-js">path.isAbsolute(&#39;/foo/bar&#39;); // true
+path.isAbsolute(&#39;/baz/..&#39;);  // true
+path.isAbsolute(&#39;qux/&#39;);     // false
+path.isAbsolute(&#39;.&#39;);        // false
+</code></pre>
+<p>On Windows:</p>
+<pre class="prettyprint"><code class="lang-js">path.isAbsolute(&#39;//server&#39;);    // true
+path.isAbsolute(&#39;\\server&#39;);  // true
+path.isAbsolute(&#39;C:/foo/..&#39;);   // true
+path.isAbsolute(&#39;C:\foo\..&#39;); // true
+path.isAbsolute(&#39;bar\baz&#39;);    // false
+path.isAbsolute(&#39;bar/baz&#39;);     // false
+path.isAbsolute(&#39;.&#39;);           // false
+</code></pre>
+<p>A <a href="errors.html#errors_class_typeerror"><code>TypeError</code></a> is thrown if <code>path</code> is not a string.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_join" id="method_join"></a>
+            <div class="permalink"><a href="#method_join" class="permalink fas fa-link"></a></div>
+            <p>path.join([...paths])</p>
+
+          </h1>
+        </div><section><p>The <code>path.join()</code> method joins all given <code>path</code> segments together using the
+platform specific separator as a delimiter, then normalizes the resulting path.</p>
+<p>Zero-length <code>path</code> segments are ignored. If the joined path string is a
+zero-length string then <code>&#39;.&#39;</code> will be returned, representing the current
+working directory.</p>
+<p>For example:</p>
+<pre class="prettyprint"><code class="lang-js">path.join(&#39;/foo&#39;, &#39;bar&#39;, &#39;baz/asdf&#39;, &#39;quux&#39;, &#39;..&#39;);
+// Returns: &#39;/foo/bar/baz/asdf&#39;
+
+path.join(&#39;foo&#39;, {}, &#39;bar&#39;);
+// throws &#39;TypeError: Path must be a string. Received {}&#39;
+</code></pre>
+<p>A <a href="errors.html#errors_class_typeerror"><code>TypeError</code></a> is thrown if any of the path segments is not a string.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_normalize" id="method_normalize"></a>
+            <div class="permalink"><a href="#method_normalize" class="permalink fas fa-link"></a></div>
+            <p>path.normalize(path)</p>
+
+          </h1>
+        </div><section><p>The <code>path.normalize()</code> method normalizes the given <code>path</code>, resolving <code>&#39;..&#39;</code> and
+<code>&#39;.&#39;</code> segments.</p>
+<p>When multiple, sequential path segment separation characters are found (e.g.
+<code>/</code> on POSIX and either <code>\</code> or <code>/</code> on Windows), they are replaced by a single
+instance of the platform specific path segment separator (<code>/</code> on POSIX and
+<code>\</code> on Windows). Trailing separators are preserved.</p>
+<p>If the <code>path</code> is a zero-length string, <code>&#39;.&#39;</code> is returned, representing the
+current working directory.</p>
+<p>For example on POSIX:</p>
+<pre class="prettyprint"><code class="lang-js">path.normalize(&#39;/foo/bar//baz/asdf/quux/..&#39;);
+// Returns: &#39;/foo/bar/baz/asdf&#39;
+</code></pre>
+<p>On Windows:</p>
+<pre class="prettyprint"><code class="lang-js">path.normalize(&#39;C:\temp\\foo\bar\..\&#39;);
+// Returns: &#39;C:\temp\foo\&#39;
+</code></pre>
+<p>Since Windows recognizes multiple path separators, both separators will be
+replaced by instances of the Windows preferred separator (<code>\</code>):</p>
+<pre class="prettyprint"><code class="lang-js">path.win32.normalize(&#39;C:////temp\\/\/\/foo/bar&#39;);
+// Returns: &#39;C:\temp\foo\bar&#39;
+</code></pre>
+<p>A <a href="errors.html#errors_class_typeerror"><code>TypeError</code></a> is thrown if <code>path</code> is not a string.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_parse" id="method_parse"></a>
+            <div class="permalink"><a href="#method_parse" class="permalink fas fa-link"></a></div>
+            <p>path.parse(path)</p>
+
+          </h1>
+        </div><section><p>The <code>path.parse()</code> method returns an object whose properties represent
+significant elements of the <code>path</code>. Trailing directory separators are ignored,
+see <a href="#path_path_sep"><code>path.sep</code></a>.</p>
+<p>The returned object will have the following properties:</p>
+<ul>
+<li><code>dir</code> {string}</li>
+<li><code>root</code> {string}</li>
+<li><code>base</code> {string}</li>
+<li><code>name</code> {string}</li>
+<li><code>ext</code> {string}</li>
+</ul>
+<p>For example on POSIX:</p>
+<pre class="prettyprint"><code class="lang-js">path.parse(&#39;/home/user/dir/file.txt&#39;);
+// Returns:
+// { root: &#39;/&#39;,
+//   dir: &#39;/home/user/dir&#39;,
+//   base: &#39;file.txt&#39;,
+//   ext: &#39;.txt&#39;,
+//   name: &#39;file&#39; }
+</code></pre>
+<pre class="prettyprint"><code class="lang-text">┌─────────────────────┬────────────┐
+│          dir        │    base    │
+├──────┬              ├──────┬─────┤
+│ root │              │ name │ ext │
+&quot;  /    home/user/dir / file  .txt &quot;
+└──────┴──────────────┴──────┴─────┘
+(all spaces in the &quot;&quot; line should be ignored -- they are purely for formatting)
+</code></pre>
+<p>On Windows:</p>
+<pre class="prettyprint"><code class="lang-js">path.parse(&#39;C:\path\dir\file.txt&#39;);
+// Returns:
+// { root: &#39;C:\&#39;,
+//   dir: &#39;C:\path\dir&#39;,
+//   base: &#39;file.txt&#39;,
+//   ext: &#39;.txt&#39;,
+//   name: &#39;file&#39; }
+</code></pre>
+<pre class="prettyprint"><code class="lang-text">┌─────────────────────┬────────────┐
+│          dir        │    base    │
+├──────┬              ├──────┬─────┤
+│ root │              │ name │ ext │
+&quot; C:\      path\dir   \ file  .txt &quot;
+└──────┴──────────────┴──────┴─────┘
+(all spaces in the &quot;&quot; line should be ignored -- they are purely for formatting)
+</code></pre>
+<p>A <a href="errors.html#errors_class_typeerror"><code>TypeError</code></a> is thrown if <code>path</code> is not a string.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_relative" id="method_relative"></a>
+            <div class="permalink"><a href="#method_relative" class="permalink fas fa-link"></a></div>
+            <p>path.relative(from, to)</p>
+
+          </h1>
+        </div><section><p>The <code>path.relative()</code> method returns the relative path from <code>from</code> to <code>to</code> based
+on the current working directory. If <code>from</code> and <code>to</code> each resolve to the same
+path (after calling <code>path.resolve()</code> on each), a zero-length string is returned.</p>
+<p>If a zero-length string is passed as <code>from</code> or <code>to</code>, the current working
+directory will be used instead of the zero-length strings.</p>
+<p>For example on POSIX:</p>
+<pre class="prettyprint"><code class="lang-js">path.relative(&#39;/data/orandea/test/aaa&#39;, &#39;/data/orandea/impl/bbb&#39;);
+// Returns: &#39;../../impl/bbb&#39;
+</code></pre>
+<p>On Windows:</p>
+<pre class="prettyprint"><code class="lang-js">path.relative(&#39;C:\orandea\test\aaa&#39;, &#39;C:\orandea\impl\bbb&#39;);
+// Returns: &#39;..\..\impl\bbb&#39;
+</code></pre>
+<p>A <a href="errors.html#errors_class_typeerror"><code>TypeError</code></a> is thrown if either <code>from</code> or <code>to</code> is not a string.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_resolve_1" id="method_resolve_1"></a>
+            <div class="permalink"><a href="#method_resolve_1" class="permalink fas fa-link"></a></div>
+            <p>path.resolve([...paths])</p>
+
+          </h1>
+        </div><section><p>The <code>path.resolve()</code> method resolves a sequence of paths or path segments into
+an absolute path.</p>
+<p>The given sequence of paths is processed from right to left, with each
+subsequent <code>path</code> prepended until an absolute path is constructed.
+For instance, given the sequence of path segments: <code>/foo</code>, <code>/bar</code>, <code>baz</code>,
+calling <code>path.resolve(&#39;/foo&#39;, &#39;/bar&#39;, &#39;baz&#39;)</code> would return <code>/bar/baz</code>.</p>
+<p>If after processing all given <code>path</code> segments an absolute path has not yet
+been generated, the current working directory is used.</p>
+<p>The resulting path is normalized and trailing slashes are removed unless the
+path is resolved to the root directory.</p>
+<p>Zero-length <code>path</code> segments are ignored.</p>
+<p>If no <code>path</code> segments are passed, <code>path.resolve()</code> will return the absolute path
+of the current working directory.</p>
+<p>For example:</p>
+<pre class="prettyprint"><code class="lang-js">path.resolve(&#39;/foo/bar&#39;, &#39;./baz&#39;);
+// Returns: &#39;/foo/bar/baz&#39;
+
+path.resolve(&#39;/foo/bar&#39;, &#39;/tmp/file/&#39;);
+// Returns: &#39;/tmp/file&#39;
+
+path.resolve(&#39;wwwroot&#39;, &#39;static_files/png/&#39;, &#39;../gif/image.gif&#39;);
+// if the current working directory is /home/myself/node,
+// this returns &#39;/home/myself/node/wwwroot/static_files/gif/image.gif&#39;
+</code></pre>
+<p>A <a href="errors.html#errors_class_typeerror"><code>TypeError</code></a> is thrown if any of the arguments is not a string.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_toNamespacedPath" id="method_toNamespacedPath"></a>
+            <div class="permalink"><a href="#method_toNamespacedPath" class="permalink fas fa-link"></a></div>
+            <p>path.toNamespacedPath(path)</p>
+
+          </h1>
+        </div><section><p>On Windows systems only, returns an equivalent <a href="https://msdn.microsoft.com/library/windows/desktop/aa365247(v=vs.85).aspx#namespaces">namespace-prefixed path</a> for
+the given <code>path</code>. If <code>path</code> is not a string, <code>path</code> will be returned without
+modifications.</p>
+<p>This method is meaningful only on Windows system. On posix systems, the
+method is non-operational and always returns <code>path</code> without modifications.</p>
+</section>
+
+  <div class="footer">
+    <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>
+    <p>Dubbed by <img src="images/mixtape.png" title="Dubbed by mixtape." style="width:40px;position:relative;top:8px"></img> mixtape.</p>
+  </div>
+
+  </div>
+  </body>
+</html>

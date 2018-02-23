@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_module__class_asyncresource___","target":"module_async_hooks.html#module__class_asyncresource___","text":"`class AsyncResource()`","icon":false,"children":true}],"ancestry":["toc_module_async_hooks","toc_module_javascript_embedder_api"]}; });

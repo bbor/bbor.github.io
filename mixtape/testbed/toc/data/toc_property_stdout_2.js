@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_subgroup_stdout_Modules","target":"global_Process_1.html#subgroup_stdout_Modules","text":"stdout.Modules","icon":false,"autoexpand":true,"children":true}],"ancestry":["toc_global_Process_1","toc_subgroup_Process_Properties","toc_property_stdout_2"]}; });

@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_module_napi_get_uv_event_loop","target":"module_n_api_1.html#module_napi_get_uv_event_loop","text":"napi_get_uv_event_loop","icon":false}],"ancestry":["toc_module_n_api_1","toc_module_libuv_event_loop"]}; });

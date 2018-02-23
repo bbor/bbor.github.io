@@ -1,0 +1,2653 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>mixtape page for fs</title>
+    <script data-main="js/setup" src="js/require.js"></script>
+    <link rel="stylesheet" href="fonts/fonts.css" />
+    <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="toc/themes/default/style.min.css" />
+    <link rel="stylesheet" href="css/design.css" />
+  </head>
+  <body>
+
+  <div id="control-panel">
+    <div id="control-strip-h">
+      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
+      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    </div>
+    <div id="controls">
+      <div id="control-find">
+        <div id="control-find-content"><input id="find" class="typeahead" placeholder="Find something..."></div>
+      </div>
+      <div id="control-toc">
+        <div id="control-toc-content"><div id="toc"></div></div>
+      </div>
+    </div>
+  </div>
+  <div id="control-strip-v">
+    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
+    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  </div>
+
+  <div id="content">
+
+  
+       <div class="heading">
+          <h1>
+            <a name="module_fs" id="module_fs"></a>
+            <div class="permalink"><a href="#module_fs" class="permalink fas fa-link"></a></div>
+            <p>fs</p>
+
+          </h1>
+        </div><p><p>The <code>fs</code> module provides an API for interacting with the file system in a
+manner closely modeled around standard POSIX functions.</p></p>
+<p><p>To use this module:</p></p>
+<pre class="prettyprint"><code class="lang-js">const fs = require(&#39;fs&#39;);
+</code></pre>
+<p>All file system operations have synchronous and asynchronous forms.</p>
+<p>The asynchronous form always takes a completion callback as its last argument.
+The arguments passed to the completion callback depend on the method, but the
+first argument is always reserved for an exception. If the operation was
+completed successfully, then the first argument will be <code>null</code> or <code>undefined</code>.</p>
+<p>For example:</p>
+<pre class="prettyprint"><code class="lang-js">const fs = require(&#39;fs&#39;);
+
+fs.unlink(&#39;/tmp/hello&#39;, (err) =&gt; {
+  if (err) throw err;
+  console.log(&#39;successfully deleted /tmp/hello&#39;);
+});
+</code></pre>
+<p>Exceptions that occur using synchronous operations are thrown immediately and
+may be handled using <code>try</code>/<code>catch</code>, or may be allowed to bubble up.</p>
+<p>For example:</p>
+<pre class="prettyprint"><code class="lang-js">const fs = require(&#39;fs&#39;);
+
+try {
+  fs.unlinkSync(&#39;/tmp/hello&#39;);
+  console.log(&#39;successfully deleted /tmp/hello&#39;);
+} catch (err) {
+  // handle the error
+}
+</code></pre>
+<p>Note that there is no guaranteed ordering when using asynchronous methods.
+So the following is prone to error because the <code>fs.stat()</code> operation may
+complete before the <code>fs.rename()</code> operation.</p>
+<pre class="prettyprint"><code class="lang-js">fs.rename(&#39;/tmp/hello&#39;, &#39;/tmp/world&#39;, (err) =&gt; {
+  if (err) throw err;
+  console.log(&#39;renamed complete&#39;);
+});
+fs.stat(&#39;/tmp/world&#39;, (err, stats) =&gt; {
+  if (err) throw err;
+  console.log(`stats: ${JSON.stringify(stats)}`);
+});
+</code></pre>
+<p>To correctly order the operations, move the <code>fs.stat()</code> call into the callback
+of the <code>fs.rename()</code> operation:</p>
+<pre class="prettyprint"><code class="lang-js">fs.rename(&#39;/tmp/hello&#39;, &#39;/tmp/world&#39;, (err) =&gt; {
+  if (err) throw err;
+  fs.stat(&#39;/tmp/world&#39;, (err, stats) =&gt; {
+    if (err) throw err;
+    console.log(`stats: ${JSON.stringify(stats)}`);
+  });
+});
+</code></pre>
+<p>In busy processes, the programmer is <em>strongly encouraged</em> to use the
+asynchronous versions of these calls. The synchronous versions will block
+the entire process until they complete--halting all connections.</p>
+<p>While it is not recommended, most fs functions allow the callback argument to
+be omitted, in which case a default callback is used that rethrows errors. To
+get a trace to the original call site, set the <code>NODE_DEBUG</code> environment
+variable:</p>
+<p><em>Note</em>: Omitting the callback function on asynchronous fs functions is
+deprecated and may result in an error being thrown in the future.</p>
+<pre class="prettyprint"><code class="lang-txt">$ cat script.js
+function bad() {
+  require(&#39;fs&#39;).readFile(&#39;/&#39;);
+}
+bad();
+
+$ env NODE_DEBUG=fs node script.js
+fs.js:88
+        throw backtrace;
+        ^
+Error: EISDIR: illegal operation on a directory, read
+    &lt;stack trace.&gt;
+</code></pre>
+
+       <div class="heading">
+          <h2>
+            <a name="module_file_paths" id="module_file_paths"></a>
+            <div class="permalink"><a href="#module_file_paths" class="permalink fas fa-link"></a></div>
+            <p>File paths</p>
+
+          </h1>
+        </div><section><p>Most <code>fs</code> operations accept filepaths that may be specified in the form of
+a string, a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a>, or a <a href="url.html#url_class_url"><code>URL</code></a> object using the <code>file:</code> protocol.</p>
+<p>String form paths are interpreted as UTF-8 character sequences identifying
+the absolute or relative filename. Relative paths will be resolved relative
+to the current working directory as specified by <code>process.cwd()</code>.</p>
+<p>Example using an absolute path on POSIX:</p>
+<pre class="prettyprint"><code class="lang-js">const fs = require(&#39;fs&#39;);
+
+fs.open(&#39;/open/some/file.txt&#39;, &#39;r&#39;, (err, fd) =&gt; {
+  if (err) throw err;
+  fs.close(fd, (err) =&gt; {
+    if (err) throw err;
+  });
+});
+</code></pre>
+<p>Example using a relative path on POSIX (relative to <code>process.cwd()</code>):</p>
+<pre class="prettyprint"><code class="lang-js">fs.open(&#39;file.txt&#39;, &#39;r&#39;, (err, fd) =&gt; {
+  if (err) throw err;
+  fs.close(fd, (err) =&gt; {
+    if (err) throw err;
+  });
+});
+</code></pre>
+<p>Paths specified using a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a> are useful primarily on certain POSIX
+operating systems that treat file paths as opaque byte sequences. On such
+systems, it is possible for a single file path to contain sub-sequences that
+use multiple character encodings. As with string paths, <code>Buffer</code> paths may
+be relative or absolute:</p>
+<p>Example using an absolute path on POSIX:</p>
+<pre class="prettyprint"><code class="lang-js">fs.open(Buffer.from(&#39;/open/some/file.txt&#39;), &#39;r&#39;, (err, fd) =&gt; {
+  if (err) throw err;
+  fs.close(fd, (err) =&gt; {
+    if (err) throw err;
+  });
+});
+</code></pre>
+<p><em>Note:</em> On Windows Node.js follows the concept of per-drive working directory.
+This behavior can be observed when using a drive path without a backslash. For
+example <code>fs.readdirSync(&#39;c:\&#39;)</code> can potentially return a different result than
+<code>fs.readdirSync(&#39;c:&#39;)</code>. For more information, see
+<a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths">this MSDN page</a>.</p>
+
+       <div class="heading">
+          <h3>
+            <a name="module_url_object_support" id="module_url_object_support"></a>
+            <div class="permalink"><a href="#module_url_object_support" class="permalink fas fa-link"></a></div>
+            <p>URL object support</p>
+
+          </h1>
+        </div><section><p><p>For most <code>fs</code> module functions, the <code>path</code> or <code>filename</code> argument may be passed
+as a WHATWG <a href="url.html#url_class_url"><code>URL</code></a> object. Only <a href="url.html#url_class_url"><code>URL</code></a> objects using the <code>file:</code> protocol
+are supported.</p></p>
+<pre class="prettyprint"><code class="lang-js">const fs = require(&#39;fs&#39;);
+const { URL } = require(&#39;url&#39;);
+const fileUrl = new URL(&#39;file:///tmp/hello&#39;);
+
+fs.readFileSync(fileUrl);
+</code></pre>
+<p><em>Note</em>: <code>file:</code> URLs are always absolute paths.</p>
+<p>Using WHATWG <a href="url.html#url_class_url"><code>URL</code></a> objects might introduce platform-specific behaviors.</p>
+<p>On Windows, <code>file:</code> URLs with a hostname convert to UNC paths, while <code>file:</code>
+URLs with drive letters convert to local absolute paths. <code>file:</code> URLs without a
+hostname nor a drive letter will result in a throw :</p>
+<pre class="prettyprint"><code class="lang-js">// On Windows :
+
+// - WHATWG file URLs with hostname convert to UNC path
+// file://hostname/p/a/t/h/file =&gt; \\hostname\p\a\t\h\file
+fs.readFileSync(new URL(&#39;file://hostname/p/a/t/h/file&#39;));
+
+// - WHATWG file URLs with drive letters convert to absolute path
+// file:///C:/tmp/hello =&gt; C:\tmp\hello
+fs.readFileSync(new URL(&#39;file:///C:/tmp/hello&#39;));
+
+// - WHATWG file URLs without hostname must have a drive letters
+fs.readFileSync(new URL(&#39;file:///notdriveletter/p/a/t/h/file&#39;));
+fs.readFileSync(new URL(&#39;file:///c/p/a/t/h/file&#39;));
+// TypeError [ERR_INVALID_FILE_URL_PATH]: File URL path must be absolute
+</code></pre>
+<p><em>Note</em>: <code>file:</code> URLs with drive letters must use <code>:</code> as a separator just after
+the drive letter. Using another separator will result in a throw.</p>
+<p>On all other platforms, <code>file:</code> URLs with a hostname are unsupported and will
+result in a throw:</p>
+<pre class="prettyprint"><code class="lang-js">// On other platforms:
+
+// - WHATWG file URLs with hostname are unsupported
+// file://hostname/p/a/t/h/file =&gt; throw!
+fs.readFileSync(new URL(&#39;file://hostname/p/a/t/h/file&#39;));
+// TypeError [ERR_INVALID_FILE_URL_PATH]: must be absolute
+
+// - WHATWG file URLs convert to absolute path
+// file:///tmp/hello =&gt; /tmp/hello
+fs.readFileSync(new URL(&#39;file:///tmp/hello&#39;));
+</code></pre>
+<p>A <code>file:</code> URL having encoded slash characters will result in a throw on all
+platforms:</p>
+<pre class="prettyprint"><code class="lang-js">// On Windows
+fs.readFileSync(new URL(&#39;file:///C:/p/a/t/h/%2F&#39;));
+fs.readFileSync(new URL(&#39;file:///C:/p/a/t/h/%2f&#39;));
+/* TypeError [ERR_INVALID_FILE_URL_PATH]: File URL path must not include encoded
+\ or / characters */
+
+// On POSIX
+fs.readFileSync(new URL(&#39;file:///p/a/t/h/%2F&#39;));
+fs.readFileSync(new URL(&#39;file:///p/a/t/h/%2f&#39;));
+/* TypeError [ERR_INVALID_FILE_URL_PATH]: File URL path must not include encoded
+/ characters */
+</code></pre>
+<p>On Windows, <code>file:</code> URLs having encoded backslash will result in a throw:</p>
+<pre class="prettyprint"><code class="lang-js">// On Windows
+fs.readFileSync(new URL(&#39;file:///C:/path/%5C&#39;));
+fs.readFileSync(new URL(&#39;file:///C:/path/%5c&#39;));
+/* TypeError [ERR_INVALID_FILE_URL_PATH]: File URL path must not include encoded
+\ or / characters */
+</code></pre>
+</section></section>
+       <div class="heading">
+          <h2>
+            <a name="module_file_descriptors" id="module_file_descriptors"></a>
+            <div class="permalink"><a href="#module_file_descriptors" class="permalink fas fa-link"></a></div>
+            <p>File Descriptors</p>
+
+          </h1>
+        </div><section><p>On POSIX systems, for every process, the kernel maintains a table of currently
+open files and resources. Each open file is assigned a simple numeric
+identifier called a <em>file descriptor</em>. At the system-level, all file system
+operations use these file descriptors to identify and track each specific
+file. Windows systems use a different but conceptually similar mechanism for
+tracking resources. To simplify things for users, Node.js abstracts away the
+specific differences between operating systems and assigns all open files a
+numeric file descriptor.</p>
+<p>The <code>fs.open()</code> method is used to allocate a new file descriptor. Once
+allocated, the file descriptor may be used to read data from, write data to,
+or request information about the file.</p>
+<pre class="prettyprint"><code class="lang-js">fs.open(&#39;/open/some/file.txt&#39;, &#39;r&#39;, (err, fd) =&gt; {
+  if (err) throw err;
+  fs.fstat(fd, (err, stat) =&gt; {
+    if (err) throw err;
+    // use stat
+
+    // always close the file descriptor!
+    fs.close(fd, (err) =&gt; {
+      if (err) throw err;
+    });
+  });
+});
+</code></pre>
+<p>Most operating systems limit the number of file descriptors that may be open
+at any given time so it is critical to close the descriptor when operations
+are completed. Failure to do so will result in a memory leak that will
+eventually cause an application to crash.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="module_threadpool_usage" id="module_threadpool_usage"></a>
+            <div class="permalink"><a href="#module_threadpool_usage" class="permalink fas fa-link"></a></div>
+            <p>Threadpool Usage</p>
+
+          </h1>
+        </div><section><p>Note that all file system APIs except <code>fs.FSWatcher()</code> and those that are
+explicitly synchronous use libuv&#39;s threadpool, which can have surprising and
+negative performance implications for some applications, see the
+<a href="cli.html#cli_uv_threadpool_size_size"><code>UV_THREADPOOL_SIZE</code></a> documentation for more information.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="module_fs_realpath_native_path___options___callback_" id="module_fs_realpath_native_path___options___callback_"></a>
+            <div class="permalink"><a href="#module_fs_realpath_native_path___options___callback_" class="permalink fas fa-link"></a></div>
+            <p>fs.realpath.native(path[, options], callback)</p>
+
+          </h1>
+        </div><section><p><ul></p>
+<p><li><code>path</code> {string|Buffer|URL}</li></p>
+<p><li><code>options</code> {string|Object}<ul></p>
+<p><li><code>encoding</code> {string} <strong>Default:</strong> <code>&#39;utf8&#39;</code></li>
+</ul>
+</li></p>
+<p><li><code>callback</code> {Function}<ul></p>
+<p><li><code>err</code> {Error}</li></p>
+<p><li><code>resolvedPath</code> {string|Buffer}</li>
+</ul>
+</li>
+</ul></p>
+<p>Asynchronous realpath(3).</p>
+<p>The <code>callback</code> gets two arguments <code>(err, resolvedPath)</code>.</p>
+<p>Only paths that can be converted to UTF8 strings are supported.</p>
+<p>The optional <code>options</code> argument can be a string specifying an encoding, or an
+object with an <code>encoding</code> property specifying the character encoding to use for
+the path passed to the callback. If the <code>encoding</code> is set to <code>&#39;buffer&#39;</code>,
+the path returned will be passed as a <code>Buffer</code> object.</p>
+<p><em>Note</em>: On Linux, when Node.js is linked against musl libc, the procfs file
+system must be mounted on <code>/proc</code> in order for this function to work.  Glibc
+does not have this restriction.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="module_fs_realpathsync_native_path___options__" id="module_fs_realpathsync_native_path___options__"></a>
+            <div class="permalink"><a href="#module_fs_realpathsync_native_path___options__" class="permalink fas fa-link"></a></div>
+            <p>fs.realpathSync.native(path[, options])</p>
+
+          </h1>
+        </div><section><p><ul></p>
+<p><li><code>path</code> {string|Buffer|URL}</li></p>
+<p><li><code>options</code> {string|Object}<ul></p>
+<p><li><code>encoding</code> {string} <strong>Default:</strong> <code>&#39;utf8&#39;</code></li>
+</ul>
+</li>
+</ul></p>
+<p>Synchronous realpath(3).</p>
+<p>Only paths that can be converted to UTF8 strings are supported.</p>
+<p>The optional <code>options</code> argument can be a string specifying an encoding, or an
+object with an <code>encoding</code> property specifying the character encoding to use for
+the path passed to the callback. If the <code>encoding</code> is set to <code>&#39;buffer&#39;</code>,
+the path returned will be passed as a <code>Buffer</code> object.</p>
+<p><em>Note</em>: On Linux, when Node.js is linked against musl libc, the procfs file
+system must be mounted on <code>/proc</code> in order for this function to work.  Glibc
+does not have this restriction.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="module_fs_constants" id="module_fs_constants"></a>
+            <div class="permalink"><a href="#module_fs_constants" class="permalink fas fa-link"></a></div>
+            <p>FS Constants</p>
+
+          </h1>
+        </div><section><p>The following constants are exported by <code>fs.constants</code>.</p>
+<p><em>Note</em>: Not every constant will be available on every operating system.</p>
+
+       <div class="heading">
+          <h3>
+            <a name="module_file_access_constants" id="module_file_access_constants"></a>
+            <div class="permalink"><a href="#module_file_access_constants" class="permalink fas fa-link"></a></div>
+            <p>File Access Constants</p>
+
+          </h1>
+        </div><section><p><p>The following constants are meant for use with <a href="#fs_fs_access_path_mode_callback"><code>fs.access()</code></a>.</p></p>
+<table>
+  <tr>
+    <th>Constant</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>F_OK</code></td>
+    <td>Flag indicating that the file is visible to the calling process.</td>
+  </tr>
+  <tr>
+    <td><code>R_OK</code></td>
+    <td>Flag indicating that the file can be read by the calling process.</td>
+  </tr>
+  <tr>
+    <td><code>W_OK</code></td>
+    <td>Flag indicating that the file can be written by the calling
+    process.</td>
+  </tr>
+  <tr>
+    <td><code>X_OK</code></td>
+    <td>Flag indicating that the file can be executed by the calling
+    process.</td>
+  </tr>
+</table>
+
+</section>
+       <div class="heading">
+          <h3>
+            <a name="module_file_open_constants" id="module_file_open_constants"></a>
+            <div class="permalink"><a href="#module_file_open_constants" class="permalink fas fa-link"></a></div>
+            <p>File Open Constants</p>
+
+          </h1>
+        </div><section><p><p>The following constants are meant for use with <code>fs.open()</code>.</p></p>
+<table>
+  <tr>
+    <th>Constant</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>O_RDONLY</code></td>
+    <td>Flag indicating to open a file for read-only access.</td>
+  </tr>
+  <tr>
+    <td><code>O_WRONLY</code></td>
+    <td>Flag indicating to open a file for write-only access.</td>
+  </tr>
+  <tr>
+    <td><code>O_RDWR</code></td>
+    <td>Flag indicating to open a file for read-write access.</td>
+  </tr>
+  <tr>
+    <td><code>O_CREAT</code></td>
+    <td>Flag indicating to create the file if it does not already exist.</td>
+  </tr>
+  <tr>
+    <td><code>O_EXCL</code></td>
+    <td>Flag indicating that opening a file should fail if the
+    <code>O_CREAT</code> flag is set and the file already exists.</td>
+  </tr>
+  <tr>
+    <td><code>O_NOCTTY</code></td>
+    <td>Flag indicating that if path identifies a terminal device, opening the
+    path shall not cause that terminal to become the controlling terminal for
+    the process (if the process does not already have one).</td>
+  </tr>
+  <tr>
+    <td><code>O_TRUNC</code></td>
+    <td>Flag indicating that if the file exists and is a regular file, and the
+    file is opened successfully for write access, its length shall be truncated
+    to zero.</td>
+  </tr>
+  <tr>
+    <td><code>O_APPEND</code></td>
+    <td>Flag indicating that data will be appended to the end of the file.</td>
+  </tr>
+  <tr>
+    <td><code>O_DIRECTORY</code></td>
+    <td>Flag indicating that the open should fail if the path is not a
+    directory.</td>
+  </tr>
+  <tr>
+  <td><code>O_NOATIME</code></td>
+    <td>Flag indicating reading accesses to the file system will no longer
+    result in an update to the <code>atime</code> information associated with the file.
+    This flag is available on Linux operating systems only.</td>
+  </tr>
+  <tr>
+    <td><code>O_NOFOLLOW</code></td>
+    <td>Flag indicating that the open should fail if the path is a symbolic
+    link.</td>
+  </tr>
+  <tr>
+    <td><code>O_SYNC</code></td>
+    <td>Flag indicating that the file is opened for synchronized I/O with write
+    operations waiting for file integrity.</td>
+  </tr>
+  <tr>
+    <td><code>O_DSYNC</code></td>
+    <td>Flag indicating that the file is opened for synchronized I/O with write
+    operations waiting for data integrity.</td>
+  </tr>
+  <tr>
+    <td><code>O_SYMLINK</code></td>
+    <td>Flag indicating to open the symbolic link itself rather than the
+    resource it is pointing to.</td>
+  </tr>
+  <tr>
+    <td><code>O_DIRECT</code></td>
+    <td>When set, an attempt will be made to minimize caching effects of file
+    I/O.</td>
+  </tr>
+  <tr>
+    <td><code>O_NONBLOCK</code></td>
+    <td>Flag indicating to open the file in nonblocking mode when possible.</td>
+  </tr>
+</table>
+
+</section>
+       <div class="heading">
+          <h3>
+            <a name="module_file_type_constants" id="module_file_type_constants"></a>
+            <div class="permalink"><a href="#module_file_type_constants" class="permalink fas fa-link"></a></div>
+            <p>File Type Constants</p>
+
+          </h1>
+        </div><section><p><p>The following constants are meant for use with the <a href="#fs_class_fs_stats"><code>fs.Stats</code></a> object&#39;s
+<code>mode</code> property for determining a file&#39;s type.</p></p>
+<table>
+  <tr>
+    <th>Constant</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>S_IFMT</code></td>
+    <td>Bit mask used to extract the file type code.</td>
+  </tr>
+  <tr>
+    <td><code>S_IFREG</code></td>
+    <td>File type constant for a regular file.</td>
+  </tr>
+  <tr>
+    <td><code>S_IFDIR</code></td>
+    <td>File type constant for a directory.</td>
+  </tr>
+  <tr>
+    <td><code>S_IFCHR</code></td>
+    <td>File type constant for a character-oriented device file.</td>
+  </tr>
+  <tr>
+    <td><code>S_IFBLK</code></td>
+    <td>File type constant for a block-oriented device file.</td>
+  </tr>
+  <tr>
+    <td><code>S_IFIFO</code></td>
+    <td>File type constant for a FIFO/pipe.</td>
+  </tr>
+  <tr>
+    <td><code>S_IFLNK</code></td>
+    <td>File type constant for a symbolic link.</td>
+  </tr>
+  <tr>
+    <td><code>S_IFSOCK</code></td>
+    <td>File type constant for a socket.</td>
+  </tr>
+</table>
+
+</section>
+       <div class="heading">
+          <h3>
+            <a name="module_file_mode_constants" id="module_file_mode_constants"></a>
+            <div class="permalink"><a href="#module_file_mode_constants" class="permalink fas fa-link"></a></div>
+            <p>File Mode Constants</p>
+
+          </h1>
+        </div><section><p><p>The following constants are meant for use with the <a href="#fs_class_fs_stats"><code>fs.Stats</code></a> object&#39;s
+<code>mode</code> property for determining the access permissions for a file.</p></p>
+<table>
+  <tr>
+    <th>Constant</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>S_IRWXU</code></td>
+    <td>File mode indicating readable, writable, and executable by owner.</td>
+  </tr>
+  <tr>
+    <td><code>S_IRUSR</code></td>
+    <td>File mode indicating readable by owner.</td>
+  </tr>
+  <tr>
+    <td><code>S_IWUSR</code></td>
+    <td>File mode indicating writable by owner.</td>
+  </tr>
+  <tr>
+    <td><code>S_IXUSR</code></td>
+    <td>File mode indicating executable by owner.</td>
+  </tr>
+  <tr>
+    <td><code>S_IRWXG</code></td>
+    <td>File mode indicating readable, writable, and executable by group.</td>
+  </tr>
+  <tr>
+    <td><code>S_IRGRP</code></td>
+    <td>File mode indicating readable by group.</td>
+  </tr>
+  <tr>
+    <td><code>S_IWGRP</code></td>
+    <td>File mode indicating writable by group.</td>
+  </tr>
+  <tr>
+    <td><code>S_IXGRP</code></td>
+    <td>File mode indicating executable by group.</td>
+  </tr>
+  <tr>
+    <td><code>S_IRWXO</code></td>
+    <td>File mode indicating readable, writable, and executable by others.</td>
+  </tr>
+  <tr>
+    <td><code>S_IROTH</code></td>
+    <td>File mode indicating readable by others.</td>
+  </tr>
+  <tr>
+    <td><code>S_IWOTH</code></td>
+    <td>File mode indicating writable by others.</td>
+  </tr>
+  <tr>
+    <td><code>S_IXOTH</code></td>
+    <td>File mode indicating executable by others.</td>
+  </tr>
+</table>
+
+
+<!-- [end-include:fs.md] -->
+<!-- [start-include:globals.md] -->
+</section></section>
+       <div class="heading">
+          <h2>
+            <a name="class_fs_FSWatcher" id="class_fs_FSWatcher"></a>
+            <div class="permalink"><a href="#class_fs_FSWatcher" class="permalink fas fa-link"></a></div>
+            <p>Class: fs.FSWatcher</p>
+
+          </h1>
+        </div><section><p>A successful call to <a href="#fs_fs_watch_filename_options_listener"><code>fs.watch()</code></a> method will return a new <code>fs.FSWatcher</code>
+object.</p>
+<p>All <code>fs.FSWatcher</code> objects are <a href="events.html"><code>EventEmitter</code></a>&#39;s that will emit a <code>&#39;change&#39;</code>
+event whenever a specific watched file is modified.</p>
+<section>
+       <div class="heading">
+          <h4>
+            <a name="method_close" id="method_close"></a>
+            <div class="permalink"><a href="#method_close" class="permalink fas fa-link"></a></div>
+            <p>watcher.close()</p>
+
+          </h1>
+        </div><section><p>Stop watching for changes on the given <code>fs.FSWatcher</code>. Once stopped, the
+<code>fs.FSWatcher</code> object is no longer usable.</p>
+</section></section></section>
+       <div class="heading">
+          <h2>
+            <a name="class_fs_ReadStream" id="class_fs_ReadStream"></a>
+            <div class="permalink"><a href="#class_fs_ReadStream" class="permalink fas fa-link"></a></div>
+            <p>Class: fs.ReadStream</p>
+
+          </h1>
+        </div><section><p>A successful call to <code>fs.createReadStream()</code> will return a new <code>fs.ReadStream</code>
+object.</p>
+<p>All <code>fs.ReadStream</code> objects are <a href="stream.html#stream_class_stream_readable">Readable Streams</a>.</p>
+<section>
+       <div class="heading">
+          <h4>
+            <a name="property_bytesRead" id="property_bytesRead"></a>
+            <div class="permalink"><a href="#property_bytesRead" class="permalink fas fa-link"></a></div>
+            <p><code>bytesRead</code> Value: {number} </p>
+
+          </h1>
+        </div><section><p>The number of bytes that have been read so far.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_path_1" id="property_path_1"></a>
+            <div class="permalink"><a href="#property_path_1" class="permalink fas fa-link"></a></div>
+            <p><code>path</code> Value: {string|Buffer} </p>
+
+          </h1>
+        </div><section><p>The path to the file the stream is reading from as specified in the first
+argument to <code>fs.createReadStream()</code>. If <code>path</code> is passed as a string, then
+<code>readStream.path</code> will be a string. If <code>path</code> is passed as a <code>Buffer</code>, then
+<code>readStream.path</code> will be a <code>Buffer</code>.</p>
+</section></section></section>
+       <div class="heading">
+          <h2>
+            <a name="class_fs_Stats" id="class_fs_Stats"></a>
+            <div class="permalink"><a href="#class_fs_Stats" class="permalink fas fa-link"></a></div>
+            <p>Class: fs.Stats</p>
+
+          </h1>
+        </div><section><p><p>A <code>fs.Stats</code> object provides information about a file.</p></p>
+<p><p>Objects returned from <a href="#fs_fs_stat_path_callback"><code>fs.stat()</code></a>, <a href="#fs_fs_lstat_path_callback"><code>fs.lstat()</code></a> and <a href="#fs_fs_fstat_fd_callback"><code>fs.fstat()</code></a> and
+their synchronous counterparts are of this type.</p></p>
+<p><p>For example:</p></p>
+<pre class="prettyprint"><code class="lang-console">Stats {
+  dev: 2114,
+  ino: 48064969,
+  mode: 33188,
+  nlink: 1,
+  uid: 85,
+  gid: 100,
+  rdev: 0,
+  size: 527,
+  blksize: 4096,
+  blocks: 8,
+  atimeMs: 1318289051000.1,
+  mtimeMs: 1318289051000.1,
+  ctimeMs: 1318289051000.1,
+  birthtimeMs: 1318289051000.1,
+  atime: Mon, 10 Oct 2011 23:24:11 GMT,
+  mtime: Mon, 10 Oct 2011 23:24:11 GMT,
+  ctime: Mon, 10 Oct 2011 23:24:11 GMT,
+  birthtime: Mon, 10 Oct 2011 23:24:11 GMT }
+</code></pre>
+<section>
+       <div class="heading">
+          <h4>
+            <a name="module_stat_time_values" id="module_stat_time_values"></a>
+            <div class="permalink"><a href="#module_stat_time_values" class="permalink fas fa-link"></a></div>
+            <p>Stat Time Values</p>
+
+          </h1>
+        </div><section><p><em>Note</em>: <code>atimeMs</code>, <code>mtimeMs</code>, <code>ctimeMs</code>, <code>birthtimeMs</code> are <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">numbers</a>
+that hold the corresponding times in milliseconds. Their precision is platform
+specific. <code>atime</code>, <code>mtime</code>, <code>ctime</code>, and <code>birthtime</code> are <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date"><code>Date</code></a>
+object alternate representations of the various times. The <code>Date</code> and number
+values are not connected. Assigning a new number value, or mutating the <code>Date</code>
+value, will not be reflected in the corresponding alternate representation.</p>
+<p>The times in the stat object have the following semantics:</p>
+<ul>
+<li><code>atime</code> &quot;Access Time&quot; - Time when file data last accessed.  Changed
+by the mknod(2), utimes(2), and read(2) system calls.</li>
+<li><code>mtime</code> &quot;Modified Time&quot; - Time when file data last modified.
+Changed by the mknod(2), utimes(2), and write(2) system calls.</li>
+<li><code>ctime</code> &quot;Change Time&quot; - Time when file status was last changed
+(inode data modification).  Changed by the chmod(2), chown(2),
+link(2), mknod(2), rename(2), unlink(2), utimes(2),
+read(2), and write(2) system calls.</li>
+<li><code>birthtime</code> &quot;Birth Time&quot; -  Time of file creation. Set once when the
+file is created.  On filesystems where birthtime is not available,
+this field may instead hold either the <code>ctime</code> or
+<code>1970-01-01T00:00Z</code> (ie, unix epoch timestamp <code>0</code>). Note that this
+value may be greater than <code>atime</code> or <code>mtime</code> in this case. On Darwin
+and other FreeBSD variants, also set if the <code>atime</code> is explicitly
+set to an earlier value than the current <code>birthtime</code> using the
+utimes(2) system call.</li>
+</ul>
+<p>Prior to Node v0.12, the <code>ctime</code> held the <code>birthtime</code> on Windows
+systems.  Note that as of v0.12, <code>ctime</code> is not &quot;creation time&quot;, and
+on Unix systems, it never was.</p>
+</section></section><section>
+       <div class="heading">
+          <h4>
+            <a name="property_dev" id="property_dev"></a>
+            <div class="permalink"><a href="#property_dev" class="permalink fas fa-link"></a></div>
+            <p><code>dev</code> Value: {number} </p>
+
+          </h1>
+        </div><section><p>The numeric identifier of the device containing the file.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_ino" id="property_ino"></a>
+            <div class="permalink"><a href="#property_ino" class="permalink fas fa-link"></a></div>
+            <p><code>ino</code> Value: {number} </p>
+
+          </h1>
+        </div><section><p>The file system specific &quot;Inode&quot; number for the file.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_mode" id="property_mode"></a>
+            <div class="permalink"><a href="#property_mode" class="permalink fas fa-link"></a></div>
+            <p><code>mode</code> Value: {number} </p>
+
+          </h1>
+        </div><section><p>A bit-field describing the file type and mode.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_nlink" id="property_nlink"></a>
+            <div class="permalink"><a href="#property_nlink" class="permalink fas fa-link"></a></div>
+            <p><code>nlink</code> Value: {number} </p>
+
+          </h1>
+        </div><section><p>The number of hard-links that exist for the file.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_uid" id="property_uid"></a>
+            <div class="permalink"><a href="#property_uid" class="permalink fas fa-link"></a></div>
+            <p><code>uid</code> Value: {number} </p>
+
+          </h1>
+        </div><section><p>The numeric user identifier of the user that owns the file (POSIX).</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_gid" id="property_gid"></a>
+            <div class="permalink"><a href="#property_gid" class="permalink fas fa-link"></a></div>
+            <p><code>gid</code> Value: {number} </p>
+
+          </h1>
+        </div><section><p>The numeric group identifier of the group that owns the file (POSIX).</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_rdev" id="property_rdev"></a>
+            <div class="permalink"><a href="#property_rdev" class="permalink fas fa-link"></a></div>
+            <p><code>rdev</code> Value: {number} </p>
+
+          </h1>
+        </div><section><p>A numeric device identifier if the file is considered &quot;special&quot;.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_blksize" id="property_blksize"></a>
+            <div class="permalink"><a href="#property_blksize" class="permalink fas fa-link"></a></div>
+            <p><code>blksize</code> Value: {number} </p>
+
+          </h1>
+        </div><section><p>The file system block size for i/o operations.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_blocks" id="property_blocks"></a>
+            <div class="permalink"><a href="#property_blocks" class="permalink fas fa-link"></a></div>
+            <p><code>blocks</code> Value: {number} </p>
+
+          </h1>
+        </div><section><p>The number of blocks allocated for this file.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_atimeMs" id="property_atimeMs"></a>
+            <div class="permalink"><a href="#property_atimeMs" class="permalink fas fa-link"></a></div>
+            <p><code>atimeMs</code> Value: {number} </p>
+
+          </h1>
+        </div><section><p>The timestamp indicating the last time this file was accessed expressed in
+milliseconds since the POSIX Epoch.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_mtimeMs" id="property_mtimeMs"></a>
+            <div class="permalink"><a href="#property_mtimeMs" class="permalink fas fa-link"></a></div>
+            <p><code>mtimeMs</code> Value: {number} </p>
+
+          </h1>
+        </div><section><p>The timestamp indicating the last time this file was modified expressed in
+milliseconds since the POSIX Epoch.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_ctimeMs" id="property_ctimeMs"></a>
+            <div class="permalink"><a href="#property_ctimeMs" class="permalink fas fa-link"></a></div>
+            <p><code>ctimeMs</code> Value: {number} </p>
+
+          </h1>
+        </div><section><p>The timestamp indicating the last time the file status was changed expressed
+in milliseconds since the POSIX Epoch.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_birthtimeMs" id="property_birthtimeMs"></a>
+            <div class="permalink"><a href="#property_birthtimeMs" class="permalink fas fa-link"></a></div>
+            <p><code>birthtimeMs</code> Value: {number} </p>
+
+          </h1>
+        </div><section><p>The timestamp indicating the creation time of this file expressed in
+milliseconds since the POSIX Epoch.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_atime" id="property_atime"></a>
+            <div class="permalink"><a href="#property_atime" class="permalink fas fa-link"></a></div>
+            <p><code>atime</code> Value: {Date} </p>
+
+          </h1>
+        </div><section><p>The timestamp indicating the last time this file was accessed.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_mtime" id="property_mtime"></a>
+            <div class="permalink"><a href="#property_mtime" class="permalink fas fa-link"></a></div>
+            <p><code>mtime</code> Value: {Date} </p>
+
+          </h1>
+        </div><section><p>The timestamp indicating the last time this file was modified.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_ctime" id="property_ctime"></a>
+            <div class="permalink"><a href="#property_ctime" class="permalink fas fa-link"></a></div>
+            <p><code>ctime</code> Value: {Date} </p>
+
+          </h1>
+        </div><section><p>The timestamp indicating the last time the file status was changed.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_birthtime" id="property_birthtime"></a>
+            <div class="permalink"><a href="#property_birthtime" class="permalink fas fa-link"></a></div>
+            <p><code>birthtime</code> Value: {Date} </p>
+
+          </h1>
+        </div><section><p>The timestamp indicating the creation time of this file.</p>
+</section></section><section>
+       <div class="heading">
+          <h4>
+            <a name="method_isBlockDevice" id="method_isBlockDevice"></a>
+            <div class="permalink"><a href="#method_isBlockDevice" class="permalink fas fa-link"></a></div>
+            <p>stats.isBlockDevice()</p>
+
+          </h1>
+        </div><section><p>Returns <code>true</code> if the <code>fs.Stats</code> object describes a block device.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_isCharacterDevice" id="method_isCharacterDevice"></a>
+            <div class="permalink"><a href="#method_isCharacterDevice" class="permalink fas fa-link"></a></div>
+            <p>stats.isCharacterDevice()</p>
+
+          </h1>
+        </div><section><p>Returns <code>true</code> if the <code>fs.Stats</code> object describes a character device.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_isDirectory" id="method_isDirectory"></a>
+            <div class="permalink"><a href="#method_isDirectory" class="permalink fas fa-link"></a></div>
+            <p>stats.isDirectory()</p>
+
+          </h1>
+        </div><section><p>Returns <code>true</code> if the <code>fs.Stats</code> object describes a file system directory.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_isFIFO" id="method_isFIFO"></a>
+            <div class="permalink"><a href="#method_isFIFO" class="permalink fas fa-link"></a></div>
+            <p>stats.isFIFO()</p>
+
+          </h1>
+        </div><section><p>Returns <code>true</code> if the <code>fs.Stats</code> object describes a first-in-first-out (FIFO)
+pipe.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_isFile" id="method_isFile"></a>
+            <div class="permalink"><a href="#method_isFile" class="permalink fas fa-link"></a></div>
+            <p>stats.isFile()</p>
+
+          </h1>
+        </div><section><p>Returns <code>true</code> if the <code>fs.Stats</code> object describes a regular file.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_isSocket" id="method_isSocket"></a>
+            <div class="permalink"><a href="#method_isSocket" class="permalink fas fa-link"></a></div>
+            <p>stats.isSocket()</p>
+
+          </h1>
+        </div><section><p>Returns <code>true</code> if the <code>fs.Stats</code> object describes a socket.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="method_isSymbolicLink" id="method_isSymbolicLink"></a>
+            <div class="permalink"><a href="#method_isSymbolicLink" class="permalink fas fa-link"></a></div>
+            <p>stats.isSymbolicLink()</p>
+
+          </h1>
+        </div><section><p>Returns <code>true</code> if the <code>fs.Stats</code> object describes a symbolic link.</p>
+<p><em>Note</em>: This method is only valid when using <a href="#fs_fs_lstat_path_callback"><code>fs.lstat()</code></a></p>
+</section></section></section>
+       <div class="heading">
+          <h2>
+            <a name="class_fs_WriteStream" id="class_fs_WriteStream"></a>
+            <div class="permalink"><a href="#class_fs_WriteStream" class="permalink fas fa-link"></a></div>
+            <p>Class: fs.WriteStream</p>
+
+          </h1>
+        </div><section><p><code>WriteStream</code> is a <a href="stream.html#stream_writable_streams">Writable Stream</a>.</p>
+<section>
+       <div class="heading">
+          <h4>
+            <a name="property_bytesWritten" id="property_bytesWritten"></a>
+            <div class="permalink"><a href="#property_bytesWritten" class="permalink fas fa-link"></a></div>
+            <p>writeStream.bytesWritten</p>
+
+          </h1>
+        </div><section><p>The number of bytes written so far. Does not include data that is still queued
+for writing.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_path_2" id="property_path_2"></a>
+            <div class="permalink"><a href="#property_path_2" class="permalink fas fa-link"></a></div>
+            <p>writeStream.path</p>
+
+          </h1>
+        </div><section><p>The path to the file the stream is writing to as specified in the first
+argument to <code>fs.createWriteStream()</code>. If <code>path</code> is passed as a string, then
+<code>writeStream.path</code> will be a string. If <code>path</code> is passed as a <code>Buffer</code>, then
+<code>writeStream.path</code> will be a <code>Buffer</code>.</p>
+</section></section></section>
+       <div class="heading">
+          <h2>
+            <a name="property_constants_1" id="property_constants_1"></a>
+            <div class="permalink"><a href="#property_constants_1" class="permalink fas fa-link"></a></div>
+            <p>fs.constants</p>
+
+          </h1>
+        </div><section><p>Returns an object containing commonly used constants for file system
+operations. The specific constants currently defined are described in
+<a href="#fs_fs_constants_1">FS Constants</a>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_access" id="method_access"></a>
+            <div class="permalink"><a href="#method_access" class="permalink fas fa-link"></a></div>
+            <p>fs.access(path[, mode], callback)</p>
+
+          </h1>
+        </div><section><p>Tests a user&#39;s permissions for the file or directory specified by <code>path</code>.
+The <code>mode</code> argument is an optional integer that specifies the accessibility
+checks to be performed. The following constants define the possible values of
+<code>mode</code>. It is possible to create a mask consisting of the bitwise OR of two or
+more values (e.g. <code>fs.constants.W_OK | fs.constants.R_OK</code>).</p>
+<ul>
+<li><code>fs.constants.F_OK</code> - <code>path</code> is visible to the calling process. This is useful
+for determining if a file exists, but says nothing about <code>rwx</code> permissions.
+Default if no <code>mode</code> is specified.</li>
+<li><code>fs.constants.R_OK</code> - <code>path</code> can be read by the calling process.</li>
+<li><code>fs.constants.W_OK</code> - <code>path</code> can be written by the calling process.</li>
+<li><code>fs.constants.X_OK</code> - <code>path</code> can be executed by the calling process. This has
+no effect on Windows (will behave like <code>fs.constants.F_OK</code>).</li>
+</ul>
+<p>The final argument, <code>callback</code>, is a callback function that is invoked with
+a possible error argument. If any of the accessibility checks fail, the error
+argument will be an <code>Error</code> object. The following example checks if the file
+<code>/etc/passwd</code> can be read and written by the current process.</p>
+<pre class="prettyprint"><code class="lang-js">fs.access(&#39;/etc/passwd&#39;, fs.constants.R_OK | fs.constants.W_OK, (err) =&gt; {
+  console.log(err ? &#39;no access!&#39; : &#39;can read/write&#39;);
+});
+</code></pre>
+<p>Using <code>fs.access()</code> to check for the accessibility of a file before calling
+<code>fs.open()</code>, <code>fs.readFile()</code> or <code>fs.writeFile()</code> is not recommended. Doing
+so introduces a race condition, since other processes may change the file&#39;s
+state between the two calls. Instead, user code should open/read/write the
+file directly and handle the error raised if the file is not accessible.</p>
+<p>For example:</p>
+<p><strong>write (NOT RECOMMENDED)</strong></p>
+<pre class="prettyprint"><code class="lang-js">fs.access(&#39;myfile&#39;, (err) =&gt; {
+  if (!err) {
+    console.error(&#39;myfile already exists&#39;);
+    return;
+  }
+
+  fs.open(&#39;myfile&#39;, &#39;wx&#39;, (err, fd) =&gt; {
+    if (err) throw err;
+    writeMyData(fd);
+  });
+});
+</code></pre>
+<p><strong>write (RECOMMENDED)</strong></p>
+<pre class="prettyprint"><code class="lang-js">fs.open(&#39;myfile&#39;, &#39;wx&#39;, (err, fd) =&gt; {
+  if (err) {
+    if (err.code === &#39;EEXIST&#39;) {
+      console.error(&#39;myfile already exists&#39;);
+      return;
+    }
+
+    throw err;
+  }
+
+  writeMyData(fd);
+});
+</code></pre>
+<p><strong>read (NOT RECOMMENDED)</strong></p>
+<pre class="prettyprint"><code class="lang-js">fs.access(&#39;myfile&#39;, (err) =&gt; {
+  if (err) {
+    if (err.code === &#39;ENOENT&#39;) {
+      console.error(&#39;myfile does not exist&#39;);
+      return;
+    }
+
+    throw err;
+  }
+
+  fs.open(&#39;myfile&#39;, &#39;r&#39;, (err, fd) =&gt; {
+    if (err) throw err;
+    readMyData(fd);
+  });
+});
+</code></pre>
+<p><strong>read (RECOMMENDED)</strong></p>
+<pre class="prettyprint"><code class="lang-js">fs.open(&#39;myfile&#39;, &#39;r&#39;, (err, fd) =&gt; {
+  if (err) {
+    if (err.code === &#39;ENOENT&#39;) {
+      console.error(&#39;myfile does not exist&#39;);
+      return;
+    }
+
+    throw err;
+  }
+
+  readMyData(fd);
+});
+</code></pre>
+<p>The &quot;not recommended&quot; examples above check for accessibility and then use the
+file; the &quot;recommended&quot; examples are better because they use the file directly
+and handle the error, if any.</p>
+<p>In general, check for the accessibility of a file only if the file will not be
+used directly, for example when its accessibility is a signal from another
+process.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_accessSync" id="method_accessSync"></a>
+            <div class="permalink"><a href="#method_accessSync" class="permalink fas fa-link"></a></div>
+            <p>fs.accessSync(path[, mode])</p>
+
+          </h1>
+        </div><section><p><p>Synchronously tests a user&#39;s permissions for the file or directory specified by
+<code>path</code>. The <code>mode</code> argument is an optional integer that specifies the
+accessibility checks to be performed. The following constants define the
+possible values of <code>mode</code>. It is possible to create a mask consisting of the
+bitwise OR of two or more values (e.g. <code>fs.constants.W_OK | fs.constants.R_OK</code>).</p></p>
+<p><ul></p>
+<p><li><code>fs.constants.F_OK</code> - <code>path</code> is visible to the calling process. This is useful
+for determining if a file exists, but says nothing about <code>rwx</code> permissions.
+Default if no <code>mode</code> is specified.</li></p>
+<p><li><code>fs.constants.R_OK</code> - <code>path</code> can be read by the calling process.</li></p>
+<p><li><code>fs.constants.W_OK</code> - <code>path</code> can be written by the calling process.</li></p>
+<p><li><code>fs.constants.X_OK</code> - <code>path</code> can be executed by the calling process. This has
+no effect on Windows (will behave like <code>fs.constants.F_OK</code>).</li>
+</ul></p>
+<p><p>If any of the accessibility checks fail, an <code>Error</code> will be thrown. Otherwise,
+the method will return <code>undefined</code>.</p></p>
+<pre class="prettyprint"><code class="lang-js">try {
+  fs.accessSync(&#39;etc/passwd&#39;, fs.constants.R_OK | fs.constants.W_OK);
+  console.log(&#39;can read/write&#39;);
+} catch (err) {
+  console.error(&#39;no access!&#39;);
+}
+</code></pre>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_appendFile" id="method_appendFile"></a>
+            <div class="permalink"><a href="#method_appendFile" class="permalink fas fa-link"></a></div>
+            <p>fs.appendFile(file, data[, options], callback)</p>
+
+          </h1>
+        </div><section><p><p>Asynchronously append data to a file, creating the file if it does not yet
+exist. <code>data</code> can be a string or a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a>.</p></p>
+<p><p>Example:</p></p>
+<pre class="prettyprint"><code class="lang-js">fs.appendFile(&#39;message.txt&#39;, &#39;data to append&#39;, (err) =&gt; {
+  if (err) throw err;
+  console.log(&#39;The &quot;data to append&quot; was appended to file!&#39;);
+});
+</code></pre>
+<p>If <code>options</code> is a string, then it specifies the encoding. Example:</p>
+<pre class="prettyprint"><code class="lang-js">fs.appendFile(&#39;message.txt&#39;, &#39;data to append&#39;, &#39;utf8&#39;, callback);
+</code></pre>
+<p>The <code>file</code> may be specified as a numeric file descriptor that has been opened
+for appending (using <code>fs.open()</code> or <code>fs.openSync()</code>). The file descriptor will
+not be closed automatically.</p>
+<pre class="prettyprint"><code class="lang-js">fs.open(&#39;message.txt&#39;, &#39;a&#39;, (err, fd) =&gt; {
+  if (err) throw err;
+  fs.appendFile(fd, &#39;data to append&#39;, &#39;utf8&#39;, (err) =&gt; {
+    fs.close(fd, (err) =&gt; {
+      if (err) throw err;
+    });
+    if (err) throw err;
+  });
+});
+</code></pre>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_appendFileSync" id="method_appendFileSync"></a>
+            <div class="permalink"><a href="#method_appendFileSync" class="permalink fas fa-link"></a></div>
+            <p>fs.appendFileSync(file, data[, options])</p>
+
+          </h1>
+        </div><section><p><p>Synchronously append data to a file, creating the file if it does not yet
+exist. <code>data</code> can be a string or a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a>.</p></p>
+<p><p>Example:</p></p>
+<pre class="prettyprint"><code class="lang-js">try {
+  fs.appendFileSync(&#39;message.txt&#39;, &#39;data to append&#39;);
+  console.log(&#39;The &quot;data to append&quot; was appended to file!&#39;);
+} catch (err) {
+  /* Handle the error */
+}
+</code></pre>
+<p>If <code>options</code> is a string, then it specifies the encoding. Example:</p>
+<pre class="prettyprint"><code class="lang-js">fs.appendFileSync(&#39;message.txt&#39;, &#39;data to append&#39;, &#39;utf8&#39;);
+</code></pre>
+<p>The <code>file</code> may be specified as a numeric file descriptor that has been opened
+for appending (using <code>fs.open()</code> or <code>fs.openSync()</code>). The file descriptor will
+not be closed automatically.</p>
+<pre class="prettyprint"><code class="lang-js">let fd;
+
+try {
+  fd = fs.openSync(&#39;message.txt&#39;, &#39;a&#39;);
+  fs.appendFileSync(fd, &#39;data to append&#39;, &#39;utf8&#39;);
+} catch (err) {
+  /* Handle the error */
+} finally {
+  if (fd !== undefined)
+    fs.closeSync(fd);
+}
+</code></pre>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_chmod" id="method_chmod"></a>
+            <div class="permalink"><a href="#method_chmod" class="permalink fas fa-link"></a></div>
+            <p>fs.chmod(path, mode, callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronously changes the permissions of a file. No arguments other than a
+possible exception are given to the completion callback.</p>
+<p>See also: chmod(2)</p>
+<section>
+       <div class="heading">
+          <h4>
+            <a name="module_file_modes" id="module_file_modes"></a>
+            <div class="permalink"><a href="#module_file_modes" class="permalink fas fa-link"></a></div>
+            <p>File modes</p>
+
+          </h1>
+        </div><section><p><p>The <code>mode</code> argument used in both the <code>fs.chmod()</code> and <code>fs.chmodSync()</code>
+methods is a numeric bitmask created using a logical OR of the following
+constants:</p></p>
+<p><table></p>
+<p><thead></p>
+<p><tr></p>
+<p><th>Constant</th></p>
+<p><th>Octal</th></p>
+<p><th>Description</th>
+</tr>
+</thead></p>
+<p><tbody></p>
+<p><tr></p>
+<p><td><code>fs.constants.S_IRUSR</code></td></p>
+<p><td><code>0o400</code></td></p>
+<p><td>read by owner</td>
+</tr></p>
+<p><tr></p>
+<p><td><code>fs.constants.S_IWUSR</code></td></p>
+<p><td><code>0o200</code></td></p>
+<p><td>write by owner</td>
+</tr></p>
+<p><tr></p>
+<p><td><code>fs.constants.S_IXUSR</code></td></p>
+<p><td><code>0o100</code></td></p>
+<p><td>execute/search by owner</td>
+</tr></p>
+<p><tr></p>
+<p><td><code>fs.constants.S_IRGRP</code></td></p>
+<p><td><code>0o40</code></td></p>
+<p><td>read by group</td>
+</tr></p>
+<p><tr></p>
+<p><td><code>fs.constants.S_IWGRP</code></td></p>
+<p><td><code>0o20</code></td></p>
+<p><td>write by group</td>
+</tr></p>
+<p><tr></p>
+<p><td><code>fs.constants.S_IXGRP</code></td></p>
+<p><td><code>0o10</code></td></p>
+<p><td>execute/search by group</td>
+</tr></p>
+<p><tr></p>
+<p><td><code>fs.constants.S_IROTH</code></td></p>
+<p><td><code>0o4</code></td></p>
+<p><td>read by others</td>
+</tr></p>
+<p><tr></p>
+<p><td><code>fs.constants.S_IWOTH</code></td></p>
+<p><td><code>0o2</code></td></p>
+<p><td>write by others</td>
+</tr></p>
+<p><tr></p>
+<p><td><code>fs.constants.S_IXOTH</code></td></p>
+<p><td><code>0o1</code></td></p>
+<p><td>execute/search by others</td>
+</tr>
+</tbody>
+</table></p>
+<p><p>An easier method of constructing the <code>mode</code> is to use a sequence of three
+octal digits (e.g. <code>765</code>). The left-most digit (<code>7</code> in the example), specifies
+the permissions for the file owner. The middle digit (<code>6</code> in the example),
+specifies permissions for the group. The right-most digit (<code>5</code> in the example),
+specifies the permissions for others.</p></p>
+<p><table></p>
+<p><thead></p>
+<p><tr></p>
+<p><th>Number</th></p>
+<p><th>Description</th>
+</tr>
+</thead></p>
+<p><tbody></p>
+<p><tr></p>
+<p><td><code>7</code></td></p>
+<p><td>read, write, and execute</td>
+</tr></p>
+<p><tr></p>
+<p><td><code>6</code></td></p>
+<p><td>read and write</td>
+</tr></p>
+<p><tr></p>
+<p><td><code>5</code></td></p>
+<p><td>read and execute</td>
+</tr></p>
+<p><tr></p>
+<p><td><code>4</code></td></p>
+<p><td>read only</td>
+</tr></p>
+<p><tr></p>
+<p><td><code>3</code></td></p>
+<p><td>write and execute</td>
+</tr></p>
+<p><tr></p>
+<p><td><code>2</code></td></p>
+<p><td>write only</td>
+</tr></p>
+<p><tr></p>
+<p><td><code>1</code></td></p>
+<p><td>execute only</td>
+</tr></p>
+<p><tr></p>
+<p><td><code>0</code></td></p>
+<p><td>no permission</td>
+</tr>
+</tbody>
+</table></p>
+<p><p>For example, the octal value <code>0o765</code> means:</p></p>
+<ul>
+<li>The owner may read, write and execute the file.</li>
+<li>The group may read and write the file.</li>
+<li>Others may read and execute the file.</li>
+</ul>
+</section></section></section>
+       <div class="heading">
+          <h2>
+            <a name="method_chmodSync" id="method_chmodSync"></a>
+            <div class="permalink"><a href="#method_chmodSync" class="permalink fas fa-link"></a></div>
+            <p>fs.chmodSync(path, mode)</p>
+
+          </h1>
+        </div><section><p>Synchronously changes the permissions of a file. Returns <code>undefined</code>.
+This is the synchronous version of <a href="#fs_fs_chmod_path_mode_callback"><code>fs.chmod()</code></a>.</p>
+<p>See also: chmod(2)</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_chown" id="method_chown"></a>
+            <div class="permalink"><a href="#method_chown" class="permalink fas fa-link"></a></div>
+            <p>fs.chown(path, uid, gid, callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronously changes owner and group of a file. No arguments other than a
+possible exception are given to the completion callback.</p>
+<p>See also: chown(2)</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_chownSync" id="method_chownSync"></a>
+            <div class="permalink"><a href="#method_chownSync" class="permalink fas fa-link"></a></div>
+            <p>fs.chownSync(path, uid, gid)</p>
+
+          </h1>
+        </div><section><p>Synchronously changes owner and group of a file. Returns <code>undefined</code>.
+This is the synchronous version of <a href="#fs_fs_chown_path_uid_gid_callback"><code>fs.chown()</code></a>.</p>
+<p>See also: chown(2)</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_close_1" id="method_close_1"></a>
+            <div class="permalink"><a href="#method_close_1" class="permalink fas fa-link"></a></div>
+            <p>fs.close(fd, callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronous close(2).  No arguments other than a possible exception are given
+to the completion callback.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_closeSync" id="method_closeSync"></a>
+            <div class="permalink"><a href="#method_closeSync" class="permalink fas fa-link"></a></div>
+            <p>fs.closeSync(fd)</p>
+
+          </h1>
+        </div><section><p>Synchronous close(2). Returns <code>undefined</code>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_copyFile" id="method_copyFile"></a>
+            <div class="permalink"><a href="#method_copyFile" class="permalink fas fa-link"></a></div>
+            <p>fs.copyFile(src, dest[, flags], callback)</p>
+
+          </h1>
+        </div><section><p><p>Asynchronously copies <code>src</code> to <code>dest</code>. By default, <code>dest</code> is overwritten if it
+already exists. No arguments other than a possible exception are given to the
+callback function. Node.js makes no guarantees about the atomicity of the copy
+operation. If an error occurs after the destination file has been opened for
+writing, Node.js will attempt to remove the destination.</p></p>
+<p><p><code>flags</code> is an optional integer that specifies the behavior
+of the copy operation. The only supported flag is <code>fs.constants.COPYFILE_EXCL</code>,
+which causes the copy operation to fail if <code>dest</code> already exists.</p></p>
+<p><p>Example:</p></p>
+<pre class="prettyprint"><code class="lang-js">const fs = require(&#39;fs&#39;);
+
+// destination.txt will be created or overwritten by default.
+fs.copyFile(&#39;source.txt&#39;, &#39;destination.txt&#39;, (err) =&gt; {
+  if (err) throw err;
+  console.log(&#39;source.txt was copied to destination.txt&#39;);
+});
+</code></pre>
+<p>If the third argument is a number, then it specifies <code>flags</code>, as shown in the
+following example.</p>
+<pre class="prettyprint"><code class="lang-js">const fs = require(&#39;fs&#39;);
+const { COPYFILE_EXCL } = fs.constants;
+
+// By using COPYFILE_EXCL, the operation will fail if destination.txt exists.
+fs.copyFile(&#39;source.txt&#39;, &#39;destination.txt&#39;, COPYFILE_EXCL, callback);
+</code></pre>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_copyFileSync" id="method_copyFileSync"></a>
+            <div class="permalink"><a href="#method_copyFileSync" class="permalink fas fa-link"></a></div>
+            <p>fs.copyFileSync(src, dest[, flags])</p>
+
+          </h1>
+        </div><section><p><p>Synchronously copies <code>src</code> to <code>dest</code>. By default, <code>dest</code> is overwritten if it
+already exists. Returns <code>undefined</code>. Node.js makes no guarantees about the
+atomicity of the copy operation. If an error occurs after the destination file
+has been opened for writing, Node.js will attempt to remove the destination.</p></p>
+<p><p><code>flags</code> is an optional integer that specifies the behavior
+of the copy operation. The only supported flag is <code>fs.constants.COPYFILE_EXCL</code>,
+which causes the copy operation to fail if <code>dest</code> already exists.</p></p>
+<p><p>Example:</p></p>
+<pre class="prettyprint"><code class="lang-js">const fs = require(&#39;fs&#39;);
+
+// destination.txt will be created or overwritten by default.
+fs.copyFileSync(&#39;source.txt&#39;, &#39;destination.txt&#39;);
+console.log(&#39;source.txt was copied to destination.txt&#39;);
+</code></pre>
+<p>If the third argument is a number, then it specifies <code>flags</code>, as shown in the
+following example.</p>
+<pre class="prettyprint"><code class="lang-js">const fs = require(&#39;fs&#39;);
+const { COPYFILE_EXCL } = fs.constants;
+
+// By using COPYFILE_EXCL, the operation will fail if destination.txt exists.
+fs.copyFileSync(&#39;source.txt&#39;, &#39;destination.txt&#39;, COPYFILE_EXCL);
+</code></pre>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_createReadStream" id="method_createReadStream"></a>
+            <div class="permalink"><a href="#method_createReadStream" class="permalink fas fa-link"></a></div>
+            <p>fs.createReadStream(path[, options])</p>
+
+          </h1>
+        </div><section><p>Returns a new <a href="#fs_class_fs_readstream"><code>ReadStream</code></a> object. (See <a href="stream.html#stream_class_stream_readable">Readable Streams</a>).</p>
+<p>Be aware that, unlike the default value set for <code>highWaterMark</code> on a
+readable stream (16 kb), the stream returned by this method has a
+default value of 64 kb for the same parameter.</p>
+<p><code>options</code> is an object or string with the following defaults:</p>
+<pre class="prettyprint"><code class="lang-js">const defaults = {
+  flags: &#39;r&#39;,
+  encoding: null,
+  fd: null,
+  mode: 0o666,
+  autoClose: true,
+  highWaterMark: 64 * 1024
+};
+</code></pre>
+<p><code>options</code> can include <code>start</code> and <code>end</code> values to read a range of bytes from
+the file instead of the entire file.  Both <code>start</code> and <code>end</code> are inclusive and
+start counting at 0. If <code>fd</code> is specified and <code>start</code> is omitted or <code>undefined</code>,
+<code>fs.createReadStream()</code> reads sequentially from the current file position.
+The <code>encoding</code> can be any one of those accepted by <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a>.</p>
+<p>If <code>fd</code> is specified, <code>ReadStream</code> will ignore the <code>path</code> argument and will use
+the specified file descriptor. This means that no <code>&#39;open&#39;</code> event will be
+emitted. Note that <code>fd</code> should be blocking; non-blocking <code>fd</code>s should be passed
+to <a href="net.html#net_class_net_socket"><code>net.Socket</code></a>.</p>
+<p>If <code>autoClose</code> is false, then the file descriptor won&#39;t be closed, even if
+there&#39;s an error. It is the application&#39;s responsibility to close it and make
+sure there&#39;s no file descriptor leak. If <code>autoClose</code> is set to true (default
+behavior), on <code>error</code> or <code>end</code> the file descriptor will be closed
+automatically.</p>
+<p><code>mode</code> sets the file mode (permission and sticky bits), but only if the
+file was created.</p>
+<p>An example to read the last 10 bytes of a file which is 100 bytes long:</p>
+<pre class="prettyprint"><code class="lang-js">fs.createReadStream(&#39;sample.txt&#39;, { start: 90, end: 99 });
+</code></pre>
+<p>If <code>options</code> is a string, then it specifies the encoding.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_createWriteStream" id="method_createWriteStream"></a>
+            <div class="permalink"><a href="#method_createWriteStream" class="permalink fas fa-link"></a></div>
+            <p>fs.createWriteStream(path[, options])</p>
+
+          </h1>
+        </div><section><p>Returns a new <a href="#fs_class_fs_writestream"><code>WriteStream</code></a> object. (See <a href="stream.html#stream_writable_streams">Writable Stream</a>).</p>
+<p><code>options</code> is an object or string with the following defaults:</p>
+<pre class="prettyprint"><code class="lang-js">const defaults = {
+  flags: &#39;w&#39;,
+  encoding: &#39;utf8&#39;,
+  fd: null,
+  mode: 0o666,
+  autoClose: true
+};
+</code></pre>
+<p><code>options</code> may also include a <code>start</code> option to allow writing data at
+some position past the beginning of the file.  Modifying a file rather
+than replacing it may require a <code>flags</code> mode of <code>r+</code> rather than the
+default mode <code>w</code>. The <code>encoding</code> can be any one of those accepted by
+<a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a>.</p>
+<p>If <code>autoClose</code> is set to true (default behavior) on <code>error</code> or <code>end</code>
+the file descriptor will be closed automatically. If <code>autoClose</code> is false,
+then the file descriptor won&#39;t be closed, even if there&#39;s an error.
+It is the application&#39;s responsibility to close it and make sure there&#39;s no
+file descriptor leak.</p>
+<p>Like <a href="#fs_class_fs_readstream"><code>ReadStream</code></a>, if <code>fd</code> is specified, <code>WriteStream</code> will ignore the
+<code>path</code> argument and will use the specified file descriptor. This means that no
+<code>&#39;open&#39;</code> event will be emitted. Note that <code>fd</code> should be blocking; non-blocking
+<code>fd</code>s should be passed to <a href="net.html#net_class_net_socket"><code>net.Socket</code></a>.</p>
+<p>If <code>options</code> is a string, then it specifies the encoding.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_exists_1" id="method_exists_1"></a>
+            <div class="permalink"><a href="#method_exists_1" class="permalink fas fa-link"></a></div>
+            <p>fs.exists(path, callback)</p>
+
+          </h1>
+        </div><section><p>Test whether or not the given path exists by checking with the file system.
+Then call the <code>callback</code> argument with either true or false.  Example:</p>
+<pre class="prettyprint"><code class="lang-js">fs.exists(&#39;/etc/passwd&#39;, (exists) =&gt; {
+  console.log(exists ? &#39;it\&#39;s there&#39; : &#39;no passwd!&#39;);
+});
+</code></pre>
+<p><strong>Note that the parameter to this callback is not consistent with other
+Node.js callbacks.</strong> Normally, the first parameter to a Node.js callback is
+an <code>err</code> parameter, optionally followed by other parameters. The
+<code>fs.exists()</code> callback has only one boolean parameter. This is one reason
+<code>fs.access()</code> is recommended instead of <code>fs.exists()</code>.</p>
+<p>Using <code>fs.exists()</code> to check for the existence of a file before calling
+<code>fs.open()</code>, <code>fs.readFile()</code> or <code>fs.writeFile()</code> is not recommended. Doing
+so introduces a race condition, since other processes may change the file&#39;s
+state between the two calls. Instead, user code should open/read/write the
+file directly and handle the error raised if the file does not exist.</p>
+<p>For example:</p>
+<p><strong>write (NOT RECOMMENDED)</strong></p>
+<pre class="prettyprint"><code class="lang-js">fs.exists(&#39;myfile&#39;, (exists) =&gt; {
+  if (exists) {
+    console.error(&#39;myfile already exists&#39;);
+  } else {
+    fs.open(&#39;myfile&#39;, &#39;wx&#39;, (err, fd) =&gt; {
+      if (err) throw err;
+      writeMyData(fd);
+    });
+  }
+});
+</code></pre>
+<p><strong>write (RECOMMENDED)</strong></p>
+<pre class="prettyprint"><code class="lang-js">fs.open(&#39;myfile&#39;, &#39;wx&#39;, (err, fd) =&gt; {
+  if (err) {
+    if (err.code === &#39;EEXIST&#39;) {
+      console.error(&#39;myfile already exists&#39;);
+      return;
+    }
+
+    throw err;
+  }
+
+  writeMyData(fd);
+});
+</code></pre>
+<p><strong>read (NOT RECOMMENDED)</strong></p>
+<pre class="prettyprint"><code class="lang-js">fs.exists(&#39;myfile&#39;, (exists) =&gt; {
+  if (exists) {
+    fs.open(&#39;myfile&#39;, &#39;r&#39;, (err, fd) =&gt; {
+      readMyData(fd);
+    });
+  } else {
+    console.error(&#39;myfile does not exist&#39;);
+  }
+});
+</code></pre>
+<p><strong>read (RECOMMENDED)</strong></p>
+<pre class="prettyprint"><code class="lang-js">fs.open(&#39;myfile&#39;, &#39;r&#39;, (err, fd) =&gt; {
+  if (err) {
+    if (err.code === &#39;ENOENT&#39;) {
+      console.error(&#39;myfile does not exist&#39;);
+      return;
+    }
+
+    throw err;
+  }
+
+  readMyData(fd);
+});
+</code></pre>
+<p>The &quot;not recommended&quot; examples above check for existence and then use the
+file; the &quot;recommended&quot; examples are better because they use the file directly
+and handle the error, if any.</p>
+<p>In general, check for the existence of a file only if the file won’t be
+used directly, for example when its existence is a signal from another
+process.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_existsSync" id="method_existsSync"></a>
+            <div class="permalink"><a href="#method_existsSync" class="permalink fas fa-link"></a></div>
+            <p>fs.existsSync(path)</p>
+
+          </h1>
+        </div><section><p>Synchronous version of <a href="fs.html#fs_fs_exists_path_callback"><code>fs.exists()</code></a>.
+Returns <code>true</code> if the path exists, <code>false</code> otherwise.</p>
+<p>Note that <code>fs.exists()</code> is deprecated, but <code>fs.existsSync()</code> is not.
+(The <code>callback</code> parameter to <code>fs.exists()</code> accepts parameters that are
+inconsistent with other Node.js callbacks. <code>fs.existsSync()</code> does not use
+a callback.)</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_fchmod" id="method_fchmod"></a>
+            <div class="permalink"><a href="#method_fchmod" class="permalink fas fa-link"></a></div>
+            <p>fs.fchmod(fd, mode, callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronous fchmod(2). No arguments other than a possible exception
+are given to the completion callback.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_fchmodSync" id="method_fchmodSync"></a>
+            <div class="permalink"><a href="#method_fchmodSync" class="permalink fas fa-link"></a></div>
+            <p>fs.fchmodSync(fd, mode)</p>
+
+          </h1>
+        </div><section><p>Synchronous fchmod(2). Returns <code>undefined</code>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_fchown" id="method_fchown"></a>
+            <div class="permalink"><a href="#method_fchown" class="permalink fas fa-link"></a></div>
+            <p>fs.fchown(fd, uid, gid, callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronous fchown(2). No arguments other than a possible exception are given
+to the completion callback.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_fchownSync" id="method_fchownSync"></a>
+            <div class="permalink"><a href="#method_fchownSync" class="permalink fas fa-link"></a></div>
+            <p>fs.fchownSync(fd, uid, gid)</p>
+
+          </h1>
+        </div><section><p>Synchronous fchown(2). Returns <code>undefined</code>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_fdatasync" id="method_fdatasync"></a>
+            <div class="permalink"><a href="#method_fdatasync" class="permalink fas fa-link"></a></div>
+            <p>fs.fdatasync(fd, callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronous fdatasync(2). No arguments other than a possible exception are
+given to the completion callback.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_fdatasyncSync" id="method_fdatasyncSync"></a>
+            <div class="permalink"><a href="#method_fdatasyncSync" class="permalink fas fa-link"></a></div>
+            <p>fs.fdatasyncSync(fd)</p>
+
+          </h1>
+        </div><section><p>Synchronous fdatasync(2). Returns <code>undefined</code>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_fstat" id="method_fstat"></a>
+            <div class="permalink"><a href="#method_fstat" class="permalink fas fa-link"></a></div>
+            <p>fs.fstat(fd, callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronous fstat(2). The callback gets two arguments <code>(err, stats)</code> where
+<code>stats</code> is an <a href="#fs_class_fs_stats"><code>fs.Stats</code></a> object. <code>fstat()</code> is identical to <a href="fs.html#fs_fs_stat_path_callback"><code>stat()</code></a>,
+except that the file to be stat-ed is specified by the file descriptor <code>fd</code>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_fstatSync" id="method_fstatSync"></a>
+            <div class="permalink"><a href="#method_fstatSync" class="permalink fas fa-link"></a></div>
+            <p>fs.fstatSync(fd)</p>
+
+          </h1>
+        </div><section><p>Synchronous fstat(2). Returns an instance of <a href="#fs_class_fs_stats"><code>fs.Stats</code></a>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_fsync" id="method_fsync"></a>
+            <div class="permalink"><a href="#method_fsync" class="permalink fas fa-link"></a></div>
+            <p>fs.fsync(fd, callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronous fsync(2). No arguments other than a possible exception are given
+to the completion callback.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_fsyncSync" id="method_fsyncSync"></a>
+            <div class="permalink"><a href="#method_fsyncSync" class="permalink fas fa-link"></a></div>
+            <p>fs.fsyncSync(fd)</p>
+
+          </h1>
+        </div><section><p>Synchronous fsync(2). Returns <code>undefined</code>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_ftruncate" id="method_ftruncate"></a>
+            <div class="permalink"><a href="#method_ftruncate" class="permalink fas fa-link"></a></div>
+            <p>fs.ftruncate(fd[, len], callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronous ftruncate(2). No arguments other than a possible exception are
+given to the completion callback.</p>
+<p>If the file referred to by the file descriptor was larger than <code>len</code> bytes, only
+the first <code>len</code> bytes will be retained in the file.</p>
+<p>For example, the following program retains only the first four bytes of the file</p>
+<pre class="prettyprint"><code class="lang-js">console.log(fs.readFileSync(&#39;temp.txt&#39;, &#39;utf8&#39;));
+// Prints: Node.js
+
+// get the file descriptor of the file to be truncated
+const fd = fs.openSync(&#39;temp.txt&#39;, &#39;r+&#39;);
+
+// truncate the file to first four bytes
+fs.ftruncate(fd, 4, (err) =&gt; {
+  assert.ifError(err);
+  console.log(fs.readFileSync(&#39;temp.txt&#39;, &#39;utf8&#39;));
+});
+// Prints: Node
+</code></pre>
+<p>If the file previously was shorter than <code>len</code> bytes, it is extended, and the
+extended part is filled with null bytes (&#39;\0&#39;). For example,</p>
+<pre class="prettyprint"><code class="lang-js">console.log(fs.readFileSync(&#39;temp.txt&#39;, &#39;utf8&#39;));
+// Prints: Node.js
+
+// get the file descriptor of the file to be truncated
+const fd = fs.openSync(&#39;temp.txt&#39;, &#39;r+&#39;);
+
+// truncate the file to 10 bytes, whereas the actual size is 7 bytes
+fs.ftruncate(fd, 10, (err) =&gt; {
+  assert.ifError(err);
+  console.log(fs.readFileSync(&#39;temp.txt&#39;));
+});
+// Prints: &lt;Buffer 4e 6f 64 65 2e 6a 73 00 00 00&gt;
+// (&#39;Node.js\0\0\0&#39; in UTF8)
+</code></pre>
+<p>The last three bytes are null bytes (&#39;\0&#39;), to compensate the over-truncation.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_ftruncateSync" id="method_ftruncateSync"></a>
+            <div class="permalink"><a href="#method_ftruncateSync" class="permalink fas fa-link"></a></div>
+            <p>fs.ftruncateSync(fd[, len])</p>
+
+          </h1>
+        </div><section><p>Synchronous ftruncate(2). Returns <code>undefined</code>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_futimes" id="method_futimes"></a>
+            <div class="permalink"><a href="#method_futimes" class="permalink fas fa-link"></a></div>
+            <p>fs.futimes(fd, atime, mtime, callback)</p>
+
+          </h1>
+        </div><section><p>Change the file system timestamps of the object referenced by the supplied file
+descriptor. See <a href="#fs_fs_utimes_path_atime_mtime_callback"><code>fs.utimes()</code></a>.</p>
+<p><em>Note</em>: This function does not work on AIX versions before 7.1, it will return
+the error <code>UV_ENOSYS</code>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_futimesSync" id="method_futimesSync"></a>
+            <div class="permalink"><a href="#method_futimesSync" class="permalink fas fa-link"></a></div>
+            <p>fs.futimesSync(fd, atime, mtime)</p>
+
+          </h1>
+        </div><section><p>Synchronous version of <a href="#fs_fs_futimes_fd_atime_mtime_callback"><code>fs.futimes()</code></a>. Returns <code>undefined</code>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_lchmod_1" id="method_lchmod_1"></a>
+            <div class="permalink"><a href="#method_lchmod_1" class="permalink fas fa-link"></a></div>
+            <p>fs.lchmod(path, mode, callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronous lchmod(2). No arguments other than a possible exception
+are given to the completion callback.</p>
+<p>Only available on macOS.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_lchmodSync_1" id="method_lchmodSync_1"></a>
+            <div class="permalink"><a href="#method_lchmodSync_1" class="permalink fas fa-link"></a></div>
+            <p>fs.lchmodSync(path, mode)</p>
+
+          </h1>
+        </div><section><p>Synchronous lchmod(2). Returns <code>undefined</code>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_lchown_1" id="method_lchown_1"></a>
+            <div class="permalink"><a href="#method_lchown_1" class="permalink fas fa-link"></a></div>
+            <p>fs.lchown(path, uid, gid, callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronous lchown(2). No arguments other than a possible exception are given
+to the completion callback.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_lchownSync_1" id="method_lchownSync_1"></a>
+            <div class="permalink"><a href="#method_lchownSync_1" class="permalink fas fa-link"></a></div>
+            <p>fs.lchownSync(path, uid, gid)</p>
+
+          </h1>
+        </div><section><p>Synchronous lchown(2). Returns <code>undefined</code>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_link" id="method_link"></a>
+            <div class="permalink"><a href="#method_link" class="permalink fas fa-link"></a></div>
+            <p>fs.link(existingPath, newPath, callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronous link(2). No arguments other than a possible exception are given to
+the completion callback.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_linkSync" id="method_linkSync"></a>
+            <div class="permalink"><a href="#method_linkSync" class="permalink fas fa-link"></a></div>
+            <p>fs.linkSync(existingPath, newPath)</p>
+
+          </h1>
+        </div><section><p>Synchronous link(2). Returns <code>undefined</code>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_lstat" id="method_lstat"></a>
+            <div class="permalink"><a href="#method_lstat" class="permalink fas fa-link"></a></div>
+            <p>fs.lstat(path, callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronous lstat(2). The callback gets two arguments <code>(err, stats)</code> where
+<code>stats</code> is a <a href="#fs_class_fs_stats"><code>fs.Stats</code></a> object. <code>lstat()</code> is identical to <code>stat()</code>,
+except that if <code>path</code> is a symbolic link, then the link itself is stat-ed,
+not the file that it refers to.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_lstatSync" id="method_lstatSync"></a>
+            <div class="permalink"><a href="#method_lstatSync" class="permalink fas fa-link"></a></div>
+            <p>fs.lstatSync(path)</p>
+
+          </h1>
+        </div><section><p>Synchronous lstat(2). Returns an instance of <a href="#fs_class_fs_stats"><code>fs.Stats</code></a>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_mkdir" id="method_mkdir"></a>
+            <div class="permalink"><a href="#method_mkdir" class="permalink fas fa-link"></a></div>
+            <p>fs.mkdir(path[, mode], callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronously creates a directory. No arguments other than a possible exception
+are given to the completion callback. <code>mode</code> defaults to <code>0o777</code>.</p>
+<p>See also: mkdir(2)</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_mkdirSync" id="method_mkdirSync"></a>
+            <div class="permalink"><a href="#method_mkdirSync" class="permalink fas fa-link"></a></div>
+            <p>fs.mkdirSync(path[, mode])</p>
+
+          </h1>
+        </div><section><p>Synchronously creates a directory. Returns <code>undefined</code>.
+This is the synchronous version of <a href="#fs_fs_mkdir_path_mode_callback"><code>fs.mkdir()</code></a>.</p>
+<p>See also: mkdir(2)</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_mkdtemp" id="method_mkdtemp"></a>
+            <div class="permalink"><a href="#method_mkdtemp" class="permalink fas fa-link"></a></div>
+            <p>fs.mkdtemp(prefix[, options], callback)</p>
+
+          </h1>
+        </div><section><p><p>Creates a unique temporary directory.</p></p>
+<p><p>Generates six random characters to be appended behind a required
+<code>prefix</code> to create a unique temporary directory.</p></p>
+<p><p>The created folder path is passed as a string to the callback&#39;s second
+parameter.</p></p>
+<p><p>The optional <code>options</code> argument can be a string specifying an encoding, or an
+object with an <code>encoding</code> property specifying the character encoding to use.</p></p>
+<p><p>Example:</p></p>
+<pre class="prettyprint"><code class="lang-js">fs.mkdtemp(path.join(os.tmpdir(), &#39;foo-&#39;), (err, folder) =&gt; {
+  if (err) throw err;
+  console.log(folder);
+  // Prints: /tmp/foo-itXde2 or C:\Users\...\AppData\Local\Temp\foo-itXde2
+});
+</code></pre>
+<p><em>Note</em>: The <code>fs.mkdtemp()</code> method will append the six randomly selected
+characters directly to the <code>prefix</code> string. For instance, given a directory
+<code>/tmp</code>, if the intention is to create a temporary directory <em>within</em> <code>/tmp</code>,
+the <code>prefix</code> <em>must</em> end with a trailing platform-specific path separator
+(<code>require(&#39;path&#39;).sep</code>).</p>
+<pre class="prettyprint"><code class="lang-js">// The parent directory for the new temporary directory
+const tmpDir = os.tmpdir();
+
+// This method is *INCORRECT*:
+fs.mkdtemp(tmpDir, (err, folder) =&gt; {
+  if (err) throw err;
+  console.log(folder);
+  // Will print something similar to `/tmpabc123`.
+  // Note that a new temporary directory is created
+  // at the file system root rather than *within*
+  // the /tmp directory.
+});
+
+// This method is *CORRECT*:
+const { sep } = require(&#39;path&#39;);
+fs.mkdtemp(`${tmpDir}${sep}`, (err, folder) =&gt; {
+  if (err) throw err;
+  console.log(folder);
+  // Will print something similar to `/tmp/abc123`.
+  // A new temporary directory is created within
+  // the /tmp directory.
+});
+</code></pre>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_mkdtempSync" id="method_mkdtempSync"></a>
+            <div class="permalink"><a href="#method_mkdtempSync" class="permalink fas fa-link"></a></div>
+            <p>fs.mkdtempSync(prefix[, options])</p>
+
+          </h1>
+        </div><section><p>The synchronous version of <a href="#fs_fs_mkdtemp_prefix_options_callback"><code>fs.mkdtemp()</code></a>. Returns the created
+folder path.</p>
+<p>The optional <code>options</code> argument can be a string specifying an encoding, or an
+object with an <code>encoding</code> property specifying the character encoding to use.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_open" id="method_open"></a>
+            <div class="permalink"><a href="#method_open" class="permalink fas fa-link"></a></div>
+            <p>fs.open(path, flags[, mode], callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronous file open. See open(2). <code>flags</code> can be:</p>
+<ul>
+<li><p><code>&#39;r&#39;</code> - Open file for reading.
+An exception occurs if the file does not exist.</p>
+</li>
+<li><p><code>&#39;r+&#39;</code> - Open file for reading and writing.
+An exception occurs if the file does not exist.</p>
+</li>
+<li><p><code>&#39;rs+&#39;</code> - Open file for reading and writing in synchronous mode. Instructs
+the operating system to bypass the local file system cache.</p>
+<p>This is primarily useful for opening files on NFS mounts as it allows skipping
+the potentially stale local cache. It has a very real impact on I/O
+performance so using this flag is not recommended unless it is needed.</p>
+<p>Note that this doesn&#39;t turn <code>fs.open()</code> into a synchronous blocking call.
+If synchronous operation is desired <code>fs.openSync()</code> should be used.</p>
+</li>
+<li><p><code>&#39;w&#39;</code> - Open file for writing.
+The file is created (if it does not exist) or truncated (if it exists).</p>
+</li>
+<li><p><code>&#39;wx&#39;</code> - Like <code>&#39;w&#39;</code> but fails if <code>path</code> exists.</p>
+</li>
+<li><p><code>&#39;w+&#39;</code> - Open file for reading and writing.
+The file is created (if it does not exist) or truncated (if it exists).</p>
+</li>
+<li><p><code>&#39;wx+&#39;</code> - Like <code>&#39;w+&#39;</code> but fails if <code>path</code> exists.</p>
+</li>
+<li><p><code>&#39;a&#39;</code> - Open file for appending.
+The file is created if it does not exist.</p>
+</li>
+<li><p><code>&#39;ax&#39;</code> - Like <code>&#39;a&#39;</code> but fails if <code>path</code> exists.</p>
+</li>
+<li><p><code>&#39;a+&#39;</code> - Open file for reading and appending.
+The file is created if it does not exist.</p>
+</li>
+<li><p><code>&#39;ax+&#39;</code> - Like <code>&#39;a+&#39;</code> but fails if <code>path</code> exists.</p>
+</li>
+</ul>
+<p><code>mode</code> sets the file mode (permission and sticky bits), but only if the file was
+created. It defaults to <code>0o666</code> (readable and writable).</p>
+<p>The callback gets two arguments <code>(err, fd)</code>.</p>
+<p>The exclusive flag <code>&#39;x&#39;</code> (<code>O_EXCL</code> flag in open(2)) ensures that <code>path</code> is newly
+created. On POSIX systems, <code>path</code> is considered to exist even if it is a symlink
+to a non-existent file. The exclusive flag may or may not work with network file
+systems.</p>
+<p><code>flags</code> can also be a number as documented by open(2); commonly used constants
+are available from <code>fs.constants</code>.  On Windows, flags are translated to
+their equivalent ones where applicable, e.g. <code>O_WRONLY</code> to <code>FILE_GENERIC_WRITE</code>,
+or <code>O_EXCL|O_CREAT</code> to <code>CREATE_NEW</code>, as accepted by CreateFileW.</p>
+<p>On Linux, positional writes don&#39;t work when the file is opened in append mode.
+The kernel ignores the position argument and always appends the data to
+the end of the file.</p>
+<p><em>Note</em>: The behavior of <code>fs.open()</code> is platform-specific for some flags. As
+such, opening a directory on macOS and Linux with the <code>&#39;a+&#39;</code> flag - see example
+below - will return an error. In contrast, on Windows and FreeBSD, a file
+descriptor will be returned.</p>
+<pre class="prettyprint"><code class="lang-js">// macOS and Linux
+fs.open(&#39;&lt;directory&gt;&#39;, &#39;a+&#39;, (err, fd) =&gt; {
+  // =&gt; [Error: EISDIR: illegal operation on a directory, open &lt;directory&gt;]
+});
+
+// Windows and FreeBSD
+fs.open(&#39;&lt;directory&gt;&#39;, &#39;a+&#39;, (err, fd) =&gt; {
+  // =&gt; null, &lt;fd&gt;
+});
+</code></pre>
+<p>Some characters (<code>&lt; &gt; : &quot; / \ | ? *</code>) are reserved under Windows as documented
+by <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247(v=vs.85).aspx">Naming Files, Paths, and Namespaces</a>. Under NTFS, if the filename contains
+a colon, Node.js will open a file system stream, as described by
+<a href="https://msdn.microsoft.com/en-us/library/windows/desktop/bb540537.aspx">this MSDN page</a>.</p>
+<p>Functions based on <code>fs.open()</code> exhibit this behavior as well. eg.
+<code>fs.writeFile()</code>, <code>fs.readFile()</code>, etc.</p>
+<p><em>Note:</em> On Windows, opening an existing hidden file using the <code>w</code> flag (either
+through <code>fs.open()</code> or <code>fs.writeFile()</code>) will fail with <code>EPERM</code>. Existing hidden
+files can be opened for writing with the <code>r+</code> flag. A call to <code>fs.ftruncate()</code>
+can be used to reset the file contents.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_openSync" id="method_openSync"></a>
+            <div class="permalink"><a href="#method_openSync" class="permalink fas fa-link"></a></div>
+            <p>fs.openSync(path, flags[, mode])</p>
+
+          </h1>
+        </div><section><p>Synchronous version of <a href="#fs_fs_open_path_flags_mode_callback"><code>fs.open()</code></a>. Returns an integer representing the file
+descriptor.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_read" id="method_read"></a>
+            <div class="permalink"><a href="#method_read" class="permalink fas fa-link"></a></div>
+            <p>fs.read(fd, buffer, offset, length, position, callback)</p>
+
+          </h1>
+        </div><section><p>Read data from the file specified by <code>fd</code>.</p>
+<p><code>buffer</code> is the buffer that the data will be written to.</p>
+<p><code>offset</code> is the offset in the buffer to start writing at.</p>
+<p><code>length</code> is an integer specifying the number of bytes to read.</p>
+<p><code>position</code> is an argument specifying where to begin reading from in the file.
+If <code>position</code> is <code>null</code>, data will be read from the current file position,
+and the file position will be updated.
+If <code>position</code> is an integer, the file position will remain unchanged.</p>
+<p>The callback is given the three arguments, <code>(err, bytesRead, buffer)</code>.</p>
+<p>If this method is invoked as its <a href="#util_util_promisify_original"><code>util.promisify()</code></a>ed version, it returns
+a Promise for an object with <code>bytesRead</code> and <code>buffer</code> properties.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_readdir" id="method_readdir"></a>
+            <div class="permalink"><a href="#method_readdir" class="permalink fas fa-link"></a></div>
+            <p>fs.readdir(path[, options], callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronous readdir(3).  Reads the contents of a directory.
+The callback gets two arguments <code>(err, files)</code> where <code>files</code> is an array of
+the names of the files in the directory excluding <code>&#39;.&#39;</code> and <code>&#39;..&#39;</code>.</p>
+<p>The optional <code>options</code> argument can be a string specifying an encoding, or an
+object with an <code>encoding</code> property specifying the character encoding to use for
+the filenames passed to the callback. If the <code>encoding</code> is set to <code>&#39;buffer&#39;</code>,
+the filenames returned will be passed as <code>Buffer</code> objects.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_readdirSync" id="method_readdirSync"></a>
+            <div class="permalink"><a href="#method_readdirSync" class="permalink fas fa-link"></a></div>
+            <p>fs.readdirSync(path[, options])</p>
+
+          </h1>
+        </div><section><p>Synchronous readdir(3). Returns an array of filenames excluding <code>&#39;.&#39;</code> and
+<code>&#39;..&#39;</code>.</p>
+<p>The optional <code>options</code> argument can be a string specifying an encoding, or an
+object with an <code>encoding</code> property specifying the character encoding to use for
+the filenames passed to the callback. If the <code>encoding</code> is set to <code>&#39;buffer&#39;</code>,
+the filenames returned will be passed as <code>Buffer</code> objects.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_readFile" id="method_readFile"></a>
+            <div class="permalink"><a href="#method_readFile" class="permalink fas fa-link"></a></div>
+            <p>fs.readFile(path[, options], callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronously reads the entire contents of a file. Example:</p>
+<pre class="prettyprint"><code class="lang-js">fs.readFile(&#39;/etc/passwd&#39;, (err, data) =&gt; {
+  if (err) throw err;
+  console.log(data);
+});
+</code></pre>
+<p>The callback is passed two arguments <code>(err, data)</code>, where <code>data</code> is the
+contents of the file.</p>
+<p>If no encoding is specified, then the raw buffer is returned.</p>
+<p>If <code>options</code> is a string, then it specifies the encoding. Example:</p>
+<pre class="prettyprint"><code class="lang-js">fs.readFile(&#39;/etc/passwd&#39;, &#39;utf8&#39;, callback);
+</code></pre>
+<p><em>Note</em>: When the path is a directory, the behavior of
+<code>fs.readFile()</code> and <a href="#fs_fs_readfilesync_path_options"><code>fs.readFileSync()</code></a> is platform-specific. On macOS,
+Linux, and Windows, an error will be returned. On FreeBSD, a representation
+of the directory&#39;s contents will be returned.</p>
+<pre class="prettyprint"><code class="lang-js">// macOS, Linux, and Windows
+fs.readFile(&#39;&lt;directory&gt;&#39;, (err, data) =&gt; {
+  // =&gt; [Error: EISDIR: illegal operation on a directory, read &lt;directory&gt;]
+});
+
+//  FreeBSD
+fs.readFile(&#39;&lt;directory&gt;&#39;, (err, data) =&gt; {
+  // =&gt; null, &lt;data&gt;
+});
+</code></pre>
+<p>Any specified file descriptor has to support reading.</p>
+<p><em>Note</em>: If a file descriptor is specified as the <code>path</code>, it will not be closed
+automatically.</p>
+<p><em>Note</em>: <code>fs.readFile()</code> reads the entire file in a single threadpool request.
+To minimize threadpool task length variation, prefer the partitioned APIs
+<code>fs.read()</code> and <code>fs.createReadStream()</code> when reading files as part of
+fulfilling a client request.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_readFileSync" id="method_readFileSync"></a>
+            <div class="permalink"><a href="#method_readFileSync" class="permalink fas fa-link"></a></div>
+            <p>fs.readFileSync(path[, options])</p>
+
+          </h1>
+        </div><section><p><p>Synchronous version of <a href="#fs_fs_readfile_path_options_callback"><code>fs.readFile()</code></a>. Returns the contents of the <code>path</code>.</p></p>
+<p><p>If the <code>encoding</code> option is specified then this function returns a
+string. Otherwise it returns a buffer.</p></p>
+<p><p><em>Note</em>: Similar to <a href="#fs_fs_readfile_path_options_callback"><code>fs.readFile()</code></a>, when the path is a directory, the
+behavior of <code>fs.readFileSync()</code> is platform-specific.</p></p>
+<pre class="prettyprint"><code class="lang-js">// macOS, Linux, and Windows
+fs.readFileSync(&#39;&lt;directory&gt;&#39;);
+// =&gt; [Error: EISDIR: illegal operation on a directory, read &lt;directory&gt;]
+
+//  FreeBSD
+fs.readFileSync(&#39;&lt;directory&gt;&#39;); // =&gt; null, &lt;data&gt;
+</code></pre>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_readlink" id="method_readlink"></a>
+            <div class="permalink"><a href="#method_readlink" class="permalink fas fa-link"></a></div>
+            <p>fs.readlink(path[, options], callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronous readlink(2). The callback gets two arguments <code>(err,
+linkString)</code>.</p>
+<p>The optional <code>options</code> argument can be a string specifying an encoding, or an
+object with an <code>encoding</code> property specifying the character encoding to use for
+the link path passed to the callback. If the <code>encoding</code> is set to <code>&#39;buffer&#39;</code>,
+the link path returned will be passed as a <code>Buffer</code> object.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_readlinkSync" id="method_readlinkSync"></a>
+            <div class="permalink"><a href="#method_readlinkSync" class="permalink fas fa-link"></a></div>
+            <p>fs.readlinkSync(path[, options])</p>
+
+          </h1>
+        </div><section><p>Synchronous readlink(2). Returns the symbolic link&#39;s string value.</p>
+<p>The optional <code>options</code> argument can be a string specifying an encoding, or an
+object with an <code>encoding</code> property specifying the character encoding to use for
+the link path passed to the callback. If the <code>encoding</code> is set to <code>&#39;buffer&#39;</code>,
+the link path returned will be passed as a <code>Buffer</code> object.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_readSync" id="method_readSync"></a>
+            <div class="permalink"><a href="#method_readSync" class="permalink fas fa-link"></a></div>
+            <p>fs.readSync(fd, buffer, offset, length, position)</p>
+
+          </h1>
+        </div><section><p>Synchronous version of <a href="#fs_fs_read_fd_buffer_offset_length_position_callback"><code>fs.read()</code></a>. Returns the number of <code>bytesRead</code>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_realpath" id="method_realpath"></a>
+            <div class="permalink"><a href="#method_realpath" class="permalink fas fa-link"></a></div>
+            <p>fs.realpath(path[, options], callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronously computes the canonical pathname by resolving <code>.</code>, <code>..</code> and
+symbolic links.</p>
+<p>Note that &quot;canonical&quot; does not mean &quot;unique&quot;: hard links and bind mounts can
+expose a file system entity through many pathnames.</p>
+<p>This function behaves like realpath(3), with some exceptions:</p>
+<ol>
+<li><p>No case conversion is performed on case-insensitive file systems.</p>
+</li>
+<li><p>The maximum number of symbolic links is platform-independent and generally
+(much) higher than what the native realpath(3) implementation supports.</p>
+</li>
+</ol>
+<p>The <code>callback</code> gets two arguments <code>(err, resolvedPath)</code>. May use <code>process.cwd</code>
+to resolve relative paths.</p>
+<p>Only paths that can be converted to UTF8 strings are supported.</p>
+<p>The optional <code>options</code> argument can be a string specifying an encoding, or an
+object with an <code>encoding</code> property specifying the character encoding to use for
+the path passed to the callback. If the <code>encoding</code> is set to <code>&#39;buffer&#39;</code>,
+the path returned will be passed as a <code>Buffer</code> object.</p>
+<p><em>Note</em>: If <code>path</code> resolves to a socket or a pipe, the function will return a
+system dependent name for that object.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_realpathSync" id="method_realpathSync"></a>
+            <div class="permalink"><a href="#method_realpathSync" class="permalink fas fa-link"></a></div>
+            <p>fs.realpathSync(path[, options])</p>
+
+          </h1>
+        </div><section><p>Synchronously computes the canonical pathname by resolving <code>.</code>, <code>..</code> and
+symbolic links.</p>
+<p>Note that &quot;canonical&quot; does not mean &quot;unique&quot;: hard links and bind mounts can
+expose a file system entity through many pathnames.</p>
+<p>This function behaves like realpath(3), with some exceptions:</p>
+<ol>
+<li><p>No case conversion is performed on case-insensitive file systems.</p>
+</li>
+<li><p>The maximum number of symbolic links is platform-independent and generally
+(much) higher than what the native realpath(3) implementation supports.</p>
+</li>
+</ol>
+<p>The optional <code>options</code> argument can be a string specifying an encoding, or an
+object with an <code>encoding</code> property specifying the character encoding to use for
+the returned value. If the <code>encoding</code> is set to <code>&#39;buffer&#39;</code>, the path returned
+will be passed as a <code>Buffer</code> object.</p>
+<p><em>Note</em>: If <code>path</code> resolves to a socket or a pipe, the function will return a
+system dependent name for that object.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_rename" id="method_rename"></a>
+            <div class="permalink"><a href="#method_rename" class="permalink fas fa-link"></a></div>
+            <p>fs.rename(oldPath, newPath, callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronous rename(2). No arguments other than a possible exception are given
+to the completion callback.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_renameSync" id="method_renameSync"></a>
+            <div class="permalink"><a href="#method_renameSync" class="permalink fas fa-link"></a></div>
+            <p>fs.renameSync(oldPath, newPath)</p>
+
+          </h1>
+        </div><section><p>Synchronous rename(2). Returns <code>undefined</code>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_rmdir" id="method_rmdir"></a>
+            <div class="permalink"><a href="#method_rmdir" class="permalink fas fa-link"></a></div>
+            <p>fs.rmdir(path, callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronous rmdir(2). No arguments other than a possible exception are given
+to the completion callback.</p>
+<p><em>Note</em>: Using <code>fs.rmdir()</code> on a file (not a directory) results in an <code>ENOENT</code>
+error on Windows and an <code>ENOTDIR</code> error on POSIX.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_rmdirSync" id="method_rmdirSync"></a>
+            <div class="permalink"><a href="#method_rmdirSync" class="permalink fas fa-link"></a></div>
+            <p>fs.rmdirSync(path)</p>
+
+          </h1>
+        </div><section><p>Synchronous rmdir(2). Returns <code>undefined</code>.</p>
+<p><em>Note</em>: Using <code>fs.rmdirSync()</code> on a file (not a directory) results in an <code>ENOENT</code>
+error on Windows and an <code>ENOTDIR</code> error on POSIX.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_stat" id="method_stat"></a>
+            <div class="permalink"><a href="#method_stat" class="permalink fas fa-link"></a></div>
+            <p>fs.stat(path, callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronous stat(2). The callback gets two arguments <code>(err, stats)</code> where
+<code>stats</code> is an <a href="#fs_class_fs_stats"><code>fs.Stats</code></a> object.</p>
+<p>In case of an error, the <code>err.code</code> will be one of <a href="errors.html#errors_common_system_errors">Common System Errors</a>.</p>
+<p>Using <code>fs.stat()</code> to check for the existence of a file before calling
+<code>fs.open()</code>, <code>fs.readFile()</code> or <code>fs.writeFile()</code> is not recommended.
+Instead, user code should open/read/write the file directly and handle the
+error raised if the file is not available.</p>
+<p>To check if a file exists without manipulating it afterwards, <a href="#fs_fs_access_path_mode_callback"><code>fs.access()</code></a>
+is recommended.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_statSync" id="method_statSync"></a>
+            <div class="permalink"><a href="#method_statSync" class="permalink fas fa-link"></a></div>
+            <p>fs.statSync(path)</p>
+
+          </h1>
+        </div><section><p>Synchronous stat(2). Returns an instance of <a href="#fs_class_fs_stats"><code>fs.Stats</code></a>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_symlink" id="method_symlink"></a>
+            <div class="permalink"><a href="#method_symlink" class="permalink fas fa-link"></a></div>
+            <p>fs.symlink(target, path[, type], callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronous symlink(2). No arguments other than a possible exception are given
+to the completion callback. The <code>type</code> argument can be set to <code>&#39;dir&#39;</code>,
+<code>&#39;file&#39;</code>, or <code>&#39;junction&#39;</code> (default is <code>&#39;file&#39;</code>) and is only available on
+Windows (ignored on other platforms). Note that Windows junction points require
+the destination path to be absolute. When using <code>&#39;junction&#39;</code>, the <code>target</code>
+argument will automatically be normalized to absolute path.</p>
+<p>Here is an example below:</p>
+<pre class="prettyprint"><code class="lang-js">fs.symlink(&#39;./foo&#39;, &#39;./new-port&#39;, callback);
+</code></pre>
+<p>It creates a symbolic link named &quot;new-port&quot; that points to &quot;foo&quot;.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_symlinkSync" id="method_symlinkSync"></a>
+            <div class="permalink"><a href="#method_symlinkSync" class="permalink fas fa-link"></a></div>
+            <p>fs.symlinkSync(target, path[, type])</p>
+
+          </h1>
+        </div><section><p>Synchronous symlink(2). Returns <code>undefined</code>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_truncate" id="method_truncate"></a>
+            <div class="permalink"><a href="#method_truncate" class="permalink fas fa-link"></a></div>
+            <p>fs.truncate(path[, len], callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronous truncate(2). No arguments other than a possible exception are
+given to the completion callback. A file descriptor can also be passed as the
+first argument. In this case, <code>fs.ftruncate()</code> is called.</p>
+<p><em>Note</em>: Passing a file descriptor is deprecated and may result in an error
+being thrown in the future.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_truncateSync" id="method_truncateSync"></a>
+            <div class="permalink"><a href="#method_truncateSync" class="permalink fas fa-link"></a></div>
+            <p>fs.truncateSync(path[, len])</p>
+
+          </h1>
+        </div><section><p>Synchronous truncate(2). Returns <code>undefined</code>. A file descriptor can also be
+passed as the first argument. In this case, <code>fs.ftruncateSync()</code> is called.</p>
+<p><em>Note</em>: Passing a file descriptor is deprecated and may result in an error
+being thrown in the future.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_unlink" id="method_unlink"></a>
+            <div class="permalink"><a href="#method_unlink" class="permalink fas fa-link"></a></div>
+            <p>fs.unlink(path, callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronous unlink(2). No arguments other than a possible exception are given
+to the completion callback.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_unlinkSync" id="method_unlinkSync"></a>
+            <div class="permalink"><a href="#method_unlinkSync" class="permalink fas fa-link"></a></div>
+            <p>fs.unlinkSync(path)</p>
+
+          </h1>
+        </div><section><p>Synchronous unlink(2). Returns <code>undefined</code>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_unwatchFile" id="method_unwatchFile"></a>
+            <div class="permalink"><a href="#method_unwatchFile" class="permalink fas fa-link"></a></div>
+            <p>fs.unwatchFile(filename[, listener])</p>
+
+          </h1>
+        </div><section><p>Stop watching for changes on <code>filename</code>. If <code>listener</code> is specified, only that
+particular listener is removed. Otherwise, <em>all</em> listeners are removed,
+effectively stopping watching of <code>filename</code>.</p>
+<p>Calling <code>fs.unwatchFile()</code> with a filename that is not being watched is a
+no-op, not an error.</p>
+<p><em>Note</em>: <a href="#fs_fs_watch_filename_options_listener"><code>fs.watch()</code></a> is more efficient than <code>fs.watchFile()</code> and
+<code>fs.unwatchFile()</code>.  <code>fs.watch()</code> should be used instead of <code>fs.watchFile()</code>
+and <code>fs.unwatchFile()</code> when possible.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_utimes" id="method_utimes"></a>
+            <div class="permalink"><a href="#method_utimes" class="permalink fas fa-link"></a></div>
+            <p>fs.utimes(path, atime, mtime, callback)</p>
+
+          </h1>
+        </div><section><p><p>Change the file system timestamps of the object referenced by <code>path</code>.</p></p>
+<p><p>The <code>atime</code> and <code>mtime</code> arguments follow these rules:</p></p>
+<ul>
+<li>Values can be either numbers representing Unix epoch time, <code>Date</code>s, or a
+numeric string like <code>&#39;123456789.0&#39;</code>.</li>
+<li>If the value can not be converted to a number, or is <code>NaN</code>, <code>Infinity</code> or
+<code>-Infinity</code>, a <code>Error</code> will be thrown.</li>
+</ul>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_utimesSync" id="method_utimesSync"></a>
+            <div class="permalink"><a href="#method_utimesSync" class="permalink fas fa-link"></a></div>
+            <p>fs.utimesSync(path, atime, mtime)</p>
+
+          </h1>
+        </div><section><p>Synchronous version of <a href="#fs_fs_utimes_path_atime_mtime_callback"><code>fs.utimes()</code></a>. Returns <code>undefined</code>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_watch" id="method_watch"></a>
+            <div class="permalink"><a href="#method_watch" class="permalink fas fa-link"></a></div>
+            <p>fs.watch(filename[, options][, listener])</p>
+
+          </h1>
+        </div><section><p>Watch for changes on <code>filename</code>, where <code>filename</code> is either a file or a
+directory.  The returned object is a <a href="#fs_class_fs_fswatcher"><code>fs.FSWatcher</code></a>.</p>
+<p>The second argument is optional. If <code>options</code> is provided as a string, it
+specifies the <code>encoding</code>. Otherwise <code>options</code> should be passed as an object.</p>
+<p>The listener callback gets two arguments <code>(eventType, filename)</code>.  <code>eventType</code> is either
+<code>&#39;rename&#39;</code> or <code>&#39;change&#39;</code>, and <code>filename</code> is the name of the file which triggered
+the event.</p>
+<p>Note that on most platforms, <code>&#39;rename&#39;</code> is emitted whenever a filename appears
+or disappears in the directory.</p>
+<p>Also note the listener callback is attached to the <code>&#39;change&#39;</code> event fired by
+<a href="#fs_class_fs_fswatcher"><code>fs.FSWatcher</code></a>, but it is not the same thing as the <code>&#39;change&#39;</code> value of
+<code>eventType</code>.</p>
+<section>
+       <div class="heading">
+          <h4>
+            <a name="misc_Caveats" id="misc_Caveats"></a>
+            <div class="permalink"><a href="#misc_Caveats" class="permalink fas fa-link"></a></div>
+            <p>Caveats</p>
+
+          </h1>
+        </div><section><p>The <code>fs.watch</code> API is not 100% consistent across platforms, and is
+unavailable in some situations.</p>
+<p>The recursive option is only supported on macOS and Windows.</p>
+
+       <div class="heading">
+          <h5>
+            <a name="misc_Availability" id="misc_Availability"></a>
+            <div class="permalink"><a href="#misc_Availability" class="permalink fas fa-link"></a></div>
+            <p>Availability</p>
+
+          </h1>
+        </div><section><p>This feature depends on the underlying operating system providing a way
+to be notified of filesystem changes.</p>
+<ul>
+<li>On Linux systems, this uses <a href="http://man7.org/linux/man-pages/man7/inotify.7.html"><code>inotify</code></a></li>
+<li>On BSD systems, this uses <a href="https://www.freebsd.org/cgi/man.cgi?kqueue"><code>kqueue</code></a></li>
+<li>On macOS, this uses <a href="https://www.freebsd.org/cgi/man.cgi?kqueue"><code>kqueue</code></a> for files and <a href="https://developer.apple.com/library/mac/documentation/Darwin/Conceptual/FSEvents_ProgGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40005289-CH1-SW1"><code>FSEvents</code></a> for directories.</li>
+<li>On SunOS systems (including Solaris and SmartOS), this uses <a href="http://illumos.org/man/port_create"><code>event ports</code></a>.</li>
+<li>On Windows systems, this feature depends on <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa365465%28v=vs.85%29.aspx"><code>ReadDirectoryChangesW</code></a>.</li>
+<li>On Aix systems, this feature depends on <a href="https://www.ibm.com/developerworks/aix/library/au-aix_event_infrastructure/"><code>AHAFS</code></a>, which must be enabled.</li>
+</ul>
+<p>If the underlying functionality is not available for some reason, then
+<code>fs.watch</code> will not be able to function. For example, watching files or
+directories can be unreliable, and in some cases impossible, on network file
+systems (NFS, SMB, etc), or host file systems when using virtualization software
+such as Vagrant, Docker, etc.</p>
+<p>It is still possible to use <code>fs.watchFile()</code>, which uses stat polling, but
+this method is slower and less reliable.</p>
+</section>
+       <div class="heading">
+          <h5>
+            <a name="misc_Inodes" id="misc_Inodes"></a>
+            <div class="permalink"><a href="#misc_Inodes" class="permalink fas fa-link"></a></div>
+            <p>Inodes</p>
+
+          </h1>
+        </div><section><p>On Linux and macOS systems, <code>fs.watch()</code> resolves the path to an <a href="https://en.wikipedia.org/wiki/Inode">inode</a> and
+watches the inode. If the watched path is deleted and recreated, it is assigned
+a new inode. The watch will emit an event for the delete but will continue
+watching the <em>original</em> inode. Events for the new inode will not be emitted.
+This is expected behavior.</p>
+<p>AIX files retain the same inode for the lifetime of a file. Saving and closing a
+watched file on AIX will result in two notifications (one for adding new
+content, and one for truncation).</p>
+</section>
+       <div class="heading">
+          <h5>
+            <a name="misc_Filename_Argument" id="misc_Filename_Argument"></a>
+            <div class="permalink"><a href="#misc_Filename_Argument" class="permalink fas fa-link"></a></div>
+            <p>Filename Argument</p>
+
+          </h1>
+        </div><section><p><p>Providing <code>filename</code> argument in the callback is only supported on Linux,
+macOS, Windows, and AIX.  Even on supported platforms, <code>filename</code> is not always
+guaranteed to be provided. Therefore, don&#39;t assume that <code>filename</code> argument is
+always provided in the callback, and have some fallback logic if it is null.</p></p>
+<pre class="prettyprint"><code class="lang-js">fs.watch(&#39;somedir&#39;, (eventType, filename) =&gt; {
+  console.log(`event type is: ${eventType}`);
+  if (filename) {
+    console.log(`filename provided: ${filename}`);
+  } else {
+    console.log(&#39;filename not provided&#39;);
+  }
+});
+</code></pre>
+</section></section></section></section>
+       <div class="heading">
+          <h2>
+            <a name="method_watchFile" id="method_watchFile"></a>
+            <div class="permalink"><a href="#method_watchFile" class="permalink fas fa-link"></a></div>
+            <p>fs.watchFile(filename[, options], listener)</p>
+
+          </h1>
+        </div><section><p><p>Watch for changes on <code>filename</code>. The callback <code>listener</code> will be called each
+time the file is accessed.</p></p>
+<p><p>The <code>options</code> argument may be omitted. If provided, it should be an object. The
+<code>options</code> object may contain a boolean named <code>persistent</code> that indicates
+whether the process should continue to run as long as files are being watched.
+The <code>options</code> object may specify an <code>interval</code> property indicating how often the
+target should be polled in milliseconds. The default is
+<code>{ persistent: true, interval: 5007 }</code>.</p></p>
+<p><p>The <code>listener</code> gets two arguments the current stat object and the previous
+stat object:</p></p>
+<p><pre class="prettyprint"><code class="lang-js">fs.watchFile(&#39;message.text&#39;, (curr, prev) =&gt; {
+  console.log(<code>the current mtime is: ${curr.mtime}</code>);
+  console.log(<code>the previous mtime was: ${prev.mtime}</code>);
+});
+</code></pre></p>
+<p><p>These stat objects are instances of <code>fs.Stat</code>.</p></p>
+<p><p>To be notified when the file was modified, not just accessed, it is necessary
+to compare <code>curr.mtime</code> and <code>prev.mtime</code>.</p></p>
+<p><p><em>Note</em>: When an <code>fs.watchFile</code> operation results in an <code>ENOENT</code> error, it
+will invoke the listener once, with all the fields zeroed (or, for dates, the
+Unix Epoch). In Windows, <code>blksize</code> and <code>blocks</code> fields will be <code>undefined</code>,
+instead of zero. If the file is created later on, the listener will be called
+again, with the latest stat objects. This is a change in functionality since
+v0.10.</p></p>
+<p><p><em>Note</em>: <a href="#fs_fs_watch_filename_options_listener"><code>fs.watch()</code></a> is more efficient than <code>fs.watchFile</code> and
+<code>fs.unwatchFile</code>. <code>fs.watch</code> should be used instead of <code>fs.watchFile</code> and
+<code>fs.unwatchFile</code> when possible.</p></p>
+<p><p><em>Note:</em> When a file being watched by <code>fs.watchFile()</code> disappears and reappears,
+then the <code>previousStat</code> reported in the second callback event (the file&#39;s
+reappearance) will be the same as the <code>previousStat</code> of the first callback
+event (its disappearance).</p></p>
+<p><p>This happens when:</p></p>
+<ul>
+<li>the file is deleted, followed by a restore</li>
+<li>the file is renamed twice - the second time back to its original name</li>
+</ul>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_write_1" id="method_write_1"></a>
+            <div class="permalink"><a href="#method_write_1" class="permalink fas fa-link"></a></div>
+            <p>fs.write(fd, buffer[, offset[, length[, position]]], callback)</p>
+
+          </h1>
+        </div><section><p>Write <code>buffer</code> to the file specified by <code>fd</code>.</p>
+<p><code>offset</code> determines the part of the buffer to be written, and <code>length</code> is
+an integer specifying the number of bytes to write.</p>
+<p><code>position</code> refers to the offset from the beginning of the file where this data
+should be written. If <code>typeof position !== &#39;number&#39;</code>, the data will be written
+at the current position. See pwrite(2).</p>
+<p>The callback will be given three arguments <code>(err, bytesWritten, buffer)</code> where
+<code>bytesWritten</code> specifies how many <em>bytes</em> were written from <code>buffer</code>.</p>
+<p>If this method is invoked as its <a href="#util_util_promisify_original"><code>util.promisify()</code></a>ed version, it returns
+a Promise for an object with <code>bytesWritten</code> and <code>buffer</code> properties.</p>
+<p>Note that it is unsafe to use <code>fs.write</code> multiple times on the same file
+without waiting for the callback. For this scenario,
+<code>fs.createWriteStream</code> is strongly recommended.</p>
+<p>On Linux, positional writes don&#39;t work when the file is opened in append mode.
+The kernel ignores the position argument and always appends the data to
+the end of the file.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_write_2" id="method_write_2"></a>
+            <div class="permalink"><a href="#method_write_2" class="permalink fas fa-link"></a></div>
+            <p>fs.write(fd, string[, position[, encoding]], callback)</p>
+
+          </h1>
+        </div><section><p>Write <code>string</code> to the file specified by <code>fd</code>.  If <code>string</code> is not a string, then
+the value will be coerced to one.</p>
+<p><code>position</code> refers to the offset from the beginning of the file where this data
+should be written. If <code>typeof position !== &#39;number&#39;</code> the data will be written at
+the current position. See pwrite(2).</p>
+<p><code>encoding</code> is the expected string encoding.</p>
+<p>The callback will receive the arguments <code>(err, written, string)</code> where <code>written</code>
+specifies how many <em>bytes</em> the passed string required to be written. Note that
+bytes written is not the same as string characters. See <a href="buffer.html#buffer_class_method_buffer_bytelength_string_encoding"><code>Buffer.byteLength</code></a>.</p>
+<p>Unlike when writing <code>buffer</code>, the entire string must be written. No substring
+may be specified. This is because the byte offset of the resulting data may not
+be the same as the string offset.</p>
+<p>Note that it is unsafe to use <code>fs.write</code> multiple times on the same file
+without waiting for the callback. For this scenario,
+<code>fs.createWriteStream</code> is strongly recommended.</p>
+<p>On Linux, positional writes don&#39;t work when the file is opened in append mode.
+The kernel ignores the position argument and always appends the data to
+the end of the file.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_writeFile" id="method_writeFile"></a>
+            <div class="permalink"><a href="#method_writeFile" class="permalink fas fa-link"></a></div>
+            <p>fs.writeFile(file, data[, options], callback)</p>
+
+          </h1>
+        </div><section><p>Asynchronously writes data to a file, replacing the file if it already exists.
+<code>data</code> can be a string or a buffer.</p>
+<p>The <code>encoding</code> option is ignored if <code>data</code> is a buffer. It defaults
+to <code>&#39;utf8&#39;</code>.</p>
+<p>Example:</p>
+<pre class="prettyprint"><code class="lang-js">fs.writeFile(&#39;message.txt&#39;, &#39;Hello Node.js&#39;, (err) =&gt; {
+  if (err) throw err;
+  console.log(&#39;The file has been saved!&#39;);
+});
+</code></pre>
+<p>If <code>options</code> is a string, then it specifies the encoding. Example:</p>
+<pre class="prettyprint"><code class="lang-js">fs.writeFile(&#39;message.txt&#39;, &#39;Hello Node.js&#39;, &#39;utf8&#39;, callback);
+</code></pre>
+<p>Any specified file descriptor has to support writing.</p>
+<p>Note that it is unsafe to use <code>fs.writeFile</code> multiple times on the same file
+without waiting for the callback. For this scenario,
+<code>fs.createWriteStream</code> is strongly recommended.</p>
+<p><em>Note</em>: If a file descriptor is specified as the <code>file</code>, it will not be closed
+automatically.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_writeFileSync" id="method_writeFileSync"></a>
+            <div class="permalink"><a href="#method_writeFileSync" class="permalink fas fa-link"></a></div>
+            <p>fs.writeFileSync(file, data[, options])</p>
+
+          </h1>
+        </div><section><p>The synchronous version of <a href="#fs_fs_writefile_file_data_options_callback"><code>fs.writeFile()</code></a>. Returns <code>undefined</code>.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_writeSync" id="method_writeSync"></a>
+            <div class="permalink"><a href="#method_writeSync" class="permalink fas fa-link"></a></div>
+            <p>fs.writeSync(fd, buffer[, offset[, length[, position]]])</p>
+
+          </h1>
+        </div><section><p>Synchronous versions of <a href="#fs_fs_write_fd_buffer_offset_length_position_callback"><code>fs.write()</code></a>. Returns the number of bytes written.</p>
+</section>
+       <div class="heading">
+          <h2>
+            <a name="method_writeSync_1" id="method_writeSync_1"></a>
+            <div class="permalink"><a href="#method_writeSync_1" class="permalink fas fa-link"></a></div>
+            <p>fs.writeSync(fd, string[, position[, encoding]])</p>
+
+          </h1>
+        </div><section><p>Synchronous versions of <a href="#fs_fs_write_fd_buffer_offset_length_position_callback"><code>fs.write()</code></a>. Returns the number of bytes written.</p>
+</section>
+
+  <div class="footer">
+    <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>
+    <p>Dubbed by <img src="images/mixtape.png" title="Dubbed by mixtape." style="width:40px;position:relative;top:8px"></img> mixtape.</p>
+  </div>
+
+  </div>
+  </body>
+</html>

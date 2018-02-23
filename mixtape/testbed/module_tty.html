@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>mixtape page for tty</title>
+    <script data-main="js/setup" src="js/require.js"></script>
+    <link rel="stylesheet" href="fonts/fonts.css" />
+    <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="toc/themes/default/style.min.css" />
+    <link rel="stylesheet" href="css/design.css" />
+  </head>
+  <body>
+
+  <div id="control-panel">
+    <div id="control-strip-h">
+      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
+      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    </div>
+    <div id="controls">
+      <div id="control-find">
+        <div id="control-find-content"><input id="find" class="typeahead" placeholder="Find something..."></div>
+      </div>
+      <div id="control-toc">
+        <div id="control-toc-content"><div id="toc"></div></div>
+      </div>
+    </div>
+  </div>
+  <div id="control-strip-v">
+    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
+    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  </div>
+
+  <div id="content">
+
+  
+       <div class="heading">
+          <h1>
+            <a name="module_tty" id="module_tty"></a>
+            <div class="permalink"><a href="#module_tty" class="permalink fas fa-link"></a></div>
+            <p>TTY</p>
+
+          </h1>
+        </div><p>The <code>tty</code> module provides the <code>tty.ReadStream</code> and <code>tty.WriteStream</code> classes.
+In most cases, it will not be necessary or possible to use this module directly.
+However, it can be accessed using:</p>
+<pre class="prettyprint"><code class="lang-js">const tty = require(&#39;tty&#39;);
+</code></pre>
+<p>When Node.js detects that it is being run with a text terminal (&quot;TTY&quot;)
+attached, <a href="process.html#process_process_stdin"><code>process.stdin</code></a> will, by default, be initialized as an instance of
+<code>tty.ReadStream</code> and both <a href="process.html#process_process_stdout"><code>process.stdout</code></a> and <a href="process.html#process_process_stderr"><code>process.stderr</code></a> will, by
+default be instances of <code>tty.WriteStream</code>. The preferred method of determining
+whether Node.js is being run within a TTY context is to check that the value of
+the <code>process.stdout.isTTY</code> property is <code>true</code>:</p>
+<pre class="prettyprint"><code class="lang-sh">$ node -p -e &quot;Boolean(process.stdout.isTTY)&quot;
+true
+$ node -p -e &quot;Boolean(process.stdout.isTTY)&quot; | cat
+false
+</code></pre>
+<p>In most cases, there should be little to no reason for an application to
+manually create instances of the <code>tty.ReadStream</code> and <code>tty.WriteStream</code>
+classes.</p>
+
+       <div class="heading">
+          <h2>
+            <a name="class_tty_ReadStream" id="class_tty_ReadStream"></a>
+            <div class="permalink"><a href="#class_tty_ReadStream" class="permalink fas fa-link"></a></div>
+            <p>Class: tty.ReadStream</p>
+
+          </h1>
+        </div><section><p>The <code>tty.ReadStream</code> class is a subclass of <a href="net.html#net_class_net_socket"><code>net.Socket</code></a> that represents the
+readable side of a TTY. In normal circumstances <a href="process.html#process_process_stdin"><code>process.stdin</code></a> will be the
+only <code>tty.ReadStream</code> instance in a Node.js process and there should be no
+reason to create additional instances.</p>
+<section>
+       <div class="heading">
+          <h4>
+            <a name="property_isRaw" id="property_isRaw"></a>
+            <div class="permalink"><a href="#property_isRaw" class="permalink fas fa-link"></a></div>
+            <p>readStream.isRaw</p>
+
+          </h1>
+        </div><section><p>A <code>boolean</code> that is <code>true</code> if the TTY is currently configured to operate as a
+raw device. Defaults to <code>false</code>.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_isTTY" id="property_isTTY"></a>
+            <div class="permalink"><a href="#property_isTTY" class="permalink fas fa-link"></a></div>
+            <p>readStream.isTTY</p>
+
+          </h1>
+        </div><section><p>A <code>boolean</code> that is always <code>true</code> for <code>tty.ReadStream</code> instances.</p>
+</section></section><section>
+       <div class="heading">
+          <h4>
+            <a name="method_setRawMode" id="method_setRawMode"></a>
+            <div class="permalink"><a href="#method_setRawMode" class="permalink fas fa-link"></a></div>
+            <p>readStream.setRawMode(mode)</p>
+
+          </h1>
+        </div><section><p><p>Allows configuration of <code>tty.ReadStream</code> so that it operates as a raw device.</p></p>
+<p><p>When in raw mode, input is always available character-by-character, not
+including modifiers. Additionally, all special processing of characters by the
+terminal is disabled, including echoing input characters.
+Note that <code>CTRL</code>+<code>C</code> will no longer cause a <code>SIGINT</code> when in this mode.</p></p>
+<ul>
+<li><code>mode</code> {boolean} If <code>true</code>, configures the <code>tty.ReadStream</code> to operate as a
+raw device. If <code>false</code>, configures the <code>tty.ReadStream</code> to operate in its
+default mode. The <code>readStream.isRaw</code> property will be set to the resulting
+mode.</li>
+</ul>
+</section></section></section>
+       <div class="heading">
+          <h2>
+            <a name="class_tty_WriteStream" id="class_tty_WriteStream"></a>
+            <div class="permalink"><a href="#class_tty_WriteStream" class="permalink fas fa-link"></a></div>
+            <p>Class: tty.WriteStream</p>
+
+          </h1>
+        </div><section><p>The <code>tty.WriteStream</code> class is a subclass of <code>net.Socket</code> that represents the
+writable side of a TTY. In normal circumstances, <a href="process.html#process_process_stdout"><code>process.stdout</code></a> and
+<a href="process.html#process_process_stderr"><code>process.stderr</code></a> will be the only <code>tty.WriteStream</code> instances created for a
+Node.js process and there should be no reason to create additional instances.</p>
+<section>
+       <div class="heading">
+          <h4>
+            <a name="property_columns" id="property_columns"></a>
+            <div class="permalink"><a href="#property_columns" class="permalink fas fa-link"></a></div>
+            <p>writeStream.columns</p>
+
+          </h1>
+        </div><section><p>A <code>number</code> specifying the number of columns the TTY currently has. This property
+is updated whenever the <code>&#39;resize&#39;</code> event is emitted.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_isTTY_1" id="property_isTTY_1"></a>
+            <div class="permalink"><a href="#property_isTTY_1" class="permalink fas fa-link"></a></div>
+            <p>writeStream.isTTY</p>
+
+          </h1>
+        </div><section><p>A <code>boolean</code> that is always <code>true</code>.</p>
+</section>
+       <div class="heading">
+          <h4>
+            <a name="property_rows" id="property_rows"></a>
+            <div class="permalink"><a href="#property_rows" class="permalink fas fa-link"></a></div>
+            <p>writeStream.rows</p>
+
+          </h1>
+        </div><section><p>A <code>number</code> specifying the number of rows the TTY currently has. This property
+is updated whenever the <code>&#39;resize&#39;</code> event is emitted.</p>
+</section></section></section>
+       <div class="heading">
+          <h2>
+            <a name="method_isatty" id="method_isatty"></a>
+            <div class="permalink"><a href="#method_isatty" class="permalink fas fa-link"></a></div>
+            <p>tty.isatty(fd)</p>
+
+          </h1>
+        </div><section><p><p>The <code>tty.isatty()</code> method returns <code>true</code> if the given <code>fd</code> is associated with
+a TTY and <code>false</code> if it is not, including whenever <code>fd</code> is not a non-negative
+integer.</p>
+<!-- [end-include:tty.md] -->
+<!-- [start-include:dgram.md] --></p>
+</section>
+
+  <div class="footer">
+    <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>
+    <p>Dubbed by <img src="images/mixtape.png" title="Dubbed by mixtape." style="width:40px;position:relative;top:8px"></img> mixtape.</p>
+  </div>
+
+  </div>
+  </body>
+</html>

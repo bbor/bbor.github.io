@@ -1,0 +1,1 @@
+define([], function() { return {"children":[],"ancestry":["toc_module_performance_timing_api","toc_class_PerformanceObserver_callback_","toc_subgroup_PerformanceObserver_callback__Modules","toc_module_measuring_how_long_it_takes_to_load_dependencies"]}; });

@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_module_napi_get_last_error_info","target":"module_n_api_1.html#module_napi_get_last_error_info","text":"napi_get_last_error_info","icon":false}],"ancestry":["toc_module_n_api_1","toc_module_error_handling_1","toc_module_return_values"]}; });

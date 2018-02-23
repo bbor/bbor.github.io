@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_subgroup_new_Methods","target":"module_string_decoder.html#subgroup_new_Methods","text":"new.Methods","icon":false,"autoexpand":true,"children":true}],"ancestry":["toc_module_string_decoder","toc_class_new"]}; });

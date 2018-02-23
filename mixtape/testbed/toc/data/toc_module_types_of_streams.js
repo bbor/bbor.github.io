@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_misc_Buffering","target":"module_stream.html#misc_Buffering","text":"Buffering","icon":false},{"id":"toc_module_object_mode","target":"module_stream.html#module_object_mode","text":"Object Mode","icon":false}],"ancestry":["toc_module_stream","toc_module_types_of_streams"]}; });

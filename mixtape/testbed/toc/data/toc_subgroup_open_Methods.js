@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_method_close_7","target":"module_inspector.html#method_close_7","text":"inspector.close()","icon":false},{"id":"toc_method_url","target":"module_inspector.html#method_url","text":"inspector.url()","icon":false}],"ancestry":["toc_module_inspector","toc_method_open_1","toc_subgroup_open_Methods"]}; });

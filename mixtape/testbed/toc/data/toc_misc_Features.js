@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_misc_supported","target":"module_esm.html#misc_supported","text":"Supported","icon":false},{"id":"toc_misc_unsupported","target":"module_esm.html#misc_unsupported","text":"Unsupported","icon":false}],"ancestry":["toc_module_esm","toc_misc_Features"]}; });

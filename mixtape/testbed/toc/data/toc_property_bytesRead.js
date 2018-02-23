@@ -1,0 +1,1 @@
+define([], function() { return {"children":[],"ancestry":["toc_module_fs","toc_class_fs_ReadStream","toc_subgroup_fs_ReadStream_Properties","toc_property_bytesRead"]}; });

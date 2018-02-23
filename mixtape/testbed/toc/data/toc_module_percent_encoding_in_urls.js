@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_module_legacy_api_1","target":"module_url.html#module_legacy_api_1","text":"Legacy API","icon":false},{"id":"toc_module_whatwg_api","target":"module_url.html#module_whatwg_api","text":"WHATWG API","icon":false}],"ancestry":["toc_module_url","toc_module_percent_encoding_in_urls"]}; });
