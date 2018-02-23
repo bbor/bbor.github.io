@@ -133,7 +133,7 @@ input#find {
   }
 
   #control-strip-v-find {
-    display:block;
+    display:inline;
     background-color:#FFFFFF;
     z-index:200;
     font-size:80px;
@@ -151,7 +151,7 @@ input#find {
     line-height:0;
   }
   #control-strip-v-toc {
-    display:block;
+    display:inline;
     background-color:#FFFFFF;
     z-index:200;
     font-size:80px;
