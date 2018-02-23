@@ -55,7 +55,7 @@ Customers use the SDK to write plugins that extend the Stingray environment to w
 Writing these docs required detailed knowledge of how Stingray works internally, and coding skills in multiple languages (C/C++, JavaScript, Lua).
 Analysis, synthesis, and recapitulation.
 
-<a href="http://help.autodesk.com/view/Stingray/ENU/?contextId=SDK_HOME" target="_blank" title="link out to the Stingray help"><img src="/images/sr_sdk.png"></a>
+<a href="http://help.autodesk.com/view/Stingray/ENU/?contextId=SDK_HOME" target="_blank" title="link out to the Stingray Help"><img src="/images/sr_sdk.png"></a>
 
 # Stingray Lua, visual programming, and C API reference docs
 
