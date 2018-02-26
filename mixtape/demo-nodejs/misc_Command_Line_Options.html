@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>mixtape page for Command Line Options</title>
+    <title>Command Line Options</title>
     <script data-main="js/setup" src="js/require.js"></script>
     <link rel="stylesheet" href="fonts/fonts.css" />
     <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
@@ -13,9 +13,9 @@
   <body>
 
   <div id="control-panel">
-    <div id="control-strip-h">
-      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
-      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    <div id="control-strip-m">
+      <div id="control-strip-m-find"><div id="m-find"></div></div>
+      <div id="control-strip-m-toc"><div id="m-toc"></div></div>
     </div>
     <div id="controls">
       <div id="control-find">
@@ -26,291 +26,371 @@
       </div>
     </div>
   </div>
-  <div id="control-strip-v">
-    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
-    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  <div id="control-strip-w">
+    <div id="control-strip-w-find"></div>
+    <div id="control-strip-w-toc"></div>
   </div>
 
   <div id="content">
 
   
-       <div class="heading">
-          <h1>
-            <a name="misc_Command_Line_Options" id="misc_Command_Line_Options"></a>
-            <div class="permalink"><a href="#misc_Command_Line_Options" class="permalink fas fa-link"></a></div>
-            <p>Command Line Options</p>
+<div class="heading">
+<h1>
+  <a name="misc_Command_Line_Options" id="misc_Command_Line_Options"></a>
+  <div class="permalink"><a href="#misc_Command_Line_Options" class="permalink fas fa-link"></a></div>
+  <p>Command Line Options</p>
 
-          </h1>
-        </div><p>Node.js comes with a variety of CLI options. These options expose built-in
+</h1>
+</div>
+
+<p>Node.js comes with a variety of CLI options. These options expose built-in
 debugging, multiple ways to execute scripts, and other helpful runtime options.</p>
 <p>To view this documentation as a manual page in a terminal, run <code>man node</code>.</p>
 
-       <div class="heading">
-          <h2>
-            <a name="misc_synopsis" id="misc_synopsis"></a>
-            <div class="permalink"><a href="#misc_synopsis" class="permalink fas fa-link"></a></div>
-            <p>Synopsis</p>
 
-          </h1>
-        </div><section><p><code>node [options] [V8 options] [script.js | -e &quot;script&quot; | -] [--] [arguments]</code></p>
+<div class="heading">
+<h2>
+  <a name="misc_synopsis" id="misc_synopsis"></a>
+  <div class="permalink"><a href="#misc_synopsis" class="permalink fas fa-link"></a></div>
+  <p>Synopsis</p>
+
+</h2>
+</div>
+
+<p><code>node [options] [V8 options] [script.js | -e &quot;script&quot; | -] [--] [arguments]</code></p>
 <p><code>node debug [script.js | -e &quot;script&quot; | &lt;host&gt;:&lt;port&gt;] …</code></p>
 <p><code>node --v8-options</code></p>
 <p>Execute without arguments to start the <a href="repl.html#repl_repl">REPL</a>.</p>
 <p><em>For more info about <code>node debug</code>, please see the <a href="debugger.html">debugger</a> documentation.</em></p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="misc_options" id="misc_options"></a>
-            <div class="permalink"><a href="#misc_options" class="permalink fas fa-link"></a></div>
-            <p>Options</p>
 
-          </h1>
-        </div><section>
-       <div class="heading">
-          <h3>
-            <a name="module___v______version_" id="module___v______version_"></a>
-            <div class="permalink"><a href="#module___v______version_" class="permalink fas fa-link"></a></div>
-            <p><code>-v</code>, <code>--version</code></p>
 
-          </h1>
-        </div><section><p>Print node&#39;s version.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module___h______help_" id="module___h______help_"></a>
-            <div class="permalink"><a href="#module___h______help_" class="permalink fas fa-link"></a></div>
-            <p><code>-h</code>, <code>--help</code></p>
+<div class="heading">
+<h2>
+  <a name="misc_options" id="misc_options"></a>
+  <div class="permalink"><a href="#misc_options" class="permalink fas fa-link"></a></div>
+  <p>Options</p>
 
-          </h1>
-        </div><section><p>Print node command line options.
+</h2>
+</div>
+
+
+
+<div class="heading">
+<h3>
+  <a name="module___v______version_" id="module___v______version_"></a>
+  <div class="permalink"><a href="#module___v______version_" class="permalink fas fa-link"></a></div>
+  <p><code>-v</code>, <code>--version</code></p>
+
+</h3>
+</div>
+
+<p>Print node&#39;s version.</p>
+
+
+<div class="heading">
+<h3>
+  <a name="module___h______help_" id="module___h______help_"></a>
+  <div class="permalink"><a href="#module___h______help_" class="permalink fas fa-link"></a></div>
+  <p><code>-h</code>, <code>--help</code></p>
+
+</h3>
+</div>
+
+<p>Print node command line options.
 The output of this option is less detailed than this document.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module___e______eval__script__" id="module___e______eval__script__"></a>
-            <div class="permalink"><a href="#module___e______eval__script__" class="permalink fas fa-link"></a></div>
-            <p><code>-e</code>, <code>--eval &quot;script&quot;</code></p>
 
-          </h1>
-        </div><section><p>Evaluate the following argument as JavaScript. The modules which are
+
+<div class="heading">
+<h3>
+  <a name="module___e______eval__script__" id="module___e______eval__script__"></a>
+  <div class="permalink"><a href="#module___e______eval__script__" class="permalink fas fa-link"></a></div>
+  <p><code>-e</code>, <code>--eval &quot;script&quot;</code></p>
+
+</h3>
+</div>
+
+<p>Evaluate the following argument as JavaScript. The modules which are
 predefined in the REPL can also be used in <code>script</code>.</p>
 <p><em>Note</em>: On Windows, using <code>cmd.exe</code> a single quote will not work correctly
 because it only recognizes double <code>&quot;</code> for quoting. In Powershell or
 Git bash, both <code>&#39;</code> and <code>&quot;</code> are usable.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module___p______print__script__" id="module___p______print__script__"></a>
-            <div class="permalink"><a href="#module___p______print__script__" class="permalink fas fa-link"></a></div>
-            <p><code>-p</code>, <code>--print &quot;script&quot;</code></p>
 
-          </h1>
-        </div><section><p>Identical to <code>-e</code> but prints the result.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module___c______check_" id="module___c______check_"></a>
-            <div class="permalink"><a href="#module___c______check_" class="permalink fas fa-link"></a></div>
-            <p><code>-c</code>, <code>--check</code></p>
 
-          </h1>
-        </div><section><p>Syntax check the script without executing.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module___i______interactive_" id="module___i______interactive_"></a>
-            <div class="permalink"><a href="#module___i______interactive_" class="permalink fas fa-link"></a></div>
-            <p><code>-i</code>, <code>--interactive</code></p>
+<div class="heading">
+<h3>
+  <a name="module___p______print__script__" id="module___p______print__script__"></a>
+  <div class="permalink"><a href="#module___p______print__script__" class="permalink fas fa-link"></a></div>
+  <p><code>-p</code>, <code>--print &quot;script&quot;</code></p>
 
-          </h1>
-        </div><section><p>Opens the REPL even if stdin does not appear to be a terminal.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module___r______require_module_" id="module___r______require_module_"></a>
-            <div class="permalink"><a href="#module___r______require_module_" class="permalink fas fa-link"></a></div>
-            <p><code>-r</code>, <code>--require module</code></p>
+</h3>
+</div>
 
-          </h1>
-        </div><section><p>Preload the specified module at startup.</p>
+<p>Identical to <code>-e</code> but prints the result.</p>
+
+
+<div class="heading">
+<h3>
+  <a name="module___c______check_" id="module___c______check_"></a>
+  <div class="permalink"><a href="#module___c______check_" class="permalink fas fa-link"></a></div>
+  <p><code>-c</code>, <code>--check</code></p>
+
+</h3>
+</div>
+
+<p>Syntax check the script without executing.</p>
+
+
+<div class="heading">
+<h3>
+  <a name="module___i______interactive_" id="module___i______interactive_"></a>
+  <div class="permalink"><a href="#module___i______interactive_" class="permalink fas fa-link"></a></div>
+  <p><code>-i</code>, <code>--interactive</code></p>
+
+</h3>
+</div>
+
+<p>Opens the REPL even if stdin does not appear to be a terminal.</p>
+
+
+<div class="heading">
+<h3>
+  <a name="module___r______require_module_" id="module___r______require_module_"></a>
+  <div class="permalink"><a href="#module___r______require_module_" class="permalink fas fa-link"></a></div>
+  <p><code>-r</code>, <code>--require module</code></p>
+
+</h3>
+</div>
+
+<p>Preload the specified module at startup.</p>
 <p>Follows <code>require()</code>&#39;s module resolution
 rules. <code>module</code> may be either a path to a file, or a node module name.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____inspect___host__port__" id="module____inspect___host__port__"></a>
-            <div class="permalink"><a href="#module____inspect___host__port__" class="permalink fas fa-link"></a></div>
-            <p><code>--inspect[=[host:]port]</code></p>
 
-          </h1>
-        </div><section><p>Activate inspector on host:port. Default is 127.0.0.1:9229.</p>
+
+<div class="heading">
+<h3>
+  <a name="module____inspect___host__port__" id="module____inspect___host__port__"></a>
+  <div class="permalink"><a href="#module____inspect___host__port__" class="permalink fas fa-link"></a></div>
+  <p><code>--inspect[=[host:]port]</code></p>
+
+</h3>
+</div>
+
+<p>Activate inspector on host:port. Default is 127.0.0.1:9229.</p>
 <p>V8 inspector integration allows tools such as Chrome DevTools and IDEs to debug
 and profile Node.js instances. The tools attach to Node.js instances via a
 tcp port and communicate using the <a href="https://chromedevtools.github.io/debugger-protocol-viewer/">Chrome Debugging Protocol</a>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____inspect_brk___host__port__" id="module____inspect_brk___host__port__"></a>
-            <div class="permalink"><a href="#module____inspect_brk___host__port__" class="permalink fas fa-link"></a></div>
-            <p><code>--inspect-brk[=[host:]port]</code></p>
 
-          </h1>
-        </div><section><p>Activate inspector on host:port and break at start of user script.
+
+<div class="heading">
+<h3>
+  <a name="module____inspect_brk___host__port__" id="module____inspect_brk___host__port__"></a>
+  <div class="permalink"><a href="#module____inspect_brk___host__port__" class="permalink fas fa-link"></a></div>
+  <p><code>--inspect-brk[=[host:]port]</code></p>
+
+</h3>
+</div>
+
+<p>Activate inspector on host:port and break at start of user script.
 Default host:port is 127.0.0.1:9229.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____inspect_port__host__port_" id="module____inspect_port__host__port_"></a>
-            <div class="permalink"><a href="#module____inspect_port__host__port_" class="permalink fas fa-link"></a></div>
-            <p><code>--inspect-port=[host:]port</code></p>
 
-          </h1>
-        </div><section><p>Set the host:port to be used when the inspector is activated.
+
+<div class="heading">
+<h3>
+  <a name="module____inspect_port__host__port_" id="module____inspect_port__host__port_"></a>
+  <div class="permalink"><a href="#module____inspect_port__host__port_" class="permalink fas fa-link"></a></div>
+  <p><code>--inspect-port=[host:]port</code></p>
+
+</h3>
+</div>
+
+<p>Set the host:port to be used when the inspector is activated.
 Useful when activating the inspector by sending the <code>SIGUSR1</code> signal.</p>
 <p>Default host is 127.0.0.1.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____no_deprecation_" id="module____no_deprecation_"></a>
-            <div class="permalink"><a href="#module____no_deprecation_" class="permalink fas fa-link"></a></div>
-            <p><code>--no-deprecation</code></p>
 
-          </h1>
-        </div><section><p>Silence deprecation warnings.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____trace_deprecation_" id="module____trace_deprecation_"></a>
-            <div class="permalink"><a href="#module____trace_deprecation_" class="permalink fas fa-link"></a></div>
-            <p><code>--trace-deprecation</code></p>
 
-          </h1>
-        </div><section><p>Print stack traces for deprecations.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____throw_deprecation_" id="module____throw_deprecation_"></a>
-            <div class="permalink"><a href="#module____throw_deprecation_" class="permalink fas fa-link"></a></div>
-            <p><code>--throw-deprecation</code></p>
+<div class="heading">
+<h3>
+  <a name="module____no_deprecation_" id="module____no_deprecation_"></a>
+  <div class="permalink"><a href="#module____no_deprecation_" class="permalink fas fa-link"></a></div>
+  <p><code>--no-deprecation</code></p>
 
-          </h1>
-        </div><section><p>Throw errors for deprecations.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____pending_deprecation_" id="module____pending_deprecation_"></a>
-            <div class="permalink"><a href="#module____pending_deprecation_" class="permalink fas fa-link"></a></div>
-            <p><code>--pending-deprecation</code></p>
+</h3>
+</div>
 
-          </h1>
-        </div><section><p>Emit pending deprecation warnings.</p>
+<p>Silence deprecation warnings.</p>
+
+
+<div class="heading">
+<h3>
+  <a name="module____trace_deprecation_" id="module____trace_deprecation_"></a>
+  <div class="permalink"><a href="#module____trace_deprecation_" class="permalink fas fa-link"></a></div>
+  <p><code>--trace-deprecation</code></p>
+
+</h3>
+</div>
+
+<p>Print stack traces for deprecations.</p>
+
+
+<div class="heading">
+<h3>
+  <a name="module____throw_deprecation_" id="module____throw_deprecation_"></a>
+  <div class="permalink"><a href="#module____throw_deprecation_" class="permalink fas fa-link"></a></div>
+  <p><code>--throw-deprecation</code></p>
+
+</h3>
+</div>
+
+<p>Throw errors for deprecations.</p>
+
+
+<div class="heading">
+<h3>
+  <a name="module____pending_deprecation_" id="module____pending_deprecation_"></a>
+  <div class="permalink"><a href="#module____pending_deprecation_" class="permalink fas fa-link"></a></div>
+  <p><code>--pending-deprecation</code></p>
+
+</h3>
+</div>
+
+<p>Emit pending deprecation warnings.</p>
 <p><em>Note</em>: Pending deprecations are generally identical to a runtime deprecation
 with the notable exception that they are turned <em>off</em> by default and will not
 be emitted unless either the <code>--pending-deprecation</code> command line flag, or the
 <code>NODE_PENDING_DEPRECATION=1</code> environment variable, is set. Pending deprecations
 are used to provide a kind of selective &quot;early warning&quot; mechanism that
 developers may leverage to detect deprecated API usage.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____no_warnings_" id="module____no_warnings_"></a>
-            <div class="permalink"><a href="#module____no_warnings_" class="permalink fas fa-link"></a></div>
-            <p><code>--no-warnings</code></p>
 
-          </h1>
-        </div><section><p>Silence all process warnings (including deprecations).</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____abort_on_uncaught_exception_" id="module____abort_on_uncaught_exception_"></a>
-            <div class="permalink"><a href="#module____abort_on_uncaught_exception_" class="permalink fas fa-link"></a></div>
-            <p><code>--abort-on-uncaught-exception</code></p>
 
-          </h1>
-        </div><section><p>Aborting instead of exiting causes a core file to be generated for post-mortem
+<div class="heading">
+<h3>
+  <a name="module____no_warnings_" id="module____no_warnings_"></a>
+  <div class="permalink"><a href="#module____no_warnings_" class="permalink fas fa-link"></a></div>
+  <p><code>--no-warnings</code></p>
+
+</h3>
+</div>
+
+<p>Silence all process warnings (including deprecations).</p>
+
+
+<div class="heading">
+<h3>
+  <a name="module____abort_on_uncaught_exception_" id="module____abort_on_uncaught_exception_"></a>
+  <div class="permalink"><a href="#module____abort_on_uncaught_exception_" class="permalink fas fa-link"></a></div>
+  <p><code>--abort-on-uncaught-exception</code></p>
+
+</h3>
+</div>
+
+<p>Aborting instead of exiting causes a core file to be generated for post-mortem
 analysis using a debugger (such as <code>lldb</code>, <code>gdb</code>, and <code>mdb</code>).</p>
 <p><em>Note</em>: If this flag is passed, the behavior can still be set to not abort
 through <a href="process.html#process_process_setuncaughtexceptioncapturecallback_fn"><code>process.setUncaughtExceptionCaptureCallback()</code></a> (and through usage
 of the <code>domain</code> module that uses it).</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____trace_warnings_" id="module____trace_warnings_"></a>
-            <div class="permalink"><a href="#module____trace_warnings_" class="permalink fas fa-link"></a></div>
-            <p><code>--trace-warnings</code></p>
 
-          </h1>
-        </div><section><p>Print stack traces for process warnings (including deprecations).</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____redirect_warnings_file_" id="module____redirect_warnings_file_"></a>
-            <div class="permalink"><a href="#module____redirect_warnings_file_" class="permalink fas fa-link"></a></div>
-            <p><code>--redirect-warnings=file</code></p>
 
-          </h1>
-        </div><section><p>Write process warnings to the given file instead of printing to stderr. The
+<div class="heading">
+<h3>
+  <a name="module____trace_warnings_" id="module____trace_warnings_"></a>
+  <div class="permalink"><a href="#module____trace_warnings_" class="permalink fas fa-link"></a></div>
+  <p><code>--trace-warnings</code></p>
+
+</h3>
+</div>
+
+<p>Print stack traces for process warnings (including deprecations).</p>
+
+
+<div class="heading">
+<h3>
+  <a name="module____redirect_warnings_file_" id="module____redirect_warnings_file_"></a>
+  <div class="permalink"><a href="#module____redirect_warnings_file_" class="permalink fas fa-link"></a></div>
+  <p><code>--redirect-warnings=file</code></p>
+
+</h3>
+</div>
+
+<p>Write process warnings to the given file instead of printing to stderr. The
 file will be created if it does not exist, and will be appended to if it does.
 If an error occurs while attempting to write the warning to the file, the
 warning will be written to stderr instead.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____trace_sync_io_" id="module____trace_sync_io_"></a>
-            <div class="permalink"><a href="#module____trace_sync_io_" class="permalink fas fa-link"></a></div>
-            <p><code>--trace-sync-io</code></p>
 
-          </h1>
-        </div><section><p>Prints a stack trace whenever synchronous I/O is detected after the first turn
+
+<div class="heading">
+<h3>
+  <a name="module____trace_sync_io_" id="module____trace_sync_io_"></a>
+  <div class="permalink"><a href="#module____trace_sync_io_" class="permalink fas fa-link"></a></div>
+  <p><code>--trace-sync-io</code></p>
+
+</h3>
+</div>
+
+<p>Prints a stack trace whenever synchronous I/O is detected after the first turn
 of the event loop.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____no_force_async_hooks_checks_" id="module____no_force_async_hooks_checks_"></a>
-            <div class="permalink"><a href="#module____no_force_async_hooks_checks_" class="permalink fas fa-link"></a></div>
-            <p><code>--no-force-async-hooks-checks</code></p>
 
-          </h1>
-        </div><section><p>Disables runtime checks for <code>async_hooks</code>. These will still be enabled
+
+<div class="heading">
+<h3>
+  <a name="module____no_force_async_hooks_checks_" id="module____no_force_async_hooks_checks_"></a>
+  <div class="permalink"><a href="#module____no_force_async_hooks_checks_" class="permalink fas fa-link"></a></div>
+  <p><code>--no-force-async-hooks-checks</code></p>
+
+</h3>
+</div>
+
+<p>Disables runtime checks for <code>async_hooks</code>. These will still be enabled
 dynamically when <code>async_hooks</code> is enabled.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____trace_events_enabled_" id="module____trace_events_enabled_"></a>
-            <div class="permalink"><a href="#module____trace_events_enabled_" class="permalink fas fa-link"></a></div>
-            <p><code>--trace-events-enabled</code></p>
 
-          </h1>
-        </div><section><p>Enables the collection of trace event tracing information.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____trace_event_categories_" id="module____trace_event_categories_"></a>
-            <div class="permalink"><a href="#module____trace_event_categories_" class="permalink fas fa-link"></a></div>
-            <p><code>--trace-event-categories</code></p>
 
-          </h1>
-        </div><section><p>A comma separated list of categories that should be traced when trace event
+<div class="heading">
+<h3>
+  <a name="module____trace_events_enabled_" id="module____trace_events_enabled_"></a>
+  <div class="permalink"><a href="#module____trace_events_enabled_" class="permalink fas fa-link"></a></div>
+  <p><code>--trace-events-enabled</code></p>
+
+</h3>
+</div>
+
+<p>Enables the collection of trace event tracing information.</p>
+
+
+<div class="heading">
+<h3>
+  <a name="module____trace_event_categories_" id="module____trace_event_categories_"></a>
+  <div class="permalink"><a href="#module____trace_event_categories_" class="permalink fas fa-link"></a></div>
+  <p><code>--trace-event-categories</code></p>
+
+</h3>
+</div>
+
+<p>A comma separated list of categories that should be traced when trace event
 tracing is enabled using <code>--trace-events-enabled</code>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____zero_fill_buffers_" id="module____zero_fill_buffers_"></a>
-            <div class="permalink"><a href="#module____zero_fill_buffers_" class="permalink fas fa-link"></a></div>
-            <p><code>--zero-fill-buffers</code></p>
 
-          </h1>
-        </div><section><p>Automatically zero-fills all newly allocated <a href="buffer.html#buffer_buffer">Buffer</a> and <a href="buffer.html#buffer_class_slowbuffer">SlowBuffer</a>
+
+<div class="heading">
+<h3>
+  <a name="module____zero_fill_buffers_" id="module____zero_fill_buffers_"></a>
+  <div class="permalink"><a href="#module____zero_fill_buffers_" class="permalink fas fa-link"></a></div>
+  <p><code>--zero-fill-buffers</code></p>
+
+</h3>
+</div>
+
+<p>Automatically zero-fills all newly allocated <a href="buffer.html#buffer_buffer">Buffer</a> and <a href="buffer.html#buffer_class_slowbuffer">SlowBuffer</a>
 instances.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____preserve_symlinks_" id="module____preserve_symlinks_"></a>
-            <div class="permalink"><a href="#module____preserve_symlinks_" class="permalink fas fa-link"></a></div>
-            <p><code>--preserve-symlinks</code></p>
 
-          </h1>
-        </div><section><p>Instructs the module loader to preserve symbolic links when resolving and
+
+<div class="heading">
+<h3>
+  <a name="module____preserve_symlinks_" id="module____preserve_symlinks_"></a>
+  <div class="permalink"><a href="#module____preserve_symlinks_" class="permalink fas fa-link"></a></div>
+  <p><code>--preserve-symlinks</code></p>
+
+</h3>
+</div>
+
+<p>Instructs the module loader to preserve symbolic links when resolving and
 caching modules.</p>
 <p>By default, when Node.js loads a module from a path that is symbolically linked
 to a different on-disk location, Node.js will dereference the link and use the
@@ -339,86 +419,110 @@ Specifically, symbolically linked <em>native</em> modules can fail to load if th
 are linked from more than one location in the dependency tree (Node.js would
 see those as two separate modules and would attempt to load the module multiple
 times, causing an exception to be thrown).</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____track_heap_objects_" id="module____track_heap_objects_"></a>
-            <div class="permalink"><a href="#module____track_heap_objects_" class="permalink fas fa-link"></a></div>
-            <p><code>--track-heap-objects</code></p>
 
-          </h1>
-        </div><section><p>Track heap object allocations for heap snapshots.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____prof_process_" id="module____prof_process_"></a>
-            <div class="permalink"><a href="#module____prof_process_" class="permalink fas fa-link"></a></div>
-            <p><code>--prof-process</code></p>
 
-          </h1>
-        </div><section><p>Process V8 profiler output generated using the V8 option <code>--prof</code>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____v8_options_" id="module____v8_options_"></a>
-            <div class="permalink"><a href="#module____v8_options_" class="permalink fas fa-link"></a></div>
-            <p><code>--v8-options</code></p>
+<div class="heading">
+<h3>
+  <a name="module____track_heap_objects_" id="module____track_heap_objects_"></a>
+  <div class="permalink"><a href="#module____track_heap_objects_" class="permalink fas fa-link"></a></div>
+  <p><code>--track-heap-objects</code></p>
 
-          </h1>
-        </div><section><p>Print V8 command line options.</p>
+</h3>
+</div>
+
+<p>Track heap object allocations for heap snapshots.</p>
+
+
+<div class="heading">
+<h3>
+  <a name="module____prof_process_" id="module____prof_process_"></a>
+  <div class="permalink"><a href="#module____prof_process_" class="permalink fas fa-link"></a></div>
+  <p><code>--prof-process</code></p>
+
+</h3>
+</div>
+
+<p>Process V8 profiler output generated using the V8 option <code>--prof</code>.</p>
+
+
+<div class="heading">
+<h3>
+  <a name="module____v8_options_" id="module____v8_options_"></a>
+  <div class="permalink"><a href="#module____v8_options_" class="permalink fas fa-link"></a></div>
+  <p><code>--v8-options</code></p>
+
+</h3>
+</div>
+
+<p>Print V8 command line options.</p>
 <p><em>Note</em>: V8 options allow words to be separated by both dashes (<code>-</code>) or
 underscores (<code>_</code>).</p>
 <p>For example, <code>--stack-trace-limit</code> is equivalent to <code>--stack_trace_limit</code>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____tls_cipher_list_list_" id="module____tls_cipher_list_list_"></a>
-            <div class="permalink"><a href="#module____tls_cipher_list_list_" class="permalink fas fa-link"></a></div>
-            <p><code>--tls-cipher-list=list</code></p>
 
-          </h1>
-        </div><section><p>Specify an alternative default TLS cipher list. (Requires Node.js to be built
+
+<div class="heading">
+<h3>
+  <a name="module____tls_cipher_list_list_" id="module____tls_cipher_list_list_"></a>
+  <div class="permalink"><a href="#module____tls_cipher_list_list_" class="permalink fas fa-link"></a></div>
+  <p><code>--tls-cipher-list=list</code></p>
+
+</h3>
+</div>
+
+<p>Specify an alternative default TLS cipher list. (Requires Node.js to be built
 with crypto support. (Default))</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____enable_fips_" id="module____enable_fips_"></a>
-            <div class="permalink"><a href="#module____enable_fips_" class="permalink fas fa-link"></a></div>
-            <p><code>--enable-fips</code></p>
 
-          </h1>
-        </div><section><p>Enable FIPS-compliant crypto at startup. (Requires Node.js to be built with
+
+<div class="heading">
+<h3>
+  <a name="module____enable_fips_" id="module____enable_fips_"></a>
+  <div class="permalink"><a href="#module____enable_fips_" class="permalink fas fa-link"></a></div>
+  <p><code>--enable-fips</code></p>
+
+</h3>
+</div>
+
+<p>Enable FIPS-compliant crypto at startup. (Requires Node.js to be built with
 <code>./configure --openssl-fips</code>)</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____force_fips_" id="module____force_fips_"></a>
-            <div class="permalink"><a href="#module____force_fips_" class="permalink fas fa-link"></a></div>
-            <p><code>--force-fips</code></p>
 
-          </h1>
-        </div><section><p>Force FIPS-compliant crypto on startup. (Cannot be disabled from script code.)
+
+<div class="heading">
+<h3>
+  <a name="module____force_fips_" id="module____force_fips_"></a>
+  <div class="permalink"><a href="#module____force_fips_" class="permalink fas fa-link"></a></div>
+  <p><code>--force-fips</code></p>
+
+</h3>
+</div>
+
+<p>Force FIPS-compliant crypto on startup. (Cannot be disabled from script code.)
 (Same requirements as <code>--enable-fips</code>)</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____openssl_config_file_" id="module____openssl_config_file_"></a>
-            <div class="permalink"><a href="#module____openssl_config_file_" class="permalink fas fa-link"></a></div>
-            <p><code>--openssl-config=file</code></p>
 
-          </h1>
-        </div><section><p>Load an OpenSSL configuration file on startup. Among other uses, this can be
+
+<div class="heading">
+<h3>
+  <a name="module____openssl_config_file_" id="module____openssl_config_file_"></a>
+  <div class="permalink"><a href="#module____openssl_config_file_" class="permalink fas fa-link"></a></div>
+  <p><code>--openssl-config=file</code></p>
+
+</h3>
+</div>
+
+<p>Load an OpenSSL configuration file on startup. Among other uses, this can be
 used to enable FIPS-compliant crypto if Node.js is built with
 <code>./configure --openssl-fips</code>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____use_openssl_ca______use_bundled_ca_" id="module____use_openssl_ca______use_bundled_ca_"></a>
-            <div class="permalink"><a href="#module____use_openssl_ca______use_bundled_ca_" class="permalink fas fa-link"></a></div>
-            <p><code>--use-openssl-ca</code>, <code>--use-bundled-ca</code></p>
 
-          </h1>
-        </div><section><p>Use OpenSSL&#39;s default CA store or use bundled Mozilla CA store as supplied by
+
+<div class="heading">
+<h3>
+  <a name="module____use_openssl_ca______use_bundled_ca_" id="module____use_openssl_ca______use_bundled_ca_"></a>
+  <div class="permalink"><a href="#module____use_openssl_ca______use_bundled_ca_" class="permalink fas fa-link"></a></div>
+  <p><code>--use-openssl-ca</code>, <code>--use-bundled-ca</code></p>
+
+</h3>
+</div>
+
+<p>Use OpenSSL&#39;s default CA store or use bundled Mozilla CA store as supplied by
 current Node.js version. The default store is selectable at build-time.</p>
 <p>Using OpenSSL store allows for external modifications of the store. For most
 Linux and BSD distributions, this store is maintained by the distribution
@@ -428,101 +532,131 @@ environment variables.</p>
 <p>The bundled CA store, as supplied by Node.js, is a snapshot of Mozilla CA store
 that is fixed at release time. It is identical on all supported platforms.</p>
 <p>See <code>SSL_CERT_DIR</code> and <code>SSL_CERT_FILE</code>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____icu_data_dir_file_" id="module____icu_data_dir_file_"></a>
-            <div class="permalink"><a href="#module____icu_data_dir_file_" class="permalink fas fa-link"></a></div>
-            <p><code>--icu-data-dir=file</code></p>
 
-          </h1>
-        </div><section><p>Specify ICU data load path. (overrides <code>NODE_ICU_DATA</code>)</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module____" id="module____"></a>
-            <div class="permalink"><a href="#module____" class="permalink fas fa-link"></a></div>
-            <p><code>-</code></p>
 
-          </h1>
-        </div><section><p>Alias for stdin, analogous to the use of - in other command line utilities,
+<div class="heading">
+<h3>
+  <a name="module____icu_data_dir_file_" id="module____icu_data_dir_file_"></a>
+  <div class="permalink"><a href="#module____icu_data_dir_file_" class="permalink fas fa-link"></a></div>
+  <p><code>--icu-data-dir=file</code></p>
+
+</h3>
+</div>
+
+<p>Specify ICU data load path. (overrides <code>NODE_ICU_DATA</code>)</p>
+
+
+<div class="heading">
+<h3>
+  <a name="module____" id="module____"></a>
+  <div class="permalink"><a href="#module____" class="permalink fas fa-link"></a></div>
+  <p><code>-</code></p>
+
+</h3>
+</div>
+
+<p>Alias for stdin, analogous to the use of - in other command line utilities,
 meaning that the script will be read from stdin, and the rest of the options
 are passed to that script.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_____" id="module_____"></a>
-            <div class="permalink"><a href="#module_____" class="permalink fas fa-link"></a></div>
-            <p><code>--</code></p>
 
-          </h1>
-        </div><section><p>Indicate the end of node options. Pass the rest of the arguments to the script.
+
+<div class="heading">
+<h3>
+  <a name="module_____" id="module_____"></a>
+  <div class="permalink"><a href="#module_____" class="permalink fas fa-link"></a></div>
+  <p><code>--</code></p>
+
+</h3>
+</div>
+
+<p>Indicate the end of node options. Pass the rest of the arguments to the script.
 If no script filename or eval/print script is supplied prior to this, then
 the next argument will be used as a script filename.</p>
-</section></section>
-       <div class="heading">
-          <h2>
-            <a name="misc_environment_variables" id="misc_environment_variables"></a>
-            <div class="permalink"><a href="#misc_environment_variables" class="permalink fas fa-link"></a></div>
-            <p>Environment Variables</p>
 
-          </h1>
-        </div><section>
-       <div class="heading">
-          <h3>
-            <a name="module__node_debug_module_____" id="module__node_debug_module_____"></a>
-            <div class="permalink"><a href="#module__node_debug_module_____" class="permalink fas fa-link"></a></div>
-            <p><code>NODE_DEBUG=module[,…]</code></p>
 
-          </h1>
-        </div><section><p><code>&#39;,&#39;</code>-separated list of core modules that should print debug information.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module__node_path_path_____" id="module__node_path_path_____"></a>
-            <div class="permalink"><a href="#module__node_path_path_____" class="permalink fas fa-link"></a></div>
-            <p><code>NODE_PATH=path[:…]</code></p>
+<div class="heading">
+<h2>
+  <a name="misc_environment_variables" id="misc_environment_variables"></a>
+  <div class="permalink"><a href="#misc_environment_variables" class="permalink fas fa-link"></a></div>
+  <p>Environment Variables</p>
 
-          </h1>
-        </div><section><p><code>&#39;:&#39;</code>-separated list of directories prefixed to the module search path.</p>
+</h2>
+</div>
+
+
+
+<div class="heading">
+<h3>
+  <a name="module__node_debug_module_____" id="module__node_debug_module_____"></a>
+  <div class="permalink"><a href="#module__node_debug_module_____" class="permalink fas fa-link"></a></div>
+  <p><code>NODE_DEBUG=module[,…]</code></p>
+
+</h3>
+</div>
+
+<p><code>&#39;,&#39;</code>-separated list of core modules that should print debug information.</p>
+
+
+<div class="heading">
+<h3>
+  <a name="module__node_path_path_____" id="module__node_path_path_____"></a>
+  <div class="permalink"><a href="#module__node_path_path_____" class="permalink fas fa-link"></a></div>
+  <p><code>NODE_PATH=path[:…]</code></p>
+
+</h3>
+</div>
+
+<p><code>&#39;:&#39;</code>-separated list of directories prefixed to the module search path.</p>
 <p><em>Note</em>: On Windows, this is a <code>&#39;;&#39;</code>-separated list instead.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module__node_disable_colors_1_" id="module__node_disable_colors_1_"></a>
-            <div class="permalink"><a href="#module__node_disable_colors_1_" class="permalink fas fa-link"></a></div>
-            <p><code>NODE_DISABLE_COLORS=1</code></p>
 
-          </h1>
-        </div><section><p>When set to <code>1</code> colors will not be used in the REPL.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module__node_icu_data_file_" id="module__node_icu_data_file_"></a>
-            <div class="permalink"><a href="#module__node_icu_data_file_" class="permalink fas fa-link"></a></div>
-            <p><code>NODE_ICU_DATA=file</code></p>
 
-          </h1>
-        </div><section><p>Data path for ICU (Intl object) data. Will extend linked-in data when compiled
+<div class="heading">
+<h3>
+  <a name="module__node_disable_colors_1_" id="module__node_disable_colors_1_"></a>
+  <div class="permalink"><a href="#module__node_disable_colors_1_" class="permalink fas fa-link"></a></div>
+  <p><code>NODE_DISABLE_COLORS=1</code></p>
+
+</h3>
+</div>
+
+<p>When set to <code>1</code> colors will not be used in the REPL.</p>
+
+
+<div class="heading">
+<h3>
+  <a name="module__node_icu_data_file_" id="module__node_icu_data_file_"></a>
+  <div class="permalink"><a href="#module__node_icu_data_file_" class="permalink fas fa-link"></a></div>
+  <p><code>NODE_ICU_DATA=file</code></p>
+
+</h3>
+</div>
+
+<p>Data path for ICU (Intl object) data. Will extend linked-in data when compiled
 with small-icu support.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module__node_no_warnings_1_" id="module__node_no_warnings_1_"></a>
-            <div class="permalink"><a href="#module__node_no_warnings_1_" class="permalink fas fa-link"></a></div>
-            <p><code>NODE_NO_WARNINGS=1</code></p>
 
-          </h1>
-        </div><section><p>When set to <code>1</code>, process warnings are silenced.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module__node_options_options____" id="module__node_options_options____"></a>
-            <div class="permalink"><a href="#module__node_options_options____" class="permalink fas fa-link"></a></div>
-            <p><code>NODE_OPTIONS=options...</code></p>
 
-          </h1>
-        </div><section><p><p>A space-separated list of command line options. <code>options...</code> are interpreted as
+<div class="heading">
+<h3>
+  <a name="module__node_no_warnings_1_" id="module__node_no_warnings_1_"></a>
+  <div class="permalink"><a href="#module__node_no_warnings_1_" class="permalink fas fa-link"></a></div>
+  <p><code>NODE_NO_WARNINGS=1</code></p>
+
+</h3>
+</div>
+
+<p>When set to <code>1</code>, process warnings are silenced.</p>
+
+
+<div class="heading">
+<h3>
+  <a name="module__node_options_options____" id="module__node_options_options____"></a>
+  <div class="permalink"><a href="#module__node_options_options____" class="permalink fas fa-link"></a></div>
+  <p><code>NODE_OPTIONS=options...</code></p>
+
+</h3>
+</div>
+
+<p><p>A space-separated list of command line options. <code>options...</code> are interpreted as
 if they had been specified on the command line before the actual command line
 (so they can be overridden).  Node will exit with an error if an option that is
 not allowed in the environment is used, such as <code>-p</code> or a script file.</p></p>
@@ -556,120 +690,149 @@ not allowed in the environment is used, such as <code>-p</code> or a script file
 <ul>
 <li><code>--abort-on-uncaught-exception</code></li>
 <li><code>--max-old-space-size</code></li>
+<li><code>--perf-basic-prof</code></li>
+<li><code>--perf-prof</code></li>
 <li><code>--stack-trace-limit</code></li>
 </ul>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module__node_pending_deprecation_1_" id="module__node_pending_deprecation_1_"></a>
-            <div class="permalink"><a href="#module__node_pending_deprecation_1_" class="permalink fas fa-link"></a></div>
-            <p><code>NODE_PENDING_DEPRECATION=1</code></p>
 
-          </h1>
-        </div><section><p>When set to <code>1</code>, emit pending deprecation warnings.</p>
+
+<div class="heading">
+<h3>
+  <a name="module__node_pending_deprecation_1_" id="module__node_pending_deprecation_1_"></a>
+  <div class="permalink"><a href="#module__node_pending_deprecation_1_" class="permalink fas fa-link"></a></div>
+  <p><code>NODE_PENDING_DEPRECATION=1</code></p>
+
+</h3>
+</div>
+
+<p>When set to <code>1</code>, emit pending deprecation warnings.</p>
 <p><em>Note</em>: Pending deprecations are generally identical to a runtime deprecation
 with the notable exception that they are turned <em>off</em> by default and will not
 be emitted unless either the <code>--pending-deprecation</code> command line flag, or the
 <code>NODE_PENDING_DEPRECATION=1</code> environment variable, is set. Pending deprecations
 are used to provide a kind of selective &quot;early warning&quot; mechanism that
 developers may leverage to detect deprecated API usage.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module__node_preserve_symlinks_1_" id="module__node_preserve_symlinks_1_"></a>
-            <div class="permalink"><a href="#module__node_preserve_symlinks_1_" class="permalink fas fa-link"></a></div>
-            <p><code>NODE_PRESERVE_SYMLINKS=1</code></p>
 
-          </h1>
-        </div><section><p>When set to <code>1</code>, instructs the module loader to preserve symbolic links when
+
+<div class="heading">
+<h3>
+  <a name="module__node_preserve_symlinks_1_" id="module__node_preserve_symlinks_1_"></a>
+  <div class="permalink"><a href="#module__node_preserve_symlinks_1_" class="permalink fas fa-link"></a></div>
+  <p><code>NODE_PRESERVE_SYMLINKS=1</code></p>
+
+</h3>
+</div>
+
+<p>When set to <code>1</code>, instructs the module loader to preserve symbolic links when
 resolving and caching modules.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module__node_repl_history_file_" id="module__node_repl_history_file_"></a>
-            <div class="permalink"><a href="#module__node_repl_history_file_" class="permalink fas fa-link"></a></div>
-            <p><code>NODE_REPL_HISTORY=file</code></p>
 
-          </h1>
-        </div><section><p>Path to the file used to store the persistent REPL history. The default path is
+
+<div class="heading">
+<h3>
+  <a name="module__node_repl_history_file_" id="module__node_repl_history_file_"></a>
+  <div class="permalink"><a href="#module__node_repl_history_file_" class="permalink fas fa-link"></a></div>
+  <p><code>NODE_REPL_HISTORY=file</code></p>
+
+</h3>
+</div>
+
+<p>Path to the file used to store the persistent REPL history. The default path is
 <code>~/.node_repl_history</code>, which is overridden by this variable. Setting the value
 to an empty string (<code>&quot;&quot;</code> or <code>&quot; &quot;</code>) disables persistent REPL history.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module__node_extra_ca_certs_file_" id="module__node_extra_ca_certs_file_"></a>
-            <div class="permalink"><a href="#module__node_extra_ca_certs_file_" class="permalink fas fa-link"></a></div>
-            <p><code>NODE_EXTRA_CA_CERTS=file</code></p>
 
-          </h1>
-        </div><section><p>When set, the well known &quot;root&quot; CAs (like VeriSign) will be extended with the
+
+<div class="heading">
+<h3>
+  <a name="module__node_extra_ca_certs_file_" id="module__node_extra_ca_certs_file_"></a>
+  <div class="permalink"><a href="#module__node_extra_ca_certs_file_" class="permalink fas fa-link"></a></div>
+  <p><code>NODE_EXTRA_CA_CERTS=file</code></p>
+
+</h3>
+</div>
+
+<p>When set, the well known &quot;root&quot; CAs (like VeriSign) will be extended with the
 extra certificates in <code>file</code>. The file should consist of one or more trusted
 certificates in PEM format. A message will be emitted (once) with
 <a href="process.html#process_process_emitwarning_warning_type_code_ctor"><code>process.emitWarning()</code></a> if the file is missing or
 malformed, but any errors are otherwise ignored.</p>
 <p>Note that neither the well known nor extra certificates are used when the <code>ca</code>
 options property is explicitly specified for a TLS or HTTPS client or server.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module__openssl_conf_file_" id="module__openssl_conf_file_"></a>
-            <div class="permalink"><a href="#module__openssl_conf_file_" class="permalink fas fa-link"></a></div>
-            <p><code>OPENSSL_CONF=file</code></p>
 
-          </h1>
-        </div><section><p>Load an OpenSSL configuration file on startup. Among other uses, this can be
+
+<div class="heading">
+<h3>
+  <a name="module__openssl_conf_file_" id="module__openssl_conf_file_"></a>
+  <div class="permalink"><a href="#module__openssl_conf_file_" class="permalink fas fa-link"></a></div>
+  <p><code>OPENSSL_CONF=file</code></p>
+
+</h3>
+</div>
+
+<p>Load an OpenSSL configuration file on startup. Among other uses, this can be
 used to enable FIPS-compliant crypto if Node.js is built with <code>./configure
 --openssl-fips</code>.</p>
 <p>If the <a href="#cli_openssl_config_file"><code>--openssl-config</code></a> command line option is used, the environment
 variable is ignored.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module__ssl_cert_dir_dir_" id="module__ssl_cert_dir_dir_"></a>
-            <div class="permalink"><a href="#module__ssl_cert_dir_dir_" class="permalink fas fa-link"></a></div>
-            <p><code>SSL_CERT_DIR=dir</code></p>
 
-          </h1>
-        </div><section><p>If <code>--use-openssl-ca</code> is enabled, this overrides and sets OpenSSL&#39;s directory
+
+<div class="heading">
+<h3>
+  <a name="module__ssl_cert_dir_dir_" id="module__ssl_cert_dir_dir_"></a>
+  <div class="permalink"><a href="#module__ssl_cert_dir_dir_" class="permalink fas fa-link"></a></div>
+  <p><code>SSL_CERT_DIR=dir</code></p>
+
+</h3>
+</div>
+
+<p>If <code>--use-openssl-ca</code> is enabled, this overrides and sets OpenSSL&#39;s directory
 containing trusted certificates.</p>
 <p><em>Note</em>: Be aware that unless the child environment is explicitly set, this
 environment variable will be inherited by any child processes, and if they use
 OpenSSL, it may cause them to trust the same CAs as node.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module__ssl_cert_file_file_" id="module__ssl_cert_file_file_"></a>
-            <div class="permalink"><a href="#module__ssl_cert_file_file_" class="permalink fas fa-link"></a></div>
-            <p><code>SSL_CERT_FILE=file</code></p>
 
-          </h1>
-        </div><section><p>If <code>--use-openssl-ca</code> is enabled, this overrides and sets OpenSSL&#39;s file
+
+<div class="heading">
+<h3>
+  <a name="module__ssl_cert_file_file_" id="module__ssl_cert_file_file_"></a>
+  <div class="permalink"><a href="#module__ssl_cert_file_file_" class="permalink fas fa-link"></a></div>
+  <p><code>SSL_CERT_FILE=file</code></p>
+
+</h3>
+</div>
+
+<p>If <code>--use-openssl-ca</code> is enabled, this overrides and sets OpenSSL&#39;s file
 containing trusted certificates.</p>
 <p><em>Note</em>: Be aware that unless the child environment is explicitly set, this
 environment variable will be inherited by any child processes, and if they use
 OpenSSL, it may cause them to trust the same CAs as node.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module__node_redirect_warnings_file_" id="module__node_redirect_warnings_file_"></a>
-            <div class="permalink"><a href="#module__node_redirect_warnings_file_" class="permalink fas fa-link"></a></div>
-            <p><code>NODE_REDIRECT_WARNINGS=file</code></p>
 
-          </h1>
-        </div><section><p>When set, process warnings will be emitted to the given file instead of
+
+<div class="heading">
+<h3>
+  <a name="module__node_redirect_warnings_file_" id="module__node_redirect_warnings_file_"></a>
+  <div class="permalink"><a href="#module__node_redirect_warnings_file_" class="permalink fas fa-link"></a></div>
+  <p><code>NODE_REDIRECT_WARNINGS=file</code></p>
+
+</h3>
+</div>
+
+<p>When set, process warnings will be emitted to the given file instead of
 printing to stderr. The file will be created if it does not exist, and will be
 appended to if it does. If an error occurs while attempting to write the
 warning to the file, the warning will be written to stderr instead. This is
 equivalent to using the <code>--redirect-warnings=file</code> command-line flag.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module__uv_threadpool_size_size_" id="module__uv_threadpool_size_size_"></a>
-            <div class="permalink"><a href="#module__uv_threadpool_size_size_" class="permalink fas fa-link"></a></div>
-            <p><code>UV_THREADPOOL_SIZE=size</code></p>
 
-          </h1>
-        </div><section><p><p>Set the number of threads used in libuv&#39;s threadpool to <code>size</code> threads.</p></p>
+
+<div class="heading">
+<h3>
+  <a name="module__uv_threadpool_size_size_" id="module__uv_threadpool_size_size_"></a>
+  <div class="permalink"><a href="#module__uv_threadpool_size_size_" class="permalink fas fa-link"></a></div>
+  <p><code>UV_THREADPOOL_SIZE=size</code></p>
+
+</h3>
+</div>
+
+<p><p>Set the number of threads used in libuv&#39;s threadpool to <code>size</code> threads.</p></p>
 <p><p>Asynchronous system APIs are used by Node.js whenever possible, but where they
 do not exist, libuv&#39;s threadpool is used to create asynchronous node APIs based
 on synchronous system APIs. Node.js APIs that use the threadpool are:</p></p>
@@ -691,7 +854,8 @@ greater than <code>4</code> (its current default value).  For more information, 
 <a href="http://docs.libuv.org/en/latest/threadpool.html">libuv threadpool documentation</a>.</p>
 <!-- [end-include:cli.md] -->
 <!-- [start-include:console.md] --></p>
-</section></section>
+
+
 
   <div class="footer">
     <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>mixtape page for child_process</title>
+    <title>Child Process</title>
     <script data-main="js/setup" src="js/require.js"></script>
     <link rel="stylesheet" href="fonts/fonts.css" />
     <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
@@ -13,9 +13,9 @@
   <body>
 
   <div id="control-panel">
-    <div id="control-strip-h">
-      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
-      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    <div id="control-strip-m">
+      <div id="control-strip-m-find"><div id="m-find"></div></div>
+      <div id="control-strip-m-toc"><div id="m-toc"></div></div>
     </div>
     <div id="controls">
       <div id="control-find">
@@ -26,22 +26,24 @@
       </div>
     </div>
   </div>
-  <div id="control-strip-v">
-    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
-    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  <div id="control-strip-w">
+    <div id="control-strip-w-find"></div>
+    <div id="control-strip-w-toc"></div>
   </div>
 
   <div id="content">
 
   
-       <div class="heading">
-          <h1>
-            <a name="module_child_process" id="module_child_process"></a>
-            <div class="permalink"><a href="#module_child_process" class="permalink fas fa-link"></a></div>
-            <p>Child Process</p>
+<div class="heading">
+<h1>
+  <a name="module_child_process" id="module_child_process"></a>
+  <div class="permalink"><a href="#module_child_process" class="permalink fas fa-link"></a></div>
+  <p>Child Process</p>
 
-          </h1>
-        </div><p>The <code>child_process</code> module provides the ability to spawn child processes in
+</h1>
+</div>
+
+<p>The <code>child_process</code> module provides the ability to spawn child processes in
 a manner that is similar, but not identical, to popen(3). This capability
 is primarily provided by the <a href="#child_process_child_process_spawn_command_args_options"><code>child_process.spawn()</code></a> function:</p>
 <pre class="prettyprint"><code class="lang-js">const { spawn } = require(&#39;child_process&#39;);
@@ -76,7 +78,7 @@ implemented on top of <a href="#child_process_child_process_spawn_command_args_o
 <li><a href="#child_process_child_process_exec_command_options_callback"><code>child_process.exec()</code></a>: spawns a shell and runs a command within that shell,
 passing the <code>stdout</code> and <code>stderr</code> to a callback function when complete.</li>
 <li><a href="#child_process_child_process_execfile_file_args_options_callback"><code>child_process.execFile()</code></a>: similar to <a href="#child_process_child_process_exec_command_options_callback"><code>child_process.exec()</code></a> except that
-it spawns the command directly without first spawning a shell.</li>
+it spawns the command directly without first spawning a shell by default.</li>
 <li><a href="child_process.html#child_process_child_process_fork_modulepath_args_options"><code>child_process.fork()</code></a>: spawns a new Node.js process and invokes a
 specified module with an IPC communication channel established that allows
 sending messages between parent and child.</li>
@@ -90,14 +92,17 @@ sending messages between parent and child.</li>
 the synchronous methods can have significant impact on performance due to
 stalling the event loop while spawned processes complete.</p>
 
-       <div class="heading">
-          <h2>
-            <a name="module_asynchronous_process_creation" id="module_asynchronous_process_creation"></a>
-            <div class="permalink"><a href="#module_asynchronous_process_creation" class="permalink fas fa-link"></a></div>
-            <p>Asynchronous Process Creation</p>
 
-          </h1>
-        </div><section><p>The <a href="#child_process_child_process_spawn_command_args_options"><code>child_process.spawn()</code></a>, <a href="child_process.html#child_process_child_process_fork_modulepath_args_options"><code>child_process.fork()</code></a>, <a href="#child_process_child_process_exec_command_options_callback"><code>child_process.exec()</code></a>,
+<div class="heading">
+<h2>
+  <a name="module_asynchronous_process_creation" id="module_asynchronous_process_creation"></a>
+  <div class="permalink"><a href="#module_asynchronous_process_creation" class="permalink fas fa-link"></a></div>
+  <p>Asynchronous Process Creation</p>
+
+</h2>
+</div>
+
+<p>The <a href="#child_process_child_process_spawn_command_args_options"><code>child_process.spawn()</code></a>, <a href="child_process.html#child_process_child_process_fork_modulepath_args_options"><code>child_process.fork()</code></a>, <a href="#child_process_child_process_exec_command_options_callback"><code>child_process.exec()</code></a>,
 and <a href="#child_process_child_process_execfile_file_args_options_callback"><code>child_process.execFile()</code></a> methods all follow the idiomatic asynchronous
 programming pattern typical of other Node.js APIs.</p>
 <p>Each of the methods returns a <a href="child_process.html#child_process_class_childprocess"><code>ChildProcess</code></a> instance. These objects
@@ -108,17 +113,20 @@ the life cycle of the child process.</p>
 allow for an optional <code>callback</code> function to be specified that is invoked
 when the child process terminates.</p>
 
-       <div class="heading">
-          <h3>
-            <a name="module_spawning___bat__and___cmd__files_on_windows" id="module_spawning___bat__and___cmd__files_on_windows"></a>
-            <div class="permalink"><a href="#module_spawning___bat__and___cmd__files_on_windows" class="permalink fas fa-link"></a></div>
-            <p>Spawning <code>.bat</code> and <code>.cmd</code> files on Windows</p>
 
-          </h1>
-        </div><section><p><p>The importance of the distinction between <a href="#child_process_child_process_exec_command_options_callback"><code>child_process.exec()</code></a> and
+<div class="heading">
+<h3>
+  <a name="module_spawning___bat__and___cmd__files_on_windows" id="module_spawning___bat__and___cmd__files_on_windows"></a>
+  <div class="permalink"><a href="#module_spawning___bat__and___cmd__files_on_windows" class="permalink fas fa-link"></a></div>
+  <p>Spawning <code>.bat</code> and <code>.cmd</code> files on Windows</p>
+
+</h3>
+</div>
+
+<p><p>The importance of the distinction between <a href="#child_process_child_process_exec_command_options_callback"><code>child_process.exec()</code></a> and
 <a href="#child_process_child_process_execfile_file_args_options_callback"><code>child_process.execFile()</code></a> can vary based on platform. On Unix-type operating
 systems (Unix, Linux, macOS) <a href="#child_process_child_process_execfile_file_args_options_callback"><code>child_process.execFile()</code></a> can be more efficient
-because it does not spawn a shell. On Windows, however, <code>.bat</code> and <code>.cmd</code>
+because it does not spawn a shell by default. On Windows, however, <code>.bat</code> and <code>.cmd</code>
 files are not executable on their own without a terminal, and therefore cannot
 be launched using <a href="#child_process_child_process_execfile_file_args_options_callback"><code>child_process.execFile()</code></a>. When running on Windows, <code>.bat</code>
 and <code>.cmd</code> files can be invoked using <a href="#child_process_child_process_spawn_command_args_options"><code>child_process.spawn()</code></a> with the <code>shell</code>
@@ -159,15 +167,21 @@ exec(&#39;&quot;my script.cmd&quot; a b&#39;, (err, stdout, stderr) =&gt; {
   // ...
 });
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_exec" id="method_exec"></a>
-            <div class="permalink"><a href="#method_exec" class="permalink fas fa-link"></a></div>
-            <p>child_process.exec(command[, options][, callback])</p>
 
-          </h1>
-        </div><section><p><p>Spawns a shell then executes the <code>command</code> within that shell, buffering any
+<div class='expandable-header' id='method_exec-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_exec" id="method_exec"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_exec-expand-icon"></i>
+        <div class="permalink"><a href="#method_exec" class="permalink fas fa-link"></a></div>
+        <p>child_process.exec(command[, options][, callback])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_exec-expand-content'>
+<p><p>Spawns a shell then executes the <code>command</code> within that shell, buffering any
 generated output. The <code>command</code> string passed to the exec function is processed
 directly by the shell and special characters (vary based on
 <a href="https://en.wikipedia.org/wiki/List_of_command-line_interpreters">shell</a>)
@@ -235,20 +249,27 @@ async function lsExample() {
 }
 lsExample();
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_execFile" id="method_execFile"></a>
-            <div class="permalink"><a href="#method_execFile" class="permalink fas fa-link"></a></div>
-            <p>child_process.execFile(file[, args][, options][, callback])</p>
 
-          </h1>
-        </div><section><p><p>The <code>child_process.execFile()</code> function is similar to <a href="#child_process_child_process_exec_command_options_callback"><code>child_process.exec()</code></a>
-except that it does not spawn a shell. Rather, the specified executable <code>file</code>
+
+</div><div class='expandable-header' id='method_execFile-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_execFile" id="method_execFile"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_execFile-expand-icon"></i>
+        <div class="permalink"><a href="#method_execFile" class="permalink fas fa-link"></a></div>
+        <p>child_process.execFile(file[, args][, options][, callback])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_execFile-expand-content'>
+<p>The <code>child_process.execFile()</code> function is similar to <a href="#child_process_child_process_exec_command_options_callback"><code>child_process.exec()</code></a>
+except that it does not spawn a shell by default. Rather, the specified executable <code>file</code>
 is spawned directly as a new process making it slightly more efficient than
-<a href="#child_process_child_process_exec_command_options_callback"><code>child_process.exec()</code></a>.</p></p>
-<p><p>The same options as <a href="#child_process_child_process_exec_command_options_callback"><code>child_process.exec()</code></a> are supported. Since a shell is not
-spawned, behaviors such as I/O redirection and file globbing are not supported.</p></p>
+<a href="#child_process_child_process_exec_command_options_callback"><code>child_process.exec()</code></a>.</p>
+<p>The same options as <a href="#child_process_child_process_exec_command_options_callback"><code>child_process.exec()</code></a> are supported. Since a shell is not
+spawned, behaviors such as I/O redirection and file globbing are not supported.</p>
 <pre class="prettyprint"><code class="lang-js">const { execFile } = require(&#39;child_process&#39;);
 const child = execFile(&#39;node&#39;, [&#39;--version&#39;], (error, stdout, stderr) =&gt; {
   if (error) {
@@ -275,15 +296,25 @@ async function getVersion() {
 }
 getVersion();
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_fork" id="method_fork"></a>
-            <div class="permalink"><a href="#method_fork" class="permalink fas fa-link"></a></div>
-            <p>child_process.fork(modulePath[, args][, options])</p>
+<p><em>Note</em>: If the <code>shell</code> option is enabled, do not pass unsanitized user input
+to this function. Any input containing shell metacharacters may be used to
+trigger arbitrary command execution.</p>
 
-          </h1>
-        </div><section><p>The <code>child_process.fork()</code> method is a special case of
+
+</div><div class='expandable-header' id='method_fork-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_fork" id="method_fork"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_fork-expand-icon"></i>
+        <div class="permalink"><a href="#method_fork" class="permalink fas fa-link"></a></div>
+        <p>child_process.fork(modulePath[, args][, options])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_fork-expand-content'>
+<p>The <code>child_process.fork()</code> method is a special case of
 <a href="#child_process_child_process_spawn_command_args_options"><code>child_process.spawn()</code></a> used specifically to spawn new Node.js processes.
 Like <a href="#child_process_child_process_spawn_command_args_options"><code>child_process.spawn()</code></a>, a <a href="child_process.html#child_process_class_childprocess"><code>ChildProcess</code></a> object is returned. The returned
 <a href="child_process.html#child_process_class_childprocess"><code>ChildProcess</code></a> will have an additional communication channel built-in that
@@ -305,15 +336,22 @@ environment variable <code>NODE_CHANNEL_FD</code> on the child process.</p>
 not clone the current process.</p>
 <p><em>Note</em>: The <code>shell</code> option available in <a href="#child_process_child_process_spawn_command_args_options"><code>child_process.spawn()</code></a> is not
 supported by <code>child_process.fork()</code> and will be ignored if set.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_spawn" id="method_spawn"></a>
-            <div class="permalink"><a href="#method_spawn" class="permalink fas fa-link"></a></div>
-            <p>child_process.spawn(command[, args][, options])</p>
 
-          </h1>
-        </div><section><p>The <code>child_process.spawn()</code> method spawns a new process using the given
+
+</div><div class='expandable-header' id='method_spawn-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_spawn" id="method_spawn"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_spawn-expand-icon"></i>
+        <div class="permalink"><a href="#method_spawn" class="permalink fas fa-link"></a></div>
+        <p>child_process.spawn(command[, args][, options])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_spawn-expand-content'>
+<p>The <code>child_process.spawn()</code> method spawns a new process using the given
 <code>command</code>, with command line arguments in <code>args</code>. If omitted, <code>args</code> defaults
 to an empty array.</p>
 <p><em>Note</em>: If the <code>shell</code> option is enabled, do not pass unsanitized user input to
@@ -394,15 +432,32 @@ the process title while others (Windows, SunOS) will use <code>command</code>.</
 startup, so <code>process.argv[0]</code> in a Node.js child process will not match the
 <code>argv0</code> parameter passed to <code>spawn</code> from the parent, retrieve it with the
 <code>process.argv0</code> property instead.</p>
-<section>
-       <div class="heading">
-          <h5>
-            <a name="property_detached" id="property_detached"></a>
-            <div class="permalink"><a href="#property_detached" class="permalink fas fa-link"></a></div>
-            <p>options.detached</p>
 
-          </h1>
-        </div><section><p><p>On Windows, setting <code>options.detached</code> to <code>true</code> makes it possible for the
+
+<div class="heading">
+<h4>
+  <a name="subgroup_method_spawn_Properties" id="subgroup_method_spawn_Properties"></a>
+  <div class="permalink"><a href="#subgroup_method_spawn_Properties" class="permalink fas fa-link"></a></div>
+  <p>Properties</p>
+
+</h4>
+</div>
+
+
+<div class='expandable-header' id='property_detached-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_detached" id="property_detached"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_detached-expand-icon"></i>
+        <div class="permalink"><a href="#property_detached" class="permalink fas fa-link"></a></div>
+        <p>options.detached</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_detached-expand-content'>
+<p><p>On Windows, setting <code>options.detached</code> to <code>true</code> makes it possible for the
 child process to continue running after the parent exits. The child will have
 its own console window. <em>Once enabled for a child process, it cannot be
 disabled</em>.</p></p>
@@ -444,15 +499,22 @@ const subprocess = spawn(&#39;prg&#39;, [], {
 
 subprocess.unref();
 </code></pre>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_stdio" id="property_stdio"></a>
-            <div class="permalink"><a href="#property_stdio" class="permalink fas fa-link"></a></div>
-            <p>options.stdio</p>
 
-          </h1>
-        </div><section><p>The <code>options.stdio</code> option is used to configure the pipes that are established
+
+</div><div class='expandable-header' id='property_stdio-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_stdio" id="property_stdio"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_stdio-expand-icon"></i>
+        <div class="permalink"><a href="#property_stdio" class="permalink fas fa-link"></a></div>
+        <p>options.stdio</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_stdio-expand-content'>
+<p>The <code>options.stdio</code> option is used to configure the pipes that are established
 between the parent and child process. By default, the child&#39;s stdin, stdout,
 and stderr are redirected to corresponding <a href="#child_process_subprocess_stdin"><code>subprocess.stdin</code></a>,
 <a href="#child_process_subprocess_stdout"><code>subprocess.stdout</code></a>, and <a href="#child_process_subprocess_stderr"><code>subprocess.stderr</code></a> streams on the
@@ -475,13 +537,17 @@ The parent end of the pipe is exposed to the parent as a property on the
 <code>child_process</code> object as <a href="#child_process_options_stdio"><code>subprocess.stdio[fd]</code></a>. Pipes created
 for fds 0 - 2 are also available as <a href="#child_process_subprocess_stdin"><code>subprocess.stdin</code></a>,
 <a href="#child_process_subprocess_stdout"><code>subprocess.stdout</code></a> and <a href="#child_process_subprocess_stderr"><code>subprocess.stderr</code></a>, respectively.</li>
-<li><code>&#39;ipc&#39;</code> - Create an IPC channel for passing messages/file descriptors
+<li><p><code>&#39;ipc&#39;</code> - Create an IPC channel for passing messages/file descriptors
 between parent and child. A <a href="child_process.html#child_process_class_childprocess"><code>ChildProcess</code></a> may have at most <em>one</em> IPC stdio
 file descriptor. Setting this option enables the <a href="child_process.html#child_process_subprocess_send_message_sendhandle_options_callback"><code>subprocess.send()</code></a>
 method. If the child is a Node.js process, the presence of an IPC channel
 will enable <a href="process.html#process_process_send_message_sendhandle_options_callback"><code>process.send()</code></a>, <a href="process.html#process_process_disconnect"><code>process.disconnect()</code></a>,
 <a href="process.html#process_event_disconnect"><code>process.on(&#39;disconnect&#39;)</code></a>, and <a href="process.html#process_event_message"><code>process.on(&#39;message&#39;)</code></a> within the
-child.</li>
+child.</p>
+<p>Accessing the IPC channel fd in any way other than <a href="process.html#process_process_send_message_sendhandle_options_callback"><code>process.send()</code></a>
+or using the IPC channel with a child process that is not a Node.js instance
+is not supported.</p>
+</li>
 <li><code>&#39;ignore&#39;</code> - Instructs Node.js to ignore the fd in the child. While Node.js
 will always open fds 0 - 2 for the processes it spawns, setting the fd to
 <code>&#39;ignore&#39;</code> will cause Node.js to open <code>/dev/null</code> and attach it to the
@@ -519,15 +585,20 @@ child registers an event handler for the <a href="process.html#process_event_dis
 or the <a href="process.html#process_event_message"><code>process.on(&#39;message&#39;)</code></a> event. This allows the child to exit
 normally without the process being held open by the open IPC channel.</em></p>
 <p>See also: <a href="#child_process_child_process_exec_command_options_callback"><code>child_process.exec()</code></a> and <a href="child_process.html#child_process_child_process_fork_modulepath_args_options"><code>child_process.fork()</code></a></p>
-</section></section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="module_synchronous_process_creation" id="module_synchronous_process_creation"></a>
-            <div class="permalink"><a href="#module_synchronous_process_creation" class="permalink fas fa-link"></a></div>
-            <p>Synchronous Process Creation</p>
 
-          </h1>
-        </div><section><p>The <a href="#child_process_child_process_spawnsync_command_args_options"><code>child_process.spawnSync()</code></a>, <a href="#child_process_child_process_execsync_command_options"><code>child_process.execSync()</code></a>, and
+
+</div>
+</div>
+<div class="heading">
+<h2>
+  <a name="module_synchronous_process_creation" id="module_synchronous_process_creation"></a>
+  <div class="permalink"><a href="#module_synchronous_process_creation" class="permalink fas fa-link"></a></div>
+  <p>Synchronous Process Creation</p>
+
+</h2>
+</div>
+
+<p>The <a href="#child_process_child_process_spawnsync_command_args_options"><code>child_process.spawnSync()</code></a>, <a href="#child_process_child_process_execsync_command_options"><code>child_process.execSync()</code></a>, and
 <a href="#child_process_child_process_execfilesync_file_args_options"><code>child_process.execFileSync()</code></a> methods are <strong>synchronous</strong> and <strong>WILL</strong> block
 the Node.js event loop, pausing execution of any additional code until the
 spawned process exits.</p>
@@ -535,14 +606,20 @@ spawned process exits.</p>
 scripting tasks and for simplifying the loading/processing of application
 configuration at startup.</p>
 
-       <div class="heading">
-          <h3>
-            <a name="method_execFileSync" id="method_execFileSync"></a>
-            <div class="permalink"><a href="#method_execFileSync" class="permalink fas fa-link"></a></div>
-            <p>child_process.execFileSync(file[, args][, options])</p>
+<div class='expandable-header' id='method_execFileSync-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_execFileSync" id="method_execFileSync"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_execFileSync-expand-icon"></i>
+        <div class="permalink"><a href="#method_execFileSync" class="permalink fas fa-link"></a></div>
+        <p>child_process.execFileSync(file[, args][, options])</p>
 
-          </h1>
-        </div><section><p>The <code>child_process.execFileSync()</code> method is generally identical to
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_execFileSync-expand-content'>
+<p>The <code>child_process.execFileSync()</code> method is generally identical to
 <a href="#child_process_child_process_execfile_file_args_options_callback"><code>child_process.execFile()</code></a> with the exception that the method will not return
 until the child process has fully closed. When a timeout has been encountered
 and <code>killSignal</code> is sent, the method won&#39;t return until the process has
@@ -553,15 +630,25 @@ exited.</p>
 <p>If the process times out or has a non-zero exit code, this method <strong><em>will</em></strong>
 throw an <a href="errors.html#errors_class_error"><code>Error</code></a> that will include the full result of the underlying
 <a href="#child_process_child_process_spawnsync_command_args_options"><code>child_process.spawnSync()</code></a>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_execSync" id="method_execSync"></a>
-            <div class="permalink"><a href="#method_execSync" class="permalink fas fa-link"></a></div>
-            <p>child_process.execSync(command[, options])</p>
+<p><em>Note</em>: If the <code>shell</code> option is enabled, do not pass unsanitized user input
+to this function. Any input containing shell metacharacters may be used to
+trigger arbitrary command execution.</p>
 
-          </h1>
-        </div><section><p>The <code>child_process.execSync()</code> method is generally identical to
+
+</div><div class='expandable-header' id='method_execSync-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_execSync" id="method_execSync"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_execSync-expand-icon"></i>
+        <div class="permalink"><a href="#method_execSync" class="permalink fas fa-link"></a></div>
+        <p>child_process.execSync(command[, options])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_execSync-expand-content'>
+<p>The <code>child_process.execSync()</code> method is generally identical to
 <a href="#child_process_child_process_exec_command_options_callback"><code>child_process.exec()</code></a> with the exception that the method will not return until
 the child process has fully closed. When a timeout has been encountered and
 <code>killSignal</code> is sent, the method won&#39;t return until the process has completely
@@ -574,15 +661,22 @@ throw.  The <a href="errors.html#errors_class_error"><code>Error</code></a> obje
 <p><em>Note</em>: Never pass unsanitized user input to this function. Any input
 containing shell metacharacters may be used to trigger arbitrary command
 execution.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_spawnSync" id="method_spawnSync"></a>
-            <div class="permalink"><a href="#method_spawnSync" class="permalink fas fa-link"></a></div>
-            <p>child_process.spawnSync(command[, args][, options])</p>
 
-          </h1>
-        </div><section><p>The <code>child_process.spawnSync()</code> method is generally identical to
+
+</div><div class='expandable-header' id='method_spawnSync-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_spawnSync" id="method_spawnSync"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_spawnSync-expand-icon"></i>
+        <div class="permalink"><a href="#method_spawnSync" class="permalink fas fa-link"></a></div>
+        <p>child_process.spawnSync(command[, args][, options])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_spawnSync-expand-content'>
+<p>The <code>child_process.spawnSync()</code> method is generally identical to
 <a href="#child_process_child_process_spawn_command_args_options"><code>child_process.spawn()</code></a> with the exception that the function will not return
 until the child process has fully closed. When a timeout has been encountered
 and <code>killSignal</code> is sent, the method won&#39;t return until the process has
@@ -592,99 +686,153 @@ process has exited.</p>
 <p><em>Note</em>: If the <code>shell</code> option is enabled, do not pass unsanitized user input
 to this function. Any input containing shell metacharacters may be used to
 trigger arbitrary command execution.</p>
-</section></section>
-       <div class="heading">
-          <h2>
-            <a name="module__maxbuffer__and_unicode" id="module__maxbuffer__and_unicode"></a>
-            <div class="permalink"><a href="#module__maxbuffer__and_unicode" class="permalink fas fa-link"></a></div>
-            <p><code>maxBuffer</code> and Unicode</p>
 
-          </h1>
-        </div><section><p>The <code>maxBuffer</code> option specifies the largest number of bytes allowed on <code>stdout</code>
+
+</div>
+<div class="heading">
+<h2>
+  <a name="module__maxbuffer__and_unicode" id="module__maxbuffer__and_unicode"></a>
+  <div class="permalink"><a href="#module__maxbuffer__and_unicode" class="permalink fas fa-link"></a></div>
+  <p><code>maxBuffer</code> and Unicode</p>
+
+</h2>
+</div>
+
+<p>The <code>maxBuffer</code> option specifies the largest number of bytes allowed on <code>stdout</code>
 or <code>stderr</code>. If this value is exceeded, then the child process is terminated.
 This impacts output that includes multibyte character encodings such as UTF-8 or
 UTF-16. For instance, <code>console.log(&#39;中文测试&#39;)</code> will send 13 UTF-8 encoded bytes
 to <code>stdout</code> although there are only 4 characters.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="module_shell_requirements" id="module_shell_requirements"></a>
-            <div class="permalink"><a href="#module_shell_requirements" class="permalink fas fa-link"></a></div>
-            <p>Shell Requirements</p>
 
-          </h1>
-        </div><section><p>The shell should understand the <code>-c</code> switch on UNIX or <code>/d /s /c</code> on Windows.
+
+<div class="heading">
+<h2>
+  <a name="module_shell_requirements" id="module_shell_requirements"></a>
+  <div class="permalink"><a href="#module_shell_requirements" class="permalink fas fa-link"></a></div>
+  <p>Shell Requirements</p>
+
+</h2>
+</div>
+
+<p>The shell should understand the <code>-c</code> switch on UNIX or <code>/d /s /c</code> on Windows.
 On Windows, command line parsing should be compatible with <code>&#39;cmd.exe&#39;</code>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="module_default_windows_shell" id="module_default_windows_shell"></a>
-            <div class="permalink"><a href="#module_default_windows_shell" class="permalink fas fa-link"></a></div>
-            <p>Default Windows Shell</p>
 
-          </h1>
-        </div><section><p><p>Although Microsoft specifies <code>%COMSPEC%</code> must contain the path to
+
+<div class="heading">
+<h2>
+  <a name="module_default_windows_shell" id="module_default_windows_shell"></a>
+  <div class="permalink"><a href="#module_default_windows_shell" class="permalink fas fa-link"></a></div>
+  <p>Default Windows Shell</p>
+
+</h2>
+</div>
+
+<p><p>Although Microsoft specifies <code>%COMSPEC%</code> must contain the path to
 <code>&#39;cmd.exe&#39;</code> in the root environment, child processes are not always subject to
 the same requirement. Thus, in <code>child_process</code> functions where a shell can be
 spawned, <code>&#39;cmd.exe&#39;</code> is used as a fallback if <code>process.env.ComSpec</code> is
 unavailable.</p>
 <!-- [end-include:child_process.md] -->
 <!-- [start-include:cluster.md] --></p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="class_ChildProcess" id="class_ChildProcess"></a>
-            <div class="permalink"><a href="#class_ChildProcess" class="permalink fas fa-link"></a></div>
-            <p>Class: ChildProcess</p>
 
-          </h1>
-        </div><section><p>Instances of the <code>ChildProcess</code> class are <a href="events.html"><code>EventEmitters</code></a> that represent
+<div class='expandable-header' id='class_ChildProcess-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_ChildProcess" id="class_ChildProcess"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_ChildProcess-expand-icon"></i>
+        <div class="permalink"><a href="#class_ChildProcess" class="permalink fas fa-link"></a></div>
+        <p>Class: ChildProcess</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_ChildProcess-expand-content'>
+<p>Instances of the <code>ChildProcess</code> class are <a href="events.html"><code>EventEmitters</code></a> that represent
 spawned child processes.</p>
 <p>Instances of <code>ChildProcess</code> are not intended to be created directly. Rather,
 use the <a href="#child_process_child_process_spawn_command_args_options"><code>child_process.spawn()</code></a>, <a href="#child_process_child_process_exec_command_options_callback"><code>child_process.exec()</code></a>,
 <a href="#child_process_child_process_execfile_file_args_options_callback"><code>child_process.execFile()</code></a>, or <a href="child_process.html#child_process_child_process_fork_modulepath_args_options"><code>child_process.fork()</code></a> methods to create
 instances of <code>ChildProcess</code>.</p>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="property_channel_1" id="property_channel_1"></a>
-            <div class="permalink"><a href="#property_channel_1" class="permalink fas fa-link"></a></div>
-            <p><code>channel</code> {Object} A pipe representing the IPC channel to the child process. </p>
 
-          </h1>
-        </div><section><p>The <code>subprocess.channel</code> property is a reference to the child&#39;s IPC channel. If
+
+<div class="heading">
+<h3>
+  <a name="subgroup_class_ChildProcess_Properties" id="subgroup_class_ChildProcess_Properties"></a>
+  <div class="permalink"><a href="#subgroup_class_ChildProcess_Properties" class="permalink fas fa-link"></a></div>
+  <p>Properties</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='property_channel_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_channel_1" id="property_channel_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_channel_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_channel_1" class="permalink fas fa-link"></a></div>
+        <p><code>channel</code> {Object} A pipe representing the IPC channel to the child process. </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_channel_1-expand-content'>
+<p>The <code>subprocess.channel</code> property is a reference to the child&#39;s IPC channel. If
 no IPC channel currently exists, this property is <code>undefined</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_connected_1" id="property_connected_1"></a>
-            <div class="permalink"><a href="#property_connected_1" class="permalink fas fa-link"></a></div>
-            <p><code>connected</code> {boolean} Set to <code>false</code> after <code>subprocess.disconnect()</code> is called. </p>
 
-          </h1>
-        </div><section><p>The <code>subprocess.connected</code> property indicates whether it is still possible to
+
+</div><div class='expandable-header' id='property_connected_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_connected_1" id="property_connected_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_connected_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_connected_1" class="permalink fas fa-link"></a></div>
+        <p><code>connected</code> {boolean} Set to <code>false</code> after <code>subprocess.disconnect()</code> is called. </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_connected_1-expand-content'>
+<p>The <code>subprocess.connected</code> property indicates whether it is still possible to
 send and receive messages from a child process. When <code>subprocess.connected</code> is
 <code>false</code>, it is no longer possible to send or receive messages.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_killed" id="property_killed"></a>
-            <div class="permalink"><a href="#property_killed" class="permalink fas fa-link"></a></div>
-            <p><code>killed</code> {boolean} Set to <code>true</code> after <code>subprocess.kill()</code> is used to successfully send a signal to the child process. </p>
 
-          </h1>
-        </div><section><p>The <code>subprocess.killed</code> property indicates whether the child process
+
+</div><div class='expandable-header' id='property_killed-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_killed" id="property_killed"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_killed-expand-icon"></i>
+        <div class="permalink"><a href="#property_killed" class="permalink fas fa-link"></a></div>
+        <p><code>killed</code> {boolean} Set to <code>true</code> after <code>subprocess.kill()</code> is used to successfully send a signal to the child process. </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_killed-expand-content'>
+<p>The <code>subprocess.killed</code> property indicates whether the child process
 successfully received a signal from <code>subprocess.kill()</code>. The <code>killed</code> property
 does not indicate that the child process has been terminated.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_pid_1" id="property_pid_1"></a>
-            <div class="permalink"><a href="#property_pid_1" class="permalink fas fa-link"></a></div>
-            <p><code>pid</code> {number} Integer </p>
 
-          </h1>
-        </div><section><p><p>Returns the process identifier (PID) of the child process.</p></p>
+
+</div><div class='expandable-header' id='property_pid_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_pid_1" id="property_pid_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_pid_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_pid_1" class="permalink fas fa-link"></a></div>
+        <p><code>pid</code> {number} Integer </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_pid_1-expand-content'>
+<p><p>Returns the process identifier (PID) of the child process.</p></p>
 <p><p>Example:</p></p>
 <pre class="prettyprint"><code class="lang-js">const { spawn } = require(&#39;child_process&#39;);
 const grep = spawn(&#39;grep&#39;, [&#39;ssh&#39;]);
@@ -692,43 +840,64 @@ const grep = spawn(&#39;grep&#39;, [&#39;ssh&#39;]);
 console.log(`Spawned child pid: ${grep.pid}`);
 grep.stdin.end();
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_stderr_1" id="property_stderr_1"></a>
-            <div class="permalink"><a href="#property_stderr_1" class="permalink fas fa-link"></a></div>
-            <p><code>stderr</code> {stream.Readable} </p>
 
-          </h1>
-        </div><section><p>A <code>Readable Stream</code> that represents the child process&#39;s <code>stderr</code>.</p>
+
+</div><div class='expandable-header' id='property_stderr_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_stderr_1" id="property_stderr_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_stderr_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_stderr_1" class="permalink fas fa-link"></a></div>
+        <p><code>stderr</code> {stream.Readable} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_stderr_1-expand-content'>
+<p>A <code>Readable Stream</code> that represents the child process&#39;s <code>stderr</code>.</p>
 <p>If the child was spawned with <code>stdio[2]</code> set to anything other than <code>&#39;pipe&#39;</code>,
 then this will be <code>null</code>.</p>
 <p><code>subprocess.stderr</code> is an alias for <code>subprocess.stdio[2]</code>. Both properties will
 refer to the same value.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_stdin_1" id="property_stdin_1"></a>
-            <div class="permalink"><a href="#property_stdin_1" class="permalink fas fa-link"></a></div>
-            <p><code>stdin</code> {stream.Writable} </p>
 
-          </h1>
-        </div><section><p>A <code>Writable Stream</code> that represents the child process&#39;s <code>stdin</code>.</p>
+
+</div><div class='expandable-header' id='property_stdin_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_stdin_1" id="property_stdin_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_stdin_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_stdin_1" class="permalink fas fa-link"></a></div>
+        <p><code>stdin</code> {stream.Writable} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_stdin_1-expand-content'>
+<p>A <code>Writable Stream</code> that represents the child process&#39;s <code>stdin</code>.</p>
 <p><em>Note that if a child process waits to read all of its input, the child will not
 continue until this stream has been closed via <code>end()</code>.</em></p>
 <p>If the child was spawned with <code>stdio[0]</code> set to anything other than <code>&#39;pipe&#39;</code>,
 then this will be <code>null</code>.</p>
 <p><code>subprocess.stdin</code> is an alias for <code>subprocess.stdio[0]</code>. Both properties will
 refer to the same value.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_stdio_1" id="property_stdio_1"></a>
-            <div class="permalink"><a href="#property_stdio_1" class="permalink fas fa-link"></a></div>
-            <p><code>stdio</code> {Array} </p>
 
-          </h1>
-        </div><section><p><p>A sparse array of pipes to the child process, corresponding with positions in
+
+</div><div class='expandable-header' id='property_stdio_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_stdio_1" id="property_stdio_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_stdio_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_stdio_1" class="permalink fas fa-link"></a></div>
+        <p><code>stdio</code> {Array} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_stdio_1-expand-content'>
+<p><p>A sparse array of pipes to the child process, corresponding with positions in
 the <a href="#child_process_options_stdio"><code>stdio</code></a> option passed to <a href="#child_process_child_process_spawn_command_args_options"><code>child_process.spawn()</code></a> that have been set
 to the value <code>&#39;pipe&#39;</code>. Note that <code>subprocess.stdio[0]</code>, <code>subprocess.stdio[1]</code>,
 and <code>subprocess.stdio[2]</code> are also available as <code>subprocess.stdin</code>,
@@ -757,28 +926,53 @@ assert.strictEqual(subprocess.stdio[1], subprocess.stdout);
 assert.strictEqual(subprocess.stdio[2], null);
 assert.strictEqual(subprocess.stdio[2], subprocess.stderr);
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_stdout_1" id="property_stdout_1"></a>
-            <div class="permalink"><a href="#property_stdout_1" class="permalink fas fa-link"></a></div>
-            <p><code>stdout</code> {stream.Readable} </p>
 
-          </h1>
-        </div><section><p>A <code>Readable Stream</code> that represents the child process&#39;s <code>stdout</code>.</p>
+
+</div><div class='expandable-header' id='property_stdout_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_stdout_1" id="property_stdout_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_stdout_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_stdout_1" class="permalink fas fa-link"></a></div>
+        <p><code>stdout</code> {stream.Readable} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_stdout_1-expand-content'>
+<p>A <code>Readable Stream</code> that represents the child process&#39;s <code>stdout</code>.</p>
 <p>If the child was spawned with <code>stdio[1]</code> set to anything other than <code>&#39;pipe&#39;</code>,
 then this will be <code>null</code>.</p>
 <p><code>subprocess.stdout</code> is an alias for <code>subprocess.stdio[1]</code>. Both properties will
 refer to the same value.</p>
-</section></section><section>
-       <div class="heading">
-          <h4>
-            <a name="method_disconnect_1" id="method_disconnect_1"></a>
-            <div class="permalink"><a href="#method_disconnect_1" class="permalink fas fa-link"></a></div>
-            <p>subprocess.disconnect()</p>
 
-          </h1>
-        </div><section><p>Closes the IPC channel between parent and child, allowing the child to exit
+
+</div>
+<div class="heading">
+<h3>
+  <a name="subgroup_class_ChildProcess_Methods" id="subgroup_class_ChildProcess_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_ChildProcess_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_disconnect_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_disconnect_1" id="method_disconnect_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_disconnect_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_disconnect_1" class="permalink fas fa-link"></a></div>
+        <p>subprocess.disconnect()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_disconnect_1-expand-content'>
+<p>Closes the IPC channel between parent and child, allowing the child to exit
 gracefully once there are no other connections keeping it alive. After calling
 this method the <code>subprocess.connected</code> and <code>process.connected</code> properties in
 both the parent and child (respectively) will be set to <code>false</code>, and it will be
@@ -789,15 +983,22 @@ calling <code>subprocess.disconnect()</code>.</p>
 <p>Note that when the child process is a Node.js instance (e.g. spawned using
 <a href="child_process.html#child_process_child_process_fork_modulepath_args_options"><code>child_process.fork()</code></a>), the <code>process.disconnect()</code> method can be invoked
 within the child process to close the IPC channel as well.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_kill_1" id="method_kill_1"></a>
-            <div class="permalink"><a href="#method_kill_1" class="permalink fas fa-link"></a></div>
-            <p>subprocess.kill([signal])</p>
 
-          </h1>
-        </div><section><p><p>The <code>subprocess.kill()</code> method sends a signal to the child process. If no
+
+</div><div class='expandable-header' id='method_kill_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_kill_1" id="method_kill_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_kill_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_kill_1" class="permalink fas fa-link"></a></div>
+        <p>subprocess.kill([signal])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_kill_1-expand-content'>
+<p><p>The <code>subprocess.kill()</code> method sends a signal to the child process. If no
 argument is given, the process will be sent the <code>&#39;SIGTERM&#39;</code> signal. See
 signal(7) for a list of available signals.</p></p>
 <pre class="prettyprint"><code class="lang-js">const { spawn } = require(&#39;child_process&#39;);
@@ -842,15 +1043,22 @@ setTimeout(() =&gt; {
   subprocess.kill(); // does not terminate the node process in the shell
 }, 2000);
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_send_1" id="method_send_1"></a>
-            <div class="permalink"><a href="#method_send_1" class="permalink fas fa-link"></a></div>
-            <p>subprocess.send(message[, sendHandle[, options]][, callback])</p>
 
-          </h1>
-        </div><section><p>When an IPC channel has been established between the parent and child (
+
+</div><div class='expandable-header' id='method_send_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_send_1" id="method_send_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_send_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_send_1" class="permalink fas fa-link"></a></div>
+        <p>subprocess.send(message[, sendHandle[, options]][, callback])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_send_1-expand-content'>
+<p>When an IPC channel has been established between the parent and child (
 i.e. when using <a href="child_process.html#child_process_child_process_fork_modulepath_args_options"><code>child_process.fork()</code></a>), the <code>subprocess.send()</code> method can
 be used to send messages to the child process. When the child process is a
 Node.js instance, these messages can be received via the
@@ -980,7 +1188,10 @@ this occurs.</p>
 <p>It is also recommended that any <code>&#39;message&#39;</code> handlers in the child process
 verify that <code>socket</code> exists, as the connection may have been closed during the
 time it takes to send the connection to the child.</p>
-</section></section></section>
+
+
+</div>
+</div>
 
   <div class="footer">
     <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>

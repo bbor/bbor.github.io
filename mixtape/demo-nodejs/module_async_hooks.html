@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>mixtape page for async_hooks</title>
+    <title>Async Hooks</title>
     <script data-main="js/setup" src="js/require.js"></script>
     <link rel="stylesheet" href="fonts/fonts.css" />
     <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
@@ -13,9 +13,9 @@
   <body>
 
   <div id="control-panel">
-    <div id="control-strip-h">
-      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
-      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    <div id="control-strip-m">
+      <div id="control-strip-m-find"><div id="m-find"></div></div>
+      <div id="control-strip-m-toc"><div id="m-toc"></div></div>
     </div>
     <div id="controls">
       <div id="control-find">
@@ -26,57 +26,68 @@
       </div>
     </div>
   </div>
-  <div id="control-strip-v">
-    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
-    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  <div id="control-strip-w">
+    <div id="control-strip-w-find"></div>
+    <div id="control-strip-w-toc"></div>
   </div>
 
   <div id="content">
 
   
-       <div class="heading">
-          <h1>
-            <a name="module_async_hooks" id="module_async_hooks"></a>
-            <div class="permalink"><a href="#module_async_hooks" class="permalink fas fa-link"></a></div>
-            <p>Async Hooks</p>
+<div class="heading">
+<h1>
+  <a name="module_async_hooks" id="module_async_hooks"></a>
+  <div class="permalink"><a href="#module_async_hooks" class="permalink fas fa-link"></a></div>
+  <p>Async Hooks</p>
 
-          </h1>
-        </div><p><p>The <code>async_hooks</code> module provides an API to register callbacks tracking the
+</h1>
+</div>
+
+<p><p>The <code>async_hooks</code> module provides an API to register callbacks tracking the
 lifetime of asynchronous resources created inside a Node.js application.
 It can be accessed using:</p></p>
 <pre class="prettyprint"><code class="lang-js">const async_hooks = require(&#39;async_hooks&#39;);
 </code></pre>
 
-       <div class="heading">
-          <h2>
-            <a name="module_terminology" id="module_terminology"></a>
-            <div class="permalink"><a href="#module_terminology" class="permalink fas fa-link"></a></div>
-            <p>Terminology</p>
 
-          </h1>
-        </div><section><p>An asynchronous resource represents an object with an associated callback.
+<div class="heading">
+<h2>
+  <a name="module_terminology" id="module_terminology"></a>
+  <div class="permalink"><a href="#module_terminology" class="permalink fas fa-link"></a></div>
+  <p>Terminology</p>
+
+</h2>
+</div>
+
+<p>An asynchronous resource represents an object with an associated callback.
 This callback may be called multiple times, for example, the <code>connection</code> event
 in <code>net.createServer</code>, or just a single time like in <code>fs.open</code>. A resource
 can also be closed before the callback is called. AsyncHook does not
 explicitly distinguish between these different cases but will represent them
 as the abstract concept that is a resource.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="module_public_api" id="module_public_api"></a>
-            <div class="permalink"><a href="#module_public_api" class="permalink fas fa-link"></a></div>
-            <p>Public API</p>
 
-          </h1>
-        </div><section>
-       <div class="heading">
-          <h3>
-            <a name="module_overview" id="module_overview"></a>
-            <div class="permalink"><a href="#module_overview" class="permalink fas fa-link"></a></div>
-            <p>Overview</p>
 
-          </h1>
-        </div><section><p><p>Following is a simple overview of the public API.</p></p>
+<div class="heading">
+<h2>
+  <a name="module_public_api" id="module_public_api"></a>
+  <div class="permalink"><a href="#module_public_api" class="permalink fas fa-link"></a></div>
+  <p>Public API</p>
+
+</h2>
+</div>
+
+
+
+<div class="heading">
+<h3>
+  <a name="module_overview" id="module_overview"></a>
+  <div class="permalink"><a href="#module_overview" class="permalink fas fa-link"></a></div>
+  <p>Overview</p>
+
+</h3>
+</div>
+
+<p><p>Following is a simple overview of the public API.</p></p>
 <pre class="prettyprint"><code class="lang-js">const async_hooks = require(&#39;async_hooks&#39;);
 
 // Return the ID of the current execution context.
@@ -124,14 +135,17 @@ function destroy(asyncId) { }
 function promiseResolve(asyncId) { }
 </code></pre>
 
-       <div class="heading">
-          <h4>
-            <a name="module__async_hooks_createhook_callbacks__" id="module__async_hooks_createhook_callbacks__"></a>
-            <div class="permalink"><a href="#module__async_hooks_createhook_callbacks__" class="permalink fas fa-link"></a></div>
-            <p><code>async_hooks.createHook(callbacks)</code></p>
 
-          </h1>
-        </div><section><p><ul></p>
+<div class="heading">
+<h4>
+  <a name="module__async_hooks_createhook_callbacks__" id="module__async_hooks_createhook_callbacks__"></a>
+  <div class="permalink"><a href="#module__async_hooks_createhook_callbacks__" class="permalink fas fa-link"></a></div>
+  <p><code>async_hooks.createHook(callbacks)</code></p>
+
+</h4>
+</div>
+
+<p><ul></p>
 <p><li><code>callbacks</code> {Object} The <a href="#async_hooks_hook_callbacks">Hook Callbacks</a> to register<ul></p>
 <p><li><code>init</code> {Function} The <a href="#async_hooks_init_asyncid_type_triggerasyncid_resource"><code>init</code> callback</a>.</li></p>
 <p><li><code>before</code> {Function} The <a href="#async_hooks_before_asyncid"><code>before</code> callback</a>.</li></p>
@@ -139,7 +153,7 @@ function promiseResolve(asyncId) { }
 <p><li><code>destroy</code> {Function} The <a href="#async_hooks_destroy_asyncid"><code>destroy</code> callback</a>.</li>
 </ul>
 </li></p>
-<p><li>Returns: <code>{AsyncHook}</code> Instance used for disabling and enabling hooks</li>
+<p><li>Returns: {AsyncHook} Instance used for disabling and enabling hooks</li>
 </ul></p>
 <p><p>Registers functions to be called for different lifetime events of each async
 operation.</p></p>
@@ -170,14 +184,17 @@ class MyAddedCallbacks extends MyAsyncCallbacks {
 const asyncHook = async_hooks.createHook(new MyAddedCallbacks());
 </code></pre>
 
-       <div class="heading">
-          <h5>
-            <a name="module_error_handling" id="module_error_handling"></a>
-            <div class="permalink"><a href="#module_error_handling" class="permalink fas fa-link"></a></div>
-            <p>Error Handling</p>
 
-          </h1>
-        </div><section><p>If any <code>AsyncHook</code> callbacks throw, the application will print the stack trace
+<div class="heading">
+<h5>
+  <a name="module_error_handling" id="module_error_handling"></a>
+  <div class="permalink"><a href="#module_error_handling" class="permalink fas fa-link"></a></div>
+  <p>Error Handling</p>
+
+</h5>
+</div>
+
+<p>If any <code>AsyncHook</code> callbacks throw, the application will print the stack trace
 and exit. The exit path does follow that of an uncaught exception, but
 all <code>uncaughtException</code> listeners are removed, thus forcing the process to
 exit. The <code>&#39;exit&#39;</code> callbacks will still be called unless the application is run
@@ -190,15 +207,18 @@ bring down the process quickly in order to prevent an unintentional abort in the
 future. This is subject to change in the future if a comprehensive analysis is
 performed to ensure an exception can follow the normal control flow without
 unintentional side effects.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="module_printing_in_asynchooks_callbacks" id="module_printing_in_asynchooks_callbacks"></a>
-            <div class="permalink"><a href="#module_printing_in_asynchooks_callbacks" class="permalink fas fa-link"></a></div>
-            <p>Printing in AsyncHooks callbacks</p>
 
-          </h1>
-        </div><section><p>Because printing to the console is an asynchronous operation, <code>console.log()</code>
+
+<div class="heading">
+<h5>
+  <a name="module_printing_in_asynchooks_callbacks" id="module_printing_in_asynchooks_callbacks"></a>
+  <div class="permalink"><a href="#module_printing_in_asynchooks_callbacks" class="permalink fas fa-link"></a></div>
+  <p>Printing in AsyncHooks callbacks</p>
+
+</h5>
+</div>
+
+<p>Because printing to the console is an asynchronous operation, <code>console.log()</code>
 will cause the AsyncHooks callbacks to be called. Using <code>console.log()</code> or
 similar asynchronous operations inside an AsyncHooks callback function will thus
 cause an infinite recursion. An easily solution to this when debugging is
@@ -218,15 +238,18 @@ track of what caused the asynchronous operation using the information
 provided by AsyncHooks itself. The logging should then be skipped when
 it was the logging itself that caused AsyncHooks callback to call. By
 doing this the otherwise infinite recursion is broken.</p>
-</section></section>
-       <div class="heading">
-          <h4>
-            <a name="module__asynchook_enable___" id="module__asynchook_enable___"></a>
-            <div class="permalink"><a href="#module__asynchook_enable___" class="permalink fas fa-link"></a></div>
-            <p><code>asyncHook.enable()</code></p>
 
-          </h1>
-        </div><section><p><ul></p>
+
+<div class="heading">
+<h4>
+  <a name="module__asynchook_enable___" id="module__asynchook_enable___"></a>
+  <div class="permalink"><a href="#module__asynchook_enable___" class="permalink fas fa-link"></a></div>
+  <p><code>asyncHook.enable()</code></p>
+
+</h4>
+</div>
+
+<p><ul></p>
 <p><li>Returns: {AsyncHook} A reference to <code>asyncHook</code>.</li>
 </ul></p>
 <p><p>Enable the callbacks for a given <code>AsyncHook</code> instance. If no callbacks are
@@ -237,41 +260,50 @@ should be enabled immediately after creation, the following pattern can be used.
 
 const hook = async_hooks.createHook(callbacks).enable();
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module__asynchook_disable___" id="module__asynchook_disable___"></a>
-            <div class="permalink"><a href="#module__asynchook_disable___" class="permalink fas fa-link"></a></div>
-            <p><code>asyncHook.disable()</code></p>
 
-          </h1>
-        </div><section><p><ul></p>
+
+<div class="heading">
+<h4>
+  <a name="module__asynchook_disable___" id="module__asynchook_disable___"></a>
+  <div class="permalink"><a href="#module__asynchook_disable___" class="permalink fas fa-link"></a></div>
+  <p><code>asyncHook.disable()</code></p>
+
+</h4>
+</div>
+
+<p><ul></p>
 <p><li>Returns: {AsyncHook} A reference to <code>asyncHook</code>.</li>
 </ul></p>
 <p>Disable the callbacks for a given <code>AsyncHook</code> instance from the global pool of
 AsyncHook callbacks to be executed. Once a hook has been disabled it will not
 be called again until enabled.</p>
 <p>For API consistency <code>disable()</code> also returns the <code>AsyncHook</code> instance.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_hook_callbacks" id="module_hook_callbacks"></a>
-            <div class="permalink"><a href="#module_hook_callbacks" class="permalink fas fa-link"></a></div>
-            <p>Hook Callbacks</p>
 
-          </h1>
-        </div><section><p>Key events in the lifetime of asynchronous events have been categorized into
+
+<div class="heading">
+<h4>
+  <a name="module_hook_callbacks" id="module_hook_callbacks"></a>
+  <div class="permalink"><a href="#module_hook_callbacks" class="permalink fas fa-link"></a></div>
+  <p>Hook Callbacks</p>
+
+</h4>
+</div>
+
+<p>Key events in the lifetime of asynchronous events have been categorized into
 four areas: instantiation, before/after the callback is called, and when the
 instance is destroyed.</p>
 
-       <div class="heading">
-          <h5>
-            <a name="module__init_asyncid__type__triggerasyncid__resource__" id="module__init_asyncid__type__triggerasyncid__resource__"></a>
-            <div class="permalink"><a href="#module__init_asyncid__type__triggerasyncid__resource__" class="permalink fas fa-link"></a></div>
-            <p><code>init(asyncId, type, triggerAsyncId, resource)</code></p>
 
-          </h1>
-        </div><section><p><ul></p>
+<div class="heading">
+<h5>
+  <a name="module__init_asyncid__type__triggerasyncid__resource__" id="module__init_asyncid__type__triggerasyncid__resource__"></a>
+  <div class="permalink"><a href="#module__init_asyncid__type__triggerasyncid__resource__" class="permalink fas fa-link"></a></div>
+  <p><code>init(asyncId, type, triggerAsyncId, resource)</code></p>
+
+</h5>
+</div>
+
+<p><ul></p>
 <p><li><code>asyncId</code> {number} A unique ID for the async resource.</li></p>
 <p><li><code>type</code> {string} The type of the async resource.</li></p>
 <p><li><code>triggerAsyncId</code> {number} The unique ID of the async resource in whose
@@ -293,14 +325,17 @@ clearTimeout(setTimeout(() =&gt; {}, 10));
 <p>Every new resource is assigned an ID that is unique within the scope of the
 current process.</p>
 
-       <div class="heading">
-          <h6>
-            <a name="module__type_" id="module__type_"></a>
-            <div class="permalink"><a href="#module__type_" class="permalink fas fa-link"></a></div>
-            <p><code>type</code></p>
 
-          </h1>
-        </div><section><p>The <code>type</code> is a string identifying the type of resource that caused
+<div class="heading">
+<h6>
+  <a name="module__type_" id="module__type_"></a>
+  <div class="permalink"><a href="#module__type_" class="permalink fas fa-link"></a></div>
+  <p><code>type</code></p>
+
+</h6>
+</div>
+
+<p>The <code>type</code> is a string identifying the type of resource that caused
 <code>init</code> to be called. Generally, it will correspond to the name of the
 resource&#39;s constructor.</p>
 <pre class="prettyprint"><code class="lang-text">FSEVENTWRAP, FSREQWRAP, GETADDRINFOREQWRAP, GETNAMEINFOREQWRAP, HTTPPARSER,
@@ -315,15 +350,18 @@ instances and asynchronous work scheduled by them.</p>
 <p><em>Note:</em> It is possible to have type name collisions. Embedders are encouraged
 to use unique prefixes, such as the npm package name, to prevent collisions
 when listening to the hooks.</p>
-</section>
-       <div class="heading">
-          <h6>
-            <a name="module__triggerid_" id="module__triggerid_"></a>
-            <div class="permalink"><a href="#module__triggerid_" class="permalink fas fa-link"></a></div>
-            <p><code>triggerId</code></p>
 
-          </h1>
-        </div><section><p><code>triggerAsyncId</code> is the <code>asyncId</code> of the resource that caused (or &quot;triggered&quot;)
+
+<div class="heading">
+<h6>
+  <a name="module__triggerid_" id="module__triggerid_"></a>
+  <div class="permalink"><a href="#module__triggerid_" class="permalink fas fa-link"></a></div>
+  <p><code>triggerId</code></p>
+
+</h6>
+</div>
+
+<p><code>triggerAsyncId</code> is the <code>asyncId</code> of the resource that caused (or &quot;triggered&quot;)
 the new resource to initialize and that caused <code>init</code> to call. This is different
 from <code>async_hooks.executionAsyncId()</code> that only shows <em>when</em> a resource was
 created, while <code>triggerAsyncId</code> shows <em>why</em> a resource was created.</p>
@@ -350,15 +388,18 @@ means it&#39;s being executed from C++, with no JavaScript stack above it).
 With only that information, it would be impossible to link resources together in
 terms of what caused them to be created, so <code>triggerAsyncId</code> is given the task of
 propagating what resource is responsible for the new resource&#39;s existence.</p>
-</section>
-       <div class="heading">
-          <h6>
-            <a name="module__resource_" id="module__resource_"></a>
-            <div class="permalink"><a href="#module__resource_" class="permalink fas fa-link"></a></div>
-            <p><code>resource</code></p>
 
-          </h1>
-        </div><section><p><code>resource</code> is an object that represents the actual async resource that has
+
+<div class="heading">
+<h6>
+  <a name="module__resource_" id="module__resource_"></a>
+  <div class="permalink"><a href="#module__resource_" class="permalink fas fa-link"></a></div>
+  <p><code>resource</code></p>
+
+</h6>
+</div>
+
+<p><code>resource</code> is an object that represents the actual async resource that has
 been initialized. This can contain useful information that can vary based on
 the value of <code>type</code>. For instance, for the <code>GETADDRINFOREQWRAP</code> resource type,
 <code>resource</code> provides the hostname used when looking up the IP address for the
@@ -367,21 +408,24 @@ currently not considered public, but using the Embedder API, users can provide
 and document their own resource objects. For example, such a resource object
 could contain the SQL query being executed.</p>
 <p>In the case of Promises, the <code>resource</code> object will have <code>promise</code> property
-that refers to the Promise that is being initialized, and a <code>parentId</code> property
-set to the <code>asyncId</code> of a parent Promise, if there is one, and <code>undefined</code>
+that refers to the Promise that is being initialized, and a <code>isChainedPromise</code>
+property, set to <code>true</code> if the promise has a parent promise, and <code>false</code>
 otherwise. For example, in the case of <code>b = a.then(handler)</code>, <code>a</code> is considered
-a parent Promise of <code>b</code>.</p>
+a parent Promise of <code>b</code>. Here, <code>b</code> is considered a chained promise.</p>
 <p><em>Note</em>: In some cases the resource object is reused for performance reasons,
 it is thus not safe to use it as a key in a <code>WeakMap</code> or add properties to it.</p>
-</section>
-       <div class="heading">
-          <h6>
-            <a name="module_asynchronous_context_example" id="module_asynchronous_context_example"></a>
-            <div class="permalink"><a href="#module_asynchronous_context_example" class="permalink fas fa-link"></a></div>
-            <p>Asynchronous context example</p>
 
-          </h1>
-        </div><section><p>The following is an example with additional information about the calls to
+
+<div class="heading">
+<h6>
+  <a name="module_asynchronous_context_example" id="module_asynchronous_context_example"></a>
+  <div class="permalink"><a href="#module_asynchronous_context_example" class="permalink fas fa-link"></a></div>
+  <p>Asynchronous context example</p>
+
+</h6>
+</div>
+
+<p>The following is an example with additional information about the calls to
 <code>init</code> between the <code>before</code> and <code>after</code> calls, specifically what the
 callback to <code>listen()</code> will look like. The output formatting is slightly more
 elaborate to make calling context easier to see.</p>
@@ -453,15 +497,18 @@ hostname is a <em>synchronous</em> operation, but to maintain a completely async
 API the user&#39;s callback is placed in a <code>process.nextTick()</code>.</p>
 <p>The graph only shows <em>when</em> a resource was created, not <em>why</em>, so to track
 the <em>why</em> use <code>triggerAsyncId</code>.</p>
-</section></section>
-       <div class="heading">
-          <h5>
-            <a name="module__before_asyncid__" id="module__before_asyncid__"></a>
-            <div class="permalink"><a href="#module__before_asyncid__" class="permalink fas fa-link"></a></div>
-            <p><code>before(asyncId)</code></p>
 
-          </h1>
-        </div><section><p><ul></p>
+
+<div class="heading">
+<h5>
+  <a name="module__before_asyncid__" id="module__before_asyncid__"></a>
+  <div class="permalink"><a href="#module__before_asyncid__" class="permalink fas fa-link"></a></div>
+  <p><code>before(asyncId)</code></p>
+
+</h5>
+</div>
+
+<p><ul></p>
 <p><li><code>asyncId</code> {number}</li>
 </ul></p>
 <p>When an asynchronous operation is initiated (such as a TCP server receiving a
@@ -475,30 +522,36 @@ or, for example, if no connections are received by a TCP server. Persistent
 asynchronous resources like a TCP server will typically call the <code>before</code>
 callback multiple times, while other operations like <code>fs.open()</code> will call
 it only once.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="module__after_asyncid__" id="module__after_asyncid__"></a>
-            <div class="permalink"><a href="#module__after_asyncid__" class="permalink fas fa-link"></a></div>
-            <p><code>after(asyncId)</code></p>
 
-          </h1>
-        </div><section><p><ul></p>
+
+<div class="heading">
+<h5>
+  <a name="module__after_asyncid__" id="module__after_asyncid__"></a>
+  <div class="permalink"><a href="#module__after_asyncid__" class="permalink fas fa-link"></a></div>
+  <p><code>after(asyncId)</code></p>
+
+</h5>
+</div>
+
+<p><ul></p>
 <p><li><code>asyncId</code> {number}</li>
 </ul></p>
 <p>Called immediately after the callback specified in <code>before</code> is completed.</p>
 <p><em>Note:</em> If an uncaught exception occurs during execution of the callback, then
 <code>after</code> will run <em>after</em> the <code>&#39;uncaughtException&#39;</code> event is emitted or a
 <code>domain</code>&#39;s handler runs.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="module__destroy_asyncid__" id="module__destroy_asyncid__"></a>
-            <div class="permalink"><a href="#module__destroy_asyncid__" class="permalink fas fa-link"></a></div>
-            <p><code>destroy(asyncId)</code></p>
 
-          </h1>
-        </div><section><p><ul></p>
+
+<div class="heading">
+<h5>
+  <a name="module__destroy_asyncid__" id="module__destroy_asyncid__"></a>
+  <div class="permalink"><a href="#module__destroy_asyncid__" class="permalink fas fa-link"></a></div>
+  <p><code>destroy(asyncId)</code></p>
+
+</h5>
+</div>
+
+<p><ul></p>
 <p><li><code>asyncId</code> {number}</li>
 </ul></p>
 <p>Called after the resource corresponding to <code>asyncId</code> is destroyed. It is also
@@ -508,15 +561,18 @@ reference is made to the <code>resource</code> object passed to <code>init</code
 <code>destroy</code> will never be called, causing a memory leak in the application. If
 the resource does not depend on garbage collection, then this will not be an
 issue.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="module__promiseresolve_asyncid__" id="module__promiseresolve_asyncid__"></a>
-            <div class="permalink"><a href="#module__promiseresolve_asyncid__" class="permalink fas fa-link"></a></div>
-            <p><code>promiseResolve(asyncId)</code></p>
 
-          </h1>
-        </div><section><p><ul></p>
+
+<div class="heading">
+<h5>
+  <a name="module__promiseresolve_asyncid__" id="module__promiseresolve_asyncid__"></a>
+  <div class="permalink"><a href="#module__promiseresolve_asyncid__" class="permalink fas fa-link"></a></div>
+  <p><code>promiseResolve(asyncId)</code></p>
+
+</h5>
+</div>
+
+<p><ul></p>
 <p><li><code>asyncId</code> {number}</li>
 </ul></p>
 <p><p>Called when the <code>resolve</code> function passed to the <code>Promise</code> constructor is
@@ -536,19 +592,22 @@ init for PROMISE with id 6, trigger id: 5  # the Promise returned by then()
   promise resolve 6      # the then() callback resolves the promise by returning
   after 6
 </code></pre>
-</section></section>
-       <div class="heading">
-          <h4>
-            <a name="module__async_hooks_executionasyncid___" id="module__async_hooks_executionasyncid___"></a>
-            <div class="permalink"><a href="#module__async_hooks_executionasyncid___" class="permalink fas fa-link"></a></div>
-            <p><code>async_hooks.executionAsyncId()</code></p>
 
-          </h1>
-        </div><section><p><ul></p>
+
+<div class="heading">
+<h4>
+  <a name="module__async_hooks_executionasyncid___" id="module__async_hooks_executionasyncid___"></a>
+  <div class="permalink"><a href="#module__async_hooks_executionasyncid___" class="permalink fas fa-link"></a></div>
+  <p><code>async_hooks.executionAsyncId()</code></p>
+
+</h4>
+</div>
+
+<p><ul></p>
 <p><li>Returns: {number} The <code>asyncId</code> of the current execution context. Useful to
 track when something calls.</li>
 </ul></p>
-<p><p>For example:</p></p>
+<p>For example:</p>
 <pre class="prettyprint"><code class="lang-js">const async_hooks = require(&#39;async_hooks&#39;);
 
 console.log(async_hooks.executionAsyncId());  // 1 - bootstrap
@@ -570,19 +629,24 @@ causality (which is covered by <code>triggerAsyncId()</code>). For example:</p>
   async_hooks.executionAsyncId();
 });
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module__async_hooks_triggerasyncid___" id="module__async_hooks_triggerasyncid___"></a>
-            <div class="permalink"><a href="#module__async_hooks_triggerasyncid___" class="permalink fas fa-link"></a></div>
-            <p><code>async_hooks.triggerAsyncId()</code></p>
+<p>Note that promise contexts may not get precise executionAsyncIds by default.
+See the section on <a href="#async_hooks_promise_execution_tracking">promise execution tracking</a>.</p>
 
-          </h1>
-        </div><section><p><ul></p>
+
+<div class="heading">
+<h4>
+  <a name="module__async_hooks_triggerasyncid___" id="module__async_hooks_triggerasyncid___"></a>
+  <div class="permalink"><a href="#module__async_hooks_triggerasyncid___" class="permalink fas fa-link"></a></div>
+  <p><code>async_hooks.triggerAsyncId()</code></p>
+
+</h4>
+</div>
+
+<p><ul></p>
 <p><li>Returns: {number} The ID of the resource responsible for calling the callback
 that is currently being executed.</li>
 </ul></p>
-<p><p>For example:</p></p>
+<p>For example:</p>
 <pre class="prettyprint"><code class="lang-js">const server = net.createServer((conn) =&gt; {
   // The resource that caused (or triggered) this callback to be called
   // was that of the new connection. Thus the return value of triggerAsyncId()
@@ -596,32 +660,84 @@ that is currently being executed.</li>
   async_hooks.triggerAsyncId();
 });
 </code></pre>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="module_javascript_embedder_api" id="module_javascript_embedder_api"></a>
-            <div class="permalink"><a href="#module_javascript_embedder_api" class="permalink fas fa-link"></a></div>
-            <p>JavaScript Embedder API</p>
+<p>Note that promise contexts may not get valid triggerAsyncIds by default. See
+the section on <a href="#async_hooks_promise_execution_tracking">promise execution tracking</a>.</p>
 
-          </h1>
-        </div><section><p>Library developers that handle their own asynchronous resources performing tasks
+
+<div class="heading">
+<h2>
+  <a name="module_promise_execution_tracking" id="module_promise_execution_tracking"></a>
+  <div class="permalink"><a href="#module_promise_execution_tracking" class="permalink fas fa-link"></a></div>
+  <p>Promise execution tracking</p>
+
+</h2>
+</div>
+
+<p>By default, promise executions are not assigned asyncIds due to the relatively
+expensive nature of the <a href="https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk">promise introspection API</a> provided by
+V8. This means that programs using promises or <code>async</code>/<code>await</code> will not get
+correct execution and trigger ids for promise callback contexts by default.</p>
+<p>Here&#39;s an example:</p>
+<pre class="prettyprint"><code class="lang-js">const ah = require(&#39;async_hooks&#39;);
+Promise.resolve(1729).then(() =&gt; {
+  console.log(<code>eid ${ah.executionAsyncId()} tid ${ah.triggerAsyncId()}</code>);
+});
+// produces:
+// eid 1 tid 0
+</code></pre>
+<p>Observe that the <code>then</code> callback claims to have executed in the context of the
+outer scope even though there was an asynchronous hop involved. Also note that
+the triggerAsyncId value is 0, which means that we are missing context about the
+resource that caused (triggered) the <code>then</code> callback to be executed.</p>
+<p>Installing async hooks via <code>async_hooks.createHook</code> enables promise execution
+tracking. Example:</p>
+<pre class="prettyprint"><code class="lang-js">const ah = require(&#39;async_hooks&#39;);
+ah.createHook({ init() {} }).enable(); // forces PromiseHooks to be enabled.
+Promise.resolve(1729).then(() =&gt; {
+  console.log(<code>eid ${ah.executionAsyncId()} tid ${ah.triggerAsyncId()}</code>);
+});
+// produces:
+// eid 7 tid 6
+</code></pre>
+<p>In this example, adding any actual hook function enabled the tracking of
+promises. There are two promises in the example above; the promise created by
+<code>Promise.resolve()</code> and the promise returned by the call to <code>then</code>. In the
+example above, the first promise got the asyncId 6 and the latter got asyncId 7.
+During the execution of the <code>then</code> callback, we are executing in the context of
+promise with asyncId 7. This promise was triggered by async resource 6.</p>
+<p>Another subtlety with promises is that <code>before</code> and <code>after</code> callbacks are run
+only on chained promises. That means promises not created by <code>then</code>/<code>catch</code> will
+not have the <code>before</code> and <code>after</code> callbacks fired on them. For more details see
+the details of the V8 <a href="https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk">PromiseHooks</a> API.</p>
+
+
+<div class="heading">
+<h2>
+  <a name="module_javascript_embedder_api" id="module_javascript_embedder_api"></a>
+  <div class="permalink"><a href="#module_javascript_embedder_api" class="permalink fas fa-link"></a></div>
+  <p>JavaScript Embedder API</p>
+
+</h2>
+</div>
+
+<p>Library developers that handle their own asynchronous resources performing tasks
 like I/O, connection pooling, or managing callback queues may use the <code>AsyncWrap</code>
 JavaScript API so that all the appropriate callbacks are called.</p>
 
-       <div class="heading">
-          <h3>
-            <a name="module__class_asyncresource___" id="module__class_asyncresource___"></a>
-            <div class="permalink"><a href="#module__class_asyncresource___" class="permalink fas fa-link"></a></div>
-            <p><code>class AsyncResource()</code></p>
 
-          </h1>
-        </div><section><p><p>The class <code>AsyncResource</code> was designed to be extended by the embedder&#39;s async
+<div class="heading">
+<h3>
+  <a name="module__class_asyncresource___" id="module__class_asyncresource___"></a>
+  <div class="permalink"><a href="#module__class_asyncresource___" class="permalink fas fa-link"></a></div>
+  <p><code>class AsyncResource()</code></p>
+
+</h3>
+</div>
+
+<p><p>The class <code>AsyncResource</code> was designed to be extended by the embedder&#39;s async
 resources. Using this users can easily trigger the lifetime events of their
 own resources.</p></p>
 <p><p>The <code>init</code> hook will trigger when an <code>AsyncResource</code> is instantiated.</p></p>
-<p><p><em>Note</em>: <code>before</code> and <code>after</code> calls must be unwound in the same order that they
-are called. Otherwise, an unrecoverable exception will occur and the process
-will abort.</p></p>
 <p><p>The following is an overview of the <code>AsyncResource</code> API.</p></p>
 <pre class="prettyprint"><code class="lang-js">const { AsyncResource, executionAsyncId } = require(&#39;async_hooks&#39;);
 
@@ -632,11 +748,13 @@ const asyncResource = new AsyncResource(
   type, { triggerAsyncId: executionAsyncId(), requireManualDestroy: false }
 );
 
-// Call AsyncHooks before callbacks.
-asyncResource.emitBefore();
-
-// Call AsyncHooks after callbacks.
-asyncResource.emitAfter();
+// Run a function in the execution context of the resource. This will
+// * establish the context of the resource
+// * trigger the AsyncHooks before callbacks
+// * call the provided function `fn` with the supplied arguments
+// * trigger the AsyncHooks after callbacks
+// * restore the original execution context
+asyncResource.runInAsyncScope(fn, thisArg, ...args);
 
 // Call AsyncHooks destroy callbacks.
 asyncResource.emitDestroy();
@@ -646,16 +764,27 @@ asyncResource.asyncId();
 
 // Return the trigger ID for the AsyncResource instance.
 asyncResource.triggerAsyncId();
+
+// Call AsyncHooks before callbacks.
+// Deprecated: Use asyncResource.runInAsyncScope instead.
+asyncResource.emitBefore();
+
+// Call AsyncHooks after callbacks.
+// Deprecated: Use asyncResource.runInAsyncScope instead.
+asyncResource.emitAfter();
 </code></pre>
 
-       <div class="heading">
-          <h4>
-            <a name="module__asyncresource_type___options___" id="module__asyncresource_type___options___"></a>
-            <div class="permalink"><a href="#module__asyncresource_type___options___" class="permalink fas fa-link"></a></div>
-            <p><code>AsyncResource(type[, options])</code></p>
 
-          </h1>
-        </div><section><p><ul></p>
+<div class="heading">
+<h4>
+  <a name="module__asyncresource_type___options___" id="module__asyncresource_type___options___"></a>
+  <div class="permalink"><a href="#module__asyncresource_type___options___" class="permalink fas fa-link"></a></div>
+  <p><code>AsyncResource(type[, options])</code></p>
+
+</h4>
+</div>
+
+<p><ul></p>
 <p><li><code>type</code> {string} The type of async event.</li></p>
 <p><li><code>options</code> {Object}<ul></p>
 <p><li><code>triggerAsyncId</code> {number} The ID of the execution context that created this
@@ -677,9 +806,7 @@ and the sensitive API&#39;s <code>emitDestroy</code> is called with it.
 
   getInfo(query, callback) {
     this.db.get(query, (err, data) =&gt; {
-      this.emitBefore();
-      callback(err, data);
-      this.emitAfter();
+      this.runInAsyncScope(callback, null, err, data);
     });
   }
 
@@ -689,29 +816,61 @@ and the sensitive API&#39;s <code>emitDestroy</code> is called with it.
   }
 }
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module__asyncresource_emitbefore___" id="module__asyncresource_emitbefore___"></a>
-            <div class="permalink"><a href="#module__asyncresource_emitbefore___" class="permalink fas fa-link"></a></div>
-            <p><code>asyncResource.emitBefore()</code></p>
 
-          </h1>
-        </div><section><p><ul></p>
+
+<div class="heading">
+<h4>
+  <a name="module__asyncresource_runinasyncscope_fn___thisarg_____args___" id="module__asyncresource_runinasyncscope_fn___thisarg_____args___"></a>
+  <div class="permalink"><a href="#module__asyncresource_runinasyncscope_fn___thisarg_____args___" class="permalink fas fa-link"></a></div>
+  <p><code>asyncResource.runInAsyncScope(fn[, thisArg, ...args])</code></p>
+
+</h4>
+</div>
+
+<p><ul></p>
+<p><li><code>fn</code> {Function} The function to call in the execution context of this async
+resource.</li></p>
+<p><li><code>thisArg</code> {any} The receiver to be used for the function call.</li></p>
+<p><li><code>...args</code> {any} Optional arguments to pass to the function.</li>
+</ul></p>
+<p>Call the provided function with the provided arguments in the execution context
+of the async resource. This will establish the context, trigger the AsyncHooks
+before callbacks, call the function, trigger the AsyncHooks after callbacks, and
+then restore the original execution context.</p>
+
+
+<div class="heading">
+<h4>
+  <a name="module__asyncresource_emitbefore___" id="module__asyncresource_emitbefore___"></a>
+  <div class="permalink"><a href="#module__asyncresource_emitbefore___" class="permalink fas fa-link"></a></div>
+  <p><code>asyncResource.emitBefore()</code></p>
+
+</h4>
+</div>
+
+<p><ul></p>
 <p><li>Returns: {undefined}</li>
 </ul></p>
 <p>Call all <code>before</code> callbacks to notify that a new asynchronous execution context
 is being entered. If nested calls to <code>emitBefore()</code> are made, the stack of
 <code>asyncId</code>s will be tracked and properly unwound.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module__asyncresource_emitafter___" id="module__asyncresource_emitafter___"></a>
-            <div class="permalink"><a href="#module__asyncresource_emitafter___" class="permalink fas fa-link"></a></div>
-            <p><code>asyncResource.emitAfter()</code></p>
+<p><code>before</code> and <code>after</code> calls must be unwound in the same order that they
+are called. Otherwise, an unrecoverable exception will occur and the process
+will abort. For this reason, the <code>emitBefore</code> and <code>emitAfter</code> APIs are
+considered deprecated. Please use <code>runInAsyncScope</code>, as it provides a much safer
+alternative.</p>
 
-          </h1>
-        </div><section><p><ul></p>
+
+<div class="heading">
+<h4>
+  <a name="module__asyncresource_emitafter___" id="module__asyncresource_emitafter___"></a>
+  <div class="permalink"><a href="#module__asyncresource_emitafter___" class="permalink fas fa-link"></a></div>
+  <p><code>asyncResource.emitAfter()</code></p>
+
+</h4>
+</div>
+
+<p><ul></p>
 <p><li>Returns: {undefined}</li>
 </ul></p>
 <p>Call all <code>after</code> callbacks. If nested calls to <code>emitBefore()</code> were made, then
@@ -719,47 +878,62 @@ make sure the stack is unwound properly. Otherwise an error will be thrown.</p>
 <p>If the user&#39;s callback throws an exception, <code>emitAfter()</code> will automatically be
 called for all <code>asyncId</code>s on the stack if the error is handled by a domain or
 <code>&#39;uncaughtException&#39;</code> handler.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module__asyncresource_emitdestroy___" id="module__asyncresource_emitdestroy___"></a>
-            <div class="permalink"><a href="#module__asyncresource_emitdestroy___" class="permalink fas fa-link"></a></div>
-            <p><code>asyncResource.emitDestroy()</code></p>
+<p><code>before</code> and <code>after</code> calls must be unwound in the same order that they
+are called. Otherwise, an unrecoverable exception will occur and the process
+will abort. For this reason, the <code>emitBefore</code> and <code>emitAfter</code> APIs are
+considered deprecated. Please use <code>runInAsyncScope</code>, as it provides a much safer
+alternative.</p>
 
-          </h1>
-        </div><section><p><ul></p>
+
+<div class="heading">
+<h4>
+  <a name="module__asyncresource_emitdestroy___" id="module__asyncresource_emitdestroy___"></a>
+  <div class="permalink"><a href="#module__asyncresource_emitdestroy___" class="permalink fas fa-link"></a></div>
+  <p><code>asyncResource.emitDestroy()</code></p>
+
+</h4>
+</div>
+
+<p><ul></p>
 <p><li>Returns: {undefined}</li>
 </ul></p>
 <p>Call all <code>destroy</code> hooks. This should only ever be called once. An error will
 be thrown if it is called more than once. This <strong>must</strong> be manually called. If
 the resource is left to be collected by the GC then the <code>destroy</code> hooks will
 never be called.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module__asyncResource_asyncId___" id="module__asyncResource_asyncId___"></a>
-            <div class="permalink"><a href="#module__asyncResource_asyncId___" class="permalink fas fa-link"></a></div>
-            <p><code>asyncResource.triggerAsyncId()</code></p>
 
-          </h1>
-        </div><section><ul>
+
+<div class="heading">
+<h4>
+  <a name="module__asyncResource_asyncId___" id="module__asyncResource_asyncId___"></a>
+  <div class="permalink"><a href="#module__asyncResource_asyncId___" class="permalink fas fa-link"></a></div>
+  <p><code>asyncResource.asyncId()</code></p>
+
+</h4>
+</div>
+
+<ul>
 <li>Returns: {number} The unique <code>asyncId</code> assigned to the resource.</li>
 </ul>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module__asyncresource_triggerasyncid___" id="module__asyncresource_triggerasyncid___"></a>
-            <div class="permalink"><a href="#module__asyncresource_triggerasyncid___" class="permalink fas fa-link"></a></div>
-            <p><code>asyncResource.triggerAsyncId()</code></p>
 
-          </h1>
-        </div><section><p><ul></p>
+
+<div class="heading">
+<h4>
+  <a name="module__asyncresource_triggerasyncid___" id="module__asyncresource_triggerasyncid___"></a>
+  <div class="permalink"><a href="#module__asyncresource_triggerasyncid___" class="permalink fas fa-link"></a></div>
+  <p><code>asyncResource.triggerAsyncId()</code></p>
+
+</h4>
+</div>
+
+<p><ul></p>
 <p><li>Returns: {number} The same <code>triggerAsyncId</code> that is passed to the <code>AsyncResource</code>
 constructor.</li>
 </ul>
 <!-- [end-include:async_hooks.md] -->
 <!-- [start-include:buffer.md] --></p>
-</section></section></section>
+
+
 
   <div class="footer">
     <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>

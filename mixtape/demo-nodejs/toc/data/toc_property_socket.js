@@ -1,1 +1,1 @@
-define([], function() { return {"children":[],"ancestry":["toc_module_http","toc_class_http_ClientRequest","toc_subgroup_http_ClientRequest_Properties","toc_property_socket"]}; });
+define([], function() { return {"children":[],"ancestry":["toc_module_http","toc_class_http_ClientRequest","toc_subgroup_class_http_ClientRequest_Properties","toc_property_socket"]}; });

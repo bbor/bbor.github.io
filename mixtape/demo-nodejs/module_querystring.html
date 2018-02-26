@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>mixtape page for querystring</title>
+    <title>Query String</title>
     <script data-main="js/setup" src="js/require.js"></script>
     <link rel="stylesheet" href="fonts/fonts.css" />
     <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
@@ -13,9 +13,9 @@
   <body>
 
   <div id="control-panel">
-    <div id="control-strip-h">
-      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
-      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    <div id="control-strip-m">
+      <div id="control-strip-m-find"><div id="m-find"></div></div>
+      <div id="control-strip-m-toc"><div id="m-toc"></div></div>
     </div>
     <div id="controls">
       <div id="control-find">
@@ -26,49 +26,64 @@
       </div>
     </div>
   </div>
-  <div id="control-strip-v">
-    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
-    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  <div id="control-strip-w">
+    <div id="control-strip-w-find"></div>
+    <div id="control-strip-w-toc"></div>
   </div>
 
   <div id="content">
 
   
-       <div class="heading">
-          <h1>
-            <a name="module_querystring" id="module_querystring"></a>
-            <div class="permalink"><a href="#module_querystring" class="permalink fas fa-link"></a></div>
-            <p>querystring</p>
+<div class="heading">
+<h1>
+  <a name="module_querystring" id="module_querystring"></a>
+  <div class="permalink"><a href="#module_querystring" class="permalink fas fa-link"></a></div>
+  <p>Query String</p>
 
-          </h1>
-        </div><p><p>The <code>querystring</code> module provides utilities for parsing and formatting URL
+</h1>
+</div>
+
+<p><p>The <code>querystring</code> module provides utilities for parsing and formatting URL
 query strings. It can be accessed using:</p></p>
 <pre class="prettyprint"><code class="lang-js">const querystring = require(&#39;querystring&#39;);
 </code></pre>
 
-       <div class="heading">
-          <h2>
-            <a name="method_escape" id="method_escape"></a>
-            <div class="permalink"><a href="#method_escape" class="permalink fas fa-link"></a></div>
-            <p>querystring.escape(str)</p>
+<div class='expandable-header' id='method_escape-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_escape" id="method_escape"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_escape-expand-icon"></i>
+        <div class="permalink"><a href="#method_escape" class="permalink fas fa-link"></a></div>
+        <p>querystring.escape(str)</p>
 
-          </h1>
-        </div><section><p>The <code>querystring.escape()</code> method performs URL percent-encoding on the given
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_escape-expand-content'>
+<p>The <code>querystring.escape()</code> method performs URL percent-encoding on the given
 <code>str</code> in a manner that is optimized for the specific requirements of URL
 query strings.</p>
 <p>The <code>querystring.escape()</code> method is used by <code>querystring.stringify()</code> and is
 generally not expected to be used directly. It is exported primarily to allow
 application code to provide a replacement percent-encoding implementation if
 necessary by assigning <code>querystring.escape</code> to an alternative function.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_parse_1" id="method_parse_1"></a>
-            <div class="permalink"><a href="#method_parse_1" class="permalink fas fa-link"></a></div>
-            <p>querystring.parse(str[, sep[, eq[, options]]])</p>
 
-          </h1>
-        </div><section><p><p>The <code>querystring.parse()</code> method parses a URL query string (<code>str</code>) into a
+
+</div><div class='expandable-header' id='method_parse_1-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_parse_1" id="method_parse_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_parse_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_parse_1" class="permalink fas fa-link"></a></div>
+        <p>querystring.parse(str[, sep[, eq[, options]]])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_parse_1-expand-content'>
+<p><p>The <code>querystring.parse()</code> method parses a URL query string (<code>str</code>) into a
 collection of key and value pairs.</p></p>
 <p><p>For example, the query string <code>&#39;foo=bar&amp;abc=xyz&amp;abc=123&#39;</code> is parsed into:</p>
 <!-- eslint-skip --></p>
@@ -90,15 +105,22 @@ in the following example:</p>
 querystring.parse(&#39;w=%D6%D0%CE%C4&amp;foo=bar&#39;, null, null,
                   { decodeURIComponent: gbkDecodeURIComponent });
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_stringify" id="method_stringify"></a>
-            <div class="permalink"><a href="#method_stringify" class="permalink fas fa-link"></a></div>
-            <p>querystring.stringify(obj[, sep[, eq[, options]]])</p>
 
-          </h1>
-        </div><section><p><p>The <code>querystring.stringify()</code> method produces a URL query string from a
+
+</div><div class='expandable-header' id='method_stringify-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_stringify" id="method_stringify"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_stringify-expand-icon"></i>
+        <div class="permalink"><a href="#method_stringify" class="permalink fas fa-link"></a></div>
+        <p>querystring.stringify(obj[, sep[, eq[, options]]])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_stringify-expand-content'>
+<p><p>The <code>querystring.stringify()</code> method produces a URL query string from a
 given <code>obj</code> by iterating through the object&#39;s &quot;own properties&quot;.</p></p>
 <p><p>It serializes the following types of values passed in <code>obj</code>:
 {string|number|boolean|string[]|number[]|boolean[]}
@@ -119,15 +141,22 @@ following example:</p>
 querystring.stringify({ w: &#39;中文&#39;, foo: &#39;bar&#39; }, null, null,
                       { encodeURIComponent: gbkEncodeURIComponent });
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_unescape" id="method_unescape"></a>
-            <div class="permalink"><a href="#method_unescape" class="permalink fas fa-link"></a></div>
-            <p>querystring.unescape(str)</p>
 
-          </h1>
-        </div><section><p><p>The <code>querystring.unescape()</code> method performs decoding of URL percent-encoded
+
+</div><div class='expandable-header' id='method_unescape-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_unescape" id="method_unescape"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_unescape-expand-icon"></i>
+        <div class="permalink"><a href="#method_unescape" class="permalink fas fa-link"></a></div>
+        <p>querystring.unescape(str)</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_unescape-expand-content'>
+<p><p>The <code>querystring.unescape()</code> method performs decoding of URL percent-encoded
 characters on the given <code>str</code>.</p></p>
 <p><p>The <code>querystring.unescape()</code> method is used by <code>querystring.parse()</code> and is
 generally not expected to be used directly. It is exported primarily to allow
@@ -138,7 +167,9 @@ JavaScript built-in <code>decodeURIComponent()</code> method to decode. If that 
 a safer equivalent that does not throw on malformed URLs will be used.</p>
 <!-- [end-include:querystring.md] -->
 <!-- [start-include:readline.md] --></p>
-</section>
+
+
+</div>
 
   <div class="footer">
     <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>

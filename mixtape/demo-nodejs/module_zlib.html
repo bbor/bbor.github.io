@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>mixtape page for zlib</title>
+    <title>Zlib</title>
     <script data-main="js/setup" src="js/require.js"></script>
     <link rel="stylesheet" href="fonts/fonts.css" />
     <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
@@ -13,9 +13,9 @@
   <body>
 
   <div id="control-panel">
-    <div id="control-strip-h">
-      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
-      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    <div id="control-strip-m">
+      <div id="control-strip-m-find"><div id="m-find"></div></div>
+      <div id="control-strip-m-toc"><div id="m-toc"></div></div>
     </div>
     <div id="controls">
       <div id="control-find">
@@ -26,22 +26,24 @@
       </div>
     </div>
   </div>
-  <div id="control-strip-v">
-    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
-    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  <div id="control-strip-w">
+    <div id="control-strip-w-find"></div>
+    <div id="control-strip-w-toc"></div>
   </div>
 
   <div id="content">
 
   
-       <div class="heading">
-          <h1>
-            <a name="module_zlib" id="module_zlib"></a>
-            <div class="permalink"><a href="#module_zlib" class="permalink fas fa-link"></a></div>
-            <p>Zlib</p>
+<div class="heading">
+<h1>
+  <a name="module_zlib" id="module_zlib"></a>
+  <div class="permalink"><a href="#module_zlib" class="permalink fas fa-link"></a></div>
+  <p>Zlib</p>
 
-          </h1>
-        </div><p><p>The <code>zlib</code> module provides compression functionality implemented using Gzip and
+</h1>
+</div>
+
+<p><p>The <code>zlib</code> module provides compression functionality implemented using Gzip and
 Deflate/Inflate. It can be accessed using:</p></p>
 <pre class="prettyprint"><code class="lang-js">const zlib = require(&#39;zlib&#39;);
 </code></pre>
@@ -74,14 +76,17 @@ zlib.unzip(buffer, (err, buffer) =&gt; {
 });
 </code></pre>
 
-       <div class="heading">
-          <h2>
-            <a name="misc_Memory_Usage_Tuning" id="misc_Memory_Usage_Tuning"></a>
-            <div class="permalink"><a href="#misc_Memory_Usage_Tuning" class="permalink fas fa-link"></a></div>
-            <p>Memory Usage Tuning</p>
 
-          </h1>
-        </div><section><p>From <code>zlib/zconf.h</code>, modified to node.js&#39;s usage:</p>
+<div class="heading">
+<h2>
+  <a name="misc_Memory_Usage_Tuning" id="misc_Memory_Usage_Tuning"></a>
+  <div class="permalink"><a href="#misc_Memory_Usage_Tuning" class="permalink fas fa-link"></a></div>
+  <p>Memory Usage Tuning</p>
+
+</h2>
+</div>
+
+<p>From <code>zlib/zconf.h</code>, modified to node.js&#39;s usage:</p>
 <p>The memory requirements for deflate are (in bytes):</p>
 <!-- eslint-disable semi -->
 <pre class="prettyprint"><code class="lang-js">(1 &lt;&lt; (windowBits + 2)) + (1 &lt;&lt; (memLevel + 9))
@@ -106,15 +111,18 @@ compression, but will be much faster.</p>
 fewer calls to <code>zlib</code> because it will be able to process more data on
 each <code>write</code> operation.  So, this is another factor that affects the
 speed, at the cost of memory usage.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="misc_Constants" id="misc_Constants"></a>
-            <div class="permalink"><a href="#misc_Constants" class="permalink fas fa-link"></a></div>
-            <p>Constants</p>
 
-          </h1>
-        </div><section><p><p>All of the constants defined in <code>zlib.h</code> are also defined on
+
+<div class="heading">
+<h2>
+  <a name="misc_Constants" id="misc_Constants"></a>
+  <div class="permalink"><a href="#misc_Constants" class="permalink fas fa-link"></a></div>
+  <p>Constants</p>
+
+</h2>
+</div>
+
+<p><p>All of the constants defined in <code>zlib.h</code> are also defined on
 <code>require(&#39;zlib&#39;).constants</code>. In the normal course of operations, it will not be
 necessary to use these  constants. They are documented so that their presence is
 not surprising. This section is taken almost directly from the
@@ -163,15 +171,18 @@ events.</p>
 <li><code>zlib.constants.Z_FIXED</code></li>
 <li><code>zlib.constants.Z_DEFAULT_STRATEGY</code></li>
 </ul>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="misc_Class_Options" id="misc_Class_Options"></a>
-            <div class="permalink"><a href="#misc_Class_Options" class="permalink fas fa-link"></a></div>
-            <p>Class Options</p>
 
-          </h1>
-        </div><section><p>Each class takes an <code>options</code> object.  All options are optional.</p>
+
+<div class="heading">
+<h2>
+  <a name="misc_Class_Options" id="misc_Class_Options"></a>
+  <div class="permalink"><a href="#misc_Class_Options" class="permalink fas fa-link"></a></div>
+  <p>Class Options</p>
+
+</h2>
+</div>
+
+<p>Each class takes an <code>options</code> object.  All options are optional.</p>
 <p>Note that some options are only relevant when compressing, and are
 ignored by the decompression classes.</p>
 <ul>
@@ -188,169 +199,276 @@ empty dictionary by default)</li>
 </ul>
 <p>See the description of <code>deflateInit2</code> and <code>inflateInit2</code> at
 <a href="https://zlib.net/manual.html#Advanced">https://zlib.net/manual.html#Advanced</a> for more information on these.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="misc_Convenience_Methods" id="misc_Convenience_Methods"></a>
-            <div class="permalink"><a href="#misc_Convenience_Methods" class="permalink fas fa-link"></a></div>
-            <p>Convenience Methods</p>
 
-          </h1>
-        </div><section><p>All of these take a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray"><code>TypedArray</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView"><code>DataView</code></a>,
+
+<div class="heading">
+<h2>
+  <a name="misc_Convenience_Methods" id="misc_Convenience_Methods"></a>
+  <div class="permalink"><a href="#misc_Convenience_Methods" class="permalink fas fa-link"></a></div>
+  <p>Convenience Methods</p>
+
+</h2>
+</div>
+
+<p>All of these take a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray"><code>TypedArray</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView"><code>DataView</code></a>,
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer"><code>ArrayBuffer</code></a> or string as the first argument, an optional second argument
 to supply options to the <code>zlib</code> classes and will call the supplied callback
 with <code>callback(error, result)</code>.</p>
 <p>Every method has a <code>*Sync</code> counterpart, which accept the same arguments, but
 without a callback.</p>
 
-       <div class="heading">
-          <h3>
-            <a name="method_deflate" id="method_deflate"></a>
-            <div class="permalink"><a href="#method_deflate" class="permalink fas fa-link"></a></div>
-            <p>zlib.deflate(buffer[, options], callback)</p>
+<div class='expandable-header' id='method_deflate-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_deflate" id="method_deflate"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_deflate-expand-icon"></i>
+        <div class="permalink"><a href="#method_deflate" class="permalink fas fa-link"></a></div>
+        <p>zlib.deflate(buffer[, options], callback)</p>
 
-          </h1>
-        </div><section><p>Compress a chunk of data with <a href="#zlib_class_zlib_deflate">Deflate</a>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_deflateSync" id="method_deflateSync"></a>
-            <div class="permalink"><a href="#method_deflateSync" class="permalink fas fa-link"></a></div>
-            <p>zlib.deflateSync(buffer[, options])</p>
+    </h3>
+</div>
 
-          </h1>
-        </div><section><p>Compress a chunk of data with <a href="#zlib_class_zlib_deflate">Deflate</a>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_deflateRaw" id="method_deflateRaw"></a>
-            <div class="permalink"><a href="#method_deflateRaw" class="permalink fas fa-link"></a></div>
-            <p>zlib.deflateRaw(buffer[, options], callback)</p>
+</div>
+<div class='expandable-content' id='method_deflate-expand-content'>
+<p>Compress a chunk of data with <a href="#zlib_class_zlib_deflate">Deflate</a>.</p>
 
-          </h1>
-        </div><section><p>Compress a chunk of data with <a href="#zlib_class_zlib_deflateraw">DeflateRaw</a>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_deflateRawSync" id="method_deflateRawSync"></a>
-            <div class="permalink"><a href="#method_deflateRawSync" class="permalink fas fa-link"></a></div>
-            <p>zlib.deflateRawSync(buffer[, options])</p>
 
-          </h1>
-        </div><section><p>Compress a chunk of data with <a href="#zlib_class_zlib_deflateraw">DeflateRaw</a>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_gunzip" id="method_gunzip"></a>
-            <div class="permalink"><a href="#method_gunzip" class="permalink fas fa-link"></a></div>
-            <p>zlib.gunzip(buffer[, options], callback)</p>
+</div><div class='expandable-header' id='method_deflateSync-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_deflateSync" id="method_deflateSync"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_deflateSync-expand-icon"></i>
+        <div class="permalink"><a href="#method_deflateSync" class="permalink fas fa-link"></a></div>
+        <p>zlib.deflateSync(buffer[, options])</p>
 
-          </h1>
-        </div><section><p>Decompress a chunk of data with <a href="#zlib_class_zlib_gunzip">Gunzip</a>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_gunzipSync" id="method_gunzipSync"></a>
-            <div class="permalink"><a href="#method_gunzipSync" class="permalink fas fa-link"></a></div>
-            <p>zlib.gunzipSync(buffer[, options])</p>
+    </h3>
+</div>
 
-          </h1>
-        </div><section><p>Decompress a chunk of data with <a href="#zlib_class_zlib_gunzip">Gunzip</a>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_gzip" id="method_gzip"></a>
-            <div class="permalink"><a href="#method_gzip" class="permalink fas fa-link"></a></div>
-            <p>zlib.gzip(buffer[, options], callback)</p>
+</div>
+<div class='expandable-content' id='method_deflateSync-expand-content'>
+<p>Compress a chunk of data with <a href="#zlib_class_zlib_deflate">Deflate</a>.</p>
 
-          </h1>
-        </div><section><p>Compress a chunk of data with <a href="#zlib_class_zlib_gzip">Gzip</a>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_gzipSync" id="method_gzipSync"></a>
-            <div class="permalink"><a href="#method_gzipSync" class="permalink fas fa-link"></a></div>
-            <p>zlib.gzipSync(buffer[, options])</p>
 
-          </h1>
-        </div><section><p>Compress a chunk of data with <a href="#zlib_class_zlib_gzip">Gzip</a>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_inflate" id="method_inflate"></a>
-            <div class="permalink"><a href="#method_inflate" class="permalink fas fa-link"></a></div>
-            <p>zlib.inflate(buffer[, options], callback)</p>
+</div><div class='expandable-header' id='method_deflateRaw-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_deflateRaw" id="method_deflateRaw"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_deflateRaw-expand-icon"></i>
+        <div class="permalink"><a href="#method_deflateRaw" class="permalink fas fa-link"></a></div>
+        <p>zlib.deflateRaw(buffer[, options], callback)</p>
 
-          </h1>
-        </div><section><p>Decompress a chunk of data with <a href="#zlib_class_zlib_inflate">Inflate</a>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_inflateSync" id="method_inflateSync"></a>
-            <div class="permalink"><a href="#method_inflateSync" class="permalink fas fa-link"></a></div>
-            <p>zlib.inflateSync(buffer[, options])</p>
+    </h3>
+</div>
 
-          </h1>
-        </div><section><p>Decompress a chunk of data with <a href="#zlib_class_zlib_inflate">Inflate</a>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_inflateRaw" id="method_inflateRaw"></a>
-            <div class="permalink"><a href="#method_inflateRaw" class="permalink fas fa-link"></a></div>
-            <p>zlib.inflateRaw(buffer[, options], callback)</p>
+</div>
+<div class='expandable-content' id='method_deflateRaw-expand-content'>
+<p>Compress a chunk of data with <a href="#zlib_class_zlib_deflateraw">DeflateRaw</a>.</p>
 
-          </h1>
-        </div><section><p>Decompress a chunk of data with <a href="#zlib_class_zlib_inflateraw">InflateRaw</a>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_inflateRawSync" id="method_inflateRawSync"></a>
-            <div class="permalink"><a href="#method_inflateRawSync" class="permalink fas fa-link"></a></div>
-            <p>zlib.inflateRawSync(buffer[, options])</p>
 
-          </h1>
-        </div><section><p>Decompress a chunk of data with <a href="#zlib_class_zlib_inflateraw">InflateRaw</a>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_unzip" id="method_unzip"></a>
-            <div class="permalink"><a href="#method_unzip" class="permalink fas fa-link"></a></div>
-            <p>zlib.unzip(buffer[, options], callback)</p>
+</div><div class='expandable-header' id='method_deflateRawSync-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_deflateRawSync" id="method_deflateRawSync"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_deflateRawSync-expand-icon"></i>
+        <div class="permalink"><a href="#method_deflateRawSync" class="permalink fas fa-link"></a></div>
+        <p>zlib.deflateRawSync(buffer[, options])</p>
 
-          </h1>
-        </div><section><p><p>Decompress a chunk of data with <a href="#zlib_class_zlib_unzip">Unzip</a>.</p>
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_deflateRawSync-expand-content'>
+<p>Compress a chunk of data with <a href="#zlib_class_zlib_deflateraw">DeflateRaw</a>.</p>
+
+
+</div><div class='expandable-header' id='method_gunzip-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_gunzip" id="method_gunzip"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_gunzip-expand-icon"></i>
+        <div class="permalink"><a href="#method_gunzip" class="permalink fas fa-link"></a></div>
+        <p>zlib.gunzip(buffer[, options], callback)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_gunzip-expand-content'>
+<p>Decompress a chunk of data with <a href="#zlib_class_zlib_gunzip">Gunzip</a>.</p>
+
+
+</div><div class='expandable-header' id='method_gunzipSync-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_gunzipSync" id="method_gunzipSync"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_gunzipSync-expand-icon"></i>
+        <div class="permalink"><a href="#method_gunzipSync" class="permalink fas fa-link"></a></div>
+        <p>zlib.gunzipSync(buffer[, options])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_gunzipSync-expand-content'>
+<p>Decompress a chunk of data with <a href="#zlib_class_zlib_gunzip">Gunzip</a>.</p>
+
+
+</div><div class='expandable-header' id='method_gzip-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_gzip" id="method_gzip"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_gzip-expand-icon"></i>
+        <div class="permalink"><a href="#method_gzip" class="permalink fas fa-link"></a></div>
+        <p>zlib.gzip(buffer[, options], callback)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_gzip-expand-content'>
+<p>Compress a chunk of data with <a href="#zlib_class_zlib_gzip">Gzip</a>.</p>
+
+
+</div><div class='expandable-header' id='method_gzipSync-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_gzipSync" id="method_gzipSync"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_gzipSync-expand-icon"></i>
+        <div class="permalink"><a href="#method_gzipSync" class="permalink fas fa-link"></a></div>
+        <p>zlib.gzipSync(buffer[, options])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_gzipSync-expand-content'>
+<p>Compress a chunk of data with <a href="#zlib_class_zlib_gzip">Gzip</a>.</p>
+
+
+</div><div class='expandable-header' id='method_inflate-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_inflate" id="method_inflate"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_inflate-expand-icon"></i>
+        <div class="permalink"><a href="#method_inflate" class="permalink fas fa-link"></a></div>
+        <p>zlib.inflate(buffer[, options], callback)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_inflate-expand-content'>
+<p>Decompress a chunk of data with <a href="#zlib_class_zlib_inflate">Inflate</a>.</p>
+
+
+</div><div class='expandable-header' id='method_inflateSync-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_inflateSync" id="method_inflateSync"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_inflateSync-expand-icon"></i>
+        <div class="permalink"><a href="#method_inflateSync" class="permalink fas fa-link"></a></div>
+        <p>zlib.inflateSync(buffer[, options])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_inflateSync-expand-content'>
+<p>Decompress a chunk of data with <a href="#zlib_class_zlib_inflate">Inflate</a>.</p>
+
+
+</div><div class='expandable-header' id='method_inflateRaw-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_inflateRaw" id="method_inflateRaw"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_inflateRaw-expand-icon"></i>
+        <div class="permalink"><a href="#method_inflateRaw" class="permalink fas fa-link"></a></div>
+        <p>zlib.inflateRaw(buffer[, options], callback)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_inflateRaw-expand-content'>
+<p>Decompress a chunk of data with <a href="#zlib_class_zlib_inflateraw">InflateRaw</a>.</p>
+
+
+</div><div class='expandable-header' id='method_inflateRawSync-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_inflateRawSync" id="method_inflateRawSync"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_inflateRawSync-expand-icon"></i>
+        <div class="permalink"><a href="#method_inflateRawSync" class="permalink fas fa-link"></a></div>
+        <p>zlib.inflateRawSync(buffer[, options])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_inflateRawSync-expand-content'>
+<p>Decompress a chunk of data with <a href="#zlib_class_zlib_inflateraw">InflateRaw</a>.</p>
+
+
+</div><div class='expandable-header' id='method_unzip-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_unzip" id="method_unzip"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_unzip-expand-icon"></i>
+        <div class="permalink"><a href="#method_unzip" class="permalink fas fa-link"></a></div>
+        <p>zlib.unzip(buffer[, options], callback)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_unzip-expand-content'>
+<p><p>Decompress a chunk of data with <a href="#zlib_class_zlib_unzip">Unzip</a>.</p>
 <!-- [end-include:zlib.md] --></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_unzipSync" id="method_unzipSync"></a>
-            <div class="permalink"><a href="#method_unzipSync" class="permalink fas fa-link"></a></div>
-            <p>zlib.unzipSync(buffer[, options])</p>
 
-          </h1>
-        </div><section><p><p>Decompress a chunk of data with <a href="#zlib_class_zlib_unzip">Unzip</a>.</p>
+
+</div><div class='expandable-header' id='method_unzipSync-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_unzipSync" id="method_unzipSync"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_unzipSync-expand-icon"></i>
+        <div class="permalink"><a href="#method_unzipSync" class="permalink fas fa-link"></a></div>
+        <p>zlib.unzipSync(buffer[, options])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_unzipSync-expand-content'>
+<p><p>Decompress a chunk of data with <a href="#zlib_class_zlib_unzip">Unzip</a>.</p>
 <!-- [end-include:zlib.md] --></p>
-</section></section>
-       <div class="heading">
-          <h2>
-            <a name="module_threadpool_usage_1" id="module_threadpool_usage_1"></a>
-            <div class="permalink"><a href="#module_threadpool_usage_1" class="permalink fas fa-link"></a></div>
-            <p>Threadpool Usage</p>
 
-          </h1>
-        </div><section><p>Note that all zlib APIs except those that are explicitly synchronous use libuv&#39;s
+
+</div>
+<div class="heading">
+<h2>
+  <a name="module_threadpool_usage_1" id="module_threadpool_usage_1"></a>
+  <div class="permalink"><a href="#module_threadpool_usage_1" class="permalink fas fa-link"></a></div>
+  <p>Threadpool Usage</p>
+
+</h2>
+</div>
+
+<p>Note that all zlib APIs except those that are explicitly synchronous use libuv&#39;s
 threadpool, which can have surprising and negative performance implications for
 some applications, see the <a href="cli.html#cli_uv_threadpool_size_size"><code>UV_THREADPOOL_SIZE</code></a> documentation for more
 information.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="module_compressing_http_requests_and_responses" id="module_compressing_http_requests_and_responses"></a>
-            <div class="permalink"><a href="#module_compressing_http_requests_and_responses" class="permalink fas fa-link"></a></div>
-            <p>Compressing HTTP requests and responses</p>
 
-          </h1>
-        </div><section><p>The <code>zlib</code> module can be used to implement support for the <code>gzip</code> and <code>deflate</code>
+
+<div class="heading">
+<h2>
+  <a name="module_compressing_http_requests_and_responses" id="module_compressing_http_requests_and_responses"></a>
+  <div class="permalink"><a href="#module_compressing_http_requests_and_responses" class="permalink fas fa-link"></a></div>
+  <p>Compressing HTTP requests and responses</p>
+
+</h2>
+</div>
+
+<p>The <code>zlib</code> module can be used to implement support for the <code>gzip</code> and <code>deflate</code>
 content-encoding mechanisms defined by
 <a href="https://tools.ietf.org/html/rfc7230#section-4.2">HTTP</a>.</p>
 <p>The HTTP <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3"><code>Accept-Encoding</code></a> header is used within an http request to identify
@@ -400,7 +518,7 @@ http.createServer((request, response) =&gt; {
   }
 
   // Note: This is not a conformant accept-encoding parser.
-  // See <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3">https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3</a>
+  // See <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3" target="_blank">https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3</a>
   if (/\bdeflate\b/.test(acceptEncoding)) {
     response.writeHead(200, { &#39;Content-Encoding&#39;: &#39;deflate&#39; });
     raw.pipe(zlib.createDeflate()).pipe(response);
@@ -437,15 +555,18 @@ when the input data has an invalid format. Using this method, it will not be
 possible to determine whether the input ended prematurely or lacks the
 integrity checks, making it necessary to manually check that the
 decompressed result is valid.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="module_flushing" id="module_flushing"></a>
-            <div class="permalink"><a href="#module_flushing" class="permalink fas fa-link"></a></div>
-            <p>Flushing</p>
 
-          </h1>
-        </div><section><p><p>Calling <a href="#zlib_zlib_flush_kind_callback"><code>.flush()</code></a> on a compression stream will make <code>zlib</code> return as much
+
+<div class="heading">
+<h2>
+  <a name="module_flushing" id="module_flushing"></a>
+  <div class="permalink"><a href="#module_flushing" class="permalink fas fa-link"></a></div>
+  <p>Flushing</p>
+
+</h2>
+</div>
+
+<p><p>Calling <a href="#zlib_zlib_flush_kind_callback"><code>.flush()</code></a> on a compression stream will make <code>zlib</code> return as much
 output as currently possible. This may come at the cost of degraded compression
 quality, but can be useful when data needs to be available as soon as possible.</p></p>
 <p><p>In the following example, <code>flush()</code> is used to write a compressed partial
@@ -470,214 +591,384 @@ http.createServer((request, response) =&gt; {
   }, 1000);
 }).listen(1337);
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="class_zlib_Deflate" id="class_zlib_Deflate"></a>
-            <div class="permalink"><a href="#class_zlib_Deflate" class="permalink fas fa-link"></a></div>
-            <p>Class: zlib.Deflate</p>
 
-          </h1>
-        </div><section><p>Compress data using deflate.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="class_zlib_DeflateRaw" id="class_zlib_DeflateRaw"></a>
-            <div class="permalink"><a href="#class_zlib_DeflateRaw" class="permalink fas fa-link"></a></div>
-            <p>Class: zlib.DeflateRaw</p>
+<div class='expandable-header' id='class_zlib_Deflate-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_zlib_Deflate" id="class_zlib_Deflate"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_zlib_Deflate-expand-icon"></i>
+        <div class="permalink"><a href="#class_zlib_Deflate" class="permalink fas fa-link"></a></div>
+        <p>Class: zlib.Deflate</p>
 
-          </h1>
-        </div><section><p>Compress data using deflate, and do not append a <code>zlib</code> header.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="class_zlib_Gunzip" id="class_zlib_Gunzip"></a>
-            <div class="permalink"><a href="#class_zlib_Gunzip" class="permalink fas fa-link"></a></div>
-            <p>Class: zlib.Gunzip</p>
+    </h2>
+</div>
 
-          </h1>
-        </div><section><p>Decompress a gzip stream.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="class_zlib_Gzip" id="class_zlib_Gzip"></a>
-            <div class="permalink"><a href="#class_zlib_Gzip" class="permalink fas fa-link"></a></div>
-            <p>Class: zlib.Gzip</p>
+</div>
+<div class='expandable-content' id='class_zlib_Deflate-expand-content'>
+<p>Compress data using deflate.</p>
 
-          </h1>
-        </div><section><p>Compress data using gzip.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="class_zlib_Inflate" id="class_zlib_Inflate"></a>
-            <div class="permalink"><a href="#class_zlib_Inflate" class="permalink fas fa-link"></a></div>
-            <p>Class: zlib.Inflate</p>
 
-          </h1>
-        </div><section><p>Decompress a deflate stream.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="class_zlib_InflateRaw" id="class_zlib_InflateRaw"></a>
-            <div class="permalink"><a href="#class_zlib_InflateRaw" class="permalink fas fa-link"></a></div>
-            <p>Class: zlib.InflateRaw</p>
+</div><div class='expandable-header' id='class_zlib_DeflateRaw-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_zlib_DeflateRaw" id="class_zlib_DeflateRaw"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_zlib_DeflateRaw-expand-icon"></i>
+        <div class="permalink"><a href="#class_zlib_DeflateRaw" class="permalink fas fa-link"></a></div>
+        <p>Class: zlib.DeflateRaw</p>
 
-          </h1>
-        </div><section><p>Decompress a raw deflate stream.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="class_zlib_Unzip" id="class_zlib_Unzip"></a>
-            <div class="permalink"><a href="#class_zlib_Unzip" class="permalink fas fa-link"></a></div>
-            <p>Class: zlib.Unzip</p>
+    </h2>
+</div>
 
-          </h1>
-        </div><section><p>Decompress either a Gzip- or Deflate-compressed stream by auto-detecting
+</div>
+<div class='expandable-content' id='class_zlib_DeflateRaw-expand-content'>
+<p>Compress data using deflate, and do not append a <code>zlib</code> header.</p>
+
+
+</div><div class='expandable-header' id='class_zlib_Gunzip-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_zlib_Gunzip" id="class_zlib_Gunzip"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_zlib_Gunzip-expand-icon"></i>
+        <div class="permalink"><a href="#class_zlib_Gunzip" class="permalink fas fa-link"></a></div>
+        <p>Class: zlib.Gunzip</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_zlib_Gunzip-expand-content'>
+<p>Decompress a gzip stream.</p>
+
+
+</div><div class='expandable-header' id='class_zlib_Gzip-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_zlib_Gzip" id="class_zlib_Gzip"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_zlib_Gzip-expand-icon"></i>
+        <div class="permalink"><a href="#class_zlib_Gzip" class="permalink fas fa-link"></a></div>
+        <p>Class: zlib.Gzip</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_zlib_Gzip-expand-content'>
+<p>Compress data using gzip.</p>
+
+
+</div><div class='expandable-header' id='class_zlib_Inflate-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_zlib_Inflate" id="class_zlib_Inflate"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_zlib_Inflate-expand-icon"></i>
+        <div class="permalink"><a href="#class_zlib_Inflate" class="permalink fas fa-link"></a></div>
+        <p>Class: zlib.Inflate</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_zlib_Inflate-expand-content'>
+<p>Decompress a deflate stream.</p>
+
+
+</div><div class='expandable-header' id='class_zlib_InflateRaw-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_zlib_InflateRaw" id="class_zlib_InflateRaw"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_zlib_InflateRaw-expand-icon"></i>
+        <div class="permalink"><a href="#class_zlib_InflateRaw" class="permalink fas fa-link"></a></div>
+        <p>Class: zlib.InflateRaw</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_zlib_InflateRaw-expand-content'>
+<p>Decompress a raw deflate stream.</p>
+
+
+</div><div class='expandable-header' id='class_zlib_Unzip-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_zlib_Unzip" id="class_zlib_Unzip"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_zlib_Unzip-expand-icon"></i>
+        <div class="permalink"><a href="#class_zlib_Unzip" class="permalink fas fa-link"></a></div>
+        <p>Class: zlib.Unzip</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_zlib_Unzip-expand-content'>
+<p>Decompress either a Gzip- or Deflate-compressed stream by auto-detecting
 the header.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="class_zlib_Zlib" id="class_zlib_Zlib"></a>
-            <div class="permalink"><a href="#class_zlib_Zlib" class="permalink fas fa-link"></a></div>
-            <p>Class: zlib.Zlib</p>
 
-          </h1>
-        </div><section><p>Not exported by the <code>zlib</code> module. It is documented here because it is the base
+
+</div><div class='expandable-header' id='class_zlib_Zlib-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_zlib_Zlib" id="class_zlib_Zlib"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_zlib_Zlib-expand-icon"></i>
+        <div class="permalink"><a href="#class_zlib_Zlib" class="permalink fas fa-link"></a></div>
+        <p>Class: zlib.Zlib</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_zlib_Zlib-expand-content'>
+<p>Not exported by the <code>zlib</code> module. It is documented here because it is the base
 class of the compressor/decompressor classes.</p>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="property_bytesRead_2" id="property_bytesRead_2"></a>
-            <div class="permalink"><a href="#property_bytesRead_2" class="permalink fas fa-link"></a></div>
-            <p><code>bytesRead</code> {number} </p>
 
-          </h1>
-        </div><section><p>The <code>zlib.bytesRead</code> property specifies the number of bytes read by the engine
+
+<div class="heading">
+<h3>
+  <a name="subgroup_class_zlib_Zlib_Properties" id="subgroup_class_zlib_Zlib_Properties"></a>
+  <div class="permalink"><a href="#subgroup_class_zlib_Zlib_Properties" class="permalink fas fa-link"></a></div>
+  <p>Properties</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='property_bytesRead_2-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_bytesRead_2" id="property_bytesRead_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_bytesRead_2-expand-icon"></i>
+        <div class="permalink"><a href="#property_bytesRead_2" class="permalink fas fa-link"></a></div>
+        <p><code>bytesRead</code> {number} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_bytesRead_2-expand-content'>
+<p>The <code>zlib.bytesRead</code> property specifies the number of bytes read by the engine
 before the bytes are processed (compressed or decompressed, as appropriate for
 the derived class).</p>
-</section></section><section>
-       <div class="heading">
-          <h4>
-            <a name="method_close_12" id="method_close_12"></a>
-            <div class="permalink"><a href="#method_close_12" class="permalink fas fa-link"></a></div>
-            <p>zlib.close([callback])</p>
 
-          </h1>
-        </div><section><p>Close the underlying handle.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_flush" id="method_flush"></a>
-            <div class="permalink"><a href="#method_flush" class="permalink fas fa-link"></a></div>
-            <p>zlib.flush([kind], callback)</p>
 
-          </h1>
-        </div><section><p><code>kind</code> defaults to <code>zlib.constants.Z_FULL_FLUSH</code>.</p>
+</div>
+<div class="heading">
+<h3>
+  <a name="subgroup_class_zlib_Zlib_Methods" id="subgroup_class_zlib_Zlib_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_zlib_Zlib_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_close_11-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_close_11" id="method_close_11"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_close_11-expand-icon"></i>
+        <div class="permalink"><a href="#method_close_11" class="permalink fas fa-link"></a></div>
+        <p>zlib.close([callback])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_close_11-expand-content'>
+<p>Close the underlying handle.</p>
+
+
+</div><div class='expandable-header' id='method_flush-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_flush" id="method_flush"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_flush-expand-icon"></i>
+        <div class="permalink"><a href="#method_flush" class="permalink fas fa-link"></a></div>
+        <p>zlib.flush([kind], callback)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_flush-expand-content'>
+<p><code>kind</code> defaults to <code>zlib.constants.Z_FULL_FLUSH</code>.</p>
 <p>Flush pending data. Don&#39;t call this frivolously, premature flushes negatively
 impact the effectiveness of the compression algorithm.</p>
 <p>Calling this only flushes data from the internal <code>zlib</code> state, and does not
 perform flushing of any kind on the streams level. Rather, it behaves like a
 normal call to <code>.write()</code>, i.e. it will be queued up behind other pending
 writes and will only produce output when data is being read from the stream.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_params" id="method_params"></a>
-            <div class="permalink"><a href="#method_params" class="permalink fas fa-link"></a></div>
-            <p>zlib.params(level, strategy, callback)</p>
 
-          </h1>
-        </div><section><p>Dynamically update the compression level and compression strategy.
+
+</div><div class='expandable-header' id='method_params-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_params" id="method_params"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_params-expand-icon"></i>
+        <div class="permalink"><a href="#method_params" class="permalink fas fa-link"></a></div>
+        <p>zlib.params(level, strategy, callback)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_params-expand-content'>
+<p>Dynamically update the compression level and compression strategy.
 Only applicable to deflate algorithm.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_reset" id="method_reset"></a>
-            <div class="permalink"><a href="#method_reset" class="permalink fas fa-link"></a></div>
-            <p>zlib.reset()</p>
 
-          </h1>
-        </div><section><p>Reset the compressor/decompressor to factory defaults. Only applicable to
+
+</div><div class='expandable-header' id='method_reset-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_reset" id="method_reset"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_reset-expand-icon"></i>
+        <div class="permalink"><a href="#method_reset" class="permalink fas fa-link"></a></div>
+        <p>zlib.reset()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_reset-expand-content'>
+<p>Reset the compressor/decompressor to factory defaults. Only applicable to
 the inflate and deflate algorithms.</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="property_constants_4" id="property_constants_4"></a>
-            <div class="permalink"><a href="#property_constants_4" class="permalink fas fa-link"></a></div>
-            <p>zlib.constants</p>
 
-          </h1>
-        </div><section><p>Provides an object enumerating Zlib-related constants.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_createDeflate" id="method_createDeflate"></a>
-            <div class="permalink"><a href="#method_createDeflate" class="permalink fas fa-link"></a></div>
-            <p>zlib.createDeflate([options])</p>
 
-          </h1>
-        </div><section><p>Creates and returns a new <a href="#zlib_class_zlib_deflate">Deflate</a> object with the given <a href="#zlib_class_options">options</a>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_createDeflateRaw" id="method_createDeflateRaw"></a>
-            <div class="permalink"><a href="#method_createDeflateRaw" class="permalink fas fa-link"></a></div>
-            <p>zlib.createDeflateRaw([options])</p>
+</div>
+</div><div class='expandable-header' id='property_constants_4-expand'>
+<div class="heading">
+    <h2>
+        <a name="property_constants_4" id="property_constants_4"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_constants_4-expand-icon"></i>
+        <div class="permalink"><a href="#property_constants_4" class="permalink fas fa-link"></a></div>
+        <p>zlib.constants</p>
 
-          </h1>
-        </div><section><p>Creates and returns a new <a href="#zlib_class_zlib_deflateraw">DeflateRaw</a> object with the given <a href="#zlib_class_options">options</a>.</p>
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='property_constants_4-expand-content'>
+<p>Provides an object enumerating Zlib-related constants.</p>
+
+
+</div><div class='expandable-header' id='method_createDeflate-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_createDeflate" id="method_createDeflate"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createDeflate-expand-icon"></i>
+        <div class="permalink"><a href="#method_createDeflate" class="permalink fas fa-link"></a></div>
+        <p>zlib.createDeflate([options])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createDeflate-expand-content'>
+<p>Creates and returns a new <a href="#zlib_class_zlib_deflate">Deflate</a> object with the given <a href="#zlib_class_options">options</a>.</p>
+
+
+</div><div class='expandable-header' id='method_createDeflateRaw-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_createDeflateRaw" id="method_createDeflateRaw"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createDeflateRaw-expand-icon"></i>
+        <div class="permalink"><a href="#method_createDeflateRaw" class="permalink fas fa-link"></a></div>
+        <p>zlib.createDeflateRaw([options])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createDeflateRaw-expand-content'>
+<p>Creates and returns a new <a href="#zlib_class_zlib_deflateraw">DeflateRaw</a> object with the given <a href="#zlib_class_options">options</a>.</p>
 <p><em>Note</em>: An upgrade of zlib from 1.2.8 to 1.2.11 changed behavior when windowBits
 is set to 8 for raw deflate streams. zlib would automatically set windowBits
 to 9 if was initially set to 8. Newer versions of zlib will throw an exception,
 so Node.js restored the original behavior of upgrading a value of 8 to 9,
 since passing <code>windowBits = 9</code> to zlib actually results in a compressed stream
 that effectively uses an 8-bit window only.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_createGunzip" id="method_createGunzip"></a>
-            <div class="permalink"><a href="#method_createGunzip" class="permalink fas fa-link"></a></div>
-            <p>zlib.createGunzip([options])</p>
 
-          </h1>
-        </div><section><p>Creates and returns a new <a href="#zlib_class_zlib_gunzip">Gunzip</a> object with the given <a href="#zlib_class_options">options</a>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_createGzip" id="method_createGzip"></a>
-            <div class="permalink"><a href="#method_createGzip" class="permalink fas fa-link"></a></div>
-            <p>zlib.createGzip([options])</p>
 
-          </h1>
-        </div><section><p>Creates and returns a new <a href="#zlib_class_zlib_gzip">Gzip</a> object with the given <a href="#zlib_class_options">options</a>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_createInflate" id="method_createInflate"></a>
-            <div class="permalink"><a href="#method_createInflate" class="permalink fas fa-link"></a></div>
-            <p>zlib.createInflate([options])</p>
+</div><div class='expandable-header' id='method_createGunzip-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_createGunzip" id="method_createGunzip"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createGunzip-expand-icon"></i>
+        <div class="permalink"><a href="#method_createGunzip" class="permalink fas fa-link"></a></div>
+        <p>zlib.createGunzip([options])</p>
 
-          </h1>
-        </div><section><p>Creates and returns a new <a href="#zlib_class_zlib_inflate">Inflate</a> object with the given <a href="#zlib_class_options">options</a>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_createInflateRaw" id="method_createInflateRaw"></a>
-            <div class="permalink"><a href="#method_createInflateRaw" class="permalink fas fa-link"></a></div>
-            <p>zlib.createInflateRaw([options])</p>
+    </h2>
+</div>
 
-          </h1>
-        </div><section><p>Creates and returns a new <a href="#zlib_class_zlib_inflateraw">InflateRaw</a> object with the given <a href="#zlib_class_options">options</a>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_createUnzip" id="method_createUnzip"></a>
-            <div class="permalink"><a href="#method_createUnzip" class="permalink fas fa-link"></a></div>
-            <p>zlib.createUnzip([options])</p>
+</div>
+<div class='expandable-content' id='method_createGunzip-expand-content'>
+<p>Creates and returns a new <a href="#zlib_class_zlib_gunzip">Gunzip</a> object with the given <a href="#zlib_class_options">options</a>.</p>
 
-          </h1>
-        </div><section><p>Creates and returns a new <a href="#zlib_class_zlib_unzip">Unzip</a> object with the given <a href="#zlib_class_options">options</a>.</p>
-</section>
+
+</div><div class='expandable-header' id='method_createGzip-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_createGzip" id="method_createGzip"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createGzip-expand-icon"></i>
+        <div class="permalink"><a href="#method_createGzip" class="permalink fas fa-link"></a></div>
+        <p>zlib.createGzip([options])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createGzip-expand-content'>
+<p>Creates and returns a new <a href="#zlib_class_zlib_gzip">Gzip</a> object with the given <a href="#zlib_class_options">options</a>.</p>
+
+
+</div><div class='expandable-header' id='method_createInflate-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_createInflate" id="method_createInflate"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createInflate-expand-icon"></i>
+        <div class="permalink"><a href="#method_createInflate" class="permalink fas fa-link"></a></div>
+        <p>zlib.createInflate([options])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createInflate-expand-content'>
+<p>Creates and returns a new <a href="#zlib_class_zlib_inflate">Inflate</a> object with the given <a href="#zlib_class_options">options</a>.</p>
+
+
+</div><div class='expandable-header' id='method_createInflateRaw-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_createInflateRaw" id="method_createInflateRaw"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createInflateRaw-expand-icon"></i>
+        <div class="permalink"><a href="#method_createInflateRaw" class="permalink fas fa-link"></a></div>
+        <p>zlib.createInflateRaw([options])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createInflateRaw-expand-content'>
+<p>Creates and returns a new <a href="#zlib_class_zlib_inflateraw">InflateRaw</a> object with the given <a href="#zlib_class_options">options</a>.</p>
+
+
+</div><div class='expandable-header' id='method_createUnzip-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_createUnzip" id="method_createUnzip"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createUnzip-expand-icon"></i>
+        <div class="permalink"><a href="#method_createUnzip" class="permalink fas fa-link"></a></div>
+        <p>zlib.createUnzip([options])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createUnzip-expand-content'>
+<p>Creates and returns a new <a href="#zlib_class_zlib_unzip">Unzip</a> object with the given <a href="#zlib_class_options">options</a>.</p>
+
+
+</div>
 
   <div class="footer">
     <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>

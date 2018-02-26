@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>mixtape page for net</title>
+    <title>Net</title>
     <script data-main="js/setup" src="js/require.js"></script>
     <link rel="stylesheet" href="fonts/fonts.css" />
     <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
@@ -13,9 +13,9 @@
   <body>
 
   <div id="control-panel">
-    <div id="control-strip-h">
-      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
-      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    <div id="control-strip-m">
+      <div id="control-strip-m-find"><div id="m-find"></div></div>
+      <div id="control-strip-m-toc"><div id="m-toc"></div></div>
     </div>
     <div id="controls">
       <div id="control-find">
@@ -26,46 +26,54 @@
       </div>
     </div>
   </div>
-  <div id="control-strip-v">
-    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
-    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  <div id="control-strip-w">
+    <div id="control-strip-w-find"></div>
+    <div id="control-strip-w-toc"></div>
   </div>
 
   <div id="content">
 
   
-       <div class="heading">
-          <h1>
-            <a name="module_net" id="module_net"></a>
-            <div class="permalink"><a href="#module_net" class="permalink fas fa-link"></a></div>
-            <p>Net</p>
+<div class="heading">
+<h1>
+  <a name="module_net" id="module_net"></a>
+  <div class="permalink"><a href="#module_net" class="permalink fas fa-link"></a></div>
+  <p>Net</p>
 
-          </h1>
-        </div><p><p>The <code>net</code> module provides an asynchronous network API for creating stream-based
+</h1>
+</div>
+
+<p><p>The <code>net</code> module provides an asynchronous network API for creating stream-based
 TCP or <a href="#net_ipc_support">IPC</a> servers (<a href="#net_net_createserver_options_connectionlistener"><code>net.createServer()</code></a>) and clients
 (<a href="#net_net_createconnection"><code>net.createConnection()</code></a>).</p></p>
 <p><p>It can be accessed using:</p></p>
 <pre class="prettyprint"><code class="lang-js">const net = require(&#39;net&#39;);
 </code></pre>
 
-       <div class="heading">
-          <h2>
-            <a name="module_ipc_support" id="module_ipc_support"></a>
-            <div class="permalink"><a href="#module_ipc_support" class="permalink fas fa-link"></a></div>
-            <p>IPC Support</p>
 
-          </h1>
-        </div><section><p>The <code>net</code> module supports IPC with named pipes on Windows, and UNIX domain
+<div class="heading">
+<h2>
+  <a name="module_ipc_support" id="module_ipc_support"></a>
+  <div class="permalink"><a href="#module_ipc_support" class="permalink fas fa-link"></a></div>
+  <p>IPC Support</p>
+
+</h2>
+</div>
+
+<p>The <code>net</code> module supports IPC with named pipes on Windows, and UNIX domain
 sockets on other operating systems.</p>
 
-       <div class="heading">
-          <h3>
-            <a name="module_identifying_paths_for_ipc_connections" id="module_identifying_paths_for_ipc_connections"></a>
-            <div class="permalink"><a href="#module_identifying_paths_for_ipc_connections" class="permalink fas fa-link"></a></div>
-            <p>Identifying paths for IPC connections</p>
 
-          </h1>
-        </div><section><p><p><a href="#net_net_connect"><code>net.connect()</code></a>, <a href="#net_net_createconnection"><code>net.createConnection()</code></a>, <a href="net.html#net_server_listen"><code>server.listen()</code></a> and
+<div class="heading">
+<h3>
+  <a name="module_identifying_paths_for_ipc_connections" id="module_identifying_paths_for_ipc_connections"></a>
+  <div class="permalink"><a href="#module_identifying_paths_for_ipc_connections" class="permalink fas fa-link"></a></div>
+  <p>Identifying paths for IPC connections</p>
+
+</h3>
+</div>
+
+<p><p><a href="#net_net_connect"><code>net.connect()</code></a>, <a href="#net_net_createconnection"><code>net.createConnection()</code></a>, <a href="net.html#net_server_listen"><code>server.listen()</code></a> and
 <a href="#net_socket_connect"><code>socket.connect()</code></a> take a <code>path</code> parameter to identify IPC endpoints.</p></p>
 <p><p>On UNIX, the local domain is also known as the UNIX domain. The path is a
 filesystem path name. It gets truncated to <code>sizeof(sockaddr_un.sun_path) - 1</code>,
@@ -84,68 +92,130 @@ double-backslashes, such as:</p></p>
 <pre class="prettyprint"><code class="lang-js">net.createServer().listen(
   path.join(&#39;\\\\?\\pipe&#39;, process.cwd(), &#39;myctl&#39;));
 </code></pre>
-</section></section>
-       <div class="heading">
-          <h2>
-            <a name="class_net_Server" id="class_net_Server"></a>
-            <div class="permalink"><a href="#class_net_Server" class="permalink fas fa-link"></a></div>
-            <p>Class: net.Server</p>
 
-          </h1>
-        </div><section><p>This class is used to create a TCP or <a href="#net_ipc_support">IPC</a> server.</p>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="property_connections_1" id="property_connections_1"></a>
-            <div class="permalink"><a href="#property_connections_1" class="permalink fas fa-link"></a></div>
-            <p>server.connections</p>
+<div class='expandable-header' id='class_net_Server-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_net_Server" id="class_net_Server"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_net_Server-expand-icon"></i>
+        <div class="permalink"><a href="#class_net_Server" class="permalink fas fa-link"></a></div>
+        <p>Class: net.Server</p>
 
-          </h1>
-        </div><section><p>The number of concurrent connections on the server.</p>
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_net_Server-expand-content'>
+<p>This class is used to create a TCP or <a href="#net_ipc_support">IPC</a> server.</p>
+
+
+<div class="heading">
+<h3>
+  <a name="subgroup_class_net_Server_Properties" id="subgroup_class_net_Server_Properties"></a>
+  <div class="permalink"><a href="#subgroup_class_net_Server_Properties" class="permalink fas fa-link"></a></div>
+  <p>Properties</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='property_connections_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_connections_1" id="property_connections_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_connections_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_connections_1" class="permalink fas fa-link"></a></div>
+        <p>server.connections</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_connections_1-expand-content'>
+<p>The number of concurrent connections on the server.</p>
 <p>This becomes <code>null</code> when sending a socket to a child with
 <a href="child_process.html#child_process_child_process_fork_modulepath_args_options"><code>child_process.fork()</code></a>. To poll forks and get current number of active
 connections use asynchronous <a href="net.html#net_server_getconnections_callback"><code>server.getConnections()</code></a> instead.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_listening_1" id="property_listening_1"></a>
-            <div class="permalink"><a href="#property_listening_1" class="permalink fas fa-link"></a></div>
-            <p>server.listening</p>
 
-          </h1>
-        </div><section><p>A Boolean indicating whether or not the server is listening for
+
+</div><div class='expandable-header' id='property_listening_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_listening_1" id="property_listening_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_listening_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_listening_1" class="permalink fas fa-link"></a></div>
+        <p>server.listening</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_listening_1-expand-content'>
+<p>A Boolean indicating whether or not the server is listening for
 connections.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_maxConnections" id="property_maxConnections"></a>
-            <div class="permalink"><a href="#property_maxConnections" class="permalink fas fa-link"></a></div>
-            <p>server.maxConnections</p>
 
-          </h1>
-        </div><section><p>Set this property to reject connections when the server&#39;s connection count gets
+
+</div><div class='expandable-header' id='property_maxConnections-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_maxConnections" id="property_maxConnections"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_maxConnections-expand-icon"></i>
+        <div class="permalink"><a href="#property_maxConnections" class="permalink fas fa-link"></a></div>
+        <p>server.maxConnections</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_maxConnections-expand-content'>
+<p>Set this property to reject connections when the server&#39;s connection count gets
 high.</p>
 <p>It is not recommended to use this option once a socket has been sent to a child
 with <a href="child_process.html#child_process_child_process_fork_modulepath_args_options"><code>child_process.fork()</code></a>.</p>
-</section></section><section>
-       <div class="heading">
-          <h4>
-            <a name="method_Server" id="method_Server"></a>
-            <div class="permalink"><a href="#method_Server" class="permalink fas fa-link"></a></div>
-            <p>new net.Server([options][, connectionListener])</p>
 
-          </h1>
-        </div><section><p>See <a href="#net_net_createserver_options_connectionlistener"><code>net.createServer([options][, connectionListener])</code></a>.</p>
+
+</div>
+<div class="heading">
+<h3>
+  <a name="subgroup_class_net_Server_Methods" id="subgroup_class_net_Server_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_net_Server_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_Server-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_Server" id="method_Server"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_Server-expand-icon"></i>
+        <div class="permalink"><a href="#method_Server" class="permalink fas fa-link"></a></div>
+        <p>new net.Server([options][, connectionListener])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_Server-expand-content'>
+<p>See <a href="#net_net_createserver_options_connectionlistener"><code>net.createServer([options][, connectionListener])</code></a>.</p>
 <p><code>net.Server</code> is an <a href="events.html"><code>EventEmitter</code></a> with the following events:</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_address" id="method_address"></a>
-            <div class="permalink"><a href="#method_address" class="permalink fas fa-link"></a></div>
-            <p>server.address()</p>
 
-          </h1>
-        </div><section><p>Returns the bound address, the address family name, and port of the server
+
+</div><div class='expandable-header' id='method_address-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_address" id="method_address"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_address-expand-icon"></i>
+        <div class="permalink"><a href="#method_address" class="permalink fas fa-link"></a></div>
+        <p>server.address()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_address-expand-content'>
+<p>Returns the bound address, the address family name, and port of the server
 as reported by the operating system if listening on an IP socket.
 Useful to find which port was assigned when getting an OS-assigned address.
 Returns an object with <code>port</code>, <code>family</code>, and <code>address</code> properties:
@@ -166,41 +236,62 @@ server.listen(() =&gt; {
 });
 </code></pre>
 <p>Don&#39;t call <code>server.address()</code> until the <code>&#39;listening&#39;</code> event has been emitted.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_close_8" id="method_close_8"></a>
-            <div class="permalink"><a href="#method_close_8" class="permalink fas fa-link"></a></div>
-            <p>server.close([callback])</p>
 
-          </h1>
-        </div><section><p>Stops the server from accepting new connections and keeps existing
+
+</div><div class='expandable-header' id='method_close_7-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_close_7" id="method_close_7"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_close_7-expand-icon"></i>
+        <div class="permalink"><a href="#method_close_7" class="permalink fas fa-link"></a></div>
+        <p>server.close([callback])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_close_7-expand-content'>
+<p>Stops the server from accepting new connections and keeps existing
 connections. This function is asynchronous, the server is finally
 closed when all connections are ended and the server emits a <a href="#dgram_event_close"><code>&#39;close&#39;</code></a> event.
 The optional <code>callback</code> will be called once the <code>&#39;close&#39;</code> event occurs. Unlike
 that event, it will be called with an Error as its only argument if the server
 was not open when it was closed.</p>
 <p>Returns <code>server</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_getConnections" id="method_getConnections"></a>
-            <div class="permalink"><a href="#method_getConnections" class="permalink fas fa-link"></a></div>
-            <p>server.getConnections(callback)</p>
 
-          </h1>
-        </div><section><p>Asynchronously get the number of concurrent connections on the server. Works
+
+</div><div class='expandable-header' id='method_getConnections-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_getConnections" id="method_getConnections"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getConnections-expand-icon"></i>
+        <div class="permalink"><a href="#method_getConnections" class="permalink fas fa-link"></a></div>
+        <p>server.getConnections(callback)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getConnections-expand-content'>
+<p>Asynchronously get the number of concurrent connections on the server. Works
 when sockets were sent to forks.</p>
 <p>Callback should take two arguments <code>err</code> and <code>count</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_listen_2" id="method_listen_2"></a>
-            <div class="permalink"><a href="#method_listen_2" class="permalink fas fa-link"></a></div>
-            <p>server.listen()</p>
 
-          </h1>
-        </div><section><p><p>Start a server listening for connections. A <code>net.Server</code> can be a TCP or
+
+</div><div class='expandable-header' id='method_listen_2-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_listen_2" id="method_listen_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_listen_2-expand-icon"></i>
+        <div class="permalink"><a href="#method_listen_2" class="permalink fas fa-link"></a></div>
+        <p>server.listen()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_listen_2-expand-content'>
+<p><p>Start a server listening for connections. A <code>net.Server</code> can be a TCP or
 a <a href="#net_ipc_support">IPC</a> server depending on what it listens to.</p></p>
 <p><p>Possible signatures:</p></p>
 <p><ul></p>
@@ -240,29 +331,53 @@ after a certain amount of time:</p></p>
   }
 });
 </code></pre>
-<section>
-       <div class="heading">
-          <h6>
-            <a name="method_listen_3" id="method_listen_3"></a>
-            <div class="permalink"><a href="#method_listen_3" class="permalink fas fa-link"></a></div>
-            <p>server.listen(handle[, backlog][, callback])</p>
 
-          </h1>
-        </div><section><p>Start a server listening for connections on a given <code>handle</code> that has
+
+<div class="heading">
+<h5>
+  <a name="subgroup_method_listen_2_Methods" id="subgroup_method_listen_2_Methods"></a>
+  <div class="permalink"><a href="#subgroup_method_listen_2_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h5>
+</div>
+
+
+<div class='expandable-header' id='method_listen_3-expand'>
+<div class="heading">
+    <h6>
+        <a name="method_listen_3" id="method_listen_3"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_listen_3-expand-icon"></i>
+        <div class="permalink"><a href="#method_listen_3" class="permalink fas fa-link"></a></div>
+        <p>server.listen(handle[, backlog][, callback])</p>
+
+    </h6>
+</div>
+
+</div>
+<div class='expandable-content' id='method_listen_3-expand-content'>
+<p>Start a server listening for connections on a given <code>handle</code> that has
 already been bound to a port, a UNIX domain socket, or a Windows named pipe.</p>
 <p>The <code>handle</code> object can be either a server, a socket (anything with an
 underlying <code>_handle</code> member), or an object with an <code>fd</code> member that is a
 valid file descriptor.</p>
 <p><em>Note</em>: Listening on a file descriptor is not supported on Windows.</p>
-</section>
-       <div class="heading">
-          <h6>
-            <a name="method_listen_4" id="method_listen_4"></a>
-            <div class="permalink"><a href="#method_listen_4" class="permalink fas fa-link"></a></div>
-            <p>server.listen(options[, callback])</p>
 
-          </h1>
-        </div><section><p><p>If <code>port</code> is specified, it behaves the same as
+
+</div><div class='expandable-header' id='method_listen_4-expand'>
+<div class="heading">
+    <h6>
+        <a name="method_listen_4" id="method_listen_4"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_listen_4-expand-icon"></i>
+        <div class="permalink"><a href="#method_listen_4" class="permalink fas fa-link"></a></div>
+        <p>server.listen(options[, callback])</p>
+
+    </h6>
+</div>
+
+</div>
+<div class='expandable-content' id='method_listen_4-expand-content'>
+<p><p>If <code>port</code> is specified, it behaves the same as
 <a href="#net_server_listen_port_host_backlog_callback"><code>server.listen([port][, hostname][, backlog][, callback])</code></a>.
 Otherwise, if <code>path</code> is specified, it behaves the same as
 <a href="#net_server_listen_path_backlog_callback"><code>server.listen(path[, backlog][, callback])</code></a>.
@@ -278,24 +393,38 @@ shown below.</p></p>
   exclusive: true
 });
 </code></pre>
-</section>
-       <div class="heading">
-          <h6>
-            <a name="method_listen_5" id="method_listen_5"></a>
-            <div class="permalink"><a href="#method_listen_5" class="permalink fas fa-link"></a></div>
-            <p>server.listen(path[, backlog][, callback])</p>
 
-          </h1>
-        </div><section><p>Start a <a href="#net_ipc_support">IPC</a> server listening for connections on the given <code>path</code>.</p>
-</section>
-       <div class="heading">
-          <h6>
-            <a name="method_listen_6" id="method_listen_6"></a>
-            <div class="permalink"><a href="#method_listen_6" class="permalink fas fa-link"></a></div>
-            <p>server.listen([port][, host][, backlog][, callback])</p>
 
-          </h1>
-        </div><section><p>Start a TCP server listening for connections on the given <code>port</code> and <code>host</code>.</p>
+</div><div class='expandable-header' id='method_listen_5-expand'>
+<div class="heading">
+    <h6>
+        <a name="method_listen_5" id="method_listen_5"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_listen_5-expand-icon"></i>
+        <div class="permalink"><a href="#method_listen_5" class="permalink fas fa-link"></a></div>
+        <p>server.listen(path[, backlog][, callback])</p>
+
+    </h6>
+</div>
+
+</div>
+<div class='expandable-content' id='method_listen_5-expand-content'>
+<p>Start a <a href="#net_ipc_support">IPC</a> server listening for connections on the given <code>path</code>.</p>
+
+
+</div><div class='expandable-header' id='method_listen_6-expand'>
+<div class="heading">
+    <h6>
+        <a name="method_listen_6" id="method_listen_6"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_listen_6-expand-icon"></i>
+        <div class="permalink"><a href="#method_listen_6" class="permalink fas fa-link"></a></div>
+        <p>server.listen([port][, host][, backlog][, callback])</p>
+
+    </h6>
+</div>
+
+</div>
+<div class='expandable-content' id='method_listen_6-expand-content'>
+<p>Start a TCP server listening for connections on the given <code>port</code> and <code>host</code>.</p>
 <p>If <code>port</code> is omitted or is 0, the operating system will assign an arbitrary
 unused port, which can be retrieved by using <code>server.address().port</code>
 after the <a href="#net_event_listening"><code>&#39;listening&#39;</code></a> event has been emitted.</p>
@@ -305,37 +434,60 @@ after the <a href="#net_event_listening"><code>&#39;listening&#39;</code></a> ev
 <p><em>Note</em>: In most operating systems, listening to the
 <a href="https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address">unspecified IPv6 address</a> (<code>::</code>) may cause the <code>net.Server</code> to also listen on
 the <a href="https://en.wikipedia.org/wiki/0.0.0.0">unspecified IPv4 address</a> (<code>0.0.0.0</code>).</p>
-</section></section></section>
-       <div class="heading">
-          <h4>
-            <a name="method_ref_1" id="method_ref_1"></a>
-            <div class="permalink"><a href="#method_ref_1" class="permalink fas fa-link"></a></div>
-            <p>server.ref()</p>
 
-          </h1>
-        </div><section><p>Opposite of <code>unref</code>, calling <code>ref</code> on a previously <code>unref</code>d server will <em>not</em>
+
+</div>
+</div><div class='expandable-header' id='method_ref_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_ref_1" id="method_ref_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_ref_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_ref_1" class="permalink fas fa-link"></a></div>
+        <p>server.ref()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_ref_1-expand-content'>
+<p>Opposite of <code>unref</code>, calling <code>ref</code> on a previously <code>unref</code>d server will <em>not</em>
 let the program exit if it&#39;s the only server left (the default behavior). If
 the server is <code>ref</code>d calling <code>ref</code> again will have no effect.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_unref_1" id="method_unref_1"></a>
-            <div class="permalink"><a href="#method_unref_1" class="permalink fas fa-link"></a></div>
-            <p>server.unref()</p>
 
-          </h1>
-        </div><section><p>Calling <code>unref</code> on a server will allow the program to exit if this is the only
+
+</div><div class='expandable-header' id='method_unref_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_unref_1" id="method_unref_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_unref_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_unref_1" class="permalink fas fa-link"></a></div>
+        <p>server.unref()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_unref_1-expand-content'>
+<p>Calling <code>unref</code> on a server will allow the program to exit if this is the only
 active server in the event system. If the server is already <code>unref</code>d calling
 <code>unref</code> again will have no effect.</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="class_net_Socket" id="class_net_Socket"></a>
-            <div class="permalink"><a href="#class_net_Socket" class="permalink fas fa-link"></a></div>
-            <p>Class: net.Socket</p>
 
-          </h1>
-        </div><section><p>This class is an abstraction of a TCP socket or a streaming <a href="#net_ipc_support">IPC</a> endpoint
+
+</div>
+</div><div class='expandable-header' id='class_net_Socket-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_net_Socket" id="class_net_Socket"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_net_Socket-expand-icon"></i>
+        <div class="permalink"><a href="#class_net_Socket" class="permalink fas fa-link"></a></div>
+        <p>Class: net.Socket</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_net_Socket-expand-content'>
+<p>This class is an abstraction of a TCP socket or a streaming <a href="#net_ipc_support">IPC</a> endpoint
 (uses named pipes on Windows, and UNIX domain sockets otherwise). A
 <code>net.Socket</code> is also a <a href="stream.html#stream_class_stream_duplex">duplex stream</a>, so it can be both readable and
 writable, and it is also a <a href="events.html"><code>EventEmitter</code></a>.</p>
@@ -346,15 +498,32 @@ so the user can use it to talk to the server.</p>
 is received. For example, it is passed to the listeners of a
 <a href="#net_event_connection"><code>&#39;connection&#39;</code></a> event emitted on a <a href="net.html#net_class_net_server"><code>net.Server</code></a>, so the user can use
 it to interact with the client.</p>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="property_bufferSize" id="property_bufferSize"></a>
-            <div class="permalink"><a href="#property_bufferSize" class="permalink fas fa-link"></a></div>
-            <p>socket.bufferSize</p>
 
-          </h1>
-        </div><section><p><code>net.Socket</code> has the property that <code>socket.write()</code> always works. This is to
+
+<div class="heading">
+<h3>
+  <a name="subgroup_class_net_Socket_Properties" id="subgroup_class_net_Socket_Properties"></a>
+  <div class="permalink"><a href="#subgroup_class_net_Socket_Properties" class="permalink fas fa-link"></a></div>
+  <p>Properties</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='property_bufferSize-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_bufferSize" id="property_bufferSize"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_bufferSize-expand-icon"></i>
+        <div class="permalink"><a href="#property_bufferSize" class="permalink fas fa-link"></a></div>
+        <p>socket.bufferSize</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_bufferSize-expand-content'>
+<p><code>net.Socket</code> has the property that <code>socket.write()</code> always works. This is to
 help users get up and running quickly. The computer cannot always keep up
 with the amount of data that is written to a socket - the network connection
 simply might be too slow. Node.js will internally queue up the data written to a
@@ -368,109 +537,190 @@ encoded, so the exact number of bytes is not known.)</p>
 <p>Users who experience large or growing <code>bufferSize</code> should attempt to
 &quot;throttle&quot; the data flows in their program with
 <a href="#net_socket_pause"><code>socket.pause()</code></a> and <a href="#net_socket_resume"><code>socket.resume()</code></a>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_bytesRead_1" id="property_bytesRead_1"></a>
-            <div class="permalink"><a href="#property_bytesRead_1" class="permalink fas fa-link"></a></div>
-            <p>socket.bytesRead</p>
 
-          </h1>
-        </div><section><p>The amount of received bytes.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_bytesWritten_1" id="property_bytesWritten_1"></a>
-            <div class="permalink"><a href="#property_bytesWritten_1" class="permalink fas fa-link"></a></div>
-            <p>socket.bytesWritten</p>
 
-          </h1>
-        </div><section><p>The amount of bytes sent.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_connecting" id="property_connecting"></a>
-            <div class="permalink"><a href="#property_connecting" class="permalink fas fa-link"></a></div>
-            <p>socket.connecting</p>
+</div><div class='expandable-header' id='property_bytesRead_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_bytesRead_1" id="property_bytesRead_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_bytesRead_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_bytesRead_1" class="permalink fas fa-link"></a></div>
+        <p>socket.bytesRead</p>
 
-          </h1>
-        </div><section><p>If <code>true</code> -
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_bytesRead_1-expand-content'>
+<p>The amount of received bytes.</p>
+
+
+</div><div class='expandable-header' id='property_bytesWritten_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_bytesWritten_1" id="property_bytesWritten_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_bytesWritten_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_bytesWritten_1" class="permalink fas fa-link"></a></div>
+        <p>socket.bytesWritten</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_bytesWritten_1-expand-content'>
+<p>The amount of bytes sent.</p>
+
+
+</div><div class='expandable-header' id='property_connecting-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_connecting" id="property_connecting"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_connecting-expand-icon"></i>
+        <div class="permalink"><a href="#property_connecting" class="permalink fas fa-link"></a></div>
+        <p>socket.connecting</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_connecting-expand-content'>
+<p>If <code>true</code> -
 <a href="#net_socket_connect_options_connectlistener"><code>socket.connect(options[, connectListener])</code></a>
 was called and haven&#39;t yet finished. Will be set to <code>false</code> before emitting
 <code>connect</code> event and/or calling
 <a href="#net_socket_connect_options_connectlistener"><code>socket.connect(options[, connectListener])</code></a>&#39;s
 callback.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_destroyed_2" id="property_destroyed_2"></a>
-            <div class="permalink"><a href="#property_destroyed_2" class="permalink fas fa-link"></a></div>
-            <p>socket.destroyed</p>
 
-          </h1>
-        </div><section><p>A Boolean value that indicates if the connection is destroyed or not. Once a
+
+</div><div class='expandable-header' id='property_destroyed_2-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_destroyed_2" id="property_destroyed_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_destroyed_2-expand-icon"></i>
+        <div class="permalink"><a href="#property_destroyed_2" class="permalink fas fa-link"></a></div>
+        <p>socket.destroyed</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_destroyed_2-expand-content'>
+<p>A Boolean value that indicates if the connection is destroyed or not. Once a
 connection is destroyed no further data can be transferred using it.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_localAddress" id="property_localAddress"></a>
-            <div class="permalink"><a href="#property_localAddress" class="permalink fas fa-link"></a></div>
-            <p>socket.localAddress</p>
 
-          </h1>
-        </div><section><p>The string representation of the local IP address the remote client is
+
+</div><div class='expandable-header' id='property_localAddress-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_localAddress" id="property_localAddress"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_localAddress-expand-icon"></i>
+        <div class="permalink"><a href="#property_localAddress" class="permalink fas fa-link"></a></div>
+        <p>socket.localAddress</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_localAddress-expand-content'>
+<p>The string representation of the local IP address the remote client is
 connecting on. For example, in a server listening on <code>&#39;0.0.0.0&#39;</code>, if a client
 connects on <code>&#39;192.168.1.1&#39;</code>, the value of <code>socket.localAddress</code> would be
 <code>&#39;192.168.1.1&#39;</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_localPort" id="property_localPort"></a>
-            <div class="permalink"><a href="#property_localPort" class="permalink fas fa-link"></a></div>
-            <p>socket.localPort</p>
 
-          </h1>
-        </div><section><p>The numeric representation of the local port. For example,
+
+</div><div class='expandable-header' id='property_localPort-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_localPort" id="property_localPort"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_localPort-expand-icon"></i>
+        <div class="permalink"><a href="#property_localPort" class="permalink fas fa-link"></a></div>
+        <p>socket.localPort</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_localPort-expand-content'>
+<p>The numeric representation of the local port. For example,
 <code>80</code> or <code>21</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_remoteAddress" id="property_remoteAddress"></a>
-            <div class="permalink"><a href="#property_remoteAddress" class="permalink fas fa-link"></a></div>
-            <p>socket.remoteAddress</p>
 
-          </h1>
-        </div><section><p>The string representation of the remote IP address. For example,
+
+</div><div class='expandable-header' id='property_remoteAddress-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_remoteAddress" id="property_remoteAddress"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_remoteAddress-expand-icon"></i>
+        <div class="permalink"><a href="#property_remoteAddress" class="permalink fas fa-link"></a></div>
+        <p>socket.remoteAddress</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_remoteAddress-expand-content'>
+<p>The string representation of the remote IP address. For example,
 <code>&#39;74.125.127.100&#39;</code> or <code>&#39;2001:4860:a005::68&#39;</code>. Value may be <code>undefined</code> if
 the socket is destroyed (for example, if the client disconnected).</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_remoteFamily" id="property_remoteFamily"></a>
-            <div class="permalink"><a href="#property_remoteFamily" class="permalink fas fa-link"></a></div>
-            <p>socket.remoteFamily</p>
 
-          </h1>
-        </div><section><p>The string representation of the remote IP family. <code>&#39;IPv4&#39;</code> or <code>&#39;IPv6&#39;</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_remotePort" id="property_remotePort"></a>
-            <div class="permalink"><a href="#property_remotePort" class="permalink fas fa-link"></a></div>
-            <p>socket.remotePort</p>
 
-          </h1>
-        </div><section><p>The numeric representation of the remote port. For example,
+</div><div class='expandable-header' id='property_remoteFamily-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_remoteFamily" id="property_remoteFamily"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_remoteFamily-expand-icon"></i>
+        <div class="permalink"><a href="#property_remoteFamily" class="permalink fas fa-link"></a></div>
+        <p>socket.remoteFamily</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_remoteFamily-expand-content'>
+<p>The string representation of the remote IP family. <code>&#39;IPv4&#39;</code> or <code>&#39;IPv6&#39;</code>.</p>
+
+
+</div><div class='expandable-header' id='property_remotePort-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_remotePort" id="property_remotePort"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_remotePort-expand-icon"></i>
+        <div class="permalink"><a href="#property_remotePort" class="permalink fas fa-link"></a></div>
+        <p>socket.remotePort</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_remotePort-expand-content'>
+<p>The numeric representation of the remote port. For example,
 <code>80</code> or <code>21</code>.</p>
-</section></section><section>
-       <div class="heading">
-          <h4>
-            <a name="method_Socket" id="method_Socket"></a>
-            <div class="permalink"><a href="#method_Socket" class="permalink fas fa-link"></a></div>
-            <p>new net.Socket([options])</p>
 
-          </h1>
-        </div><section><p>Creates a new socket object.</p>
+
+</div>
+<div class="heading">
+<h3>
+  <a name="subgroup_class_net_Socket_Methods" id="subgroup_class_net_Socket_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_net_Socket_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_Socket-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_Socket" id="method_Socket"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_Socket-expand-icon"></i>
+        <div class="permalink"><a href="#method_Socket" class="permalink fas fa-link"></a></div>
+        <p>new net.Socket([options])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_Socket-expand-content'>
+<p>Creates a new socket object.</p>
 <ul>
 <li><code>options</code> {Object} Available options are:<ul>
 <li><code>fd</code>: {number} If specified, wrap around an existing socket with
@@ -488,27 +738,41 @@ otherwise ignored. <strong>Default:</strong> <code>false</code></li>
 </ul>
 <p>The newly created socket can be either a TCP socket or a streaming <a href="#net_ipc_support">IPC</a>
 endpoint, depending on what it <a href="#net_socket_connect"><code>connect()</code></a> to.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_address_1" id="method_address_1"></a>
-            <div class="permalink"><a href="#method_address_1" class="permalink fas fa-link"></a></div>
-            <p>socket.address()</p>
 
-          </h1>
-        </div><section><p>Returns the bound address, the address family name and port of the
+
+</div><div class='expandable-header' id='method_address_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_address_1" id="method_address_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_address_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_address_1" class="permalink fas fa-link"></a></div>
+        <p>socket.address()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_address_1-expand-content'>
+<p>Returns the bound address, the address family name and port of the
 socket as reported by the operating system. Returns an object with
 three properties, e.g.
 <code>{ port: 12346, family: &#39;IPv4&#39;, address: &#39;127.0.0.1&#39; }</code></p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_connect_2" id="method_connect_2"></a>
-            <div class="permalink"><a href="#method_connect_2" class="permalink fas fa-link"></a></div>
-            <p>socket.connect()</p>
 
-          </h1>
-        </div><section><p>Initiate a connection on a given socket.</p>
+
+</div><div class='expandable-header' id='method_connect_2-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_connect_2" id="method_connect_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_connect_2-expand-icon"></i>
+        <div class="permalink"><a href="#method_connect_2" class="permalink fas fa-link"></a></div>
+        <p>socket.connect()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_connect_2-expand-content'>
+<p>Initiate a connection on a given socket.</p>
 <p>Possible signatures:</p>
 <ul>
 <li><a href="#net_socket_connect_options_connectlistener">socket.connect(options[, connectListener])</a></li>
@@ -524,15 +788,32 @@ instead of a <a href="#net_event_connect"><code>&#39;connect&#39;</code></a> eve
 the error passed to the <a href="#net_event_error_1"><code>&#39;error&#39;</code></a> listener.
 The last parameter <code>connectListener</code>, if supplied, will be added as a listener
 for the <a href="#net_event_connect"><code>&#39;connect&#39;</code></a> event <strong>once</strong>.</p>
-<section>
-       <div class="heading">
-          <h6>
-            <a name="method_connect_3" id="method_connect_3"></a>
-            <div class="permalink"><a href="#method_connect_3" class="permalink fas fa-link"></a></div>
-            <p>socket.connect(options[, connectListener])</p>
 
-          </h1>
-        </div><section><p>Initiate a connection on a given socket. Normally this method is not needed,
+
+<div class="heading">
+<h5>
+  <a name="subgroup_method_connect_2_Methods" id="subgroup_method_connect_2_Methods"></a>
+  <div class="permalink"><a href="#subgroup_method_connect_2_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h5>
+</div>
+
+
+<div class='expandable-header' id='method_connect_3-expand'>
+<div class="heading">
+    <h6>
+        <a name="method_connect_3" id="method_connect_3"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_connect_3-expand-icon"></i>
+        <div class="permalink"><a href="#method_connect_3" class="permalink fas fa-link"></a></div>
+        <p>socket.connect(options[, connectListener])</p>
+
+    </h6>
+</div>
+
+</div>
+<div class='expandable-content' id='method_connect_3-expand-content'>
+<p>Initiate a connection on a given socket. Normally this method is not needed,
 the socket should be created and opened with <a href="#net_net_createconnection"><code>net.createConnection()</code></a>. Use
 this only when implementing a custom Socket.</p>
 <p>For TCP connections, available <code>options</code> are:</p>
@@ -552,162 +833,210 @@ See <a href="#net_identifying_paths_for_ipc_connections">Identifying paths for I
 options above are ignored.</li>
 </ul>
 <p>Returns <code>socket</code>.</p>
-</section>
-       <div class="heading">
-          <h6>
-            <a name="method_connect_4" id="method_connect_4"></a>
-            <div class="permalink"><a href="#method_connect_4" class="permalink fas fa-link"></a></div>
-            <p>socket.connect(path[, connectListener])</p>
 
-          </h1>
-        </div><section><p>Initiate an <a href="#net_ipc_support">IPC</a> connection on the given socket.</p>
+
+</div><div class='expandable-header' id='method_connect_4-expand'>
+<div class="heading">
+    <h6>
+        <a name="method_connect_4" id="method_connect_4"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_connect_4-expand-icon"></i>
+        <div class="permalink"><a href="#method_connect_4" class="permalink fas fa-link"></a></div>
+        <p>socket.connect(path[, connectListener])</p>
+
+    </h6>
+</div>
+
+</div>
+<div class='expandable-content' id='method_connect_4-expand-content'>
+<p>Initiate an <a href="#net_ipc_support">IPC</a> connection on the given socket.</p>
 <p>Alias to
 <a href="#net_socket_connect_options_connectlistener"><code>socket.connect(options[, connectListener])</code></a>
 called with <code>{ path: path }</code> as <code>options</code>.</p>
 <p>Returns <code>socket</code>.</p>
-</section>
-       <div class="heading">
-          <h6>
-            <a name="method_connect_5" id="method_connect_5"></a>
-            <div class="permalink"><a href="#method_connect_5" class="permalink fas fa-link"></a></div>
-            <p>socket.connect(port[, host][, connectListener])</p>
 
-          </h1>
-        </div><section><p>Initiate a TCP connection on the given socket.</p>
+
+</div><div class='expandable-header' id='method_connect_5-expand'>
+<div class="heading">
+    <h6>
+        <a name="method_connect_5" id="method_connect_5"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_connect_5-expand-icon"></i>
+        <div class="permalink"><a href="#method_connect_5" class="permalink fas fa-link"></a></div>
+        <p>socket.connect(port[, host][, connectListener])</p>
+
+    </h6>
+</div>
+
+</div>
+<div class='expandable-content' id='method_connect_5-expand-content'>
+<p>Initiate a TCP connection on the given socket.</p>
 <p>Alias to
 <a href="#net_socket_connect_options_connectlistener"><code>socket.connect(options[, connectListener])</code></a>
 called with <code>{port: port, host: host}</code> as <code>options</code>.</p>
 <p>Returns <code>socket</code>.</p>
-</section>
-       <div class="heading">
-          <h6>
-            <a name="method_connect_7" id="method_connect_7"></a>
-            <div class="permalink"><a href="#method_connect_7" class="permalink fas fa-link"></a></div>
-            <p>net.connect(options[, connectListener])</p>
 
-          </h1>
-        </div><section><p>Alias to
-<a href="#net_net_createconnection_options_connectlistener"><code>net.createConnection(options[, connectListener])</code></a>.</p>
-</section>
-       <div class="heading">
-          <h6>
-            <a name="method_connect_8" id="method_connect_8"></a>
-            <div class="permalink"><a href="#method_connect_8" class="permalink fas fa-link"></a></div>
-            <p>net.connect(path[, connectListener])</p>
 
-          </h1>
-        </div><section><p>Alias to
-<a href="#net_net_createconnection_path_connectlistener"><code>net.createConnection(path[, connectListener])</code></a>.</p>
-</section>
-       <div class="heading">
-          <h6>
-            <a name="method_connect_9" id="method_connect_9"></a>
-            <div class="permalink"><a href="#method_connect_9" class="permalink fas fa-link"></a></div>
-            <p>net.connect(port[, host][, connectListener])</p>
+</div>
+</div><div class='expandable-header' id='method_destroy_4-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_destroy_4" id="method_destroy_4"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_destroy_4-expand-icon"></i>
+        <div class="permalink"><a href="#method_destroy_4" class="permalink fas fa-link"></a></div>
+        <p>socket.destroy([exception])</p>
 
-          </h1>
-        </div><section><p>Alias to
-<a href="#net_net_createconnection_port_host_connectlistener"><code>net.createConnection(port[, host][, connectListener])</code></a>.</p>
-</section></section></section>
-       <div class="heading">
-          <h4>
-            <a name="method_destroy_4" id="method_destroy_4"></a>
-            <div class="permalink"><a href="#method_destroy_4" class="permalink fas fa-link"></a></div>
-            <p>socket.destroy([exception])</p>
+    </h4>
+</div>
 
-          </h1>
-        </div><section><p>Ensures that no more I/O activity happens on this socket. Only necessary in
+</div>
+<div class='expandable-content' id='method_destroy_4-expand-content'>
+<p>Ensures that no more I/O activity happens on this socket. Only necessary in
 case of errors (parse error or so).</p>
 <p>If <code>exception</code> is specified, an <a href="#net_event_error_1"><code>&#39;error&#39;</code></a> event will be emitted and any
 listeners for that event will receive <code>exception</code> as an argument.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_end_3" id="method_end_3"></a>
-            <div class="permalink"><a href="#method_end_3" class="permalink fas fa-link"></a></div>
-            <p>socket.end([data][, encoding])</p>
 
-          </h1>
-        </div><section><p>Half-closes the socket. i.e., it sends a FIN packet. It is possible the
+
+</div><div class='expandable-header' id='method_end_3-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_end_3" id="method_end_3"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_end_3-expand-icon"></i>
+        <div class="permalink"><a href="#method_end_3" class="permalink fas fa-link"></a></div>
+        <p>socket.end([data][, encoding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_end_3-expand-content'>
+<p>Half-closes the socket. i.e., it sends a FIN packet. It is possible the
 server will still send some data.</p>
 <p>If <code>data</code> is specified, it is equivalent to calling
 <code>socket.write(data, encoding)</code> followed by <a href="#net_socket_end_data_encoding"><code>socket.end()</code></a>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_pause" id="method_pause"></a>
-            <div class="permalink"><a href="#method_pause" class="permalink fas fa-link"></a></div>
-            <p>socket.pause()</p>
 
-          </h1>
-        </div><section><p>Pauses the reading of data. That is, <a href="#stream_event_data"><code>&#39;data&#39;</code></a> events will not be emitted.
+
+</div><div class='expandable-header' id='method_pause-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_pause" id="method_pause"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_pause-expand-icon"></i>
+        <div class="permalink"><a href="#method_pause" class="permalink fas fa-link"></a></div>
+        <p>socket.pause()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_pause-expand-content'>
+<p>Pauses the reading of data. That is, <a href="#stream_event_data"><code>&#39;data&#39;</code></a> events will not be emitted.
 Useful to throttle back an upload.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_ref_2" id="method_ref_2"></a>
-            <div class="permalink"><a href="#method_ref_2" class="permalink fas fa-link"></a></div>
-            <p>socket.ref()</p>
 
-          </h1>
-        </div><section><p>Opposite of <code>unref</code>, calling <code>ref</code> on a previously <code>unref</code>d socket will <em>not</em>
+
+</div><div class='expandable-header' id='method_ref_2-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_ref_2" id="method_ref_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_ref_2-expand-icon"></i>
+        <div class="permalink"><a href="#method_ref_2" class="permalink fas fa-link"></a></div>
+        <p>socket.ref()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_ref_2-expand-content'>
+<p>Opposite of <code>unref</code>, calling <code>ref</code> on a previously <code>unref</code>d socket will <em>not</em>
 let the program exit if it&#39;s the only socket left (the default behavior). If
 the socket is <code>ref</code>d calling <code>ref</code> again will have no effect.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_resume" id="method_resume"></a>
-            <div class="permalink"><a href="#method_resume" class="permalink fas fa-link"></a></div>
-            <p>socket.resume()</p>
 
-          </h1>
-        </div><section><p>Resumes reading after a call to <a href="#net_socket_pause"><code>socket.pause()</code></a>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_setEncoding" id="method_setEncoding"></a>
-            <div class="permalink"><a href="#method_setEncoding" class="permalink fas fa-link"></a></div>
-            <p>socket.setEncoding([encoding])</p>
 
-          </h1>
-        </div><section><p>Set the encoding for the socket as a <a href="stream.html#stream_class_stream_readable">Readable Stream</a>. See
+</div><div class='expandable-header' id='method_resume-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_resume" id="method_resume"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_resume-expand-icon"></i>
+        <div class="permalink"><a href="#method_resume" class="permalink fas fa-link"></a></div>
+        <p>socket.resume()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_resume-expand-content'>
+<p>Resumes reading after a call to <a href="#net_socket_pause"><code>socket.pause()</code></a>.</p>
+
+
+</div><div class='expandable-header' id='method_setEncoding-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_setEncoding" id="method_setEncoding"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setEncoding-expand-icon"></i>
+        <div class="permalink"><a href="#method_setEncoding" class="permalink fas fa-link"></a></div>
+        <p>socket.setEncoding([encoding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setEncoding-expand-content'>
+<p>Set the encoding for the socket as a <a href="stream.html#stream_class_stream_readable">Readable Stream</a>. See
 <a href="stream.html#stream_readable_setencoding_encoding"><code>stream.setEncoding()</code></a> for more information.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_setKeepAlive" id="method_setKeepAlive"></a>
-            <div class="permalink"><a href="#method_setKeepAlive" class="permalink fas fa-link"></a></div>
-            <p>socket.setKeepAlive([enable][, initialDelay])</p>
 
-          </h1>
-        </div><section><p>Enable/disable keep-alive functionality, and optionally set the initial
+
+</div><div class='expandable-header' id='method_setKeepAlive-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_setKeepAlive" id="method_setKeepAlive"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setKeepAlive-expand-icon"></i>
+        <div class="permalink"><a href="#method_setKeepAlive" class="permalink fas fa-link"></a></div>
+        <p>socket.setKeepAlive([enable][, initialDelay])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setKeepAlive-expand-content'>
+<p>Enable/disable keep-alive functionality, and optionally set the initial
 delay before the first keepalive probe is sent on an idle socket.
 <code>enable</code> defaults to <code>false</code>.</p>
 <p>Set <code>initialDelay</code> (in milliseconds) to set the delay between the last
 data packet received and the first keepalive probe. Setting 0 for
 initialDelay will leave the value unchanged from the default
 (or previous) setting. Defaults to <code>0</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_setNoDelay_1" id="method_setNoDelay_1"></a>
-            <div class="permalink"><a href="#method_setNoDelay_1" class="permalink fas fa-link"></a></div>
-            <p>socket.setNoDelay([noDelay])</p>
 
-          </h1>
-        </div><section><p>Disables the Nagle algorithm. By default TCP connections use the Nagle
+
+</div><div class='expandable-header' id='method_setNoDelay_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_setNoDelay_1" id="method_setNoDelay_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setNoDelay_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_setNoDelay_1" class="permalink fas fa-link"></a></div>
+        <p>socket.setNoDelay([noDelay])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setNoDelay_1-expand-content'>
+<p>Disables the Nagle algorithm. By default TCP connections use the Nagle
 algorithm, they buffer data before sending it off. Setting <code>true</code> for
 <code>noDelay</code> will immediately fire off data each time <code>socket.write()</code> is called.
 <code>noDelay</code> defaults to <code>true</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_setTimeout_9" id="method_setTimeout_9"></a>
-            <div class="permalink"><a href="#method_setTimeout_9" class="permalink fas fa-link"></a></div>
-            <p>socket.setTimeout(timeout[, callback])</p>
 
-          </h1>
-        </div><section><p>Sets the socket to timeout after <code>timeout</code> milliseconds of inactivity on
+
+</div><div class='expandable-header' id='method_setTimeout_9-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_setTimeout_9" id="method_setTimeout_9"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setTimeout_9-expand-icon"></i>
+        <div class="permalink"><a href="#method_setTimeout_9" class="permalink fas fa-link"></a></div>
+        <p>socket.setTimeout(timeout[, callback])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setTimeout_9-expand-content'>
+<p>Sets the socket to timeout after <code>timeout</code> milliseconds of inactivity on
 the socket. By default <code>net.Socket</code> do not have a timeout.</p>
 <p>When an idle timeout is triggered the socket will receive a <a href="#net_event_timeout"><code>&#39;timeout&#39;</code></a>
 event but the connection will not be severed. The user must manually call
@@ -721,41 +1050,63 @@ socket.on(&#39;timeout&#39;, () =&gt; {
 <p>If <code>timeout</code> is 0, then the existing idle timeout is disabled.</p>
 <p>The optional <code>callback</code> parameter will be added as a one-time listener for the
 <a href="#net_event_timeout"><code>&#39;timeout&#39;</code></a> event.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_unref_2" id="method_unref_2"></a>
-            <div class="permalink"><a href="#method_unref_2" class="permalink fas fa-link"></a></div>
-            <p>socket.unref()</p>
 
-          </h1>
-        </div><section><p>Calling <code>unref</code> on a socket will allow the program to exit if this is the only
+
+</div><div class='expandable-header' id='method_unref_2-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_unref_2" id="method_unref_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_unref_2-expand-icon"></i>
+        <div class="permalink"><a href="#method_unref_2" class="permalink fas fa-link"></a></div>
+        <p>socket.unref()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_unref_2-expand-content'>
+<p>Calling <code>unref</code> on a socket will allow the program to exit if this is the only
 active socket in the event system. If the socket is already <code>unref</code>d calling
 <code>unref</code> again will have no effect.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_write_6" id="method_write_6"></a>
-            <div class="permalink"><a href="#method_write_6" class="permalink fas fa-link"></a></div>
-            <p>socket.write(data[, encoding][, callback])</p>
 
-          </h1>
-        </div><section><p>Sends data on the socket. The second parameter specifies the encoding in the
+
+</div><div class='expandable-header' id='method_write_6-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_write_6" id="method_write_6"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_write_6-expand-icon"></i>
+        <div class="permalink"><a href="#method_write_6" class="permalink fas fa-link"></a></div>
+        <p>socket.write(data[, encoding][, callback])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_write_6-expand-content'>
+<p>Sends data on the socket. The second parameter specifies the encoding in the
 case of a string--it defaults to UTF8 encoding.</p>
 <p>Returns <code>true</code> if the entire data was flushed successfully to the kernel
 buffer. Returns <code>false</code> if all or part of the data was queued in user memory.
 <a href="#stream_event_drain"><code>&#39;drain&#39;</code></a> will be emitted when the buffer is again free.</p>
 <p>The optional <code>callback</code> parameter will be executed when the data is finally
 written out - this may not be immediately.</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="method_connect_6" id="method_connect_6"></a>
-            <div class="permalink"><a href="#method_connect_6" class="permalink fas fa-link"></a></div>
-            <p>net.connect()</p>
 
-          </h1>
-        </div><section><p><p>Aliases to
+
+</div>
+</div><div class='expandable-header' id='method_connect_6-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_connect_6" id="method_connect_6"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_connect_6-expand-icon"></i>
+        <div class="permalink"><a href="#method_connect_6" class="permalink fas fa-link"></a></div>
+        <p>net.connect()</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_connect_6-expand-content'>
+<p><p>Aliases to
 <a href="#net_net_createconnection"><code>net.createConnection()</code></a>.</p></p>
 <p><p>Possible signatures:</p></p>
 <ul>
@@ -765,99 +1116,84 @@ connections.</li>
 <li><a href="#net_net_connect_port_host_connectlistener"><code>net.connect(port[, host][, connectListener])</code></a>
 for TCP connections.</li>
 </ul>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="method_connect_3" id="method_connect_3"></a>
-            <div class="permalink"><a href="#method_connect_3" class="permalink fas fa-link"></a></div>
-            <p>socket.connect(options[, connectListener])</p>
 
-          </h1>
-        </div><section><p>Initiate a connection on a given socket. Normally this method is not needed,
-the socket should be created and opened with <a href="#net_net_createconnection"><code>net.createConnection()</code></a>. Use
-this only when implementing a custom Socket.</p>
-<p>For TCP connections, available <code>options</code> are:</p>
-<ul>
-<li><code>port</code> {number} Required. Port the socket should connect to.</li>
-<li><code>host</code> {string} Host the socket should connect to. <strong>Default:</strong> <code>&#39;localhost&#39;</code></li>
-<li><code>localAddress</code> {string} Local address the socket should connect from.</li>
-<li><code>localPort</code> {number} Local port the socket should connect from.</li>
-<li><code>family</code> {number}: Version of IP stack, can be either 4 or 6. <strong>Default:</strong> <code>4</code></li>
-<li><code>hints</code> {number} Optional <a href="dns.html#dns_supported_getaddrinfo_flags"><code>dns.lookup()</code> hints</a>.</li>
-<li><code>lookup</code> {Function} Custom lookup function. <strong>Default:</strong> <a href="dns.html#dns_dns_lookup_hostname_options_callback"><code>dns.lookup()</code></a></li>
-</ul>
-<p>For <a href="#net_ipc_support">IPC</a> connections, available <code>options</code> are:</p>
-<ul>
-<li><code>path</code> {string} Required. Path the client should connect to.
-See <a href="#net_identifying_paths_for_ipc_connections">Identifying paths for IPC connections</a>. If provided, the TCP-specific
-options above are ignored.</li>
-</ul>
-<p>Returns <code>socket</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_connect_4" id="method_connect_4"></a>
-            <div class="permalink"><a href="#method_connect_4" class="permalink fas fa-link"></a></div>
-            <p>socket.connect(path[, connectListener])</p>
 
-          </h1>
-        </div><section><p>Initiate an <a href="#net_ipc_support">IPC</a> connection on the given socket.</p>
+<div class="heading">
+<h3>
+  <a name="subgroup_method_connect_6_Methods" id="subgroup_method_connect_6_Methods"></a>
+  <div class="permalink"><a href="#subgroup_method_connect_6_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_connect_7-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_connect_7" id="method_connect_7"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_connect_7-expand-icon"></i>
+        <div class="permalink"><a href="#method_connect_7" class="permalink fas fa-link"></a></div>
+        <p>net.connect(options[, connectListener])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_connect_7-expand-content'>
 <p>Alias to
-<a href="#net_socket_connect_options_connectlistener"><code>socket.connect(options[, connectListener])</code></a>
-called with <code>{ path: path }</code> as <code>options</code>.</p>
-<p>Returns <code>socket</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_connect_5" id="method_connect_5"></a>
-            <div class="permalink"><a href="#method_connect_5" class="permalink fas fa-link"></a></div>
-            <p>socket.connect(port[, host][, connectListener])</p>
-
-          </h1>
-        </div><section><p>Initiate a TCP connection on the given socket.</p>
-<p>Alias to
-<a href="#net_socket_connect_options_connectlistener"><code>socket.connect(options[, connectListener])</code></a>
-called with <code>{port: port, host: host}</code> as <code>options</code>.</p>
-<p>Returns <code>socket</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_connect_7" id="method_connect_7"></a>
-            <div class="permalink"><a href="#method_connect_7" class="permalink fas fa-link"></a></div>
-            <p>net.connect(options[, connectListener])</p>
-
-          </h1>
-        </div><section><p>Alias to
 <a href="#net_net_createconnection_options_connectlistener"><code>net.createConnection(options[, connectListener])</code></a>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_connect_8" id="method_connect_8"></a>
-            <div class="permalink"><a href="#method_connect_8" class="permalink fas fa-link"></a></div>
-            <p>net.connect(path[, connectListener])</p>
 
-          </h1>
-        </div><section><p>Alias to
+
+</div><div class='expandable-header' id='method_connect_8-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_connect_8" id="method_connect_8"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_connect_8-expand-icon"></i>
+        <div class="permalink"><a href="#method_connect_8" class="permalink fas fa-link"></a></div>
+        <p>net.connect(path[, connectListener])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_connect_8-expand-content'>
+<p>Alias to
 <a href="#net_net_createconnection_path_connectlistener"><code>net.createConnection(path[, connectListener])</code></a>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_connect_9" id="method_connect_9"></a>
-            <div class="permalink"><a href="#method_connect_9" class="permalink fas fa-link"></a></div>
-            <p>net.connect(port[, host][, connectListener])</p>
 
-          </h1>
-        </div><section><p>Alias to
+
+</div><div class='expandable-header' id='method_connect_9-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_connect_9" id="method_connect_9"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_connect_9-expand-icon"></i>
+        <div class="permalink"><a href="#method_connect_9" class="permalink fas fa-link"></a></div>
+        <p>net.connect(port[, host][, connectListener])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_connect_9-expand-content'>
+<p>Alias to
 <a href="#net_net_createconnection_port_host_connectlistener"><code>net.createConnection(port[, host][, connectListener])</code></a>.</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="method_createConnection_1" id="method_createConnection_1"></a>
-            <div class="permalink"><a href="#method_createConnection_1" class="permalink fas fa-link"></a></div>
-            <p>net.createConnection()</p>
 
-          </h1>
-        </div><section><p>A factory function, which creates a new <a href="net.html#net_class_net_socket"><code>net.Socket</code></a>,
+
+</div>
+</div><div class='expandable-header' id='method_createConnection_1-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_createConnection_1" id="method_createConnection_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createConnection_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_createConnection_1" class="permalink fas fa-link"></a></div>
+        <p>net.createConnection()</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createConnection_1-expand-content'>
+<p>A factory function, which creates a new <a href="net.html#net_class_net_socket"><code>net.Socket</code></a>,
 immediately initiates connection with <a href="#net_socket_connect"><code>socket.connect()</code></a>,
 then returns the <code>net.Socket</code> that starts the connection.</p>
 <p>When the connection is established, a <a href="#net_event_connect"><code>&#39;connect&#39;</code></a> event will be emitted
@@ -872,15 +1208,32 @@ for <a href="#net_ipc_support">IPC</a> connections.</li>
 for TCP connections.</li>
 </ul>
 <p><em>Note</em>: The <a href="#net_net_connect"><code>net.connect()</code></a> function is an alias to this function.</p>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="method_createConnection_2" id="method_createConnection_2"></a>
-            <div class="permalink"><a href="#method_createConnection_2" class="permalink fas fa-link"></a></div>
-            <p>net.createConnection(options[, connectListener])</p>
 
-          </h1>
-        </div><section><p><p>For available options, see
+
+<div class="heading">
+<h3>
+  <a name="subgroup_method_createConnection_1_Methods" id="subgroup_method_createConnection_1_Methods"></a>
+  <div class="permalink"><a href="#subgroup_method_createConnection_1_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_createConnection_2-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_createConnection_2" id="method_createConnection_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createConnection_2-expand-icon"></i>
+        <div class="permalink"><a href="#method_createConnection_2" class="permalink fas fa-link"></a></div>
+        <p>net.createConnection(options[, connectListener])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createConnection_2-expand-content'>
+<p><p>For available options, see
 <a href="#net_new_net_socket_options"><code>new net.Socket([options])</code></a>
 and <a href="#net_socket_connect_options_connectlistener"><code>socket.connect(options[, connectListener])</code></a>.</p></p>
 <p><p>Additional options:</p></p>
@@ -909,41 +1262,63 @@ client.on(&#39;end&#39;, () =&gt; {
 changed to</p>
 <pre class="prettyprint"><code class="lang-js">const client = net.createConnection({ path: &#39;/tmp/echo.sock&#39; });
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_createConnection_3" id="method_createConnection_3"></a>
-            <div class="permalink"><a href="#method_createConnection_3" class="permalink fas fa-link"></a></div>
-            <p>net.createConnection(path[, connectListener])</p>
 
-          </h1>
-        </div><section><p>Initiates an <a href="#net_ipc_support">IPC</a> connection.</p>
+
+</div><div class='expandable-header' id='method_createConnection_3-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_createConnection_3" id="method_createConnection_3"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createConnection_3-expand-icon"></i>
+        <div class="permalink"><a href="#method_createConnection_3" class="permalink fas fa-link"></a></div>
+        <p>net.createConnection(path[, connectListener])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createConnection_3-expand-content'>
+<p>Initiates an <a href="#net_ipc_support">IPC</a> connection.</p>
 <p>This function creates a new <a href="net.html#net_class_net_socket"><code>net.Socket</code></a> with all options set to default,
 immediately initiates connection with
 <a href="#net_socket_connect_path_connectlistener"><code>socket.connect(path[, connectListener])</code></a>,
 then returns the <code>net.Socket</code> that starts the connection.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_createConnection_4" id="method_createConnection_4"></a>
-            <div class="permalink"><a href="#method_createConnection_4" class="permalink fas fa-link"></a></div>
-            <p>net.createConnection(port[, host][, connectListener])</p>
 
-          </h1>
-        </div><section><p>Initiates a TCP connection.</p>
+
+</div><div class='expandable-header' id='method_createConnection_4-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_createConnection_4" id="method_createConnection_4"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createConnection_4-expand-icon"></i>
+        <div class="permalink"><a href="#method_createConnection_4" class="permalink fas fa-link"></a></div>
+        <p>net.createConnection(port[, host][, connectListener])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createConnection_4-expand-content'>
+<p>Initiates a TCP connection.</p>
 <p>This function creates a new <a href="net.html#net_class_net_socket"><code>net.Socket</code></a> with all options set to default,
 immediately initiates connection with
 <a href="#net_socket_connect_port_host_connectlistener"><code>socket.connect(port[, host][, connectListener])</code></a>,
 then returns the <code>net.Socket</code> that starts the connection.</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="method_createServer_3" id="method_createServer_3"></a>
-            <div class="permalink"><a href="#method_createServer_3" class="permalink fas fa-link"></a></div>
-            <p>net.createServer([options][, connectionListener])</p>
 
-          </h1>
-        </div><section><p><p>Creates a new TCP or <a href="#net_ipc_support">IPC</a> server.</p></p>
+
+</div>
+</div><div class='expandable-header' id='method_createServer_3-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_createServer_3" id="method_createServer_3"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createServer_3-expand-icon"></i>
+        <div class="permalink"><a href="#method_createServer_3" class="permalink fas fa-link"></a></div>
+        <p>net.createServer([options][, connectionListener])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createServer_3-expand-content'>
+<p><p>Creates a new TCP or <a href="#net_ipc_support">IPC</a> server.</p></p>
 <p><ul></p>
 <p><li><code>options</code> {Object}<ul></p>
 <p><li><code>allowHalfOpen</code> {boolean} Indicates whether half-opened TCP
@@ -999,37 +1374,60 @@ just be changed to</p>
 <p>Use <code>nc</code> to connect to a UNIX domain socket server:</p>
 <pre class="prettyprint"><code class="lang-console">$ nc -U /tmp/echo.sock
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_isIP" id="method_isIP"></a>
-            <div class="permalink"><a href="#method_isIP" class="permalink fas fa-link"></a></div>
-            <p>net.isIP(input)</p>
 
-          </h1>
-        </div><section><p>Tests if input is an IP address. Returns 0 for invalid strings,
+
+</div><div class='expandable-header' id='method_isIP-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_isIP" id="method_isIP"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isIP-expand-icon"></i>
+        <div class="permalink"><a href="#method_isIP" class="permalink fas fa-link"></a></div>
+        <p>net.isIP(input)</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isIP-expand-content'>
+<p>Tests if input is an IP address. Returns 0 for invalid strings,
 returns 4 for IP version 4 addresses, and returns 6 for IP version 6 addresses.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_isIPv4" id="method_isIPv4"></a>
-            <div class="permalink"><a href="#method_isIPv4" class="permalink fas fa-link"></a></div>
-            <p>net.isIPv4(input)</p>
 
-          </h1>
-        </div><section><p>Returns true if input is a version 4 IP address, otherwise returns false.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_isIPv6" id="method_isIPv6"></a>
-            <div class="permalink"><a href="#method_isIPv6" class="permalink fas fa-link"></a></div>
-            <p>net.isIPv6(input)</p>
 
-          </h1>
-        </div><section><p><p>Returns true if input is a version 6 IP address, otherwise returns false.</p>
+</div><div class='expandable-header' id='method_isIPv4-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_isIPv4" id="method_isIPv4"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isIPv4-expand-icon"></i>
+        <div class="permalink"><a href="#method_isIPv4" class="permalink fas fa-link"></a></div>
+        <p>net.isIPv4(input)</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isIPv4-expand-content'>
+<p>Returns true if input is a version 4 IP address, otherwise returns false.</p>
+
+
+</div><div class='expandable-header' id='method_isIPv6-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_isIPv6" id="method_isIPv6"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isIPv6-expand-icon"></i>
+        <div class="permalink"><a href="#method_isIPv6" class="permalink fas fa-link"></a></div>
+        <p>net.isIPv6(input)</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isIPv6-expand-content'>
+<p><p>Returns true if input is a version 6 IP address, otherwise returns false.</p>
 <!-- [end-include:net.md] -->
 <!-- [start-include:os.md] --></p>
-</section>
+
+
+</div>
 
   <div class="footer">
     <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>

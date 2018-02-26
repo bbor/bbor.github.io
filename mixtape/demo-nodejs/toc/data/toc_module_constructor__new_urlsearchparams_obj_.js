@@ -1,1 +1,1 @@
-define([], function() { return {"children":[],"ancestry":["toc_module_url","toc_module_the_whatwg_url_api","toc_class_URLSearchParams","toc_subgroup_URLSearchParams_Modules","toc_module_constructor__new_urlsearchparams_obj_"]}; });
+define([], function() { return {"children":[],"ancestry":["toc_module_url","toc_module_the_whatwg_url_api","toc_class_URLSearchParams","toc_subgroup_class_URLSearchParams_Modules","toc_module_constructor__new_urlsearchparams_obj_"]}; });

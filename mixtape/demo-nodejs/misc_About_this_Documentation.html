@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>mixtape page for About this Documentation</title>
+    <title>About this Documentation</title>
     <script data-main="js/setup" src="js/require.js"></script>
     <link rel="stylesheet" href="fonts/fonts.css" />
     <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
@@ -13,9 +13,9 @@
   <body>
 
   <div id="control-panel">
-    <div id="control-strip-h">
-      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
-      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    <div id="control-strip-m">
+      <div id="control-strip-m-find"><div id="m-find"></div></div>
+      <div id="control-strip-m-toc"><div id="m-toc"></div></div>
     </div>
     <div id="controls">
       <div id="control-find">
@@ -26,50 +26,58 @@
       </div>
     </div>
   </div>
-  <div id="control-strip-v">
-    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
-    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  <div id="control-strip-w">
+    <div id="control-strip-w-find"></div>
+    <div id="control-strip-w-toc"></div>
   </div>
 
   <div id="content">
 
   
-       <div class="heading">
-          <h1>
-            <a name="misc_About_this_Documentation" id="misc_About_this_Documentation"></a>
-            <div class="permalink"><a href="#misc_About_this_Documentation" class="permalink fas fa-link"></a></div>
-            <p>About this Documentation</p>
+<div class="heading">
+<h1>
+  <a name="misc_About_this_Documentation" id="misc_About_this_Documentation"></a>
+  <div class="permalink"><a href="#misc_About_this_Documentation" class="permalink fas fa-link"></a></div>
+  <p>About this Documentation</p>
 
-          </h1>
-        </div><p>The goal of this documentation is to comprehensively explain the Node.js
+</h1>
+</div>
+
+<p>The goal of this documentation is to comprehensively explain the Node.js
 API, both from a reference as well as a conceptual point of view. Each
 section describes a built-in module or high-level concept.</p>
 <p>Where appropriate, property types, method arguments, and the arguments
 provided to event handlers are detailed in a list underneath the topic
 heading.</p>
 
-       <div class="heading">
-          <h2>
-            <a name="misc_contributing" id="misc_contributing"></a>
-            <div class="permalink"><a href="#misc_contributing" class="permalink fas fa-link"></a></div>
-            <p>Contributing</p>
 
-          </h1>
-        </div><section><p>If errors are found in this documentation, please <a href="https://github.com/nodejs/node/issues/new">submit an issue</a>
+<div class="heading">
+<h2>
+  <a name="misc_contributing" id="misc_contributing"></a>
+  <div class="permalink"><a href="#misc_contributing" class="permalink fas fa-link"></a></div>
+  <p>Contributing</p>
+
+</h2>
+</div>
+
+<p>If errors are found in this documentation, please <a href="https://github.com/nodejs/node/issues/new">submit an issue</a>
 or see <a href="https://github.com/nodejs/node/blob/master/CONTRIBUTING.md">the contributing guide</a> for directions on how to submit a patch.</p>
 <p>Every file is generated based on the corresponding <code>.md</code> file in the
 <code>doc/api/</code> folder in Node.js&#39;s source tree. The documentation is generated
 using the <code>tools/doc/generate.js</code> program. An HTML template is located at
 <code>doc/template.html</code>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="misc_Stability_Index" id="misc_Stability_Index"></a>
-            <div class="permalink"><a href="#misc_Stability_Index" class="permalink fas fa-link"></a></div>
-            <p>Stability Index</p>
 
-          </h1>
-        </div><section><p>Throughout the documentation are indications of a section&#39;s
+
+<div class="heading">
+<h2>
+  <a name="misc_Stability_Index" id="misc_Stability_Index"></a>
+  <div class="permalink"><a href="#misc_Stability_Index" class="permalink fas fa-link"></a></div>
+  <p>Stability Index</p>
+
+</h2>
+</div>
+
+<p>Throughout the documentation are indications of a section&#39;s
 stability. The Node.js API is still somewhat changing, and as it
 matures, certain parts are more reliable than others. Some are so
 proven, and so relied upon, that they are unlikely to ever change at
@@ -100,27 +108,33 @@ surprises, <code>Experimental</code> features may require a command-line flag to
 explicitly enable them, or may cause a process warning to be emitted.
 By default, such warnings are printed to <a href="process.html#process_process_stderr"><code>stderr</code></a> and may be handled by
 attaching a listener to the <a href="process.html#process_event_warning"><code>process.on(&#39;warning&#39;)</code></a> event.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="misc_json_output" id="misc_json_output"></a>
-            <div class="permalink"><a href="#misc_json_output" class="permalink fas fa-link"></a></div>
-            <p>JSON Output</p>
 
-          </h1>
-        </div><section><p>Every <code>.html</code> document has a corresponding <code>.json</code> document presenting
+
+<div class="heading">
+<h2>
+  <a name="misc_json_output" id="misc_json_output"></a>
+  <div class="permalink"><a href="#misc_json_output" class="permalink fas fa-link"></a></div>
+  <p>JSON Output</p>
+
+</h2>
+</div>
+
+<p>Every <code>.html</code> document has a corresponding <code>.json</code> document presenting
 the same information in a structured manner. This feature is
 experimental, and added for the benefit of IDEs and other utilities that
 wish to do programmatic things with the documentation.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="misc_syscalls_and_man_pages" id="misc_syscalls_and_man_pages"></a>
-            <div class="permalink"><a href="#misc_syscalls_and_man_pages" class="permalink fas fa-link"></a></div>
-            <p>Syscalls and man pages</p>
 
-          </h1>
-        </div><section><p><p>System calls like open(2) and read(2) define the interface between user programs
+
+<div class="heading">
+<h2>
+  <a name="misc_syscalls_and_man_pages" id="misc_syscalls_and_man_pages"></a>
+  <div class="permalink"><a href="#misc_syscalls_and_man_pages" class="permalink fas fa-link"></a></div>
+  <p>Syscalls and man pages</p>
+
+</h2>
+</div>
+
+<p><p>System calls like open(2) and read(2) define the interface between user programs
 and the underlying operating system. Node functions which simply wrap a syscall,
 like <a href="#fs_fs_open_path_flags_mode_callback"><code>fs.open()</code></a>, will document that. The docs link to the corresponding man
 pages (short for manual pages) which describe how the syscalls work.</p></p>
@@ -133,7 +147,8 @@ sometimes impossible to replace Unix syscall semantics on Windows, see <a href="
 issue 4760</a>.</p>
 <!-- [end-include:documentation.md] -->
 <!-- [start-include:synopsis.md] --></p>
-</section>
+
+
 
   <div class="footer">
     <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>

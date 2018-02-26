@@ -1,1 +1,1 @@
-define([], function() { return {"children":[],"ancestry":["toc_module_tty","toc_class_tty_ReadStream","toc_subgroup_tty_ReadStream_Properties","toc_property_isRaw"]}; });
+define([], function() { return {"children":[],"ancestry":["toc_module_tty","toc_class_tty_ReadStream","toc_subgroup_class_tty_ReadStream_Properties","toc_property_isRaw"]}; });

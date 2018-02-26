@@ -1,1 +1,1 @@
-define([], function() { return {"children":[],"ancestry":["toc_module_buffer","toc_class_Buffer","toc_subgroup_Buffer_Properties","toc_property_length"]}; });
+define([], function() { return {"children":[],"ancestry":["toc_module_buffer","toc_class_Buffer","toc_subgroup_class_Buffer_Properties","toc_property_length"]}; });

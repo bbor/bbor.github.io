@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>mixtape page for cluster</title>
+    <title>Cluster</title>
     <script data-main="js/setup" src="js/require.js"></script>
     <link rel="stylesheet" href="fonts/fonts.css" />
     <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
@@ -13,9 +13,9 @@
   <body>
 
   <div id="control-panel">
-    <div id="control-strip-h">
-      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
-      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    <div id="control-strip-m">
+      <div id="control-strip-m-find"><div id="m-find"></div></div>
+      <div id="control-strip-m-toc"><div id="m-toc"></div></div>
     </div>
     <div id="controls">
       <div id="control-find">
@@ -26,22 +26,24 @@
       </div>
     </div>
   </div>
-  <div id="control-strip-v">
-    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
-    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  <div id="control-strip-w">
+    <div id="control-strip-w-find"></div>
+    <div id="control-strip-w-toc"></div>
   </div>
 
   <div id="content">
 
   
-       <div class="heading">
-          <h1>
-            <a name="module_cluster" id="module_cluster"></a>
-            <div class="permalink"><a href="#module_cluster" class="permalink fas fa-link"></a></div>
-            <p>Cluster</p>
+<div class="heading">
+<h1>
+  <a name="module_cluster" id="module_cluster"></a>
+  <div class="permalink"><a href="#module_cluster" class="permalink fas fa-link"></a></div>
+  <p>Cluster</p>
 
-          </h1>
-        </div><p>A single instance of Node.js runs in a single thread. To take advantage of
+</h1>
+</div>
+
+<p>A single instance of Node.js runs in a single thread. To take advantage of
 multi-core systems, the user will sometimes want to launch a cluster of Node.js
 processes to handle the load.</p>
 <p>The cluster module allows easy creation of child processes that all share
@@ -83,14 +85,17 @@ Worker 5644 started
 <p>Please note that on Windows, it is not yet possible to set up a named pipe
 server in a worker.</p>
 
-       <div class="heading">
-          <h2>
-            <a name="misc_How_It_Works" id="misc_How_It_Works"></a>
-            <div class="permalink"><a href="#misc_How_It_Works" class="permalink fas fa-link"></a></div>
-            <p>How It Works</p>
 
-          </h1>
-        </div><section><p>The worker processes are spawned using the <a href="child_process.html#child_process_child_process_fork_modulepath_args_options"><code>child_process.fork()</code></a> method,
+<div class="heading">
+<h2>
+  <a name="misc_How_It_Works" id="misc_How_It_Works"></a>
+  <div class="permalink"><a href="#misc_How_It_Works" class="permalink fas fa-link"></a></div>
+  <p>How It Works</p>
+
+</h2>
+</div>
+
+<p>The worker processes are spawned using the <a href="child_process.html#child_process_child_process_fork_modulepath_args_options"><code>child_process.fork()</code></a> method,
 so that they can communicate with the parent via IPC and pass server
 handles back and forth.</p>
 <p>The cluster module supports two methods of distributing incoming
@@ -137,26 +142,49 @@ automatically manage the number of workers, however. It is the application&#39;s
 responsibility to manage the worker pool based on its own needs.</p>
 <p>Although a primary use case for the <code>cluster</code> module is networking, it can
 also be used for other use cases requiring worker processes.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="class_Worker" id="class_Worker"></a>
-            <div class="permalink"><a href="#class_Worker" class="permalink fas fa-link"></a></div>
-            <p>Class: Worker</p>
 
-          </h1>
-        </div><section><p>A Worker object contains all public information and method about a worker.
+<div class='expandable-header' id='class_Worker-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_Worker" id="class_Worker"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_Worker-expand-icon"></i>
+        <div class="permalink"><a href="#class_Worker" class="permalink fas fa-link"></a></div>
+        <p>Class: Worker</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_Worker-expand-content'>
+<p>A Worker object contains all public information and method about a worker.
 In the master it can be obtained using <code>cluster.workers</code>. In a worker
 it can be obtained using <code>cluster.worker</code>.</p>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="property_exitedAfterDisconnect" id="property_exitedAfterDisconnect"></a>
-            <div class="permalink"><a href="#property_exitedAfterDisconnect" class="permalink fas fa-link"></a></div>
-            <p><code>exitedAfterDisconnect</code> {boolean} </p>
 
-          </h1>
-        </div><section><p><p>Set by calling <code>.kill()</code> or <code>.disconnect()</code>. Until then, it is <code>undefined</code>.</p></p>
+
+<div class="heading">
+<h3>
+  <a name="subgroup_class_Worker_Properties" id="subgroup_class_Worker_Properties"></a>
+  <div class="permalink"><a href="#subgroup_class_Worker_Properties" class="permalink fas fa-link"></a></div>
+  <p>Properties</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='property_exitedAfterDisconnect-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_exitedAfterDisconnect" id="property_exitedAfterDisconnect"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_exitedAfterDisconnect-expand-icon"></i>
+        <div class="permalink"><a href="#property_exitedAfterDisconnect" class="permalink fas fa-link"></a></div>
+        <p><code>exitedAfterDisconnect</code> {boolean} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_exitedAfterDisconnect-expand-content'>
+<p><p>Set by calling <code>.kill()</code> or <code>.disconnect()</code>. Until then, it is <code>undefined</code>.</p></p>
 <p><p>The boolean <a href="cluster.html#cluster_worker_exitedafterdisconnect"><code>worker.exitedAfterDisconnect</code></a> allows distinguishing between
 voluntary and accidental exit, the master may choose not to respawn a worker
 based on this value.</p></p>
@@ -169,42 +197,74 @@ based on this value.</p></p>
 // kill worker
 worker.kill();
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_id" id="property_id"></a>
-            <div class="permalink"><a href="#property_id" class="permalink fas fa-link"></a></div>
-            <p><code>id</code> {number} </p>
 
-          </h1>
-        </div><section><p>Each new worker is given its own unique id, this id is stored in the
+
+</div><div class='expandable-header' id='property_id-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_id" id="property_id"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_id-expand-icon"></i>
+        <div class="permalink"><a href="#property_id" class="permalink fas fa-link"></a></div>
+        <p><code>id</code> {number} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_id-expand-content'>
+<p>Each new worker is given its own unique id, this id is stored in the
 <code>id</code>.</p>
 <p>While a worker is alive, this is the key that indexes it in
 cluster.workers</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_process" id="property_process"></a>
-            <div class="permalink"><a href="#property_process" class="permalink fas fa-link"></a></div>
-            <p><code>process</code> {ChildProcess} </p>
 
-          </h1>
-        </div><section><p>All workers are created using <a href="child_process.html#child_process_child_process_fork_modulepath_args_options"><code>child_process.fork()</code></a>, the returned object
+
+</div><div class='expandable-header' id='property_process-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_process" id="property_process"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_process-expand-icon"></i>
+        <div class="permalink"><a href="#property_process" class="permalink fas fa-link"></a></div>
+        <p><code>process</code> {ChildProcess} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_process-expand-content'>
+<p>All workers are created using <a href="child_process.html#child_process_child_process_fork_modulepath_args_options"><code>child_process.fork()</code></a>, the returned object
 from this function is stored as <code>.process</code>. In a worker, the global <code>process</code>
 is stored.</p>
 <p>See: <a href="child_process.html#child_process_child_process_fork_modulepath_args_options">Child Process module</a></p>
 <p>Note that workers will call <code>process.exit(0)</code> if the <code>&#39;disconnect&#39;</code> event occurs
 on <code>process</code> and <code>.exitedAfterDisconnect</code> is not <code>true</code>. This protects against
 accidental disconnection.</p>
-</section></section><section>
-       <div class="heading">
-          <h4>
-            <a name="method_disconnect_2" id="method_disconnect_2"></a>
-            <div class="permalink"><a href="#method_disconnect_2" class="permalink fas fa-link"></a></div>
-            <p>worker.disconnect()</p>
 
-          </h1>
-        </div><section><p><p>In a worker, this function will close all servers, wait for the <code>&#39;close&#39;</code> event on
+
+</div>
+<div class="heading">
+<h3>
+  <a name="subgroup_class_Worker_Methods" id="subgroup_class_Worker_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_Worker_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_disconnect_2-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_disconnect_2" id="method_disconnect_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_disconnect_2-expand-icon"></i>
+        <div class="permalink"><a href="#method_disconnect_2" class="permalink fas fa-link"></a></div>
+        <p>worker.disconnect()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_disconnect_2-expand-content'>
+<p><p>In a worker, this function will close all servers, wait for the <code>&#39;close&#39;</code> event on
 those servers, and then disconnect the IPC channel.</p></p>
 <p><p>In the master, an internal message is sent to the worker causing it to call
 <code>.disconnect()</code> on itself.</p></p>
@@ -254,51 +314,79 @@ the <code>&#39;disconnect&#39;</code> event has not been emitted after some time
   });
 }
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_isConnected" id="method_isConnected"></a>
-            <div class="permalink"><a href="#method_isConnected" class="permalink fas fa-link"></a></div>
-            <p>worker.isConnected()</p>
 
-          </h1>
-        </div><section><p>This function returns <code>true</code> if the worker is connected to its master via its
+
+</div><div class='expandable-header' id='method_isConnected-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_isConnected" id="method_isConnected"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isConnected-expand-icon"></i>
+        <div class="permalink"><a href="#method_isConnected" class="permalink fas fa-link"></a></div>
+        <p>worker.isConnected()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isConnected-expand-content'>
+<p>This function returns <code>true</code> if the worker is connected to its master via its
 IPC channel, <code>false</code> otherwise. A worker is connected to its master after it
 has been created. It is disconnected after the <code>&#39;disconnect&#39;</code> event is emitted.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_isDead" id="method_isDead"></a>
-            <div class="permalink"><a href="#method_isDead" class="permalink fas fa-link"></a></div>
-            <p>worker.isDead()</p>
 
-          </h1>
-        </div><section><p>This function returns <code>true</code> if the worker&#39;s process has terminated (either
+
+</div><div class='expandable-header' id='method_isDead-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_isDead" id="method_isDead"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isDead-expand-icon"></i>
+        <div class="permalink"><a href="#method_isDead" class="permalink fas fa-link"></a></div>
+        <p>worker.isDead()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isDead-expand-content'>
+<p>This function returns <code>true</code> if the worker&#39;s process has terminated (either
 because of exiting or being signaled). Otherwise, it returns <code>false</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_kill_2" id="method_kill_2"></a>
-            <div class="permalink"><a href="#method_kill_2" class="permalink fas fa-link"></a></div>
-            <p>worker.kill([signal=&#39;SIGTERM&#39;])</p>
 
-          </h1>
-        </div><section><p>This function will kill the worker. In the master, it does this by disconnecting
+
+</div><div class='expandable-header' id='method_kill_2-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_kill_2" id="method_kill_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_kill_2-expand-icon"></i>
+        <div class="permalink"><a href="#method_kill_2" class="permalink fas fa-link"></a></div>
+        <p>worker.kill([signal=&#39;SIGTERM&#39;])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_kill_2-expand-content'>
+<p>This function will kill the worker. In the master, it does this by disconnecting
 the <code>worker.process</code>, and once disconnected, killing with <code>signal</code>. In the
 worker, it does it by disconnecting the channel, and then exiting with code <code>0</code>.</p>
 <p>Causes <code>.exitedAfterDisconnect</code> to be set.</p>
 <p>This method is aliased as <code>worker.destroy()</code> for backwards compatibility.</p>
 <p>Note that in a worker, <code>process.kill()</code> exists, but it is not this function,
 it is <a href="process.html#process_process_kill_pid_signal"><code>kill</code></a>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_send_2" id="method_send_2"></a>
-            <div class="permalink"><a href="#method_send_2" class="permalink fas fa-link"></a></div>
-            <p>worker.send(message[, sendHandle][, callback])</p>
 
-          </h1>
-        </div><section><p><p>Send a message to a worker or master, optionally with a handle.</p></p>
+
+</div><div class='expandable-header' id='method_send_2-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_send_2" id="method_send_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_send_2-expand-icon"></i>
+        <div class="permalink"><a href="#method_send_2" class="permalink fas fa-link"></a></div>
+        <p>worker.send(message[, sendHandle][, callback])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_send_2-expand-content'>
+<p><p>Send a message to a worker or master, optionally with a handle.</p></p>
 <p><p>In the master this sends a message to a specific worker. It is identical to
 <a href="child_process.html#child_process_subprocess_send_message_sendhandle_options_callback"><code>ChildProcess.send()</code></a>.</p></p>
 <p><p>In a worker this sends a message to the master. It is identical to
@@ -314,35 +402,57 @@ it is <a href="process.html#process_process_kill_pid_signal"><code>kill</code></
   });
 }
 </code></pre>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="property_isMaster" id="property_isMaster"></a>
-            <div class="permalink"><a href="#property_isMaster" class="permalink fas fa-link"></a></div>
-            <p><code>isMaster</code> {boolean} </p>
 
-          </h1>
-        </div><section><p>True if the process is a master. This is determined
+
+</div>
+</div><div class='expandable-header' id='property_isMaster-expand'>
+<div class="heading">
+    <h2>
+        <a name="property_isMaster" id="property_isMaster"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_isMaster-expand-icon"></i>
+        <div class="permalink"><a href="#property_isMaster" class="permalink fas fa-link"></a></div>
+        <p><code>isMaster</code> {boolean} </p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='property_isMaster-expand-content'>
+<p>True if the process is a master. This is determined
 by the <code>process.env.NODE_UNIQUE_ID</code>. If <code>process.env.NODE_UNIQUE_ID</code> is
 undefined, then <code>isMaster</code> is <code>true</code>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="property_isWorker" id="property_isWorker"></a>
-            <div class="permalink"><a href="#property_isWorker" class="permalink fas fa-link"></a></div>
-            <p><code>isWorker</code> {boolean} </p>
 
-          </h1>
-        </div><section><p>True if the process is not a master (it is the negation of <code>cluster.isMaster</code>).</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="property_schedulingPolicy" id="property_schedulingPolicy"></a>
-            <div class="permalink"><a href="#property_schedulingPolicy" class="permalink fas fa-link"></a></div>
-            <p>cluster.schedulingPolicy</p>
 
-          </h1>
-        </div><section><p>The scheduling policy, either <code>cluster.SCHED_RR</code> for round-robin or
+</div><div class='expandable-header' id='property_isWorker-expand'>
+<div class="heading">
+    <h2>
+        <a name="property_isWorker" id="property_isWorker"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_isWorker-expand-icon"></i>
+        <div class="permalink"><a href="#property_isWorker" class="permalink fas fa-link"></a></div>
+        <p><code>isWorker</code> {boolean} </p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='property_isWorker-expand-content'>
+<p>True if the process is not a master (it is the negation of <code>cluster.isMaster</code>).</p>
+
+
+</div><div class='expandable-header' id='property_schedulingPolicy-expand'>
+<div class="heading">
+    <h2>
+        <a name="property_schedulingPolicy" id="property_schedulingPolicy"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_schedulingPolicy-expand-icon"></i>
+        <div class="permalink"><a href="#property_schedulingPolicy" class="permalink fas fa-link"></a></div>
+        <p>cluster.schedulingPolicy</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='property_schedulingPolicy-expand-content'>
+<p>The scheduling policy, either <code>cluster.SCHED_RR</code> for round-robin or
 <code>cluster.SCHED_NONE</code> to leave it to the operating system. This is a
 global setting and effectively frozen once either the first worker is spawned,
 or <code>cluster.setupMaster()</code> is called, whichever comes first.</p>
@@ -352,26 +462,40 @@ distribute IOCP handles without incurring a large performance hit.</p>
 <p><code>cluster.schedulingPolicy</code> can also be set through the
 <code>NODE_CLUSTER_SCHED_POLICY</code> environment variable. Valid
 values are <code>&quot;rr&quot;</code> and <code>&quot;none&quot;</code>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="property_settings" id="property_settings"></a>
-            <div class="permalink"><a href="#property_settings" class="permalink fas fa-link"></a></div>
-            <p><code>settings</code> {Object} </p>
 
-          </h1>
-        </div><section><p>After calling <code>.setupMaster()</code> (or <code>.fork()</code>) this settings object will contain
+
+</div><div class='expandable-header' id='property_settings-expand'>
+<div class="heading">
+    <h2>
+        <a name="property_settings" id="property_settings"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_settings-expand-icon"></i>
+        <div class="permalink"><a href="#property_settings" class="permalink fas fa-link"></a></div>
+        <p><code>settings</code> {Object} </p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='property_settings-expand-content'>
+<p>After calling <code>.setupMaster()</code> (or <code>.fork()</code>) this settings object will contain
 the settings, including the default values.</p>
 <p>This object is not intended to be changed or set manually.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="property_worker" id="property_worker"></a>
-            <div class="permalink"><a href="#property_worker" class="permalink fas fa-link"></a></div>
-            <p><code>worker</code> {Object} </p>
 
-          </h1>
-        </div><section><p><p>A reference to the current worker object. Not available in the master process.</p></p>
+
+</div><div class='expandable-header' id='property_worker-expand'>
+<div class="heading">
+    <h2>
+        <a name="property_worker" id="property_worker"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_worker-expand-icon"></i>
+        <div class="permalink"><a href="#property_worker" class="permalink fas fa-link"></a></div>
+        <p><code>worker</code> {Object} </p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='property_worker-expand-content'>
+<p><p>A reference to the current worker object. Not available in the master process.</p></p>
 <pre class="prettyprint"><code class="lang-js">const cluster = require(&#39;cluster&#39;);
 
 if (cluster.isMaster) {
@@ -382,15 +506,22 @@ if (cluster.isMaster) {
   console.log(`I am worker #${cluster.worker.id}`);
 }
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="property_workers" id="property_workers"></a>
-            <div class="permalink"><a href="#property_workers" class="permalink fas fa-link"></a></div>
-            <p><code>workers</code> {Object} </p>
 
-          </h1>
-        </div><section><p><p>A hash that stores the active worker objects, keyed by <code>id</code> field. Makes it
+
+</div><div class='expandable-header' id='property_workers-expand'>
+<div class="heading">
+    <h2>
+        <a name="property_workers" id="property_workers"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_workers-expand-icon"></i>
+        <div class="permalink"><a href="#property_workers" class="permalink fas fa-link"></a></div>
+        <p><code>workers</code> {Object} </p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='property_workers-expand-content'>
+<p><p>A hash that stores the active worker objects, keyed by <code>id</code> field. Makes it
 easy to loop through all the workers. It is only available in the master
 process.</p></p>
 <p><p>A worker is removed from cluster.workers after the worker has disconnected <em>and</em>
@@ -414,38 +545,59 @@ eachWorker((worker) =&gt; {
 </code></pre>
 <!-- [end-include:cluster.md] -->
 <!-- [start-include:cli.md] --></p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_disconnect_3" id="method_disconnect_3"></a>
-            <div class="permalink"><a href="#method_disconnect_3" class="permalink fas fa-link"></a></div>
-            <p>cluster.disconnect([callback])</p>
 
-          </h1>
-        </div><section><p>Calls <code>.disconnect()</code> on each worker in <code>cluster.workers</code>.</p>
+
+</div><div class='expandable-header' id='method_disconnect_3-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_disconnect_3" id="method_disconnect_3"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_disconnect_3-expand-icon"></i>
+        <div class="permalink"><a href="#method_disconnect_3" class="permalink fas fa-link"></a></div>
+        <p>cluster.disconnect([callback])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_disconnect_3-expand-content'>
+<p>Calls <code>.disconnect()</code> on each worker in <code>cluster.workers</code>.</p>
 <p>When they are disconnected all internal handles will be closed, allowing the
 master process to die gracefully if no other event is waiting.</p>
 <p>The method takes an optional callback argument which will be called when finished.</p>
 <p>This can only be called from the master process.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_fork_1" id="method_fork_1"></a>
-            <div class="permalink"><a href="#method_fork_1" class="permalink fas fa-link"></a></div>
-            <p>cluster.fork([env])</p>
 
-          </h1>
-        </div><section><p>Spawn a new worker process.</p>
+
+</div><div class='expandable-header' id='method_fork_1-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_fork_1" id="method_fork_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_fork_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_fork_1" class="permalink fas fa-link"></a></div>
+        <p>cluster.fork([env])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_fork_1-expand-content'>
+<p>Spawn a new worker process.</p>
 <p>This can only be called from the master process.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_setupMaster" id="method_setupMaster"></a>
-            <div class="permalink"><a href="#method_setupMaster" class="permalink fas fa-link"></a></div>
-            <p>cluster.setupMaster([settings])</p>
 
-          </h1>
-        </div><section><p><code>setupMaster</code> is used to change the default &#39;fork&#39; behavior. Once called,
+
+</div><div class='expandable-header' id='method_setupMaster-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_setupMaster" id="method_setupMaster"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setupMaster-expand-icon"></i>
+        <div class="permalink"><a href="#method_setupMaster" class="permalink fas fa-link"></a></div>
+        <p>cluster.setupMaster([settings])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setupMaster-expand-content'>
+<p><code>setupMaster</code> is used to change the default &#39;fork&#39; behavior. Once called,
 the settings will be present in <code>cluster.settings</code>.</p>
 <p>Note that:</p>
 <ul>
@@ -471,7 +623,9 @@ cluster.setupMaster({
 cluster.fork(); // http worker
 </code></pre>
 <p>This can only be called from the master process.</p>
-</section>
+
+
+</div>
 
   <div class="footer">
     <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>

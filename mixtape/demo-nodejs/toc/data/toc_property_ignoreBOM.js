@@ -1,1 +1,1 @@
-define([], function() { return {"children":[],"ancestry":["toc_module_util","toc_class_util_TextDecoder","toc_subgroup_util_TextDecoder_Properties","toc_property_ignoreBOM"]}; });
+define([], function() { return {"children":[],"ancestry":["toc_module_util","toc_class_util_TextDecoder","toc_subgroup_class_util_TextDecoder_Properties","toc_property_ignoreBOM"]}; });

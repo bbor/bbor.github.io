@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>mixtape page for http</title>
+    <title>HTTP</title>
     <script data-main="js/setup" src="js/require.js"></script>
     <link rel="stylesheet" href="fonts/fonts.css" />
     <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
@@ -13,9 +13,9 @@
   <body>
 
   <div id="control-panel">
-    <div id="control-strip-h">
-      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
-      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    <div id="control-strip-m">
+      <div id="control-strip-m-find"><div id="m-find"></div></div>
+      <div id="control-strip-m-toc"><div id="m-toc"></div></div>
     </div>
     <div id="controls">
       <div id="control-find">
@@ -26,22 +26,24 @@
       </div>
     </div>
   </div>
-  <div id="control-strip-v">
-    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
-    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  <div id="control-strip-w">
+    <div id="control-strip-w-find"></div>
+    <div id="control-strip-w-toc"></div>
   </div>
 
   <div id="content">
 
   
-       <div class="heading">
-          <h1>
-            <a name="module_http" id="module_http"></a>
-            <div class="permalink"><a href="#module_http" class="permalink fas fa-link"></a></div>
-            <p>HTTP</p>
+<div class="heading">
+<h1>
+  <a name="module_http" id="module_http"></a>
+  <div class="permalink"><a href="#module_http" class="permalink fas fa-link"></a></div>
+  <p>HTTP</p>
 
-          </h1>
-        </div><p><p>To use the HTTP server and client one must <code>require(&#39;http&#39;)</code>.</p></p>
+</h1>
+</div>
+
+<p><p>To use the HTTP server and client one must <code>require(&#39;http&#39;)</code>.</p></p>
 <p><p>The HTTP interfaces in Node.js are designed to support many features
 of the protocol which have been traditionally difficult to use.
 In particular, large, possibly chunk-encoded, messages. The interface is
@@ -74,14 +76,20 @@ list like the following:</p>
   &#39;accepT&#39;, &#39;*/*&#39; ]
 </code></pre>
 
-       <div class="heading">
-          <h2>
-            <a name="class_http_Agent" id="class_http_Agent"></a>
-            <div class="permalink"><a href="#class_http_Agent" class="permalink fas fa-link"></a></div>
-            <p>Class: http.Agent</p>
+<div class='expandable-header' id='class_http_Agent-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_http_Agent" id="class_http_Agent"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_http_Agent-expand-icon"></i>
+        <div class="permalink"><a href="#class_http_Agent" class="permalink fas fa-link"></a></div>
+        <p>Class: http.Agent</p>
 
-          </h1>
-        </div><section><p><p>An <code>Agent</code> is responsible for managing connection persistence
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_http_Agent-expand-content'>
+<p><p>An <code>Agent</code> is responsible for managing connection persistence
 and reuse for HTTP clients. It maintains a queue of pending requests
 for a given host and port, reusing a single socket connection for each
 until the queue is empty, at which time the socket is either destroyed
@@ -125,80 +133,150 @@ for the client connection.</p>
   // Do stuff with response
 });
 </code></pre>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="property_freeSockets" id="property_freeSockets"></a>
-            <div class="permalink"><a href="#property_freeSockets" class="permalink fas fa-link"></a></div>
-            <p><code>freeSockets</code> {Object} </p>
 
-          </h1>
-        </div><section><p>An object which contains arrays of sockets currently awaiting use by
+
+<div class="heading">
+<h3>
+  <a name="subgroup_class_http_Agent_Properties" id="subgroup_class_http_Agent_Properties"></a>
+  <div class="permalink"><a href="#subgroup_class_http_Agent_Properties" class="permalink fas fa-link"></a></div>
+  <p>Properties</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='property_freeSockets-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_freeSockets" id="property_freeSockets"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_freeSockets-expand-icon"></i>
+        <div class="permalink"><a href="#property_freeSockets" class="permalink fas fa-link"></a></div>
+        <p><code>freeSockets</code> {Object} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_freeSockets-expand-content'>
+<p>An object which contains arrays of sockets currently awaiting use by
 the agent when <code>keepAlive</code> is enabled.  Do not modify.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_maxFreeSockets" id="property_maxFreeSockets"></a>
-            <div class="permalink"><a href="#property_maxFreeSockets" class="permalink fas fa-link"></a></div>
-            <p><code>maxFreeSockets</code> {number} </p>
 
-          </h1>
-        </div><section><p>By default set to 256.  For agents with <code>keepAlive</code> enabled, this
+
+</div><div class='expandable-header' id='property_maxFreeSockets-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_maxFreeSockets" id="property_maxFreeSockets"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_maxFreeSockets-expand-icon"></i>
+        <div class="permalink"><a href="#property_maxFreeSockets" class="permalink fas fa-link"></a></div>
+        <p><code>maxFreeSockets</code> {number} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_maxFreeSockets-expand-content'>
+<p>By default set to 256.  For agents with <code>keepAlive</code> enabled, this
 sets the maximum number of sockets that will be left open in the free
 state.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_maxSockets" id="property_maxSockets"></a>
-            <div class="permalink"><a href="#property_maxSockets" class="permalink fas fa-link"></a></div>
-            <p><code>maxSockets</code> {number} </p>
 
-          </h1>
-        </div><section><p>By default set to Infinity. Determines how many concurrent sockets the agent
+
+</div><div class='expandable-header' id='property_maxSockets-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_maxSockets" id="property_maxSockets"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_maxSockets-expand-icon"></i>
+        <div class="permalink"><a href="#property_maxSockets" class="permalink fas fa-link"></a></div>
+        <p><code>maxSockets</code> {number} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_maxSockets-expand-content'>
+<p>By default set to Infinity. Determines how many concurrent sockets the agent
 can have open per origin. Origin is the returned value of <a href="#http_agent_getname_options"><code>agent.getName()</code></a>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_requests" id="property_requests"></a>
-            <div class="permalink"><a href="#property_requests" class="permalink fas fa-link"></a></div>
-            <p><code>requests</code> {Object} </p>
 
-          </h1>
-        </div><section><p>An object which contains queues of requests that have not yet been assigned to
+
+</div><div class='expandable-header' id='property_requests-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_requests" id="property_requests"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_requests-expand-icon"></i>
+        <div class="permalink"><a href="#property_requests" class="permalink fas fa-link"></a></div>
+        <p><code>requests</code> {Object} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_requests-expand-content'>
+<p>An object which contains queues of requests that have not yet been assigned to
 sockets. Do not modify.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_sockets" id="property_sockets"></a>
-            <div class="permalink"><a href="#property_sockets" class="permalink fas fa-link"></a></div>
-            <p><code>sockets</code> {Object} </p>
 
-          </h1>
-        </div><section><p>An object which contains arrays of sockets currently in use by the
+
+</div><div class='expandable-header' id='property_sockets-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_sockets" id="property_sockets"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_sockets-expand-icon"></i>
+        <div class="permalink"><a href="#property_sockets" class="permalink fas fa-link"></a></div>
+        <p><code>sockets</code> {Object} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_sockets-expand-content'>
+<p>An object which contains arrays of sockets currently in use by the
 agent.  Do not modify.</p>
-</section></section><section>
-       <div class="heading">
-          <h4>
-            <a name="method_createConnection" id="method_createConnection"></a>
-            <div class="permalink"><a href="#method_createConnection" class="permalink fas fa-link"></a></div>
-            <p>agent.createConnection(options[, callback])</p>
 
-          </h1>
-        </div><section><p>Produces a socket/stream to be used for HTTP requests.</p>
+
+</div>
+<div class="heading">
+<h3>
+  <a name="subgroup_class_http_Agent_Methods" id="subgroup_class_http_Agent_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_http_Agent_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_createConnection-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_createConnection" id="method_createConnection"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createConnection-expand-icon"></i>
+        <div class="permalink"><a href="#method_createConnection" class="permalink fas fa-link"></a></div>
+        <p>agent.createConnection(options[, callback])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createConnection-expand-content'>
+<p>Produces a socket/stream to be used for HTTP requests.</p>
 <p>By default, this function is the same as <a href="#net_net_createconnection"><code>net.createConnection()</code></a>. However,
 custom agents may override this method in case greater flexibility is desired.</p>
 <p>A socket/stream can be supplied in one of two ways: by returning the
 socket/stream from this function, or by passing the socket/stream to <code>callback</code>.</p>
 <p><code>callback</code> has a signature of <code>(err, stream)</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_keepSocketAlive" id="method_keepSocketAlive"></a>
-            <div class="permalink"><a href="#method_keepSocketAlive" class="permalink fas fa-link"></a></div>
-            <p>agent.keepSocketAlive(socket)</p>
 
-          </h1>
-        </div><section><p>Called when <code>socket</code> is detached from a request and could be persisted by the
+
+</div><div class='expandable-header' id='method_keepSocketAlive-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_keepSocketAlive" id="method_keepSocketAlive"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_keepSocketAlive-expand-icon"></i>
+        <div class="permalink"><a href="#method_keepSocketAlive" class="permalink fas fa-link"></a></div>
+        <p>agent.keepSocketAlive(socket)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_keepSocketAlive-expand-content'>
+<p>Called when <code>socket</code> is detached from a request and could be persisted by the
 Agent. Default behavior is to:</p>
 <pre class="prettyprint"><code class="lang-js">socket.setKeepAlive(true, this.keepAliveMsecs);
 socket.unref();
@@ -207,55 +285,84 @@ return true;
 <p>This method can be overridden by a particular <code>Agent</code> subclass. If this
 method returns a falsy value, the socket will be destroyed instead of persisting
 it for use with the next request.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_reuseSocket" id="method_reuseSocket"></a>
-            <div class="permalink"><a href="#method_reuseSocket" class="permalink fas fa-link"></a></div>
-            <p>agent.reuseSocket(socket, request)</p>
 
-          </h1>
-        </div><section><p>Called when <code>socket</code> is attached to <code>request</code> after being persisted because of
+
+</div><div class='expandable-header' id='method_reuseSocket-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_reuseSocket" id="method_reuseSocket"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_reuseSocket-expand-icon"></i>
+        <div class="permalink"><a href="#method_reuseSocket" class="permalink fas fa-link"></a></div>
+        <p>agent.reuseSocket(socket, request)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_reuseSocket-expand-content'>
+<p>Called when <code>socket</code> is attached to <code>request</code> after being persisted because of
 the keep-alive options. Default behavior is to:</p>
 <pre class="prettyprint"><code class="lang-js">socket.ref();
 </code></pre>
 <p>This method can be overridden by a particular <code>Agent</code> subclass.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_destroy" id="method_destroy"></a>
-            <div class="permalink"><a href="#method_destroy" class="permalink fas fa-link"></a></div>
-            <p>agent.destroy()</p>
 
-          </h1>
-        </div><section><p>Destroy any sockets that are currently in use by the agent.</p>
+
+</div><div class='expandable-header' id='method_destroy-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_destroy" id="method_destroy"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_destroy-expand-icon"></i>
+        <div class="permalink"><a href="#method_destroy" class="permalink fas fa-link"></a></div>
+        <p>agent.destroy()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_destroy-expand-content'>
+<p>Destroy any sockets that are currently in use by the agent.</p>
 <p>It is usually not necessary to do this.  However, if using an
 agent with <code>keepAlive</code> enabled, then it is best to explicitly shut down
 the agent when it will no longer be used.  Otherwise,
 sockets may hang open for quite a long time before the server
 terminates them.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_getName" id="method_getName"></a>
-            <div class="permalink"><a href="#method_getName" class="permalink fas fa-link"></a></div>
-            <p>agent.getName(options)</p>
 
-          </h1>
-        </div><section><p>Get a unique name for a set of request options, to determine whether a
+
+</div><div class='expandable-header' id='method_getName-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_getName" id="method_getName"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getName-expand-icon"></i>
+        <div class="permalink"><a href="#method_getName" class="permalink fas fa-link"></a></div>
+        <p>agent.getName(options)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getName-expand-content'>
+<p>Get a unique name for a set of request options, to determine whether a
 connection can be reused. For an HTTP agent, this returns
 <code>host:port:localAddress</code> or <code>host:port:localAddress:family</code>. For an HTTPS agent,
 the name includes the CA, cert, ciphers, and other HTTPS/TLS-specific options
 that determine socket reusability.</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="class_http_ClientRequest" id="class_http_ClientRequest"></a>
-            <div class="permalink"><a href="#class_http_ClientRequest" class="permalink fas fa-link"></a></div>
-            <p>Class: http.ClientRequest</p>
 
-          </h1>
-        </div><section><p>This object is created internally and returned from <a href="http.html#http_http_request_options_callback"><code>http.request()</code></a>.  It
+
+</div>
+</div><div class='expandable-header' id='class_http_ClientRequest-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_http_ClientRequest" id="class_http_ClientRequest"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_http_ClientRequest-expand-icon"></i>
+        <div class="permalink"><a href="#class_http_ClientRequest" class="permalink fas fa-link"></a></div>
+        <p>Class: http.ClientRequest</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_http_ClientRequest-expand-content'>
+<p>This object is created internally and returned from <a href="http.html#http_http_request_options_callback"><code>http.request()</code></a>.  It
 represents an <em>in-progress</em> request whose header has already been queued.  The
 header is still mutable using the <a href="#http_request_setheader_name_value"><code>setHeader(name, value)</code></a>,
  <a href="#http_request_getheader_name"><code>getHeader(name)</code></a>, <a href="#http_request_removeheader_name"><code>removeHeader(name)</code></a> API.  The actual header will
@@ -278,34 +385,65 @@ the data is read it will consume memory that can eventually lead to a
 body which has been transmitted are equal or not.</p>
 <p>The request implements the <a href="stream.html#stream_writable_streams">Writable Stream</a> interface. This is an
 <a href="events.html"><code>EventEmitter</code></a> with the following events:</p>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="property_aborted" id="property_aborted"></a>
-            <div class="permalink"><a href="#property_aborted" class="permalink fas fa-link"></a></div>
-            <p>request.aborted</p>
 
-          </h1>
-        </div><section><p>If a request has been aborted, this value is the time when the request was
+
+<div class="heading">
+<h3>
+  <a name="subgroup_class_http_ClientRequest_Properties" id="subgroup_class_http_ClientRequest_Properties"></a>
+  <div class="permalink"><a href="#subgroup_class_http_ClientRequest_Properties" class="permalink fas fa-link"></a></div>
+  <p>Properties</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='property_aborted-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_aborted" id="property_aborted"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_aborted-expand-icon"></i>
+        <div class="permalink"><a href="#property_aborted" class="permalink fas fa-link"></a></div>
+        <p>request.aborted</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_aborted-expand-content'>
+<p>If a request has been aborted, this value is the time when the request was
 aborted, in milliseconds since 1 January 1970 00:00:00 UTC.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_connection" id="property_connection"></a>
-            <div class="permalink"><a href="#property_connection" class="permalink fas fa-link"></a></div>
-            <p><code>connection</code> {net.Socket} </p>
 
-          </h1>
-        </div><section><p>See <a href="#http_request_socket"><code>request.socket</code></a></p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_socket" id="property_socket"></a>
-            <div class="permalink"><a href="#property_socket" class="permalink fas fa-link"></a></div>
-            <p><code>socket</code> {net.Socket} </p>
 
-          </h1>
-        </div><section><p><p>Reference to the underlying socket. Usually users will not want to access
+</div><div class='expandable-header' id='property_connection-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_connection" id="property_connection"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_connection-expand-icon"></i>
+        <div class="permalink"><a href="#property_connection" class="permalink fas fa-link"></a></div>
+        <p><code>connection</code> {net.Socket} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_connection-expand-content'>
+<p>See <a href="#http_request_socket"><code>request.socket</code></a></p>
+
+
+</div><div class='expandable-header' id='property_socket-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_socket" id="property_socket"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_socket-expand-icon"></i>
+        <div class="permalink"><a href="#property_socket" class="permalink fas fa-link"></a></div>
+        <p><code>socket</code> {net.Socket} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_socket-expand-content'>
+<p><p>Reference to the underlying socket. Usually users will not want to access
 this property. In particular, the socket will not emit <code>&#39;readable&#39;</code> events
 because of how the protocol parser attaches to the socket. After
 <code>response.end()</code>, the property is nulled. The <code>socket</code> may also be accessed
@@ -324,79 +462,132 @@ req.once(&#39;response&#39;, (res) =&gt; {
   // consume response object
 });
 </code></pre>
-</section></section><section>
-       <div class="heading">
-          <h4>
-            <a name="method_abort_1" id="method_abort_1"></a>
-            <div class="permalink"><a href="#method_abort_1" class="permalink fas fa-link"></a></div>
-            <p>request.abort()</p>
 
-          </h1>
-        </div><section><p>Marks the request as aborting. Calling this will cause remaining data
+
+</div>
+<div class="heading">
+<h3>
+  <a name="subgroup_class_http_ClientRequest_Methods" id="subgroup_class_http_ClientRequest_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_http_ClientRequest_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_abort_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_abort_1" id="method_abort_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_abort_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_abort_1" class="permalink fas fa-link"></a></div>
+        <p>request.abort()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_abort_1-expand-content'>
+<p>Marks the request as aborting. Calling this will cause remaining data
 in the response to be dropped and the socket to be destroyed.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_end" id="method_end"></a>
-            <div class="permalink"><a href="#method_end" class="permalink fas fa-link"></a></div>
-            <p>request.end([data[, encoding]][, callback])</p>
 
-          </h1>
-        </div><section><p>Finishes sending the request. If any parts of the body are
+
+</div><div class='expandable-header' id='method_end-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_end" id="method_end"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_end-expand-icon"></i>
+        <div class="permalink"><a href="#method_end" class="permalink fas fa-link"></a></div>
+        <p>request.end([data[, encoding]][, callback])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_end-expand-content'>
+<p>Finishes sending the request. If any parts of the body are
 unsent, it will flush them to the stream. If the request is
 chunked, this will send the terminating <code>&#39;0\r\n\r\n&#39;</code>.</p>
 <p>If <code>data</code> is specified, it is equivalent to calling
 <a href="#http_request_write_chunk_encoding_callback"><code>request.write(data, encoding)</code></a> followed by <code>request.end(callback)</code>.</p>
 <p>If <code>callback</code> is specified, it will be called when the request stream
 is finished.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_flushHeaders" id="method_flushHeaders"></a>
-            <div class="permalink"><a href="#method_flushHeaders" class="permalink fas fa-link"></a></div>
-            <p>request.flushHeaders()</p>
 
-          </h1>
-        </div><section><p>Flush the request headers.</p>
+
+</div><div class='expandable-header' id='method_flushHeaders-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_flushHeaders" id="method_flushHeaders"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_flushHeaders-expand-icon"></i>
+        <div class="permalink"><a href="#method_flushHeaders" class="permalink fas fa-link"></a></div>
+        <p>request.flushHeaders()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_flushHeaders-expand-content'>
+<p>Flush the request headers.</p>
 <p>For efficiency reasons, Node.js normally buffers the request headers until
 <code>request.end()</code> is called or the first chunk of request data is written. It
 then tries to pack the request headers and data into a single TCP packet.</p>
 <p>That&#39;s usually desired (it saves a TCP round-trip), but not when the first
 data is not sent until possibly much later.  <code>request.flushHeaders()</code> bypasses
 the optimization and kickstarts the request.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_getHeader" id="method_getHeader"></a>
-            <div class="permalink"><a href="#method_getHeader" class="permalink fas fa-link"></a></div>
-            <p>request.getHeader(name)</p>
 
-          </h1>
-        </div><section><p><p>Reads out a header on the request. Note that the name is case insensitive.</p></p>
+
+</div><div class='expandable-header' id='method_getHeader-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_getHeader" id="method_getHeader"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getHeader-expand-icon"></i>
+        <div class="permalink"><a href="#method_getHeader" class="permalink fas fa-link"></a></div>
+        <p>request.getHeader(name)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getHeader-expand-content'>
+<p><p>Reads out a header on the request. Note that the name is case insensitive.</p></p>
 <p><p>Example:</p></p>
 <pre class="prettyprint"><code class="lang-js">const contentType = request.getHeader(&#39;Content-Type&#39;);
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_removeHeader" id="method_removeHeader"></a>
-            <div class="permalink"><a href="#method_removeHeader" class="permalink fas fa-link"></a></div>
-            <p>request.removeHeader(name)</p>
 
-          </h1>
-        </div><section><p><p>Removes a header that&#39;s already defined into headers object.</p></p>
+
+</div><div class='expandable-header' id='method_removeHeader-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_removeHeader" id="method_removeHeader"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_removeHeader-expand-icon"></i>
+        <div class="permalink"><a href="#method_removeHeader" class="permalink fas fa-link"></a></div>
+        <p>request.removeHeader(name)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_removeHeader-expand-content'>
+<p><p>Removes a header that&#39;s already defined into headers object.</p></p>
 <p><p>Example:</p></p>
 <pre class="prettyprint"><code class="lang-js">request.removeHeader(&#39;Content-Type&#39;);
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_setHeader" id="method_setHeader"></a>
-            <div class="permalink"><a href="#method_setHeader" class="permalink fas fa-link"></a></div>
-            <p>request.setHeader(name, value)</p>
 
-          </h1>
-        </div><section><p><p>Sets a single header value for headers object. If this header already exists in
+
+</div><div class='expandable-header' id='method_setHeader-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_setHeader" id="method_setHeader"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setHeader-expand-icon"></i>
+        <div class="permalink"><a href="#method_setHeader" class="permalink fas fa-link"></a></div>
+        <p>request.setHeader(name, value)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setHeader-expand-content'>
+<p><p>Sets a single header value for headers object. If this header already exists in
 the to-be-sent headers, its value will be replaced. Use an array of strings
 here to send multiple headers with the same name.</p></p>
 <p><p>Example:</p></p>
@@ -405,46 +596,74 @@ here to send multiple headers with the same name.</p></p>
 <p>or</p>
 <pre class="prettyprint"><code class="lang-js">request.setHeader(&#39;Set-Cookie&#39;, [&#39;type=ninja&#39;, &#39;language=javascript&#39;]);
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_setNoDelay" id="method_setNoDelay"></a>
-            <div class="permalink"><a href="#method_setNoDelay" class="permalink fas fa-link"></a></div>
-            <p>request.setNoDelay([noDelay])</p>
 
-          </h1>
-        </div><section><p>Once a socket is assigned to this request and is connected
+
+</div><div class='expandable-header' id='method_setNoDelay-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_setNoDelay" id="method_setNoDelay"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setNoDelay-expand-icon"></i>
+        <div class="permalink"><a href="#method_setNoDelay" class="permalink fas fa-link"></a></div>
+        <p>request.setNoDelay([noDelay])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setNoDelay-expand-content'>
+<p>Once a socket is assigned to this request and is connected
 <a href="net.html#net_socket_setnodelay_nodelay"><code>socket.setNoDelay()</code></a> will be called.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_setSocketKeepAlive" id="method_setSocketKeepAlive"></a>
-            <div class="permalink"><a href="#method_setSocketKeepAlive" class="permalink fas fa-link"></a></div>
-            <p>request.setSocketKeepAlive([enable][, initialDelay])</p>
 
-          </h1>
-        </div><section><p>Once a socket is assigned to this request and is connected
+
+</div><div class='expandable-header' id='method_setSocketKeepAlive-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_setSocketKeepAlive" id="method_setSocketKeepAlive"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setSocketKeepAlive-expand-icon"></i>
+        <div class="permalink"><a href="#method_setSocketKeepAlive" class="permalink fas fa-link"></a></div>
+        <p>request.setSocketKeepAlive([enable][, initialDelay])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setSocketKeepAlive-expand-content'>
+<p>Once a socket is assigned to this request and is connected
 <a href="net.html#net_socket_setkeepalive_enable_initialdelay"><code>socket.setKeepAlive()</code></a> will be called.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_setTimeout" id="method_setTimeout"></a>
-            <div class="permalink"><a href="#method_setTimeout" class="permalink fas fa-link"></a></div>
-            <p>request.setTimeout(timeout[, callback])</p>
 
-          </h1>
-        </div><section><p>Once a socket is assigned to this request and is connected
+
+</div><div class='expandable-header' id='method_setTimeout-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_setTimeout" id="method_setTimeout"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setTimeout-expand-icon"></i>
+        <div class="permalink"><a href="#method_setTimeout" class="permalink fas fa-link"></a></div>
+        <p>request.setTimeout(timeout[, callback])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setTimeout-expand-content'>
+<p>Once a socket is assigned to this request and is connected
 <a href="#net_socket_settimeout_timeout_callback"><code>socket.setTimeout()</code></a> will be called.</p>
 <p>Returns <code>request</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_write_3" id="method_write_3"></a>
-            <div class="permalink"><a href="#method_write_3" class="permalink fas fa-link"></a></div>
-            <p>request.write(chunk[, encoding][, callback])</p>
 
-          </h1>
-        </div><section><p>Sends a chunk of the body.  By calling this method
+
+</div><div class='expandable-header' id='method_write_3-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_write_3" id="method_write_3"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_write_3-expand-icon"></i>
+        <div class="permalink"><a href="#method_write_3" class="permalink fas fa-link"></a></div>
+        <p>request.write(chunk[, encoding][, callback])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_write_3-expand-content'>
+<p>Sends a chunk of the body.  By calling this method
 many times, a request body can be sent to a
 server--in that case it is suggested to use the
 <code>[&#39;Transfer-Encoding&#39;, &#39;chunked&#39;]</code> header line when
@@ -453,58 +672,106 @@ creating the request.</p>
 Defaults to <code>&#39;utf8&#39;</code>.</p>
 <p>The <code>callback</code> argument is optional and will be called when this chunk of data
 is flushed.</p>
-<p>Returns <code>request</code>.</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="class_http_Server" id="class_http_Server"></a>
-            <div class="permalink"><a href="#class_http_Server" class="permalink fas fa-link"></a></div>
-            <p>Class: http.Server</p>
+<p>Returns <code>true</code> if the entire data was flushed successfully to the kernel
+buffer. Returns <code>false</code> if all or part of the data was queued in user memory.
+<code>&#39;drain&#39;</code> will be emitted when the buffer is free again.</p>
 
-          </h1>
-        </div><section><p>This class inherits from <a href="net.html#net_class_net_server"><code>net.Server</code></a> and has the following additional events:</p>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="property_listening" id="property_listening"></a>
-            <div class="permalink"><a href="#property_listening" class="permalink fas fa-link"></a></div>
-            <p><code>listening</code> {boolean} </p>
 
-          </h1>
-        </div><section><p>A Boolean indicating whether or not the server is listening for
+</div>
+</div><div class='expandable-header' id='class_http_Server-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_http_Server" id="class_http_Server"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_http_Server-expand-icon"></i>
+        <div class="permalink"><a href="#class_http_Server" class="permalink fas fa-link"></a></div>
+        <p>Class: http.Server</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_http_Server-expand-content'>
+<p>This class inherits from <a href="net.html#net_class_net_server"><code>net.Server</code></a> and has the following additional events:</p>
+
+
+<div class="heading">
+<h3>
+  <a name="subgroup_class_http_Server_Properties" id="subgroup_class_http_Server_Properties"></a>
+  <div class="permalink"><a href="#subgroup_class_http_Server_Properties" class="permalink fas fa-link"></a></div>
+  <p>Properties</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='property_listening-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_listening" id="property_listening"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_listening-expand-icon"></i>
+        <div class="permalink"><a href="#property_listening" class="permalink fas fa-link"></a></div>
+        <p><code>listening</code> {boolean} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_listening-expand-content'>
+<p>A Boolean indicating whether or not the server is listening for
 connections.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_maxHeadersCount" id="property_maxHeadersCount"></a>
-            <div class="permalink"><a href="#property_maxHeadersCount" class="permalink fas fa-link"></a></div>
-            <p><code>maxHeadersCount</code> {number} Defaults to 2000. </p>
 
-          </h1>
-        </div><section><p>Limits maximum incoming headers count, equal to 2000 by default. If set to 0 -
+
+</div><div class='expandable-header' id='property_maxHeadersCount-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_maxHeadersCount" id="property_maxHeadersCount"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_maxHeadersCount-expand-icon"></i>
+        <div class="permalink"><a href="#property_maxHeadersCount" class="permalink fas fa-link"></a></div>
+        <p><code>maxHeadersCount</code> {number} Defaults to 2000. </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_maxHeadersCount-expand-content'>
+<p>Limits maximum incoming headers count, equal to 2000 by default. If set to 0 -
 no limit will be applied.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_timeout" id="property_timeout"></a>
-            <div class="permalink"><a href="#property_timeout" class="permalink fas fa-link"></a></div>
-            <p><code>timeout</code> {number} Timeout in milliseconds. Defaults to 120000 (2 minutes). </p>
 
-          </h1>
-        </div><section><p>The number of milliseconds of inactivity before a socket is presumed
+
+</div><div class='expandable-header' id='property_timeout-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_timeout" id="property_timeout"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_timeout-expand-icon"></i>
+        <div class="permalink"><a href="#property_timeout" class="permalink fas fa-link"></a></div>
+        <p><code>timeout</code> {number} Timeout in milliseconds. Defaults to 120000 (2 minutes). </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_timeout-expand-content'>
+<p>The number of milliseconds of inactivity before a socket is presumed
 to have timed out.</p>
 <p>A value of <code>0</code> will disable the timeout behavior on incoming connections.</p>
 <p><em>Note</em>: The socket timeout logic is set up on connection, so changing this
 value only affects new connections to the server, not any existing connections.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_keepAliveTimeout" id="property_keepAliveTimeout"></a>
-            <div class="permalink"><a href="#property_keepAliveTimeout" class="permalink fas fa-link"></a></div>
-            <p><code>keepAliveTimeout</code> {number} Timeout in milliseconds. Defaults to 5000 (5 seconds). </p>
 
-          </h1>
-        </div><section><p>The number of milliseconds of inactivity a server needs to wait for additional
+
+</div><div class='expandable-header' id='property_keepAliveTimeout-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_keepAliveTimeout" id="property_keepAliveTimeout"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_keepAliveTimeout-expand-icon"></i>
+        <div class="permalink"><a href="#property_keepAliveTimeout" class="permalink fas fa-link"></a></div>
+        <p><code>keepAliveTimeout</code> {number} Timeout in milliseconds. Defaults to 5000 (5 seconds). </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_keepAliveTimeout-expand-content'>
+<p>The number of milliseconds of inactivity a server needs to wait for additional
 incoming data, after it has finished writing the last response, before a socket
 will be destroyed. If the server receives new data before the keep-alive
 timeout has fired, it will reset the regular inactivity timeout, i.e.,
@@ -514,34 +781,66 @@ A value of <code>0</code> makes the http server behave similarly to Node.js vers
 which did not have a keep-alive timeout.</p>
 <p><em>Note</em>: The socket timeout logic is set up on connection, so changing this
 value only affects new connections to the server, not any existing connections.</p>
-</section></section><section>
-       <div class="heading">
-          <h4>
-            <a name="method_close_2" id="method_close_2"></a>
-            <div class="permalink"><a href="#method_close_2" class="permalink fas fa-link"></a></div>
-            <p>server.close([callback])</p>
 
-          </h1>
-        </div><section><p>Stops the server from accepting new connections.  See <a href="net.html#net_server_close_callback"><code>net.Server.close()</code></a>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_listen" id="method_listen"></a>
-            <div class="permalink"><a href="#method_listen" class="permalink fas fa-link"></a></div>
-            <p>server.listen()</p>
 
-          </h1>
-        </div><section><p>Starts the HTTP server listening for connections.
+</div>
+<div class="heading">
+<h3>
+  <a name="subgroup_class_http_Server_Methods" id="subgroup_class_http_Server_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_http_Server_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_close_2-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_close_2" id="method_close_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_close_2-expand-icon"></i>
+        <div class="permalink"><a href="#method_close_2" class="permalink fas fa-link"></a></div>
+        <p>server.close([callback])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_close_2-expand-content'>
+<p>Stops the server from accepting new connections.  See <a href="net.html#net_server_close_callback"><code>net.Server.close()</code></a>.</p>
+
+
+</div><div class='expandable-header' id='method_listen-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_listen" id="method_listen"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_listen-expand-icon"></i>
+        <div class="permalink"><a href="#method_listen" class="permalink fas fa-link"></a></div>
+        <p>server.listen()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_listen-expand-content'>
+<p>Starts the HTTP server listening for connections.
 This method is identical to <a href="net.html#net_server_listen"><code>server.listen()</code></a> from <a href="net.html#net_class_net_server"><code>net.Server</code></a>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_setTimeout_1" id="method_setTimeout_1"></a>
-            <div class="permalink"><a href="#method_setTimeout_1" class="permalink fas fa-link"></a></div>
-            <p>server.setTimeout([msecs][, callback])</p>
 
-          </h1>
-        </div><section><p>Sets the timeout value for sockets, and emits a <code>&#39;timeout&#39;</code> event on
+
+</div><div class='expandable-header' id='method_setTimeout_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_setTimeout_1" id="method_setTimeout_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setTimeout_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_setTimeout_1" class="permalink fas fa-link"></a></div>
+        <p>server.setTimeout([msecs][, callback])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setTimeout_1-expand-content'>
+<p>Sets the timeout value for sockets, and emits a <code>&#39;timeout&#39;</code> event on
 the Server object, passing the socket as an argument, if a timeout
 occurs.</p>
 <p>If there is a <code>&#39;timeout&#39;</code> event listener on the Server object, then it
@@ -550,67 +849,120 @@ will be called with the timed-out socket as an argument.</p>
 destroyed automatically if they time out.  However, if a callback is assigned
 to the Server&#39;s <code>&#39;timeout&#39;</code> event, timeouts must be handled explicitly.</p>
 <p>Returns <code>server</code>.</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="class_http_ServerResponse" id="class_http_ServerResponse"></a>
-            <div class="permalink"><a href="#class_http_ServerResponse" class="permalink fas fa-link"></a></div>
-            <p>Class: http.ServerResponse</p>
 
-          </h1>
-        </div><section><p>This object is created internally by an HTTP server--not by the user. It is
+
+</div>
+</div><div class='expandable-header' id='class_http_ServerResponse-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_http_ServerResponse" id="class_http_ServerResponse"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_http_ServerResponse-expand-icon"></i>
+        <div class="permalink"><a href="#class_http_ServerResponse" class="permalink fas fa-link"></a></div>
+        <p>Class: http.ServerResponse</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_http_ServerResponse-expand-content'>
+<p>This object is created internally by an HTTP server--not by the user. It is
 passed as the second parameter to the <a href="#http2_event_request"><code>&#39;request&#39;</code></a> event.</p>
 <p>The response implements, but does not inherit from, the <a href="stream.html#stream_writable_streams">Writable Stream</a>
 interface. This is an <a href="events.html"><code>EventEmitter</code></a> with the following events:</p>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="property_connection_1" id="property_connection_1"></a>
-            <div class="permalink"><a href="#property_connection_1" class="permalink fas fa-link"></a></div>
-            <p><code>connection</code> {net.Socket} </p>
 
-          </h1>
-        </div><section><p>See <a href="#http2_response_socket"><code>response.socket</code></a>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_finished" id="property_finished"></a>
-            <div class="permalink"><a href="#property_finished" class="permalink fas fa-link"></a></div>
-            <p><code>finished</code> {boolean} </p>
 
-          </h1>
-        </div><section><p>Boolean value that indicates whether the response has completed. Starts
+<div class="heading">
+<h3>
+  <a name="subgroup_class_http_ServerResponse_Properties" id="subgroup_class_http_ServerResponse_Properties"></a>
+  <div class="permalink"><a href="#subgroup_class_http_ServerResponse_Properties" class="permalink fas fa-link"></a></div>
+  <p>Properties</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='property_connection_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_connection_1" id="property_connection_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_connection_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_connection_1" class="permalink fas fa-link"></a></div>
+        <p><code>connection</code> {net.Socket} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_connection_1-expand-content'>
+<p>See <a href="#http2_response_socket"><code>response.socket</code></a>.</p>
+
+
+</div><div class='expandable-header' id='property_finished-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_finished" id="property_finished"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_finished-expand-icon"></i>
+        <div class="permalink"><a href="#property_finished" class="permalink fas fa-link"></a></div>
+        <p><code>finished</code> {boolean} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_finished-expand-content'>
+<p>Boolean value that indicates whether the response has completed. Starts
 as <code>false</code>. After <a href="#http2_response_end_data_encoding_callback"><code>response.end()</code></a> executes, the value will be <code>true</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_headersSent" id="property_headersSent"></a>
-            <div class="permalink"><a href="#property_headersSent" class="permalink fas fa-link"></a></div>
-            <p><code>headersSent</code> {boolean} </p>
 
-          </h1>
-        </div><section><p>Boolean (read-only). True if headers were sent, false otherwise.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_sendDate" id="property_sendDate"></a>
-            <div class="permalink"><a href="#property_sendDate" class="permalink fas fa-link"></a></div>
-            <p><code>sendDate</code> {boolean} </p>
 
-          </h1>
-        </div><section><p>When true, the Date header will be automatically generated and sent in
+</div><div class='expandable-header' id='property_headersSent-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_headersSent" id="property_headersSent"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_headersSent-expand-icon"></i>
+        <div class="permalink"><a href="#property_headersSent" class="permalink fas fa-link"></a></div>
+        <p><code>headersSent</code> {boolean} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_headersSent-expand-content'>
+<p>Boolean (read-only). True if headers were sent, false otherwise.</p>
+
+
+</div><div class='expandable-header' id='property_sendDate-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_sendDate" id="property_sendDate"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_sendDate-expand-icon"></i>
+        <div class="permalink"><a href="#property_sendDate" class="permalink fas fa-link"></a></div>
+        <p><code>sendDate</code> {boolean} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_sendDate-expand-content'>
+<p>When true, the Date header will be automatically generated and sent in
 the response if it is not already present in the headers. Defaults to true.</p>
 <p>This should only be disabled for testing; HTTP requires the Date header
 in responses.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_socket_1" id="property_socket_1"></a>
-            <div class="permalink"><a href="#property_socket_1" class="permalink fas fa-link"></a></div>
-            <p><code>socket</code> {net.Socket} </p>
 
-          </h1>
-        </div><section><p><p>Reference to the underlying socket. Usually users will not want to access
+
+</div><div class='expandable-header' id='property_socket_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_socket_1" id="property_socket_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_socket_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_socket_1" class="permalink fas fa-link"></a></div>
+        <p><code>socket</code> {net.Socket} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_socket_1-expand-content'>
+<p><p>Reference to the underlying socket. Usually users will not want to access
 this property. In particular, the socket will not emit <code>&#39;readable&#39;</code> events
 because of how the protocol parser attaches to the socket. After
 <code>response.end()</code>, the property is nulled. The <code>socket</code> may also be accessed
@@ -623,15 +975,22 @@ const server = http.createServer((req, res) =&gt; {
   res.end(`Your IP address is ${ip} and your source port is ${port}.`);
 }).listen(3000);
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_statusCode" id="property_statusCode"></a>
-            <div class="permalink"><a href="#property_statusCode" class="permalink fas fa-link"></a></div>
-            <p><code>statusCode</code> {number} </p>
 
-          </h1>
-        </div><section><p>When using implicit headers (not calling <a href="#http2_response_writehead_statuscode_statusmessage_headers"><code>response.writeHead()</code></a> explicitly),
+
+</div><div class='expandable-header' id='property_statusCode-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_statusCode" id="property_statusCode"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_statusCode-expand-icon"></i>
+        <div class="permalink"><a href="#property_statusCode" class="permalink fas fa-link"></a></div>
+        <p><code>statusCode</code> {number} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_statusCode-expand-content'>
+<p>When using implicit headers (not calling <a href="#http2_response_writehead_statuscode_statusmessage_headers"><code>response.writeHead()</code></a> explicitly),
 this property controls the status code that will be sent to the client when
 the headers get flushed.</p>
 <p>Example:</p>
@@ -639,15 +998,22 @@ the headers get flushed.</p>
 </code></pre>
 <p>After response header was sent to the client, this property indicates the
 status code which was sent out.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_statusMessage" id="property_statusMessage"></a>
-            <div class="permalink"><a href="#property_statusMessage" class="permalink fas fa-link"></a></div>
-            <p><code>statusMessage</code> {string} </p>
 
-          </h1>
-        </div><section><p>When using implicit headers (not calling <a href="#http2_response_writehead_statuscode_statusmessage_headers"><code>response.writeHead()</code></a> explicitly), this property
+
+</div><div class='expandable-header' id='property_statusMessage-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_statusMessage" id="property_statusMessage"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_statusMessage-expand-icon"></i>
+        <div class="permalink"><a href="#property_statusMessage" class="permalink fas fa-link"></a></div>
+        <p><code>statusMessage</code> {string} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_statusMessage-expand-content'>
+<p>When using implicit headers (not calling <a href="#http2_response_writehead_statuscode_statusmessage_headers"><code>response.writeHead()</code></a> explicitly), this property
 controls the status message that will be sent to the client when the headers get
 flushed. If this is left as <code>undefined</code> then the standard message for the status
 code will be used.</p>
@@ -656,15 +1022,33 @@ code will be used.</p>
 </code></pre>
 <p>After response header was sent to the client, this property indicates the
 status message which was sent out.</p>
-</section></section><section>
-       <div class="heading">
-          <h4>
-            <a name="method_addTrailers" id="method_addTrailers"></a>
-            <div class="permalink"><a href="#method_addTrailers" class="permalink fas fa-link"></a></div>
-            <p>response.addTrailers(headers)</p>
 
-          </h1>
-        </div><section><p>This method adds HTTP trailing headers (a header but at the end of the
+
+</div>
+<div class="heading">
+<h3>
+  <a name="subgroup_class_http_ServerResponse_Methods" id="subgroup_class_http_ServerResponse_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_http_ServerResponse_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_addTrailers-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_addTrailers" id="method_addTrailers"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_addTrailers-expand-icon"></i>
+        <div class="permalink"><a href="#method_addTrailers" class="permalink fas fa-link"></a></div>
+        <p>response.addTrailers(headers)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_addTrailers-expand-content'>
+<p>This method adds HTTP trailing headers (a header but at the end of the
 message) to the response.</p>
 <p>Trailers will <strong>only</strong> be emitted if chunked encoding is used for the
 response; if it is not (e.g. if the request was HTTP/1.0), they will
@@ -679,43 +1063,64 @@ response.end();
 </code></pre>
 <p>Attempting to set a header field name or value that contains invalid characters
 will result in a <a href="errors.html#errors_class_typeerror"><code>TypeError</code></a> being thrown.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_end_1" id="method_end_1"></a>
-            <div class="permalink"><a href="#method_end_1" class="permalink fas fa-link"></a></div>
-            <p>response.end([data][, encoding][, callback])</p>
 
-          </h1>
-        </div><section><p>This method signals to the server that all of the response headers and body
+
+</div><div class='expandable-header' id='method_end_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_end_1" id="method_end_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_end_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_end_1" class="permalink fas fa-link"></a></div>
+        <p>response.end([data][, encoding][, callback])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_end_1-expand-content'>
+<p>This method signals to the server that all of the response headers and body
 have been sent; that server should consider this message complete.
 The method, <code>response.end()</code>, MUST be called on each response.</p>
 <p>If <code>data</code> is specified, it is equivalent to calling
 <a href="http.html#http_response_write_chunk_encoding_callback"><code>response.write(data, encoding)</code></a> followed by <code>response.end(callback)</code>.</p>
 <p>If <code>callback</code> is specified, it will be called when the response stream
 is finished.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_getHeader_1" id="method_getHeader_1"></a>
-            <div class="permalink"><a href="#method_getHeader_1" class="permalink fas fa-link"></a></div>
-            <p>response.getHeader(name)</p>
 
-          </h1>
-        </div><section><p><p>Reads out a header that&#39;s already been queued but not sent to the client.
+
+</div><div class='expandable-header' id='method_getHeader_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_getHeader_1" id="method_getHeader_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getHeader_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_getHeader_1" class="permalink fas fa-link"></a></div>
+        <p>response.getHeader(name)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getHeader_1-expand-content'>
+<p><p>Reads out a header that&#39;s already been queued but not sent to the client.
 Note that the name is case insensitive.</p></p>
 <p><p>Example:</p></p>
 <pre class="prettyprint"><code class="lang-js">const contentType = response.getHeader(&#39;content-type&#39;);
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_getHeaderNames" id="method_getHeaderNames"></a>
-            <div class="permalink"><a href="#method_getHeaderNames" class="permalink fas fa-link"></a></div>
-            <p>response.getHeaderNames()</p>
 
-          </h1>
-        </div><section><p><p>Returns an array containing the unique names of the current outgoing headers.
+
+</div><div class='expandable-header' id='method_getHeaderNames-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_getHeaderNames" id="method_getHeaderNames"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getHeaderNames-expand-icon"></i>
+        <div class="permalink"><a href="#method_getHeaderNames" class="permalink fas fa-link"></a></div>
+        <p>response.getHeaderNames()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getHeaderNames-expand-content'>
+<p><p>Returns an array containing the unique names of the current outgoing headers.
 All header names are lowercase.</p></p>
 <p><p>Example:</p></p>
 <pre class="prettyprint"><code class="lang-js">response.setHeader(&#39;Foo&#39;, &#39;bar&#39;);
@@ -724,15 +1129,22 @@ response.setHeader(&#39;Set-Cookie&#39;, [&#39;foo=bar&#39;, &#39;bar=baz&#39;])
 const headerNames = response.getHeaderNames();
 // headerNames === [&#39;foo&#39;, &#39;set-cookie&#39;]
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_getHeaders" id="method_getHeaders"></a>
-            <div class="permalink"><a href="#method_getHeaders" class="permalink fas fa-link"></a></div>
-            <p>response.getHeaders()</p>
 
-          </h1>
-        </div><section><p><p>Returns a shallow copy of the current outgoing headers. Since a shallow copy
+
+</div><div class='expandable-header' id='method_getHeaders-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_getHeaders" id="method_getHeaders"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getHeaders-expand-icon"></i>
+        <div class="permalink"><a href="#method_getHeaders" class="permalink fas fa-link"></a></div>
+        <p>response.getHeaders()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getHeaders-expand-content'>
+<p><p>Returns a shallow copy of the current outgoing headers. Since a shallow copy
 is used, array values may be mutated without additional calls to various
 header-related http module methods. The keys of the returned object are the
 header names and the values are the respective header values. All header names
@@ -748,40 +1160,61 @@ response.setHeader(&#39;Set-Cookie&#39;, [&#39;foo=bar&#39;, &#39;bar=baz&#39;])
 const headers = response.getHeaders();
 // headers === { foo: &#39;bar&#39;, &#39;set-cookie&#39;: [&#39;foo=bar&#39;, &#39;bar=baz&#39;] }
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_hasHeader" id="method_hasHeader"></a>
-            <div class="permalink"><a href="#method_hasHeader" class="permalink fas fa-link"></a></div>
-            <p>response.hasHeader(name)</p>
 
-          </h1>
-        </div><section><p><p>Returns <code>true</code> if the header identified by <code>name</code> is currently set in the
+
+</div><div class='expandable-header' id='method_hasHeader-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_hasHeader" id="method_hasHeader"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_hasHeader-expand-icon"></i>
+        <div class="permalink"><a href="#method_hasHeader" class="permalink fas fa-link"></a></div>
+        <p>response.hasHeader(name)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_hasHeader-expand-content'>
+<p><p>Returns <code>true</code> if the header identified by <code>name</code> is currently set in the
 outgoing headers. Note that the header name matching is case-insensitive.</p></p>
 <p><p>Example:</p></p>
 <pre class="prettyprint"><code class="lang-js">const hasContentType = response.hasHeader(&#39;content-type&#39;);
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_removeHeader_1" id="method_removeHeader_1"></a>
-            <div class="permalink"><a href="#method_removeHeader_1" class="permalink fas fa-link"></a></div>
-            <p>response.removeHeader(name)</p>
 
-          </h1>
-        </div><section><p><p>Removes a header that&#39;s queued for implicit sending.</p></p>
+
+</div><div class='expandable-header' id='method_removeHeader_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_removeHeader_1" id="method_removeHeader_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_removeHeader_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_removeHeader_1" class="permalink fas fa-link"></a></div>
+        <p>response.removeHeader(name)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_removeHeader_1-expand-content'>
+<p><p>Removes a header that&#39;s queued for implicit sending.</p></p>
 <p><p>Example:</p></p>
 <pre class="prettyprint"><code class="lang-js">response.removeHeader(&#39;Content-Encoding&#39;);
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_setHeader_1" id="method_setHeader_1"></a>
-            <div class="permalink"><a href="#method_setHeader_1" class="permalink fas fa-link"></a></div>
-            <p>response.setHeader(name, value)</p>
 
-          </h1>
-        </div><section><p><p>Sets a single header value for implicit headers.  If this header already exists
+
+</div><div class='expandable-header' id='method_setHeader_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_setHeader_1" id="method_setHeader_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setHeader_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_setHeader_1" class="permalink fas fa-link"></a></div>
+        <p>response.setHeader(name, value)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setHeader_1-expand-content'>
+<p><p>Sets a single header value for implicit headers.  If this header already exists
 in the to-be-sent headers, its value will be replaced.  Use an array of strings
 here to send multiple headers with the same name.</p></p>
 <p><p>Example:</p></p>
@@ -803,15 +1236,22 @@ const server = http.createServer((req, res) =&gt; {
   res.end(&#39;ok&#39;);
 });
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_setTimeout_2" id="method_setTimeout_2"></a>
-            <div class="permalink"><a href="#method_setTimeout_2" class="permalink fas fa-link"></a></div>
-            <p>response.setTimeout(msecs[, callback])</p>
 
-          </h1>
-        </div><section><p>Sets the Socket&#39;s timeout value to <code>msecs</code>.  If a callback is
+
+</div><div class='expandable-header' id='method_setTimeout_2-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_setTimeout_2" id="method_setTimeout_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setTimeout_2-expand-icon"></i>
+        <div class="permalink"><a href="#method_setTimeout_2" class="permalink fas fa-link"></a></div>
+        <p>response.setTimeout(msecs[, callback])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setTimeout_2-expand-content'>
+<p>Sets the Socket&#39;s timeout value to <code>msecs</code>.  If a callback is
 provided, then it is added as a listener on the <code>&#39;timeout&#39;</code> event on
 the response object.</p>
 <p>If no <code>&#39;timeout&#39;</code> listener is added to the request, the response, or
@@ -819,15 +1259,22 @@ the server, then sockets are destroyed when they time out.  If a handler is
 assigned to the request, the response, or the server&#39;s <code>&#39;timeout&#39;</code> events,
 timed out sockets must be handled explicitly.</p>
 <p>Returns <code>response</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_write_4" id="method_write_4"></a>
-            <div class="permalink"><a href="#method_write_4" class="permalink fas fa-link"></a></div>
-            <p>response.write(chunk[, encoding][, callback])</p>
 
-          </h1>
-        </div><section><p>If this method is called and <a href="#http2_response_writehead_statuscode_statusmessage_headers"><code>response.writeHead()</code></a> has not been called,
+
+</div><div class='expandable-header' id='method_write_4-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_write_4" id="method_write_4"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_write_4-expand-icon"></i>
+        <div class="permalink"><a href="#method_write_4" class="permalink fas fa-link"></a></div>
+        <p>response.write(chunk[, encoding][, callback])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_write_4-expand-content'>
+<p>If this method is called and <a href="#http2_response_writehead_statuscode_statusmessage_headers"><code>response.writeHead()</code></a> has not been called,
 it will switch to implicit header mode and flush the implicit headers.</p>
 <p>This sends a chunk of the response body. This method may
 be called multiple times to provide successive parts of the body.</p>
@@ -848,25 +1295,39 @@ first chunk of the body.</p>
 <p>Returns <code>true</code> if the entire data was flushed successfully to the kernel
 buffer. Returns <code>false</code> if all or part of the data was queued in user memory.
 <code>&#39;drain&#39;</code> will be emitted when the buffer is free again.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_writeContinue" id="method_writeContinue"></a>
-            <div class="permalink"><a href="#method_writeContinue" class="permalink fas fa-link"></a></div>
-            <p>response.writeContinue()</p>
 
-          </h1>
-        </div><section><p>Sends a HTTP/1.1 100 Continue message to the client, indicating that
+
+</div><div class='expandable-header' id='method_writeContinue-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_writeContinue" id="method_writeContinue"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_writeContinue-expand-icon"></i>
+        <div class="permalink"><a href="#method_writeContinue" class="permalink fas fa-link"></a></div>
+        <p>response.writeContinue()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_writeContinue-expand-content'>
+<p>Sends a HTTP/1.1 100 Continue message to the client, indicating that
 the request body should be sent. See the <a href="#http2_event_checkcontinue"><code>&#39;checkContinue&#39;</code></a> event on <code>Server</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_writeHead" id="method_writeHead"></a>
-            <div class="permalink"><a href="#method_writeHead" class="permalink fas fa-link"></a></div>
-            <p>response.writeHead(statusCode[, statusMessage][, headers])</p>
 
-          </h1>
-        </div><section><p>Sends a response header to the request. The status code is a 3-digit HTTP
+
+</div><div class='expandable-header' id='method_writeHead-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_writeHead" id="method_writeHead"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_writeHead-expand-icon"></i>
+        <div class="permalink"><a href="#method_writeHead" class="permalink fas fa-link"></a></div>
+        <p>response.writeHead(statusCode[, statusMessage][, headers])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_writeHead-expand-content'>
+<p>Sends a response header to the request. The status code is a 3-digit HTTP
 status code, like <code>404</code>. The last argument, <code>headers</code>, are the response headers.
 Optionally one can give a human-readable <code>statusMessage</code> as the second
 argument.</p>
@@ -899,29 +1360,54 @@ And Node.js does not check whether Content-Length and the length of the body
 which has been transmitted are equal or not.</p>
 <p>Attempting to set a header field name or value that contains invalid characters
 will result in a <a href="errors.html#errors_class_typeerror"><code>TypeError</code></a> being thrown.</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="class_http_IncomingMessage" id="class_http_IncomingMessage"></a>
-            <div class="permalink"><a href="#class_http_IncomingMessage" class="permalink fas fa-link"></a></div>
-            <p>Class: http.IncomingMessage</p>
 
-          </h1>
-        </div><section><p>An <code>IncomingMessage</code> object is created by <a href="http.html#http_class_http_server"><code>http.Server</code></a> or
+
+</div>
+</div><div class='expandable-header' id='class_http_IncomingMessage-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_http_IncomingMessage" id="class_http_IncomingMessage"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_http_IncomingMessage-expand-icon"></i>
+        <div class="permalink"><a href="#class_http_IncomingMessage" class="permalink fas fa-link"></a></div>
+        <p>Class: http.IncomingMessage</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_http_IncomingMessage-expand-content'>
+<p>An <code>IncomingMessage</code> object is created by <a href="http.html#http_class_http_server"><code>http.Server</code></a> or
 <a href="#http_class_http_clientrequest"><code>http.ClientRequest</code></a> and passed as the first argument to the <a href="#http2_event_request"><code>&#39;request&#39;</code></a>
 and <a href="#http_event_response"><code>&#39;response&#39;</code></a> event respectively. It may be used to access response status,
 headers and data.</p>
 <p>It implements the <a href="stream.html#stream_class_stream_readable">Readable Stream</a> interface, as well as the
 following additional events, methods, and properties.</p>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="property_headers" id="property_headers"></a>
-            <div class="permalink"><a href="#property_headers" class="permalink fas fa-link"></a></div>
-            <p><code>headers</code> {Object} </p>
 
-          </h1>
-        </div><section><p><p>The request/response headers object.</p></p>
+
+<div class="heading">
+<h3>
+  <a name="subgroup_class_http_IncomingMessage_Properties" id="subgroup_class_http_IncomingMessage_Properties"></a>
+  <div class="permalink"><a href="#subgroup_class_http_IncomingMessage_Properties" class="permalink fas fa-link"></a></div>
+  <p>Properties</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='property_headers-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_headers" id="property_headers"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_headers-expand-icon"></i>
+        <div class="permalink"><a href="#property_headers" class="permalink fas fa-link"></a></div>
+        <p><code>headers</code> {Object} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_headers-expand-content'>
+<p><p>The request/response headers object.</p></p>
 <p><p>Key-value pairs of header names and values. Header names are lower-cased.
 Example:</p></p>
 <p><pre class="prettyprint"><code class="lang-js">// Prints something like:
@@ -941,39 +1427,60 @@ header name:</p></p>
 <li><code>set-cookie</code> is always an array. Duplicates are added to the array.</li>
 <li>For all other headers, the values are joined together with &#39;, &#39;.</li>
 </ul>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_httpVersion" id="property_httpVersion"></a>
-            <div class="permalink"><a href="#property_httpVersion" class="permalink fas fa-link"></a></div>
-            <p><code>httpVersion</code> {string} </p>
 
-          </h1>
-        </div><section><p>In case of server request, the HTTP version sent by the client. In the case of
+
+</div><div class='expandable-header' id='property_httpVersion-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_httpVersion" id="property_httpVersion"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_httpVersion-expand-icon"></i>
+        <div class="permalink"><a href="#property_httpVersion" class="permalink fas fa-link"></a></div>
+        <p><code>httpVersion</code> {string} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_httpVersion-expand-content'>
+<p>In case of server request, the HTTP version sent by the client. In the case of
 client response, the HTTP version of the connected-to server.
 Probably either <code>&#39;1.1&#39;</code> or <code>&#39;1.0&#39;</code>.</p>
 <p>Also <code>message.httpVersionMajor</code> is the first integer and
 <code>message.httpVersionMinor</code> is the second.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_method" id="property_method"></a>
-            <div class="permalink"><a href="#property_method" class="permalink fas fa-link"></a></div>
-            <p><code>method</code> {string} </p>
 
-          </h1>
-        </div><section><p><strong>Only valid for request obtained from <a href="http.html#http_class_http_server"><code>http.Server</code></a>.</strong></p>
+
+</div><div class='expandable-header' id='property_method-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_method" id="property_method"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_method-expand-icon"></i>
+        <div class="permalink"><a href="#property_method" class="permalink fas fa-link"></a></div>
+        <p><code>method</code> {string} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_method-expand-content'>
+<p><strong>Only valid for request obtained from <a href="http.html#http_class_http_server"><code>http.Server</code></a>.</strong></p>
 <p>The request method as a string. Read only. Example:
 <code>&#39;GET&#39;</code>, <code>&#39;DELETE&#39;</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_rawHeaders" id="property_rawHeaders"></a>
-            <div class="permalink"><a href="#property_rawHeaders" class="permalink fas fa-link"></a></div>
-            <p><code>rawHeaders</code> {Array} </p>
 
-          </h1>
-        </div><section><p><p>The raw request/response headers list exactly as they were received.</p></p>
+
+</div><div class='expandable-header' id='property_rawHeaders-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_rawHeaders" id="property_rawHeaders"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_rawHeaders-expand-icon"></i>
+        <div class="permalink"><a href="#property_rawHeaders" class="permalink fas fa-link"></a></div>
+        <p><code>rawHeaders</code> {Array} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_rawHeaders-expand-content'>
+<p><p>The raw request/response headers list exactly as they were received.</p></p>
 <p><p>Note that the keys and values are in the same list.  It is <em>not</em> a
 list of tuples.  So, the even-numbered offsets are key values, and the
 odd-numbered offsets are the associated values.</p></p>
@@ -990,65 +1497,107 @@ odd-numbered offsets are the associated values.</p></p>
 //   &#39;*/*&#39; ]
 console.log(request.rawHeaders);
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_rawTrailers" id="property_rawTrailers"></a>
-            <div class="permalink"><a href="#property_rawTrailers" class="permalink fas fa-link"></a></div>
-            <p><code>rawTrailers</code> {Array} </p>
 
-          </h1>
-        </div><section><p>The raw request/response trailer keys and values exactly as they were
+
+</div><div class='expandable-header' id='property_rawTrailers-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_rawTrailers" id="property_rawTrailers"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_rawTrailers-expand-icon"></i>
+        <div class="permalink"><a href="#property_rawTrailers" class="permalink fas fa-link"></a></div>
+        <p><code>rawTrailers</code> {Array} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_rawTrailers-expand-content'>
+<p>The raw request/response trailer keys and values exactly as they were
 received.  Only populated at the <code>&#39;end&#39;</code> event.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_socket_2" id="property_socket_2"></a>
-            <div class="permalink"><a href="#property_socket_2" class="permalink fas fa-link"></a></div>
-            <p><code>socket</code> {net.Socket} </p>
 
-          </h1>
-        </div><section><p>The <a href="net.html#net_class_net_socket"><code>net.Socket</code></a> object associated with the connection.</p>
+
+</div><div class='expandable-header' id='property_socket_2-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_socket_2" id="property_socket_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_socket_2-expand-icon"></i>
+        <div class="permalink"><a href="#property_socket_2" class="permalink fas fa-link"></a></div>
+        <p><code>socket</code> {net.Socket} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_socket_2-expand-content'>
+<p>The <a href="net.html#net_class_net_socket"><code>net.Socket</code></a> object associated with the connection.</p>
 <p>With HTTPS support, use <a href="tls.html#tls_tlssocket_getpeercertificate_detailed"><code>request.socket.getPeerCertificate()</code></a> to obtain the
 client&#39;s authentication details.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_statusCode_1" id="property_statusCode_1"></a>
-            <div class="permalink"><a href="#property_statusCode_1" class="permalink fas fa-link"></a></div>
-            <p><code>statusCode</code> {number} </p>
 
-          </h1>
-        </div><section><p><strong>Only valid for response obtained from <a href="#http_class_http_clientrequest"><code>http.ClientRequest</code></a>.</strong></p>
+
+</div><div class='expandable-header' id='property_statusCode_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_statusCode_1" id="property_statusCode_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_statusCode_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_statusCode_1" class="permalink fas fa-link"></a></div>
+        <p><code>statusCode</code> {number} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_statusCode_1-expand-content'>
+<p><strong>Only valid for response obtained from <a href="#http_class_http_clientrequest"><code>http.ClientRequest</code></a>.</strong></p>
 <p>The 3-digit HTTP response status code. E.G. <code>404</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_statusMessage_1" id="property_statusMessage_1"></a>
-            <div class="permalink"><a href="#property_statusMessage_1" class="permalink fas fa-link"></a></div>
-            <p><code>statusMessage</code> {string} </p>
 
-          </h1>
-        </div><section><p><strong>Only valid for response obtained from <a href="#http_class_http_clientrequest"><code>http.ClientRequest</code></a>.</strong></p>
+
+</div><div class='expandable-header' id='property_statusMessage_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_statusMessage_1" id="property_statusMessage_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_statusMessage_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_statusMessage_1" class="permalink fas fa-link"></a></div>
+        <p><code>statusMessage</code> {string} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_statusMessage_1-expand-content'>
+<p><strong>Only valid for response obtained from <a href="#http_class_http_clientrequest"><code>http.ClientRequest</code></a>.</strong></p>
 <p>The HTTP response status message (reason phrase). E.G. <code>OK</code> or <code>Internal Server Error</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_trailers" id="property_trailers"></a>
-            <div class="permalink"><a href="#property_trailers" class="permalink fas fa-link"></a></div>
-            <p><code>trailers</code> {Object} </p>
 
-          </h1>
-        </div><section><p>The request/response trailers object. Only populated at the <code>&#39;end&#39;</code> event.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_url" id="property_url"></a>
-            <div class="permalink"><a href="#property_url" class="permalink fas fa-link"></a></div>
-            <p><code>url</code> {string} </p>
 
-          </h1>
-        </div><section><p><p><strong>Only valid for request obtained from <a href="http.html#http_class_http_server"><code>http.Server</code></a>.</strong></p></p>
+</div><div class='expandable-header' id='property_trailers-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_trailers" id="property_trailers"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_trailers-expand-icon"></i>
+        <div class="permalink"><a href="#property_trailers" class="permalink fas fa-link"></a></div>
+        <p><code>trailers</code> {Object} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_trailers-expand-content'>
+<p>The request/response trailers object. Only populated at the <code>&#39;end&#39;</code> event.</p>
+
+
+</div><div class='expandable-header' id='property_url-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_url" id="property_url"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_url-expand-icon"></i>
+        <div class="permalink"><a href="#property_url" class="permalink fas fa-link"></a></div>
+        <p><code>url</code> {string} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_url-expand-content'>
+<p><p><strong>Only valid for request obtained from <a href="http.html#http_class_http_server"><code>http.Server</code></a>.</strong></p></p>
 <p><p>Request URL string. This contains only the URL that is
 present in the actual HTTP request. If the request is:</p></p>
 <pre class="prettyprint"><code class="lang-txt">GET /status?name=ryan HTTP/1.1\r\n
@@ -1097,77 +1646,138 @@ Url {
   path: &#39;/status?name=ryan&#39;,
   href: &#39;/status?name=ryan&#39; }
 </code></pre>
-</section></section><section>
-       <div class="heading">
-          <h4>
-            <a name="method_destroy_1" id="method_destroy_1"></a>
-            <div class="permalink"><a href="#method_destroy_1" class="permalink fas fa-link"></a></div>
-            <p>message.destroy([error])</p>
 
-          </h1>
-        </div><section><p>Calls <code>destroy()</code> on the socket that received the <code>IncomingMessage</code>. If <code>error</code>
+
+</div>
+<div class="heading">
+<h3>
+  <a name="subgroup_class_http_IncomingMessage_Methods" id="subgroup_class_http_IncomingMessage_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_http_IncomingMessage_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_destroy_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_destroy_1" id="method_destroy_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_destroy_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_destroy_1" class="permalink fas fa-link"></a></div>
+        <p>message.destroy([error])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_destroy_1-expand-content'>
+<p>Calls <code>destroy()</code> on the socket that received the <code>IncomingMessage</code>. If <code>error</code>
 is provided, an <code>&#39;error&#39;</code> event is emitted and <code>error</code> is passed as an argument
 to any listeners on the event.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_setTimeout_3" id="method_setTimeout_3"></a>
-            <div class="permalink"><a href="#method_setTimeout_3" class="permalink fas fa-link"></a></div>
-            <p>message.setTimeout(msecs, callback)</p>
 
-          </h1>
-        </div><section><p>Calls <code>message.connection.setTimeout(msecs, callback)</code>.</p>
+
+</div><div class='expandable-header' id='method_setTimeout_3-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_setTimeout_3" id="method_setTimeout_3"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setTimeout_3-expand-icon"></i>
+        <div class="permalink"><a href="#method_setTimeout_3" class="permalink fas fa-link"></a></div>
+        <p>message.setTimeout(msecs, callback)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setTimeout_3-expand-content'>
+<p>Calls <code>message.connection.setTimeout(msecs, callback)</code>.</p>
 <p>Returns <code>message</code>.</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="property_METHODS" id="property_METHODS"></a>
-            <div class="permalink"><a href="#property_METHODS" class="permalink fas fa-link"></a></div>
-            <p><code>METHODS</code> {Array} </p>
 
-          </h1>
-        </div><section><p>A list of the HTTP methods that are supported by the parser.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="property_STATUS_CODES" id="property_STATUS_CODES"></a>
-            <div class="permalink"><a href="#property_STATUS_CODES" class="permalink fas fa-link"></a></div>
-            <p><code>STATUS_CODES</code> {Object} </p>
 
-          </h1>
-        </div><section><p>A collection of all the standard HTTP response status codes, and the
+</div>
+</div><div class='expandable-header' id='property_METHODS-expand'>
+<div class="heading">
+    <h2>
+        <a name="property_METHODS" id="property_METHODS"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_METHODS-expand-icon"></i>
+        <div class="permalink"><a href="#property_METHODS" class="permalink fas fa-link"></a></div>
+        <p><code>METHODS</code> {Array} </p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='property_METHODS-expand-content'>
+<p>A list of the HTTP methods that are supported by the parser.</p>
+
+
+</div><div class='expandable-header' id='property_STATUS_CODES-expand'>
+<div class="heading">
+    <h2>
+        <a name="property_STATUS_CODES" id="property_STATUS_CODES"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_STATUS_CODES-expand-icon"></i>
+        <div class="permalink"><a href="#property_STATUS_CODES" class="permalink fas fa-link"></a></div>
+        <p><code>STATUS_CODES</code> {Object} </p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='property_STATUS_CODES-expand-content'>
+<p>A collection of all the standard HTTP response status codes, and the
 short description of each.  For example, <code>http.STATUS_CODES[404] === &#39;Not
 Found&#39;</code>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="property_globalAgent" id="property_globalAgent"></a>
-            <div class="permalink"><a href="#property_globalAgent" class="permalink fas fa-link"></a></div>
-            <p><code>globalAgent</code> {http.Agent} </p>
 
-          </h1>
-        </div><section><p>Global instance of <code>Agent</code> which is used as the default for all HTTP client
+
+</div><div class='expandable-header' id='property_globalAgent-expand'>
+<div class="heading">
+    <h2>
+        <a name="property_globalAgent" id="property_globalAgent"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_globalAgent-expand-icon"></i>
+        <div class="permalink"><a href="#property_globalAgent" class="permalink fas fa-link"></a></div>
+        <p><code>globalAgent</code> {http.Agent} </p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='property_globalAgent-expand-content'>
+<p>Global instance of <code>Agent</code> which is used as the default for all HTTP client
 requests.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_createServer" id="method_createServer"></a>
-            <div class="permalink"><a href="#method_createServer" class="permalink fas fa-link"></a></div>
-            <p>http.createServer([requestListener])</p>
 
-          </h1>
-        </div><section><p>Returns a new instance of <a href="http.html#http_class_http_server"><code>http.Server</code></a>.</p>
+
+</div><div class='expandable-header' id='method_createServer-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_createServer" id="method_createServer"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createServer-expand-icon"></i>
+        <div class="permalink"><a href="#method_createServer" class="permalink fas fa-link"></a></div>
+        <p>http.createServer([options][, requestListener])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createServer-expand-content'>
+<p>Returns a new instance of <a href="http.html#http_class_http_server"><code>http.Server</code></a>.</p>
 <p>The <code>requestListener</code> is a function which is automatically
 added to the <a href="#http2_event_request"><code>&#39;request&#39;</code></a> event.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_get" id="method_get"></a>
-            <div class="permalink"><a href="#method_get" class="permalink fas fa-link"></a></div>
-            <p>http.get(options[, callback])</p>
 
-          </h1>
-        </div><section><p><p>Since most requests are GET requests without bodies, Node.js provides this
+
+</div><div class='expandable-header' id='method_get-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_get" id="method_get"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_get-expand-icon"></i>
+        <div class="permalink"><a href="#method_get" class="permalink fas fa-link"></a></div>
+        <p>http.get(options[, callback])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_get-expand-content'>
+<p><p>Since most requests are GET requests without bodies, Node.js provides this
 convenience method. The only difference between this method and
 <a href="http.html#http_http_request_options_callback"><code>http.request()</code></a> is that it sets the method to GET and calls <code>req.end()</code>
 automatically. Note that the callback must take care to consume the response
@@ -1209,15 +1819,22 @@ data for reasons stated in <a href="#http_class_http_clientrequest"><code>http.C
   console.error(`Got error: ${e.message}`);
 });
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_request" id="method_request"></a>
-            <div class="permalink"><a href="#method_request" class="permalink fas fa-link"></a></div>
-            <p>http.request(options[, callback])</p>
 
-          </h1>
-        </div><section><p><p>Node.js maintains several connections per server to make HTTP requests.
+
+</div><div class='expandable-header' id='method_request-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_request" id="method_request"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_request-expand-icon"></i>
+        <div class="permalink"><a href="#method_request" class="permalink fas fa-link"></a></div>
+        <p>http.request(options[, callback])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_request-expand-content'>
+<p><p>Node.js maintains several connections per server to make HTTP requests.
 This function allows one to transparently issue requests.</p></p>
 <p><p><code>options</code> can be an object, a string, or a <a href="url.html#url_class_url"><code>URL</code></a> object. If <code>options</code> is a
 string, it is automatically parsed with <a href="#url_url_parse_urlstring_parsequerystring_slashesdenotehost"><code>url.parse()</code></a>. If it is a <a href="url.html#url_class_url"><code>URL</code></a>
@@ -1284,14 +1901,64 @@ to compute basic authentication.</p>
 </ul></p>
 <p><p>Example using a <a href="url.html#url_class_url"><code>URL</code></a> as <code>options</code>:</p></p>
 <p><pre class="prettyprint"><code class="lang-js">const { URL } = require(&#39;url&#39;);</p>
-<p>const options = new URL(&#39;<a href="http://abc:xyz@example.com&amp;#39">http://abc:xyz@example.com&amp;#39</a>;);</p>
+<p>const options = new URL(&#39;<a href="http://abc:xyz@example.com&amp;#39" target="_blank">http://abc:xyz@example.com&amp;#39</a>;);</p>
 <p>const req = http.request(options, (res) =&gt; {
   // ...
 });
-</code></pre>
+</code></pre></p>
+<p><p>In a successful request, the following events will be emitted in the following
+order:</p></p>
+<p><ul></p>
+<p><li><code>socket</code></li></p>
+<p><li><code>response</code><ul></p>
+<p><li><code>data</code> any number of times, on the <code>res</code> object
+(<code>data</code> will not be emitted at all if the response body is empty, for
+instance, in most redirects)</li></p>
+<p><li><code>end</code> on the <code>res</code> object</li>
+</ul>
+</li></p>
+<p><li><code>close</code></li>
+</ul></p>
+<p><p>In the case of a connection error, the following events will be emitted:</p></p>
+<p><ul></p>
+<p><li><code>socket</code></li></p>
+<p><li><code>error</code></li></p>
+<p><li><code>close</code></li>
+</ul></p>
+<p><p>If <code>req.abort()</code> is called before the connection succeeds, the following events
+will be emitted in the following order:</p></p>
+<p><ul></p>
+<p><li><code>socket</code></li></p>
+<p><li>(<code>req.abort()</code> called here)</li></p>
+<p><li><code>abort</code></li></p>
+<p><li><code>close</code></li></p>
+<p><li><code>error</code> with an error with message <code>Error: socket hang up</code> and code
+<code>ECONNRESET</code></li>
+</ul></p>
+<p><p>If <code>req.abort()</code> is called after the response is received, the following events
+will be emitted in the following order:</p></p>
+<p><ul></p>
+<p><li><code>socket</code></li></p>
+<p><li><code>response</code><ul></p>
+<p><li><code>data</code> any number of times, on the <code>res</code> object</li>
+</ul>
+</li></p>
+<p><li>(<code>req.abort()</code> called here)</li></p>
+<p><li><code>abort</code></li></p>
+<p><li><code>close</code><ul></p>
+<p><li><code>aborted</code> on the <code>res</code> object</li></p>
+<p><li><code>end</code> on the <code>res</code> object</li></p>
+<p><li><code>close</code> on the <code>res</code> object</li>
+</ul>
+</li>
+</ul></p>
+<p><p>Note that setting the <code>timeout</code> option or using the <code>setTimeout</code> function will
+not abort the request or do anything besides add a <code>timeout</code> event.</p>
 <!-- [end-include:http.md] -->
 <!-- [start-include:http2.md] --></p>
-</section>
+
+
+</div>
 
   <div class="footer">
     <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>

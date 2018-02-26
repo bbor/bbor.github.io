@@ -1,1 +1,1 @@
-define([], function() { return {"children":[],"ancestry":["toc_module_tls__ssl_","toc_class_tls_Server","toc_subgroup_tls_Server_Properties","toc_property_connections_2"]}; });
+define([], function() { return {"children":[],"ancestry":["toc_module_tls__ssl_","toc_class_tls_Server","toc_subgroup_class_tls_Server_Properties","toc_property_connections_2"]}; });

@@ -1,1 +1,0 @@
-define([], function() { return {"children":[{"id":"toc_module_change_to_asynchronous__socket_bind____behavior","target":"module_dgram.html#module_change_to_asynchronous__socket_bind____behavior","text":"Change to asynchronous `socket.bind()` behavior","icon":false}],"ancestry":["toc_module_dgram","toc_class_dgram_Socket","toc_subgroup_dgram_Socket_Modules"]}; });

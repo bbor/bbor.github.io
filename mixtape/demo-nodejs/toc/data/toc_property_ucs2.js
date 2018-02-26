@@ -1,1 +1,1 @@
-define([], function() { return {"children":[{"id":"toc_subgroup_ucs2_Modules","target":"module_punycode.html#subgroup_ucs2_Modules","text":"ucs2.Modules","icon":false,"autoexpand":true,"children":true}],"ancestry":["toc_module_punycode","toc_property_ucs2"]}; });
+define([], function() { return {"children":[{"id":"toc_subgroup_property_ucs2_Modules","target":"module_punycode.html#subgroup_property_ucs2_Modules","text":"Modules","icon":false,"autoexpand":true,"children":true}],"ancestry":["toc_module_punycode","toc_property_ucs2"]}; });

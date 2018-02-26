@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>mixtape page for repl</title>
+    <title>REPL</title>
     <script data-main="js/setup" src="js/require.js"></script>
     <link rel="stylesheet" href="fonts/fonts.css" />
     <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
@@ -13,9 +13,9 @@
   <body>
 
   <div id="control-panel">
-    <div id="control-strip-h">
-      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
-      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    <div id="control-strip-m">
+      <div id="control-strip-m-find"><div id="m-find"></div></div>
+      <div id="control-strip-m-toc"><div id="m-toc"></div></div>
     </div>
     <div id="controls">
       <div id="control-find">
@@ -26,35 +26,40 @@
       </div>
     </div>
   </div>
-  <div id="control-strip-v">
-    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
-    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  <div id="control-strip-w">
+    <div id="control-strip-w-find"></div>
+    <div id="control-strip-w-toc"></div>
   </div>
 
   <div id="content">
 
   
-       <div class="heading">
-          <h1>
-            <a name="module_repl" id="module_repl"></a>
-            <div class="permalink"><a href="#module_repl" class="permalink fas fa-link"></a></div>
-            <p>REPL</p>
+<div class="heading">
+<h1>
+  <a name="module_repl" id="module_repl"></a>
+  <div class="permalink"><a href="#module_repl" class="permalink fas fa-link"></a></div>
+  <p>REPL</p>
 
-          </h1>
-        </div><p><p>The <code>repl</code> module provides a Read-Eval-Print-Loop (REPL) implementation that
+</h1>
+</div>
+
+<p><p>The <code>repl</code> module provides a Read-Eval-Print-Loop (REPL) implementation that
 is available both as a standalone program or includible in other applications.
 It can be accessed using:</p></p>
 <pre class="prettyprint"><code class="lang-js">const repl = require(&#39;repl&#39;);
 </code></pre>
 
-       <div class="heading">
-          <h2>
-            <a name="module_design_and_features" id="module_design_and_features"></a>
-            <div class="permalink"><a href="#module_design_and_features" class="permalink fas fa-link"></a></div>
-            <p>Design and Features</p>
 
-          </h1>
-        </div><section><p>The <code>repl</code> module exports the <code>repl.REPLServer</code> class. While running, instances
+<div class="heading">
+<h2>
+  <a name="module_design_and_features" id="module_design_and_features"></a>
+  <div class="permalink"><a href="#module_design_and_features" class="permalink fas fa-link"></a></div>
+  <p>Design and Features</p>
+
+</h2>
+</div>
+
+<p>The <code>repl</code> module exports the <code>repl.REPLServer</code> class. While running, instances
 of <code>repl.REPLServer</code> will accept individual lines of user input, evaluate those
 according to a user-defined evaluation function, then output the result. Input
 and output may be from <code>stdin</code> and <code>stdout</code>, respectively, or may be connected
@@ -64,14 +69,17 @@ simplistic Emacs-style line editing, multi-line inputs, ANSI-styled output,
 saving and restoring current REPL session state, error recovery, and
 customizable evaluation functions.</p>
 
-       <div class="heading">
-          <h3>
-            <a name="module_commands_and_special_keys" id="module_commands_and_special_keys"></a>
-            <div class="permalink"><a href="#module_commands_and_special_keys" class="permalink fas fa-link"></a></div>
-            <p>Commands and Special Keys</p>
 
-          </h1>
-        </div><section><p><p>The following special commands are supported by all REPL instances:</p></p>
+<div class="heading">
+<h3>
+  <a name="module_commands_and_special_keys" id="module_commands_and_special_keys"></a>
+  <div class="permalink"><a href="#module_commands_and_special_keys" class="permalink fas fa-link"></a></div>
+  <p>Commands and Special Keys</p>
+
+</h3>
+</div>
+
+<p><p>The following special commands are supported by all REPL instances:</p></p>
 <ul>
 <li><code>.break</code> - When in the process of inputting a multi-line expression, entering
 the <code>.break</code> command (or pressing the <code>&lt;ctrl&gt;-C</code> key combination) will abort
@@ -109,27 +117,33 @@ command.</li>
 variables. When pressed while entering other input, displays relevant
 autocompletion options.</li>
 </ul>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_default_evaluation" id="module_default_evaluation"></a>
-            <div class="permalink"><a href="#module_default_evaluation" class="permalink fas fa-link"></a></div>
-            <p>Default Evaluation</p>
 
-          </h1>
-        </div><section><p>By default, all instances of <code>repl.REPLServer</code> use an evaluation function that
+
+<div class="heading">
+<h3>
+  <a name="module_default_evaluation" id="module_default_evaluation"></a>
+  <div class="permalink"><a href="#module_default_evaluation" class="permalink fas fa-link"></a></div>
+  <p>Default Evaluation</p>
+
+</h3>
+</div>
+
+<p>By default, all instances of <code>repl.REPLServer</code> use an evaluation function that
 evaluates JavaScript expressions and provides access to Node.js&#39; built-in
 modules. This default behavior can be overridden by passing in an alternative
 evaluation function when the <code>repl.REPLServer</code> instance is created.</p>
 
-       <div class="heading">
-          <h4>
-            <a name="module_javascript_expressions" id="module_javascript_expressions"></a>
-            <div class="permalink"><a href="#module_javascript_expressions" class="permalink fas fa-link"></a></div>
-            <p>JavaScript Expressions</p>
 
-          </h1>
-        </div><section><p>The default evaluator supports direct evaluation of JavaScript expressions:</p>
+<div class="heading">
+<h4>
+  <a name="module_javascript_expressions" id="module_javascript_expressions"></a>
+  <div class="permalink"><a href="#module_javascript_expressions" class="permalink fas fa-link"></a></div>
+  <p>JavaScript Expressions</p>
+
+</h4>
+</div>
+
+<p>The default evaluator supports direct evaluation of JavaScript expressions:</p>
 <!-- eslint-skip -->
 <pre class="prettyprint"><code class="lang-js">&gt; 1 + 1
 2
@@ -141,15 +155,18 @@ undefined
 <p>Unless otherwise scoped within blocks or functions, variables declared
 either implicitly or using the <code>const</code>, <code>let</code>, or <code>var</code> keywords
 are declared at the global scope.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_global_and_local_scope" id="module_global_and_local_scope"></a>
-            <div class="permalink"><a href="#module_global_and_local_scope" class="permalink fas fa-link"></a></div>
-            <p>Global and Local Scope</p>
 
-          </h1>
-        </div><section><p><p>The default evaluator provides access to any variables that exist in the global
+
+<div class="heading">
+<h4>
+  <a name="module_global_and_local_scope" id="module_global_and_local_scope"></a>
+  <div class="permalink"><a href="#module_global_and_local_scope" class="permalink fas fa-link"></a></div>
+  <p>Global and Local Scope</p>
+
+</h4>
+</div>
+
+<p><p>The default evaluator provides access to any variables that exist in the global
 scope. It is possible to expose a variable to the REPL explicitly by assigning
 it to the <code>context</code> object associated with each <code>REPLServer</code>.  For example:</p></p>
 <pre class="prettyprint"><code class="lang-js">const repl = require(&#39;repl&#39;);
@@ -175,30 +192,36 @@ Object.defineProperty(r.context, &#39;m&#39;, {
   value: msg
 });
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_accessing_core_node_js_modules" id="module_accessing_core_node_js_modules"></a>
-            <div class="permalink"><a href="#module_accessing_core_node_js_modules" class="permalink fas fa-link"></a></div>
-            <p>Accessing Core Node.js Modules</p>
 
-          </h1>
-        </div><section><p><p>The default evaluator will automatically load Node.js core modules into the
+
+<div class="heading">
+<h4>
+  <a name="module_accessing_core_node_js_modules" id="module_accessing_core_node_js_modules"></a>
+  <div class="permalink"><a href="#module_accessing_core_node_js_modules" class="permalink fas fa-link"></a></div>
+  <p>Accessing Core Node.js Modules</p>
+
+</h4>
+</div>
+
+<p><p>The default evaluator will automatically load Node.js core modules into the
 REPL environment when used. For instance, unless otherwise declared as a
 global or scoped variable, the input <code>fs</code> will be evaluated on-demand as
 <code>global.fs = require(&#39;fs&#39;)</code>.</p>
 <!-- eslint-skip --></p>
 <pre class="prettyprint"><code class="lang-js">&gt; fs.createReadStream(&#39;./some/file&#39;);
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_assignment_of_the______underscore__variable" id="module_assignment_of_the______underscore__variable"></a>
-            <div class="permalink"><a href="#module_assignment_of_the______underscore__variable" class="permalink fas fa-link"></a></div>
-            <p>Assignment of the <code>_</code> (underscore) variable</p>
 
-          </h1>
-        </div><section><p><p>The default evaluator will, by default, assign the result of the most recently
+
+<div class="heading">
+<h4>
+  <a name="module_assignment_of_the______underscore__variable" id="module_assignment_of_the______underscore__variable"></a>
+  <div class="permalink"><a href="#module_assignment_of_the______underscore__variable" class="permalink fas fa-link"></a></div>
+  <p>Assignment of the <code>_</code> (underscore) variable</p>
+
+</h4>
+</div>
+
+<p><p>The default evaluator will, by default, assign the result of the most recently
 evaluated expression to the special variable <code><em></code> (underscore).
 Explicitly setting <code></em></code> to a value will disable this behavior.</p>
 <!-- eslint-skip --></p>
@@ -214,15 +237,18 @@ Expression assignment to _ now disabled.
 &gt; _
 4
 </code></pre>
-</section></section>
-       <div class="heading">
-          <h3>
-            <a name="module_custom_evaluation_functions" id="module_custom_evaluation_functions"></a>
-            <div class="permalink"><a href="#module_custom_evaluation_functions" class="permalink fas fa-link"></a></div>
-            <p>Custom Evaluation Functions</p>
 
-          </h1>
-        </div><section><p><p>When a new <code>repl.REPLServer</code> is created, a custom evaluation function may be
+
+<div class="heading">
+<h3>
+  <a name="module_custom_evaluation_functions" id="module_custom_evaluation_functions"></a>
+  <div class="permalink"><a href="#module_custom_evaluation_functions" class="permalink fas fa-link"></a></div>
+  <p>Custom Evaluation Functions</p>
+
+</h3>
+</div>
+
+<p><p>When a new <code>repl.REPLServer</code> is created, a custom evaluation function may be
 provided. This can be used, for instance, to implement fully customized REPL
 applications.</p></p>
 <p><p>The following illustrates a hypothetical example of a REPL that performs
@@ -239,14 +265,17 @@ function myEval(cmd, context, filename, callback) {
 repl.start({ prompt: &#39;&gt; &#39;, eval: myEval });
 </code></pre>
 
-       <div class="heading">
-          <h4>
-            <a name="module_recoverable_errors" id="module_recoverable_errors"></a>
-            <div class="permalink"><a href="#module_recoverable_errors" class="permalink fas fa-link"></a></div>
-            <p>Recoverable Errors</p>
 
-          </h1>
-        </div><section><p><p>As a user is typing input into the REPL prompt, pressing the <code>&lt;enter&gt;</code> key will
+<div class="heading">
+<h4>
+  <a name="module_recoverable_errors" id="module_recoverable_errors"></a>
+  <div class="permalink"><a href="#module_recoverable_errors" class="permalink fas fa-link"></a></div>
+  <p>Recoverable Errors</p>
+
+</h4>
+</div>
+
+<p><p>As a user is typing input into the REPL prompt, pressing the <code>&lt;enter&gt;</code> key will
 send the current line of input to the <code>eval</code> function. In order to support
 multi-line input, the eval function can return an instance of <code>repl.Recoverable</code>
 to the provided callback function:</p></p>
@@ -269,15 +298,18 @@ function isRecoverableError(error) {
   return false;
 }
 </code></pre>
-</section></section>
-       <div class="heading">
-          <h3>
-            <a name="module_customizing_repl_output" id="module_customizing_repl_output"></a>
-            <div class="permalink"><a href="#module_customizing_repl_output" class="permalink fas fa-link"></a></div>
-            <p>Customizing REPL Output</p>
 
-          </h1>
-        </div><section><p><p>By default, <code>repl.REPLServer</code> instances format output using the
+
+<div class="heading">
+<h3>
+  <a name="module_customizing_repl_output" id="module_customizing_repl_output"></a>
+  <div class="permalink"><a href="#module_customizing_repl_output" class="permalink fas fa-link"></a></div>
+  <p>Customizing REPL Output</p>
+
+</h3>
+</div>
+
+<p><p>By default, <code>repl.REPLServer</code> instances format output using the
 <a href="#util_util_inspect_object_options"><code>util.inspect()</code></a> method before writing the output to the provided Writable
 stream (<code>process.stdout</code> by default). The <code>useColors</code> boolean option can be
 specified at construction to instruct the default writer to use ANSI style
@@ -297,15 +329,18 @@ function myWriter(output) {
   return output.toUpperCase();
 }
 </code></pre>
-</section></section>
-       <div class="heading">
-          <h2>
-            <a name="module_the_node_js_repl" id="module_the_node_js_repl"></a>
-            <div class="permalink"><a href="#module_the_node_js_repl" class="permalink fas fa-link"></a></div>
-            <p>The Node.js REPL</p>
 
-          </h1>
-        </div><section><p><p>Node.js itself uses the <code>repl</code> module to provide its own interactive interface
+
+<div class="heading">
+<h2>
+  <a name="module_the_node_js_repl" id="module_the_node_js_repl"></a>
+  <div class="permalink"><a href="#module_the_node_js_repl" class="permalink fas fa-link"></a></div>
+  <p>The Node.js REPL</p>
+
+</h2>
+</div>
+
+<p><p>Node.js itself uses the <code>repl</code> module to provide its own interactive interface
 for executing JavaScript. This can be used by executing the Node.js binary
 without passing any arguments (or by passing the <code>-i</code> argument):</p>
 <!-- eslint-skip --></p>
@@ -322,14 +357,17 @@ undefined
 3
 </code></pre>
 
-       <div class="heading">
-          <h3>
-            <a name="module_environment_variable_options" id="module_environment_variable_options"></a>
-            <div class="permalink"><a href="#module_environment_variable_options" class="permalink fas fa-link"></a></div>
-            <p>Environment Variable Options</p>
 
-          </h1>
-        </div><section><p><p>Various behaviors of the Node.js REPL can be customized using the following
+<div class="heading">
+<h3>
+  <a name="module_environment_variable_options" id="module_environment_variable_options"></a>
+  <div class="permalink"><a href="#module_environment_variable_options" class="permalink fas fa-link"></a></div>
+  <p>Environment Variable Options</p>
+
+</h3>
+</div>
+
+<p><p>Various behaviors of the Node.js REPL can be customized using the following
 environment variables:</p></p>
 <ul>
 <li><code>NODE_REPL_HISTORY</code> - When a valid path is given, persistent REPL history
@@ -342,56 +380,68 @@ history will be persisted if history is available. Must be a positive number.</l
 to <code>sloppy</code>, which will allow non-strict mode code to be run. <code>magic</code> is
 <strong>deprecated</strong> and treated as an alias of <code>sloppy</code>.</li>
 </ul>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_persistent_history" id="module_persistent_history"></a>
-            <div class="permalink"><a href="#module_persistent_history" class="permalink fas fa-link"></a></div>
-            <p>Persistent History</p>
 
-          </h1>
-        </div><section><p>By default, the Node.js REPL will persist history between <code>node</code> REPL sessions
+
+<div class="heading">
+<h3>
+  <a name="module_persistent_history" id="module_persistent_history"></a>
+  <div class="permalink"><a href="#module_persistent_history" class="permalink fas fa-link"></a></div>
+  <p>Persistent History</p>
+
+</h3>
+</div>
+
+<p>By default, the Node.js REPL will persist history between <code>node</code> REPL sessions
 by saving inputs to a <code>.node_repl_history</code> file located in the user&#39;s home
 directory. This can be disabled by setting the environment variable
 <code>NODE_REPL_HISTORY=&quot;&quot;</code>.</p>
 
-       <div class="heading">
-          <h4>
-            <a name="module_node_repl_history_file" id="module_node_repl_history_file"></a>
-            <div class="permalink"><a href="#module_node_repl_history_file" class="permalink fas fa-link"></a></div>
-            <p>NODE_REPL_HISTORY_FILE</p>
 
-          </h1>
-        </div><section><p>Previously in Node.js/io.js v2.x, REPL history was controlled by using a
+<div class="heading">
+<h4>
+  <a name="module_node_repl_history_file" id="module_node_repl_history_file"></a>
+  <div class="permalink"><a href="#module_node_repl_history_file" class="permalink fas fa-link"></a></div>
+  <p>NODE_REPL_HISTORY_FILE</p>
+
+</h4>
+</div>
+
+<p>Previously in Node.js/io.js v2.x, REPL history was controlled by using a
 <code>NODE_REPL_HISTORY_FILE</code> environment variable, and the history was saved in JSON
 format. This variable has now been deprecated, and the old JSON REPL history
 file will be automatically converted to a simplified plain text format. This new
 file will be saved to either the user&#39;s home directory, or a directory defined
 by the <code>NODE_REPL_HISTORY</code> variable, as documented in the
 <a href="#repl_environment_variable_options">Environment Variable Options</a>.</p>
-</section></section>
-       <div class="heading">
-          <h3>
-            <a name="module_using_the_node_js_repl_with_advanced_line_editors" id="module_using_the_node_js_repl_with_advanced_line_editors"></a>
-            <div class="permalink"><a href="#module_using_the_node_js_repl_with_advanced_line_editors" class="permalink fas fa-link"></a></div>
-            <p>Using the Node.js REPL with advanced line-editors</p>
 
-          </h1>
-        </div><section><p><p>For advanced line-editors, start Node.js with the environment variable
+
+<div class="heading">
+<h3>
+  <a name="module_using_the_node_js_repl_with_advanced_line_editors" id="module_using_the_node_js_repl_with_advanced_line_editors"></a>
+  <div class="permalink"><a href="#module_using_the_node_js_repl_with_advanced_line_editors" class="permalink fas fa-link"></a></div>
+  <p>Using the Node.js REPL with advanced line-editors</p>
+
+</h3>
+</div>
+
+<p><p>For advanced line-editors, start Node.js with the environment variable
 <code>NODE_NO_READLINE=1</code>. This will start the main and debugger REPL in canonical
 terminal settings, which will allow use with <code>rlwrap</code>.</p></p>
 <p><p>For example, the following can be added to a <code>.bashrc</code> file:</p></p>
 <pre class="prettyprint"><code class="lang-text">alias node=&quot;env NODE_NO_READLINE=1 rlwrap node&quot;
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_starting_multiple_repl_instances_against_a_single_running_instance" id="module_starting_multiple_repl_instances_against_a_single_running_instance"></a>
-            <div class="permalink"><a href="#module_starting_multiple_repl_instances_against_a_single_running_instance" class="permalink fas fa-link"></a></div>
-            <p>Starting multiple REPL instances against a single running instance</p>
 
-          </h1>
-        </div><section><p><p>It is possible to create and run multiple REPL instances against a single
+
+<div class="heading">
+<h3>
+  <a name="module_starting_multiple_repl_instances_against_a_single_running_instance" id="module_starting_multiple_repl_instances_against_a_single_running_instance"></a>
+  <div class="permalink"><a href="#module_starting_multiple_repl_instances_against_a_single_running_instance" class="permalink fas fa-link"></a></div>
+  <p>Starting multiple REPL instances against a single running instance</p>
+
+</h3>
+</div>
+
+<p><p>It is possible to create and run multiple REPL instances against a single
 running instance of Node.js that share a single <code>global</code> object but have
 separate I/O interfaces.</p></p>
 <p><p>The following example, for instance, provides separate REPLs on <code>stdin</code>, a Unix
@@ -437,26 +487,49 @@ a <code>net.Server</code> and <code>net.Socket</code> instance, see: <a href="ht
 see: <a href="https://gist.github.com/2053342">https://gist.github.com/2053342</a></p>
 <!-- [end-include:repl.md] -->
 <!-- [start-include:stream.md] --></p>
-</section></section>
-       <div class="heading">
-          <h2>
-            <a name="class_REPLServer" id="class_REPLServer"></a>
-            <div class="permalink"><a href="#class_REPLServer" class="permalink fas fa-link"></a></div>
-            <p>Class: REPLServer</p>
 
-          </h1>
-        </div><section><p>The <code>repl.REPLServer</code> class inherits from the <a href="readline.html#readline_class_interface"><code>readline.Interface</code></a> class.
+<div class='expandable-header' id='class_REPLServer-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_REPLServer" id="class_REPLServer"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_REPLServer-expand-icon"></i>
+        <div class="permalink"><a href="#class_REPLServer" class="permalink fas fa-link"></a></div>
+        <p>Class: REPLServer</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_REPLServer-expand-content'>
+<p>The <code>repl.REPLServer</code> class inherits from the <a href="readline.html#readline_class_interface"><code>readline.Interface</code></a> class.
 Instances of <code>repl.REPLServer</code> are created using the <code>repl.start()</code> method and
 <em>should not</em> be created directly using the JavaScript <code>new</code> keyword.</p>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="method_defineCommand" id="method_defineCommand"></a>
-            <div class="permalink"><a href="#method_defineCommand" class="permalink fas fa-link"></a></div>
-            <p>replServer.defineCommand(keyword, cmd)</p>
 
-          </h1>
-        </div><section><p><p>The <code>replServer.defineCommand()</code> method is used to add new <code>.</code>-prefixed commands
+
+<div class="heading">
+<h3>
+  <a name="subgroup_class_REPLServer_Methods" id="subgroup_class_REPLServer_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_REPLServer_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_defineCommand-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_defineCommand" id="method_defineCommand"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_defineCommand-expand-icon"></i>
+        <div class="permalink"><a href="#method_defineCommand" class="permalink fas fa-link"></a></div>
+        <p>replServer.defineCommand(keyword, cmd)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_defineCommand-expand-content'>
+<p><p>The <code>replServer.defineCommand()</code> method is used to add new <code>.</code>-prefixed commands
 to the REPL instance. Such commands are invoked by typing a <code>.</code> followed by the
 <code>keyword</code>. The <code>cmd</code> is either a Function or an object with the following
 properties:</p></p>
@@ -488,15 +561,22 @@ Hello, Node.js User!
 &gt; .saybye
 Goodbye!
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_displayPrompt" id="method_displayPrompt"></a>
-            <div class="permalink"><a href="#method_displayPrompt" class="permalink fas fa-link"></a></div>
-            <p>replServer.displayPrompt([preserveCursor])</p>
 
-          </h1>
-        </div><section><p>The <code>replServer.displayPrompt()</code> method readies the REPL instance for input
+
+</div><div class='expandable-header' id='method_displayPrompt-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_displayPrompt" id="method_displayPrompt"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_displayPrompt-expand-icon"></i>
+        <div class="permalink"><a href="#method_displayPrompt" class="permalink fas fa-link"></a></div>
+        <p>replServer.displayPrompt([preserveCursor])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_displayPrompt-expand-content'>
+<p>The <code>replServer.displayPrompt()</code> method readies the REPL instance for input
 from the user, printing the configured <code>prompt</code> to a new line in the <code>output</code>
 and resuming the <code>input</code> to accept new input.</p>
 <p>When multi-line input is being entered, an ellipsis is printed rather than the
@@ -505,44 +585,68 @@ and resuming the <code>input</code> to accept new input.</p>
 <p>The <code>replServer.displayPrompt</code> method is primarily intended to be called from
 within the action function for commands registered using the
 <code>replServer.defineCommand()</code> method.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_clearBufferedCommand" id="method_clearBufferedCommand"></a>
-            <div class="permalink"><a href="#method_clearBufferedCommand" class="permalink fas fa-link"></a></div>
-            <p>replServer.clearBufferedCommand()</p>
 
-          </h1>
-        </div><section><p>The <code>replServer.clearBufferedCommand()</code> method clears any command that has been
+
+</div><div class='expandable-header' id='method_clearBufferedCommand-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_clearBufferedCommand" id="method_clearBufferedCommand"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_clearBufferedCommand-expand-icon"></i>
+        <div class="permalink"><a href="#method_clearBufferedCommand" class="permalink fas fa-link"></a></div>
+        <p>replServer.clearBufferedCommand()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_clearBufferedCommand-expand-content'>
+<p>The <code>replServer.clearBufferedCommand()</code> method clears any command that has been
 buffered but not yet executed. This method is primarily intended to be
 called from within the action function for commands registered using the
 <code>replServer.defineCommand()</code> method.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_parseREPLKeyword_1" id="method_parseREPLKeyword_1"></a>
-            <div class="permalink"><a href="#method_parseREPLKeyword_1" class="permalink fas fa-link"></a></div>
-            <p>replServer.parseREPLKeyword(keyword, [rest])</p>
 
-          </h1>
-        </div><section><p>An internal method used to parse and execute <code>REPLServer</code> keywords.
+
+</div><div class='expandable-header' id='method_parseREPLKeyword_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_parseREPLKeyword_1" id="method_parseREPLKeyword_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_parseREPLKeyword_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_parseREPLKeyword_1" class="permalink fas fa-link"></a></div>
+        <p>replServer.parseREPLKeyword(keyword, [rest])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_parseREPLKeyword_1-expand-content'>
+<p>An internal method used to parse and execute <code>REPLServer</code> keywords.
 Returns <code>true</code> if <code>keyword</code> is a valid keyword, otherwise <code>false</code>.</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="method_start" id="method_start"></a>
-            <div class="permalink"><a href="#method_start" class="permalink fas fa-link"></a></div>
-            <p>repl.start([options])</p>
 
-          </h1>
-        </div><section><p><p>The <code>repl.start()</code> method creates and starts a <code>repl.REPLServer</code> instance.</p></p>
+
+</div>
+</div><div class='expandable-header' id='method_start-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_start" id="method_start"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_start-expand-icon"></i>
+        <div class="permalink"><a href="#method_start" class="permalink fas fa-link"></a></div>
+        <p>repl.start([options])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_start-expand-content'>
+<p><p>The <code>repl.start()</code> method creates and starts a <code>repl.REPLServer</code> instance.</p></p>
 <p><p>If <code>options</code> is a string, then it specifies the input prompt:</p></p>
 <pre class="prettyprint"><code class="lang-js">const repl = require(&#39;repl&#39;);
 
 // a Unix style prompt
 repl.start(&#39;$ &#39;);
 </code></pre>
-</section>
+
+
+</div>
 
   <div class="footer">
     <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>

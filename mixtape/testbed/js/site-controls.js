@@ -140,10 +140,10 @@ define(['jquery', 'hoverDelay'], function($) {
           return;
       if (!site_controls.is_mobile())
       {
-        alert('okay');
         site_controls.close_control_panel_h();
       }
     });
+
     $(window).on('hashchange', function(e) {
       site_controls.glow_heading();
       site_controls.close_control_panel_h();

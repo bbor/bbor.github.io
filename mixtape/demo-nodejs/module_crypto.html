@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>mixtape page for crypto</title>
+    <title>Crypto</title>
     <script data-main="js/setup" src="js/require.js"></script>
     <link rel="stylesheet" href="fonts/fonts.css" />
     <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
@@ -13,9 +13,9 @@
   <body>
 
   <div id="control-panel">
-    <div id="control-strip-h">
-      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
-      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    <div id="control-strip-m">
+      <div id="control-strip-m-find"><div id="m-find"></div></div>
+      <div id="control-strip-m-toc"><div id="m-toc"></div></div>
     </div>
     <div id="controls">
       <div id="control-find">
@@ -26,22 +26,24 @@
       </div>
     </div>
   </div>
-  <div id="control-strip-v">
-    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
-    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  <div id="control-strip-w">
+    <div id="control-strip-w-find"></div>
+    <div id="control-strip-w-toc"></div>
   </div>
 
   <div id="content">
 
   
-       <div class="heading">
-          <h1>
-            <a name="module_crypto" id="module_crypto"></a>
-            <div class="permalink"><a href="#module_crypto" class="permalink fas fa-link"></a></div>
-            <p>Crypto</p>
+<div class="heading">
+<h1>
+  <a name="module_crypto" id="module_crypto"></a>
+  <div class="permalink"><a href="#module_crypto" class="permalink fas fa-link"></a></div>
+  <p>Crypto</p>
 
-          </h1>
-        </div><p><p>The <code>crypto</code> module provides cryptographic functionality that includes a set of
+</h1>
+</div>
+
+<p><p>The <code>crypto</code> module provides cryptographic functionality that includes a set of
 wrappers for OpenSSL&#39;s hash, HMAC, cipher, decipher, sign, and verify functions.</p></p>
 <p><p>Use <code>require(&#39;crypto&#39;)</code> to access this module.</p></p>
 <pre class="prettyprint"><code class="lang-js">const crypto = require(&#39;crypto&#39;);
@@ -55,14 +57,17 @@ console.log(hash);
 //   c0fa1bc00531bd78ef38c628449c5102aeabd49b5dc3a2a516ea6ea959d6658e
 </code></pre>
 
-       <div class="heading">
-          <h2>
-            <a name="module_determining_if_crypto_support_is_unavailable" id="module_determining_if_crypto_support_is_unavailable"></a>
-            <div class="permalink"><a href="#module_determining_if_crypto_support_is_unavailable" class="permalink fas fa-link"></a></div>
-            <p>Determining if crypto support is unavailable</p>
 
-          </h1>
-        </div><section><p><p>It is possible for Node.js to be built without including support for the
+<div class="heading">
+<h2>
+  <a name="module_determining_if_crypto_support_is_unavailable" id="module_determining_if_crypto_support_is_unavailable"></a>
+  <div class="permalink"><a href="#module_determining_if_crypto_support_is_unavailable" class="permalink fas fa-link"></a></div>
+  <p>Determining if crypto support is unavailable</p>
+
+</h2>
+</div>
+
+<p><p>It is possible for Node.js to be built without including support for the
 <code>crypto</code> module. In such cases, calling <code>require(&#39;crypto&#39;)</code> will result in an
 error being thrown.</p></p>
 <pre class="prettyprint"><code class="lang-js">let crypto;
@@ -72,59 +77,89 @@ try {
   console.log(&#39;crypto support is disabled!&#39;);
 }
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="module__crypto__module_methods_and_properties" id="module__crypto__module_methods_and_properties"></a>
-            <div class="permalink"><a href="#module__crypto__module_methods_and_properties" class="permalink fas fa-link"></a></div>
-            <p><code>crypto</code> module methods and properties</p>
 
-          </h1>
-        </div><section>
-       <div class="heading">
-          <h3>
-            <a name="property_constants" id="property_constants"></a>
-            <div class="permalink"><a href="#property_constants" class="permalink fas fa-link"></a></div>
-            <p>crypto.constants</p>
 
-          </h1>
-        </div><section><p>Returns an object containing commonly used constants for crypto and security
+<div class="heading">
+<h2>
+  <a name="module__crypto__module_methods_and_properties" id="module__crypto__module_methods_and_properties"></a>
+  <div class="permalink"><a href="#module__crypto__module_methods_and_properties" class="permalink fas fa-link"></a></div>
+  <p><code>crypto</code> module methods and properties</p>
+
+</h2>
+</div>
+
+
+<div class='expandable-header' id='property_constants-expand'>
+<div class="heading">
+    <h3>
+        <a name="property_constants" id="property_constants"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_constants-expand-icon"></i>
+        <div class="permalink"><a href="#property_constants" class="permalink fas fa-link"></a></div>
+        <p>crypto.constants</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='property_constants-expand-content'>
+<p>Returns an object containing commonly used constants for crypto and security
 related operations. The specific constants currently defined are described in
 <a href="#crypto_crypto_constants_1">Crypto Constants</a>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="property_DEFAULT_ENCODING" id="property_DEFAULT_ENCODING"></a>
-            <div class="permalink"><a href="#property_DEFAULT_ENCODING" class="permalink fas fa-link"></a></div>
-            <p>crypto.DEFAULT_ENCODING</p>
 
-          </h1>
-        </div><section><p>The default encoding to use for functions that can take either strings
+
+</div><div class='expandable-header' id='property_DEFAULT_ENCODING-expand'>
+<div class="heading">
+    <h3>
+        <a name="property_DEFAULT_ENCODING" id="property_DEFAULT_ENCODING"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_DEFAULT_ENCODING-expand-icon"></i>
+        <div class="permalink"><a href="#property_DEFAULT_ENCODING" class="permalink fas fa-link"></a></div>
+        <p>crypto.DEFAULT_ENCODING</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='property_DEFAULT_ENCODING-expand-content'>
+<p>The default encoding to use for functions that can take either strings
 or <a href="buffer.html#buffer_class_buffer">buffers</a>. The default value is <code>&#39;buffer&#39;</code>, which makes methods
 default to <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a> objects.</p>
 <p>The <code>crypto.DEFAULT_ENCODING</code> mechanism is provided for backwards compatibility
 with legacy programs that expect <code>&#39;latin1&#39;</code> to be the default encoding.</p>
 <p>New applications should expect the default to be <code>&#39;buffer&#39;</code>. This property may
 become deprecated in a future Node.js release.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="property_fips" id="property_fips"></a>
-            <div class="permalink"><a href="#property_fips" class="permalink fas fa-link"></a></div>
-            <p>crypto.fips</p>
 
-          </h1>
-        </div><section><p>Property for checking and controlling whether a FIPS compliant crypto provider is
+
+</div><div class='expandable-header' id='property_fips-expand'>
+<div class="heading">
+    <h3>
+        <a name="property_fips" id="property_fips"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_fips-expand-icon"></i>
+        <div class="permalink"><a href="#property_fips" class="permalink fas fa-link"></a></div>
+        <p>crypto.fips</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='property_fips-expand-content'>
+<p>Property for checking and controlling whether a FIPS compliant crypto provider is
 currently in use. Setting to true requires a FIPS build of Node.js.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_createCipher" id="method_createCipher"></a>
-            <div class="permalink"><a href="#method_createCipher" class="permalink fas fa-link"></a></div>
-            <p>crypto.createCipher(algorithm, password[, options])</p>
 
-          </h1>
-        </div><section><p>Creates and returns a <code>Cipher</code> object that uses the given <code>algorithm</code> and
+
+</div><div class='expandable-header' id='method_createCipher-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_createCipher" id="method_createCipher"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createCipher-expand-icon"></i>
+        <div class="permalink"><a href="#method_createCipher" class="permalink fas fa-link"></a></div>
+        <p>crypto.createCipher(algorithm, password[, options])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createCipher-expand-content'>
+<p>Creates and returns a <code>Cipher</code> object that uses the given <code>algorithm</code> and
 <code>password</code>. Optional <code>options</code> argument controls stream behavior.</p>
 <p>The <code>algorithm</code> is dependent on OpenSSL, examples are <code>&#39;aes192&#39;</code>, etc. On
 recent OpenSSL releases, <code>openssl list-cipher-algorithms</code> will display the
@@ -146,15 +181,22 @@ to create the <code>Cipher</code> object. Users should not use ciphers with coun
 they are used in order to avoid the risk of IV reuse that causes
 vulnerabilities. For the case when IV is reused in GCM, see <a href="https://github.com/nonce-disrespect/nonce-disrespect">Nonce-Disrespecting
 Adversaries</a> for details.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_createCipheriv" id="method_createCipheriv"></a>
-            <div class="permalink"><a href="#method_createCipheriv" class="permalink fas fa-link"></a></div>
-            <p>crypto.createCipheriv(algorithm, key, iv[, options])</p>
 
-          </h1>
-        </div><section><p>Creates and returns a <code>Cipher</code> object, with the given <code>algorithm</code>, <code>key</code> and
+
+</div><div class='expandable-header' id='method_createCipheriv-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_createCipheriv" id="method_createCipheriv"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createCipheriv-expand-icon"></i>
+        <div class="permalink"><a href="#method_createCipheriv" class="permalink fas fa-link"></a></div>
+        <p>crypto.createCipheriv(algorithm, key, iv[, options])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createCipheriv-expand-content'>
+<p>Creates and returns a <code>Cipher</code> object, with the given <code>algorithm</code>, <code>key</code> and
 initialization vector (<code>iv</code>). Optional <code>options</code> argument controls stream behavior.</p>
 <p>The <code>algorithm</code> is dependent on OpenSSL, examples are <code>&#39;aes192&#39;</code>, etc. On
 recent OpenSSL releases, <code>openssl list-cipher-algorithms</code> will display the
@@ -162,29 +204,43 @@ available cipher algorithms.</p>
 <p>The <code>key</code> is the raw key used by the <code>algorithm</code> and <code>iv</code> is an
 <a href="https://en.wikipedia.org/wiki/Initialization_vector">initialization vector</a>. Both arguments must be <code>&#39;utf8&#39;</code> encoded strings,
 <a href="buffer.html#buffer_class_buffer">Buffers</a>, <code>TypedArray</code>, or <code>DataView</code>s.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_createCredentials" id="method_createCredentials"></a>
-            <div class="permalink"><a href="#method_createCredentials" class="permalink fas fa-link"></a></div>
-            <p>crypto.createCredentials(details)</p>
 
-          </h1>
-        </div><section><p>The <code>crypto.createCredentials()</code> method is a deprecated function for creating
+
+</div><div class='expandable-header' id='method_createCredentials-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_createCredentials" id="method_createCredentials"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createCredentials-expand-icon"></i>
+        <div class="permalink"><a href="#method_createCredentials" class="permalink fas fa-link"></a></div>
+        <p>crypto.createCredentials(details)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createCredentials-expand-content'>
+<p>The <code>crypto.createCredentials()</code> method is a deprecated function for creating
 and returning a <code>tls.SecureContext</code>. It should not be used. Replace it with
 <a href="#tls_tls_createsecurecontext_options"><code>tls.createSecureContext()</code></a> which has the exact same arguments and return
 value.</p>
 <p>Returns a <code>tls.SecureContext</code>, as-if <a href="#tls_tls_createsecurecontext_options"><code>tls.createSecureContext()</code></a> had been
 called.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_createDecipher" id="method_createDecipher"></a>
-            <div class="permalink"><a href="#method_createDecipher" class="permalink fas fa-link"></a></div>
-            <p>crypto.createDecipher(algorithm, password[, options])</p>
 
-          </h1>
-        </div><section><p>Creates and returns a <code>Decipher</code> object that uses the given <code>algorithm</code> and
+
+</div><div class='expandable-header' id='method_createDecipher-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_createDecipher" id="method_createDecipher"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createDecipher-expand-icon"></i>
+        <div class="permalink"><a href="#method_createDecipher" class="permalink fas fa-link"></a></div>
+        <p>crypto.createDecipher(algorithm, password[, options])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createDecipher-expand-content'>
+<p>Creates and returns a <code>Decipher</code> object that uses the given <code>algorithm</code> and
 <code>password</code> (key). Optional <code>options</code> argument controls stream behavior.</p>
 <p>The implementation of <code>crypto.createDecipher()</code> derives keys using the OpenSSL
 function <a href="https://www.openssl.org/docs/man1.0.2/crypto/EVP_BytesToKey.html"><code>EVP_BytesToKey</code></a> with the digest algorithm set to MD5, one
@@ -196,32 +252,46 @@ rapidly.</p>
 <a href="https://www.openssl.org/docs/man1.0.2/crypto/EVP_BytesToKey.html"><code>EVP_BytesToKey</code></a> it is recommended that developers derive a key and IV on
 their own using <a href="crypto.html#crypto_crypto_pbkdf2_password_salt_iterations_keylen_digest_callback"><code>crypto.pbkdf2()</code></a> and to use <a href="#crypto_crypto_createdecipheriv_algorithm_key_iv_options"><code>crypto.createDecipheriv()</code></a>
 to create the <code>Decipher</code> object.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_createDecipheriv" id="method_createDecipheriv"></a>
-            <div class="permalink"><a href="#method_createDecipheriv" class="permalink fas fa-link"></a></div>
-            <p>crypto.createDecipheriv(algorithm, key, iv[, options])</p>
 
-          </h1>
-        </div><section><p>Creates and returns a <code>Decipher</code> object that uses the given <code>algorithm</code>, <code>key</code>
+
+</div><div class='expandable-header' id='method_createDecipheriv-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_createDecipheriv" id="method_createDecipheriv"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createDecipheriv-expand-icon"></i>
+        <div class="permalink"><a href="#method_createDecipheriv" class="permalink fas fa-link"></a></div>
+        <p>crypto.createDecipheriv(algorithm, key, iv[, options])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createDecipheriv-expand-content'>
+<p>Creates and returns a <code>Decipher</code> object that uses the given <code>algorithm</code>, <code>key</code>
 and initialization vector (<code>iv</code>). Optional <code>options</code> argument controls stream
 behavior.</p>
 <p>The <code>algorithm</code> is dependent on OpenSSL, examples are <code>&#39;aes192&#39;</code>, etc. On
 recent OpenSSL releases, <code>openssl list-cipher-algorithms</code> will display the
 available cipher algorithms.</p>
 <p>The <code>key</code> is the raw key used by the <code>algorithm</code> and <code>iv</code> is an
-<a href="https://en.wikipedia.org/wiki/Initialization_vector">initialization vector</a>. Both arguments must be <code>&#39;utf8&#39;</code> encoded strings or
-<a href="buffer.html#buffer_class_buffer">buffers</a>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_createDiffieHellman" id="method_createDiffieHellman"></a>
-            <div class="permalink"><a href="#method_createDiffieHellman" class="permalink fas fa-link"></a></div>
-            <p>crypto.createDiffieHellman(prime[, primeEncoding][, generator][, generatorEncoding])</p>
+<a href="https://en.wikipedia.org/wiki/Initialization_vector">initialization vector</a>. Both arguments must be <code>&#39;utf8&#39;</code> encoded strings,
+<a href="buffer.html#buffer_class_buffer">Buffers</a>, <code>TypedArray</code>, or <code>DataView</code>s.</p>
 
-          </h1>
-        </div><section><p>Creates a <code>DiffieHellman</code> key exchange object using the supplied <code>prime</code> and an
+
+</div><div class='expandable-header' id='method_createDiffieHellman-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_createDiffieHellman" id="method_createDiffieHellman"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createDiffieHellman-expand-icon"></i>
+        <div class="permalink"><a href="#method_createDiffieHellman" class="permalink fas fa-link"></a></div>
+        <p>crypto.createDiffieHellman(prime[, primeEncoding][, generator][, generatorEncoding])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createDiffieHellman-expand-content'>
+<p>Creates a <code>DiffieHellman</code> key exchange object using the supplied <code>prime</code> and an
 optional specific <code>generator</code>.</p>
 <p>The <code>generator</code> argument can be a number, string, or <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a>. If
 <code>generator</code> is not specified, the value <code>2</code> is used.</p>
@@ -231,39 +301,60 @@ optional specific <code>generator</code>.</p>
 a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a>, <code>TypedArray</code>, or <code>DataView</code> is expected.</p>
 <p>If <code>generatorEncoding</code> is specified, <code>generator</code> is expected to be a string;
 otherwise a number, <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a>, <code>TypedArray</code>, or <code>DataView</code> is expected.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_createDiffieHellman_1" id="method_createDiffieHellman_1"></a>
-            <div class="permalink"><a href="#method_createDiffieHellman_1" class="permalink fas fa-link"></a></div>
-            <p>crypto.createDiffieHellman(primeLength[, generator])</p>
 
-          </h1>
-        </div><section><p>Creates a <code>DiffieHellman</code> key exchange object and generates a prime of
+
+</div><div class='expandable-header' id='method_createDiffieHellman_1-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_createDiffieHellman_1" id="method_createDiffieHellman_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createDiffieHellman_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_createDiffieHellman_1" class="permalink fas fa-link"></a></div>
+        <p>crypto.createDiffieHellman(primeLength[, generator])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createDiffieHellman_1-expand-content'>
+<p>Creates a <code>DiffieHellman</code> key exchange object and generates a prime of
 <code>primeLength</code> bits using an optional specific numeric <code>generator</code>.
 If <code>generator</code> is not specified, the value <code>2</code> is used.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_createECDH" id="method_createECDH"></a>
-            <div class="permalink"><a href="#method_createECDH" class="permalink fas fa-link"></a></div>
-            <p>crypto.createECDH(curveName)</p>
 
-          </h1>
-        </div><section><p>Creates an Elliptic Curve Diffie-Hellman (<code>ECDH</code>) key exchange object using a
+
+</div><div class='expandable-header' id='method_createECDH-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_createECDH" id="method_createECDH"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createECDH-expand-icon"></i>
+        <div class="permalink"><a href="#method_createECDH" class="permalink fas fa-link"></a></div>
+        <p>crypto.createECDH(curveName)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createECDH-expand-content'>
+<p>Creates an Elliptic Curve Diffie-Hellman (<code>ECDH</code>) key exchange object using a
 predefined curve specified by the <code>curveName</code> string. Use
 <a href="crypto.html#crypto_crypto_getcurves"><code>crypto.getCurves()</code></a> to obtain a list of available curve names. On recent
 OpenSSL releases, <code>openssl ecparam -list_curves</code> will also display the name
 and description of each available elliptic curve.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_createHash" id="method_createHash"></a>
-            <div class="permalink"><a href="#method_createHash" class="permalink fas fa-link"></a></div>
-            <p>crypto.createHash(algorithm[, options])</p>
 
-          </h1>
-        </div><section><p><p>Creates and returns a <code>Hash</code> object that can be used to generate hash digests
+
+</div><div class='expandable-header' id='method_createHash-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_createHash" id="method_createHash"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createHash-expand-icon"></i>
+        <div class="permalink"><a href="#method_createHash" class="permalink fas fa-link"></a></div>
+        <p>crypto.createHash(algorithm[, options])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createHash-expand-content'>
+<p><p>Creates and returns a <code>Hash</code> object that can be used to generate hash digests
 using the given <code>algorithm</code>. Optional <code>options</code> argument controls stream
 behavior.</p></p>
 <p><p>The <code>algorithm</code> is dependent on the available algorithms supported by the
@@ -287,15 +378,22 @@ input.on(&#39;readable&#39;, () =&gt; {
   }
 });
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_createHmac" id="method_createHmac"></a>
-            <div class="permalink"><a href="#method_createHmac" class="permalink fas fa-link"></a></div>
-            <p>crypto.createHmac(algorithm, key[, options])</p>
 
-          </h1>
-        </div><section><p><p>Creates and returns an <code>Hmac</code> object that uses the given <code>algorithm</code> and <code>key</code>.
+
+</div><div class='expandable-header' id='method_createHmac-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_createHmac" id="method_createHmac"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createHmac-expand-icon"></i>
+        <div class="permalink"><a href="#method_createHmac" class="permalink fas fa-link"></a></div>
+        <p>crypto.createHmac(algorithm, key[, options])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createHmac-expand-content'>
+<p><p>Creates and returns an <code>Hmac</code> object that uses the given <code>algorithm</code> and <code>key</code>.
 Optional <code>options</code> argument controls stream behavior.</p></p>
 <p><p>The <code>algorithm</code> is dependent on the available algorithms supported by the
 version of OpenSSL on the platform. Examples are <code>&#39;sha256&#39;</code>, <code>&#39;sha512&#39;</code>, etc.
@@ -319,65 +417,100 @@ input.on(&#39;readable&#39;, () =&gt; {
   }
 });
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_createSign" id="method_createSign"></a>
-            <div class="permalink"><a href="#method_createSign" class="permalink fas fa-link"></a></div>
-            <p>crypto.createSign(algorithm[, options])</p>
 
-          </h1>
-        </div><section><p>Creates and returns a <code>Sign</code> object that uses the given <code>algorithm</code>.
+
+</div><div class='expandable-header' id='method_createSign-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_createSign" id="method_createSign"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createSign-expand-icon"></i>
+        <div class="permalink"><a href="#method_createSign" class="permalink fas fa-link"></a></div>
+        <p>crypto.createSign(algorithm[, options])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createSign-expand-content'>
+<p>Creates and returns a <code>Sign</code> object that uses the given <code>algorithm</code>.
 Use <a href="#crypto_crypto_gethashes"><code>crypto.getHashes()</code></a> to obtain an array of names of the available
 signing algorithms. Optional <code>options</code> argument controls the
 <code>stream.Writable</code> behavior.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_createVerify" id="method_createVerify"></a>
-            <div class="permalink"><a href="#method_createVerify" class="permalink fas fa-link"></a></div>
-            <p>crypto.createVerify(algorithm[, options])</p>
 
-          </h1>
-        </div><section><p>Creates and returns a <code>Verify</code> object that uses the given algorithm.
+
+</div><div class='expandable-header' id='method_createVerify-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_createVerify" id="method_createVerify"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createVerify-expand-icon"></i>
+        <div class="permalink"><a href="#method_createVerify" class="permalink fas fa-link"></a></div>
+        <p>crypto.createVerify(algorithm[, options])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createVerify-expand-content'>
+<p>Creates and returns a <code>Verify</code> object that uses the given algorithm.
 Use <a href="#crypto_crypto_gethashes"><code>crypto.getHashes()</code></a> to obtain an array of names of the available
 signing algorithms. Optional <code>options</code> argument controls the
 <code>stream.Writable</code> behavior.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_getCiphers" id="method_getCiphers"></a>
-            <div class="permalink"><a href="#method_getCiphers" class="permalink fas fa-link"></a></div>
-            <p>crypto.getCiphers()</p>
 
-          </h1>
-        </div><section><p><p>Returns an array with the names of the supported cipher algorithms.</p></p>
+
+</div><div class='expandable-header' id='method_getCiphers-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_getCiphers" id="method_getCiphers"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getCiphers-expand-icon"></i>
+        <div class="permalink"><a href="#method_getCiphers" class="permalink fas fa-link"></a></div>
+        <p>crypto.getCiphers()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getCiphers-expand-content'>
+<p><p>Returns an array with the names of the supported cipher algorithms.</p></p>
 <p><p>Example:</p></p>
 <pre class="prettyprint"><code class="lang-js">const ciphers = crypto.getCiphers();
 console.log(ciphers); // [&#39;aes-128-cbc&#39;, &#39;aes-128-ccm&#39;, ...]
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_getCurves" id="method_getCurves"></a>
-            <div class="permalink"><a href="#method_getCurves" class="permalink fas fa-link"></a></div>
-            <p>crypto.getCurves()</p>
 
-          </h1>
-        </div><section><p><p>Returns an array with the names of the supported elliptic curves.</p></p>
+
+</div><div class='expandable-header' id='method_getCurves-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_getCurves" id="method_getCurves"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getCurves-expand-icon"></i>
+        <div class="permalink"><a href="#method_getCurves" class="permalink fas fa-link"></a></div>
+        <p>crypto.getCurves()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getCurves-expand-content'>
+<p><p>Returns an array with the names of the supported elliptic curves.</p></p>
 <p><p>Example:</p></p>
 <pre class="prettyprint"><code class="lang-js">const curves = crypto.getCurves();
 console.log(curves); // [&#39;Oakley-EC2N-3&#39;, &#39;Oakley-EC2N-4&#39;, ...]
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_getDiffieHellman" id="method_getDiffieHellman"></a>
-            <div class="permalink"><a href="#method_getDiffieHellman" class="permalink fas fa-link"></a></div>
-            <p>crypto.getDiffieHellman(groupName)</p>
 
-          </h1>
-        </div><section><p><p>Creates a predefined <code>DiffieHellman</code> key exchange object. The
+
+</div><div class='expandable-header' id='method_getDiffieHellman-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_getDiffieHellman" id="method_getDiffieHellman"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getDiffieHellman-expand-icon"></i>
+        <div class="permalink"><a href="#method_getDiffieHellman" class="permalink fas fa-link"></a></div>
+        <p>crypto.getDiffieHellman(groupName)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getDiffieHellman-expand-content'>
+<p><p>Creates a predefined <code>DiffieHellman</code> key exchange object. The
 supported groups are: <code>&#39;modp1&#39;</code>, <code>&#39;modp2&#39;</code>, <code>&#39;modp5&#39;</code> (defined in
 <a href="https://www.rfc-editor.org/rfc/rfc2412.txt">RFC 2412</a>, but see <a href="#fs_caveats">Caveats</a>) and <code>&#39;modp14&#39;</code>, <code>&#39;modp15&#39;</code>,
 <code>&#39;modp16&#39;</code>, <code>&#39;modp17&#39;</code>, <code>&#39;modp18&#39;</code> (defined in <a href="https://www.rfc-editor.org/rfc/rfc3526.txt">RFC 3526</a>). The
@@ -401,29 +534,43 @@ const bobSecret = bob.computeSecret(alice.getPublicKey(), null, &#39;hex&#39;);
 /* aliceSecret and bobSecret should be the same */
 console.log(aliceSecret === bobSecret);
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_getHashes" id="method_getHashes"></a>
-            <div class="permalink"><a href="#method_getHashes" class="permalink fas fa-link"></a></div>
-            <p>crypto.getHashes()</p>
 
-          </h1>
-        </div><section><p><p>Returns an array of the names of the supported hash algorithms,
+
+</div><div class='expandable-header' id='method_getHashes-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_getHashes" id="method_getHashes"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getHashes-expand-icon"></i>
+        <div class="permalink"><a href="#method_getHashes" class="permalink fas fa-link"></a></div>
+        <p>crypto.getHashes()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getHashes-expand-content'>
+<p><p>Returns an array of the names of the supported hash algorithms,
 such as <code>RSA-SHA256</code>.</p></p>
 <p><p>Example:</p></p>
 <pre class="prettyprint"><code class="lang-js">const hashes = crypto.getHashes();
 console.log(hashes); // [&#39;DSA&#39;, &#39;DSA-SHA&#39;, &#39;DSA-SHA1&#39;, ...]
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_pbkdf2" id="method_pbkdf2"></a>
-            <div class="permalink"><a href="#method_pbkdf2" class="permalink fas fa-link"></a></div>
-            <p>crypto.pbkdf2(password, salt, iterations, keylen, digest, callback)</p>
 
-          </h1>
-        </div><section><p>Provides an asynchronous Password-Based Key Derivation Function 2 (PBKDF2)
+
+</div><div class='expandable-header' id='method_pbkdf2-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_pbkdf2" id="method_pbkdf2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_pbkdf2-expand-icon"></i>
+        <div class="permalink"><a href="#method_pbkdf2" class="permalink fas fa-link"></a></div>
+        <p>crypto.pbkdf2(password, salt, iterations, keylen, digest, callback)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_pbkdf2-expand-content'>
+<p>Provides an asynchronous Password-Based Key Derivation Function 2 (PBKDF2)
 implementation. A selected HMAC digest algorithm specified by <code>digest</code> is
 applied to derive a key of the requested byte length (<code>keylen</code>) from the
 <code>password</code>, <code>salt</code> and <code>iterations</code>.</p>
@@ -459,15 +606,22 @@ crypto.pbkdf2(&#39;secret&#39;, &#39;salt&#39;, 100000, 512, &#39;sha512&#39;, (
 <p>Note that this API uses libuv&#39;s threadpool, which can have surprising and
 negative performance implications for some applications, see the
 <a href="cli.html#cli_uv_threadpool_size_size"><code>UV_THREADPOOL_SIZE</code></a> documentation for more information.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_pbkdf2Sync" id="method_pbkdf2Sync"></a>
-            <div class="permalink"><a href="#method_pbkdf2Sync" class="permalink fas fa-link"></a></div>
-            <p>crypto.pbkdf2Sync(password, salt, iterations, keylen, digest)</p>
 
-          </h1>
-        </div><section><p>Provides a synchronous Password-Based Key Derivation Function 2 (PBKDF2)
+
+</div><div class='expandable-header' id='method_pbkdf2Sync-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_pbkdf2Sync" id="method_pbkdf2Sync"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_pbkdf2Sync-expand-icon"></i>
+        <div class="permalink"><a href="#method_pbkdf2Sync" class="permalink fas fa-link"></a></div>
+        <p>crypto.pbkdf2Sync(password, salt, iterations, keylen, digest)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_pbkdf2Sync-expand-content'>
+<p>Provides a synchronous Password-Based Key Derivation Function 2 (PBKDF2)
 implementation. A selected HMAC digest algorithm specified by <code>digest</code> is
 applied to derive a key of the requested byte length (<code>keylen</code>) from the
 <code>password</code>, <code>salt</code> and <code>iterations</code>.</p>
@@ -493,64 +647,99 @@ console.log(key);  // &#39;3745e48...aa39b34&#39;
 </code></pre>
 <p>An array of supported digest functions can be retrieved using
 <a href="#crypto_crypto_gethashes"><code>crypto.getHashes()</code></a>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_privateDecrypt" id="method_privateDecrypt"></a>
-            <div class="permalink"><a href="#method_privateDecrypt" class="permalink fas fa-link"></a></div>
-            <p>crypto.privateDecrypt(privateKey, buffer)</p>
 
-          </h1>
-        </div><section><p>Decrypts <code>buffer</code> with <code>privateKey</code>.</p>
+
+</div><div class='expandable-header' id='method_privateDecrypt-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_privateDecrypt" id="method_privateDecrypt"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_privateDecrypt-expand-icon"></i>
+        <div class="permalink"><a href="#method_privateDecrypt" class="permalink fas fa-link"></a></div>
+        <p>crypto.privateDecrypt(privateKey, buffer)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_privateDecrypt-expand-content'>
+<p>Decrypts <code>buffer</code> with <code>privateKey</code>.</p>
 <p><code>privateKey</code> can be an object or a string. If <code>privateKey</code> is a string, it is
 treated as the key with no passphrase and will use <code>RSA_PKCS1_OAEP_PADDING</code>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_privateEncrypt" id="method_privateEncrypt"></a>
-            <div class="permalink"><a href="#method_privateEncrypt" class="permalink fas fa-link"></a></div>
-            <p>crypto.privateEncrypt(privateKey, buffer)</p>
 
-          </h1>
-        </div><section><p>Encrypts <code>buffer</code> with <code>privateKey</code>.</p>
+
+</div><div class='expandable-header' id='method_privateEncrypt-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_privateEncrypt" id="method_privateEncrypt"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_privateEncrypt-expand-icon"></i>
+        <div class="permalink"><a href="#method_privateEncrypt" class="permalink fas fa-link"></a></div>
+        <p>crypto.privateEncrypt(privateKey, buffer)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_privateEncrypt-expand-content'>
+<p>Encrypts <code>buffer</code> with <code>privateKey</code>.</p>
 <p><code>privateKey</code> can be an object or a string. If <code>privateKey</code> is a string, it is
 treated as the key with no passphrase and will use <code>RSA_PKCS1_PADDING</code>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_publicDecrypt" id="method_publicDecrypt"></a>
-            <div class="permalink"><a href="#method_publicDecrypt" class="permalink fas fa-link"></a></div>
-            <p>crypto.publicDecrypt(key, buffer)</p>
 
-          </h1>
-        </div><section><p>Decrypts <code>buffer</code> with <code>key</code>.</p>
+
+</div><div class='expandable-header' id='method_publicDecrypt-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_publicDecrypt" id="method_publicDecrypt"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_publicDecrypt-expand-icon"></i>
+        <div class="permalink"><a href="#method_publicDecrypt" class="permalink fas fa-link"></a></div>
+        <p>crypto.publicDecrypt(key, buffer)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_publicDecrypt-expand-content'>
+<p>Decrypts <code>buffer</code> with <code>key</code>.</p>
 <p><code>key</code> can be an object or a string. If <code>key</code> is a string, it is treated as
 the key with no passphrase and will use <code>RSA_PKCS1_PADDING</code>.</p>
 <p>Because RSA public keys can be derived from private keys, a private key may
 be passed instead of a public key.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_publicEncrypt" id="method_publicEncrypt"></a>
-            <div class="permalink"><a href="#method_publicEncrypt" class="permalink fas fa-link"></a></div>
-            <p>crypto.publicEncrypt(key, buffer)</p>
 
-          </h1>
-        </div><section><p>Encrypts the content of <code>buffer</code> with <code>key</code> and returns a new
+
+</div><div class='expandable-header' id='method_publicEncrypt-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_publicEncrypt" id="method_publicEncrypt"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_publicEncrypt-expand-icon"></i>
+        <div class="permalink"><a href="#method_publicEncrypt" class="permalink fas fa-link"></a></div>
+        <p>crypto.publicEncrypt(key, buffer)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_publicEncrypt-expand-content'>
+<p>Encrypts the content of <code>buffer</code> with <code>key</code> and returns a new
 <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a> with encrypted content.</p>
 <p><code>key</code> can be an object or a string. If <code>key</code> is a string, it is treated as
 the key with no passphrase and will use <code>RSA_PKCS1_OAEP_PADDING</code>.</p>
 <p>Because RSA public keys can be derived from private keys, a private key may
 be passed instead of a public key.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_randomBytes" id="method_randomBytes"></a>
-            <div class="permalink"><a href="#method_randomBytes" class="permalink fas fa-link"></a></div>
-            <p>crypto.randomBytes(size[, callback])</p>
 
-          </h1>
-        </div><section><p>Generates cryptographically strong pseudo-random data. The <code>size</code> argument
+
+</div><div class='expandable-header' id='method_randomBytes-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_randomBytes" id="method_randomBytes"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_randomBytes-expand-icon"></i>
+        <div class="permalink"><a href="#method_randomBytes" class="permalink fas fa-link"></a></div>
+        <p>crypto.randomBytes(size[, callback])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_randomBytes-expand-content'>
+<p>Generates cryptographically strong pseudo-random data. The <code>size</code> argument
 is a number indicating the number of bytes to generate.</p>
 <p>If a <code>callback</code> function is provided, the bytes are generated asynchronously
 and the <code>callback</code> function is invoked with two arguments: <code>err</code> and <code>buf</code>.
@@ -583,15 +772,22 @@ negative performance implications for some applications, see the
 in a single threadpool request. To minimize threadpool task length variation,
 partition large <code>randomBytes</code> requests when doing so as part of fulfilling a
 client request.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_randomFillSync" id="method_randomFillSync"></a>
-            <div class="permalink"><a href="#method_randomFillSync" class="permalink fas fa-link"></a></div>
-            <p>crypto.randomFillSync(buffer[, offset][, size])</p>
 
-          </h1>
-        </div><section><p><p>Synchronous version of <a href="#crypto_crypto_randomfill_buffer_offset_size_callback"><code>crypto.randomFill()</code></a>.</p></p>
+
+</div><div class='expandable-header' id='method_randomFillSync-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_randomFillSync" id="method_randomFillSync"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_randomFillSync-expand-icon"></i>
+        <div class="permalink"><a href="#method_randomFillSync" class="permalink fas fa-link"></a></div>
+        <p>crypto.randomFillSync(buffer[, offset][, size])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_randomFillSync-expand-content'>
+<p><p>Synchronous version of <a href="#crypto_crypto_randomfill_buffer_offset_size_callback"><code>crypto.randomFill()</code></a>.</p></p>
 <p><p>Returns <code>buffer</code></p></p>
 <pre class="prettyprint"><code class="lang-js">const buf = Buffer.alloc(10);
 console.log(crypto.randomFillSync(buf).toString(&#39;hex&#39;));
@@ -613,15 +809,22 @@ console.log(crypto.randomFillSync(a).toString(&#39;hex&#39;));
 const c = new DataView(new ArrayBuffer(10));
 console.log(crypto.randomFillSync(a).toString(&#39;hex&#39;));
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_randomFill" id="method_randomFill"></a>
-            <div class="permalink"><a href="#method_randomFill" class="permalink fas fa-link"></a></div>
-            <p>crypto.randomFill(buffer[, offset][, size], callback)</p>
 
-          </h1>
-        </div><section><p>This function is similar to <a href="#crypto_crypto_randombytes_size_callback"><code>crypto.randomBytes()</code></a> but requires the first
+
+</div><div class='expandable-header' id='method_randomFill-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_randomFill" id="method_randomFill"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_randomFill-expand-icon"></i>
+        <div class="permalink"><a href="#method_randomFill" class="permalink fas fa-link"></a></div>
+        <p>crypto.randomFill(buffer[, offset][, size], callback)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_randomFill-expand-content'>
+<p>This function is similar to <a href="#crypto_crypto_randombytes_size_callback"><code>crypto.randomBytes()</code></a> but requires the first
 argument to be a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a> that will be filled. It also
 requires that a callback is passed in.</p>
 <p>If the <code>callback</code> function is not provided, an error will be thrown.</p>
@@ -668,15 +871,22 @@ negative performance implications for some applications, see the
 in a single threadpool request. To minimize threadpool task length variation,
 partition large <code>randomFill</code> requests when doing so as part of fulfilling a
 client request.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_setEngine" id="method_setEngine"></a>
-            <div class="permalink"><a href="#method_setEngine" class="permalink fas fa-link"></a></div>
-            <p>crypto.setEngine(engine[, flags])</p>
 
-          </h1>
-        </div><section><p><p>Load and set the <code>engine</code> for some or all OpenSSL functions (selected by flags).</p></p>
+
+</div><div class='expandable-header' id='method_setEngine-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_setEngine" id="method_setEngine"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setEngine-expand-icon"></i>
+        <div class="permalink"><a href="#method_setEngine" class="permalink fas fa-link"></a></div>
+        <p>crypto.setEngine(engine[, flags])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setEngine-expand-content'>
+<p><p>Load and set the <code>engine</code> for some or all OpenSSL functions (selected by flags).</p></p>
 <p><p><code>engine</code> could be either an id or a path to the engine&#39;s shared library.</p></p>
 <p><p>The optional <code>flags</code> argument uses <code>ENGINE_METHOD_ALL</code> by default. The <code>flags</code>
 is a bit field taking one of or a mix of the following flags (defined in
@@ -696,15 +906,22 @@ is a bit field taking one of or a mix of the following flags (defined in
 <li><code>crypto.constants.ENGINE_METHOD_ALL</code></li>
 <li><code>crypto.constants.ENGINE_METHOD_NONE</code></li>
 </ul>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_timingSafeEqual" id="method_timingSafeEqual"></a>
-            <div class="permalink"><a href="#method_timingSafeEqual" class="permalink fas fa-link"></a></div>
-            <p>crypto.timingSafeEqual(a, b)</p>
 
-          </h1>
-        </div><section><p>This function is based on a constant-time algorithm.
+
+</div><div class='expandable-header' id='method_timingSafeEqual-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_timingSafeEqual" id="method_timingSafeEqual"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_timingSafeEqual-expand-icon"></i>
+        <div class="permalink"><a href="#method_timingSafeEqual" class="permalink fas fa-link"></a></div>
+        <p>crypto.timingSafeEqual(a, b)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_timingSafeEqual-expand-content'>
+<p>This function is based on a constant-time algorithm.
 Returns true if <code>a</code> is equal to <code>b</code>, without leaking timing information that
 would allow an attacker to guess one of the values. This is suitable for
 comparing HMAC digests or secret values like authentication cookies or
@@ -714,23 +931,30 @@ must have the same length.</p>
 <p><em>Note</em>: Use of <code>crypto.timingSafeEqual</code> does not guarantee that the
 <em>surrounding</em> code is timing-safe. Care should be taken to ensure that the
 surrounding code does not introduce timing vulnerabilities.</p>
-</section></section>
-       <div class="heading">
-          <h2>
-            <a name="module_notes" id="module_notes"></a>
-            <div class="permalink"><a href="#module_notes" class="permalink fas fa-link"></a></div>
-            <p>Notes</p>
 
-          </h1>
-        </div><section>
-       <div class="heading">
-          <h3>
-            <a name="module_legacy_streams_api__pre_node_js_v0_10_" id="module_legacy_streams_api__pre_node_js_v0_10_"></a>
-            <div class="permalink"><a href="#module_legacy_streams_api__pre_node_js_v0_10_" class="permalink fas fa-link"></a></div>
-            <p>Legacy Streams API (pre Node.js v0.10)</p>
 
-          </h1>
-        </div><section><p>The Crypto module was added to Node.js before there was the concept of a
+</div>
+<div class="heading">
+<h2>
+  <a name="module_notes" id="module_notes"></a>
+  <div class="permalink"><a href="#module_notes" class="permalink fas fa-link"></a></div>
+  <p>Notes</p>
+
+</h2>
+</div>
+
+
+
+<div class="heading">
+<h3>
+  <a name="module_legacy_streams_api__pre_node_js_v0_10_" id="module_legacy_streams_api__pre_node_js_v0_10_"></a>
+  <div class="permalink"><a href="#module_legacy_streams_api__pre_node_js_v0_10_" class="permalink fas fa-link"></a></div>
+  <p>Legacy Streams API (pre Node.js v0.10)</p>
+
+</h3>
+</div>
+
+<p>The Crypto module was added to Node.js before there was the concept of a
 unified Stream API, and before there were <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a> objects for handling
 binary data. As such, the many of the <code>crypto</code> defined classes have methods not
 typically found on other Node.js classes that implement the <a href="stream.html#stream_stream">streams</a>
@@ -738,15 +962,18 @@ API (e.g. <code>update()</code>, <code>final()</code>, or <code>digest()</code>)
 and returned <code>&#39;latin1&#39;</code> encoded strings by default rather than Buffers. This
 default was changed after Node.js v0.8 to use <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a> objects by default
 instead.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_recent_ecdh_changes" id="module_recent_ecdh_changes"></a>
-            <div class="permalink"><a href="#module_recent_ecdh_changes" class="permalink fas fa-link"></a></div>
-            <p>Recent ECDH Changes</p>
 
-          </h1>
-        </div><section><p>Usage of <code>ECDH</code> with non-dynamically generated key pairs has been simplified.
+
+<div class="heading">
+<h3>
+  <a name="module_recent_ecdh_changes" id="module_recent_ecdh_changes"></a>
+  <div class="permalink"><a href="#module_recent_ecdh_changes" class="permalink fas fa-link"></a></div>
+  <p>Recent ECDH Changes</p>
+
+</h3>
+</div>
+
+<p>Usage of <code>ECDH</code> with non-dynamically generated key pairs has been simplified.
 Now, <a href="#crypto_ecdh_setprivatekey_privatekey_encoding"><code>ecdh.setPrivateKey()</code></a> can be called with a preselected private key
 and the associated public point (key) will be computed and stored in the object.
 This allows code to only store and provide the private part of the EC key pair.
@@ -757,15 +984,18 @@ API is not useful. Either a previously stored private key should be set, which
 automatically generates the associated public key, or <a href="#crypto_ecdh_generatekeys_encoding_format"><code>ecdh.generateKeys()</code></a>
 should be called. The main drawback of using <a href="crypto.html#crypto_ecdh_setpublickey_publickey_encoding"><code>ecdh.setPublicKey()</code></a> is that
 it can be used to put the ECDH key pair into an inconsistent state.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_support_for_weak_or_compromised_algorithms" id="module_support_for_weak_or_compromised_algorithms"></a>
-            <div class="permalink"><a href="#module_support_for_weak_or_compromised_algorithms" class="permalink fas fa-link"></a></div>
-            <p>Support for weak or compromised algorithms</p>
 
-          </h1>
-        </div><section><p>The <code>crypto</code> module still supports some algorithms which are already
+
+<div class="heading">
+<h3>
+  <a name="module_support_for_weak_or_compromised_algorithms" id="module_support_for_weak_or_compromised_algorithms"></a>
+  <div class="permalink"><a href="#module_support_for_weak_or_compromised_algorithms" class="permalink fas fa-link"></a></div>
+  <p>Support for weak or compromised algorithms</p>
+
+</h3>
+</div>
+
+<p>The <code>crypto</code> module still supports some algorithms which are already
 compromised and are not currently recommended for use. The API also allows
 the use of ciphers and hashes with a small key size that are considered to be
 too weak for safe use.</p>
@@ -782,25 +1012,31 @@ at least 2048 bits and that of the curve of ECDSA and ECDH at least
 smaller than 2048 bits and are not recommended.</li>
 </ul>
 <p>See the reference for other recommendations and details.</p>
-</section></section>
-       <div class="heading">
-          <h2>
-            <a name="module_crypto_constants" id="module_crypto_constants"></a>
-            <div class="permalink"><a href="#module_crypto_constants" class="permalink fas fa-link"></a></div>
-            <p>Crypto Constants</p>
 
-          </h1>
-        </div><section><p>The following constants exported by <code>crypto.constants</code> apply to various uses of
+
+<div class="heading">
+<h2>
+  <a name="module_crypto_constants" id="module_crypto_constants"></a>
+  <div class="permalink"><a href="#module_crypto_constants" class="permalink fas fa-link"></a></div>
+  <p>Crypto Constants</p>
+
+</h2>
+</div>
+
+<p>The following constants exported by <code>crypto.constants</code> apply to various uses of
 the <code>crypto</code>, <code>tls</code>, and <code>https</code> modules and are generally specific to OpenSSL.</p>
 
-       <div class="heading">
-          <h3>
-            <a name="module_openssl_options" id="module_openssl_options"></a>
-            <div class="permalink"><a href="#module_openssl_options" class="permalink fas fa-link"></a></div>
-            <p>OpenSSL Options</p>
 
-          </h1>
-        </div><section><table>
+<div class="heading">
+<h3>
+  <a name="module_openssl_options" id="module_openssl_options"></a>
+  <div class="permalink"><a href="#module_openssl_options" class="permalink fas fa-link"></a></div>
+  <p>OpenSSL Options</p>
+
+</h3>
+</div>
+
+<table>
   <tr>
     <th>Constant</th>
     <th>Description</th>
@@ -954,15 +1190,18 @@ the <code>crypto</code>, <code>tls</code>, and <code>https</code> modules and ar
   </tr>
 </table>
 
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_openssl_engine_constants" id="module_openssl_engine_constants"></a>
-            <div class="permalink"><a href="#module_openssl_engine_constants" class="permalink fas fa-link"></a></div>
-            <p>OpenSSL Engine Constants</p>
 
-          </h1>
-        </div><section><table>
+
+<div class="heading">
+<h3>
+  <a name="module_openssl_engine_constants" id="module_openssl_engine_constants"></a>
+  <div class="permalink"><a href="#module_openssl_engine_constants" class="permalink fas fa-link"></a></div>
+  <p>OpenSSL Engine Constants</p>
+
+</h3>
+</div>
+
+<table>
   <tr>
     <th>Constant</th>
     <th>Description</th>
@@ -1021,15 +1260,18 @@ the <code>crypto</code>, <code>tls</code>, and <code>https</code> modules and ar
   </tr>
 </table>
 
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_other_openssl_constants" id="module_other_openssl_constants"></a>
-            <div class="permalink"><a href="#module_other_openssl_constants" class="permalink fas fa-link"></a></div>
-            <p>Other OpenSSL Constants</p>
 
-          </h1>
-        </div><section><table>
+
+<div class="heading">
+<h3>
+  <a name="module_other_openssl_constants" id="module_other_openssl_constants"></a>
+  <div class="permalink"><a href="#module_other_openssl_constants" class="permalink fas fa-link"></a></div>
+  <p>Other OpenSSL Constants</p>
+
+</h3>
+</div>
+
+<table>
   <tr>
     <th>Constant</th>
     <th>Description</th>
@@ -1111,15 +1353,18 @@ the <code>crypto</code>, <code>tls</code>, and <code>https</code> modules and ar
   </tr>
 </table>
 
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_node_js_crypto_constants" id="module_node_js_crypto_constants"></a>
-            <div class="permalink"><a href="#module_node_js_crypto_constants" class="permalink fas fa-link"></a></div>
-            <p>Node.js Crypto Constants</p>
 
-          </h1>
-        </div><section><table>
+
+<div class="heading">
+<h3>
+  <a name="module_node_js_crypto_constants" id="module_node_js_crypto_constants"></a>
+  <div class="permalink"><a href="#module_node_js_crypto_constants" class="permalink fas fa-link"></a></div>
+  <p>Node.js Crypto Constants</p>
+
+</h3>
+</div>
+
+<table>
   <tr>
     <th>Constant</th>
     <th>Description</th>
@@ -1138,136 +1383,225 @@ the <code>crypto</code>, <code>tls</code>, and <code>https</code> modules and ar
 
 <!-- [end-include:crypto.md] -->
 <!-- [start-include:debugger.md] -->
-</section></section>
-       <div class="heading">
-          <h2>
-            <a name="class_Certificate" id="class_Certificate"></a>
-            <div class="permalink"><a href="#class_Certificate" class="permalink fas fa-link"></a></div>
-            <p>Class: Certificate</p>
 
-          </h1>
-        </div><section><p>SPKAC is a Certificate Signing Request mechanism originally implemented by
-Netscape and now specified formally as part of <a href="https://www.w3.org/TR/html5/forms.html#the-keygen-element">HTML5&#39;s <code>keygen</code> element</a>.</p>
+<div class='expandable-header' id='class_Certificate-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_Certificate" id="class_Certificate"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_Certificate-expand-icon"></i>
+        <div class="permalink"><a href="#class_Certificate" class="permalink fas fa-link"></a></div>
+        <p>Class: Certificate</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_Certificate-expand-content'>
+<p>SPKAC is a Certificate Signing Request mechanism originally implemented by
+Netscape and was specified formally as part of <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/keygen">HTML5&#39;s <code>keygen</code> element</a>.</p>
+<p>Note that <code>&lt;keygen&gt;</code> is deprecated since <a href="https://www.w3.org/TR/html52/changes.html#features-removed">HTML 5.2</a> and new projects
+should not use this element anymore.</p>
 <p>The <code>crypto</code> module provides the <code>Certificate</code> class for working with SPKAC
 data. The most common usage is handling output generated by the HTML5
 <code>&lt;keygen&gt;</code> element. Node.js uses <a href="https://www.openssl.org/docs/man1.0.2/apps/spkac.html">OpenSSL&#39;s SPKAC implementation</a> internally.</p>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="module_legacy_api" id="module_legacy_api"></a>
-            <div class="permalink"><a href="#module_legacy_api" class="permalink fas fa-link"></a></div>
-            <p>Legacy API</p>
 
-          </h1>
-        </div><section><p>As a still supported legacy interface, it is possible (but not recommended) to
+
+<div class="heading">
+<h3>
+  <a name="subgroup_class_Certificate_Modules" id="subgroup_class_Certificate_Modules"></a>
+  <div class="permalink"><a href="#subgroup_class_Certificate_Modules" class="permalink fas fa-link"></a></div>
+  <p>Modules</p>
+
+</h3>
+</div>
+
+
+
+<div class="heading">
+<h4>
+  <a name="module_legacy_api" id="module_legacy_api"></a>
+  <div class="permalink"><a href="#module_legacy_api" class="permalink fas fa-link"></a></div>
+  <p>Legacy API</p>
+
+</h4>
+</div>
+
+<p>As a still supported legacy interface, it is possible (but not recommended) to
 create new instances of the <code>crypto.Certificate</code> class as illustrated in the
 examples below.</p>
 
-       <div class="heading">
-          <h5>
-            <a name="method_Certificate" id="method_Certificate"></a>
-            <div class="permalink"><a href="#method_Certificate" class="permalink fas fa-link"></a></div>
-            <p>new crypto.Certificate()</p>
+<div class='expandable-header' id='method_Certificate-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_Certificate" id="method_Certificate"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_Certificate-expand-icon"></i>
+        <div class="permalink"><a href="#method_Certificate" class="permalink fas fa-link"></a></div>
+        <p>new crypto.Certificate()</p>
 
-          </h1>
-        </div><section><p><p>Instances of the <code>Certificate</code> class can be created using the <code>new</code> keyword
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_Certificate-expand-content'>
+<p><p>Instances of the <code>Certificate</code> class can be created using the <code>new</code> keyword
 or by calling <code>crypto.Certificate()</code> as a function:</p></p>
 <pre class="prettyprint"><code class="lang-js">const crypto = require(&#39;crypto&#39;);
 
 const cert1 = new crypto.Certificate();
 const cert2 = crypto.Certificate();
 </code></pre>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_exportChallenge" id="method_exportChallenge"></a>
-            <div class="permalink"><a href="#method_exportChallenge" class="permalink fas fa-link"></a></div>
-            <p>certificate.exportChallenge(spkac)</p>
 
-          </h1>
-        </div><section><pre class="prettyprint"><code class="lang-js">const cert = require(&#39;crypto&#39;).Certificate();
+
+</div><div class='expandable-header' id='method_exportChallenge-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_exportChallenge" id="method_exportChallenge"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_exportChallenge-expand-icon"></i>
+        <div class="permalink"><a href="#method_exportChallenge" class="permalink fas fa-link"></a></div>
+        <p>certificate.exportChallenge(spkac)</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_exportChallenge-expand-content'>
+<pre class="prettyprint"><code class="lang-js">const cert = require(&#39;crypto&#39;).Certificate();
 const spkac = getSpkacSomehow();
 const challenge = cert.exportChallenge(spkac);
 console.log(challenge.toString(&#39;utf8&#39;));
 // Prints: the challenge as a UTF8 string
 </code></pre>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_exportPublicKey" id="method_exportPublicKey"></a>
-            <div class="permalink"><a href="#method_exportPublicKey" class="permalink fas fa-link"></a></div>
-            <p>certificate.exportPublicKey(spkac)</p>
 
-          </h1>
-        </div><section><pre class="prettyprint"><code class="lang-js">const cert = require(&#39;crypto&#39;).Certificate();
+
+</div><div class='expandable-header' id='method_exportPublicKey-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_exportPublicKey" id="method_exportPublicKey"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_exportPublicKey-expand-icon"></i>
+        <div class="permalink"><a href="#method_exportPublicKey" class="permalink fas fa-link"></a></div>
+        <p>certificate.exportPublicKey(spkac)</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_exportPublicKey-expand-content'>
+<pre class="prettyprint"><code class="lang-js">const cert = require(&#39;crypto&#39;).Certificate();
 const spkac = getSpkacSomehow();
 const publicKey = cert.exportPublicKey(spkac);
 console.log(publicKey);
 // Prints: the public key as &lt;Buffer ...&gt;
 </code></pre>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_verifySpkac" id="method_verifySpkac"></a>
-            <div class="permalink"><a href="#method_verifySpkac" class="permalink fas fa-link"></a></div>
-            <p>certificate.verifySpkac(spkac)</p>
 
-          </h1>
-        </div><section><pre class="prettyprint"><code class="lang-js">const cert = require(&#39;crypto&#39;).Certificate();
+
+</div><div class='expandable-header' id='method_verifySpkac-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_verifySpkac" id="method_verifySpkac"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_verifySpkac-expand-icon"></i>
+        <div class="permalink"><a href="#method_verifySpkac" class="permalink fas fa-link"></a></div>
+        <p>certificate.verifySpkac(spkac)</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_verifySpkac-expand-content'>
+<pre class="prettyprint"><code class="lang-js">const cert = require(&#39;crypto&#39;).Certificate();
 const spkac = getSpkacSomehow();
 console.log(cert.verifySpkac(Buffer.from(spkac)));
 // Prints: true or false
 </code></pre>
-</section></section></section><section>
-       <div class="heading">
-          <h4>
-            <a name="method_exportChallenge_1" id="method_exportChallenge_1"></a>
-            <div class="permalink"><a href="#method_exportChallenge_1" class="permalink fas fa-link"></a></div>
-            <p>Certificate.exportChallenge(spkac)</p>
 
-          </h1>
-        </div><section><pre class="prettyprint"><code class="lang-js">const { Certificate } = require(&#39;crypto&#39;);
+
+</div>
+<div class="heading">
+<h3>
+  <a name="subgroup_class_Certificate_Methods" id="subgroup_class_Certificate_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_Certificate_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_exportChallenge_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_exportChallenge_1" id="method_exportChallenge_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_exportChallenge_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_exportChallenge_1" class="permalink fas fa-link"></a></div>
+        <p>Certificate.exportChallenge(spkac)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_exportChallenge_1-expand-content'>
+<pre class="prettyprint"><code class="lang-js">const { Certificate } = require(&#39;crypto&#39;);
 const spkac = getSpkacSomehow();
 const challenge = Certificate.exportChallenge(spkac);
 console.log(challenge.toString(&#39;utf8&#39;));
 // Prints: the challenge as a UTF8 string
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_exportPublicKey_1" id="method_exportPublicKey_1"></a>
-            <div class="permalink"><a href="#method_exportPublicKey_1" class="permalink fas fa-link"></a></div>
-            <p>Certificate.exportPublicKey(spkac[, encoding])</p>
 
-          </h1>
-        </div><section><pre class="prettyprint"><code class="lang-js">const { Certificate } = require(&#39;crypto&#39;);
+
+</div><div class='expandable-header' id='method_exportPublicKey_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_exportPublicKey_1" id="method_exportPublicKey_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_exportPublicKey_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_exportPublicKey_1" class="permalink fas fa-link"></a></div>
+        <p>Certificate.exportPublicKey(spkac[, encoding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_exportPublicKey_1-expand-content'>
+<pre class="prettyprint"><code class="lang-js">const { Certificate } = require(&#39;crypto&#39;);
 const spkac = getSpkacSomehow();
 const publicKey = Certificate.exportPublicKey(spkac);
 console.log(publicKey);
 // Prints: the public key as &lt;Buffer ...&gt;
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_verifySpkac_1" id="method_verifySpkac_1"></a>
-            <div class="permalink"><a href="#method_verifySpkac_1" class="permalink fas fa-link"></a></div>
-            <p>Certificate.verifySpkac(spkac)</p>
 
-          </h1>
-        </div><section><pre class="prettyprint"><code class="lang-js">const { Certificate } = require(&#39;crypto&#39;);
+
+</div><div class='expandable-header' id='method_verifySpkac_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_verifySpkac_1" id="method_verifySpkac_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_verifySpkac_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_verifySpkac_1" class="permalink fas fa-link"></a></div>
+        <p>Certificate.verifySpkac(spkac)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_verifySpkac_1-expand-content'>
+<pre class="prettyprint"><code class="lang-js">const { Certificate } = require(&#39;crypto&#39;);
 const spkac = getSpkacSomehow();
 console.log(Certificate.verifySpkac(Buffer.from(spkac)));
 // Prints: true or false
 </code></pre>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="class_Cipher" id="class_Cipher"></a>
-            <div class="permalink"><a href="#class_Cipher" class="permalink fas fa-link"></a></div>
-            <p>Class: Cipher</p>
 
-          </h1>
-        </div><section><p><p>Instances of the <code>Cipher</code> class are used to encrypt data. The class can be
+
+</div>
+</div><div class='expandable-header' id='class_Cipher-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_Cipher" id="class_Cipher"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_Cipher-expand-icon"></i>
+        <div class="permalink"><a href="#class_Cipher" class="permalink fas fa-link"></a></div>
+        <p>Class: Cipher</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_Cipher-expand-content'>
+<p><p>Instances of the <code>Cipher</code> class are used to encrypt data. The class can be
 used in one of two ways:</p></p>
 <p><ul></p>
 <p><li>As a <a href="stream.html#stream_stream">stream</a> that is both readable and writable, where plain unencrypted
@@ -1315,54 +1649,92 @@ encrypted += cipher.final(&#39;hex&#39;);
 console.log(encrypted);
 // Prints: ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504
 </code></pre>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="method_final" id="method_final"></a>
-            <div class="permalink"><a href="#method_final" class="permalink fas fa-link"></a></div>
-            <p>cipher.final([outputEncoding])</p>
 
-          </h1>
-        </div><section><p>Returns any remaining enciphered contents. If <code>outputEncoding</code>
+
+<div class="heading">
+<h3>
+  <a name="subgroup_class_Cipher_Methods" id="subgroup_class_Cipher_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_Cipher_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_final-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_final" id="method_final"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_final-expand-icon"></i>
+        <div class="permalink"><a href="#method_final" class="permalink fas fa-link"></a></div>
+        <p>cipher.final([outputEncoding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_final-expand-content'>
+<p>Returns any remaining enciphered contents. If <code>outputEncoding</code>
 parameter is one of <code>&#39;latin1&#39;</code>, <code>&#39;base64&#39;</code> or <code>&#39;hex&#39;</code>, a string is returned.
 If an <code>outputEncoding</code> is not provided, a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a> is returned.</p>
 <p>Once the <code>cipher.final()</code> method has been called, the <code>Cipher</code> object can no
 longer be used to encrypt data. Attempts to call <code>cipher.final()</code> more than
 once will result in an error being thrown.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_setAAD" id="method_setAAD"></a>
-            <div class="permalink"><a href="#method_setAAD" class="permalink fas fa-link"></a></div>
-            <p>cipher.setAAD(buffer)</p>
 
-          </h1>
-        </div><section><p>When using an authenticated encryption mode (only <code>GCM</code> is currently
+
+</div><div class='expandable-header' id='method_setAAD-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_setAAD" id="method_setAAD"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setAAD-expand-icon"></i>
+        <div class="permalink"><a href="#method_setAAD" class="permalink fas fa-link"></a></div>
+        <p>cipher.setAAD(buffer)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setAAD-expand-content'>
+<p>When using an authenticated encryption mode (only <code>GCM</code> is currently
 supported), the <code>cipher.setAAD()</code> method sets the value used for the
 <em>additional authenticated data</em> (AAD) input parameter.</p>
 <p>The <code>cipher.setAAD()</code> method must be called before <a href="#crypto_cipher_update_data_inputencoding_outputencoding"><code>cipher.update()</code></a>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_getAuthTag" id="method_getAuthTag"></a>
-            <div class="permalink"><a href="#method_getAuthTag" class="permalink fas fa-link"></a></div>
-            <p>cipher.getAuthTag()</p>
 
-          </h1>
-        </div><section><p>When using an authenticated encryption mode (only <code>GCM</code> is currently
+
+</div><div class='expandable-header' id='method_getAuthTag-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_getAuthTag" id="method_getAuthTag"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getAuthTag-expand-icon"></i>
+        <div class="permalink"><a href="#method_getAuthTag" class="permalink fas fa-link"></a></div>
+        <p>cipher.getAuthTag()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getAuthTag-expand-content'>
+<p>When using an authenticated encryption mode (only <code>GCM</code> is currently
 supported), the <code>cipher.getAuthTag()</code> method returns a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a> containing
 the <em>authentication tag</em> that has been computed from the given data.</p>
 <p>The <code>cipher.getAuthTag()</code> method should only be called after encryption has
 been completed using the <a href="#crypto_cipher_final_outputencoding"><code>cipher.final()</code></a> method.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_setAutoPadding" id="method_setAutoPadding"></a>
-            <div class="permalink"><a href="#method_setAutoPadding" class="permalink fas fa-link"></a></div>
-            <p>cipher.setAutoPadding([autoPadding])</p>
 
-          </h1>
-        </div><section><p>When using block encryption algorithms, the <code>Cipher</code> class will automatically
+
+</div><div class='expandable-header' id='method_setAutoPadding-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_setAutoPadding" id="method_setAutoPadding"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setAutoPadding-expand-icon"></i>
+        <div class="permalink"><a href="#method_setAutoPadding" class="permalink fas fa-link"></a></div>
+        <p>cipher.setAutoPadding([autoPadding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setAutoPadding-expand-content'>
+<p>When using block encryption algorithms, the <code>Cipher</code> class will automatically
 add padding to the input data to the appropriate block size. To disable the
 default padding call <code>cipher.setAutoPadding(false)</code>.</p>
 <p>When <code>autoPadding</code> is <code>false</code>, the length of the entire input data must be a
@@ -1371,15 +1743,22 @@ Disabling automatic padding is useful for non-standard padding, for instance
 using <code>0x0</code> instead of PKCS padding.</p>
 <p>The <code>cipher.setAutoPadding()</code> method must be called before
 <a href="#crypto_cipher_final_outputencoding"><code>cipher.final()</code></a>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_update" id="method_update"></a>
-            <div class="permalink"><a href="#method_update" class="permalink fas fa-link"></a></div>
-            <p>cipher.update(data[, inputEncoding][, outputEncoding])</p>
 
-          </h1>
-        </div><section><p>Updates the cipher with <code>data</code>. If the <code>inputEncoding</code> argument is given,
+
+</div><div class='expandable-header' id='method_update-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_update" id="method_update"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_update-expand-icon"></i>
+        <div class="permalink"><a href="#method_update" class="permalink fas fa-link"></a></div>
+        <p>cipher.update(data[, inputEncoding][, outputEncoding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_update-expand-content'>
+<p>Updates the cipher with <code>data</code>. If the <code>inputEncoding</code> argument is given,
 its value must be one of <code>&#39;utf8&#39;</code>, <code>&#39;ascii&#39;</code>, or <code>&#39;latin1&#39;</code> and the <code>data</code>
 argument is a string using the specified encoding. If the <code>inputEncoding</code>
 argument is not given, <code>data</code> must be a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a>, <code>TypedArray</code>, or
@@ -1392,15 +1771,23 @@ is specified, a string using the specified encoding is returned. If no
 <p>The <code>cipher.update()</code> method can be called multiple times with new data until
 <a href="#crypto_cipher_final_outputencoding"><code>cipher.final()</code></a> is called. Calling <code>cipher.update()</code> after
 <a href="#crypto_cipher_final_outputencoding"><code>cipher.final()</code></a> will result in an error being thrown.</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="class_Decipher" id="class_Decipher"></a>
-            <div class="permalink"><a href="#class_Decipher" class="permalink fas fa-link"></a></div>
-            <p>Class: Decipher</p>
 
-          </h1>
-        </div><section><p><p>Instances of the <code>Decipher</code> class are used to decrypt data. The class can be
+
+</div>
+</div><div class='expandable-header' id='class_Decipher-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_Decipher" id="class_Decipher"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_Decipher-expand-icon"></i>
+        <div class="permalink"><a href="#class_Decipher" class="permalink fas fa-link"></a></div>
+        <p>Class: Decipher</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_Decipher-expand-content'>
+<p><p>Instances of the <code>Decipher</code> class are used to decrypt data. The class can be
 used in one of two ways:</p></p>
 <p><ul></p>
 <p><li>As a <a href="stream.html#stream_stream">stream</a> that is both readable and writable, where plain encrypted
@@ -1452,71 +1839,123 @@ decrypted += decipher.final(&#39;utf8&#39;);
 console.log(decrypted);
 // Prints: some clear text data
 </code></pre>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="method_final_1" id="method_final_1"></a>
-            <div class="permalink"><a href="#method_final_1" class="permalink fas fa-link"></a></div>
-            <p>decipher.final([outputEncoding])</p>
 
-          </h1>
-        </div><section><p>Returns any remaining deciphered contents. If <code>outputEncoding</code>
+
+<div class="heading">
+<h3>
+  <a name="subgroup_class_Decipher_Methods" id="subgroup_class_Decipher_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_Decipher_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_final_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_final_1" id="method_final_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_final_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_final_1" class="permalink fas fa-link"></a></div>
+        <p>decipher.final([outputEncoding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_final_1-expand-content'>
+<p>Returns any remaining deciphered contents. If <code>outputEncoding</code>
 parameter is one of <code>&#39;latin1&#39;</code>, <code>&#39;ascii&#39;</code> or <code>&#39;utf8&#39;</code>, a string is returned.
 If an <code>outputEncoding</code> is not provided, a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a> is returned.</p>
 <p>Once the <code>decipher.final()</code> method has been called, the <code>Decipher</code> object can
 no longer be used to decrypt data. Attempts to call <code>decipher.final()</code> more
 than once will result in an error being thrown.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_setAAD_1" id="method_setAAD_1"></a>
-            <div class="permalink"><a href="#method_setAAD_1" class="permalink fas fa-link"></a></div>
-            <p>decipher.setAAD(buffer)</p>
 
-          </h1>
-        </div><section><p>When using an authenticated encryption mode (only <code>GCM</code> is currently
+
+</div><div class='expandable-header' id='method_setAAD_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_setAAD_1" id="method_setAAD_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setAAD_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_setAAD_1" class="permalink fas fa-link"></a></div>
+        <p>decipher.setAAD(buffer)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setAAD_1-expand-content'>
+<p>When using an authenticated encryption mode (only <code>GCM</code> is currently
 supported), the <code>decipher.setAAD()</code> method sets the value used for the
 <em>additional authenticated data</em> (AAD) input parameter.</p>
 <p>The <code>decipher.setAAD()</code> method must be called before <a href="#crypto_decipher_update_data_inputencoding_outputencoding"><code>decipher.update()</code></a>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_setAuthTag" id="method_setAuthTag"></a>
-            <div class="permalink"><a href="#method_setAuthTag" class="permalink fas fa-link"></a></div>
-            <p>decipher.setAuthTag(buffer)</p>
 
-          </h1>
-        </div><section><p>When using an authenticated encryption mode (only <code>GCM</code> is currently
+
+</div><div class='expandable-header' id='method_setAuthTag-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_setAuthTag" id="method_setAuthTag"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setAuthTag-expand-icon"></i>
+        <div class="permalink"><a href="#method_setAuthTag" class="permalink fas fa-link"></a></div>
+        <p>decipher.setAuthTag(buffer)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setAuthTag-expand-content'>
+<p>When using an authenticated encryption mode (only <code>GCM</code> is currently
 supported), the <code>decipher.setAuthTag()</code> method is used to pass in the
 received <em>authentication tag</em>. If no tag is provided, or if the cipher text
 has been tampered with, <a href="#crypto_decipher_final_outputencoding"><code>decipher.final()</code></a> will throw, indicating that the
 cipher text should be discarded due to failed authentication.</p>
+<p>Note that this Node.js version does not verify the length of GCM authentication
+tags. Such a check <em>must</em> be implemented by applications and is crucial to the
+authenticity of the encrypted data, otherwise, an attacker can use an
+arbitrarily short authentication tag to increase the chances of successfully
+passing authentication (up to 0.39%). It is highly recommended to associate one
+of the values 16, 15, 14, 13, 12, 8 or 4 bytes with each key, and to only permit
+authentication tags of that length, see <a href="http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf">NIST SP 800-38D</a>.</p>
 <p>The <code>decipher.setAuthTag()</code> method must be called before
 <a href="#crypto_decipher_final_outputencoding"><code>decipher.final()</code></a>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_setAutoPadding_1" id="method_setAutoPadding_1"></a>
-            <div class="permalink"><a href="#method_setAutoPadding_1" class="permalink fas fa-link"></a></div>
-            <p>decipher.setAutoPadding([autoPadding])</p>
 
-          </h1>
-        </div><section><p>When data has been encrypted without standard block padding, calling
+
+</div><div class='expandable-header' id='method_setAutoPadding_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_setAutoPadding_1" id="method_setAutoPadding_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setAutoPadding_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_setAutoPadding_1" class="permalink fas fa-link"></a></div>
+        <p>decipher.setAutoPadding([autoPadding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setAutoPadding_1-expand-content'>
+<p>When data has been encrypted without standard block padding, calling
 <code>decipher.setAutoPadding(false)</code> will disable automatic padding to prevent
 <a href="#crypto_decipher_final_outputencoding"><code>decipher.final()</code></a> from checking for and removing padding.</p>
 <p>Turning auto padding off will only work if the input data&#39;s length is a
 multiple of the ciphers block size.</p>
 <p>The <code>decipher.setAutoPadding()</code> method must be called before
 <a href="#crypto_decipher_final_outputencoding"><code>decipher.final()</code></a>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_update_1" id="method_update_1"></a>
-            <div class="permalink"><a href="#method_update_1" class="permalink fas fa-link"></a></div>
-            <p>decipher.update(data[, inputEncoding][, outputEncoding])</p>
 
-          </h1>
-        </div><section><p>Updates the decipher with <code>data</code>. If the <code>inputEncoding</code> argument is given,
+
+</div><div class='expandable-header' id='method_update_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_update_1" id="method_update_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_update_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_update_1" class="permalink fas fa-link"></a></div>
+        <p>decipher.update(data[, inputEncoding][, outputEncoding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_update_1-expand-content'>
+<p>Updates the decipher with <code>data</code>. If the <code>inputEncoding</code> argument is given,
 its value must be one of <code>&#39;latin1&#39;</code>, <code>&#39;base64&#39;</code>, or <code>&#39;hex&#39;</code> and the <code>data</code>
 argument is a string using the specified encoding. If the <code>inputEncoding</code>
 argument is not given, <code>data</code> must be a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a>. If <code>data</code> is a
@@ -1528,15 +1967,23 @@ is specified, a string using the specified encoding is returned. If no
 <p>The <code>decipher.update()</code> method can be called multiple times with new data until
 <a href="#crypto_decipher_final_outputencoding"><code>decipher.final()</code></a> is called. Calling <code>decipher.update()</code> after
 <a href="#crypto_decipher_final_outputencoding"><code>decipher.final()</code></a> will result in an error being thrown.</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="class_DiffieHellman" id="class_DiffieHellman"></a>
-            <div class="permalink"><a href="#class_DiffieHellman" class="permalink fas fa-link"></a></div>
-            <p>Class: DiffieHellman</p>
 
-          </h1>
-        </div><section><p><p>The <code>DiffieHellman</code> class is a utility for creating Diffie-Hellman key
+
+</div>
+</div><div class='expandable-header' id='class_DiffieHellman-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_DiffieHellman" id="class_DiffieHellman"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_DiffieHellman-expand-icon"></i>
+        <div class="permalink"><a href="#class_DiffieHellman" class="permalink fas fa-link"></a></div>
+        <p>Class: DiffieHellman</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_DiffieHellman-expand-content'>
+<p><p>The <code>DiffieHellman</code> class is a utility for creating Diffie-Hellman key
 exchanges.</p></p>
 <p><p>Instances of the <code>DiffieHellman</code> class can be created using the
 <a href="#crypto_crypto_creatediffiehellman_prime_primeencoding_generator_generatorencoding"><code>crypto.createDiffieHellman()</code></a> function.</p></p>
@@ -1558,15 +2005,32 @@ const bobSecret = bob.computeSecret(aliceKey);
 // OK
 assert.strictEqual(aliceSecret.toString(&#39;hex&#39;), bobSecret.toString(&#39;hex&#39;));
 </code></pre>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="property_verifyError" id="property_verifyError"></a>
-            <div class="permalink"><a href="#property_verifyError" class="permalink fas fa-link"></a></div>
-            <p>diffieHellman.verifyError</p>
 
-          </h1>
-        </div><section><p><p>A bit field containing any warnings and/or errors resulting from a check
+
+<div class="heading">
+<h3>
+  <a name="subgroup_class_DiffieHellman_Properties" id="subgroup_class_DiffieHellman_Properties"></a>
+  <div class="permalink"><a href="#subgroup_class_DiffieHellman_Properties" class="permalink fas fa-link"></a></div>
+  <p>Properties</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='property_verifyError-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_verifyError" id="property_verifyError"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_verifyError-expand-icon"></i>
+        <div class="permalink"><a href="#property_verifyError" class="permalink fas fa-link"></a></div>
+        <p>diffieHellman.verifyError</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_verifyError-expand-content'>
+<p><p>A bit field containing any warnings and/or errors resulting from a check
 performed during initialization of the <code>DiffieHellman</code> object.</p></p>
 <p><p>The following values are valid for this property (as defined in <code>constants</code>
 module):</p></p>
@@ -1576,15 +2040,33 @@ module):</p></p>
 <li><code>DH_UNABLE_TO_CHECK_GENERATOR</code></li>
 <li><code>DH_NOT_SUITABLE_GENERATOR</code></li>
 </ul>
-</section></section><section>
-       <div class="heading">
-          <h4>
-            <a name="method_computeSecret" id="method_computeSecret"></a>
-            <div class="permalink"><a href="#method_computeSecret" class="permalink fas fa-link"></a></div>
-            <p>diffieHellman.computeSecret(otherPublicKey[, inputEncoding][, outputEncoding])</p>
 
-          </h1>
-        </div><section><p>Computes the shared secret using <code>otherPublicKey</code> as the other
+
+</div>
+<div class="heading">
+<h3>
+  <a name="subgroup_class_DiffieHellman_Methods" id="subgroup_class_DiffieHellman_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_DiffieHellman_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_computeSecret-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_computeSecret" id="method_computeSecret"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_computeSecret-expand-icon"></i>
+        <div class="permalink"><a href="#method_computeSecret" class="permalink fas fa-link"></a></div>
+        <p>diffieHellman.computeSecret(otherPublicKey[, inputEncoding][, outputEncoding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_computeSecret-expand-content'>
+<p>Computes the shared secret using <code>otherPublicKey</code> as the other
 party&#39;s public key and returns the computed shared secret. The supplied
 key is interpreted using the specified <code>inputEncoding</code>, and secret is
 encoded using specified <code>outputEncoding</code>. Encodings can be
@@ -1593,96 +2075,153 @@ provided, <code>otherPublicKey</code> is expected to be a <a href="buffer.html#b
 <code>TypedArray</code>, or <code>DataView</code>.</p>
 <p>If <code>outputEncoding</code> is given a string is returned; otherwise, a
 <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a> is returned.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_generateKeys" id="method_generateKeys"></a>
-            <div class="permalink"><a href="#method_generateKeys" class="permalink fas fa-link"></a></div>
-            <p>diffieHellman.generateKeys([encoding])</p>
 
-          </h1>
-        </div><section><p>Generates private and public Diffie-Hellman key values, and returns
+
+</div><div class='expandable-header' id='method_generateKeys-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_generateKeys" id="method_generateKeys"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_generateKeys-expand-icon"></i>
+        <div class="permalink"><a href="#method_generateKeys" class="permalink fas fa-link"></a></div>
+        <p>diffieHellman.generateKeys([encoding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_generateKeys-expand-content'>
+<p>Generates private and public Diffie-Hellman key values, and returns
 the public key in the specified <code>encoding</code>. This key should be
 transferred to the other party. Encoding can be <code>&#39;latin1&#39;</code>, <code>&#39;hex&#39;</code>,
 or <code>&#39;base64&#39;</code>. If <code>encoding</code> is provided a string is returned; otherwise a
 <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a> is returned.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_getGenerator" id="method_getGenerator"></a>
-            <div class="permalink"><a href="#method_getGenerator" class="permalink fas fa-link"></a></div>
-            <p>diffieHellman.getGenerator([encoding])</p>
 
-          </h1>
-        </div><section><p>Returns the Diffie-Hellman generator in the specified <code>encoding</code>, which can
+
+</div><div class='expandable-header' id='method_getGenerator-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_getGenerator" id="method_getGenerator"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getGenerator-expand-icon"></i>
+        <div class="permalink"><a href="#method_getGenerator" class="permalink fas fa-link"></a></div>
+        <p>diffieHellman.getGenerator([encoding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getGenerator-expand-content'>
+<p>Returns the Diffie-Hellman generator in the specified <code>encoding</code>, which can
 be <code>&#39;latin1&#39;</code>, <code>&#39;hex&#39;</code>, or <code>&#39;base64&#39;</code>. If  <code>encoding</code> is provided a string is
 returned; otherwise a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a> is returned.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_getPrime" id="method_getPrime"></a>
-            <div class="permalink"><a href="#method_getPrime" class="permalink fas fa-link"></a></div>
-            <p>diffieHellman.getPrime([encoding])</p>
 
-          </h1>
-        </div><section><p>Returns the Diffie-Hellman prime in the specified <code>encoding</code>, which can
+
+</div><div class='expandable-header' id='method_getPrime-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_getPrime" id="method_getPrime"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getPrime-expand-icon"></i>
+        <div class="permalink"><a href="#method_getPrime" class="permalink fas fa-link"></a></div>
+        <p>diffieHellman.getPrime([encoding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getPrime-expand-content'>
+<p>Returns the Diffie-Hellman prime in the specified <code>encoding</code>, which can
 be <code>&#39;latin1&#39;</code>, <code>&#39;hex&#39;</code>, or <code>&#39;base64&#39;</code>. If <code>encoding</code> is provided a string is
 returned; otherwise a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a> is returned.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_getPrivateKey" id="method_getPrivateKey"></a>
-            <div class="permalink"><a href="#method_getPrivateKey" class="permalink fas fa-link"></a></div>
-            <p>diffieHellman.getPrivateKey([encoding])</p>
 
-          </h1>
-        </div><section><p>Returns the Diffie-Hellman private key in the specified <code>encoding</code>,
+
+</div><div class='expandable-header' id='method_getPrivateKey-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_getPrivateKey" id="method_getPrivateKey"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getPrivateKey-expand-icon"></i>
+        <div class="permalink"><a href="#method_getPrivateKey" class="permalink fas fa-link"></a></div>
+        <p>diffieHellman.getPrivateKey([encoding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getPrivateKey-expand-content'>
+<p>Returns the Diffie-Hellman private key in the specified <code>encoding</code>,
 which can be <code>&#39;latin1&#39;</code>, <code>&#39;hex&#39;</code>, or <code>&#39;base64&#39;</code>. If <code>encoding</code> is provided a
 string is returned; otherwise a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a> is returned.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_getPublicKey" id="method_getPublicKey"></a>
-            <div class="permalink"><a href="#method_getPublicKey" class="permalink fas fa-link"></a></div>
-            <p>diffieHellman.getPublicKey([encoding])</p>
 
-          </h1>
-        </div><section><p>Returns the Diffie-Hellman public key in the specified <code>encoding</code>, which
+
+</div><div class='expandable-header' id='method_getPublicKey-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_getPublicKey" id="method_getPublicKey"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getPublicKey-expand-icon"></i>
+        <div class="permalink"><a href="#method_getPublicKey" class="permalink fas fa-link"></a></div>
+        <p>diffieHellman.getPublicKey([encoding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getPublicKey-expand-content'>
+<p>Returns the Diffie-Hellman public key in the specified <code>encoding</code>, which
 can be <code>&#39;latin1&#39;</code>, <code>&#39;hex&#39;</code>, or <code>&#39;base64&#39;</code>. If <code>encoding</code> is provided a
 string is returned; otherwise a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a> is returned.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_setPrivateKey" id="method_setPrivateKey"></a>
-            <div class="permalink"><a href="#method_setPrivateKey" class="permalink fas fa-link"></a></div>
-            <p>diffieHellman.setPrivateKey(privateKey[, encoding])</p>
 
-          </h1>
-        </div><section><p>Sets the Diffie-Hellman private key. If the <code>encoding</code> argument is provided
+
+</div><div class='expandable-header' id='method_setPrivateKey-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_setPrivateKey" id="method_setPrivateKey"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setPrivateKey-expand-icon"></i>
+        <div class="permalink"><a href="#method_setPrivateKey" class="permalink fas fa-link"></a></div>
+        <p>diffieHellman.setPrivateKey(privateKey[, encoding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setPrivateKey-expand-content'>
+<p>Sets the Diffie-Hellman private key. If the <code>encoding</code> argument is provided
 and is either <code>&#39;latin1&#39;</code>, <code>&#39;hex&#39;</code>, or <code>&#39;base64&#39;</code>, <code>privateKey</code> is expected
 to be a string. If no <code>encoding</code> is provided, <code>privateKey</code> is expected
 to be a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a>, <code>TypedArray</code>, or <code>DataView</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_setPublicKey" id="method_setPublicKey"></a>
-            <div class="permalink"><a href="#method_setPublicKey" class="permalink fas fa-link"></a></div>
-            <p>diffieHellman.setPublicKey(publicKey[, encoding])</p>
 
-          </h1>
-        </div><section><p>Sets the Diffie-Hellman public key. If the <code>encoding</code> argument is provided
+
+</div><div class='expandable-header' id='method_setPublicKey-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_setPublicKey" id="method_setPublicKey"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setPublicKey-expand-icon"></i>
+        <div class="permalink"><a href="#method_setPublicKey" class="permalink fas fa-link"></a></div>
+        <p>diffieHellman.setPublicKey(publicKey[, encoding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setPublicKey-expand-content'>
+<p>Sets the Diffie-Hellman public key. If the <code>encoding</code> argument is provided
 and is either <code>&#39;latin1&#39;</code>, <code>&#39;hex&#39;</code> or <code>&#39;base64&#39;</code>, <code>publicKey</code> is expected
 to be a string. If no <code>encoding</code> is provided, <code>publicKey</code> is expected
 to be a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a>, <code>TypedArray</code>, or <code>DataView</code>.</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="class_ECDH" id="class_ECDH"></a>
-            <div class="permalink"><a href="#class_ECDH" class="permalink fas fa-link"></a></div>
-            <p>Class: ECDH</p>
 
-          </h1>
-        </div><section><p><p>The <code>ECDH</code> class is a utility for creating Elliptic Curve Diffie-Hellman (ECDH)
+
+</div>
+</div><div class='expandable-header' id='class_ECDH-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_ECDH" id="class_ECDH"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_ECDH-expand-icon"></i>
+        <div class="permalink"><a href="#class_ECDH" class="permalink fas fa-link"></a></div>
+        <p>Class: ECDH</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_ECDH-expand-content'>
+<p><p>The <code>ECDH</code> class is a utility for creating Elliptic Curve Diffie-Hellman (ECDH)
 key exchanges.</p></p>
 <p><p>Instances of the <code>ECDH</code> class can be created using the
 <a href="#crypto_crypto_createecdh_curvename"><code>crypto.createECDH()</code></a> function.</p></p>
@@ -1704,15 +2243,32 @@ const bobSecret = bob.computeSecret(aliceKey);
 assert.strictEqual(aliceSecret.toString(&#39;hex&#39;), bobSecret.toString(&#39;hex&#39;));
 // OK
 </code></pre>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="method_computeSecret_1" id="method_computeSecret_1"></a>
-            <div class="permalink"><a href="#method_computeSecret_1" class="permalink fas fa-link"></a></div>
-            <p>ecdh.computeSecret(otherPublicKey[, inputEncoding][, outputEncoding])</p>
 
-          </h1>
-        </div><section><p>Computes the shared secret using <code>otherPublicKey</code> as the other
+
+<div class="heading">
+<h3>
+  <a name="subgroup_class_ECDH_Methods" id="subgroup_class_ECDH_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_ECDH_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_computeSecret_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_computeSecret_1" id="method_computeSecret_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_computeSecret_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_computeSecret_1" class="permalink fas fa-link"></a></div>
+        <p>ecdh.computeSecret(otherPublicKey[, inputEncoding][, outputEncoding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_computeSecret_1-expand-content'>
+<p>Computes the shared secret using <code>otherPublicKey</code> as the other
 party&#39;s public key and returns the computed shared secret. The supplied
 key is interpreted using specified <code>inputEncoding</code>, and the returned secret
 is encoded using the specified <code>outputEncoding</code>. Encodings can be
@@ -1721,15 +2277,22 @@ provided, <code>otherPublicKey</code> is expected to be a <a href="buffer.html#b
 <code>DataView</code>.</p>
 <p>If <code>outputEncoding</code> is given a string will be returned; otherwise a
 <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a> is returned.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_generateKeys_1" id="method_generateKeys_1"></a>
-            <div class="permalink"><a href="#method_generateKeys_1" class="permalink fas fa-link"></a></div>
-            <p>ecdh.generateKeys([encoding[, format]])</p>
 
-          </h1>
-        </div><section><p>Generates private and public EC Diffie-Hellman key values, and returns
+
+</div><div class='expandable-header' id='method_generateKeys_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_generateKeys_1" id="method_generateKeys_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_generateKeys_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_generateKeys_1" class="permalink fas fa-link"></a></div>
+        <p>ecdh.generateKeys([encoding[, format]])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_generateKeys_1-expand-content'>
+<p>Generates private and public EC Diffie-Hellman key values, and returns
 the public key in the specified <code>format</code> and <code>encoding</code>. This key should be
 transferred to the other party.</p>
 <p>The <code>format</code> argument specifies point encoding and can be <code>&#39;compressed&#39;</code> or
@@ -1738,26 +2301,40 @@ transferred to the other party.</p>
 <p>The <code>encoding</code> argument can be <code>&#39;latin1&#39;</code>, <code>&#39;hex&#39;</code>, or <code>&#39;base64&#39;</code>. If
 <code>encoding</code> is provided a string is returned; otherwise a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a>
 is returned.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_getPrivateKey_1" id="method_getPrivateKey_1"></a>
-            <div class="permalink"><a href="#method_getPrivateKey_1" class="permalink fas fa-link"></a></div>
-            <p>ecdh.getPrivateKey([encoding])</p>
 
-          </h1>
-        </div><section><p>Returns the EC Diffie-Hellman private key in the specified <code>encoding</code>,
+
+</div><div class='expandable-header' id='method_getPrivateKey_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_getPrivateKey_1" id="method_getPrivateKey_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getPrivateKey_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_getPrivateKey_1" class="permalink fas fa-link"></a></div>
+        <p>ecdh.getPrivateKey([encoding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getPrivateKey_1-expand-content'>
+<p>Returns the EC Diffie-Hellman private key in the specified <code>encoding</code>,
 which can be <code>&#39;latin1&#39;</code>, <code>&#39;hex&#39;</code>, or <code>&#39;base64&#39;</code>. If <code>encoding</code> is provided
 a string is returned; otherwise a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a> is returned.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_getPublicKey_1" id="method_getPublicKey_1"></a>
-            <div class="permalink"><a href="#method_getPublicKey_1" class="permalink fas fa-link"></a></div>
-            <p>ecdh.getPublicKey([encoding][, format])</p>
 
-          </h1>
-        </div><section><p>Returns the EC Diffie-Hellman public key in the specified <code>encoding</code> and
+
+</div><div class='expandable-header' id='method_getPublicKey_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_getPublicKey_1" id="method_getPublicKey_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getPublicKey_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_getPublicKey_1" class="permalink fas fa-link"></a></div>
+        <p>ecdh.getPublicKey([encoding][, format])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getPublicKey_1-expand-content'>
+<p>Returns the EC Diffie-Hellman public key in the specified <code>encoding</code> and
 <code>format</code>.</p>
 <p>The <code>format</code> argument specifies point encoding and can be <code>&#39;compressed&#39;</code> or
 <code>&#39;uncompressed&#39;</code>. If <code>format</code> is not specified the point will be returned in
@@ -1765,30 +2342,44 @@ a string is returned; otherwise a <a href="buffer.html#buffer_class_buffer"><cod
 <p>The <code>encoding</code> argument can be <code>&#39;latin1&#39;</code>, <code>&#39;hex&#39;</code>, or <code>&#39;base64&#39;</code>. If
 <code>encoding</code> is specified, a string is returned; otherwise a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a> is
 returned.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_setPrivateKey_1" id="method_setPrivateKey_1"></a>
-            <div class="permalink"><a href="#method_setPrivateKey_1" class="permalink fas fa-link"></a></div>
-            <p>ecdh.setPrivateKey(privateKey[, encoding])</p>
 
-          </h1>
-        </div><section><p>Sets the EC Diffie-Hellman private key. The <code>encoding</code> can be <code>&#39;latin1&#39;</code>,
+
+</div><div class='expandable-header' id='method_setPrivateKey_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_setPrivateKey_1" id="method_setPrivateKey_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setPrivateKey_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_setPrivateKey_1" class="permalink fas fa-link"></a></div>
+        <p>ecdh.setPrivateKey(privateKey[, encoding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setPrivateKey_1-expand-content'>
+<p>Sets the EC Diffie-Hellman private key. The <code>encoding</code> can be <code>&#39;latin1&#39;</code>,
 <code>&#39;hex&#39;</code> or <code>&#39;base64&#39;</code>. If <code>encoding</code> is provided, <code>privateKey</code> is expected
 to be a string; otherwise <code>privateKey</code> is expected to be a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a>,
 <code>TypedArray</code>, or <code>DataView</code>.</p>
 <p>If <code>privateKey</code> is not valid for the curve specified when the <code>ECDH</code> object was
 created, an error is thrown. Upon setting the private key, the associated
 public point (key) is also generated and set in the ECDH object.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_setPublicKey_1" id="method_setPublicKey_1"></a>
-            <div class="permalink"><a href="#method_setPublicKey_1" class="permalink fas fa-link"></a></div>
-            <p>ecdh.setPublicKey(publicKey[, encoding])</p>
 
-          </h1>
-        </div><section><p><p>Sets the EC Diffie-Hellman public key. Key encoding can be <code>&#39;latin1&#39;</code>,
+
+</div><div class='expandable-header' id='method_setPublicKey_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_setPublicKey_1" id="method_setPublicKey_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setPublicKey_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_setPublicKey_1" class="permalink fas fa-link"></a></div>
+        <p>ecdh.setPublicKey(publicKey[, encoding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setPublicKey_1-expand-content'>
+<p><p>Sets the EC Diffie-Hellman public key. Key encoding can be <code>&#39;latin1&#39;</code>,
 <code>&#39;hex&#39;</code> or <code>&#39;base64&#39;</code>. If <code>encoding</code> is provided <code>publicKey</code> is expected to
 be a string; otherwise a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a>, <code>TypedArray</code>, or <code>DataView</code> is expected.</p></p>
 <p><p>Note that there is not normally a reason to call this method because <code>ECDH</code>
@@ -1819,15 +2410,23 @@ const bobSecret = bob.computeSecret(alice.getPublicKey(), null, &#39;hex&#39;);
 // aliceSecret and bobSecret should be the same shared secret value
 console.log(aliceSecret === bobSecret);
 </code></pre>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="class_Hash" id="class_Hash"></a>
-            <div class="permalink"><a href="#class_Hash" class="permalink fas fa-link"></a></div>
-            <p>Class: Hash</p>
 
-          </h1>
-        </div><section><p><p>The <code>Hash</code> class is a utility for creating hash digests of data. It can be
+
+</div>
+</div><div class='expandable-header' id='class_Hash-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_Hash" id="class_Hash"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_Hash-expand-icon"></i>
+        <div class="permalink"><a href="#class_Hash" class="permalink fas fa-link"></a></div>
+        <p>Class: Hash</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_Hash-expand-content'>
+<p><p>The <code>Hash</code> class is a utility for creating hash digests of data. It can be
 used in one of two ways:</p></p>
 <p><ul></p>
 <p><li>As a <a href="stream.html#stream_stream">stream</a> that is both readable and writable, where data is written
@@ -1870,43 +2469,75 @@ console.log(hash.digest(&#39;hex&#39;));
 // Prints:
 //   6a2da20943931e9834fc12cfe5bb47bbd9ae43489a30726962b576f4e3993e50
 </code></pre>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="method_digest" id="method_digest"></a>
-            <div class="permalink"><a href="#method_digest" class="permalink fas fa-link"></a></div>
-            <p>hash.digest([encoding])</p>
 
-          </h1>
-        </div><section><p>Calculates the digest of all of the data passed to be hashed (using the
+
+<div class="heading">
+<h3>
+  <a name="subgroup_class_Hash_Methods" id="subgroup_class_Hash_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_Hash_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_digest-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_digest" id="method_digest"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_digest-expand-icon"></i>
+        <div class="permalink"><a href="#method_digest" class="permalink fas fa-link"></a></div>
+        <p>hash.digest([encoding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_digest-expand-content'>
+<p>Calculates the digest of all of the data passed to be hashed (using the
 <a href="crypto.html#crypto_hash_update_data_inputencoding"><code>hash.update()</code></a> method). The <code>encoding</code> can be <code>&#39;hex&#39;</code>, <code>&#39;latin1&#39;</code> or
 <code>&#39;base64&#39;</code>. If <code>encoding</code> is provided a string will be returned; otherwise
 a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a> is returned.</p>
 <p>The <code>Hash</code> object can not be used again after <code>hash.digest()</code> method has been
 called. Multiple calls will cause an error to be thrown.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_update_2" id="method_update_2"></a>
-            <div class="permalink"><a href="#method_update_2" class="permalink fas fa-link"></a></div>
-            <p>hash.update(data[, inputEncoding])</p>
 
-          </h1>
-        </div><section><p>Updates the hash content with the given <code>data</code>, the encoding of which
+
+</div><div class='expandable-header' id='method_update_2-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_update_2" id="method_update_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_update_2-expand-icon"></i>
+        <div class="permalink"><a href="#method_update_2" class="permalink fas fa-link"></a></div>
+        <p>hash.update(data[, inputEncoding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_update_2-expand-content'>
+<p>Updates the hash content with the given <code>data</code>, the encoding of which
 is given in <code>inputEncoding</code> and can be <code>&#39;utf8&#39;</code>, <code>&#39;ascii&#39;</code> or
 <code>&#39;latin1&#39;</code>. If <code>encoding</code> is not provided, and the <code>data</code> is a string, an
 encoding of <code>&#39;utf8&#39;</code> is enforced. If <code>data</code> is a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a>, <code>TypedArray</code>, or
 <code>DataView</code>, then <code>inputEncoding</code> is ignored.</p>
 <p>This can be called many times with new data as it is streamed.</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="class_Hmac" id="class_Hmac"></a>
-            <div class="permalink"><a href="#class_Hmac" class="permalink fas fa-link"></a></div>
-            <p>Class: Hmac</p>
 
-          </h1>
-        </div><section><p><p>The <code>Hmac</code> Class is a utility for creating cryptographic HMAC digests. It can
+
+</div>
+</div><div class='expandable-header' id='class_Hmac-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_Hmac" id="class_Hmac"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_Hmac-expand-icon"></i>
+        <div class="permalink"><a href="#class_Hmac" class="permalink fas fa-link"></a></div>
+        <p>Class: Hmac</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_Hmac-expand-content'>
+<p><p>The <code>Hmac</code> Class is a utility for creating cryptographic HMAC digests. It can
 be used in one of two ways:</p></p>
 <p><ul></p>
 <p><li>As a <a href="stream.html#stream_stream">stream</a> that is both readable and writable, where data is written
@@ -1949,42 +2580,74 @@ console.log(hmac.digest(&#39;hex&#39;));
 // Prints:
 //   7fd04df92f636fd450bc841c9418e5825c17f33ad9c87c518115a45971f7f77e
 </code></pre>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="method_digest_1" id="method_digest_1"></a>
-            <div class="permalink"><a href="#method_digest_1" class="permalink fas fa-link"></a></div>
-            <p>hmac.digest([encoding])</p>
 
-          </h1>
-        </div><section><p>Calculates the HMAC digest of all of the data passed using <a href="#crypto_hmac_update_data_inputencoding"><code>hmac.update()</code></a>.
+
+<div class="heading">
+<h3>
+  <a name="subgroup_class_Hmac_Methods" id="subgroup_class_Hmac_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_Hmac_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_digest_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_digest_1" id="method_digest_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_digest_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_digest_1" class="permalink fas fa-link"></a></div>
+        <p>hmac.digest([encoding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_digest_1-expand-content'>
+<p>Calculates the HMAC digest of all of the data passed using <a href="#crypto_hmac_update_data_inputencoding"><code>hmac.update()</code></a>.
 The <code>encoding</code> can be <code>&#39;hex&#39;</code>, <code>&#39;latin1&#39;</code> or <code>&#39;base64&#39;</code>. If <code>encoding</code> is
 provided a string is returned; otherwise a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a> is returned;</p>
 <p>The <code>Hmac</code> object can not be used again after <code>hmac.digest()</code> has been
 called. Multiple calls to <code>hmac.digest()</code> will result in an error being thrown.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_update_3" id="method_update_3"></a>
-            <div class="permalink"><a href="#method_update_3" class="permalink fas fa-link"></a></div>
-            <p>hmac.update(data[, inputEncoding])</p>
 
-          </h1>
-        </div><section><p>Updates the <code>Hmac</code> content with the given <code>data</code>, the encoding of which
+
+</div><div class='expandable-header' id='method_update_3-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_update_3" id="method_update_3"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_update_3-expand-icon"></i>
+        <div class="permalink"><a href="#method_update_3" class="permalink fas fa-link"></a></div>
+        <p>hmac.update(data[, inputEncoding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_update_3-expand-content'>
+<p>Updates the <code>Hmac</code> content with the given <code>data</code>, the encoding of which
 is given in <code>inputEncoding</code> and can be <code>&#39;utf8&#39;</code>, <code>&#39;ascii&#39;</code> or
 <code>&#39;latin1&#39;</code>. If <code>encoding</code> is not provided, and the <code>data</code> is a string, an
 encoding of <code>&#39;utf8&#39;</code> is enforced. If <code>data</code> is a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a>, <code>TypedArray</code>, or
 <code>DataView</code>, then <code>inputEncoding</code> is ignored.</p>
 <p>This can be called many times with new data as it is streamed.</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="class_Sign" id="class_Sign"></a>
-            <div class="permalink"><a href="#class_Sign" class="permalink fas fa-link"></a></div>
-            <p>Class: Sign</p>
 
-          </h1>
-        </div><section><p><p>The <code>Sign</code> Class is a utility for generating signatures. It can be used in one
+
+</div>
+</div><div class='expandable-header' id='class_Sign-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_Sign" id="class_Sign"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_Sign-expand-icon"></i>
+        <div class="permalink"><a href="#class_Sign" class="permalink fas fa-link"></a></div>
+        <p>Class: Sign</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_Sign-expand-content'>
+<p><p>The <code>Sign</code> Class is a utility for generating signatures. It can be used in one
 of two ways:</p></p>
 <p><ul></p>
 <p><li>As a writable <a href="stream.html#stream_stream">stream</a>, where data to be signed is written and the
@@ -2032,15 +2695,32 @@ const privateKey = getPrivateKeySomehow();
 console.log(sign.sign(privateKey, &#39;hex&#39;));
 // Prints: the calculated signature
 </code></pre>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="method_sign" id="method_sign"></a>
-            <div class="permalink"><a href="#method_sign" class="permalink fas fa-link"></a></div>
-            <p>sign.sign(privateKey[, outputFormat])</p>
 
-          </h1>
-        </div><section><p>Calculates the signature on all the data passed through using either
+
+<div class="heading">
+<h3>
+  <a name="subgroup_class_Sign_Methods" id="subgroup_class_Sign_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_Sign_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_sign-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_sign" id="method_sign"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_sign-expand-icon"></i>
+        <div class="permalink"><a href="#method_sign" class="permalink fas fa-link"></a></div>
+        <p>sign.sign(privateKey[, outputFormat])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_sign-expand-content'>
+<p>Calculates the signature on all the data passed through using either
 <a href="#crypto_sign_update_data_inputencoding"><code>sign.update()</code></a> or <a href="stream.html#stream_writable_write_chunk_encoding_callback"><code>sign.write()</code></a>.</p>
 <p>The <code>privateKey</code> argument can be an object or a string. If <code>privateKey</code> is a
 string, it is treated as a raw key with no passphrase. If <code>privateKey</code> is an
@@ -2067,29 +2747,44 @@ maximum permissible value.</li>
 returned.</p>
 <p>The <code>Sign</code> object can not be again used after <code>sign.sign()</code> method has been
 called. Multiple calls to <code>sign.sign()</code> will result in an error being thrown.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_update_4" id="method_update_4"></a>
-            <div class="permalink"><a href="#method_update_4" class="permalink fas fa-link"></a></div>
-            <p>sign.update(data[, inputEncoding])</p>
 
-          </h1>
-        </div><section><p>Updates the <code>Sign</code> content with the given <code>data</code>, the encoding of which
+
+</div><div class='expandable-header' id='method_update_4-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_update_4" id="method_update_4"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_update_4-expand-icon"></i>
+        <div class="permalink"><a href="#method_update_4" class="permalink fas fa-link"></a></div>
+        <p>sign.update(data[, inputEncoding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_update_4-expand-content'>
+<p>Updates the <code>Sign</code> content with the given <code>data</code>, the encoding of which
 is given in <code>inputEncoding</code> and can be <code>&#39;utf8&#39;</code>, <code>&#39;ascii&#39;</code> or
 <code>&#39;latin1&#39;</code>. If <code>encoding</code> is not provided, and the <code>data</code> is a string, an
 encoding of <code>&#39;utf8&#39;</code> is enforced. If <code>data</code> is a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a>, <code>TypedArray</code>, or
 <code>DataView</code>, then <code>inputEncoding</code> is ignored.</p>
 <p>This can be called many times with new data as it is streamed.</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="class_Verify" id="class_Verify"></a>
-            <div class="permalink"><a href="#class_Verify" class="permalink fas fa-link"></a></div>
-            <p>Class: Verify</p>
 
-          </h1>
-        </div><section><p><p>The <code>Verify</code> class is a utility for verifying signatures. It can be used in one
+
+</div>
+</div><div class='expandable-header' id='class_Verify-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_Verify" id="class_Verify"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_Verify-expand-icon"></i>
+        <div class="permalink"><a href="#class_Verify" class="permalink fas fa-link"></a></div>
+        <p>Class: Verify</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_Verify-expand-content'>
+<p><p>The <code>Verify</code> class is a utility for verifying signatures. It can be used in one
 of two ways:</p></p>
 <p><ul></p>
 <p><li>As a writable <a href="stream.html#stream_stream">stream</a> where written data is used to validate against the
@@ -2122,29 +2817,53 @@ const signature = getSignatureToVerify();
 console.log(verify.verify(publicKey, signature));
 // Prints: true or false
 </code></pre>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="method_update_5" id="method_update_5"></a>
-            <div class="permalink"><a href="#method_update_5" class="permalink fas fa-link"></a></div>
-            <p>verify.update(data[, inputEncoding])</p>
 
-          </h1>
-        </div><section><p>Updates the <code>Verify</code> content with the given <code>data</code>, the encoding of which
+
+<div class="heading">
+<h3>
+  <a name="subgroup_class_Verify_Methods" id="subgroup_class_Verify_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_Verify_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_update_5-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_update_5" id="method_update_5"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_update_5-expand-icon"></i>
+        <div class="permalink"><a href="#method_update_5" class="permalink fas fa-link"></a></div>
+        <p>verify.update(data[, inputEncoding])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_update_5-expand-content'>
+<p>Updates the <code>Verify</code> content with the given <code>data</code>, the encoding of which
 is given in <code>inputEncoding</code> and can be <code>&#39;utf8&#39;</code>, <code>&#39;ascii&#39;</code> or
 <code>&#39;latin1&#39;</code>. If <code>encoding</code> is not provided, and the <code>data</code> is a string, an
 encoding of <code>&#39;utf8&#39;</code> is enforced. If <code>data</code> is a <a href="buffer.html#buffer_class_buffer"><code>Buffer</code></a>, <code>TypedArray</code>, or
 <code>DataView</code>, then <code>inputEncoding</code> is ignored.</p>
 <p>This can be called many times with new data as it is streamed.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_verify" id="method_verify"></a>
-            <div class="permalink"><a href="#method_verify" class="permalink fas fa-link"></a></div>
-            <p>verify.verify(object, signature[, signatureFormat])</p>
 
-          </h1>
-        </div><section><p>Verifies the provided data using the given <code>object</code> and <code>signature</code>.
+
+</div><div class='expandable-header' id='method_verify-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_verify" id="method_verify"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_verify-expand-icon"></i>
+        <div class="permalink"><a href="#method_verify" class="permalink fas fa-link"></a></div>
+        <p>verify.verify(object, signature[, signatureFormat])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_verify-expand-content'>
+<p>Verifies the provided data using the given <code>object</code> and <code>signature</code>.
 The <code>object</code> argument can be either a string containing a PEM encoded object,
 which can be an RSA public key, a DSA public key, or an X.509 certificate,
 or an object with one or more of the following properties:</p>
@@ -2174,7 +2893,10 @@ the data and public key.</p>
 <p>The <code>verify</code> object can not be used again after <code>verify.verify()</code> has been
 called. Multiple calls to <code>verify.verify()</code> will result in an error being
 thrown.</p>
-</section></section></section>
+
+
+</div>
+</div>
 
   <div class="footer">
     <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>

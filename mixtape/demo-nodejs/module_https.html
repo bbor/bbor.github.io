@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>mixtape page for https</title>
+    <title>HTTPS</title>
     <script data-main="js/setup" src="js/require.js"></script>
     <link rel="stylesheet" href="fonts/fonts.css" />
     <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
@@ -13,9 +13,9 @@
   <body>
 
   <div id="control-panel">
-    <div id="control-strip-h">
-      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
-      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    <div id="control-strip-m">
+      <div id="control-strip-m-find"><div id="m-find"></div></div>
+      <div id="control-strip-m-toc"><div id="m-toc"></div></div>
     </div>
     <div id="controls">
       <div id="control-find">
@@ -26,107 +26,193 @@
       </div>
     </div>
   </div>
-  <div id="control-strip-v">
-    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
-    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  <div id="control-strip-w">
+    <div id="control-strip-w-find"></div>
+    <div id="control-strip-w-toc"></div>
   </div>
 
   <div id="content">
 
   
-       <div class="heading">
-          <h1>
-            <a name="module_https" id="module_https"></a>
-            <div class="permalink"><a href="#module_https" class="permalink fas fa-link"></a></div>
-            <p>HTTPS</p>
+<div class="heading">
+<h1>
+  <a name="module_https" id="module_https"></a>
+  <div class="permalink"><a href="#module_https" class="permalink fas fa-link"></a></div>
+  <p>HTTPS</p>
 
-          </h1>
-        </div><p>HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a
+</h1>
+</div>
+
+<p>HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a
 separate module.</p>
 
-       <div class="heading">
-          <h2>
-            <a name="class_https_Agent" id="class_https_Agent"></a>
-            <div class="permalink"><a href="#class_https_Agent" class="permalink fas fa-link"></a></div>
-            <p>Class: https.Agent</p>
+<div class='expandable-header' id='class_https_Agent-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_https_Agent" id="class_https_Agent"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_https_Agent-expand-icon"></i>
+        <div class="permalink"><a href="#class_https_Agent" class="permalink fas fa-link"></a></div>
+        <p>Class: https.Agent</p>
 
-          </h1>
-        </div><section><p>An Agent object for HTTPS similar to <a href="http.html#http_class_http_agent"><code>http.Agent</code></a>.  See <a href="#https_https_request_options_callback"><code>https.request()</code></a>
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_https_Agent-expand-content'>
+<p>An <a href="#https_class_https_agent"><code>Agent</code></a> object for HTTPS similar to <a href="http.html#http_class_http_agent"><code>http.Agent</code></a>.  See <a href="#https_https_request_options_callback"><code>https.request()</code></a>
 for more information.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="class_https_Server" id="class_https_Server"></a>
-            <div class="permalink"><a href="#class_https_Server" class="permalink fas fa-link"></a></div>
-            <p>Class: https.Server</p>
 
-          </h1>
-        </div><section><p>This class is a subclass of <code>tls.Server</code> and emits events same as
+
+</div><div class='expandable-header' id='class_https_Server-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_https_Server" id="class_https_Server"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_https_Server-expand-icon"></i>
+        <div class="permalink"><a href="#class_https_Server" class="permalink fas fa-link"></a></div>
+        <p>Class: https.Server</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_https_Server-expand-content'>
+<p>This class is a subclass of <code>tls.Server</code> and emits events same as
 <a href="http.html#http_class_http_server"><code>http.Server</code></a>. See <a href="http.html#http_class_http_server"><code>http.Server</code></a> for more information.</p>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="property_timeout_1" id="property_timeout_1"></a>
-            <div class="permalink"><a href="#property_timeout_1" class="permalink fas fa-link"></a></div>
-            <p><code>timeout</code> {number} Defaults to 120000 (2 minutes). </p>
 
-          </h1>
-        </div><section><p>See <a href="http.html#http_server_timeout"><code>http.Server#timeout</code></a>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_keepAliveTimeout_1" id="property_keepAliveTimeout_1"></a>
-            <div class="permalink"><a href="#property_keepAliveTimeout_1" class="permalink fas fa-link"></a></div>
-            <p><code>keepAliveTimeout</code> {number} Defaults to 5000 (5 seconds). </p>
 
-          </h1>
-        </div><section><p>See <a href="http.html#http_server_keepalivetimeout"><code>http.Server#keepAliveTimeout</code></a>.</p>
-</section></section><section>
-       <div class="heading">
-          <h4>
-            <a name="method_close_6" id="method_close_6"></a>
-            <div class="permalink"><a href="#method_close_6" class="permalink fas fa-link"></a></div>
-            <p>server.close([callback])</p>
+<div class="heading">
+<h3>
+  <a name="subgroup_class_https_Server_Properties" id="subgroup_class_https_Server_Properties"></a>
+  <div class="permalink"><a href="#subgroup_class_https_Server_Properties" class="permalink fas fa-link"></a></div>
+  <p>Properties</p>
 
-          </h1>
-        </div><section><p>See <a href="http.html#http_server_close_callback"><code>server.close()</code></a> from the HTTP module for details.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_listen_1" id="method_listen_1"></a>
-            <div class="permalink"><a href="#method_listen_1" class="permalink fas fa-link"></a></div>
-            <p>server.listen()</p>
+</h3>
+</div>
 
-          </h1>
-        </div><section><p>Starts the HTTPS server listening for encrypted connections.
+
+<div class='expandable-header' id='property_timeout_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_timeout_1" id="property_timeout_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_timeout_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_timeout_1" class="permalink fas fa-link"></a></div>
+        <p><code>timeout</code> {number} Defaults to 120000 (2 minutes). </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_timeout_1-expand-content'>
+<p>See <a href="http.html#http_server_timeout"><code>http.Server#timeout</code></a>.</p>
+
+
+</div><div class='expandable-header' id='property_keepAliveTimeout_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_keepAliveTimeout_1" id="property_keepAliveTimeout_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_keepAliveTimeout_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_keepAliveTimeout_1" class="permalink fas fa-link"></a></div>
+        <p><code>keepAliveTimeout</code> {number} Defaults to 5000 (5 seconds). </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_keepAliveTimeout_1-expand-content'>
+<p>See <a href="http.html#http_server_keepalivetimeout"><code>http.Server#keepAliveTimeout</code></a>.</p>
+
+
+</div>
+<div class="heading">
+<h3>
+  <a name="subgroup_class_https_Server_Methods" id="subgroup_class_https_Server_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_https_Server_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_close_5-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_close_5" id="method_close_5"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_close_5-expand-icon"></i>
+        <div class="permalink"><a href="#method_close_5" class="permalink fas fa-link"></a></div>
+        <p>server.close([callback])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_close_5-expand-content'>
+<p>See <a href="http.html#http_server_close_callback"><code>server.close()</code></a> from the HTTP module for details.</p>
+
+
+</div><div class='expandable-header' id='method_listen_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_listen_1" id="method_listen_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_listen_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_listen_1" class="permalink fas fa-link"></a></div>
+        <p>server.listen()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_listen_1-expand-content'>
+<p>Starts the HTTPS server listening for encrypted connections.
 This method is identical to <a href="net.html#net_server_listen"><code>server.listen()</code></a> from <a href="net.html#net_class_net_server"><code>net.Server</code></a>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_setTimeout_8" id="method_setTimeout_8"></a>
-            <div class="permalink"><a href="#method_setTimeout_8" class="permalink fas fa-link"></a></div>
-            <p>server.setTimeout([msecs][, callback])</p>
 
-          </h1>
-        </div><section><p>See <a href="http.html#http_server_settimeout_msecs_callback"><code>http.Server#setTimeout()</code></a>.</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="property_globalAgent_1" id="property_globalAgent_1"></a>
-            <div class="permalink"><a href="#property_globalAgent_1" class="permalink fas fa-link"></a></div>
-            <p>https.globalAgent</p>
 
-          </h1>
-        </div><section><p>Global instance of <a href="#https_class_https_agent"><code>https.Agent</code></a> for all HTTPS client requests.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_createServer_2" id="method_createServer_2"></a>
-            <div class="permalink"><a href="#method_createServer_2" class="permalink fas fa-link"></a></div>
-            <p>https.createServer([options][, requestListener])</p>
+</div><div class='expandable-header' id='method_setTimeout_8-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_setTimeout_8" id="method_setTimeout_8"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setTimeout_8-expand-icon"></i>
+        <div class="permalink"><a href="#method_setTimeout_8" class="permalink fas fa-link"></a></div>
+        <p>server.setTimeout([msecs][, callback])</p>
 
-          </h1>
-        </div><section><p><p>Example:</p></p>
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setTimeout_8-expand-content'>
+<p>See <a href="http.html#http_server_settimeout_msecs_callback"><code>http.Server#setTimeout()</code></a>.</p>
+
+
+</div>
+</div><div class='expandable-header' id='property_globalAgent_1-expand'>
+<div class="heading">
+    <h2>
+        <a name="property_globalAgent_1" id="property_globalAgent_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_globalAgent_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_globalAgent_1" class="permalink fas fa-link"></a></div>
+        <p>https.globalAgent</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='property_globalAgent_1-expand-content'>
+<p>Global instance of <a href="#https_class_https_agent"><code>https.Agent</code></a> for all HTTPS client requests.</p>
+
+
+</div><div class='expandable-header' id='method_createServer_2-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_createServer_2" id="method_createServer_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createServer_2-expand-icon"></i>
+        <div class="permalink"><a href="#method_createServer_2" class="permalink fas fa-link"></a></div>
+        <p>https.createServer([options][, requestListener])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createServer_2-expand-content'>
+<p><p>Example:</p></p>
 <pre class="prettyprint"><code class="lang-js">// curl -k https://localhost:8000/
 const https = require(&#39;https&#39;);
 const fs = require(&#39;fs&#39;);
@@ -155,15 +241,22 @@ https.createServer(options, (req, res) =&gt; {
   res.end(&#39;hello world\n&#39;);
 }).listen(8000);
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_get_1" id="method_get_1"></a>
-            <div class="permalink"><a href="#method_get_1" class="permalink fas fa-link"></a></div>
-            <p>https.get(options[, callback])</p>
 
-          </h1>
-        </div><section><p><p>Like <a href="http.html#http_http_get_options_callback"><code>http.get()</code></a> but for HTTPS.</p></p>
+
+</div><div class='expandable-header' id='method_get_1-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_get_1" id="method_get_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_get_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_get_1" class="permalink fas fa-link"></a></div>
+        <p>https.get(options[, callback])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_get_1-expand-content'>
+<p><p>Like <a href="http.html#http_http_get_options_callback"><code>http.get()</code></a> but for HTTPS.</p></p>
 <p><p><code>options</code> can be an object, a string, or a <a href="url.html#url_class_url"><code>URL</code></a> object. If <code>options</code> is a
 string, it is automatically parsed with <a href="#url_url_parse_urlstring_parsequerystring_slashesdenotehost"><code>url.parse()</code></a>. If it is a <a href="url.html#url_class_url"><code>URL</code></a>
 object, it will be automatically converted to an ordinary <code>options</code> object.</p></p>
@@ -182,18 +275,26 @@ https.get(&#39;https://encrypted.google.com/&#39;, (res) =&gt; {
   console.error(e);
 });
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_request_2" id="method_request_2"></a>
-            <div class="permalink"><a href="#method_request_2" class="permalink fas fa-link"></a></div>
-            <p>https.request(options[, callback])</p>
 
-          </h1>
-        </div><section><p><p>Makes a request to a secure web server.</p></p>
-<p><p>The following additional <code>options</code> from <a href="#tls_tls_connect_options_callback"><code>tls.connect()</code></a> are also accepted
-when using a custom <a href="#https_class_https_agent"><code>Agent</code></a>: <code>ca</code>, <code>cert</code>, <code>ciphers</code>, <code>clientCertEngine</code>,
-<code>key</code>, <code>passphrase</code>, <code>pfx</code>, <code>rejectUnauthorized</code>, <code>secureProtocol</code>, <code>servername</code></p></p>
+
+</div><div class='expandable-header' id='method_request_2-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_request_2" id="method_request_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_request_2-expand-icon"></i>
+        <div class="permalink"><a href="#method_request_2" class="permalink fas fa-link"></a></div>
+        <p>https.request(options[, callback])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_request_2-expand-content'>
+<p><p>Makes a request to a secure web server.</p></p>
+<p><p>The following additional <code>options</code> from <a href="#tls_tls_connect_options_callback"><code>tls.connect()</code></a> are also accepted:
+<code>ca</code>, <code>cert</code>, <code>ciphers</code>, <code>clientCertEngine</code>, <code>crl</code>, <code>dhparam</code>, <code>ecdhCurve</code>,
+<code>honorCipherOrder</code>, <code>key</code>, <code>passphrase</code>, <code>pfx</code>, <code>rejectUnauthorized</code>,
+<code>secureOptions</code>, <code>secureProtocol</code>, <code>servername</code>, <code>sessionIdContext</code></p></p>
 <p><p><code>options</code> can be an object, a string, or a <a href="url.html#url_class_url"><code>URL</code></a> object. If <code>options</code> is a
 string, it is automatically parsed with <a href="#url_url_parse_urlstring_parsequerystring_slashesdenotehost"><code>url.parse()</code></a>. If it is a <a href="url.html#url_class_url"><code>URL</code></a>
 object, it will be automatically converted to an ordinary <code>options</code> object.</p></p>
@@ -231,7 +332,7 @@ options.agent = new https.Agent(options);</p>
   // ...
 });
 </code></pre></p>
-<p><p>Alternatively, opt out of connection pooling by not using an <code>Agent</code>.</p></p>
+<p><p>Alternatively, opt out of connection pooling by not using an <a href="#https_class_https_agent"><code>Agent</code></a>.</p></p>
 <p><p>Example:</p></p>
 <p><pre class="prettyprint"><code class="lang-js">const options = {
   hostname: &#39;encrypted.google.com&#39;,
@@ -248,14 +349,16 @@ options.agent = new https.Agent(options);</p>
 </code></pre></p>
 <p><p>Example using a <a href="url.html#url_class_url"><code>URL</code></a> as <code>options</code>:</p></p>
 <p><pre class="prettyprint"><code class="lang-js">const { URL } = require(&#39;url&#39;);</p>
-<p>const options = new URL(&#39;<a href="https://abc:xyz@example.com&amp;#39">https://abc:xyz@example.com&amp;#39</a>;);</p>
+<p>const options = new URL(&#39;<a href="https://abc:xyz@example.com&amp;#39" target="_blank">https://abc:xyz@example.com&amp;#39</a>;);</p>
 <p>const req = https.request(options, (res) =&gt; {
   // ...
 });
 </code></pre>
 <!-- [end-include:https.md] -->
 <!-- [start-include:inspector.md] --></p>
-</section>
+
+
+</div>
 
   <div class="footer">
     <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>

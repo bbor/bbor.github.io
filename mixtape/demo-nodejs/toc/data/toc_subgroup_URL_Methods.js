@@ -1,1 +1,0 @@
-define([], function() { return {"children":[{"id":"toc_method_toString_1","target":"module_url.html#method_toString_1","text":"url.toString()","icon":false},{"id":"toc_method_toJSON_1","target":"module_url.html#method_toJSON_1","text":"url.toJSON()","icon":false}],"ancestry":["toc_module_url","toc_module_the_whatwg_url_api","toc_class_URL","toc_subgroup_URL_Methods"]}; });

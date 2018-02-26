@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>mixtape page for vm</title>
+    <title>VM (Executing JavaScript)</title>
     <script data-main="js/setup" src="js/require.js"></script>
     <link rel="stylesheet" href="fonts/fonts.css" />
     <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
@@ -13,9 +13,9 @@
   <body>
 
   <div id="control-panel">
-    <div id="control-strip-h">
-      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
-      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    <div id="control-strip-m">
+      <div id="control-strip-m-find"><div id="m-find"></div></div>
+      <div id="control-strip-m-toc"><div id="m-toc"></div></div>
     </div>
     <div id="controls">
       <div id="control-find">
@@ -26,22 +26,24 @@
       </div>
     </div>
   </div>
-  <div id="control-strip-v">
-    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
-    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  <div id="control-strip-w">
+    <div id="control-strip-w-find"></div>
+    <div id="control-strip-w-toc"></div>
   </div>
 
   <div id="content">
 
   
-       <div class="heading">
-          <h1>
-            <a name="module_vm" id="module_vm"></a>
-            <div class="permalink"><a href="#module_vm" class="permalink fas fa-link"></a></div>
-            <p>vm</p>
+<div class="heading">
+<h1>
+  <a name="module_vm" id="module_vm"></a>
+  <div class="permalink"><a href="#module_vm" class="permalink fas fa-link"></a></div>
+  <p>VM (Executing JavaScript)</p>
 
-          </h1>
-        </div><p>The <code>vm</code> module provides APIs for compiling and running code within V8 Virtual
+</h1>
+</div>
+
+<p>The <code>vm</code> module provides APIs for compiling and running code within V8 Virtual
 Machine contexts.</p>
 <p>JavaScript code can be compiled and run immediately or
 compiled, saved, and run later.</p>
@@ -72,14 +74,17 @@ console.log(x); // 1; y is not defined.
 <p><em>Note</em>: The vm module is not a security mechanism.
 <strong>Do not use it to run untrusted code</strong>.</p>
 
-       <div class="heading">
-          <h2>
-            <a name="module_what_does_it_mean_to__contextify__an_object_" id="module_what_does_it_mean_to__contextify__an_object_"></a>
-            <div class="permalink"><a href="#module_what_does_it_mean_to__contextify__an_object_" class="permalink fas fa-link"></a></div>
-            <p>What does it mean to &quot;contextify&quot; an object?</p>
 
-          </h1>
-        </div><section><p><p>All JavaScript executed within Node.js runs within the scope of a &quot;context&quot;.
+<div class="heading">
+<h2>
+  <a name="module_what_does_it_mean_to__contextify__an_object_" id="module_what_does_it_mean_to__contextify__an_object_"></a>
+  <div class="permalink"><a href="#module_what_does_it_mean_to__contextify__an_object_" class="permalink fas fa-link"></a></div>
+  <p>What does it mean to &quot;contextify&quot; an object?</p>
+
+</h2>
+</div>
+
+<p><p>All JavaScript executed within Node.js runs within the scope of a &quot;context&quot;.
 According to the <a href="https://github.com/v8/v8/wiki/Embedder&#39;s%20Guide#contexts">V8 Embedder&#39;s Guide</a>:</p></p>
 <p><blockquote></p>
 <p><p>In V8, a context is an execution environment that allows separate, unrelated,
@@ -95,36 +100,473 @@ associating it with the <code>sandbox</code> object is what this document refers
 &quot;contextifying&quot; the <code>sandbox</code>.</p>
 <!-- [end-include:vm.md] -->
 <!-- [start-include:zlib.md] --></p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="class_vm_Script" id="class_vm_Script"></a>
-            <div class="permalink"><a href="#class_vm_Script" class="permalink fas fa-link"></a></div>
-            <p>Class: vm.Script</p>
 
-          </h1>
-        </div><section><p>Instances of the <code>vm.Script</code> class contain precompiled scripts that can be
+<div class='expandable-header' id='class_vm_Module-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_vm_Module" id="class_vm_Module"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_vm_Module-expand-icon"></i>
+        <div class="permalink"><a href="#class_vm_Module" class="permalink fas fa-link"></a></div>
+        <p>Class: vm.Module</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_vm_Module-expand-content'>
+<p><p><em>This feature is only available with the <code>--experimental-vm-modules</code> command
+flag enabled.</em></p></p>
+<p><p>The <code>vm.Module</code> class provides a low-level interface for using ECMAScript
+modules in VM contexts. It is the counterpart of the <code>vm.Script</code> class that
+closely mirrors <a href="https://tc39.github.io/ecma262/#sec-source-text-module-records">Source Text Module Record</a>s as defined in the ECMAScript
+specification.</p></p>
+<p><p>Unlike <code>vm.Script</code> however, every <code>vm.Module</code> object is bound to a context from
+its creation. Operations on <code>vm.Module</code> objects are intrinsically asynchronous,
+in contrast with the synchronous nature of <code>vm.Script</code> objects. With the help
+of async functions, however, manipulating <code>vm.Module</code> objects is fairly
+straightforward.</p></p>
+<p><p>Using a <code>vm.Module</code> object requires four distinct steps: creation/parsing,
+linking, instantiation, and evaluation. These four steps are illustrated in the
+following example.</p></p>
+<p><p><em>Note</em>: This implementation lies at a lower level than the <a href="esm.html#esm_ecmascript_modules">ECMAScript Module
+loader</a>. There is also currently no way to interact with the Loader, though
+support is planned.</p></p>
+<pre class="prettyprint"><code class="lang-js">const vm = require(&#39;vm&#39;);
+
+const contextifiedSandbox = vm.createContext({ secret: 42 });
+
+(async () =&gt; {
+  // Step 1
+  //
+  // Create a Module by constructing a new `vm.Module` object. This parses the
+  // provided source text, throwing a `SyntaxError` if anything goes wrong. By
+  // default, a Module is created in the top context. But here, we specify
+  // `contextifiedSandbox` as the context this Module belongs to.
+  //
+  // Here, we attempt to obtain the default export from the module &quot;foo&quot;, and
+  // put it into local binding &quot;secret&quot;.
+
+  const bar = new vm.Module(`
+    import s from &#39;foo&#39;;
+    s;
+  `, { context: contextifiedSandbox });
+
+  // Step 2
+  //
+  // &quot;Link&quot; the imported dependencies of this Module to it.
+  //
+  // The provided linking callback (the &quot;linker&quot;) accepts two arguments: the
+  // parent module (`bar` in this case) and the string that is the specifier of
+  // the imported module. The callback is expected to return a Module that
+  // corresponds to the provided specifier, with certain requirements documented
+  // in `module.link()`.
+  //
+  // If linking has not started for the returned Module, the same linker
+  // callback will be called on the returned Module.
+  //
+  // Even top-level Modules without dependencies must be explicitly linked. The
+  // callback provided would never be called, however.
+  //
+  // The link() method returns a Promise that will be resolved when all the
+  // Promises returned by the linker resolve.
+  //
+  // Note: This is a contrived example in that the linker function creates a new
+  // &quot;foo&quot; module every time it is called. In a full-fledged module system, a
+  // cache would probably be used to avoid duplicated modules.
+
+  async function linker(specifier, referencingModule) {
+    if (specifier === &#39;foo&#39;) {
+      return new vm.Module(`
+        // The &quot;secret&quot; variable refers to the global variable we added to
+        // &quot;contextifiedSandbox&quot; when creating the context.
+        export default secret;
+      `, { context: referencingModule.context });
+
+      // Using `contextifiedSandbox` instead of `referencingModule.context`
+      // here would work as well.
+    }
+    throw new Error(`Unable to resolve dependency: ${specifier}`);
+  }
+  await bar.link(linker);
+
+  // Step 3
+  //
+  // Instantiate the top-level Module.
+  //
+  // Only the top-level Module needs to be explicitly instantiated; its
+  // dependencies will be recursively instantiated by instantiate().
+
+  bar.instantiate();
+
+  // Step 4
+  //
+  // Evaluate the Module. The evaluate() method returns a Promise with a single
+  // property &quot;result&quot; that contains the result of the very last statement
+  // executed in the Module. In the case of `bar`, it is `s;`, which refers to
+  // the default export of the `foo` module, the `secret` we set in the
+  // beginning to 42.
+
+  const { result } = await bar.evaluate();
+
+  console.log(result);
+  // Prints 42.
+})();
+</code></pre>
+
+
+<div class="heading">
+<h3>
+  <a name="subgroup_class_vm_Module_Properties" id="subgroup_class_vm_Module_Properties"></a>
+  <div class="permalink"><a href="#subgroup_class_vm_Module_Properties" class="permalink fas fa-link"></a></div>
+  <p>Properties</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='property_dependencySpecifiers-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_dependencySpecifiers" id="property_dependencySpecifiers"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_dependencySpecifiers-expand-icon"></i>
+        <div class="permalink"><a href="#property_dependencySpecifiers" class="permalink fas fa-link"></a></div>
+        <p><code>dependencySpecifiers</code> {string[]} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_dependencySpecifiers-expand-content'>
+<p>The specifiers of all dependencies of this module. The returned array is frozen
+to disallow any changes to it.</p>
+<p>Corresponds to the [[RequestedModules]] field of <a href="https://tc39.github.io/ecma262/#sec-source-text-module-records">Source Text Module Record</a>s
+in the ECMAScript specification.</p>
+
+
+</div><div class='expandable-header' id='property_error-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_error" id="property_error"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_error-expand-icon"></i>
+        <div class="permalink"><a href="#property_error" class="permalink fas fa-link"></a></div>
+        <p><code>error</code> {any} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_error-expand-content'>
+<p>If the <code>module.status</code> is <code>&#39;errored&#39;</code>, this property contains the exception thrown
+by the module during evaluation. If the status is anything else, accessing this
+property will result in a thrown exception.</p>
+<p><em>Note</em>: <code>undefined</code> cannot be used for cases where there is not a thrown
+exception due to possible ambiguity with <code>throw undefined;</code>.</p>
+<p>Corresponds to the [[EvaluationError]] field of <a href="https://tc39.github.io/ecma262/#sec-source-text-module-records">Source Text Module Record</a>s
+in the ECMAScript specification.</p>
+
+
+</div><div class='expandable-header' id='property_linkingStatus-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_linkingStatus" id="property_linkingStatus"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_linkingStatus-expand-icon"></i>
+        <div class="permalink"><a href="#property_linkingStatus" class="permalink fas fa-link"></a></div>
+        <p><code>linkingStatus</code> {string} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_linkingStatus-expand-content'>
+<p><p>The current linking status of <code>module</code>. It will be one of the following values:</p></p>
+<ul>
+<li><code>&#39;unlinked&#39;</code>: <code>module.link()</code> has not yet been called.</li>
+<li><code>&#39;linking&#39;</code>: <code>module.link()</code> has been called, but not all Promises returned by
+the linker function have been resolved yet.</li>
+<li><code>&#39;linked&#39;</code>: <code>module.link()</code> has been called, and all its dependencies have
+been successfully linked.</li>
+<li><code>&#39;errored&#39;</code>: <code>module.link()</code> has been called, but at least one of its
+dependencies failed to link, either because the callback returned a Promise
+that is rejected, or because the Module the callback returned is invalid.</li>
+</ul>
+
+
+</div><div class='expandable-header' id='property_namespace-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_namespace" id="property_namespace"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_namespace-expand-icon"></i>
+        <div class="permalink"><a href="#property_namespace" class="permalink fas fa-link"></a></div>
+        <p><code>namespace</code> {Object} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_namespace-expand-content'>
+<p>The namespace object of the module. This is only available after instantiation
+(<code>module.instantiate()</code>) has completed.</p>
+<p>Corresponds to the <a href="https://tc39.github.io/ecma262/#sec-getmodulenamespace">GetModuleNamespace</a> abstract operation in the ECMAScript
+specification.</p>
+
+
+</div><div class='expandable-header' id='property_status-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_status" id="property_status"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_status-expand-icon"></i>
+        <div class="permalink"><a href="#property_status" class="permalink fas fa-link"></a></div>
+        <p><code>status</code> {string} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_status-expand-content'>
+<p>The current status of the module. Will be one of:</p>
+<ul>
+<li><p><code>&#39;uninstantiated&#39;</code>: The module is not instantiated. It may because of any of
+the following reasons:</p>
+<ul>
+<li>The module was just created.</li>
+<li><code>module.instantiate()</code> has been called on this module, but it failed for
+some reason.</li>
+</ul>
+<p>This status does not convey any information regarding if <code>module.link()</code> has
+been called. See <code>module.linkingStatus</code> for that.</p>
+</li>
+<li><p><code>&#39;instantiating&#39;</code>: The module is currently being instantiated through a
+<code>module.instantiate()</code> call on itself or a parent module.</p>
+</li>
+<li><p><code>&#39;instantiated&#39;</code>: The module has been instantiated successfully, but
+<code>module.evaluate()</code> has not yet been called.</p>
+</li>
+<li><p><code>&#39;evaluating&#39;</code>: The module is being evaluated through a <code>module.evaluate()</code> on
+itself or a parent module.</p>
+</li>
+<li><p><code>&#39;evaluated&#39;</code>: The module has been successfully evaluated.</p>
+</li>
+<li><p><code>&#39;errored&#39;</code>: The module has been evaluated, but an exception was thrown.</p>
+</li>
+</ul>
+<p>Other than <code>&#39;errored&#39;</code>, this status string corresponds to the specification&#39;s
+<a href="https://tc39.github.io/ecma262/#sec-source-text-module-records">Source Text Module Record</a>&#39;s [[Status]] field. <code>&#39;errored&#39;</code> corresponds to
+<code>&#39;evaluated&#39;</code> in the specification, but with [[EvaluationError]] set to a value
+that is not <code>undefined</code>.</p>
+
+
+</div><div class='expandable-header' id='property_url_2-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_url_2" id="property_url_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_url_2-expand-icon"></i>
+        <div class="permalink"><a href="#property_url_2" class="permalink fas fa-link"></a></div>
+        <p><code>url</code> {string} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_url_2-expand-content'>
+<p>The URL of the current module, as set in the constructor.</p>
+
+
+</div>
+<div class="heading">
+<h3>
+  <a name="subgroup_class_vm_Module_Methods" id="subgroup_class_vm_Module_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_vm_Module_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_Module-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_Module" id="method_Module"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_Module-expand-icon"></i>
+        <div class="permalink"><a href="#method_Module" class="permalink fas fa-link"></a></div>
+        <p>Constructor: new vm.Module(code[, options])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_Module-expand-content'>
+<p>Creates a new ES <code>Module</code> object.</p>
+
+
+</div><div class='expandable-header' id='method_evaluate-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_evaluate" id="method_evaluate"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_evaluate-expand-icon"></i>
+        <div class="permalink"><a href="#method_evaluate" class="permalink fas fa-link"></a></div>
+        <p>module.evaluate([options])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_evaluate-expand-content'>
+<p>Evaluate the module.</p>
+<p>This must be called after the module has been instantiated; otherwise it will
+throw an error. It could be called also when the module has already been
+evaluated, in which case it will do one of the following two things:</p>
+<ul>
+<li>return <code>undefined</code> if the initial evaluation ended in success (<code>module.status</code>
+is <code>&#39;evaluated&#39;</code>)</li>
+<li>rethrow the same exception the initial evaluation threw if the initial
+evaluation ended in an error (<code>module.status</code> is <code>&#39;errored&#39;</code>)</li>
+</ul>
+<p>This method cannot be called while the module is being evaluated
+(<code>module.status</code> is <code>&#39;evaluating&#39;</code>) to prevent infinite recursion.</p>
+<p>Corresponds to the <a href="https://tc39.github.io/ecma262/#sec-moduleevaluation">Evaluate() concrete method</a> field of <a href="https://tc39.github.io/ecma262/#sec-source-text-module-records">Source Text Module
+Record</a>s in the ECMAScript specification.</p>
+
+
+</div><div class='expandable-header' id='method_instantiate-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_instantiate" id="method_instantiate"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_instantiate-expand-icon"></i>
+        <div class="permalink"><a href="#method_instantiate" class="permalink fas fa-link"></a></div>
+        <p>module.instantiate()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_instantiate-expand-content'>
+<p>Instantiate the module. This must be called after linking has completed
+(<code>linkingStatus</code> is <code>&#39;linked&#39;</code>); otherwise it will throw an error. It may also
+throw an exception if one of the dependencies does not provide an export the
+parent module requires.</p>
+<p>However, if this function succeeded, further calls to this function after the
+initial instantiation will be no-ops, to be consistent with the ECMAScript
+specification.</p>
+<p>Unlike other methods operating on <code>Module</code>, this function completes
+synchronously and returns nothing.</p>
+<p>Corresponds to the <a href="https://tc39.github.io/ecma262/#sec-moduledeclarationinstantiation">Instantiate() concrete method</a> field of <a href="https://tc39.github.io/ecma262/#sec-source-text-module-records">Source Text
+Module Record</a>s in the ECMAScript specification.</p>
+
+
+</div><div class='expandable-header' id='method_link_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_link_1" id="method_link_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_link_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_link_1" class="permalink fas fa-link"></a></div>
+        <p>module.link(linker)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_link_1-expand-content'>
+<p>Link module dependencies. This method must be called before instantiation, and
+can only be called once per module.</p>
+<p>Two parameters will be passed to the <code>linker</code> function:</p>
+<ul>
+<li><code>specifier</code> The specifier of the requested module:<!-- eslint-skip -->
+<pre class="prettyprint"><code class="lang-js">import foo from &#39;foo&#39;;
+//              ^^^^^ the module specifier
+</code></pre>
+</li>
+<li><code>referencingModule</code> The <code>Module</code> object <code>link()</code> is called on.</li>
+</ul>
+<p>The function is expected to return a <code>Module</code> object or a <code>Promise</code> that
+eventually resolves to a <code>Module</code> object. The returned <code>Module</code> must satisfy the
+following two invariants:</p>
+<ul>
+<li>It must belong to the same context as the parent <code>Module</code>.</li>
+<li>Its <code>linkingStatus</code> must not be <code>&#39;errored&#39;</code>.</li>
+</ul>
+<p>If the returned <code>Module</code>&#39;s <code>linkingStatus</code> is <code>&#39;unlinked&#39;</code>, this method will be
+recursively called on the returned <code>Module</code> with the same provided <code>linker</code>
+function.</p>
+<p><code>link()</code> returns a <code>Promise</code> that will either get resolved when all linking
+instances resolve to a valid <code>Module</code>, or rejected if the linker function either
+throws an exception or returns an invalid <code>Module</code>.</p>
+<p>The linker function roughly corresponds to the implementation-defined
+<a href="https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule">HostResolveImportedModule</a> abstract operation in the ECMAScript
+specification, with a few key differences:</p>
+<ul>
+<li>The linker function is allowed to be asynchronous while
+<a href="https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule">HostResolveImportedModule</a> is synchronous.</li>
+<li>The linker function is executed during linking, a Node.js-specific stage
+before instantiation, while <a href="https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule">HostResolveImportedModule</a> is called during
+instantiation.</li>
+</ul>
+<p>The actual <a href="https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule">HostResolveImportedModule</a> implementation used during module
+instantiation is one that returns the modules linked during linking. Since at
+that point all modules would have been fully linked already, the
+<a href="https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule">HostResolveImportedModule</a> implementation is fully synchronous per
+specification.</p>
+
+
+</div>
+</div><div class='expandable-header' id='class_vm_Script-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_vm_Script" id="class_vm_Script"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_vm_Script-expand-icon"></i>
+        <div class="permalink"><a href="#class_vm_Script" class="permalink fas fa-link"></a></div>
+        <p>Class: vm.Script</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_vm_Script-expand-content'>
+<p>Instances of the <code>vm.Script</code> class contain precompiled scripts that can be
 executed in specific sandboxes (or &quot;contexts&quot;).</p>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="method_Script" id="method_Script"></a>
-            <div class="permalink"><a href="#method_Script" class="permalink fas fa-link"></a></div>
-            <p>new vm.Script(code, options)</p>
 
-          </h1>
-        </div><section><p>Creating a new <code>vm.Script</code> object compiles <code>code</code> but does not run it. The
+
+<div class="heading">
+<h3>
+  <a name="subgroup_class_vm_Script_Methods" id="subgroup_class_vm_Script_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_vm_Script_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_Script-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_Script" id="method_Script"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_Script-expand-icon"></i>
+        <div class="permalink"><a href="#method_Script" class="permalink fas fa-link"></a></div>
+        <p>new vm.Script(code, options)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_Script-expand-content'>
+<p>Creating a new <code>vm.Script</code> object compiles <code>code</code> but does not run it. The
 compiled <code>vm.Script</code> can be run later multiple times. The <code>code</code> is not bound to
 any global object; rather, it is bound before each run, just for that run.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_runInContext" id="method_runInContext"></a>
-            <div class="permalink"><a href="#method_runInContext" class="permalink fas fa-link"></a></div>
-            <p>script.runInContext(contextifiedSandbox[, options])</p>
 
-          </h1>
-        </div><section><p>Runs the compiled code contained by the <code>vm.Script</code> object within the given
+
+</div><div class='expandable-header' id='method_runInContext-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_runInContext" id="method_runInContext"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_runInContext-expand-icon"></i>
+        <div class="permalink"><a href="#method_runInContext" class="permalink fas fa-link"></a></div>
+        <p>script.runInContext(contextifiedSandbox[, options])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_runInContext-expand-content'>
+<p>Runs the compiled code contained by the <code>vm.Script</code> object within the given
 <code>contextifiedSandbox</code> and returns the result. Running code does not have access
 to local scope.</p>
 <p>The following example compiles code that increments a global variable, sets
@@ -152,15 +594,22 @@ console.log(util.inspect(sandbox));
 <p><em>Note</em>: Using the <code>timeout</code> or <code>breakOnSigint</code> options will result in new
 event loops and corresponding threads being started, which have a non-zero
 performance overhead.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_runInNewContext" id="method_runInNewContext"></a>
-            <div class="permalink"><a href="#method_runInNewContext" class="permalink fas fa-link"></a></div>
-            <p>script.runInNewContext([sandbox[, options]])</p>
 
-          </h1>
-        </div><section><p><p>First contextifies the given <code>sandbox</code>, runs the compiled code contained by
+
+</div><div class='expandable-header' id='method_runInNewContext-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_runInNewContext" id="method_runInNewContext"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_runInNewContext-expand-icon"></i>
+        <div class="permalink"><a href="#method_runInNewContext" class="permalink fas fa-link"></a></div>
+        <p>script.runInNewContext([sandbox[, options]])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_runInNewContext-expand-content'>
+<p><p>First contextifies the given <code>sandbox</code>, runs the compiled code contained by
 the <code>vm.Script</code> object within the created sandbox, and returns the result.
 Running code does not have access to local scope.</p></p>
 <p><p>The following example compiles code that sets a global variable, then executes
@@ -180,15 +629,22 @@ console.log(util.inspect(sandboxes));
 
 // [{ globalVar: &#39;set&#39; }, { globalVar: &#39;set&#39; }, { globalVar: &#39;set&#39; }]
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_runInThisContext" id="method_runInThisContext"></a>
-            <div class="permalink"><a href="#method_runInThisContext" class="permalink fas fa-link"></a></div>
-            <p>script.runInThisContext([options])</p>
 
-          </h1>
-        </div><section><p><p>Runs the compiled code contained by the <code>vm.Script</code> within the context of the
+
+</div><div class='expandable-header' id='method_runInThisContext-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_runInThisContext" id="method_runInThisContext"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_runInThisContext-expand-icon"></i>
+        <div class="permalink"><a href="#method_runInThisContext" class="permalink fas fa-link"></a></div>
+        <p>script.runInThisContext([options])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_runInThisContext-expand-content'>
+<p><p>Runs the compiled code contained by the <code>vm.Script</code> within the context of the
 current <code>global</code> object. Running code does not have access to local scope, but
 <em>does</em> have access to the current <code>global</code> object.</p></p>
 <p><p>The following example compiles code that increments a <code>global</code> variable then
@@ -207,15 +663,23 @@ console.log(globalVar);
 
 // 1000
 </code></pre>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="method_createContext" id="method_createContext"></a>
-            <div class="permalink"><a href="#method_createContext" class="permalink fas fa-link"></a></div>
-            <p>vm.createContext([sandbox[, options]])</p>
 
-          </h1>
-        </div><section><p>If given a <code>sandbox</code> object, the <code>vm.createContext()</code> method will <a href="#vm_what_does_it_mean_to_contextify_an_object">prepare
+
+</div>
+</div><div class='expandable-header' id='method_createContext-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_createContext" id="method_createContext"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createContext-expand-icon"></i>
+        <div class="permalink"><a href="#method_createContext" class="permalink fas fa-link"></a></div>
+        <p>vm.createContext([sandbox[, options]])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createContext-expand-content'>
+<p>If given a <code>sandbox</code> object, the <code>vm.createContext()</code> method will <a href="#vm_what_does_it_mean_to_contextify_an_object">prepare
 that sandbox</a> so that it can be used in calls to
 <a href="#vm_vm_runincontext_code_contextifiedsandbox_options"><code>vm.runInContext()</code></a> or <a href="#vm_script_runincontext_contextifiedsandbox_options"><code>script.runInContext()</code></a>. Inside such scripts,
 the <code>sandbox</code> object will be the global object, retaining all of its existing
@@ -245,25 +709,39 @@ window&#39;s global object, then run all <code>&lt;script&gt;</code> tags togeth
 of that sandbox.</p>
 <p>The provided <code>name</code> and <code>origin</code> of the context are made visible through the
 Inspector API.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_isContext" id="method_isContext"></a>
-            <div class="permalink"><a href="#method_isContext" class="permalink fas fa-link"></a></div>
-            <p>vm.isContext(sandbox)</p>
 
-          </h1>
-        </div><section><p>Returns <code>true</code> if the given <code>sandbox</code> object has been <a href="#vm_what_does_it_mean_to_contextify_an_object">contextified</a> using
+
+</div><div class='expandable-header' id='method_isContext-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_isContext" id="method_isContext"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isContext-expand-icon"></i>
+        <div class="permalink"><a href="#method_isContext" class="permalink fas fa-link"></a></div>
+        <p>vm.isContext(sandbox)</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isContext-expand-content'>
+<p>Returns <code>true</code> if the given <code>sandbox</code> object has been <a href="#vm_what_does_it_mean_to_contextify_an_object">contextified</a> using
 <a href="#vm_vm_createcontext_sandbox_options"><code>vm.createContext()</code></a>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_runInContext_1" id="method_runInContext_1"></a>
-            <div class="permalink"><a href="#method_runInContext_1" class="permalink fas fa-link"></a></div>
-            <p>vm.runInContext(code, contextifiedSandbox[, options])</p>
 
-          </h1>
-        </div><section><p><p>The <code>vm.runInContext()</code> method compiles <code>code</code>, runs it within the context of
+
+</div><div class='expandable-header' id='method_runInContext_1-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_runInContext_1" id="method_runInContext_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_runInContext_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_runInContext_1" class="permalink fas fa-link"></a></div>
+        <p>vm.runInContext(code, contextifiedSandbox[, options])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_runInContext_1-expand-content'>
+<p><p>The <code>vm.runInContext()</code> method compiles <code>code</code>, runs it within the context of
 the <code>contextifiedSandbox</code>, then returns the result. Running code does not have
 access to the local scope. The <code>contextifiedSandbox</code> object <em>must</em> have been
 previously <a href="#vm_what_does_it_mean_to_contextify_an_object">contextified</a> using the <a href="#vm_vm_createcontext_sandbox_options"><code>vm.createContext()</code></a> method.</p></p>
@@ -282,15 +760,22 @@ console.log(util.inspect(sandbox));
 
 // { globalVar: 1024 }
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_runInDebugContext_1" id="method_runInDebugContext_1"></a>
-            <div class="permalink"><a href="#method_runInDebugContext_1" class="permalink fas fa-link"></a></div>
-            <p>vm.runInDebugContext(code)</p>
 
-          </h1>
-        </div><section><p>The <code>vm.runInDebugContext()</code> method compiles and executes <code>code</code> inside the V8
+
+</div><div class='expandable-header' id='method_runInDebugContext_1-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_runInDebugContext_1" id="method_runInDebugContext_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_runInDebugContext_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_runInDebugContext_1" class="permalink fas fa-link"></a></div>
+        <p>vm.runInDebugContext(code)</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_runInDebugContext_1-expand-content'>
+<p>The <code>vm.runInDebugContext()</code> method compiles and executes <code>code</code> inside the V8
 debug context. The primary use case is to gain access to the V8 <code>Debug</code> object:</p>
 <pre class="prettyprint"><code class="lang-js">const vm = require(&#39;vm&#39;);
 const Debug = vm.runInDebugContext(&#39;Debug&#39;);
@@ -301,15 +786,22 @@ console.log(Debug.findScript(process.exit).name);  // &#39;internal/process.js&#
 implementation and may change (or even be removed) without prior warning.</p>
 <p>The <code>Debug</code> object can also be made available using the V8-specific
 <code>--expose_debug_as=</code> <a href="cli.html">command line option</a>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_runInNewContext_1" id="method_runInNewContext_1"></a>
-            <div class="permalink"><a href="#method_runInNewContext_1" class="permalink fas fa-link"></a></div>
-            <p>vm.runInNewContext(code[, sandbox][, options])</p>
 
-          </h1>
-        </div><section><p><p>The <code>vm.runInNewContext()</code> first contextifies the given <code>sandbox</code> object (or
+
+</div><div class='expandable-header' id='method_runInNewContext_1-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_runInNewContext_1" id="method_runInNewContext_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_runInNewContext_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_runInNewContext_1" class="permalink fas fa-link"></a></div>
+        <p>vm.runInNewContext(code[, sandbox][, options])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_runInNewContext_1-expand-content'>
+<p><p>The <code>vm.runInNewContext()</code> first contextifies the given <code>sandbox</code> object (or
 creates a new <code>sandbox</code> if passed as <code>undefined</code>), compiles the <code>code</code>, runs it
 within the context of the created context, then returns the result. Running code
 does not have access to the local scope.</p></p>
@@ -328,15 +820,22 @@ console.log(util.inspect(sandbox));
 
 // { animal: &#39;cat&#39;, count: 3, name: &#39;kitty&#39; }
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_runInThisContext_1" id="method_runInThisContext_1"></a>
-            <div class="permalink"><a href="#method_runInThisContext_1" class="permalink fas fa-link"></a></div>
-            <p>vm.runInThisContext(code[, options])</p>
 
-          </h1>
-        </div><section><p><code>vm.runInThisContext()</code> compiles <code>code</code>, runs it within the context of the
+
+</div><div class='expandable-header' id='method_runInThisContext_1-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_runInThisContext_1" id="method_runInThisContext_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_runInThisContext_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_runInThisContext_1" class="permalink fas fa-link"></a></div>
+        <p>vm.runInThisContext(code[, options])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_runInThisContext_1-expand-content'>
+<p><code>vm.runInThisContext()</code> compiles <code>code</code>, runs it within the context of the
 current <code>global</code> and returns the result. Running code does not have access to
 local scope, but does have access to the current <code>global</code> object.</p>
 <p>The following example illustrates using both <code>vm.runInThisContext()</code> and
@@ -387,7 +886,9 @@ vm.runInThisContext(code)(require);
 <p><em>Note</em>: The <code>require()</code> in the above case shares the state with the context it
 is passed from. This may introduce risks when untrusted code is executed, e.g.
 altering objects in the context in unwanted ways.</p>
-</section>
+
+
+</div>
 
   <div class="footer">
     <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>

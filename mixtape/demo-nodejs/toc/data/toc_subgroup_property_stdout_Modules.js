@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_module_a_note_on_process_i_o","target":"misc_Global_Objects.html#module_a_note_on_process_i_o","text":"A note on process I/O","icon":false}],"ancestry":["toc_misc_Global_Objects","toc_global_Process","toc_subgroup_global_Process_Properties","toc_property_stdout","toc_subgroup_property_stdout_Modules"]}; });

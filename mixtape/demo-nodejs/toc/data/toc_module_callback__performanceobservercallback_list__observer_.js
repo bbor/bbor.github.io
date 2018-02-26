@@ -1,1 +1,1 @@
-define([], function() { return {"children":[],"ancestry":["toc_module_performance_timing_api","toc_class_PerformanceObserver_callback_","toc_subgroup_PerformanceObserver_callback__Modules","toc_module_callback__performanceobservercallback_list__observer_"]}; });
+define([], function() { return {"children":[],"ancestry":["toc_module_performance_timing_api","toc_class_PerformanceObserver_callback_","toc_subgroup_class_PerformanceObserver_callback__Modules","toc_module_callback__performanceobservercallback_list__observer_"]}; });

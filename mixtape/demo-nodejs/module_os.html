@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>mixtape page for os</title>
+    <title>OS</title>
     <script data-main="js/setup" src="js/require.js"></script>
     <link rel="stylesheet" href="fonts/fonts.css" />
     <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
@@ -13,9 +13,9 @@
   <body>
 
   <div id="control-panel">
-    <div id="control-strip-h">
-      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
-      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    <div id="control-strip-m">
+      <div id="control-strip-m-find"><div id="m-find"></div></div>
+      <div id="control-strip-m-toc"><div id="m-toc"></div></div>
     </div>
     <div id="controls">
       <div id="control-find">
@@ -26,44 +26,52 @@
       </div>
     </div>
   </div>
-  <div id="control-strip-v">
-    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
-    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  <div id="control-strip-w">
+    <div id="control-strip-w-find"></div>
+    <div id="control-strip-w-toc"></div>
   </div>
 
   <div id="content">
 
   
-       <div class="heading">
-          <h1>
-            <a name="module_os" id="module_os"></a>
-            <div class="permalink"><a href="#module_os" class="permalink fas fa-link"></a></div>
-            <p>OS</p>
+<div class="heading">
+<h1>
+  <a name="module_os" id="module_os"></a>
+  <div class="permalink"><a href="#module_os" class="permalink fas fa-link"></a></div>
+  <p>OS</p>
 
-          </h1>
-        </div><p><p>The <code>os</code> module provides a number of operating system-related utility methods.
+</h1>
+</div>
+
+<p><p>The <code>os</code> module provides a number of operating system-related utility methods.
 It can be accessed using:</p></p>
 <pre class="prettyprint"><code class="lang-js">const os = require(&#39;os&#39;);
 </code></pre>
 
-       <div class="heading">
-          <h2>
-            <a name="module_os_constants" id="module_os_constants"></a>
-            <div class="permalink"><a href="#module_os_constants" class="permalink fas fa-link"></a></div>
-            <p>OS Constants</p>
 
-          </h1>
-        </div><section><p>The following constants are exported by <code>os.constants</code>.</p>
+<div class="heading">
+<h2>
+  <a name="module_os_constants" id="module_os_constants"></a>
+  <div class="permalink"><a href="#module_os_constants" class="permalink fas fa-link"></a></div>
+  <p>OS Constants</p>
+
+</h2>
+</div>
+
+<p>The following constants are exported by <code>os.constants</code>.</p>
 <p><em>Note</em>: Not all constants will be available on every operating system.</p>
 
-       <div class="heading">
-          <h3>
-            <a name="module_signal_constants" id="module_signal_constants"></a>
-            <div class="permalink"><a href="#module_signal_constants" class="permalink fas fa-link"></a></div>
-            <p>Signal Constants</p>
 
-          </h1>
-        </div><section><p><p>The following signal constants are exported by <code>os.constants.signals</code>:</p></p>
+<div class="heading">
+<h3>
+  <a name="module_signal_constants" id="module_signal_constants"></a>
+  <div class="permalink"><a href="#module_signal_constants" class="permalink fas fa-link"></a></div>
+  <p>Signal Constants</p>
+
+</h3>
+</div>
+
+<p><p>The following signal constants are exported by <code>os.constants.signals</code>:</p></p>
 <table>
   <tr>
     <th>Constant</th>
@@ -225,24 +233,30 @@ It can be accessed using:</p></p>
   </tr>
 </table>
 
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_error_constants" id="module_error_constants"></a>
-            <div class="permalink"><a href="#module_error_constants" class="permalink fas fa-link"></a></div>
-            <p>Error Constants</p>
 
-          </h1>
-        </div><section><p>The following error constants are exported by <code>os.constants.errno</code>:</p>
 
-       <div class="heading">
-          <h4>
-            <a name="module_posix_error_constants" id="module_posix_error_constants"></a>
-            <div class="permalink"><a href="#module_posix_error_constants" class="permalink fas fa-link"></a></div>
-            <p>POSIX Error Constants</p>
+<div class="heading">
+<h3>
+  <a name="module_error_constants" id="module_error_constants"></a>
+  <div class="permalink"><a href="#module_error_constants" class="permalink fas fa-link"></a></div>
+  <p>Error Constants</p>
 
-          </h1>
-        </div><section><table>
+</h3>
+</div>
+
+<p>The following error constants are exported by <code>os.constants.errno</code>:</p>
+
+
+<div class="heading">
+<h4>
+  <a name="module_posix_error_constants" id="module_posix_error_constants"></a>
+  <div class="permalink"><a href="#module_posix_error_constants" class="permalink fas fa-link"></a></div>
+  <p>POSIX Error Constants</p>
+
+</h4>
+</div>
+
+<table>
   <tr>
     <th>Constant</th>
     <th>Description</th>
@@ -572,15 +586,18 @@ It can be accessed using:</p></p>
   </tr>
 </table>
 
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_windows_specific_error_constants" id="module_windows_specific_error_constants"></a>
-            <div class="permalink"><a href="#module_windows_specific_error_constants" class="permalink fas fa-link"></a></div>
-            <p>Windows Specific Error Constants</p>
 
-          </h1>
-        </div><section><p><p>The following error codes are specific to the Windows operating system:</p></p>
+
+<div class="heading">
+<h4>
+  <a name="module_windows_specific_error_constants" id="module_windows_specific_error_constants"></a>
+  <div class="permalink"><a href="#module_windows_specific_error_constants" class="permalink fas fa-link"></a></div>
+  <p>Windows Specific Error Constants</p>
+
+</h4>
+</div>
+
+<p><p>The following error codes are specific to the Windows operating system:</p></p>
 <table>
   <tr>
     <th>Constant</th>
@@ -821,15 +838,18 @@ It can be accessed using:</p></p>
   </tr>
 </table>
 
-</section></section>
-       <div class="heading">
-          <h3>
-            <a name="module_dlopen_constants" id="module_dlopen_constants"></a>
-            <div class="permalink"><a href="#module_dlopen_constants" class="permalink fas fa-link"></a></div>
-            <p>dlopen Constants</p>
 
-          </h1>
-        </div><section><p><p>If available on the operating system, the following constants
+
+<div class="heading">
+<h3>
+  <a name="module_dlopen_constants" id="module_dlopen_constants"></a>
+  <div class="permalink"><a href="#module_dlopen_constants" class="permalink fas fa-link"></a></div>
+  <p>dlopen Constants</p>
+
+</h3>
+</div>
+
+<p><p>If available on the operating system, the following constants
 are exported in <code>os.constants.dlopen</code>. See dlopen(3) for detailed
 information.</p></p>
 <table>
@@ -863,15 +883,18 @@ information.</p></p>
   </tr>
 </table>
 
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_libuv_constants" id="module_libuv_constants"></a>
-            <div class="permalink"><a href="#module_libuv_constants" class="permalink fas fa-link"></a></div>
-            <p>libuv Constants</p>
 
-          </h1>
-        </div><section><table>
+
+<div class="heading">
+<h3>
+  <a name="module_libuv_constants" id="module_libuv_constants"></a>
+  <div class="permalink"><a href="#module_libuv_constants" class="permalink fas fa-link"></a></div>
+  <p>libuv Constants</p>
+
+</h3>
+</div>
+
+<table>
   <tr>
     <th>Constant</th>
     <th>Description</th>
@@ -884,52 +907,79 @@ information.</p></p>
 
 <!-- [end-include:os.md] -->
 <!-- [start-include:path.md] -->
-</section></section>
-       <div class="heading">
-          <h2>
-            <a name="property_EOL" id="property_EOL"></a>
-            <div class="permalink"><a href="#property_EOL" class="permalink fas fa-link"></a></div>
-            <p><code>EOL</code> {string} </p>
 
-          </h1>
-        </div><section><p><p>A string constant defining the operating system-specific end-of-line marker:</p></p>
+<div class='expandable-header' id='property_EOL-expand'>
+<div class="heading">
+    <h2>
+        <a name="property_EOL" id="property_EOL"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_EOL-expand-icon"></i>
+        <div class="permalink"><a href="#property_EOL" class="permalink fas fa-link"></a></div>
+        <p><code>EOL</code> {string} </p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='property_EOL-expand-content'>
+<p><p>A string constant defining the operating system-specific end-of-line marker:</p></p>
 <ul>
 <li><code>\n</code> on POSIX</li>
 <li><code>\r\n</code> on Windows</li>
 </ul>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="property_constants_3" id="property_constants_3"></a>
-            <div class="permalink"><a href="#property_constants_3" class="permalink fas fa-link"></a></div>
-            <p><code>constants</code> {Object} </p>
 
-          </h1>
-        </div><section><p>Returns an object containing commonly used operating system specific constants
+
+</div><div class='expandable-header' id='property_constants_3-expand'>
+<div class="heading">
+    <h2>
+        <a name="property_constants_3" id="property_constants_3"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_constants_3-expand-icon"></i>
+        <div class="permalink"><a href="#property_constants_3" class="permalink fas fa-link"></a></div>
+        <p><code>constants</code> {Object} </p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='property_constants_3-expand-content'>
+<p>Returns an object containing commonly used operating system specific constants
 for error codes, process signals, and so on. The specific constants currently
 defined are described in <a href="#os_os_constants_1">OS Constants</a>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_arch" id="method_arch"></a>
-            <div class="permalink"><a href="#method_arch" class="permalink fas fa-link"></a></div>
-            <p>os.arch()</p>
 
-          </h1>
-        </div><section><p>The <code>os.arch()</code> method returns a string identifying the operating system CPU
+
+</div><div class='expandable-header' id='method_arch-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_arch" id="method_arch"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_arch-expand-icon"></i>
+        <div class="permalink"><a href="#method_arch" class="permalink fas fa-link"></a></div>
+        <p>os.arch()</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_arch-expand-content'>
+<p>The <code>os.arch()</code> method returns a string identifying the operating system CPU
 architecture for which the Node.js binary was compiled.</p>
 <p>The current possible values are: <code>&#39;arm&#39;</code>, <code>&#39;arm64&#39;</code>, <code>&#39;ia32&#39;</code>, <code>&#39;mips&#39;</code>,
 <code>&#39;mipsel&#39;</code>, <code>&#39;ppc&#39;</code>, <code>&#39;ppc64&#39;</code>, <code>&#39;s390&#39;</code>, <code>&#39;s390x&#39;</code>, <code>&#39;x32&#39;</code>, and <code>&#39;x64&#39;</code>.</p>
 <p>Equivalent to <a href="process.html#process_process_arch"><code>process.arch</code></a>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_cpus" id="method_cpus"></a>
-            <div class="permalink"><a href="#method_cpus" class="permalink fas fa-link"></a></div>
-            <p>os.cpus()</p>
 
-          </h1>
-        </div><section><p>The <code>os.cpus()</code> method returns an array of objects containing information about
+
+</div><div class='expandable-header' id='method_cpus-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_cpus" id="method_cpus"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_cpus-expand-icon"></i>
+        <div class="permalink"><a href="#method_cpus" class="permalink fas fa-link"></a></div>
+        <p>os.cpus()</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_cpus-expand-content'>
+<p>The <code>os.cpus()</code> method returns an array of objects containing information about
 each logical CPU core.</p>
 <p>The properties included on each object include:</p>
 <ul>
@@ -1039,75 +1089,117 @@ each logical CPU core.</p>
 </code></pre>
 <p><em>Note</em>: Because <code>nice</code> values are UNIX-specific, on Windows the <code>nice</code> values
 of all processors are always 0.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_endianness" id="method_endianness"></a>
-            <div class="permalink"><a href="#method_endianness" class="permalink fas fa-link"></a></div>
-            <p>os.endianness()</p>
 
-          </h1>
-        </div><section><p><p>The <code>os.endianness()</code> method returns a string identifying the endianness of the
+
+</div><div class='expandable-header' id='method_endianness-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_endianness" id="method_endianness"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_endianness-expand-icon"></i>
+        <div class="permalink"><a href="#method_endianness" class="permalink fas fa-link"></a></div>
+        <p>os.endianness()</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_endianness-expand-content'>
+<p><p>The <code>os.endianness()</code> method returns a string identifying the endianness of the
 CPU <em>for which the Node.js binary was compiled</em>.</p></p>
 <p><p>Possible values are:</p></p>
 <ul>
 <li><code>&#39;BE&#39;</code> for big endian</li>
 <li><code>&#39;LE&#39;</code> for little endian.</li>
 </ul>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_freemem" id="method_freemem"></a>
-            <div class="permalink"><a href="#method_freemem" class="permalink fas fa-link"></a></div>
-            <p>os.freemem()</p>
 
-          </h1>
-        </div><section><p>The <code>os.freemem()</code> method returns the amount of free system memory in bytes as
+
+</div><div class='expandable-header' id='method_freemem-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_freemem" id="method_freemem"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_freemem-expand-icon"></i>
+        <div class="permalink"><a href="#method_freemem" class="permalink fas fa-link"></a></div>
+        <p>os.freemem()</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_freemem-expand-content'>
+<p>The <code>os.freemem()</code> method returns the amount of free system memory in bytes as
 an integer.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_homedir" id="method_homedir"></a>
-            <div class="permalink"><a href="#method_homedir" class="permalink fas fa-link"></a></div>
-            <p>os.homedir()</p>
 
-          </h1>
-        </div><section><p>The <code>os.homedir()</code> method returns the home directory of the current user as a
+
+</div><div class='expandable-header' id='method_homedir-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_homedir" id="method_homedir"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_homedir-expand-icon"></i>
+        <div class="permalink"><a href="#method_homedir" class="permalink fas fa-link"></a></div>
+        <p>os.homedir()</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_homedir-expand-content'>
+<p>The <code>os.homedir()</code> method returns the home directory of the current user as a
 string.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_hostname" id="method_hostname"></a>
-            <div class="permalink"><a href="#method_hostname" class="permalink fas fa-link"></a></div>
-            <p>os.hostname()</p>
 
-          </h1>
-        </div><section><p>The <code>os.hostname()</code> method returns the hostname of the operating system as a
+
+</div><div class='expandable-header' id='method_hostname-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_hostname" id="method_hostname"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_hostname-expand-icon"></i>
+        <div class="permalink"><a href="#method_hostname" class="permalink fas fa-link"></a></div>
+        <p>os.hostname()</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_hostname-expand-content'>
+<p>The <code>os.hostname()</code> method returns the hostname of the operating system as a
 string.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_loadavg" id="method_loadavg"></a>
-            <div class="permalink"><a href="#method_loadavg" class="permalink fas fa-link"></a></div>
-            <p>os.loadavg()</p>
 
-          </h1>
-        </div><section><p>The <code>os.loadavg()</code> method returns an array containing the 1, 5, and 15 minute
+
+</div><div class='expandable-header' id='method_loadavg-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_loadavg" id="method_loadavg"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_loadavg-expand-icon"></i>
+        <div class="permalink"><a href="#method_loadavg" class="permalink fas fa-link"></a></div>
+        <p>os.loadavg()</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_loadavg-expand-content'>
+<p>The <code>os.loadavg()</code> method returns an array containing the 1, 5, and 15 minute
 load averages.</p>
 <p>The load average is a measure of system activity, calculated by the operating
 system and expressed as a fractional number.  As a rule of thumb, the load
 average should ideally be less than the number of logical CPUs in the system.</p>
 <p>The load average is a UNIX-specific concept with no real equivalent on
 Windows platforms. On Windows, the return value is always <code>[0, 0, 0]</code>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_networkInterfaces" id="method_networkInterfaces"></a>
-            <div class="permalink"><a href="#method_networkInterfaces" class="permalink fas fa-link"></a></div>
-            <p>os.networkInterfaces()</p>
 
-          </h1>
-        </div><section><p><p>The <code>os.networkInterfaces()</code> method returns an object containing only network
+
+</div><div class='expandable-header' id='method_networkInterfaces-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_networkInterfaces" id="method_networkInterfaces"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_networkInterfaces-expand-icon"></i>
+        <div class="permalink"><a href="#method_networkInterfaces" class="permalink fas fa-link"></a></div>
+        <p>os.networkInterfaces()</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_networkInterfaces-expand-content'>
+<p><p>The <code>os.networkInterfaces()</code> method returns an object containing only network
 interfaces that have been assigned a network address.</p></p>
 <p><p>Each key on the returned object identifies a network interface. The associated
 value is an array of objects that each describe an assigned network address.</p></p>
@@ -1165,15 +1257,22 @@ to <code>null</code></li>
   ]
 }
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_platform" id="method_platform"></a>
-            <div class="permalink"><a href="#method_platform" class="permalink fas fa-link"></a></div>
-            <p>os.platform()</p>
 
-          </h1>
-        </div><section><p>The <code>os.platform()</code> method returns a string identifying the operating system
+
+</div><div class='expandable-header' id='method_platform-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_platform" id="method_platform"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_platform-expand-icon"></i>
+        <div class="permalink"><a href="#method_platform" class="permalink fas fa-link"></a></div>
+        <p>os.platform()</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_platform-expand-content'>
+<p>The <code>os.platform()</code> method returns a string identifying the operating system
 platform as set during compile time of Node.js.</p>
 <p>Currently possible values are:</p>
 <ul>
@@ -1189,73 +1288,115 @@ platform as set during compile time of Node.js.</p>
 <p><em>Note</em>: The value <code>&#39;android&#39;</code> may also be returned if the Node.js is built on
 the Android operating system. However, Android support in Node.js is considered
 to be experimental at this time.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_release" id="method_release"></a>
-            <div class="permalink"><a href="#method_release" class="permalink fas fa-link"></a></div>
-            <p>os.release()</p>
 
-          </h1>
-        </div><section><p>The <code>os.release()</code> method returns a string identifying the operating system
+
+</div><div class='expandable-header' id='method_release-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_release" id="method_release"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_release-expand-icon"></i>
+        <div class="permalink"><a href="#method_release" class="permalink fas fa-link"></a></div>
+        <p>os.release()</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_release-expand-content'>
+<p>The <code>os.release()</code> method returns a string identifying the operating system
 release.</p>
 <p><em>Note</em>: On POSIX systems, the operating system release is determined by
 calling <a href="https://linux.die.net/man/3/uname">uname(3)</a>. On Windows, <code>GetVersionExW()</code> is used. Please see
 <a href="https://en.wikipedia.org/wiki/Uname#Examples">https://en.wikipedia.org/wiki/Uname#Examples</a> for more information.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_tmpdir" id="method_tmpdir"></a>
-            <div class="permalink"><a href="#method_tmpdir" class="permalink fas fa-link"></a></div>
-            <p>os.tmpdir()</p>
 
-          </h1>
-        </div><section><p>The <code>os.tmpdir()</code> method returns a string specifying the operating system&#39;s
+
+</div><div class='expandable-header' id='method_tmpdir-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_tmpdir" id="method_tmpdir"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_tmpdir-expand-icon"></i>
+        <div class="permalink"><a href="#method_tmpdir" class="permalink fas fa-link"></a></div>
+        <p>os.tmpdir()</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_tmpdir-expand-content'>
+<p>The <code>os.tmpdir()</code> method returns a string specifying the operating system&#39;s
 default directory for temporary files.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_totalmem" id="method_totalmem"></a>
-            <div class="permalink"><a href="#method_totalmem" class="permalink fas fa-link"></a></div>
-            <p>os.totalmem()</p>
 
-          </h1>
-        </div><section><p>The <code>os.totalmem()</code> method returns the total amount of system memory in bytes
+
+</div><div class='expandable-header' id='method_totalmem-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_totalmem" id="method_totalmem"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_totalmem-expand-icon"></i>
+        <div class="permalink"><a href="#method_totalmem" class="permalink fas fa-link"></a></div>
+        <p>os.totalmem()</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_totalmem-expand-content'>
+<p>The <code>os.totalmem()</code> method returns the total amount of system memory in bytes
 as an integer.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_type" id="method_type"></a>
-            <div class="permalink"><a href="#method_type" class="permalink fas fa-link"></a></div>
-            <p>os.type()</p>
 
-          </h1>
-        </div><section><p>The <code>os.type()</code> method returns a string identifying the operating system name
+
+</div><div class='expandable-header' id='method_type-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_type" id="method_type"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_type-expand-icon"></i>
+        <div class="permalink"><a href="#method_type" class="permalink fas fa-link"></a></div>
+        <p>os.type()</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_type-expand-content'>
+<p>The <code>os.type()</code> method returns a string identifying the operating system name
 as returned by <a href="https://linux.die.net/man/3/uname">uname(3)</a>. For example <code>&#39;Linux&#39;</code> on Linux, <code>&#39;Darwin&#39;</code> on macOS
 and <code>&#39;Windows_NT&#39;</code> on Windows.</p>
 <p>Please see <a href="https://en.wikipedia.org/wiki/Uname#Examples">https://en.wikipedia.org/wiki/Uname#Examples</a> for additional
 information about the output of running <a href="https://linux.die.net/man/3/uname">uname(3)</a> on various operating
 systems.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_uptime_1" id="method_uptime_1"></a>
-            <div class="permalink"><a href="#method_uptime_1" class="permalink fas fa-link"></a></div>
-            <p>os.uptime()</p>
 
-          </h1>
-        </div><section><p>The <code>os.uptime()</code> method returns the system uptime in number of seconds.</p>
+
+</div><div class='expandable-header' id='method_uptime_1-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_uptime_1" id="method_uptime_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_uptime_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_uptime_1" class="permalink fas fa-link"></a></div>
+        <p>os.uptime()</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_uptime_1-expand-content'>
+<p>The <code>os.uptime()</code> method returns the system uptime in number of seconds.</p>
 <p><em>Note</em>: On Windows the returned value includes fractions of a second.
 Use <code>Math.floor()</code> to get whole seconds.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_userInfo" id="method_userInfo"></a>
-            <div class="permalink"><a href="#method_userInfo" class="permalink fas fa-link"></a></div>
-            <p>os.userInfo([options])</p>
 
-          </h1>
-        </div><section><p>The <code>os.userInfo()</code> method returns information about the currently effective
+
+</div><div class='expandable-header' id='method_userInfo-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_userInfo" id="method_userInfo"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_userInfo-expand-icon"></i>
+        <div class="permalink"><a href="#method_userInfo" class="permalink fas fa-link"></a></div>
+        <p>os.userInfo([options])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_userInfo-expand-content'>
+<p>The <code>os.userInfo()</code> method returns information about the currently effective
 user -- on POSIX platforms, this is typically a subset of the password file. The
 returned object includes the <code>username</code>, <code>uid</code>, <code>gid</code>, <code>shell</code>, and <code>homedir</code>.
 On Windows, the <code>uid</code> and <code>gid</code> fields are <code>-1</code>, and <code>shell</code> is <code>null</code>.</p>
@@ -1263,7 +1404,9 @@ On Windows, the <code>uid</code> and <code>gid</code> fields are <code>-1</code>
 system. This differs from the result of <code>os.homedir()</code>, which queries several
 environment variables for the home directory before falling back to the
 operating system response.</p>
-</section>
+
+
+</div>
 
   <div class="footer">
     <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>

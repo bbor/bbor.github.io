@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>mixtape page for n-api</title>
+    <title>N-API</title>
     <script data-main="js/setup" src="js/require.js"></script>
     <link rel="stylesheet" href="fonts/fonts.css" />
     <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
@@ -13,9 +13,9 @@
   <body>
 
   <div id="control-panel">
-    <div id="control-strip-h">
-      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
-      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    <div id="control-strip-m">
+      <div id="control-strip-m-find"><div id="m-find"></div></div>
+      <div id="control-strip-m-toc"><div id="m-toc"></div></div>
     </div>
     <div id="controls">
       <div id="control-find">
@@ -26,22 +26,24 @@
       </div>
     </div>
   </div>
-  <div id="control-strip-v">
-    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
-    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  <div id="control-strip-w">
+    <div id="control-strip-w-find"></div>
+    <div id="control-strip-w-toc"></div>
   </div>
 
   <div id="content">
 
   
-       <div class="heading">
-          <h1>
-            <a name="module_n_api_1" id="module_n_api_1"></a>
-            <div class="permalink"><a href="#module_n_api_1" class="permalink fas fa-link"></a></div>
-            <p>N-API</p>
+<div class="heading">
+<h1>
+  <a name="module_n_api_1" id="module_n_api_1"></a>
+  <div class="permalink"><a href="#module_n_api_1" class="permalink fas fa-link"></a></div>
+  <p>N-API</p>
 
-          </h1>
-        </div><p><p>N-API (pronounced N as in the letter, followed by API)
+</h1>
+</div>
+
+<p><p>N-API (pronounced N as in the letter, followed by API)
 is an API for building native Addons. It is independent from
 the underlying JavaScript runtime (ex V8) and is maintained as part of
 Node.js itself. This API will be Application Binary Interface (ABI) stable
@@ -99,25 +101,31 @@ For example:</p></p>
 <pre class="prettyprint"><code class="lang-C">#include &lt;node_api.h&gt;
 </code></pre>
 
-       <div class="heading">
-          <h2>
-            <a name="module_basic_n_api_data_types" id="module_basic_n_api_data_types"></a>
-            <div class="permalink"><a href="#module_basic_n_api_data_types" class="permalink fas fa-link"></a></div>
-            <p>Basic N-API Data Types</p>
 
-          </h1>
-        </div><section><p>N-API exposes the following fundamental datatypes as abstractions that are
+<div class="heading">
+<h2>
+  <a name="module_basic_n_api_data_types" id="module_basic_n_api_data_types"></a>
+  <div class="permalink"><a href="#module_basic_n_api_data_types" class="permalink fas fa-link"></a></div>
+  <p>Basic N-API Data Types</p>
+
+</h2>
+</div>
+
+<p>N-API exposes the following fundamental datatypes as abstractions that are
 consumed by the various APIs. These APIs should be treated as opaque,
 introspectable only with other N-API calls.</p>
 
-       <div class="heading">
-          <h3>
-            <a name="module_napi_status" id="module_napi_status"></a>
-            <div class="permalink"><a href="#module_napi_status" class="permalink fas fa-link"></a></div>
-            <p>napi_status</p>
 
-          </h1>
-        </div><section><p>Integral status code indicating the success or failure of a N-API call.
+<div class="heading">
+<h3>
+  <a name="module_napi_status" id="module_napi_status"></a>
+  <div class="permalink"><a href="#module_napi_status" class="permalink fas fa-link"></a></div>
+  <p>napi_status</p>
+
+</h3>
+</div>
+
+<p>Integral status code indicating the success or failure of a N-API call.
 Currently, the following status codes are supported.</p>
 <pre class="prettyprint"><code class="lang-C">typedef enum {
   napi_ok,
@@ -137,15 +145,18 @@ Currently, the following status codes are supported.</p>
 </code></pre>
 <p>If additional information is required upon an API returning a failed status,
 it can be obtained by calling <code>napi_get_last_error_info</code>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_extended_error_info" id="module_napi_extended_error_info"></a>
-            <div class="permalink"><a href="#module_napi_extended_error_info" class="permalink fas fa-link"></a></div>
-            <p>napi_extended_error_info</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">typedef struct {
+
+<div class="heading">
+<h3>
+  <a name="module_napi_extended_error_info" id="module_napi_extended_error_info"></a>
+  <div class="permalink"><a href="#module_napi_extended_error_info" class="permalink fas fa-link"></a></div>
+  <p>napi_extended_error_info</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">typedef struct {
   const char<em> error_message;
   void</em> engine_reserved;
   uint32_t engine_error_code;
@@ -162,47 +173,59 @@ not implemented for any VM.</li></p>
 <p><li><code>error_code</code>: The N-API status code that originated with the last error.</li>
 </ul></p>
 <p>See the <a href="#n_api_error_handling">Error Handling</a> section for additional information.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_env" id="module_napi_env"></a>
-            <div class="permalink"><a href="#module_napi_env" class="permalink fas fa-link"></a></div>
-            <p>napi_env</p>
 
-          </h1>
-        </div><section><p><code>napi_env</code> is used to represent a context that the underlying N-API
+
+<div class="heading">
+<h3>
+  <a name="module_napi_env" id="module_napi_env"></a>
+  <div class="permalink"><a href="#module_napi_env" class="permalink fas fa-link"></a></div>
+  <p>napi_env</p>
+
+</h3>
+</div>
+
+<p><code>napi_env</code> is used to represent a context that the underlying N-API
 implementation can use to persist VM-specific state. This structure is passed
 to native functions when they&#39;re invoked, and it must be passed back when
 making N-API calls. Specifically, the same <code>napi_env</code> that was passed in when
 the initial native function was called must be passed to any subsequent
 nested N-API calls. Caching the <code>napi_env</code> for the purpose of general reuse is
 not allowed.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_value" id="module_napi_value"></a>
-            <div class="permalink"><a href="#module_napi_value" class="permalink fas fa-link"></a></div>
-            <p>napi_value</p>
 
-          </h1>
-        </div><section><p>This is an opaque pointer that is used to represent a JavaScript value.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_n_api_memory_management_types" id="module_n_api_memory_management_types"></a>
-            <div class="permalink"><a href="#module_n_api_memory_management_types" class="permalink fas fa-link"></a></div>
-            <p>N-API Memory Management types</p>
 
-          </h1>
-        </div><section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_handle_scope" id="module_napi_handle_scope"></a>
-            <div class="permalink"><a href="#module_napi_handle_scope" class="permalink fas fa-link"></a></div>
-            <p>napi_handle_scope</p>
+<div class="heading">
+<h3>
+  <a name="module_napi_value" id="module_napi_value"></a>
+  <div class="permalink"><a href="#module_napi_value" class="permalink fas fa-link"></a></div>
+  <p>napi_value</p>
 
-          </h1>
-        </div><section><p>This is an abstraction used to control and modify the lifetime of objects
+</h3>
+</div>
+
+<p>This is an opaque pointer that is used to represent a JavaScript value.</p>
+
+
+<div class="heading">
+<h3>
+  <a name="module_n_api_memory_management_types" id="module_n_api_memory_management_types"></a>
+  <div class="permalink"><a href="#module_n_api_memory_management_types" class="permalink fas fa-link"></a></div>
+  <p>N-API Memory Management types</p>
+
+</h3>
+</div>
+
+
+
+<div class="heading">
+<h4>
+  <a name="module_napi_handle_scope" id="module_napi_handle_scope"></a>
+  <div class="permalink"><a href="#module_napi_handle_scope" class="permalink fas fa-link"></a></div>
+  <p>napi_handle_scope</p>
+
+</h4>
+</div>
+
+<p>This is an abstraction used to control and modify the lifetime of objects
 created within a particular scope. In general, N-API values are created within
 the context of a handle scope. When a native method is called from
 JavaScript, a default handle scope will exist. If the user does not explicitly
@@ -216,69 +239,87 @@ using <a href="#n_api_napi_close_handle_scope"><code>napi_close_handle_scope</co
 all <code>napi_value</code>s created during the lifetime of the handle scope are no longer
 referenced from the current stack frame.</p>
 <p>For more details, review the <a href="#n_api_object_lifetime_management">Object Lifetime Management</a>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_escapable_handle_scope" id="module_napi_escapable_handle_scope"></a>
-            <div class="permalink"><a href="#module_napi_escapable_handle_scope" class="permalink fas fa-link"></a></div>
-            <p>napi_escapable_handle_scope</p>
 
-          </h1>
-        </div><section><p>Escapable handle scopes are a special type of handle scope to return values
+
+<div class="heading">
+<h4>
+  <a name="module_napi_escapable_handle_scope" id="module_napi_escapable_handle_scope"></a>
+  <div class="permalink"><a href="#module_napi_escapable_handle_scope" class="permalink fas fa-link"></a></div>
+  <p>napi_escapable_handle_scope</p>
+
+</h4>
+</div>
+
+<p>Escapable handle scopes are a special type of handle scope to return values
 created within a particular handle scope to a parent scope.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_ref" id="module_napi_ref"></a>
-            <div class="permalink"><a href="#module_napi_ref" class="permalink fas fa-link"></a></div>
-            <p>napi_ref</p>
 
-          </h1>
-        </div><section><p>This is the abstraction to use to reference a <code>napi_value</code>. This allows for
+
+<div class="heading">
+<h4>
+  <a name="module_napi_ref" id="module_napi_ref"></a>
+  <div class="permalink"><a href="#module_napi_ref" class="permalink fas fa-link"></a></div>
+  <p>napi_ref</p>
+
+</h4>
+</div>
+
+<p>This is the abstraction to use to reference a <code>napi_value</code>. This allows for
 users to manage the lifetimes of JavaScript values, including defining their
 minimum lifetimes explicitly.</p>
 <p>For more details, review the <a href="#n_api_object_lifetime_management">Object Lifetime Management</a>.</p>
-</section></section>
-       <div class="heading">
-          <h3>
-            <a name="module_n_api_callback_types" id="module_n_api_callback_types"></a>
-            <div class="permalink"><a href="#module_n_api_callback_types" class="permalink fas fa-link"></a></div>
-            <p>N-API Callback types</p>
 
-          </h1>
-        </div><section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_callback_info" id="module_napi_callback_info"></a>
-            <div class="permalink"><a href="#module_napi_callback_info" class="permalink fas fa-link"></a></div>
-            <p>napi_callback_info</p>
 
-          </h1>
-        </div><section><p>Opaque datatype that is passed to a callback function. It can be used for
+<div class="heading">
+<h3>
+  <a name="module_n_api_callback_types" id="module_n_api_callback_types"></a>
+  <div class="permalink"><a href="#module_n_api_callback_types" class="permalink fas fa-link"></a></div>
+  <p>N-API Callback types</p>
+
+</h3>
+</div>
+
+
+
+<div class="heading">
+<h4>
+  <a name="module_napi_callback_info" id="module_napi_callback_info"></a>
+  <div class="permalink"><a href="#module_napi_callback_info" class="permalink fas fa-link"></a></div>
+  <p>napi_callback_info</p>
+
+</h4>
+</div>
+
+<p>Opaque datatype that is passed to a callback function. It can be used for
 getting additional information about the context in which the callback was
 invoked.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_callback" id="module_napi_callback"></a>
-            <div class="permalink"><a href="#module_napi_callback" class="permalink fas fa-link"></a></div>
-            <p>napi_callback</p>
 
-          </h1>
-        </div><section><p><p>Function pointer type for user-provided native functions which are to be
+
+<div class="heading">
+<h4>
+  <a name="module_napi_callback" id="module_napi_callback"></a>
+  <div class="permalink"><a href="#module_napi_callback" class="permalink fas fa-link"></a></div>
+  <p>napi_callback</p>
+
+</h4>
+</div>
+
+<p><p>Function pointer type for user-provided native functions which are to be
 exposed to JavaScript via N-API. Callback functions should satisfy the
 following signature:</p></p>
 <pre class="prettyprint"><code class="lang-C">typedef napi_value (*napi_callback)(napi_env, napi_callback_info);
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_finalize" id="module_napi_finalize"></a>
-            <div class="permalink"><a href="#module_napi_finalize" class="permalink fas fa-link"></a></div>
-            <p>napi_finalize</p>
 
-          </h1>
-        </div><section><p><p>Function pointer type for add-on provided functions that allow the user to be
+
+<div class="heading">
+<h4>
+  <a name="module_napi_finalize" id="module_napi_finalize"></a>
+  <div class="permalink"><a href="#module_napi_finalize" class="permalink fas fa-link"></a></div>
+  <p>napi_finalize</p>
+
+</h4>
+</div>
+
+<p><p>Function pointer type for add-on provided functions that allow the user to be
 notified when externally-owned data is ready to be cleaned up because the
 object with which it was associated with, has been garbage-collected. The user
 must provide a function satisfying the following signature which would get
@@ -288,51 +329,63 @@ finding out when objects that have external data are collected.</p></p>
                               void* finalize_data,
                               void* finalize_hint);
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_async_execute_callback" id="module_napi_async_execute_callback"></a>
-            <div class="permalink"><a href="#module_napi_async_execute_callback" class="permalink fas fa-link"></a></div>
-            <p>napi_async_execute_callback</p>
 
-          </h1>
-        </div><section><p><p>Function pointer used with functions that support asynchronous
+
+<div class="heading">
+<h4>
+  <a name="module_napi_async_execute_callback" id="module_napi_async_execute_callback"></a>
+  <div class="permalink"><a href="#module_napi_async_execute_callback" class="permalink fas fa-link"></a></div>
+  <p>napi_async_execute_callback</p>
+
+</h4>
+</div>
+
+<p><p>Function pointer used with functions that support asynchronous
 operations. Callback functions must statisfy the following signature:</p></p>
 <pre class="prettyprint"><code class="lang-C">typedef void (*napi_async_execute_callback)(napi_env env, void* data);
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_async_complete_callback" id="module_napi_async_complete_callback"></a>
-            <div class="permalink"><a href="#module_napi_async_complete_callback" class="permalink fas fa-link"></a></div>
-            <p>napi_async_complete_callback</p>
 
-          </h1>
-        </div><section><p><p>Function pointer used with functions that support asynchronous
+
+<div class="heading">
+<h4>
+  <a name="module_napi_async_complete_callback" id="module_napi_async_complete_callback"></a>
+  <div class="permalink"><a href="#module_napi_async_complete_callback" class="permalink fas fa-link"></a></div>
+  <p>napi_async_complete_callback</p>
+
+</h4>
+</div>
+
+<p><p>Function pointer used with functions that support asynchronous
 operations. Callback functions must statisfy the following signature:</p></p>
 <pre class="prettyprint"><code class="lang-C">typedef void (*napi_async_complete_callback)(napi_env env,
                                              napi_status status,
                                              void* data);
 </code></pre>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="module_error_handling_1" id="module_error_handling_1"></a>
-            <div class="permalink"><a href="#module_error_handling_1" class="permalink fas fa-link"></a></div>
-            <p>Error Handling</p>
 
-          </h1>
-        </div><section><p>N-API uses both return values and JavaScript exceptions for error handling.
+
+<div class="heading">
+<h2>
+  <a name="module_error_handling_1" id="module_error_handling_1"></a>
+  <div class="permalink"><a href="#module_error_handling_1" class="permalink fas fa-link"></a></div>
+  <p>Error Handling</p>
+
+</h2>
+</div>
+
+<p>N-API uses both return values and JavaScript exceptions for error handling.
 The following sections explain the approach for each case.</p>
 
-       <div class="heading">
-          <h3>
-            <a name="module_return_values" id="module_return_values"></a>
-            <div class="permalink"><a href="#module_return_values" class="permalink fas fa-link"></a></div>
-            <p>Return values</p>
 
-          </h1>
-        </div><section><p>All of the N-API functions share the same error handling pattern. The
+<div class="heading">
+<h3>
+  <a name="module_return_values" id="module_return_values"></a>
+  <div class="permalink"><a href="#module_return_values" class="permalink fas fa-link"></a></div>
+  <p>Return values</p>
+
+</h3>
+</div>
+
+<p>All of the N-API functions share the same error handling pattern. The
 return type of all API functions is <code>napi_status</code>.</p>
 <p>The return value will be <code>napi_ok</code> if the request was successful and
 no uncaught JavaScript exception was thrown. If an error occurred AND
@@ -371,14 +424,17 @@ N-API call that was made.</p>
 information as it is not subject to SemVer and may change at any time.
 It is intended only for logging purposes.</p>
 
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_last_error_info" id="module_napi_get_last_error_info"></a>
-            <div class="permalink"><a href="#module_napi_get_last_error_info" class="permalink fas fa-link"></a></div>
-            <p>napi_get_last_error_info</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status
+<div class="heading">
+<h4>
+  <a name="module_napi_get_last_error_info" id="module_napi_get_last_error_info"></a>
+  <div class="permalink"><a href="#module_napi_get_last_error_info" class="permalink fas fa-link"></a></div>
+  <p>napi_get_last_error_info</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status
 napi_get_last_error_info(napi_env env,
                          const napi_extended_error_info** result);
 </code></pre></p>
@@ -395,15 +451,18 @@ valid up until an n-api function is called on the same <code>env</code>.</p>
 <p><em>Note</em>: Do not rely on the content or format of any of the extended
 information as it is not subject to SemVer and may change at any time.
 It is intended only for logging purposes.</p>
-</section></section>
-       <div class="heading">
-          <h3>
-            <a name="module_exceptions" id="module_exceptions"></a>
-            <div class="permalink"><a href="#module_exceptions" class="permalink fas fa-link"></a></div>
-            <p>Exceptions</p>
 
-          </h1>
-        </div><section><p><p>Any N-API function call may result in a pending JavaScript exception. This is
+
+<div class="heading">
+<h3>
+  <a name="module_exceptions" id="module_exceptions"></a>
+  <div class="permalink"><a href="#module_exceptions" class="permalink fas fa-link"></a></div>
+  <p>Exceptions</p>
+
+</h3>
+</div>
+
+<p><p>Any N-API function call may result in a pending JavaScript exception. This is
 obviously the case for any function that may cause the execution of
 JavaScript, but N-API specifies that an exception may be pending
 on return from any of the API functions.</p></p>
@@ -461,14 +520,17 @@ is &#39;ERR_ERROR_1&#39; and a TypeError is being created the name will be:</p>
 <pre class="prettyprint"><code class="lang-text">TypeError [ERR_ERROR_1]
 </code></pre>
 
-       <div class="heading">
-          <h4>
-            <a name="module_napi_throw" id="module_napi_throw"></a>
-            <div class="permalink"><a href="#module_napi_throw" class="permalink fas fa-link"></a></div>
-            <p>napi_throw</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_throw(napi_env env, napi_value error);
+<div class="heading">
+<h4>
+  <a name="module_napi_throw" id="module_napi_throw"></a>
+  <div class="permalink"><a href="#module_napi_throw" class="permalink fas fa-link"></a></div>
+  <p>napi_throw</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_throw(napi_env env, napi_value error);
 </code></pre></p>
 <p><ul></p>
 <p><li><code>[in] env</code>: The environment that the API is invoked under.</li></p>
@@ -476,15 +538,18 @@ is &#39;ERR_ERROR_1&#39; and a TypeError is being created the name will be:</p>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API throws the JavaScript Error provided.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_throw_error" id="module_napi_throw_error"></a>
-            <div class="permalink"><a href="#module_napi_throw_error" class="permalink fas fa-link"></a></div>
-            <p>napi_throw_error</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_throw_error(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_throw_error" id="module_napi_throw_error"></a>
+  <div class="permalink"><a href="#module_napi_throw_error" class="permalink fas fa-link"></a></div>
+  <p>napi_throw_error</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_throw_error(napi_env env,
                                          const char<em> code,
                                          const char</em> msg);
 </code></pre></p>
@@ -496,15 +561,18 @@ the error.</li>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API throws a JavaScript Error with the text provided.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_throw_type_error" id="module_napi_throw_type_error"></a>
-            <div class="permalink"><a href="#module_napi_throw_type_error" class="permalink fas fa-link"></a></div>
-            <p>napi_throw_type_error</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_throw_type_error(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_throw_type_error" id="module_napi_throw_type_error"></a>
+  <div class="permalink"><a href="#module_napi_throw_type_error" class="permalink fas fa-link"></a></div>
+  <p>napi_throw_type_error</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_throw_type_error(napi_env env,
                                               const char<em> code,
                                               const char</em> msg);
 </code></pre></p>
@@ -516,15 +584,18 @@ the error.</li>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API throws a JavaScript TypeError with the text provided.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_throw_range_error" id="module_napi_throw_range_error"></a>
-            <div class="permalink"><a href="#module_napi_throw_range_error" class="permalink fas fa-link"></a></div>
-            <p>napi_throw_range_error</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_throw_range_error(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_throw_range_error" id="module_napi_throw_range_error"></a>
+  <div class="permalink"><a href="#module_napi_throw_range_error" class="permalink fas fa-link"></a></div>
+  <p>napi_throw_range_error</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_throw_range_error(napi_env env,
                                                const char<em> code,
                                                const char</em> msg);
 </code></pre></p>
@@ -536,15 +607,18 @@ the error.</li>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API throws a JavaScript RangeError with the text provided.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_is_error" id="module_napi_is_error"></a>
-            <div class="permalink"><a href="#module_napi_is_error" class="permalink fas fa-link"></a></div>
-            <p>napi_is_error</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_is_error(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_is_error" id="module_napi_is_error"></a>
+  <div class="permalink"><a href="#module_napi_is_error" class="permalink fas fa-link"></a></div>
+  <p>napi_is_error</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_is_error(napi_env env,
                                       napi_value value,
                                       bool* result);
 </code></pre></p>
@@ -556,15 +630,18 @@ an error, false otherwise.</li>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API queries a <code>napi_value</code> to check if it represents an error object.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_create_error" id="module_napi_create_error"></a>
-            <div class="permalink"><a href="#module_napi_create_error" class="permalink fas fa-link"></a></div>
-            <p>napi_create_error</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_create_error(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_create_error" id="module_napi_create_error"></a>
+  <div class="permalink"><a href="#module_napi_create_error" class="permalink fas fa-link"></a></div>
+  <p>napi_create_error</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_create_error(napi_env env,
                                           napi_value code,
                                           napi_value msg,
                                           napi_value* result);
@@ -579,15 +656,18 @@ used as the message for the Error.</li></p>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API returns a JavaScript Error with the text provided.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_create_type_error" id="module_napi_create_type_error"></a>
-            <div class="permalink"><a href="#module_napi_create_type_error" class="permalink fas fa-link"></a></div>
-            <p>napi_create_type_error</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_create_type_error(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_create_type_error" id="module_napi_create_type_error"></a>
+  <div class="permalink"><a href="#module_napi_create_type_error" class="permalink fas fa-link"></a></div>
+  <p>napi_create_type_error</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_create_type_error(napi_env env,
                                                napi_value code,
                                                napi_value msg,
                                                napi_value* result);
@@ -602,15 +682,18 @@ used as the message for the Error.</li></p>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API returns a JavaScript TypeError with the text provided.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_create_range_error" id="module_napi_create_range_error"></a>
-            <div class="permalink"><a href="#module_napi_create_range_error" class="permalink fas fa-link"></a></div>
-            <p>napi_create_range_error</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_create_range_error(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_create_range_error" id="module_napi_create_range_error"></a>
+  <div class="permalink"><a href="#module_napi_create_range_error" class="permalink fas fa-link"></a></div>
+  <p>napi_create_range_error</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_create_range_error(napi_env env,
                                                 napi_value code,
                                                 const char<em> msg,
                                                 napi_value</em> result);
@@ -625,15 +708,18 @@ used as the message for the Error.</li></p>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API returns a JavaScript RangeError with the text provided.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_and_clear_last_exception" id="module_napi_get_and_clear_last_exception"></a>
-            <div class="permalink"><a href="#module_napi_get_and_clear_last_exception" class="permalink fas fa-link"></a></div>
-            <p>napi_get_and_clear_last_exception</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_and_clear_last_exception(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_get_and_clear_last_exception" id="module_napi_get_and_clear_last_exception"></a>
+  <div class="permalink"><a href="#module_napi_get_and_clear_last_exception" class="permalink fas fa-link"></a></div>
+  <p>napi_get_and_clear_last_exception</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_and_clear_last_exception(napi_env env,
                                               napi_value* result);
 </code></pre></p>
 <p><ul></p>
@@ -642,15 +728,18 @@ used as the message for the Error.</li></p>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API returns true if an exception is pending.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_is_exception_pending" id="module_napi_is_exception_pending"></a>
-            <div class="permalink"><a href="#module_napi_is_exception_pending" class="permalink fas fa-link"></a></div>
-            <p>napi_is_exception_pending</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_is_exception_pending(napi_env env, bool* result);
+
+<div class="heading">
+<h4>
+  <a name="module_napi_is_exception_pending" id="module_napi_is_exception_pending"></a>
+  <div class="permalink"><a href="#module_napi_is_exception_pending" class="permalink fas fa-link"></a></div>
+  <p>napi_is_exception_pending</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_is_exception_pending(napi_env env, bool* result);
 </code></pre></p>
 <p><ul></p>
 <p><li><code>[in] env</code>: The environment that the API is invoked under.</li></p>
@@ -658,25 +747,31 @@ used as the message for the Error.</li></p>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API returns true if an exception is pending.</p>
-</section></section>
-       <div class="heading">
-          <h3>
-            <a name="module_fatal_errors" id="module_fatal_errors"></a>
-            <div class="permalink"><a href="#module_fatal_errors" class="permalink fas fa-link"></a></div>
-            <p>Fatal Errors</p>
 
-          </h1>
-        </div><section><p>In the event of an unrecoverable error in a native module, a fatal error can be
+
+<div class="heading">
+<h3>
+  <a name="module_fatal_errors" id="module_fatal_errors"></a>
+  <div class="permalink"><a href="#module_fatal_errors" class="permalink fas fa-link"></a></div>
+  <p>Fatal Errors</p>
+
+</h3>
+</div>
+
+<p>In the event of an unrecoverable error in a native module, a fatal error can be
 thrown to immediately terminate the process.</p>
 
-       <div class="heading">
-          <h4>
-            <a name="module_napi_fatal_error" id="module_napi_fatal_error"></a>
-            <div class="permalink"><a href="#module_napi_fatal_error" class="permalink fas fa-link"></a></div>
-            <p>napi_fatal_error</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">NAPI_NO_RETURN void napi_fatal_error(const char<em> location,
+<div class="heading">
+<h4>
+  <a name="module_napi_fatal_error" id="module_napi_fatal_error"></a>
+  <div class="permalink"><a href="#module_napi_fatal_error" class="permalink fas fa-link"></a></div>
+  <p>napi_fatal_error</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">NAPI_NO_RETURN void napi_fatal_error(const char<em> location,
                                                  size_t location_len,
                                                  const char</em> message,
                                                  size_t message_len);
@@ -684,22 +779,25 @@ thrown to immediately terminate the process.</p>
 <p><ul></p>
 <p><li><code>[in] location</code>: Optional location at which the error occurred.</li></p>
 <p><li><code>[in] location_len</code>: The length of the location in bytes, or
-NAPI_AUTO_LENGTH if it is null-terminated.</li></p>
+<code>NAPI_AUTO_LENGTH</code> if it is null-terminated.</li></p>
 <p><li><code>[in] message</code>: The message associated with the error.</li></p>
 <p><li><code>[in] message_len</code>: The length of the message in bytes, or
-NAPI_AUTO_LENGTH if it is
+<code>NAPI_AUTO_LENGTH</code> if it is
 null-terminated.</li>
 </ul></p>
 <p>The function call does not return, the process will be terminated.</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="module_object_lifetime_management" id="module_object_lifetime_management"></a>
-            <div class="permalink"><a href="#module_object_lifetime_management" class="permalink fas fa-link"></a></div>
-            <p>Object Lifetime management</p>
 
-          </h1>
-        </div><section><p>As N-API calls are made, handles to objects in the heap for the underlying
+
+<div class="heading">
+<h2>
+  <a name="module_object_lifetime_management" id="module_object_lifetime_management"></a>
+  <div class="permalink"><a href="#module_object_lifetime_management" class="permalink fas fa-link"></a></div>
+  <p>Object Lifetime management</p>
+
+</h2>
+</div>
+
+<p>As N-API calls are made, handles to objects in the heap for the underlying
 VM may be returned as <code>napi_values</code>. These handles must hold the
 objects &#39;live&#39; until they are no longer required by the native code,
 otherwise the objects could be collected before the native code was
@@ -714,14 +812,17 @@ either a shorter or longer lifespan than that of the native method.
 The sections which follow describe the N-API functions than can be used
 to change the handle lifespan from the default.</p>
 
-       <div class="heading">
-          <h3>
-            <a name="module_making_handle_lifespan_shorter_than_that_of_the_native_method" id="module_making_handle_lifespan_shorter_than_that_of_the_native_method"></a>
-            <div class="permalink"><a href="#module_making_handle_lifespan_shorter_than_that_of_the_native_method" class="permalink fas fa-link"></a></div>
-            <p>Making handle lifespan shorter than that of the native method</p>
 
-          </h1>
-        </div><section><p>It is often necessary to make the lifespan of handles shorter than
+<div class="heading">
+<h3>
+  <a name="module_making_handle_lifespan_shorter_than_that_of_the_native_method" id="module_making_handle_lifespan_shorter_than_that_of_the_native_method"></a>
+  <div class="permalink"><a href="#module_making_handle_lifespan_shorter_than_that_of_the_native_method" class="permalink fas fa-link"></a></div>
+  <p>Making handle lifespan shorter than that of the native method</p>
+
+</h3>
+</div>
+
+<p>It is often necessary to make the lifespan of handles shorter than
 the lifespan of a native method. For example, consider a native method
 that has a loop which iterates through the elements in a large array:</p>
 <pre class="prettyprint"><code class="lang-C">for (int i = 0; i &lt; 1000000; i++) {
@@ -779,14 +880,17 @@ scope to that of the outer scope.</p>
 <p>The request to promote a handle is made through <a href="#n_api_napi_escape_handle"><code>napi_escape_handle</code></a> which
 can only be called once.</p>
 
-       <div class="heading">
-          <h4>
-            <a name="module_napi_open_handle_scope" id="module_napi_open_handle_scope"></a>
-            <div class="permalink"><a href="#module_napi_open_handle_scope" class="permalink fas fa-link"></a></div>
-            <p>napi_open_handle_scope</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_open_handle_scope(napi_env env,
+<div class="heading">
+<h4>
+  <a name="module_napi_open_handle_scope" id="module_napi_open_handle_scope"></a>
+  <div class="permalink"><a href="#module_napi_open_handle_scope" class="permalink fas fa-link"></a></div>
+  <p>napi_open_handle_scope</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_open_handle_scope(napi_env env,
                                                napi_handle_scope* result);
 </code></pre></p>
 <p><ul></p>
@@ -795,15 +899,18 @@ can only be called once.</p>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API open a new scope.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_close_handle_scope" id="module_napi_close_handle_scope"></a>
-            <div class="permalink"><a href="#module_napi_close_handle_scope" class="permalink fas fa-link"></a></div>
-            <p>napi_close_handle_scope</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_close_handle_scope(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_close_handle_scope" id="module_napi_close_handle_scope"></a>
+  <div class="permalink"><a href="#module_napi_close_handle_scope" class="permalink fas fa-link"></a></div>
+  <p>napi_close_handle_scope</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_close_handle_scope(napi_env env,
                                                 napi_handle_scope scope);
 </code></pre></p>
 <p><ul></p>
@@ -813,15 +920,18 @@ can only be called once.</p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API closes the scope passed in. Scopes must be closed in the
 reverse order from which they were created.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_open_escapable_handle_scope" id="module_napi_open_escapable_handle_scope"></a>
-            <div class="permalink"><a href="#module_napi_open_escapable_handle_scope" class="permalink fas fa-link"></a></div>
-            <p>napi_open_escapable_handle_scope</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status
+
+<div class="heading">
+<h4>
+  <a name="module_napi_open_escapable_handle_scope" id="module_napi_open_escapable_handle_scope"></a>
+  <div class="permalink"><a href="#module_napi_open_escapable_handle_scope" class="permalink fas fa-link"></a></div>
+  <p>napi_open_escapable_handle_scope</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status
     napi_open_escapable_handle_scope(napi_env env,
                                      napi_handle_scope* result);
 </code></pre></p>
@@ -832,15 +942,18 @@ reverse order from which they were created.</p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API open a new scope from which one object can be promoted
 to the outer scope.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_close_escapable_handle_scope" id="module_napi_close_escapable_handle_scope"></a>
-            <div class="permalink"><a href="#module_napi_close_escapable_handle_scope" class="permalink fas fa-link"></a></div>
-            <p>napi_close_escapable_handle_scope</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status
+
+<div class="heading">
+<h4>
+  <a name="module_napi_close_escapable_handle_scope" id="module_napi_close_escapable_handle_scope"></a>
+  <div class="permalink"><a href="#module_napi_close_escapable_handle_scope" class="permalink fas fa-link"></a></div>
+  <p>napi_close_escapable_handle_scope</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status
     napi_close_escapable_handle_scope(napi_env env,
                                       napi_handle_scope scope);
 </code></pre></p>
@@ -851,15 +964,18 @@ to the outer scope.</p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API closes the scope passed in. Scopes must be closed in the
 reverse order from which they were created.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_escape_handle" id="module_napi_escape_handle"></a>
-            <div class="permalink"><a href="#module_napi_escape_handle" class="permalink fas fa-link"></a></div>
-            <p>napi_escape_handle</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_escape_handle(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_escape_handle" id="module_napi_escape_handle"></a>
+  <div class="permalink"><a href="#module_napi_escape_handle" class="permalink fas fa-link"></a></div>
+  <p>napi_escape_handle</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_escape_handle(napi_env env,
                                napi_escapable_handle_scope scope,
                                napi_value escapee,
                                napi_value* result);
@@ -875,15 +991,18 @@ Object in the outer scope.</li>
 <p>This API promotes the handle to the JavaScript object so that it is valid
 for the lifetime of the outer scope. It can only be called once per scope.
 If it is called more than once an error will be returned.</p>
-</section></section>
-       <div class="heading">
-          <h3>
-            <a name="module_references_to_objects_with_a_lifespan_longer_than_that_of_the_native_method" id="module_references_to_objects_with_a_lifespan_longer_than_that_of_the_native_method"></a>
-            <div class="permalink"><a href="#module_references_to_objects_with_a_lifespan_longer_than_that_of_the_native_method" class="permalink fas fa-link"></a></div>
-            <p>References to objects with a lifespan longer than that of the native method</p>
 
-          </h1>
-        </div><section><p>In some cases an addon will need to be able to create and reference objects
+
+<div class="heading">
+<h3>
+  <a name="module_references_to_objects_with_a_lifespan_longer_than_that_of_the_native_method" id="module_references_to_objects_with_a_lifespan_longer_than_that_of_the_native_method"></a>
+  <div class="permalink"><a href="#module_references_to_objects_with_a_lifespan_longer_than_that_of_the_native_method" class="permalink fas fa-link"></a></div>
+  <p>References to objects with a lifespan longer than that of the native method</p>
+
+</h3>
+</div>
+
+<p>In some cases an addon will need to be able to create and reference objects
 with a lifespan longer than that of a single native method invocation. For
 example, to create a constructor and later use that constructor
 in a request to creates instances, it must be possible to reference
@@ -916,14 +1035,17 @@ the corresponding object on the heap being retained forever.</p>
 object, each of which will either keep the object live or not based on its
 individual count.</p>
 
-       <div class="heading">
-          <h4>
-            <a name="module_napi_create_reference" id="module_napi_create_reference"></a>
-            <div class="permalink"><a href="#module_napi_create_reference" class="permalink fas fa-link"></a></div>
-            <p>napi_create_reference</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_create_reference(napi_env env,
+<div class="heading">
+<h4>
+  <a name="module_napi_create_reference" id="module_napi_create_reference"></a>
+  <div class="permalink"><a href="#module_napi_create_reference" class="permalink fas fa-link"></a></div>
+  <p>napi_create_reference</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_create_reference(napi_env env,
                                               napi_value value,
                                               int initial_refcount,
                                               napi_ref* result);
@@ -938,15 +1060,18 @@ a reference.</li></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API create a new reference with the specified reference count
 to the Object passed in.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_delete_reference" id="module_napi_delete_reference"></a>
-            <div class="permalink"><a href="#module_napi_delete_reference" class="permalink fas fa-link"></a></div>
-            <p>napi_delete_reference</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_delete_reference(napi_env env, napi_ref ref);
+
+<div class="heading">
+<h4>
+  <a name="module_napi_delete_reference" id="module_napi_delete_reference"></a>
+  <div class="permalink"><a href="#module_napi_delete_reference" class="permalink fas fa-link"></a></div>
+  <p>napi_delete_reference</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_delete_reference(napi_env env, napi_ref ref);
 </code></pre></p>
 <p><ul></p>
 <p><li><code>[in] env</code>: The environment that the API is invoked under.</li></p>
@@ -954,15 +1079,18 @@ to the Object passed in.</p>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API deletes the reference passed in.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_reference_ref" id="module_napi_reference_ref"></a>
-            <div class="permalink"><a href="#module_napi_reference_ref" class="permalink fas fa-link"></a></div>
-            <p>napi_reference_ref</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_reference_ref(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_reference_ref" id="module_napi_reference_ref"></a>
+  <div class="permalink"><a href="#module_napi_reference_ref" class="permalink fas fa-link"></a></div>
+  <p>napi_reference_ref</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_reference_ref(napi_env env,
                                            napi_ref ref,
                                            int* result);
 </code></pre></p>
@@ -974,15 +1102,18 @@ to the Object passed in.</p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API increments the reference count for the reference
 passed in and returns the resulting reference count.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_reference_unref" id="module_napi_reference_unref"></a>
-            <div class="permalink"><a href="#module_napi_reference_unref" class="permalink fas fa-link"></a></div>
-            <p>napi_reference_unref</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_reference_unref(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_reference_unref" id="module_napi_reference_unref"></a>
+  <div class="permalink"><a href="#module_napi_reference_unref" class="permalink fas fa-link"></a></div>
+  <p>napi_reference_unref</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_reference_unref(napi_env env,
                                              napi_ref ref,
                                              int* result);
 </code></pre></p>
@@ -994,15 +1125,18 @@ passed in and returns the resulting reference count.</p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API decrements the reference count for the reference
 passed in and returns the resulting reference count.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_reference_value" id="module_napi_get_reference_value"></a>
-            <div class="permalink"><a href="#module_napi_get_reference_value" class="permalink fas fa-link"></a></div>
-            <p>napi_get_reference_value</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_get_reference_value(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_get_reference_value" id="module_napi_get_reference_value"></a>
+  <div class="permalink"><a href="#module_napi_get_reference_value" class="permalink fas fa-link"></a></div>
+  <p>napi_get_reference_value</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">NODE_EXTERN napi_status napi_get_reference_value(napi_env env,
                                                  napi_ref ref,
                                                  napi_value* result);
 </code></pre></p>
@@ -1018,15 +1152,18 @@ object to which the reference is related.</p>
 <p>If still valid, this API returns the <code>napi_value</code> representing the
 JavaScript Object associated with the <code>napi_ref</code>. Otherise, result
 will be NULL.</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="module_module_registration" id="module_module_registration"></a>
-            <div class="permalink"><a href="#module_module_registration" class="permalink fas fa-link"></a></div>
-            <p>Module registration</p>
 
-          </h1>
-        </div><section><p>N-API modules are registered in a manner similar to other modules
+
+<div class="heading">
+<h2>
+  <a name="module_module_registration" id="module_module_registration"></a>
+  <div class="permalink"><a href="#module_module_registration" class="permalink fas fa-link"></a></div>
+  <p>Module registration</p>
+
+</h2>
+</div>
+
+<p>N-API modules are registered in a manner similar to other modules
 except that instead of using the <code>NODE_MODULE</code> macro the following
 is used:</p>
 <pre class="prettyprint"><code class="lang-C">NAPI_MODULE(NODE_GYP_MODULE_NAME, Init)
@@ -1056,7 +1193,7 @@ as a method provided by the addon:</p>
 <pre class="prettyprint"><code class="lang-C">napi_value Init(napi_env env, napi_value exports) {
   napi_value method;
   napi_status status;
-  status = napi_create_function(env, &quot;exports&quot;, Method, NULL, &amp;method));
+  status = napi_create_function(env, &quot;exports&quot;, NAPI_AUTO_LENGTH, Method, NULL, &amp;method);
   if (status != napi_ok) return NULL;
   return method;
 }
@@ -1089,15 +1226,18 @@ napi_value Init(napi_env env, napi_value exports) {
 <p>For more details on setting properties on objects, see the section on
 <a href="#n_api_working_with_javascript_properties">Working with JavaScript Properties</a>.</p>
 <p>For more details on building addon modules in general, refer to the existing API</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="module_working_with_javascript_values" id="module_working_with_javascript_values"></a>
-            <div class="permalink"><a href="#module_working_with_javascript_values" class="permalink fas fa-link"></a></div>
-            <p>Working with JavaScript Values</p>
 
-          </h1>
-        </div><section><p>N-API exposes a set of APIs to create all types of JavaScript values.
+
+<div class="heading">
+<h2>
+  <a name="module_working_with_javascript_values" id="module_working_with_javascript_values"></a>
+  <div class="permalink"><a href="#module_working_with_javascript_values" class="permalink fas fa-link"></a></div>
+  <p>Working with JavaScript Values</p>
+
+</h2>
+</div>
+
+<p>N-API exposes a set of APIs to create all types of JavaScript values.
 Some of these types are documented under
 <a href="https://tc39.github.io/ecma262/#sec-ecmascript-data-types-and-values">Section 6</a>
 of the <a href="https://tc39.github.io/ecma262/">ECMAScript Language Specification</a>.</p>
@@ -1114,22 +1254,28 @@ In some cases, the API does check the type of the <code>napi_value</code> up-fro
 However, for better performance, it&#39;s better for the caller to make sure that
 the <code>napi_value</code> in question is of the JavaScript type expected by the API.</p>
 
-       <div class="heading">
-          <h3>
-            <a name="module_enum_types" id="module_enum_types"></a>
-            <div class="permalink"><a href="#module_enum_types" class="permalink fas fa-link"></a></div>
-            <p>Enum types</p>
 
-          </h1>
-        </div><section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_valuetype" id="module_napi_valuetype"></a>
-            <div class="permalink"><a href="#module_napi_valuetype" class="permalink fas fa-link"></a></div>
-            <p>napi_valuetype</p>
+<div class="heading">
+<h3>
+  <a name="module_enum_types" id="module_enum_types"></a>
+  <div class="permalink"><a href="#module_enum_types" class="permalink fas fa-link"></a></div>
+  <p>Enum types</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">typedef enum {
+</h3>
+</div>
+
+
+
+<div class="heading">
+<h4>
+  <a name="module_napi_valuetype" id="module_napi_valuetype"></a>
+  <div class="permalink"><a href="#module_napi_valuetype" class="permalink fas fa-link"></a></div>
+  <p>napi_valuetype</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">typedef enum {
   // ES6 types (corresponds to typeof)
   napi_undefined,
   napi_null,
@@ -1148,15 +1294,18 @@ described in
 the ECMAScript Language Specification.
 In addition to types in that section, <code>napi_valuetype</code> can also represent
 Functions and Objects with external data.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_typedarray_type" id="module_napi_typedarray_type"></a>
-            <div class="permalink"><a href="#module_napi_typedarray_type" class="permalink fas fa-link"></a></div>
-            <p>napi_typedarray_type</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">typedef enum {
+
+<div class="heading">
+<h4>
+  <a name="module_napi_typedarray_type" id="module_napi_typedarray_type"></a>
+  <div class="permalink"><a href="#module_napi_typedarray_type" class="permalink fas fa-link"></a></div>
+  <p>napi_typedarray_type</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">typedef enum {
   napi_int8_array,
   napi_uint8_array,
   napi_uint8_clamped_array,
@@ -1170,25 +1319,30 @@ Functions and Objects with external data.</p>
 </code></pre></p>
 <p>This represents the underlying binary scalar datatype of the TypedArray.
 Elements of this enum correspond to
-<a href="https://tc39.github.io/ecma262/#sec-typedarray-objects">Section 22.2</a>
-of the <a href="https://tc39.github.io/ecma262/">ECMAScript Language Specification</a>.</p>
-</section></section>
-       <div class="heading">
-          <h3>
-            <a name="module_object_creation_functions" id="module_object_creation_functions"></a>
-            <div class="permalink"><a href="#module_object_creation_functions" class="permalink fas fa-link"></a></div>
-            <p>Object Creation Functions</p>
+<a href="https://tc39.github.io/ecma262/#sec-typedarray-objects">Section 22.2</a> of the <a href="https://tc39.github.io/ecma262/">ECMAScript Language Specification</a>.</p>
 
-          </h1>
-        </div><section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_create_array" id="module_napi_create_array"></a>
-            <div class="permalink"><a href="#module_napi_create_array" class="permalink fas fa-link"></a></div>
-            <p>napi_create_array</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_array(napi_env env, napi_value* result)
+<div class="heading">
+<h3>
+  <a name="module_object_creation_functions" id="module_object_creation_functions"></a>
+  <div class="permalink"><a href="#module_object_creation_functions" class="permalink fas fa-link"></a></div>
+  <p>Object Creation Functions</p>
+
+</h3>
+</div>
+
+
+
+<div class="heading">
+<h4>
+  <a name="module_napi_create_array" id="module_napi_create_array"></a>
+  <div class="permalink"><a href="#module_napi_create_array" class="permalink fas fa-link"></a></div>
+  <p>napi_create_array</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_array(napi_env env, napi_value* result)
 </code></pre></p>
 <p><ul></p>
 <p><li><code>[in] env</code>: The environment that the N-API call is invoked under.</li></p>
@@ -1197,17 +1351,19 @@ of the <a href="https://tc39.github.io/ecma262/">ECMAScript Language Specificati
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API returns an N-API value corresponding to a JavaScript Array type.
 JavaScript arrays are described in
-<a href="https://tc39.github.io/ecma262/#sec-array-objects">Section 22.1</a> of the
-ECMAScript Language Specification.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_create_array_with_length" id="module_napi_create_array_with_length"></a>
-            <div class="permalink"><a href="#module_napi_create_array_with_length" class="permalink fas fa-link"></a></div>
-            <p>napi_create_array_with_length</p>
+<a href="https://tc39.github.io/ecma262/#sec-array-objects">Section 22.1</a> of the ECMAScript Language Specification.</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_array_with_length(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_create_array_with_length" id="module_napi_create_array_with_length"></a>
+  <div class="permalink"><a href="#module_napi_create_array_with_length" class="permalink fas fa-link"></a></div>
+  <p>napi_create_array_with_length</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_array_with_length(napi_env env,
                                           size_t length,
                                           napi_value* result)
 </code></pre></p>
@@ -1226,17 +1382,19 @@ If the buffer must be a contiguous block of memory that can be
 directly read and/or written via C, consider using
 <a href="#n_api_napi_create_external_arraybuffer"><code>napi_create_external_arraybuffer</code></a>.</p>
 <p>JavaScript arrays are described in
-<a href="https://tc39.github.io/ecma262/#sec-array-objects">Section 22.1</a> of the
-ECMAScript Language Specification.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_create_arraybuffer" id="module_napi_create_arraybuffer"></a>
-            <div class="permalink"><a href="#module_napi_create_arraybuffer" class="permalink fas fa-link"></a></div>
-            <p>napi_create_arraybuffer</p>
+<a href="https://tc39.github.io/ecma262/#sec-array-objects">Section 22.1</a> of the ECMAScript Language Specification.</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_arraybuffer(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_create_arraybuffer" id="module_napi_create_arraybuffer"></a>
+  <div class="permalink"><a href="#module_napi_create_arraybuffer" class="permalink fas fa-link"></a></div>
+  <p>napi_create_arraybuffer</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_arraybuffer(napi_env env,
                                     size_t byte_length,
                                     void<em>* data,
                                     napi_value</em> result)
@@ -1258,17 +1416,19 @@ caller wants to directly manipulate the buffer. This buffer can only be
 written to directly from native code. To write to this buffer from JavaScript,
 a typed array or DataView object would need to be created.</p>
 <p>JavaScript ArrayBuffer objects are described in
-<a href="https://tc39.github.io/ecma262/#sec-arraybuffer-objects">Section 24.1</a>
-of the ECMAScript Language Specification.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_create_buffer" id="module_napi_create_buffer"></a>
-            <div class="permalink"><a href="#module_napi_create_buffer" class="permalink fas fa-link"></a></div>
-            <p>napi_create_buffer</p>
+<a href="https://tc39.github.io/ecma262/#sec-arraybuffer-objects">Section 24.1</a> of the ECMAScript Language Specification.</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_buffer(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_create_buffer" id="module_napi_create_buffer"></a>
+  <div class="permalink"><a href="#module_napi_create_buffer" class="permalink fas fa-link"></a></div>
+  <p>napi_create_buffer</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_buffer(napi_env env,
                                size_t size,
                                void<em>* data,
                                napi_value</em> result)
@@ -1282,15 +1442,18 @@ of the ECMAScript Language Specification.</p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API allocates a <code>node::Buffer</code> object. While this is still a
 fully-supported data structure, in most cases using a TypedArray will suffice.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_create_buffer_copy" id="module_napi_create_buffer_copy"></a>
-            <div class="permalink"><a href="#module_napi_create_buffer_copy" class="permalink fas fa-link"></a></div>
-            <p>napi_create_buffer_copy</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_buffer_copy(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_create_buffer_copy" id="module_napi_create_buffer_copy"></a>
+  <div class="permalink"><a href="#module_napi_create_buffer_copy" class="permalink fas fa-link"></a></div>
+  <p>napi_create_buffer_copy</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_buffer_copy(napi_env env,
                                     size_t length,
                                     const void<em> data,
                                     void** result_data,
@@ -1308,15 +1471,18 @@ size of the new buffer).</li></p>
 <p>This API allocates a <code>node::Buffer</code> object and initializes it with data copied
 from the passed-in buffer. While this is still a fully-supported data
 structure, in most cases using a TypedArray will suffice.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_create_external" id="module_napi_create_external"></a>
-            <div class="permalink"><a href="#module_napi_create_external" class="permalink fas fa-link"></a></div>
-            <p>napi_create_external</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_external(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_create_external" id="module_napi_create_external"></a>
+  <div class="permalink"><a href="#module_napi_create_external" class="permalink fas fa-link"></a></div>
+  <p>napi_create_external</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_external(napi_env env,
                                  void<em> data,
                                  napi_finalize finalize_cb,
                                  void</em> finalize_hint,
@@ -1340,15 +1506,18 @@ JavaScript value gets collected.</p>
 <p><em>Note</em>: The created value is not an object, and therefore does not support
 additional properties. It is considered a distinct value type: calling
 <code>napi_typeof()</code> with an external value yields <code>napi_external</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_create_external_arraybuffer" id="module_napi_create_external_arraybuffer"></a>
-            <div class="permalink"><a href="#module_napi_create_external_arraybuffer" class="permalink fas fa-link"></a></div>
-            <p>napi_create_external_arraybuffer</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status
+
+<div class="heading">
+<h4>
+  <a name="module_napi_create_external_arraybuffer" id="module_napi_create_external_arraybuffer"></a>
+  <div class="permalink"><a href="#module_napi_create_external_arraybuffer" class="permalink fas fa-link"></a></div>
+  <p>napi_create_external_arraybuffer</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status
 napi_create_external_arraybuffer(napi_env env,
                                  void<em> external_data,
                                  size_t byte_length,
@@ -1373,17 +1542,19 @@ The underlying byte buffer of the ArrayBuffer is externally allocated and
 managed. The caller must ensure that the byte buffer remains valid until the
 finalize callback is called.</p>
 <p>JavaScript ArrayBuffers are described in
-<a href="https://tc39.github.io/ecma262/#sec-arraybuffer-objects">Section 24.1</a>
-of the ECMAScript Language Specification.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_create_external_buffer" id="module_napi_create_external_buffer"></a>
-            <div class="permalink"><a href="#module_napi_create_external_buffer" class="permalink fas fa-link"></a></div>
-            <p>napi_create_external_buffer</p>
+<a href="https://tc39.github.io/ecma262/#sec-arraybuffer-objects">Section 24.1</a> of the ECMAScript Language Specification.</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_external_buffer(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_create_external_buffer" id="module_napi_create_external_buffer"></a>
+  <div class="permalink"><a href="#module_napi_create_external_buffer" class="permalink fas fa-link"></a></div>
+  <p>napi_create_external_buffer</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_external_buffer(napi_env env,
                                         size_t length,
                                         void<em> data,
                                         napi_finalize finalize_cb,
@@ -1406,15 +1577,18 @@ during collection.</li></p>
 backed by the passed in buffer. While this is still a fully-supported data
 structure, in most cases using a TypedArray will suffice.</p>
 <p><em>Note</em>: For Node.js &gt;=4 <code>Buffers</code> are Uint8Arrays.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_create_function" id="module_napi_create_function"></a>
-            <div class="permalink"><a href="#module_napi_create_function" class="permalink fas fa-link"></a></div>
-            <p>napi_create_function</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_function(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_create_function" id="module_napi_create_function"></a>
+  <div class="permalink"><a href="#module_napi_create_function" class="permalink fas fa-link"></a></div>
+  <p>napi_create_function</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_function(napi_env env,
                                  const char<em> utf8name,
                                  size_t length,
                                  napi_callback cb,
@@ -1426,7 +1600,7 @@ structure, in most cases using a TypedArray will suffice.</p>
 <p><li><code>[in] utf8name</code>: A string representing the name of the function encoded as
 UTF8.</li></p>
 <p><li><code>[in] length</code>: The length of the utf8name in bytes, or
-NAPI_AUTO_LENGTH if it is null-terminated.</li></p>
+<code>NAPI_AUTO_LENGTH</code> if it is null-terminated.</li></p>
 <p><li><code>[in] cb</code>: A function pointer to the native function to be invoked when the
 created function is invoked from JavaScript.</li></p>
 <p><li><code>[in] data</code>: Optional arbitrary context data to be passed into the native
@@ -1439,15 +1613,18 @@ It&#39;s used to wrap native functions so that they can be invoked from JavaScri
 <p>JavaScript Functions are described in
 <a href="https://tc39.github.io/ecma262/#sec-function-objects">Section 19.2</a>
 of the ECMAScript Language Specification.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_create_object" id="module_napi_create_object"></a>
-            <div class="permalink"><a href="#module_napi_create_object" class="permalink fas fa-link"></a></div>
-            <p>napi_create_object</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_object(napi_env env, napi_value* result)
+
+<div class="heading">
+<h4>
+  <a name="module_napi_create_object" id="module_napi_create_object"></a>
+  <div class="permalink"><a href="#module_napi_create_object" class="permalink fas fa-link"></a></div>
+  <p>napi_create_object</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_object(napi_env env, napi_value* result)
 </code></pre></p>
 <p><ul></p>
 <p><li><code>[in] env</code>: The environment that the API is invoked under.</li></p>
@@ -1459,15 +1636,18 @@ It is the equivalent of doing <code>new Object()</code> in JavaScript.</p>
 <p>The JavaScript Object type is described in
 <a href="https://tc39.github.io/ecma262/#sec-object-type">Section 6.1.7</a> of the
 ECMAScript Language Specification.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_create_symbol" id="module_napi_create_symbol"></a>
-            <div class="permalink"><a href="#module_napi_create_symbol" class="permalink fas fa-link"></a></div>
-            <p>napi_create_symbol</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_symbol(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_create_symbol" id="module_napi_create_symbol"></a>
+  <div class="permalink"><a href="#module_napi_create_symbol" class="permalink fas fa-link"></a></div>
+  <p>napi_create_symbol</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_symbol(napi_env env,
                                napi_value description,
                                napi_value* result)
 </code></pre></p>
@@ -1482,15 +1662,18 @@ String to be set as the description for the symbol.</li></p>
 <p>The JavaScript Symbol type is described in
 <a href="https://tc39.github.io/ecma262/#sec-symbol-objects">Section 19.4</a>
 of the ECMAScript Language Specification.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_create_typedarray" id="module_napi_create_typedarray"></a>
-            <div class="permalink"><a href="#module_napi_create_typedarray" class="permalink fas fa-link"></a></div>
-            <p>napi_create_typedarray</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_typedarray(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_create_typedarray" id="module_napi_create_typedarray"></a>
+  <div class="permalink"><a href="#module_napi_create_typedarray" class="permalink fas fa-link"></a></div>
+  <p>napi_create_typedarray</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_typedarray(napi_env env,
                                    napi_typedarray_type type,
                                    size_t length,
                                    napi_value arraybuffer,
@@ -1514,17 +1697,19 @@ where each element has the same underlying binary scalar datatype.</p>
 be &lt;= the size in bytes of the array passed in. If not, a RangeError exception is
 raised.</p>
 <p>JavaScript TypedArray Objects are described in
-<a href="https://tc39.github.io/ecma262/#sec-typedarray-objects">Section 22.2</a>
-of the ECMAScript Language Specification.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_create_dataview" id="module_napi_create_dataview"></a>
-            <div class="permalink"><a href="#module_napi_create_dataview" class="permalink fas fa-link"></a></div>
-            <p>napi_create_dataview</p>
+<a href="https://tc39.github.io/ecma262/#sec-typedarray-objects">Section 22.2</a> of the ECMAScript Language Specification.</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_dataview(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_create_dataview" id="module_napi_create_dataview"></a>
+  <div class="permalink"><a href="#module_napi_create_dataview" class="permalink fas fa-link"></a></div>
+  <p>napi_create_dataview</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_dataview(napi_env env,
                                  size_t byte_length,
                                  napi_value arraybuffer,
                                  size_t byte_offset,
@@ -1546,23 +1731,29 @@ but one which allows items of different size and type in the ArrayBuffer.</p>
 size in bytes of the array passed in. If not, a RangeError exception is raised.</p>
 <p>JavaScript DataView Objects are described in
 <a href="https://tc39.github.io/ecma262/#sec-dataview-objects">Section 24.3</a> of the ECMAScript Language Specification.</p>
-</section></section>
-       <div class="heading">
-          <h3>
-            <a name="module_functions_to_convert_from_c_types_to_n_api" id="module_functions_to_convert_from_c_types_to_n_api"></a>
-            <div class="permalink"><a href="#module_functions_to_convert_from_c_types_to_n_api" class="permalink fas fa-link"></a></div>
-            <p>Functions to convert from C types to N-API</p>
 
-          </h1>
-        </div><section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_create_int32" id="module_napi_create_int32"></a>
-            <div class="permalink"><a href="#module_napi_create_int32" class="permalink fas fa-link"></a></div>
-            <p>napi_create_int32</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_int32(napi_env env, int32_t value, napi_value* result)
+<div class="heading">
+<h3>
+  <a name="module_functions_to_convert_from_c_types_to_n_api" id="module_functions_to_convert_from_c_types_to_n_api"></a>
+  <div class="permalink"><a href="#module_functions_to_convert_from_c_types_to_n_api" class="permalink fas fa-link"></a></div>
+  <p>Functions to convert from C types to N-API</p>
+
+</h3>
+</div>
+
+
+
+<div class="heading">
+<h4>
+  <a name="module_napi_create_int32" id="module_napi_create_int32"></a>
+  <div class="permalink"><a href="#module_napi_create_int32" class="permalink fas fa-link"></a></div>
+  <p>napi_create_int32</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_int32(napi_env env, int32_t value, napi_value* result)
 </code></pre></p>
 <p><ul></p>
 <p><li><code>[in] env</code>: The environment that the API is invoked under.</li></p>
@@ -1573,17 +1764,19 @@ size in bytes of the array passed in. If not, a RangeError exception is raised.<
 <p>This API is used to convert from the C <code>int32_t</code> type to the JavaScript
 Number type.</p>
 <p>The JavaScript Number type is described in
-<a href="https://tc39.github.io/ecma262/#sec-ecmascript-language-types-number-type">Section 6.1.6</a>
-of the ECMAScript Language Specification.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_create_uint32" id="module_napi_create_uint32"></a>
-            <div class="permalink"><a href="#module_napi_create_uint32" class="permalink fas fa-link"></a></div>
-            <p>napi_create_uint32</p>
+<a href="https://tc39.github.io/ecma262/#sec-ecmascript-language-types-number-type">Section 6.1.6</a> of the ECMAScript Language Specification.</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_uint32(napi_env env, uint32_t value, napi_value* result)
+
+<div class="heading">
+<h4>
+  <a name="module_napi_create_uint32" id="module_napi_create_uint32"></a>
+  <div class="permalink"><a href="#module_napi_create_uint32" class="permalink fas fa-link"></a></div>
+  <p>napi_create_uint32</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_uint32(napi_env env, uint32_t value, napi_value* result)
 </code></pre></p>
 <p><ul></p>
 <p><li><code>[in] env</code>: The environment that the API is invoked under.</li></p>
@@ -1594,17 +1787,19 @@ of the ECMAScript Language Specification.</p>
 <p>This API is used to convert from the C <code>uint32_t</code> type to the JavaScript
 Number type.</p>
 <p>The JavaScript Number type is described in
-<a href="https://tc39.github.io/ecma262/#sec-ecmascript-language-types-number-type">Section 6.1.6</a>
-of the ECMAScript Language Specification.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_create_int64" id="module_napi_create_int64"></a>
-            <div class="permalink"><a href="#module_napi_create_int64" class="permalink fas fa-link"></a></div>
-            <p>napi_create_int64</p>
+<a href="https://tc39.github.io/ecma262/#sec-ecmascript-language-types-number-type">Section 6.1.6</a> of the ECMAScript Language Specification.</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_int64(napi_env env, int64_t value, napi_value* result)
+
+<div class="heading">
+<h4>
+  <a name="module_napi_create_int64" id="module_napi_create_int64"></a>
+  <div class="permalink"><a href="#module_napi_create_int64" class="permalink fas fa-link"></a></div>
+  <p>napi_create_int64</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_int64(napi_env env, int64_t value, napi_value* result)
 </code></pre></p>
 <p><ul></p>
 <p><li><code>[in] env</code>: The environment that the API is invoked under.</li></p>
@@ -1614,8 +1809,7 @@ of the ECMAScript Language Specification.</p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API is used to convert from the C <code>int64_t</code> type to the JavaScript
 Number type.</p>
-<p>The JavaScript Number type is described in
-<a href="https://tc39.github.io/ecma262/#sec-ecmascript-language-types-number-type">Section 6.1.6</a>
+<p>The JavaScript Number type is described in <a href="https://tc39.github.io/ecma262/#sec-ecmascript-language-types-number-type">Section 6.1.6</a>
 of the ECMAScript Language Specification. Note the complete range of <code>int64_t</code>
 cannot be represented with full precision in JavaScript. Integer values
 outside the range of
@@ -1623,15 +1817,18 @@ outside the range of
 -(2^53 - 1) -
 <a href="https://tc39.github.io/ecma262/#sec-number.max_safe_integer"><code>Number.MAX_SAFE_INTEGER</code></a>
 (2^53 - 1) will lose precision.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_create_double" id="module_napi_create_double"></a>
-            <div class="permalink"><a href="#module_napi_create_double" class="permalink fas fa-link"></a></div>
-            <p>napi_create_double</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_double(napi_env env, double value, napi_value* result)
+
+<div class="heading">
+<h4>
+  <a name="module_napi_create_double" id="module_napi_create_double"></a>
+  <div class="permalink"><a href="#module_napi_create_double" class="permalink fas fa-link"></a></div>
+  <p>napi_create_double</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_double(napi_env env, double value, napi_value* result)
 </code></pre></p>
 <p><ul></p>
 <p><li><code>[in] env</code>: The environment that the API is invoked under.</li></p>
@@ -1642,17 +1839,19 @@ outside the range of
 <p>This API is used to convert from the C <code>double</code> type to the JavaScript
 Number type.</p>
 <p>The JavaScript Number type is described in
-<a href="https://tc39.github.io/ecma262/#sec-ecmascript-language-types-number-type">Section 6.1.6</a>
-of the ECMAScript Language Specification.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_create_string_latin1" id="module_napi_create_string_latin1"></a>
-            <div class="permalink"><a href="#module_napi_create_string_latin1" class="permalink fas fa-link"></a></div>
-            <p>napi_create_string_latin1</p>
+<a href="https://tc39.github.io/ecma262/#sec-ecmascript-language-types-number-type">Section 6.1.6</a> of the ECMAScript Language Specification.</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_string_latin1(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_create_string_latin1" id="module_napi_create_string_latin1"></a>
+  <div class="permalink"><a href="#module_napi_create_string_latin1" class="permalink fas fa-link"></a></div>
+  <p>napi_create_string_latin1</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_string_latin1(napi_env env,
                                       const char<em> str,
                                       size_t length,
                                       napi_value</em> result);
@@ -1661,23 +1860,25 @@ of the ECMAScript Language Specification.</p>
 <p><li><code>[in] env</code>: The environment that the API is invoked under.</li></p>
 <p><li><code>[in] str</code>: Character buffer representing a ISO-8859-1-encoded string.</li></p>
 <p><li><code>[in] length</code>: The length of the string in bytes, or
-NAPI_AUTO_LENGTH if it is null-terminated.</li></p>
+<code>NAPI_AUTO_LENGTH</code> if it is null-terminated.</li></p>
 <p><li><code>[out] result</code>: A <code>napi_value</code> representing a JavaScript String.</li>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API creates a JavaScript String object from a ISO-8859-1-encoded C string.</p>
 <p>The JavaScript String type is described in
-<a href="https://tc39.github.io/ecma262/#sec-ecmascript-language-types-string-type">Section 6.1.4</a>
-of the ECMAScript Language Specification.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_create_string_utf16" id="module_napi_create_string_utf16"></a>
-            <div class="permalink"><a href="#module_napi_create_string_utf16" class="permalink fas fa-link"></a></div>
-            <p>napi_create_string_utf16</p>
+<a href="https://tc39.github.io/ecma262/#sec-ecmascript-language-types-string-type">Section 6.1.4</a> of the ECMAScript Language Specification.</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_string_utf16(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_create_string_utf16" id="module_napi_create_string_utf16"></a>
+  <div class="permalink"><a href="#module_napi_create_string_utf16" class="permalink fas fa-link"></a></div>
+  <p>napi_create_string_utf16</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_string_utf16(napi_env env,
                                      const char16_t<em> str,
                                      size_t length,
                                      napi_value</em> result)
@@ -1686,23 +1887,25 @@ of the ECMAScript Language Specification.</p>
 <p><li><code>[in] env</code>: The environment that the API is invoked under.</li></p>
 <p><li><code>[in] str</code>: Character buffer representing a UTF16-LE-encoded string.</li></p>
 <p><li><code>[in] length</code>: The length of the string in two-byte code units, or
-NAPI_AUTO_LENGTH if it is null-terminated.</li></p>
+<code>NAPI_AUTO_LENGTH</code> if it is null-terminated.</li></p>
 <p><li><code>[out] result</code>: A <code>napi_value</code> representing a JavaScript String.</li>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API creates a JavaScript String object from a UTF16-LE-encoded C string</p>
 <p>The JavaScript String type is described in
-<a href="https://tc39.github.io/ecma262/#sec-ecmascript-language-types-string-type">Section 6.1.4</a>
-of the ECMAScript Language Specification.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_create_string_utf8" id="module_napi_create_string_utf8"></a>
-            <div class="permalink"><a href="#module_napi_create_string_utf8" class="permalink fas fa-link"></a></div>
-            <p>napi_create_string_utf8</p>
+<a href="https://tc39.github.io/ecma262/#sec-ecmascript-language-types-string-type">Section 6.1.4</a> of the ECMAScript Language Specification.</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_string_utf8(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_create_string_utf8" id="module_napi_create_string_utf8"></a>
+  <div class="permalink"><a href="#module_napi_create_string_utf8" class="permalink fas fa-link"></a></div>
+  <p>napi_create_string_utf8</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_string_utf8(napi_env env,
                                     const char<em> str,
                                     size_t length,
                                     napi_value</em> result)
@@ -1710,32 +1913,37 @@ of the ECMAScript Language Specification.</p>
 <p><ul></p>
 <p><li><code>[in] env</code>: The environment that the API is invoked under.</li></p>
 <p><li><code>[in] str</code>: Character buffer representing a UTF8-encoded string.</li></p>
-<p><li><code>[in] length</code>: The length of the string in bytes, or NAPI_AUTO_LENGTH
+<p><li><code>[in] length</code>: The length of the string in bytes, or <code>NAPI_AUTO_LENGTH</code>
 if it is null-terminated.</li></p>
 <p><li><code>[out] result</code>: A <code>napi_value</code> representing a JavaScript String.</li>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API creates a JavaScript String object from a UTF8-encoded C string</p>
 <p>The JavaScript String type is described in
-<a href="https://tc39.github.io/ecma262/#sec-ecmascript-language-types-string-type">Section 6.1.4</a>
-of the ECMAScript Language Specification.</p>
-</section></section>
-       <div class="heading">
-          <h3>
-            <a name="module_functions_to_convert_from_n_api_to_c_types" id="module_functions_to_convert_from_n_api_to_c_types"></a>
-            <div class="permalink"><a href="#module_functions_to_convert_from_n_api_to_c_types" class="permalink fas fa-link"></a></div>
-            <p>Functions to convert from N-API to C types</p>
+<a href="https://tc39.github.io/ecma262/#sec-ecmascript-language-types-string-type">Section 6.1.4</a> of the ECMAScript Language Specification.</p>
 
-          </h1>
-        </div><section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_array_length" id="module_napi_get_array_length"></a>
-            <div class="permalink"><a href="#module_napi_get_array_length" class="permalink fas fa-link"></a></div>
-            <p>napi_get_array_length</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_array_length(napi_env env,
+<div class="heading">
+<h3>
+  <a name="module_functions_to_convert_from_n_api_to_c_types" id="module_functions_to_convert_from_n_api_to_c_types"></a>
+  <div class="permalink"><a href="#module_functions_to_convert_from_n_api_to_c_types" class="permalink fas fa-link"></a></div>
+  <p>Functions to convert from N-API to C types</p>
+
+</h3>
+</div>
+
+
+
+<div class="heading">
+<h4>
+  <a name="module_napi_get_array_length" id="module_napi_get_array_length"></a>
+  <div class="permalink"><a href="#module_napi_get_array_length" class="permalink fas fa-link"></a></div>
+  <p>napi_get_array_length</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_array_length(napi_env env,
                                   napi_value value,
                                   uint32_t* result)
 </code></pre></p>
@@ -1750,15 +1958,18 @@ being queried.</li></p>
 <p>Array length is described in
 <a href="https://tc39.github.io/ecma262/#sec-properties-of-array-instances-length">Section 22.1.4.1</a>
 of the ECMAScript Language Specification.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_arraybuffer_info" id="module_napi_get_arraybuffer_info"></a>
-            <div class="permalink"><a href="#module_napi_get_arraybuffer_info" class="permalink fas fa-link"></a></div>
-            <p>napi_get_arraybuffer_info</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_arraybuffer_info(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_get_arraybuffer_info" id="module_napi_get_arraybuffer_info"></a>
+  <div class="permalink"><a href="#module_napi_get_arraybuffer_info" class="permalink fas fa-link"></a></div>
+  <p>napi_get_arraybuffer_info</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_arraybuffer_info(napi_env env,
                                       napi_value arraybuffer,
                                       void<em>* data,
                                       size_t</em> byte_length)
@@ -1778,15 +1989,18 @@ possible safe way to use this API is in conjunction with <a href="#n_api_napi_cr
 which can be used to guarantee control over the lifetime of the
 ArrayBuffer. It&#39;s also safe to use the returned data buffer within the same
 callback as long as there are no calls to other APIs that might trigger a GC.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_buffer_info" id="module_napi_get_buffer_info"></a>
-            <div class="permalink"><a href="#module_napi_get_buffer_info" class="permalink fas fa-link"></a></div>
-            <p>napi_get_buffer_info</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_buffer_info(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_get_buffer_info" id="module_napi_get_buffer_info"></a>
+  <div class="permalink"><a href="#module_napi_get_buffer_info" class="permalink fas fa-link"></a></div>
+  <p>napi_get_buffer_info</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_buffer_info(napi_env env,
                                  napi_value value,
                                  void<em>* data,
                                  size_t</em> length)
@@ -1802,15 +2016,18 @@ callback as long as there are no calls to other APIs that might trigger a GC.</p
 and it&#39;s length.</p>
 <p><em>Warning</em>: Use caution while using this API since the underlying data buffer&#39;s
 lifetime is not guaranteed if it&#39;s managed by the VM.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_prototype" id="module_napi_get_prototype"></a>
-            <div class="permalink"><a href="#module_napi_get_prototype" class="permalink fas fa-link"></a></div>
-            <p>napi_get_prototype</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_prototype(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_get_prototype" id="module_napi_get_prototype"></a>
+  <div class="permalink"><a href="#module_napi_get_prototype" class="permalink fas fa-link"></a></div>
+  <p>napi_get_prototype</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_prototype(napi_env env,
                                napi_value object,
                                napi_value* result)
 </code></pre></p>
@@ -1822,15 +2039,18 @@ not the same as the function&#39;s <code>prototype</code> property).</li></p>
 <p><li><code>[out] result</code>: <code>napi_value</code> representing prototype of the given object.</li>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_typedarray_info" id="module_napi_get_typedarray_info"></a>
-            <div class="permalink"><a href="#module_napi_get_typedarray_info" class="permalink fas fa-link"></a></div>
-            <p>napi_get_typedarray_info</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_typedarray_info(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_get_typedarray_info" id="module_napi_get_typedarray_info"></a>
+  <div class="permalink"><a href="#module_napi_get_typedarray_info" class="permalink fas fa-link"></a></div>
+  <p>napi_get_typedarray_info</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_typedarray_info(napi_env env,
                                      napi_value typedarray,
                                      napi_typedarray_type<em> type,
                                      size_t</em> length,
@@ -1852,15 +2072,18 @@ to start projecting the TypedArray.</li>
 <p>This API returns various properties of a typed array.</p>
 <p><em>Warning</em>: Use caution while using this API since the underlying data buffer
 is managed by the VM</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_dataview_info" id="module_napi_get_dataview_info"></a>
-            <div class="permalink"><a href="#module_napi_get_dataview_info" class="permalink fas fa-link"></a></div>
-            <p>napi_get_dataview_info</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_dataview_info(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_get_dataview_info" id="module_napi_get_dataview_info"></a>
+  <div class="permalink"><a href="#module_napi_get_dataview_info" class="permalink fas fa-link"></a></div>
+  <p>napi_get_dataview_info</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_dataview_info(napi_env env,
                                    napi_value dataview,
                                    size_t<em> byte_length,
                                    void** data,
@@ -1879,15 +2102,18 @@ to start projecting the DataView.</li>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API returns various properties of a DataView.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_value_bool" id="module_napi_get_value_bool"></a>
-            <div class="permalink"><a href="#module_napi_get_value_bool" class="permalink fas fa-link"></a></div>
-            <p>napi_get_value_bool</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_value_bool(napi_env env, napi_value value, bool* result)
+
+<div class="heading">
+<h4>
+  <a name="module_napi_get_value_bool" id="module_napi_get_value_bool"></a>
+  <div class="permalink"><a href="#module_napi_get_value_bool" class="permalink fas fa-link"></a></div>
+  <p>napi_get_value_bool</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_value_bool(napi_env env, napi_value value, bool* result)
 </code></pre></p>
 <p><ul></p>
 <p><li><code>[in] env</code>: The environment that the API is invoked under.</li></p>
@@ -1899,15 +2125,18 @@ Boolean.</li>
 passed in it returns <code>napi_boolean_expected</code>.</p>
 <p>This API returns the C boolean primitive equivalent of the given JavaScript
 Boolean.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_value_double" id="module_napi_get_value_double"></a>
-            <div class="permalink"><a href="#module_napi_get_value_double" class="permalink fas fa-link"></a></div>
-            <p>napi_get_value_double</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_value_double(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_get_value_double" id="module_napi_get_value_double"></a>
+  <div class="permalink"><a href="#module_napi_get_value_double" class="permalink fas fa-link"></a></div>
+  <p>napi_get_value_double</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_value_double(napi_env env,
                                   napi_value value,
                                   double* result)
 </code></pre></p>
@@ -1921,15 +2150,18 @@ Number.</li>
 in it returns <code>napi_number_expected</code>.</p>
 <p>This API returns the C double primitive equivalent of the given JavaScript
 Number.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_value_external" id="module_napi_get_value_external"></a>
-            <div class="permalink"><a href="#module_napi_get_value_external" class="permalink fas fa-link"></a></div>
-            <p>napi_get_value_external</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_value_external(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_get_value_external" id="module_napi_get_value_external"></a>
+  <div class="permalink"><a href="#module_napi_get_value_external" class="permalink fas fa-link"></a></div>
+  <p>napi_get_value_external</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_value_external(napi_env env,
                                     napi_value value,
                                     void** result)
 </code></pre></p>
@@ -1942,15 +2174,18 @@ Number.</p>
 passed in it returns <code>napi_invalid_arg</code>.</p>
 <p>This API retrieves the external data pointer that was previously passed to
 <code>napi_create_external()</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_value_int32" id="module_napi_get_value_int32"></a>
-            <div class="permalink"><a href="#module_napi_get_value_int32" class="permalink fas fa-link"></a></div>
-            <p>napi_get_value_int32</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_value_int32(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_get_value_int32" id="module_napi_get_value_int32"></a>
+  <div class="permalink"><a href="#module_napi_get_value_int32" class="permalink fas fa-link"></a></div>
+  <p>napi_get_value_int32</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_value_int32(napi_env env,
                                  napi_value value,
                                  int32_t* result)
 </code></pre></p>
@@ -1966,15 +2201,18 @@ of the given JavaScript Number. If the number exceeds the range of the
 32 bit integer, then the result is truncated to the equivalent of the
 bottom 32 bits. This can result in a large positive number becoming
 a negative number if the value is &gt; 2^31 -1.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_value_int64" id="module_napi_get_value_int64"></a>
-            <div class="permalink"><a href="#module_napi_get_value_int64" class="permalink fas fa-link"></a></div>
-            <p>napi_get_value_int64</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_value_int64(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_get_value_int64" id="module_napi_get_value_int64"></a>
+  <div class="permalink"><a href="#module_napi_get_value_int64" class="permalink fas fa-link"></a></div>
+  <p>napi_get_value_int64</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_value_int64(napi_env env,
                                  napi_value value,
                                  int64_t* result)
 </code></pre></p>
@@ -1987,15 +2225,18 @@ a negative number if the value is &gt; 2^31 -1.</p>
 is passed in it returns <code>napi_number_expected</code>.</p>
 <p>This API returns the C int64 primitive equivalent of the given
 JavaScript Number</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_value_string_latin1" id="module_napi_get_value_string_latin1"></a>
-            <div class="permalink"><a href="#module_napi_get_value_string_latin1" class="permalink fas fa-link"></a></div>
-            <p>napi_get_value_string_latin1</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_value_string_latin1(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_get_value_string_latin1" id="module_napi_get_value_string_latin1"></a>
+  <div class="permalink"><a href="#module_napi_get_value_string_latin1" class="permalink fas fa-link"></a></div>
+  <p>napi_get_value_string_latin1</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_value_string_latin1(napi_env env,
                                          napi_value value,
                                          char<em> buf,
                                          size_t bufsize,
@@ -2015,15 +2256,18 @@ terminator.</li>
 is passed in it returns <code>napi_string_expected</code>.</p>
 <p>This API returns the ISO-8859-1-encoded string corresponding the value passed
 in.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_value_string_utf8" id="module_napi_get_value_string_utf8"></a>
-            <div class="permalink"><a href="#module_napi_get_value_string_utf8" class="permalink fas fa-link"></a></div>
-            <p>napi_get_value_string_utf8</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_value_string_utf8(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_get_value_string_utf8" id="module_napi_get_value_string_utf8"></a>
+  <div class="permalink"><a href="#module_napi_get_value_string_utf8" class="permalink fas fa-link"></a></div>
+  <p>napi_get_value_string_utf8</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_value_string_utf8(napi_env env,
                                        napi_value value,
                                        char<em> buf,
                                        size_t bufsize,
@@ -2042,15 +2286,18 @@ terminator.</li>
 <p>Returns <code>napi_ok</code> if the API succeeded. If a non-String <code>napi_value</code>
 is passed in it returns <code>napi_string_expected</code>.</p>
 <p>This API returns the UTF8-encoded string corresponding the value passed in.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_value_string_utf16" id="module_napi_get_value_string_utf16"></a>
-            <div class="permalink"><a href="#module_napi_get_value_string_utf16" class="permalink fas fa-link"></a></div>
-            <p>napi_get_value_string_utf16</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_value_string_utf16(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_get_value_string_utf16" id="module_napi_get_value_string_utf16"></a>
+  <div class="permalink"><a href="#module_napi_get_value_string_utf16" class="permalink fas fa-link"></a></div>
+  <p>napi_get_value_string_utf16</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_value_string_utf16(napi_env env,
                                         napi_value value,
                                         char16_t<em> buf,
                                         size_t bufsize,
@@ -2069,15 +2316,18 @@ terminator.</li>
 <p>Returns <code>napi_ok</code> if the API succeeded. If a non-String <code>napi_value</code>
 is passed in it returns <code>napi_string_expected</code>.</p>
 <p>This API returns the UTF16-encoded string corresponding the value passed in.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_value_uint32" id="module_napi_get_value_uint32"></a>
-            <div class="permalink"><a href="#module_napi_get_value_uint32" class="permalink fas fa-link"></a></div>
-            <p>napi_get_value_uint32</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_value_uint32(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_get_value_uint32" id="module_napi_get_value_uint32"></a>
+  <div class="permalink"><a href="#module_napi_get_value_uint32" class="permalink fas fa-link"></a></div>
+  <p>napi_get_value_uint32</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_value_uint32(napi_env env,
                                   napi_value value,
                                   uint32_t* result)
 </code></pre></p>
@@ -2091,23 +2341,29 @@ is passed in it returns <code>napi_string_expected</code>.</p>
 is passed in it returns <code>napi_number_expected</code>.</p>
 <p>This API returns the C primitive equivalent of the given <code>napi_value</code> as a
 <code>uint32_t</code>.</p>
-</section></section>
-       <div class="heading">
-          <h3>
-            <a name="module_functions_to_get_global_instances" id="module_functions_to_get_global_instances"></a>
-            <div class="permalink"><a href="#module_functions_to_get_global_instances" class="permalink fas fa-link"></a></div>
-            <p>Functions to get global instances</p>
 
-          </h1>
-        </div><section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_boolean" id="module_napi_get_boolean"></a>
-            <div class="permalink"><a href="#module_napi_get_boolean" class="permalink fas fa-link"></a></div>
-            <p>napi_get_boolean</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_boolean(napi_env env, bool value, napi_value* result)
+<div class="heading">
+<h3>
+  <a name="module_functions_to_get_global_instances" id="module_functions_to_get_global_instances"></a>
+  <div class="permalink"><a href="#module_functions_to_get_global_instances" class="permalink fas fa-link"></a></div>
+  <p>Functions to get global instances</p>
+
+</h3>
+</div>
+
+
+
+<div class="heading">
+<h4>
+  <a name="module_napi_get_boolean" id="module_napi_get_boolean"></a>
+  <div class="permalink"><a href="#module_napi_get_boolean" class="permalink fas fa-link"></a></div>
+  <p>napi_get_boolean</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_boolean(napi_env env, bool value, napi_value* result)
 </code></pre></p>
 <p><ul></p>
 <p><li><code>[in] env</code>: The environment that the API is invoked under.</li></p>
@@ -2118,15 +2374,18 @@ retrieve.</li>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API is used to return the JavaScript singleton object that is used to
 represent the given boolean value</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_global" id="module_napi_get_global"></a>
-            <div class="permalink"><a href="#module_napi_get_global" class="permalink fas fa-link"></a></div>
-            <p>napi_get_global</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_global(napi_env env, napi_value* result)
+
+<div class="heading">
+<h4>
+  <a name="module_napi_get_global" id="module_napi_get_global"></a>
+  <div class="permalink"><a href="#module_napi_get_global" class="permalink fas fa-link"></a></div>
+  <p>napi_get_global</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_global(napi_env env, napi_value* result)
 </code></pre></p>
 <p><ul></p>
 <p><li><code>[in] env</code>: The environment that the API is invoked under.</li></p>
@@ -2134,15 +2393,18 @@ represent the given boolean value</p>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API returns the global Object.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_null" id="module_napi_get_null"></a>
-            <div class="permalink"><a href="#module_napi_get_null" class="permalink fas fa-link"></a></div>
-            <p>napi_get_null</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_null(napi_env env, napi_value* result)
+
+<div class="heading">
+<h4>
+  <a name="module_napi_get_null" id="module_napi_get_null"></a>
+  <div class="permalink"><a href="#module_napi_get_null" class="permalink fas fa-link"></a></div>
+  <p>napi_get_null</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_null(napi_env env, napi_value* result)
 </code></pre></p>
 <p><ul></p>
 <p><li><code>[in] env</code>: The environment that the API is invoked under.</li></p>
@@ -2150,15 +2412,18 @@ represent the given boolean value</p>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API returns the null Object.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_undefined" id="module_napi_get_undefined"></a>
-            <div class="permalink"><a href="#module_napi_get_undefined" class="permalink fas fa-link"></a></div>
-            <p>napi_get_undefined</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_undefined(napi_env env, napi_value* result)
+
+<div class="heading">
+<h4>
+  <a name="module_napi_get_undefined" id="module_napi_get_undefined"></a>
+  <div class="permalink"><a href="#module_napi_get_undefined" class="permalink fas fa-link"></a></div>
+  <p>napi_get_undefined</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_undefined(napi_env env, napi_value* result)
 </code></pre></p>
 <p><ul></p>
 <p><li><code>[in] env</code>: The environment that the API is invoked under.</li></p>
@@ -2166,15 +2431,18 @@ represent the given boolean value</p>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API returns the Undefined object.</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="module_working_with_javascript_values___abstract_operations" id="module_working_with_javascript_values___abstract_operations"></a>
-            <div class="permalink"><a href="#module_working_with_javascript_values___abstract_operations" class="permalink fas fa-link"></a></div>
-            <p>Working with JavaScript Values - Abstract Operations</p>
 
-          </h1>
-        </div><section><p><p>N-API exposes a set of APIs to perform some abstract operations on JavaScript
+
+<div class="heading">
+<h2>
+  <a name="module_working_with_javascript_values___abstract_operations" id="module_working_with_javascript_values___abstract_operations"></a>
+  <div class="permalink"><a href="#module_working_with_javascript_values___abstract_operations" class="permalink fas fa-link"></a></div>
+  <p>Working with JavaScript Values - Abstract Operations</p>
+
+</h2>
+</div>
+
+<p><p>N-API exposes a set of APIs to perform some abstract operations on JavaScript
 values. Some of these operations are documented under
 <a href="https://tc39.github.io/ecma262/#sec-abstract-operations">Section 7</a>
 of the <a href="https://tc39.github.io/ecma262/">ECMAScript Language Specification</a>.</p></p>
@@ -2186,14 +2454,17 @@ String)</li>
 <li>Check for equality between two JavaScript values</li>
 </ol>
 
-       <div class="heading">
-          <h3>
-            <a name="module_napi_coerce_to_bool" id="module_napi_coerce_to_bool"></a>
-            <div class="permalink"><a href="#module_napi_coerce_to_bool" class="permalink fas fa-link"></a></div>
-            <p>napi_coerce_to_bool</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_coerce_to_bool(napi_env env,
+<div class="heading">
+<h3>
+  <a name="module_napi_coerce_to_bool" id="module_napi_coerce_to_bool"></a>
+  <div class="permalink"><a href="#module_napi_coerce_to_bool" class="permalink fas fa-link"></a></div>
+  <p>napi_coerce_to_bool</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_coerce_to_bool(napi_env env,
                                 napi_value value,
                                 napi_value* result)
 </code></pre></p>
@@ -2207,15 +2478,18 @@ String)</li>
 <a href="https://tc39.github.io/ecma262/#sec-toboolean">Section 7.1.2</a>
 of the ECMAScript Language Specification.
 This API can be re-entrant if getters are defined on the passed-in Object.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_coerce_to_number" id="module_napi_coerce_to_number"></a>
-            <div class="permalink"><a href="#module_napi_coerce_to_number" class="permalink fas fa-link"></a></div>
-            <p>napi_coerce_to_number</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_coerce_to_number(napi_env env,
+
+<div class="heading">
+<h3>
+  <a name="module_napi_coerce_to_number" id="module_napi_coerce_to_number"></a>
+  <div class="permalink"><a href="#module_napi_coerce_to_number" class="permalink fas fa-link"></a></div>
+  <p>napi_coerce_to_number</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_coerce_to_number(napi_env env,
                                   napi_value value,
                                   napi_value* result)
 </code></pre></p>
@@ -2229,15 +2503,18 @@ This API can be re-entrant if getters are defined on the passed-in Object.</p>
 <a href="https://tc39.github.io/ecma262/#sec-tonumber">Section 7.1.3</a>
 of the ECMAScript Language Specification.
 This API can be re-entrant if getters are defined on the passed-in Object.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_coerce_to_object" id="module_napi_coerce_to_object"></a>
-            <div class="permalink"><a href="#module_napi_coerce_to_object" class="permalink fas fa-link"></a></div>
-            <p>napi_coerce_to_object</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_coerce_to_object(napi_env env,
+
+<div class="heading">
+<h3>
+  <a name="module_napi_coerce_to_object" id="module_napi_coerce_to_object"></a>
+  <div class="permalink"><a href="#module_napi_coerce_to_object" class="permalink fas fa-link"></a></div>
+  <p>napi_coerce_to_object</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_coerce_to_object(napi_env env,
                                   napi_value value,
                                   napi_value* result)
 </code></pre></p>
@@ -2251,15 +2528,18 @@ This API can be re-entrant if getters are defined on the passed-in Object.</p>
 <a href="https://tc39.github.io/ecma262/#sec-toobject">Section 7.1.13</a>
 of the ECMAScript Language Specification.
 This API can be re-entrant if getters are defined on the passed-in Object.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_coerce_to_string" id="module_napi_coerce_to_string"></a>
-            <div class="permalink"><a href="#module_napi_coerce_to_string" class="permalink fas fa-link"></a></div>
-            <p>napi_coerce_to_string</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_coerce_to_string(napi_env env,
+
+<div class="heading">
+<h3>
+  <a name="module_napi_coerce_to_string" id="module_napi_coerce_to_string"></a>
+  <div class="permalink"><a href="#module_napi_coerce_to_string" class="permalink fas fa-link"></a></div>
+  <p>napi_coerce_to_string</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_coerce_to_string(napi_env env,
                                   napi_value value,
                                   napi_value* result)
 </code></pre></p>
@@ -2273,15 +2553,18 @@ This API can be re-entrant if getters are defined on the passed-in Object.</p>
 <a href="https://tc39.github.io/ecma262/#sec-tostring">Section 7.1.13</a>
 of the ECMAScript Language Specification.
 This API can be re-entrant if getters are defined on the passed-in Object.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_typeof" id="module_napi_typeof"></a>
-            <div class="permalink"><a href="#module_napi_typeof" class="permalink fas fa-link"></a></div>
-            <p>napi_typeof</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_typeof(napi_env env, napi_value value, napi_valuetype* result)
+
+<div class="heading">
+<h3>
+  <a name="module_napi_typeof" id="module_napi_typeof"></a>
+  <div class="permalink"><a href="#module_napi_typeof" class="permalink fas fa-link"></a></div>
+  <p>napi_typeof</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_typeof(napi_env env, napi_value value, napi_valuetype* result)
 </code></pre></p>
 <p><ul></p>
 <p><li><code>[in] env</code>: The environment that the API is invoked under.</li></p>
@@ -2297,15 +2580,18 @@ This API can be re-entrant if getters are defined on the passed-in Object.</p>
 the object as defined in <a href="https://tc39.github.io/ecma262/#sec-typeof-operator">Section 12.5.5</a> of the ECMAScript Language
 Specification. However, it has support for detecting an External value.
 If <code>value</code> has a type that is invalid, an error is returned.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_instanceof" id="module_napi_instanceof"></a>
-            <div class="permalink"><a href="#module_napi_instanceof" class="permalink fas fa-link"></a></div>
-            <p>napi_instanceof</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_instanceof(napi_env env,
+
+<div class="heading">
+<h3>
+  <a name="module_napi_instanceof" id="module_napi_instanceof"></a>
+  <div class="permalink"><a href="#module_napi_instanceof" class="permalink fas fa-link"></a></div>
+  <p>napi_instanceof</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_instanceof(napi_env env,
                             napi_value object,
                             napi_value constructor,
                             bool* result)
@@ -2323,15 +2609,18 @@ is true.</li>
 defined in
 <a href="https://tc39.github.io/ecma262/#sec-instanceofoperator">Section 12.10.4</a>
 of the ECMAScript Language Specification.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_is_array" id="module_napi_is_array"></a>
-            <div class="permalink"><a href="#module_napi_is_array" class="permalink fas fa-link"></a></div>
-            <p>napi_is_array</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_is_array(napi_env env, napi_value value, bool* result)
+
+<div class="heading">
+<h3>
+  <a name="module_napi_is_array" id="module_napi_is_array"></a>
+  <div class="permalink"><a href="#module_napi_is_array" class="permalink fas fa-link"></a></div>
+  <p>napi_is_array</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_is_array(napi_env env, napi_value value, bool* result)
 </code></pre></p>
 <p><ul></p>
 <p><li><code>[in] env</code>: The environment that the API is invoked under.</li></p>
@@ -2342,15 +2631,18 @@ of the ECMAScript Language Specification.</p>
 <p>This API represents invoking the <code>IsArray</code> operation on the object
 as defined in <a href="https://tc39.github.io/ecma262/#sec-isarray">Section 7.2.2</a>
 of the ECMAScript Language Specification.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_is_arraybuffer" id="module_napi_is_arraybuffer"></a>
-            <div class="permalink"><a href="#module_napi_is_arraybuffer" class="permalink fas fa-link"></a></div>
-            <p>napi_is_arraybuffer</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_is_arraybuffer(napi_env env, napi_value value, bool* result)
+
+<div class="heading">
+<h3>
+  <a name="module_napi_is_arraybuffer" id="module_napi_is_arraybuffer"></a>
+  <div class="permalink"><a href="#module_napi_is_arraybuffer" class="permalink fas fa-link"></a></div>
+  <p>napi_is_arraybuffer</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_is_arraybuffer(napi_env env, napi_value value, bool* result)
 </code></pre></p>
 <p><ul></p>
 <p><li><code>[in] env</code>: The environment that the API is invoked under.</li></p>
@@ -2359,15 +2651,18 @@ of the ECMAScript Language Specification.</p>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API checks if the Object passsed in is an array buffer.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_is_buffer" id="module_napi_is_buffer"></a>
-            <div class="permalink"><a href="#module_napi_is_buffer" class="permalink fas fa-link"></a></div>
-            <p>napi_is_buffer</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_is_buffer(napi_env env, napi_value value, bool* result)
+
+<div class="heading">
+<h3>
+  <a name="module_napi_is_buffer" id="module_napi_is_buffer"></a>
+  <div class="permalink"><a href="#module_napi_is_buffer" class="permalink fas fa-link"></a></div>
+  <p>napi_is_buffer</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_is_buffer(napi_env env, napi_value value, bool* result)
 </code></pre></p>
 <p><ul></p>
 <p><li><code>[in] env</code>: The environment that the API is invoked under.</li></p>
@@ -2377,15 +2672,18 @@ object.</li>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API checks if the Object passsed in is a buffer.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_is_error_1" id="module_napi_is_error_1"></a>
-            <div class="permalink"><a href="#module_napi_is_error_1" class="permalink fas fa-link"></a></div>
-            <p>napi_is_error</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_is_error(napi_env env, napi_value value, bool* result)
+
+<div class="heading">
+<h3>
+  <a name="module_napi_is_error_1" id="module_napi_is_error_1"></a>
+  <div class="permalink"><a href="#module_napi_is_error_1" class="permalink fas fa-link"></a></div>
+  <p>napi_is_error</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_is_error(napi_env env, napi_value value, bool* result)
 </code></pre></p>
 <p><ul></p>
 <p><li><code>[in] env</code>: The environment that the API is invoked under.</li></p>
@@ -2394,15 +2692,18 @@ object.</li>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API checks if the Object passsed in is an Error.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_is_typedarray" id="module_napi_is_typedarray"></a>
-            <div class="permalink"><a href="#module_napi_is_typedarray" class="permalink fas fa-link"></a></div>
-            <p>napi_is_typedarray</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_is_typedarray(napi_env env, napi_value value, bool* result)
+
+<div class="heading">
+<h3>
+  <a name="module_napi_is_typedarray" id="module_napi_is_typedarray"></a>
+  <div class="permalink"><a href="#module_napi_is_typedarray" class="permalink fas fa-link"></a></div>
+  <p>napi_is_typedarray</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_is_typedarray(napi_env env, napi_value value, bool* result)
 </code></pre></p>
 <p><ul></p>
 <p><li><code>[in] env</code>: The environment that the API is invoked under.</li></p>
@@ -2411,15 +2712,18 @@ object.</li>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API checks if the Object passsed in is a typed array.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_is_dataview" id="module_napi_is_dataview"></a>
-            <div class="permalink"><a href="#module_napi_is_dataview" class="permalink fas fa-link"></a></div>
-            <p>napi_is_dataview</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_is_dataview(napi_env env, napi_value value, bool* result)
+
+<div class="heading">
+<h3>
+  <a name="module_napi_is_dataview" id="module_napi_is_dataview"></a>
+  <div class="permalink"><a href="#module_napi_is_dataview" class="permalink fas fa-link"></a></div>
+  <p>napi_is_dataview</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_is_dataview(napi_env env, napi_value value, bool* result)
 </code></pre></p>
 <p><ul></p>
 <p><li><code>[in] env</code>: The environment that the API is invoked under.</li></p>
@@ -2428,15 +2732,18 @@ object.</li>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API checks if the Object passed in is a DataView.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_strict_equals" id="module_napi_strict_equals"></a>
-            <div class="permalink"><a href="#module_napi_strict_equals" class="permalink fas fa-link"></a></div>
-            <p>napi_strict_equals</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_strict_equals(napi_env env,
+
+<div class="heading">
+<h3>
+  <a name="module_napi_strict_equals" id="module_napi_strict_equals"></a>
+  <div class="permalink"><a href="#module_napi_strict_equals" class="permalink fas fa-link"></a></div>
+  <p>napi_strict_equals</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_strict_equals(napi_env env,
                                napi_value lhs,
                                napi_value rhs,
                                bool* result)
@@ -2452,15 +2759,18 @@ object.</li>
 defined in
 <a href="https://tc39.github.io/ecma262/#sec-strict-equality-comparison">Section 7.2.14</a>
 of the ECMAScript Language Specification.</p>
-</section></section>
-       <div class="heading">
-          <h2>
-            <a name="module_working_with_javascript_properties" id="module_working_with_javascript_properties"></a>
-            <div class="permalink"><a href="#module_working_with_javascript_properties" class="permalink fas fa-link"></a></div>
-            <p>Working with JavaScript Properties</p>
 
-          </h1>
-        </div><section><p><p>N-API exposes a set of APIs to get and set properties on JavaScript
+
+<div class="heading">
+<h2>
+  <a name="module_working_with_javascript_properties" id="module_working_with_javascript_properties"></a>
+  <div class="permalink"><a href="#module_working_with_javascript_properties" class="permalink fas fa-link"></a></div>
+  <p>Working with JavaScript Properties</p>
+
+</h2>
+</div>
+
+<p><p>N-API exposes a set of APIs to get and set properties on JavaScript
 objects. Some of these types are documented under
 <a href="https://tc39.github.io/ecma262/#sec-operations-on-objects">Section 7</a> of the
 <a href="https://tc39.github.io/ecma262/">ECMAScript Language Specification</a>.</p></p>
@@ -2573,22 +2883,28 @@ status = napi_define_properties(env,
 if (status != napi_ok) return status;
 </code></pre>
 
-       <div class="heading">
-          <h3>
-            <a name="module_structures" id="module_structures"></a>
-            <div class="permalink"><a href="#module_structures" class="permalink fas fa-link"></a></div>
-            <p>Structures</p>
 
-          </h1>
-        </div><section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_property_attributes" id="module_napi_property_attributes"></a>
-            <div class="permalink"><a href="#module_napi_property_attributes" class="permalink fas fa-link"></a></div>
-            <p>napi_property_attributes</p>
+<div class="heading">
+<h3>
+  <a name="module_structures" id="module_structures"></a>
+  <div class="permalink"><a href="#module_structures" class="permalink fas fa-link"></a></div>
+  <p>Structures</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">typedef enum {
+</h3>
+</div>
+
+
+
+<div class="heading">
+<h4>
+  <a name="module_napi_property_attributes" id="module_napi_property_attributes"></a>
+  <div class="permalink"><a href="#module_napi_property_attributes" class="permalink fas fa-link"></a></div>
+  <p>napi_property_attributes</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">typedef enum {
   napi_default = 0,
   napi_writable = 1 &lt;&lt; 0,
   napi_enumerable = 1 &lt;&lt; 1,
@@ -2609,24 +2925,25 @@ given property. By default, a property is read only, not enumerable and not
 configurable.</li>
 <li><code>napi_writable</code>  - Used to indicate that a given property is writable.</li>
 <li><code>napi_enumerable</code> - Used to indicate that a given property is enumerable.</li>
-<li><code>napi_configurable</code> - Used to indicate that a given property is
-configurable, as defined in
-<a href="https://tc39.github.io/ecma262/#table-2">Section 6.1.7.1</a> of the
-<a href="https://tc39.github.io/ecma262/">ECMAScript Language Specification</a>.</li>
+<li><code>napi_configurable</code> - Used to indicate that a given property is configurable,
+as defined in <a href="https://tc39.github.io/ecma262/#table-2">Section 6.1.7.1</a> of the <a href="https://tc39.github.io/ecma262/">ECMAScript Language Specification</a>.</li>
 <li><code>napi_static</code> - Used to indicate that the property will be defined as
 a static property on a class as opposed to an instance property, which is the
 default. This is used only by <a href="#n_api_napi_define_class"><code>napi_define_class</code></a>. It is ignored by
 <code>napi_define_properties</code>.</li>
 </ul>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_property_descriptor" id="module_napi_property_descriptor"></a>
-            <div class="permalink"><a href="#module_napi_property_descriptor" class="permalink fas fa-link"></a></div>
-            <p>napi_property_descriptor</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">typedef struct {
+
+<div class="heading">
+<h4>
+  <a name="module_napi_property_descriptor" id="module_napi_property_descriptor"></a>
+  <div class="permalink"><a href="#module_napi_property_descriptor" class="permalink fas fa-link"></a></div>
+  <p>napi_property_descriptor</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">typedef struct {
   // One of utf8name or name should be NULL.
   const char* utf8name;
   napi_value name;</p>
@@ -2667,23 +2984,29 @@ this function is invoked.</li>
 <li><code>attributes</code>: The attributes associated with the particular property.
 See <a href="#n_api_napi_property_attributes"><code>napi_property_attributes</code></a>.</li>
 </ul>
-</section></section>
-       <div class="heading">
-          <h3>
-            <a name="module_functions" id="module_functions"></a>
-            <div class="permalink"><a href="#module_functions" class="permalink fas fa-link"></a></div>
-            <p>Functions</p>
 
-          </h1>
-        </div><section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_property_names" id="module_napi_get_property_names"></a>
-            <div class="permalink"><a href="#module_napi_get_property_names" class="permalink fas fa-link"></a></div>
-            <p>napi_get_property_names</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_property_names(napi_env env,
+<div class="heading">
+<h3>
+  <a name="module_functions" id="module_functions"></a>
+  <div class="permalink"><a href="#module_functions" class="permalink fas fa-link"></a></div>
+  <p>Functions</p>
+
+</h3>
+</div>
+
+
+
+<div class="heading">
+<h4>
+  <a name="module_napi_get_property_names" id="module_napi_get_property_names"></a>
+  <div class="permalink"><a href="#module_napi_get_property_names" class="permalink fas fa-link"></a></div>
+  <p>napi_get_property_names</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_property_names(napi_env env,
                                     napi_value object,
                                     napi_value* result);
 </code></pre></p>
@@ -2697,15 +3020,18 @@ and <a href="#n_api_napi_get_element"><code>napi_get_element</code></a>.</li>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API returns the array of propertys for the Object passed in</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_set_property" id="module_napi_set_property"></a>
-            <div class="permalink"><a href="#module_napi_set_property" class="permalink fas fa-link"></a></div>
-            <p>napi_set_property</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_set_property(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_set_property" id="module_napi_set_property"></a>
+  <div class="permalink"><a href="#module_napi_set_property" class="permalink fas fa-link"></a></div>
+  <p>napi_set_property</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_set_property(napi_env env,
                               napi_value object,
                               napi_value key,
                               napi_value value);
@@ -2718,15 +3044,18 @@ and <a href="#n_api_napi_get_element"><code>napi_get_element</code></a>.</li>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API set a property on the Object passed in.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_property" id="module_napi_get_property"></a>
-            <div class="permalink"><a href="#module_napi_get_property" class="permalink fas fa-link"></a></div>
-            <p>napi_get_property</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_property(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_get_property" id="module_napi_get_property"></a>
+  <div class="permalink"><a href="#module_napi_get_property" class="permalink fas fa-link"></a></div>
+  <p>napi_get_property</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_property(napi_env env,
                               napi_value object,
                               napi_value key,
                               napi_value* result);
@@ -2739,15 +3068,18 @@ and <a href="#n_api_napi_get_element"><code>napi_get_element</code></a>.</li>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API gets the requested property from the Object passed in.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_has_property" id="module_napi_has_property"></a>
-            <div class="permalink"><a href="#module_napi_has_property" class="permalink fas fa-link"></a></div>
-            <p>napi_has_property</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_has_property(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_has_property" id="module_napi_has_property"></a>
+  <div class="permalink"><a href="#module_napi_has_property" class="permalink fas fa-link"></a></div>
+  <p>napi_has_property</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_has_property(napi_env env,
                               napi_value object,
                               napi_value key,
                               bool* result);
@@ -2760,15 +3092,18 @@ and <a href="#n_api_napi_get_element"><code>napi_get_element</code></a>.</li>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API checks if the Object passed in has the named property.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_delete_property" id="module_napi_delete_property"></a>
-            <div class="permalink"><a href="#module_napi_delete_property" class="permalink fas fa-link"></a></div>
-            <p>napi_delete_property</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_delete_property(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_delete_property" id="module_napi_delete_property"></a>
+  <div class="permalink"><a href="#module_napi_delete_property" class="permalink fas fa-link"></a></div>
+  <p>napi_delete_property</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_delete_property(napi_env env,
                                  napi_value object,
                                  napi_value key,
                                  bool* result);
@@ -2782,15 +3117,18 @@ optionally be ignored by passing <code>NULL</code>.</li>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API attempts to delete the <code>key</code> own property from <code>object</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_has_own_property" id="module_napi_has_own_property"></a>
-            <div class="permalink"><a href="#module_napi_has_own_property" class="permalink fas fa-link"></a></div>
-            <p>napi_has_own_property</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_has_own_property(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_has_own_property" id="module_napi_has_own_property"></a>
+  <div class="permalink"><a href="#module_napi_has_own_property" class="permalink fas fa-link"></a></div>
+  <p>napi_has_own_property</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_has_own_property(napi_env env,
                                   napi_value object,
                                   napi_value key,
                                   bool* result);
@@ -2805,15 +3143,18 @@ optionally be ignored by passing <code>NULL</code>.</li>
 <p>This API checks if the Object passed in has the named own property. <code>key</code> must
 be a string or a Symbol, or an error will be thrown. N-API will not perform any
 conversion between data types.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_set_named_property" id="module_napi_set_named_property"></a>
-            <div class="permalink"><a href="#module_napi_set_named_property" class="permalink fas fa-link"></a></div>
-            <p>napi_set_named_property</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_set_named_property(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_set_named_property" id="module_napi_set_named_property"></a>
+  <div class="permalink"><a href="#module_napi_set_named_property" class="permalink fas fa-link"></a></div>
+  <p>napi_set_named_property</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_set_named_property(napi_env env,
                                     napi_value object,
                                     const char* utf8Name,
                                     napi_value value);
@@ -2827,15 +3168,18 @@ conversion between data types.</p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This method is equivalent to calling <a href="#n_api_napi_set_property"><code>napi_set_property</code></a> with a <code>napi_value</code>
 created from the string passed in as <code>utf8Name</code></p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_named_property" id="module_napi_get_named_property"></a>
-            <div class="permalink"><a href="#module_napi_get_named_property" class="permalink fas fa-link"></a></div>
-            <p>napi_get_named_property</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_named_property(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_get_named_property" id="module_napi_get_named_property"></a>
+  <div class="permalink"><a href="#module_napi_get_named_property" class="permalink fas fa-link"></a></div>
+  <p>napi_get_named_property</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_named_property(napi_env env,
                                     napi_value object,
                                     const char<em> utf8Name,
                                     napi_value</em> result);
@@ -2849,15 +3193,18 @@ created from the string passed in as <code>utf8Name</code></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This method is equivalent to calling <a href="#n_api_napi_get_property"><code>napi_get_property</code></a> with a <code>napi_value</code>
 created from the string passed in as <code>utf8Name</code></p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_has_named_property" id="module_napi_has_named_property"></a>
-            <div class="permalink"><a href="#module_napi_has_named_property" class="permalink fas fa-link"></a></div>
-            <p>napi_has_named_property</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_has_named_property(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_has_named_property" id="module_napi_has_named_property"></a>
+  <div class="permalink"><a href="#module_napi_has_named_property" class="permalink fas fa-link"></a></div>
+  <p>napi_has_named_property</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_has_named_property(napi_env env,
                                     napi_value object,
                                     const char<em> utf8Name,
                                     bool</em> result);
@@ -2871,15 +3218,18 @@ created from the string passed in as <code>utf8Name</code></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This method is equivalent to calling <a href="#n_api_napi_has_property"><code>napi_has_property</code></a> with a <code>napi_value</code>
 created from the string passed in as <code>utf8Name</code></p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_set_element" id="module_napi_set_element"></a>
-            <div class="permalink"><a href="#module_napi_set_element" class="permalink fas fa-link"></a></div>
-            <p>napi_set_element</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_set_element(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_set_element" id="module_napi_set_element"></a>
+  <div class="permalink"><a href="#module_napi_set_element" class="permalink fas fa-link"></a></div>
+  <p>napi_set_element</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_set_element(napi_env env,
                              napi_value object,
                              uint32_t index,
                              napi_value value);
@@ -2892,15 +3242,18 @@ created from the string passed in as <code>utf8Name</code></p>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API sets and element on the Object passed in.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_get_element" id="module_napi_get_element"></a>
-            <div class="permalink"><a href="#module_napi_get_element" class="permalink fas fa-link"></a></div>
-            <p>napi_get_element</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_element(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_get_element" id="module_napi_get_element"></a>
+  <div class="permalink"><a href="#module_napi_get_element" class="permalink fas fa-link"></a></div>
+  <p>napi_get_element</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_element(napi_env env,
                              napi_value object,
                              uint32_t index,
                              napi_value* result);
@@ -2913,15 +3266,18 @@ created from the string passed in as <code>utf8Name</code></p>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API gets the element at the requested index.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_has_element" id="module_napi_has_element"></a>
-            <div class="permalink"><a href="#module_napi_has_element" class="permalink fas fa-link"></a></div>
-            <p>napi_has_element</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_has_element(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_has_element" id="module_napi_has_element"></a>
+  <div class="permalink"><a href="#module_napi_has_element" class="permalink fas fa-link"></a></div>
+  <p>napi_has_element</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_has_element(napi_env env,
                              napi_value object,
                              uint32_t index,
                              bool* result);
@@ -2935,15 +3291,18 @@ created from the string passed in as <code>utf8Name</code></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API returns if the Object passed in has an element at the
 requested index.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_delete_element" id="module_napi_delete_element"></a>
-            <div class="permalink"><a href="#module_napi_delete_element" class="permalink fas fa-link"></a></div>
-            <p>napi_delete_element</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_delete_element(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_delete_element" id="module_napi_delete_element"></a>
+  <div class="permalink"><a href="#module_napi_delete_element" class="permalink fas fa-link"></a></div>
+  <p>napi_delete_element</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_delete_element(napi_env env,
                                 napi_value object,
                                 uint32_t index,
                                 bool* result);
@@ -2957,15 +3316,18 @@ optionally be ignored by passing <code>NULL</code>.</li>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API attempts to delete the specified <code>index</code> from <code>object</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_napi_define_properties" id="module_napi_define_properties"></a>
-            <div class="permalink"><a href="#module_napi_define_properties" class="permalink fas fa-link"></a></div>
-            <p>napi_define_properties</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_define_properties(napi_env env,
+
+<div class="heading">
+<h4>
+  <a name="module_napi_define_properties" id="module_napi_define_properties"></a>
+  <div class="permalink"><a href="#module_napi_define_properties" class="permalink fas fa-link"></a></div>
+  <p>napi_define_properties</p>
+
+</h4>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_define_properties(napi_env env,
                                    napi_value object,
                                    size_t property_count,
                                    const napi_property_descriptor* properties);
@@ -2982,15 +3344,18 @@ object. The properties are defined using property descriptors (See
 <a href="#n_api_napi_property_descriptor"><code>napi_property_descriptor</code></a>). Given an array of such property descriptors, this
 API will set the properties on the object one at a time, as defined by
 DefineOwnProperty (described in <a href="https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots-defineownproperty-p-desc">Section 9.1.6</a> of the ECMA262 specification).</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="module_working_with_javascript_functions" id="module_working_with_javascript_functions"></a>
-            <div class="permalink"><a href="#module_working_with_javascript_functions" class="permalink fas fa-link"></a></div>
-            <p>Working with JavaScript Functions</p>
 
-          </h1>
-        </div><section><p>N-API provides a set of APIs that allow JavaScript code to
+
+<div class="heading">
+<h2>
+  <a name="module_working_with_javascript_functions" id="module_working_with_javascript_functions"></a>
+  <div class="permalink"><a href="#module_working_with_javascript_functions" class="permalink fas fa-link"></a></div>
+  <p>Working with JavaScript Functions</p>
+
+</h2>
+</div>
+
+<p>N-API provides a set of APIs that allow JavaScript code to
 call back into native code. N-API APIs that support calling back
 into native code take in a callback functions represented by
 the <code>napi_callback</code> type. When the JavaScript VM calls back to
@@ -3007,14 +3372,17 @@ JavaScript functions from native code. One can either call a function
 like a regular JavaScript function call, or as a constructor
 function.</p>
 
-       <div class="heading">
-          <h3>
-            <a name="module_napi_call_function" id="module_napi_call_function"></a>
-            <div class="permalink"><a href="#module_napi_call_function" class="permalink fas fa-link"></a></div>
-            <p>napi_call_function</p>
 
-          </h1>
-        </div><section><pre class="prettyprint"><code class="lang-C">napi_status napi_call_function(napi_env env,
+<div class="heading">
+<h3>
+  <a name="module_napi_call_function" id="module_napi_call_function"></a>
+  <div class="permalink"><a href="#module_napi_call_function" class="permalink fas fa-link"></a></div>
+  <p>napi_call_function</p>
+
+</h3>
+</div>
+
+<pre class="prettyprint"><code class="lang-C">napi_status napi_call_function(napi_env env,
                                napi_value recv,
                                napi_value func,
                                int argc,
@@ -3069,15 +3437,18 @@ int32_t result;
 status = napi_get_value_int32(env, return_val, &amp;result);
 if (status != napi_ok) return;
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_create_function_1" id="module_napi_create_function_1"></a>
-            <div class="permalink"><a href="#module_napi_create_function_1" class="permalink fas fa-link"></a></div>
-            <p>napi_create_function</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_function(napi_env env,
+
+<div class="heading">
+<h3>
+  <a name="module_napi_create_function_1" id="module_napi_create_function_1"></a>
+  <div class="permalink"><a href="#module_napi_create_function_1" class="permalink fas fa-link"></a></div>
+  <p>napi_create_function</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_function(napi_env env,
                                  const char<em> utf8name,
                                  napi_callback cb,
                                  void</em> data,
@@ -3132,15 +3503,18 @@ myaddon.sayHello();
 <p><em>Note</em>: The string passed to require is not necessarily the name passed into
 <code>NAPI_MODULE</code> in the earlier snippet but the name of the target in <code>binding.gyp</code>
 responsible for creating the <code>.node</code> file.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_get_cb_info" id="module_napi_get_cb_info"></a>
-            <div class="permalink"><a href="#module_napi_get_cb_info" class="permalink fas fa-link"></a></div>
-            <p>napi_get_cb_info</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_cb_info(napi_env env,
+
+<div class="heading">
+<h3>
+  <a name="module_napi_get_cb_info" id="module_napi_get_cb_info"></a>
+  <div class="permalink"><a href="#module_napi_get_cb_info" class="permalink fas fa-link"></a></div>
+  <p>napi_get_cb_info</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_cb_info(napi_env env,
                              napi_callback_info cbinfo,
                              size_t<em> argc,
                              napi_value</em> argv,
@@ -3163,15 +3537,18 @@ values that represent <code>undefined</code>.</li></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This method is used within a callback function to retrieve details about the
 call like the arguments and the <code>this</code> pointer from a given callback info.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_get_new_target" id="module_napi_get_new_target"></a>
-            <div class="permalink"><a href="#module_napi_get_new_target" class="permalink fas fa-link"></a></div>
-            <p>napi_get_new_target</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_new_target(napi_env env,
+
+<div class="heading">
+<h3>
+  <a name="module_napi_get_new_target" id="module_napi_get_new_target"></a>
+  <div class="permalink"><a href="#module_napi_get_new_target" class="permalink fas fa-link"></a></div>
+  <p>napi_get_new_target</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_new_target(napi_env env,
                                 napi_callback_info cbinfo,
                                 napi_value* result)
 </code></pre></p>
@@ -3183,15 +3560,18 @@ call like the arguments and the <code>this</code> pointer from a given callback 
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API returns the <code>new.target</code> of the constructor call. If the current
 callback is not a constructor call, the result is <code>NULL</code>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_new_instance" id="module_napi_new_instance"></a>
-            <div class="permalink"><a href="#module_napi_new_instance" class="permalink fas fa-link"></a></div>
-            <p>napi_new_instance</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_new_instance(napi_env env,
+
+<div class="heading">
+<h3>
+  <a name="module_napi_new_instance" id="module_napi_new_instance"></a>
+  <div class="permalink"><a href="#module_napi_new_instance" class="permalink fas fa-link"></a></div>
+  <p>napi_new_instance</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_new_instance(napi_env env,
                               napi_value cons,
                               size_t argc,
                               napi_value<em> argv,
@@ -3237,15 +3617,18 @@ size_t argc = 1;
 status = napi_new_instance(env, constructor, argc, argv, &amp;value);
 </code></pre>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
-</section></section>
-       <div class="heading">
-          <h2>
-            <a name="module_object_wrap" id="module_object_wrap"></a>
-            <div class="permalink"><a href="#module_object_wrap" class="permalink fas fa-link"></a></div>
-            <p>Object Wrap</p>
 
-          </h1>
-        </div><section><p>N-API offers a way to &quot;wrap&quot; C++ classes and instances so that the class
+
+<div class="heading">
+<h2>
+  <a name="module_object_wrap" id="module_object_wrap"></a>
+  <div class="permalink"><a href="#module_object_wrap" class="permalink fas fa-link"></a></div>
+  <p>Object Wrap</p>
+
+</h2>
+</div>
+
+<p>N-API offers a way to &quot;wrap&quot; C++ classes and instances so that the class
 constructor and methods can be called from JavaScript.</p>
 <ol>
 <li>The <a href="#n_api_napi_define_class"><code>napi_define_class</code></a> API defines a JavaScript class with constructor,
@@ -3278,14 +3661,17 @@ if (is_instance) {
 </code></pre>
 <p>The reference must be freed once it is no longer needed.</p>
 
-       <div class="heading">
-          <h3>
-            <a name="module_napi_define_class" id="module_napi_define_class"></a>
-            <div class="permalink"><a href="#module_napi_define_class" class="permalink fas fa-link"></a></div>
-            <p>napi_define_class</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_define_class(napi_env env,
+<div class="heading">
+<h3>
+  <a name="module_napi_define_class" id="module_napi_define_class"></a>
+  <div class="permalink"><a href="#module_napi_define_class" class="permalink fas fa-link"></a></div>
+  <p>napi_define_class</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_define_class(napi_env env,
                               const char<em> utf8name,
                               size_t length,
                               napi_callback constructor,
@@ -3299,7 +3685,7 @@ if (is_instance) {
 <p><li><code>[in] utf8name</code>: Name of the JavaScript constructor function; this is
 not required to be the same as the C++ class name, though it is recommended
 for clarity.</li></p>
-<p><li><code>[in] length</code>: The length of the utf8name in bytes, or NAPI_AUTO_LENGTH
+<p><li><code>[in] length</code>: The length of the utf8name in bytes, or <code>NAPI_AUTO_LENGTH</code>
 if it is null-terminated.</li></p>
 <p><li><code>[in] constructor</code>: Callback function that handles constructing instances
 of the class. (This should be a static method on the class, not an actual
@@ -3334,15 +3720,18 @@ code, and/or check whether provided values are instances of the class. In that
 case, to prevent the function value from being garbage-collected, create a
 persistent reference to it using <a href="#n_api_napi_create_reference"><code>napi_create_reference</code></a> and ensure the
 reference count is kept &gt;= 1.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_wrap" id="module_napi_wrap"></a>
-            <div class="permalink"><a href="#module_napi_wrap" class="permalink fas fa-link"></a></div>
-            <p>napi_wrap</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_wrap(napi_env env,
+
+<div class="heading">
+<h3>
+  <a name="module_napi_wrap" id="module_napi_wrap"></a>
+  <div class="permalink"><a href="#module_napi_wrap" class="permalink fas fa-link"></a></div>
+  <p>napi_wrap</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_wrap(napi_env env,
                       napi_value js_object,
                       void<em> native_object,
                       napi_finalize finalize_cb,
@@ -3386,20 +3775,20 @@ required in order to enable correct proper of the reference.</p>
 <p><em>Note</em>: This API may modify the prototype chain of the wrapper object.
 Afterward, additional manipulation of the wrapper&#39;s prototype chain may cause
 <code>napi_unwrap()</code> to fail.</p>
-<p><em>Note</em>: Calling <code>napi_wrap()</code> a second time on an object that already has a
-native instance associated with it by virtue of a previous call to
-<code>napi_wrap()</code> will cause an error to be returned. If you wish to associate
-another native instance with the given object, call <code>napi_remove_wrap()</code> on it
-first.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_unwrap" id="module_napi_unwrap"></a>
-            <div class="permalink"><a href="#module_napi_unwrap" class="permalink fas fa-link"></a></div>
-            <p>napi_unwrap</p>
+<p>Calling napi_wrap() a second time on an object will return an error. To associate
+another native instance with the object, use napi_remove_wrap() first.</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_unwrap(napi_env env,
+
+<div class="heading">
+<h3>
+  <a name="module_napi_unwrap" id="module_napi_unwrap"></a>
+  <div class="permalink"><a href="#module_napi_unwrap" class="permalink fas fa-link"></a></div>
+  <p>napi_unwrap</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_unwrap(napi_env env,
                         napi_value js_object,
                         void** result);
 </code></pre></p>
@@ -3416,15 +3805,18 @@ corresponding <code>napi_callback</code> is invoked. If the callback is for an i
 method or accessor, then the <code>this</code> argument to the callback is the wrapper
 object; the wrapped C++ instance that is the target of the call can be obtained
 then by calling <code>napi_unwrap()</code> on the wrapper object.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_remove_wrap" id="module_napi_remove_wrap"></a>
-            <div class="permalink"><a href="#module_napi_remove_wrap" class="permalink fas fa-link"></a></div>
-            <p>napi_remove_wrap</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_remove_wrap(napi_env env,
+
+<div class="heading">
+<h3>
+  <a name="module_napi_remove_wrap" id="module_napi_remove_wrap"></a>
+  <div class="permalink"><a href="#module_napi_remove_wrap" class="permalink fas fa-link"></a></div>
+  <p>napi_remove_wrap</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_remove_wrap(napi_env env,
                              napi_value js_object,
                              void** result);
 </code></pre></p>
@@ -3439,15 +3831,18 @@ object <code>js_object</code> using <code>napi_wrap()</code> and removes the wra
 restoring the JavaScript object&#39;s prototype chain. If a finalize callback was
 associated with the wrapping, it will no longer be called when the JavaScript
 object becomes garbage-collected.</p>
-</section></section>
-       <div class="heading">
-          <h2>
-            <a name="module_simple_asynchronous_operations" id="module_simple_asynchronous_operations"></a>
-            <div class="permalink"><a href="#module_simple_asynchronous_operations" class="permalink fas fa-link"></a></div>
-            <p>Simple Asynchronous Operations</p>
 
-          </h1>
-        </div><section><p>Addon modules often need to leverage async helpers from libuv as part of their
+
+<div class="heading">
+<h2>
+  <a name="module_simple_asynchronous_operations" id="module_simple_asynchronous_operations"></a>
+  <div class="permalink"><a href="#module_simple_asynchronous_operations" class="permalink fas fa-link"></a></div>
+  <p>Simple Asynchronous Operations</p>
+
+</h2>
+</div>
+
+<p>Addon modules often need to leverage async helpers from libuv as part of their
 implementation. This allows them to schedule work to be executed asynchronously
 so that their methods can return in advance of the work being completed. This
 is important in order to allow them to avoid blocking overall execution
@@ -3481,14 +3876,17 @@ will be invoked with a status value of <code>napi_cancelled</code>.
 The work should not be deleted before the <code>complete</code>
 callback invocation, even when it was cancelled.</p>
 
-       <div class="heading">
-          <h3>
-            <a name="module_napi_create_async_work" id="module_napi_create_async_work"></a>
-            <div class="permalink"><a href="#module_napi_create_async_work" class="permalink fas fa-link"></a></div>
-            <p>napi_create_async_work</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_async_work(napi_env env,
+<div class="heading">
+<h3>
+  <a name="module_napi_create_async_work" id="module_napi_create_async_work"></a>
+  <div class="permalink"><a href="#module_napi_create_async_work" class="permalink fas fa-link"></a></div>
+  <p>napi_create_async_work</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_async_work(napi_env env,
                                    napi_value async_resource,
                                    napi_value async_resource_name,
                                    napi_async_execute_callback execute,
@@ -3521,15 +3919,18 @@ be representative of the type of async work being performed. It is also
 recommended to apply namespacing to the identifier, e.g. by including the
 module name. See the <a href="async_hooks.html#async_hooks_type"><code>async_hooks</code> documentation</a>
 for more information.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_delete_async_work" id="module_napi_delete_async_work"></a>
-            <div class="permalink"><a href="#module_napi_delete_async_work" class="permalink fas fa-link"></a></div>
-            <p>napi_delete_async_work</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_delete_async_work(napi_env env,
+
+<div class="heading">
+<h3>
+  <a name="module_napi_delete_async_work" id="module_napi_delete_async_work"></a>
+  <div class="permalink"><a href="#module_napi_delete_async_work" class="permalink fas fa-link"></a></div>
+  <p>napi_delete_async_work</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_delete_async_work(napi_env env,
                                    napi_async_work work);
 </code></pre></p>
 <p><ul></p>
@@ -3538,15 +3939,18 @@ for more information.</p>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API frees a previously allocated work object.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_queue_async_work" id="module_napi_queue_async_work"></a>
-            <div class="permalink"><a href="#module_napi_queue_async_work" class="permalink fas fa-link"></a></div>
-            <p>napi_queue_async_work</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_queue_async_work(napi_env env,
+
+<div class="heading">
+<h3>
+  <a name="module_napi_queue_async_work" id="module_napi_queue_async_work"></a>
+  <div class="permalink"><a href="#module_napi_queue_async_work" class="permalink fas fa-link"></a></div>
+  <p>napi_queue_async_work</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_queue_async_work(napi_env env,
                                   napi_async_work work);
 </code></pre></p>
 <p><ul></p>
@@ -3556,15 +3960,18 @@ for more information.</p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API requests that the previously allocated work be scheduled
 for execution.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_cancel_async_work" id="module_napi_cancel_async_work"></a>
-            <div class="permalink"><a href="#module_napi_cancel_async_work" class="permalink fas fa-link"></a></div>
-            <p>napi_cancel_async_work</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_cancel_async_work(napi_env env,
+
+<div class="heading">
+<h3>
+  <a name="module_napi_cancel_async_work" id="module_napi_cancel_async_work"></a>
+  <div class="permalink"><a href="#module_napi_cancel_async_work" class="permalink fas fa-link"></a></div>
+  <p>napi_cancel_async_work</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_cancel_async_work(napi_env env,
                                    napi_async_work work);
 </code></pre></p>
 <p><ul></p>
@@ -3578,27 +3985,33 @@ cancelled and <code>napi_generic_failure</code> will be returned. If successful,
 the <code>complete</code> callback will be invoked with a status value of
 <code>napi_cancelled</code>. The work should not be deleted before the <code>complete</code>
 callback invocation, even if it has been successfully cancelled.</p>
-</section></section>
-       <div class="heading">
-          <h2>
-            <a name="module_custom_asynchronous_operations" id="module_custom_asynchronous_operations"></a>
-            <div class="permalink"><a href="#module_custom_asynchronous_operations" class="permalink fas fa-link"></a></div>
-            <p>Custom Asynchronous Operations</p>
 
-          </h1>
-        </div><section><p>The simple asynchronous work APIs above may not be appropriate for every
+
+<div class="heading">
+<h2>
+  <a name="module_custom_asynchronous_operations" id="module_custom_asynchronous_operations"></a>
+  <div class="permalink"><a href="#module_custom_asynchronous_operations" class="permalink fas fa-link"></a></div>
+  <p>Custom Asynchronous Operations</p>
+
+</h2>
+</div>
+
+<p>The simple asynchronous work APIs above may not be appropriate for every
 scenario, because with those the async execution still happens on the main
 event loop. When using any other async mechanism, the following APIs are
 necessary to ensure an async operation is properly tracked by the runtime.</p>
 
-       <div class="heading">
-          <h3>
-            <a name="module_napi_async_init" id="module_napi_async_init"></a>
-            <div class="permalink"><a href="#module_napi_async_init" class="permalink fas fa-link"></a></div>
-            <p>napi_async_init</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_async_init(napi_env env,
+<div class="heading">
+<h3>
+  <a name="module_napi_async_init" id="module_napi_async_init"></a>
+  <div class="permalink"><a href="#module_napi_async_init" class="permalink fas fa-link"></a></div>
+  <p>napi_async_init</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_async_init(napi_env env,
                             napi_value async_resource,
                             napi_value async_resource_name,
                             napi_async_context* result)
@@ -3613,15 +4026,18 @@ that is being provided for diagnostic information exposed by the
 <p><li><code>[out] result</code>: The initialized async context.</li>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_async_destroy" id="module_napi_async_destroy"></a>
-            <div class="permalink"><a href="#module_napi_async_destroy" class="permalink fas fa-link"></a></div>
-            <p>napi_async_destroy</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_async_destroy(napi_env env,
+
+<div class="heading">
+<h3>
+  <a name="module_napi_async_destroy" id="module_napi_async_destroy"></a>
+  <div class="permalink"><a href="#module_napi_async_destroy" class="permalink fas fa-link"></a></div>
+  <p>napi_async_destroy</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_async_destroy(napi_env env,
                                napi_async_context async_context);
 </code></pre></p>
 <p><ul></p>
@@ -3629,15 +4045,18 @@ that is being provided for diagnostic information exposed by the
 <p><li><code>[in] async_context</code>: The async context to be destroyed.</li>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_make_callback" id="module_napi_make_callback"></a>
-            <div class="permalink"><a href="#module_napi_make_callback" class="permalink fas fa-link"></a></div>
-            <p>napi_make_callback</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_make_callback(napi_env env,
+
+<div class="heading">
+<h3>
+  <a name="module_napi_make_callback" id="module_napi_make_callback"></a>
+  <div class="permalink"><a href="#module_napi_make_callback" class="permalink fas fa-link"></a></div>
+  <p>napi_make_callback</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_make_callback(napi_env env,
                                napi_async_context async_context,
                                napi_value recv,
                                napi_value func,
@@ -3672,23 +4091,78 @@ context has already been set up, so a direct call to <code>napi_call_function</c
 is sufficient and appropriate. Use of the <code>napi_make_callback</code> function
 may be required when implementing custom async behavior that does not use
 <code>napi_create_async_work</code>.</p>
-</section></section>
-       <div class="heading">
-          <h2>
-            <a name="module_version_management" id="module_version_management"></a>
-            <div class="permalink"><a href="#module_version_management" class="permalink fas fa-link"></a></div>
-            <p>Version Management</p>
 
-          </h1>
-        </div><section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_get_node_version" id="module_napi_get_node_version"></a>
-            <div class="permalink"><a href="#module_napi_get_node_version" class="permalink fas fa-link"></a></div>
-            <p>napi_get_node_version</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">typedef struct {
+<div class="heading">
+<h3>
+  <a name="module__napi_open_callback_scope_" id="module__napi_open_callback_scope_"></a>
+  <div class="permalink"><a href="#module__napi_open_callback_scope_" class="permalink fas fa-link"></a></div>
+  <p><em>napi_open_callback_scope</em></p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">NAPI_EXTERN napi_status napi_open_callback_scope(napi_env env,
+                                                 napi_value resource_object,
+                                                 napi_async_context context,
+                                                 napi_callback_scope* result)
+</code></pre></p>
+<p><ul></p>
+<p><li><code>[in] env</code>: The environment that the API is invoked under.</li></p>
+<p><li><code>[in] resource_object</code>: An optional object associated with the async work
+that will be passed to possible async_hooks <a href="async_hooks.html#async_hooks_init_asyncid_type_triggerasyncid_resource"><code>init</code> hooks</a>.</li></p>
+<p><li><code>[in] context</code>: Context for the async operation that is
+invoking the callback. This should be a value previously obtained
+from <a href="#n_api_napi_async_init"><code>napi_async_init</code></a>.</li></p>
+<p><li><code>[out] result</code>: The newly created scope.</li>
+</ul></p>
+<p>There are cases (for example resolving promises) where it is
+necessary to have the equivalent of the scope associated with a callback
+in place when making certain N-API calls.  If there is no other script on
+the stack the <a href="#n_api_napi_open_callback_scope"><code>napi_open_callback_scope</code></a> and
+<a href="#n_api_napi_close_callback_scope"><code>napi_close_callback_scope</code></a> functions can be used to open/close
+the required scope.</p>
+
+
+<div class="heading">
+<h3>
+  <a name="module__napi_close_callback_scope_" id="module__napi_close_callback_scope_"></a>
+  <div class="permalink"><a href="#module__napi_close_callback_scope_" class="permalink fas fa-link"></a></div>
+  <p><em>napi_close_callback_scope</em></p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">NAPI_EXTERN napi_status napi_close_callback_scope(napi_env env,
+                                                  napi_callback_scope scope)
+</code></pre></p>
+<ul>
+<li><code>[in] env</code>: The environment that the API is invoked under.</li>
+<li><code>[in] scope</code>: The scope to be closed.</li>
+</ul>
+
+
+<div class="heading">
+<h2>
+  <a name="module_version_management" id="module_version_management"></a>
+  <div class="permalink"><a href="#module_version_management" class="permalink fas fa-link"></a></div>
+  <p>Version Management</p>
+
+</h2>
+</div>
+
+
+
+<div class="heading">
+<h3>
+  <a name="module_napi_get_node_version" id="module_napi_get_node_version"></a>
+  <div class="permalink"><a href="#module_napi_get_node_version" class="permalink fas fa-link"></a></div>
+  <p>napi_get_node_version</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">typedef struct {
   uint32_t major;
   uint32_t minor;
   uint32_t patch;
@@ -3706,15 +4180,18 @@ may be required when implementing custom async behavior that does not use
 version of Node.js that is currently running, and the <code>release</code> field with the
 value of <a href="process.html#process_process_release"><code>process.release.name</code></a>.</p>
 <p>The returned buffer is statically allocated and does not need to be freed.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_get_version" id="module_napi_get_version"></a>
-            <div class="permalink"><a href="#module_napi_get_version" class="permalink fas fa-link"></a></div>
-            <p>napi_get_version</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_version(napi_env env,
+
+<div class="heading">
+<h3>
+  <a name="module_napi_get_version" id="module_napi_get_version"></a>
+  <div class="permalink"><a href="#module_napi_get_version" class="permalink fas fa-link"></a></div>
+  <p>napi_get_version</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_get_version(napi_env env,
                              uint32_t* result);
 </code></pre></p>
 <ul>
@@ -3736,23 +4213,29 @@ support it:</p>
 <li>If the function is not available, provide an alternate implementation
 that does not use the function.</li>
 </ul>
-</section></section>
-       <div class="heading">
-          <h2>
-            <a name="module_memory_management" id="module_memory_management"></a>
-            <div class="permalink"><a href="#module_memory_management" class="permalink fas fa-link"></a></div>
-            <p>Memory Management</p>
 
-          </h1>
-        </div><section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_adjust_external_memory" id="module_napi_adjust_external_memory"></a>
-            <div class="permalink"><a href="#module_napi_adjust_external_memory" class="permalink fas fa-link"></a></div>
-            <p>napi_adjust_external_memory</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">NAPI_EXTERN napi_status napi_adjust_external_memory(napi_env env,
+<div class="heading">
+<h2>
+  <a name="module_memory_management" id="module_memory_management"></a>
+  <div class="permalink"><a href="#module_memory_management" class="permalink fas fa-link"></a></div>
+  <p>Memory Management</p>
+
+</h2>
+</div>
+
+
+
+<div class="heading">
+<h3>
+  <a name="module_napi_adjust_external_memory" id="module_napi_adjust_external_memory"></a>
+  <div class="permalink"><a href="#module_napi_adjust_external_memory" class="permalink fas fa-link"></a></div>
+  <p>napi_adjust_external_memory</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">NAPI_EXTERN napi_status napi_adjust_external_memory(napi_env env,
                                                     int64_t change_in_bytes,
                                                     int64_t* result);
 </code></pre></p>
@@ -3770,15 +4253,18 @@ externally allocated memory will trigger global garbage collections more
 often than it would otherwise.</p>
 <!-- it's very convenient to have all the anchors indexed -->
 <!--lint disable no-unused-definitions remark-lint--></p>
-</section></section>
-       <div class="heading">
-          <h2>
-            <a name="module_promises" id="module_promises"></a>
-            <div class="permalink"><a href="#module_promises" class="permalink fas fa-link"></a></div>
-            <p>Promises</p>
 
-          </h1>
-        </div><section><p><p>N-API provides facilities for creating <code>Promise</code> objects as described in
+
+<div class="heading">
+<h2>
+  <a name="module_promises" id="module_promises"></a>
+  <div class="permalink"><a href="#module_promises" class="permalink fas fa-link"></a></div>
+  <p>Promises</p>
+
+</h2>
+</div>
+
+<p><p>N-API provides facilities for creating <code>Promise</code> objects as described in
 <a href="https://tc39.github.io/ecma262/#sec-promise-objects">Section 25.4</a> of the ECMA specification. It implements promises as a pair of
 objects. When a promise is created by <code>napi_create_promise()</code>, a &quot;deferred&quot;
 object is created and returned alongside the <code>Promise</code>. The deferred object is
@@ -3826,14 +4312,17 @@ if (status != napi_ok) return NULL;
 deferred = NULL;
 </code></pre>
 
-       <div class="heading">
-          <h3>
-            <a name="module_napi_create_promise" id="module_napi_create_promise"></a>
-            <div class="permalink"><a href="#module_napi_create_promise" class="permalink fas fa-link"></a></div>
-            <p>napi_create_promise</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_promise(napi_env env,
+<div class="heading">
+<h3>
+  <a name="module_napi_create_promise" id="module_napi_create_promise"></a>
+  <div class="permalink"><a href="#module_napi_create_promise" class="permalink fas fa-link"></a></div>
+  <p>napi_create_promise</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_create_promise(napi_env env,
                                 napi_deferred<em> deferred,
                                 napi_value</em> promise);
 </code></pre></p>
@@ -3846,15 +4335,18 @@ the associated promise.</li></p>
 </ul></p>
 <p>Returns <code>napi_ok</code> if the API succeeded.</p>
 <p>This API creates a deferred object and a JavaScript promise.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_resolve_deferred" id="module_napi_resolve_deferred"></a>
-            <div class="permalink"><a href="#module_napi_resolve_deferred" class="permalink fas fa-link"></a></div>
-            <p>napi_resolve_deferred</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_resolve_deferred(napi_env env,
+
+<div class="heading">
+<h3>
+  <a name="module_napi_resolve_deferred" id="module_napi_resolve_deferred"></a>
+  <div class="permalink"><a href="#module_napi_resolve_deferred" class="permalink fas fa-link"></a></div>
+  <p>napi_resolve_deferred</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_resolve_deferred(napi_env env,
                                   napi_deferred deferred,
                                   napi_value resolution);
 </code></pre></p>
@@ -3870,15 +4362,18 @@ effectively means that the promise must have been created using
 <code>napi_create_promise()</code> and the deferred object returned from that call must
 have been retained in order to be passed to this API.</p>
 <p>The deferred object is freed upon successful completion.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_reject_deferred" id="module_napi_reject_deferred"></a>
-            <div class="permalink"><a href="#module_napi_reject_deferred" class="permalink fas fa-link"></a></div>
-            <p>napi_reject_deferred</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_reject_deferred(napi_env env,
+
+<div class="heading">
+<h3>
+  <a name="module_napi_reject_deferred" id="module_napi_reject_deferred"></a>
+  <div class="permalink"><a href="#module_napi_reject_deferred" class="permalink fas fa-link"></a></div>
+  <p>napi_reject_deferred</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_reject_deferred(napi_env env,
                                  napi_deferred deferred,
                                  napi_value rejection);
 </code></pre></p>
@@ -3894,15 +4389,18 @@ effectively means that the promise must have been created using
 <code>napi_create_promise()</code> and the deferred object returned from that call must
 have been retained in order to be passed to this API.</p>
 <p>The deferred object is freed upon successful completion.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_napi_is_promise" id="module_napi_is_promise"></a>
-            <div class="permalink"><a href="#module_napi_is_promise" class="permalink fas fa-link"></a></div>
-            <p>napi_is_promise</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">napi_status napi_is_promise(napi_env env,
+
+<div class="heading">
+<h3>
+  <a name="module_napi_is_promise" id="module_napi_is_promise"></a>
+  <div class="permalink"><a href="#module_napi_is_promise" class="permalink fas fa-link"></a></div>
+  <p>napi_is_promise</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">napi_status napi_is_promise(napi_env env,
                             napi_value promise,
                             bool* is_promise);
 </code></pre></p>
@@ -3912,25 +4410,31 @@ have been retained in order to be passed to this API.</p>
 <li><code>[out] is_promise</code>: Flag indicating whether <code>promise</code> is a native promise
 object - that is, a promise object created by the underlying engine.</li>
 </ul>
-</section></section>
-       <div class="heading">
-          <h2>
-            <a name="module_script_execution" id="module_script_execution"></a>
-            <div class="permalink"><a href="#module_script_execution" class="permalink fas fa-link"></a></div>
-            <p>Script execution</p>
 
-          </h1>
-        </div><section><p>N-API provides an API for executing a string containing JavaScript using the
+
+<div class="heading">
+<h2>
+  <a name="module_script_execution" id="module_script_execution"></a>
+  <div class="permalink"><a href="#module_script_execution" class="permalink fas fa-link"></a></div>
+  <p>Script execution</p>
+
+</h2>
+</div>
+
+<p>N-API provides an API for executing a string containing JavaScript using the
 underlying JavaScript engine.</p>
 
-       <div class="heading">
-          <h3>
-            <a name="module_napi_run_script" id="module_napi_run_script"></a>
-            <div class="permalink"><a href="#module_napi_run_script" class="permalink fas fa-link"></a></div>
-            <p>napi_run_script</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">NAPI_EXTERN napi_status napi_run_script(napi_env env,
+<div class="heading">
+<h3>
+  <a name="module_napi_run_script" id="module_napi_run_script"></a>
+  <div class="permalink"><a href="#module_napi_run_script" class="permalink fas fa-link"></a></div>
+  <p>napi_run_script</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">NAPI_EXTERN napi_status napi_run_script(napi_env env,
                                         napi_value script,
                                         napi_value* result);
 </code></pre></p>
@@ -3939,25 +4443,31 @@ underlying JavaScript engine.</p>
 <li><code>[in] script</code>: A JavaScript string containing the script to execute.</li>
 <li><code>[out] result</code>: The value resulting from having executed the script.</li>
 </ul>
-</section></section>
-       <div class="heading">
-          <h2>
-            <a name="module_libuv_event_loop" id="module_libuv_event_loop"></a>
-            <div class="permalink"><a href="#module_libuv_event_loop" class="permalink fas fa-link"></a></div>
-            <p>libuv event loop</p>
 
-          </h1>
-        </div><section><p>N-API provides a function for getting the current event loop associated with
+
+<div class="heading">
+<h2>
+  <a name="module_libuv_event_loop" id="module_libuv_event_loop"></a>
+  <div class="permalink"><a href="#module_libuv_event_loop" class="permalink fas fa-link"></a></div>
+  <p>libuv event loop</p>
+
+</h2>
+</div>
+
+<p>N-API provides a function for getting the current event loop associated with
 a specific <code>napi_env</code>.</p>
 
-       <div class="heading">
-          <h3>
-            <a name="module_napi_get_uv_event_loop" id="module_napi_get_uv_event_loop"></a>
-            <div class="permalink"><a href="#module_napi_get_uv_event_loop" class="permalink fas fa-link"></a></div>
-            <p>napi_get_uv_event_loop</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-C">NAPI_EXTERN napi_status napi_get_uv_event_loop(napi_env env,
+<div class="heading">
+<h3>
+  <a name="module_napi_get_uv_event_loop" id="module_napi_get_uv_event_loop"></a>
+  <div class="permalink"><a href="#module_napi_get_uv_event_loop" class="permalink fas fa-link"></a></div>
+  <p>napi_get_uv_event_loop</p>
+
+</h3>
+</div>
+
+<p><pre class="prettyprint"><code class="lang-C">NAPI_EXTERN napi_status napi_get_uv_event_loop(napi_env env,
                                                uv_loop_t** loop);
 </code></pre></p>
 <p><ul></p>
@@ -3966,7 +4476,8 @@ a specific <code>napi_env</code>.</p>
 </ul>
 <!-- [end-include:n-api.md] -->
 <!-- [start-include:child_process.md] --></p>
-</section></section>
+
+
 
   <div class="footer">
     <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>

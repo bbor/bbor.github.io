@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>mixtape page for punycode</title>
+    <title>Punycode</title>
     <script data-main="js/setup" src="js/require.js"></script>
     <link rel="stylesheet" href="fonts/fonts.css" />
     <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
@@ -13,9 +13,9 @@
   <body>
 
   <div id="control-panel">
-    <div id="control-strip-h">
-      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
-      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    <div id="control-strip-m">
+      <div id="control-strip-m-find"><div id="m-find"></div></div>
+      <div id="control-strip-m-toc"><div id="m-toc"></div></div>
     </div>
     <div id="controls">
       <div id="control-find">
@@ -26,22 +26,24 @@
       </div>
     </div>
   </div>
-  <div id="control-strip-v">
-    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
-    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  <div id="control-strip-w">
+    <div id="control-strip-w-find"></div>
+    <div id="control-strip-w-toc"></div>
   </div>
 
   <div id="content">
 
   
-       <div class="heading">
-          <h1>
-            <a name="module_punycode" id="module_punycode"></a>
-            <div class="permalink"><a href="#module_punycode" class="permalink fas fa-link"></a></div>
-            <p>Punycode</p>
+<div class="heading">
+<h1>
+  <a name="module_punycode" id="module_punycode"></a>
+  <div class="permalink"><a href="#module_punycode" class="permalink fas fa-link"></a></div>
+  <p>Punycode</p>
 
-          </h1>
-        </div><p><strong>The version of the punycode module bundled in Node.js is being deprecated</strong>.
+</h1>
+</div>
+
+<p><strong>The version of the punycode module bundled in Node.js is being deprecated</strong>.
 In a future major version of Node.js this module will be removed. Users
 currently depending on the <code>punycode</code> module should switch to using the
 userland-provided <a href="https://mths.be/punycode">Punycode.js</a> module instead.</p>
@@ -62,22 +64,42 @@ to <code>&#39;example.com&#39;</code>) is represented by Punycode as the ASCII s
 made available to developers as a convenience. Fixes or other modifications to
 the module must be directed to the <a href="https://mths.be/punycode">Punycode.js</a> project.</p>
 
-       <div class="heading">
-          <h2>
-            <a name="property_ucs2" id="property_ucs2"></a>
-            <div class="permalink"><a href="#property_ucs2" class="permalink fas fa-link"></a></div>
-            <p>punycode.ucs2</p>
+<div class='expandable-header' id='property_ucs2-expand'>
+<div class="heading">
+    <h2>
+        <a name="property_ucs2" id="property_ucs2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_ucs2-expand-icon"></i>
+        <div class="permalink"><a href="#property_ucs2" class="permalink fas fa-link"></a></div>
+        <p>punycode.ucs2</p>
 
-          </h1>
-        </div><section><section>
-       <div class="heading">
-          <h4>
-            <a name="module_punycode_ucs2_decode_string_" id="module_punycode_ucs2_decode_string_"></a>
-            <div class="permalink"><a href="#module_punycode_ucs2_decode_string_" class="permalink fas fa-link"></a></div>
-            <p>punycode.ucs2.decode(string)</p>
+    </h2>
+</div>
 
-          </h1>
-        </div><section><p><ul></p>
+</div>
+<div class='expandable-content' id='property_ucs2-expand-content'>
+
+
+<div class="heading">
+<h3>
+  <a name="subgroup_property_ucs2_Modules" id="subgroup_property_ucs2_Modules"></a>
+  <div class="permalink"><a href="#subgroup_property_ucs2_Modules" class="permalink fas fa-link"></a></div>
+  <p>Modules</p>
+
+</h3>
+</div>
+
+
+
+<div class="heading">
+<h4>
+  <a name="module_punycode_ucs2_decode_string_" id="module_punycode_ucs2_decode_string_"></a>
+  <div class="permalink"><a href="#module_punycode_ucs2_decode_string_" class="permalink fas fa-link"></a></div>
+  <p>punycode.ucs2.decode(string)</p>
+
+</h4>
+</div>
+
+<p><ul></p>
 <p><li><code>string</code> {string}</li>
 </ul></p>
 <p><p>The <code>punycode.ucs2.decode()</code> method returns an array containing the numeric
@@ -86,15 +108,18 @@ codepoint values of each Unicode symbol in the string.</p></p>
 // surrogate pair for U+1D306 tetragram for centre:
 punycode.ucs2.decode(&#39;\uD834\uDF06&#39;); // [0x1D306]
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_punycode_ucs2_encode_codepoints_" id="module_punycode_ucs2_encode_codepoints_"></a>
-            <div class="permalink"><a href="#module_punycode_ucs2_encode_codepoints_" class="permalink fas fa-link"></a></div>
-            <p>punycode.ucs2.encode(codePoints)</p>
 
-          </h1>
-        </div><section><p><ul></p>
+
+<div class="heading">
+<h4>
+  <a name="module_punycode_ucs2_encode_codepoints_" id="module_punycode_ucs2_encode_codepoints_"></a>
+  <div class="permalink"><a href="#module_punycode_ucs2_encode_codepoints_" class="permalink fas fa-link"></a></div>
+  <p>punycode.ucs2.encode(codePoints)</p>
+
+</h4>
+</div>
+
+<p><ul></p>
 <p><li><code>codePoints</code> {Array}</li>
 </ul></p>
 <p><p>The <code>punycode.ucs2.encode()</code> method returns a string based on an array of
@@ -102,52 +127,80 @@ numeric code point values.</p></p>
 <pre class="prettyprint"><code class="lang-js">punycode.ucs2.encode([0x61, 0x62, 0x63]); // &#39;abc&#39;
 punycode.ucs2.encode([0x1D306]); // &#39;\uD834\uDF06&#39;
 </code></pre>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="property_version_1" id="property_version_1"></a>
-            <div class="permalink"><a href="#property_version_1" class="permalink fas fa-link"></a></div>
-            <p>punycode.version</p>
 
-          </h1>
-        </div><section><p><p>Returns a string identifying the current <a href="https://mths.be/punycode">Punycode.js</a> version number.</p>
+
+</div><div class='expandable-header' id='property_version_1-expand'>
+<div class="heading">
+    <h2>
+        <a name="property_version_1" id="property_version_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_version_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_version_1" class="permalink fas fa-link"></a></div>
+        <p>punycode.version</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='property_version_1-expand-content'>
+<p><p>Returns a string identifying the current <a href="https://mths.be/punycode">Punycode.js</a> version number.</p>
 <!-- [end-include:punycode.md] -->
 <!-- [start-include:querystring.md] --></p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_decode" id="method_decode"></a>
-            <div class="permalink"><a href="#method_decode" class="permalink fas fa-link"></a></div>
-            <p>punycode.decode(string)</p>
 
-          </h1>
-        </div><section><p><p>The <code>punycode.decode()</code> method converts a <a href="https://tools.ietf.org/html/rfc5891#section-4.4">Punycode</a> string of ASCII-only
+
+</div><div class='expandable-header' id='method_decode-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_decode" id="method_decode"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_decode-expand-icon"></i>
+        <div class="permalink"><a href="#method_decode" class="permalink fas fa-link"></a></div>
+        <p>punycode.decode(string)</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_decode-expand-content'>
+<p><p>The <code>punycode.decode()</code> method converts a <a href="https://tools.ietf.org/html/rfc5891#section-4.4">Punycode</a> string of ASCII-only
 characters to the equivalent string of Unicode codepoints.</p></p>
 <pre class="prettyprint"><code class="lang-js">punycode.decode(&#39;maana-pta&#39;); // &#39;mañana&#39;
 punycode.decode(&#39;--dqo34k&#39;); // &#39;☃-⌘&#39;
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_encode" id="method_encode"></a>
-            <div class="permalink"><a href="#method_encode" class="permalink fas fa-link"></a></div>
-            <p>punycode.encode(string)</p>
 
-          </h1>
-        </div><section><p><p>The <code>punycode.encode()</code> method converts a string of Unicode codepoints to a
+
+</div><div class='expandable-header' id='method_encode-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_encode" id="method_encode"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_encode-expand-icon"></i>
+        <div class="permalink"><a href="#method_encode" class="permalink fas fa-link"></a></div>
+        <p>punycode.encode(string)</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_encode-expand-content'>
+<p><p>The <code>punycode.encode()</code> method converts a string of Unicode codepoints to a
 <a href="https://tools.ietf.org/html/rfc5891#section-4.4">Punycode</a> string of ASCII-only characters.</p></p>
 <pre class="prettyprint"><code class="lang-js">punycode.encode(&#39;mañana&#39;); // &#39;maana-pta&#39;
 punycode.encode(&#39;☃-⌘&#39;); // &#39;--dqo34k&#39;
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_toASCII" id="method_toASCII"></a>
-            <div class="permalink"><a href="#method_toASCII" class="permalink fas fa-link"></a></div>
-            <p>punycode.toASCII(domain)</p>
 
-          </h1>
-        </div><section><p><p>The <code>punycode.toASCII()</code> method converts a Unicode string representing an
+
+</div><div class='expandable-header' id='method_toASCII-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_toASCII" id="method_toASCII"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_toASCII-expand-icon"></i>
+        <div class="permalink"><a href="#method_toASCII" class="permalink fas fa-link"></a></div>
+        <p>punycode.toASCII(domain)</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_toASCII-expand-content'>
+<p><p>The <code>punycode.toASCII()</code> method converts a Unicode string representing an
 Internationalized Domain Name to <a href="https://tools.ietf.org/html/rfc5891#section-4.4">Punycode</a>. Only the non-ASCII parts of the
 domain name will be converted. Calling <code>punycode.toASCII()</code> on a string that
 already only contains ASCII characters will have no effect.</p></p>
@@ -156,15 +209,22 @@ punycode.toASCII(&#39;mañana.com&#39;);  // &#39;xn--maana-pta.com&#39;
 punycode.toASCII(&#39;☃-⌘.com&#39;);   // &#39;xn----dqo34k.com&#39;
 punycode.toASCII(&#39;example.com&#39;); // &#39;example.com&#39;
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_toUnicode" id="method_toUnicode"></a>
-            <div class="permalink"><a href="#method_toUnicode" class="permalink fas fa-link"></a></div>
-            <p>punycode.toUnicode(domain)</p>
 
-          </h1>
-        </div><section><p><p>The <code>punycode.toUnicode()</code> method converts a string representing a domain name
+
+</div><div class='expandable-header' id='method_toUnicode-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_toUnicode" id="method_toUnicode"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_toUnicode-expand-icon"></i>
+        <div class="permalink"><a href="#method_toUnicode" class="permalink fas fa-link"></a></div>
+        <p>punycode.toUnicode(domain)</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_toUnicode-expand-content'>
+<p><p>The <code>punycode.toUnicode()</code> method converts a string representing a domain name
 containing <a href="https://tools.ietf.org/html/rfc5891#section-4.4">Punycode</a> encoded characters into Unicode. Only the <a href="https://tools.ietf.org/html/rfc5891#section-4.4">Punycode</a>
 encoded parts of the domain name are be converted.</p></p>
 <pre class="prettyprint"><code class="lang-js">// decode domain names
@@ -172,7 +232,9 @@ punycode.toUnicode(&#39;xn--maana-pta.com&#39;); // &#39;mañana.com&#39;
 punycode.toUnicode(&#39;xn----dqo34k.com&#39;);  // &#39;☃-⌘.com&#39;
 punycode.toUnicode(&#39;example.com&#39;);       // &#39;example.com&#39;
 </code></pre>
-</section>
+
+
+</div>
 
   <div class="footer">
     <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>

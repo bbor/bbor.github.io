@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>mixtape page for http2</title>
+    <title>HTTP2</title>
     <script data-main="js/setup" src="js/require.js"></script>
     <link rel="stylesheet" href="fonts/fonts.css" />
     <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
@@ -13,9 +13,9 @@
   <body>
 
   <div id="control-panel">
-    <div id="control-strip-h">
-      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
-      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    <div id="control-strip-m">
+      <div id="control-strip-m-find"><div id="m-find"></div></div>
+      <div id="control-strip-m-toc"><div id="m-toc"></div></div>
     </div>
     <div id="controls">
       <div id="control-find">
@@ -26,49 +26,57 @@
       </div>
     </div>
   </div>
-  <div id="control-strip-v">
-    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
-    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  <div id="control-strip-w">
+    <div id="control-strip-w-find"></div>
+    <div id="control-strip-w-toc"></div>
   </div>
 
   <div id="content">
 
   
-       <div class="heading">
-          <h1>
-            <a name="module_http2" id="module_http2"></a>
-            <div class="permalink"><a href="#module_http2" class="permalink fas fa-link"></a></div>
-            <p>HTTP2</p>
+<div class="heading">
+<h1>
+  <a name="module_http2" id="module_http2"></a>
+  <div class="permalink"><a href="#module_http2" class="permalink fas fa-link"></a></div>
+  <p>HTTP2</p>
 
-          </h1>
-        </div><p><p>The <code>http2</code> module provides an implementation of the <a href="https://tools.ietf.org/html/rfc7540">HTTP/2</a> protocol. It
+</h1>
+</div>
+
+<p><p>The <code>http2</code> module provides an implementation of the <a href="https://tools.ietf.org/html/rfc7540">HTTP/2</a> protocol. It
 can be accessed using:</p></p>
 <pre class="prettyprint"><code class="lang-js">const http2 = require(&#39;http2&#39;);
 </code></pre>
 
-       <div class="heading">
-          <h2>
-            <a name="module_core_api" id="module_core_api"></a>
-            <div class="permalink"><a href="#module_core_api" class="permalink fas fa-link"></a></div>
-            <p>Core API</p>
 
-          </h1>
-        </div><section><p>The Core API provides a low-level interface designed specifically around
+<div class="heading">
+<h2>
+  <a name="module_core_api" id="module_core_api"></a>
+  <div class="permalink"><a href="#module_core_api" class="permalink fas fa-link"></a></div>
+  <p>Core API</p>
+
+</h2>
+</div>
+
+<p>The Core API provides a low-level interface designed specifically around
 support for HTTP/2 protocol features. It is specifically <em>not</em> designed for
 compatibility with the existing <a href="http.html">HTTP/1</a> module API. However,
 the <a href="#http2_compatibility_api">Compatibility API</a> is.</p>
 <p>The <code>http2</code> Core API is much more symmetric between client and server than the
-<code>http</code> API. For instance, most events, like <code>error</code> and <code>socketError</code>, can be
-emitted either by client-side code or server-side code.</p>
+<code>http</code> API. For instance, most events, like <code>error</code>, <code>connect</code> and <code>stream</code>, can
+be emitted either by client-side code or server-side code.</p>
 
-       <div class="heading">
-          <h3>
-            <a name="module_server_side_example" id="module_server_side_example"></a>
-            <div class="permalink"><a href="#module_server_side_example" class="permalink fas fa-link"></a></div>
-            <p>Server-side example</p>
 
-          </h1>
-        </div><section><p><p>The following illustrates a simple, plain-text HTTP/2 server using the
+<div class="heading">
+<h3>
+  <a name="module_server_side_example" id="module_server_side_example"></a>
+  <div class="permalink"><a href="#module_server_side_example" class="permalink fas fa-link"></a></div>
+  <p>Server-side example</p>
+
+</h3>
+</div>
+
+<p><p>The following illustrates a simple, plain-text HTTP/2 server using the
 Core API:</p></p>
 <pre class="prettyprint"><code class="lang-js">const http2 = require(&#39;http2&#39;);
 const fs = require(&#39;fs&#39;);
@@ -78,7 +86,6 @@ const server = http2.createSecureServer({
   cert: fs.readFileSync(&#39;localhost-cert.pem&#39;)
 });
 server.on(&#39;error&#39;, (err) =&gt; console.error(err));
-server.on(&#39;socketError&#39;, (err) =&gt; console.error(err));
 
 server.on(&#39;stream&#39;, (stream, headers) =&gt; {
   // stream is a Duplex
@@ -95,22 +102,24 @@ server.listen(8443);
 <pre class="prettyprint"><code class="lang-bash">openssl req -x509 -newkey rsa:2048 -nodes -sha256 -subj &#39;/CN=localhost&#39; \
   -keyout localhost-privkey.pem -out localhost-cert.pem
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_client_side_example" id="module_client_side_example"></a>
-            <div class="permalink"><a href="#module_client_side_example" class="permalink fas fa-link"></a></div>
-            <p>Client-side example</p>
 
-          </h1>
-        </div><section><p><p>The following illustrates an HTTP/2 client:</p></p>
+
+<div class="heading">
+<h3>
+  <a name="module_client_side_example" id="module_client_side_example"></a>
+  <div class="permalink"><a href="#module_client_side_example" class="permalink fas fa-link"></a></div>
+  <p>Client-side example</p>
+
+</h3>
+</div>
+
+<p><p>The following illustrates an HTTP/2 client:</p></p>
 <pre class="prettyprint"><code class="lang-js">const http2 = require(&#39;http2&#39;);
 const fs = require(&#39;fs&#39;);
 const client = http2.connect(&#39;https://localhost:8443&#39;, {
   ca: fs.readFileSync(&#39;localhost-cert.pem&#39;)
 });
 client.on(&#39;error&#39;, (err) =&gt; console.error(err));
-client.on(&#39;socketError&#39;, (err) =&gt; console.error(err));
 
 const req = client.request({ &#39;:path&#39;: &#39;/&#39; });
 
@@ -129,15 +138,18 @@ req.on(&#39;end&#39;, () =&gt; {
 });
 req.end();
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_headers_object" id="module_headers_object"></a>
-            <div class="permalink"><a href="#module_headers_object" class="permalink fas fa-link"></a></div>
-            <p>Headers Object</p>
 
-          </h1>
-        </div><section><p><p>Headers are represented as own-properties on JavaScript objects. The property
+
+<div class="heading">
+<h3>
+  <a name="module_headers_object" id="module_headers_object"></a>
+  <div class="permalink"><a href="#module_headers_object" class="permalink fas fa-link"></a></div>
+  <p>Headers Object</p>
+
+</h3>
+</div>
+
+<p><p>Headers are represented as own-properties on JavaScript objects. The property
 keys will be serialized to lower-case. Property values should be strings (if
 they are not they will be coerced to strings) or an Array of strings (in order
 to send more than one value per header field).</p></p>
@@ -161,15 +173,18 @@ server.on(&#39;stream&#39;, (stream, headers) =&gt; {
   console.log(headers.ABC);
 });
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_settings_object" id="module_settings_object"></a>
-            <div class="permalink"><a href="#module_settings_object" class="permalink fas fa-link"></a></div>
-            <p>Settings Object</p>
 
-          </h1>
-        </div><section><p>The <code>http2.getDefaultSettings()</code>, <code>http2.getPackedSettings()</code>,
+
+<div class="heading">
+<h3>
+  <a name="module_settings_object" id="module_settings_object"></a>
+  <div class="permalink"><a href="#module_settings_object" class="permalink fas fa-link"></a></div>
+  <p>Settings Object</p>
+
+</h3>
+</div>
+
+<p>The <code>http2.getDefaultSettings()</code>, <code>http2.getPackedSettings()</code>,
 <code>http2.createServer()</code>, <code>http2.createSecureServer()</code>,
 <code>http2session.settings()</code>, <code>http2session.localSettings</code>, and
 <code>http2session.remoteSettings</code> APIs either return or receive as input an
@@ -200,15 +215,18 @@ of header list that will be accepted. The minimum allowed value is 0. The
 maximum allowed value is 2<sup>32</sup>-1. <strong>Default:</strong> 65535.</li>
 </ul>
 <p>All additional properties on the settings object are ignored.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_error_handling_2" id="module_error_handling_2"></a>
-            <div class="permalink"><a href="#module_error_handling_2" class="permalink fas fa-link"></a></div>
-            <p>Error Handling</p>
 
-          </h1>
-        </div><section><p>There are several types of error conditions that may arise when using the
+
+<div class="heading">
+<h3>
+  <a name="module_error_handling_2" id="module_error_handling_2"></a>
+  <div class="permalink"><a href="#module_error_handling_2" class="permalink fas fa-link"></a></div>
+  <p>Error Handling</p>
+
+</h3>
+</div>
+
+<p>There are several types of error conditions that may arise when using the
 <code>http2</code> module:</p>
 <p>Validation Errors occur when an incorrect argument, option, or setting value is
 passed in. These will always be reported by a synchronous <code>throw</code>.</p>
@@ -223,15 +241,18 @@ reported via an <code>&#39;error&#39;</code> event on the <code>Http2Session</co
 These will be reported using either a synchronous <code>throw</code> or via an <code>&#39;error&#39;</code>
 event on the <code>Http2Stream</code>, <code>Http2Session</code> or HTTP/2 Server objects, depending
 on where and when the error occurs.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_invalid_character_handling_in_header_names_and_values" id="module_invalid_character_handling_in_header_names_and_values"></a>
-            <div class="permalink"><a href="#module_invalid_character_handling_in_header_names_and_values" class="permalink fas fa-link"></a></div>
-            <p>Invalid character handling in header names and values</p>
 
-          </h1>
-        </div><section><p>The HTTP/2 implementation applies stricter handling of invalid characters in
+
+<div class="heading">
+<h3>
+  <a name="module_invalid_character_handling_in_header_names_and_values" id="module_invalid_character_handling_in_header_names_and_values"></a>
+  <div class="permalink"><a href="#module_invalid_character_handling_in_header_names_and_values" class="permalink fas fa-link"></a></div>
+  <p>Invalid character handling in header names and values</p>
+
+</h3>
+</div>
+
+<p>The HTTP/2 implementation applies stricter handling of invalid characters in
 HTTP header names and values than the HTTP/1 implementation.</p>
 <p>Header field names are <em>case-insensitive</em> and are transmitted over the wire
 strictly as lower-case strings. The API provided by Node.js allows header
@@ -245,15 +266,18 @@ stream to be closed with a protocol error being reported.</p>
 <p>Header field values are handled with more leniency but <em>should</em> not contain
 new-line or carriage return characters and <em>should</em> be limited to US-ASCII
 characters, per the requirements of the HTTP specification.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_push_streams_on_the_client" id="module_push_streams_on_the_client"></a>
-            <div class="permalink"><a href="#module_push_streams_on_the_client" class="permalink fas fa-link"></a></div>
-            <p>Push streams on the client</p>
 
-          </h1>
-        </div><section><p><p>To receive pushed streams on the client, set a listener for the <code>&#39;stream&#39;</code>
+
+<div class="heading">
+<h3>
+  <a name="module_push_streams_on_the_client" id="module_push_streams_on_the_client"></a>
+  <div class="permalink"><a href="#module_push_streams_on_the_client" class="permalink fas fa-link"></a></div>
+  <p>Push streams on the client</p>
+
+</h3>
+</div>
+
+<p><p>To receive pushed streams on the client, set a listener for the <code>&#39;stream&#39;</code>
 event on the <code>ClientHttp2Session</code>:</p></p>
 <pre class="prettyprint"><code class="lang-js">const http2 = require(&#39;http2&#39;);
 
@@ -268,15 +292,18 @@ client.on(&#39;stream&#39;, (pushedStream, requestHeaders) =&gt; {
 
 const req = client.request({ &#39;:path&#39;: &#39;/&#39; });
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_supporting_the_connect_method" id="module_supporting_the_connect_method"></a>
-            <div class="permalink"><a href="#module_supporting_the_connect_method" class="permalink fas fa-link"></a></div>
-            <p>Supporting the CONNECT method</p>
 
-          </h1>
-        </div><section><p><p>The <code>CONNECT</code> method is used to allow an HTTP/2 server to be used as a proxy
+
+<div class="heading">
+<h3>
+  <a name="module_supporting_the_connect_method" id="module_supporting_the_connect_method"></a>
+  <div class="permalink"><a href="#module_supporting_the_connect_method" class="permalink fas fa-link"></a></div>
+  <p>Supporting the CONNECT method</p>
+
+</h3>
+</div>
+
+<p><p>The <code>CONNECT</code> method is used to allow an HTTP/2 server to be used as a proxy
 for TCP/IP connections.</p></p>
 <p><p>A simple TCP Server:</p></p>
 <pre class="prettyprint"><code class="lang-js">const net = require(&#39;net&#39;);
@@ -342,15 +369,21 @@ req.on(&#39;end&#39;, () =&gt; {
 });
 req.end(&#39;Jane&#39;);
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="class_Http2Session" id="class_Http2Session"></a>
-            <div class="permalink"><a href="#class_Http2Session" class="permalink fas fa-link"></a></div>
-            <p>Class: Http2Session</p>
 
-          </h1>
-        </div><section><p><ul></p>
+<div class='expandable-header' id='class_Http2Session-expand'>
+<div class="heading">
+    <h3>
+        <a name="class_Http2Session" id="class_Http2Session"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_Http2Session-expand-icon"></i>
+        <div class="permalink"><a href="#class_Http2Session" class="permalink fas fa-link"></a></div>
+        <p>Class: Http2Session</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='class_Http2Session-expand-content'>
+<p><ul></p>
 <p><li>Extends: {EventEmitter}</li>
 </ul></p>
 <p>Instances of the <code>http2.Http2Session</code> class represent an active communications
@@ -363,15 +396,29 @@ depending on whether it is operating as a server or a client. The
 have occasion to work with the <code>Http2Session</code> object directly, with most
 actions typically taken through interactions with either the <code>Http2Server</code> or
 <code>Http2Stream</code> objects.</p>
-<section>
-       <div class="heading">
-          <h5>
-            <a name="module_http2session_and_sockets" id="module_http2session_and_sockets"></a>
-            <div class="permalink"><a href="#module_http2session_and_sockets" class="permalink fas fa-link"></a></div>
-            <p>Http2Session and Sockets</p>
 
-          </h1>
-        </div><section><p>Every <code>Http2Session</code> instance is associated with exactly one <a href="net.html#net_class_net_socket"><code>net.Socket</code></a> or
+
+<div class="heading">
+<h4>
+  <a name="subgroup_class_Http2Session_Modules" id="subgroup_class_Http2Session_Modules"></a>
+  <div class="permalink"><a href="#subgroup_class_Http2Session_Modules" class="permalink fas fa-link"></a></div>
+  <p>Modules</p>
+
+</h4>
+</div>
+
+
+
+<div class="heading">
+<h5>
+  <a name="module_http2session_and_sockets" id="module_http2session_and_sockets"></a>
+  <div class="permalink"><a href="#module_http2session_and_sockets" class="permalink fas fa-link"></a></div>
+  <p>Http2Session and Sockets</p>
+
+</h5>
+</div>
+
+<p>Every <code>Http2Session</code> instance is associated with exactly one <a href="net.html#net_class_net_socket"><code>net.Socket</code></a> or
 <a href="#tls_class_tls_tlssocket"><code>tls.TLSSocket</code></a> when it is created. When either the <code>Socket</code> or the
 <code>Http2Session</code> are destroyed, both will be destroyed.</p>
 <p>Because the of the specific serialization and processing requirements imposed
@@ -381,117 +428,197 @@ put the HTTP/2 session into an indeterminate state causing the session and
 the socket to become unusable.</p>
 <p>Once a <code>Socket</code> has been bound to an <code>Http2Session</code>, user code should rely
 solely on the API of the <code>Http2Session</code>.</p>
-</section></section><section>
-       <div class="heading">
-          <h5>
-            <a name="property_alpnProtocol" id="property_alpnProtocol"></a>
-            <div class="permalink"><a href="#property_alpnProtocol" class="permalink fas fa-link"></a></div>
-            <p><code>alpnProtocol</code> Value: {string|undefined} </p>
 
-          </h1>
-        </div><section><p>Value will be <code>undefined</code> if the <code>Http2Session</code> is not yet connected to a
+
+<div class="heading">
+<h4>
+  <a name="subgroup_class_Http2Session_Properties" id="subgroup_class_Http2Session_Properties"></a>
+  <div class="permalink"><a href="#subgroup_class_Http2Session_Properties" class="permalink fas fa-link"></a></div>
+  <p>Properties</p>
+
+</h4>
+</div>
+
+
+<div class='expandable-header' id='property_alpnProtocol-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_alpnProtocol" id="property_alpnProtocol"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_alpnProtocol-expand-icon"></i>
+        <div class="permalink"><a href="#property_alpnProtocol" class="permalink fas fa-link"></a></div>
+        <p><code>alpnProtocol</code> Value: {string|undefined} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_alpnProtocol-expand-content'>
+<p>Value will be <code>undefined</code> if the <code>Http2Session</code> is not yet connected to a
 socket, <code>h2c</code> if the <code>Http2Session</code> is not connected to a <code>TLSSocket</code>, or
 will return the value of the connected <code>TLSSocket</code>&#39;s own <code>alpnProtocol</code>
 property.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_closed" id="property_closed"></a>
-            <div class="permalink"><a href="#property_closed" class="permalink fas fa-link"></a></div>
-            <p><code>closed</code> Value: {boolean} </p>
 
-          </h1>
-        </div><section><p>Will be <code>true</code> if this <code>Http2Session</code> instance has been closed, otherwise
+
+</div><div class='expandable-header' id='property_closed-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_closed" id="property_closed"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_closed-expand-icon"></i>
+        <div class="permalink"><a href="#property_closed" class="permalink fas fa-link"></a></div>
+        <p><code>closed</code> Value: {boolean} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_closed-expand-content'>
+<p>Will be <code>true</code> if this <code>Http2Session</code> instance has been closed, otherwise
 <code>false</code>.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_destroyed" id="property_destroyed"></a>
-            <div class="permalink"><a href="#property_destroyed" class="permalink fas fa-link"></a></div>
-            <p><code>destroyed</code> Value: {boolean} </p>
 
-          </h1>
-        </div><section><p>Will be <code>true</code> if this <code>Http2Session</code> instance has been destroyed and must no
+
+</div><div class='expandable-header' id='property_destroyed-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_destroyed" id="property_destroyed"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_destroyed-expand-icon"></i>
+        <div class="permalink"><a href="#property_destroyed" class="permalink fas fa-link"></a></div>
+        <p><code>destroyed</code> Value: {boolean} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_destroyed-expand-content'>
+<p>Will be <code>true</code> if this <code>Http2Session</code> instance has been destroyed and must no
 longer be used, otherwise <code>false</code>.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_encrypted" id="property_encrypted"></a>
-            <div class="permalink"><a href="#property_encrypted" class="permalink fas fa-link"></a></div>
-            <p><code>encrypted</code> Value: {boolean|undefined} </p>
 
-          </h1>
-        </div><section><p>Value is <code>undefined</code> if the <code>Http2Session</code> session socket has not yet been
+
+</div><div class='expandable-header' id='property_encrypted-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_encrypted" id="property_encrypted"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_encrypted-expand-icon"></i>
+        <div class="permalink"><a href="#property_encrypted" class="permalink fas fa-link"></a></div>
+        <p><code>encrypted</code> Value: {boolean|undefined} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_encrypted-expand-content'>
+<p>Value is <code>undefined</code> if the <code>Http2Session</code> session socket has not yet been
 connected, <code>true</code> if the <code>Http2Session</code> is connected with a <code>TLSSocket</code>,
 and <code>false</code> if the <code>Http2Session</code> is connected to any other kind of socket
 or stream.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_localSettings" id="property_localSettings"></a>
-            <div class="permalink"><a href="#property_localSettings" class="permalink fas fa-link"></a></div>
-            <p><code>localSettings</code> Value: {HTTP2 Settings Object} </p>
 
-          </h1>
-        </div><section><p>A prototype-less object describing the current local settings of this
+
+</div><div class='expandable-header' id='property_localSettings-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_localSettings" id="property_localSettings"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_localSettings-expand-icon"></i>
+        <div class="permalink"><a href="#property_localSettings" class="permalink fas fa-link"></a></div>
+        <p><code>localSettings</code> Value: {HTTP2 Settings Object} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_localSettings-expand-content'>
+<p>A prototype-less object describing the current local settings of this
 <code>Http2Session</code>. The local settings are local to <em>this</em> <code>Http2Session</code> instance.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_originSet" id="property_originSet"></a>
-            <div class="permalink"><a href="#property_originSet" class="permalink fas fa-link"></a></div>
-            <p><code>originSet</code> Value: {string[]|undefined} </p>
 
-          </h1>
-        </div><section><p>If the <code>Http2Session</code> is connected to a <code>TLSSocket</code>, the <code>originSet</code> property
+
+</div><div class='expandable-header' id='property_originSet-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_originSet" id="property_originSet"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_originSet-expand-icon"></i>
+        <div class="permalink"><a href="#property_originSet" class="permalink fas fa-link"></a></div>
+        <p><code>originSet</code> Value: {string[]|undefined} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_originSet-expand-content'>
+<p>If the <code>Http2Session</code> is connected to a <code>TLSSocket</code>, the <code>originSet</code> property
 will return an Array of origins for which the <code>Http2Session</code> may be
 considered authoritative.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_pendingSettingsAck" id="property_pendingSettingsAck"></a>
-            <div class="permalink"><a href="#property_pendingSettingsAck" class="permalink fas fa-link"></a></div>
-            <p><code>pendingSettingsAck</code> Value: {boolean} </p>
 
-          </h1>
-        </div><section><p>Indicates whether or not the <code>Http2Session</code> is currently waiting for an
+
+</div><div class='expandable-header' id='property_pendingSettingsAck-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_pendingSettingsAck" id="property_pendingSettingsAck"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_pendingSettingsAck-expand-icon"></i>
+        <div class="permalink"><a href="#property_pendingSettingsAck" class="permalink fas fa-link"></a></div>
+        <p><code>pendingSettingsAck</code> Value: {boolean} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_pendingSettingsAck-expand-content'>
+<p>Indicates whether or not the <code>Http2Session</code> is currently waiting for an
 acknowledgment for a sent SETTINGS frame. Will be <code>true</code> after calling the
 <code>http2session.settings()</code> method. Will be <code>false</code> once all sent SETTINGS
 frames have been acknowledged.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_remoteSettings" id="property_remoteSettings"></a>
-            <div class="permalink"><a href="#property_remoteSettings" class="permalink fas fa-link"></a></div>
-            <p><code>remoteSettings</code> Value: {HTTP2 Settings Object} </p>
 
-          </h1>
-        </div><section><p>A prototype-less object describing the current remote settings of this
+
+</div><div class='expandable-header' id='property_remoteSettings-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_remoteSettings" id="property_remoteSettings"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_remoteSettings-expand-icon"></i>
+        <div class="permalink"><a href="#property_remoteSettings" class="permalink fas fa-link"></a></div>
+        <p><code>remoteSettings</code> Value: {HTTP2 Settings Object} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_remoteSettings-expand-content'>
+<p>A prototype-less object describing the current remote settings of this
 <code>Http2Session</code>. The remote settings are set by the <em>connected</em> HTTP/2 peer.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_socket_3" id="property_socket_3"></a>
-            <div class="permalink"><a href="#property_socket_3" class="permalink fas fa-link"></a></div>
-            <p><code>socket</code> Value: {net.Socket|tls.TLSSocket} </p>
 
-          </h1>
-        </div><section><p>Returns a Proxy object that acts as a <code>net.Socket</code> (or <code>tls.TLSSocket</code>) but
+
+</div><div class='expandable-header' id='property_socket_3-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_socket_3" id="property_socket_3"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_socket_3-expand-icon"></i>
+        <div class="permalink"><a href="#property_socket_3" class="permalink fas fa-link"></a></div>
+        <p><code>socket</code> Value: {net.Socket|tls.TLSSocket} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_socket_3-expand-content'>
+<p>Returns a Proxy object that acts as a <code>net.Socket</code> (or <code>tls.TLSSocket</code>) but
 limits available methods to ones safe to use with HTTP/2.</p>
 <p><code>destroy</code>, <code>emit</code>, <code>end</code>, <code>pause</code>, <code>read</code>, <code>resume</code>, and <code>write</code> will throw
 an error with code <code>ERR_HTTP2_NO_SOCKET_MANIPULATION</code>. See
 <a href="#http2_http2session_and_sockets">Http2Session and Sockets</a> for more information.</p>
 <p><code>setTimeout</code> method will be called on this <code>Http2Session</code>.</p>
 <p>All other interactions will be routed directly to the socket.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_state" id="property_state"></a>
-            <div class="permalink"><a href="#property_state" class="permalink fas fa-link"></a></div>
-            <p>http2session.state</p>
 
-          </h1>
-        </div><section><p>Provides miscellaneous information about the current state of the
+
+</div><div class='expandable-header' id='property_state-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_state" id="property_state"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_state-expand-icon"></i>
+        <div class="permalink"><a href="#property_state" class="permalink fas fa-link"></a></div>
+        <p>http2session.state</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_state-expand-content'>
+<p>Provides miscellaneous information about the current state of the
 <code>Http2Session</code>.</p>
 <ul>
 <li>Value: {Object}<ul>
@@ -517,66 +644,112 @@ inbound header compression state table.</li>
 </li>
 </ul>
 <p>An object describing the current status of this <code>Http2Session</code>.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_type" id="property_type"></a>
-            <div class="permalink"><a href="#property_type" class="permalink fas fa-link"></a></div>
-            <p><code>type</code> Value: {number} </p>
 
-          </h1>
-        </div><section><p>The <code>http2session.type</code> will be equal to
+
+</div><div class='expandable-header' id='property_type-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_type" id="property_type"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_type-expand-icon"></i>
+        <div class="permalink"><a href="#property_type" class="permalink fas fa-link"></a></div>
+        <p><code>type</code> Value: {number} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_type-expand-content'>
+<p>The <code>http2session.type</code> will be equal to
 <code>http2.constants.NGHTTP2_SESSION_SERVER</code> if this <code>Http2Session</code> instance is a
 server, and <code>http2.constants.NGHTTP2_SESSION_CLIENT</code> if the instance is a
 client.</p>
-</section></section><section>
-       <div class="heading">
-          <h5>
-            <a name="method_close_3" id="method_close_3"></a>
-            <div class="permalink"><a href="#method_close_3" class="permalink fas fa-link"></a></div>
-            <p>http2session.close([callback])</p>
 
-          </h1>
-        </div><section><p>Gracefully closes the <code>Http2Session</code>, allowing any existing streams to
+
+</div>
+<div class="heading">
+<h4>
+  <a name="subgroup_class_Http2Session_Methods" id="subgroup_class_Http2Session_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_Http2Session_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h4>
+</div>
+
+
+<div class='expandable-header' id='method_close_3-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_close_3" id="method_close_3"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_close_3-expand-icon"></i>
+        <div class="permalink"><a href="#method_close_3" class="permalink fas fa-link"></a></div>
+        <p>http2session.close([callback])</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_close_3-expand-content'>
+<p>Gracefully closes the <code>Http2Session</code>, allowing any existing streams to
 complete on their own and preventing new <code>Http2Stream</code> instances from being
 created. Once closed, <code>http2session.destroy()</code> <em>might</em> be called if there
 are no open <code>Http2Stream</code> instances.</p>
 <p>If specified, the <code>callback</code> function is registered as a handler for the
 <code>&#39;close&#39;</code> event.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_destroy_2" id="method_destroy_2"></a>
-            <div class="permalink"><a href="#method_destroy_2" class="permalink fas fa-link"></a></div>
-            <p>http2session.destroy([error,][code])</p>
 
-          </h1>
-        </div><section><p>Immediately terminates the <code>Http2Session</code> and the associated <code>net.Socket</code> or
+
+</div><div class='expandable-header' id='method_destroy_2-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_destroy_2" id="method_destroy_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_destroy_2-expand-icon"></i>
+        <div class="permalink"><a href="#method_destroy_2" class="permalink fas fa-link"></a></div>
+        <p>http2session.destroy([error,][code])</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_destroy_2-expand-content'>
+<p>Immediately terminates the <code>Http2Session</code> and the associated <code>net.Socket</code> or
 <code>tls.TLSSocket</code>.</p>
 <p>Once destroyed, the <code>Http2Session</code> will emit the <code>&#39;close&#39;</code> event. If <code>error</code>
 is not undefined, an <code>&#39;error&#39;</code> event will be emitted immediately after the
 <code>&#39;close&#39;</code> event.</p>
 <p>If there are any remaining open <code>Http2Streams</code> associated with the
 <code>Http2Session</code>, those will also be destroyed.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_goaway" id="method_goaway"></a>
-            <div class="permalink"><a href="#method_goaway" class="permalink fas fa-link"></a></div>
-            <p>http2session.goaway([code, [lastStreamID, [opaqueData]]])</p>
 
-          </h1>
-        </div><section><p>Transmits a <code>GOAWAY</code> frame to the connected peer <em>without</em> shutting down the
+
+</div><div class='expandable-header' id='method_goaway-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_goaway" id="method_goaway"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_goaway-expand-icon"></i>
+        <div class="permalink"><a href="#method_goaway" class="permalink fas fa-link"></a></div>
+        <p>http2session.goaway([code, [lastStreamID, [opaqueData]]])</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_goaway-expand-content'>
+<p>Transmits a <code>GOAWAY</code> frame to the connected peer <em>without</em> shutting down the
 <code>Http2Session</code>.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_ping" id="method_ping"></a>
-            <div class="permalink"><a href="#method_ping" class="permalink fas fa-link"></a></div>
-            <p>http2session.ping([payload, ]callback)</p>
 
-          </h1>
-        </div><section><p>Sends a <code>PING</code> frame to the connected HTTP/2 peer. A <code>callback</code> function must
+
+</div><div class='expandable-header' id='method_ping-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_ping" id="method_ping"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_ping-expand-icon"></i>
+        <div class="permalink"><a href="#method_ping" class="permalink fas fa-link"></a></div>
+        <p>http2session.ping([payload, ]callback)</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_ping-expand-content'>
+<p>Sends a <code>PING</code> frame to the connected HTTP/2 peer. A <code>callback</code> function must
 be provided. The method will return <code>true</code> if the <code>PING</code> was sent, <code>false</code>
 otherwise.</p>
 <p>The maximum number of outstanding (unacknowledged) pings is determined by the
@@ -598,58 +771,57 @@ payload.</p>
 </code></pre>
 <p>If the <code>payload</code> argument is not specified, the default payload will be the
 64-bit timestamp (little endian) marking the start of the <code>PING</code> duration.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_ref" id="method_ref"></a>
-            <div class="permalink"><a href="#method_ref" class="permalink fas fa-link"></a></div>
-            <p>http2session.ref()</p>
 
-          </h1>
-        </div><section><p>Calls <a href="net.html#net_socket_ref"><code>ref()</code></a> on this <code>Http2Session</code>
+
+</div><div class='expandable-header' id='method_ref-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_ref" id="method_ref"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_ref-expand-icon"></i>
+        <div class="permalink"><a href="#method_ref" class="permalink fas fa-link"></a></div>
+        <p>http2session.ref()</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_ref-expand-content'>
+<p>Calls <a href="net.html#net_socket_ref"><code>ref()</code></a> on this <code>Http2Session</code>
 instance&#39;s underlying <a href="net.html#net_class_net_socket"><code>net.Socket</code></a>.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_setTimeout_4" id="method_setTimeout_4"></a>
-            <div class="permalink"><a href="#method_setTimeout_4" class="permalink fas fa-link"></a></div>
-            <p>http2session.setTimeout(msecs, callback)</p>
 
-          </h1>
-        </div><section><p>Used to set a callback function that is called when there is no activity on
+
+</div><div class='expandable-header' id='method_setTimeout_4-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_setTimeout_4" id="method_setTimeout_4"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setTimeout_4-expand-icon"></i>
+        <div class="permalink"><a href="#method_setTimeout_4" class="permalink fas fa-link"></a></div>
+        <p>http2session.setTimeout(msecs, callback)</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setTimeout_4-expand-content'>
+<p>Used to set a callback function that is called when there is no activity on
 the <code>Http2Session</code> after <code>msecs</code> milliseconds. The given <code>callback</code> is
 registered as a listener on the <code>&#39;timeout&#39;</code> event.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_close_4" id="method_close_4"></a>
-            <div class="permalink"><a href="#method_close_4" class="permalink fas fa-link"></a></div>
-            <p>http2session.close(options[, callback])</p>
 
-          </h1>
-        </div><section><p><p>Attempts to shut down this <code>Http2Session</code> using HTTP/2 defined procedures.
-If specified, the given <code>callback</code> function will be invoked once the shutdown
-process has completed.</p></p>
-<p><p>If the <code>Http2Session</code> instance is a server-side session and the <code>errorCode</code>
-option is <code>0x00</code> (No Error), a &quot;graceful&quot; shutdown will be initiated. During a
-&quot;graceful&quot; shutdown, the session will first send a <code>GOAWAY</code> frame to
-the connected peer identifying the last processed stream as 2<sup>31</sup>-1.
-Then, on the next tick of the event loop, a second <code>GOAWAY</code> frame identifying
-the most recently processed stream identifier is sent. This process allows the
-remote peer to begin preparing for the connection to be terminated.</p></p>
-<pre class="prettyprint"><code class="lang-js">session.close({
-  opaqueData: Buffer.from(&#39;add some debugging data here&#39;)
-}, () =&gt; session.destroy());
-</code></pre>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_settings" id="method_settings"></a>
-            <div class="permalink"><a href="#method_settings" class="permalink fas fa-link"></a></div>
-            <p>http2session.settings(settings)</p>
 
-          </h1>
-        </div><section><p>Updates the current local settings for this <code>Http2Session</code> and sends a new
+</div><div class='expandable-header' id='method_settings-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_settings" id="method_settings"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_settings-expand-icon"></i>
+        <div class="permalink"><a href="#method_settings" class="permalink fas fa-link"></a></div>
+        <p>http2session.settings(settings)</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_settings-expand-content'>
+<p>Updates the current local settings for this <code>Http2Session</code> and sends a new
 <code>SETTINGS</code> frame to the connected HTTP/2 peer.</p>
 <p>Once called, the <code>http2session.pendingSettingsAck</code> property will be <code>true</code>
 while the session is waiting for the remote peer to acknowledge the new
@@ -658,33 +830,62 @@ settings.</p>
 acknowledgment is received and the <code>&#39;localSettings&#39;</code> event is emitted. It
 is possible to send multiple SETTINGS frames while acknowledgment is still
 pending.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_unref" id="method_unref"></a>
-            <div class="permalink"><a href="#method_unref" class="permalink fas fa-link"></a></div>
-            <p>http2session.unref()</p>
 
-          </h1>
-        </div><section><p>Calls <a href="net.html#net_socket_unref"><code>unref()</code></a> on this <code>Http2Session</code>
+
+</div><div class='expandable-header' id='method_unref-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_unref" id="method_unref"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_unref-expand-icon"></i>
+        <div class="permalink"><a href="#method_unref" class="permalink fas fa-link"></a></div>
+        <p>http2session.unref()</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_unref-expand-content'>
+<p>Calls <a href="net.html#net_socket_unref"><code>unref()</code></a> on this <code>Http2Session</code>
 instance&#39;s underlying <a href="net.html#net_class_net_socket"><code>net.Socket</code></a>.</p>
-</section></section></section>
-       <div class="heading">
-          <h3>
-            <a name="class_ServerHttp2Session" id="class_ServerHttp2Session"></a>
-            <div class="permalink"><a href="#class_ServerHttp2Session" class="permalink fas fa-link"></a></div>
-            <p>Class: ServerHttp2Session</p>
 
-          </h1>
-        </div><section><section>
-       <div class="heading">
-          <h5>
-            <a name="module_specifying_alternative_services" id="module_specifying_alternative_services"></a>
-            <div class="permalink"><a href="#module_specifying_alternative_services" class="permalink fas fa-link"></a></div>
-            <p>Specifying alternative services</p>
 
-          </h1>
-        </div><section><p>The format of the <code>alt</code> parameter is strictly defined by <a href="https://tools.ietf.org/html/rfc7838">RFC 7838</a> as an
+</div>
+</div><div class='expandable-header' id='class_ServerHttp2Session-expand'>
+<div class="heading">
+    <h3>
+        <a name="class_ServerHttp2Session" id="class_ServerHttp2Session"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_ServerHttp2Session-expand-icon"></i>
+        <div class="permalink"><a href="#class_ServerHttp2Session" class="permalink fas fa-link"></a></div>
+        <p>Class: ServerHttp2Session</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='class_ServerHttp2Session-expand-content'>
+
+
+<div class="heading">
+<h4>
+  <a name="subgroup_class_ServerHttp2Session_Modules" id="subgroup_class_ServerHttp2Session_Modules"></a>
+  <div class="permalink"><a href="#subgroup_class_ServerHttp2Session_Modules" class="permalink fas fa-link"></a></div>
+  <p>Modules</p>
+
+</h4>
+</div>
+
+
+
+<div class="heading">
+<h5>
+  <a name="module_specifying_alternative_services" id="module_specifying_alternative_services"></a>
+  <div class="permalink"><a href="#module_specifying_alternative_services" class="permalink fas fa-link"></a></div>
+  <p>Specifying alternative services</p>
+
+</h5>
+</div>
+
+<p>The format of the <code>alt</code> parameter is strictly defined by <a href="https://tools.ietf.org/html/rfc7838">RFC 7838</a> as an
 ASCII string containing a comma-delimited list of &quot;alternative&quot; protocols
 associated with a specific host and port.</p>
 <p>For example, the value <code>&#39;h2=&quot;example.org:81&quot;&#39;</code> indicates that the HTTP/2
@@ -696,21 +897,38 @@ h2=&quot;:82&quot;&#39;</code></p>
 <a href="https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids">ALPN Protocol ID</a>.</p>
 <p>The syntax of these values is not validated by the Node.js implementation and
 are passed through as provided by the user or received from the peer.</p>
-</section></section><section>
-       <div class="heading">
-          <h5>
-            <a name="method_altsvc" id="method_altsvc"></a>
-            <div class="permalink"><a href="#method_altsvc" class="permalink fas fa-link"></a></div>
-            <p>serverhttp2session.altsvc(alt, originOrStream)</p>
 
-          </h1>
-        </div><section><p>Submits an <code>ALTSVC</code> frame (as defined by <a href="https://tools.ietf.org/html/rfc7838">RFC 7838</a>) to the connected client.</p>
+
+<div class="heading">
+<h4>
+  <a name="subgroup_class_ServerHttp2Session_Methods" id="subgroup_class_ServerHttp2Session_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_ServerHttp2Session_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h4>
+</div>
+
+
+<div class='expandable-header' id='method_altsvc-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_altsvc" id="method_altsvc"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_altsvc-expand-icon"></i>
+        <div class="permalink"><a href="#method_altsvc" class="permalink fas fa-link"></a></div>
+        <p>serverhttp2session.altsvc(alt, originOrStream)</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_altsvc-expand-content'>
+<p>Submits an <code>ALTSVC</code> frame (as defined by <a href="https://tools.ietf.org/html/rfc7838">RFC 7838</a>) to the connected client.</p>
 <pre class="prettyprint"><code class="lang-js">const http2 = require(&#39;http2&#39;);
 
 const server = http2.createServer();
 server.on(&#39;session&#39;, (session) =&gt; {
-  // Set altsvc for origin <a href="https://example.org:80">https://example.org:80</a>
-  session.altsvc(&#39;h2=&quot;:8000&quot;&#39;, &#39;<a href="https://example.org:80&amp;#39">https://example.org:80&amp;#39</a>;);
+  // Set altsvc for origin <a href="https://example.org:80" target="_blank">https://example.org:80</a>
+  session.altsvc(&#39;h2=&quot;:8000&quot;&#39;, &#39;<a href="https://example.org:80&amp;#39" target="_blank">https://example.org:80&amp;#39</a>;);
 });
 
 server.on(&#39;stream&#39;, (stream) =&gt; {
@@ -726,36 +944,61 @@ may be passed to clear any previously set alternative service for a given
 domain.</p>
 <p>When a string is passed for the <code>originOrStream</code> argument, it will be parsed as
 a URL and the origin will be derived. For instance, the origin for the
-HTTP URL <code>&#39;<a href="https://example.org/foo/bar&amp;#39">https://example.org/foo/bar&amp;#39</a>;</code> is the ASCII string
-<code>&#39;<a href="https://example.org&amp;#39">https://example.org&amp;#39</a>;</code>. An error will be thrown if either the given string
+HTTP URL <code>&#39;<a href="https://example.org/foo/bar&amp;#39" target="_blank">https://example.org/foo/bar&amp;#39</a>;</code> is the ASCII string
+<code>&#39;<a href="https://example.org&amp;#39" target="_blank">https://example.org&amp;#39</a>;</code>. An error will be thrown if either the given string
 cannot be parsed as a URL or if a valid origin cannot be derived.</p>
 <p>A <code>URL</code> object, or any object with an <code>origin</code> property, may be passed as
 <code>originOrStream</code>, in which case the value of the <code>origin</code> property will be
 used. The value of the <code>origin</code> property <em>must</em> be a properly serialized
 ASCII origin.</p>
-</section></section></section>
-       <div class="heading">
-          <h3>
-            <a name="class_ClientHttp2Session" id="class_ClientHttp2Session"></a>
-            <div class="permalink"><a href="#class_ClientHttp2Session" class="permalink fas fa-link"></a></div>
-            <p>Class: ClientHttp2Session</p>
 
-          </h1>
-        </div><section><section>
-       <div class="heading">
-          <h5>
-            <a name="method_request_1" id="method_request_1"></a>
-            <div class="permalink"><a href="#method_request_1" class="permalink fas fa-link"></a></div>
-            <p>clienthttp2session.request(headers[, options])</p>
 
-          </h1>
-        </div><section><p><p>For HTTP/2 Client <code>Http2Session</code> instances only, the <code>http2session.request()</code>
+</div>
+</div><div class='expandable-header' id='class_ClientHttp2Session-expand'>
+<div class="heading">
+    <h3>
+        <a name="class_ClientHttp2Session" id="class_ClientHttp2Session"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_ClientHttp2Session-expand-icon"></i>
+        <div class="permalink"><a href="#class_ClientHttp2Session" class="permalink fas fa-link"></a></div>
+        <p>Class: ClientHttp2Session</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='class_ClientHttp2Session-expand-content'>
+
+
+<div class="heading">
+<h4>
+  <a name="subgroup_class_ClientHttp2Session_Methods" id="subgroup_class_ClientHttp2Session_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_ClientHttp2Session_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h4>
+</div>
+
+
+<div class='expandable-header' id='method_request_1-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_request_1" id="method_request_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_request_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_request_1" class="permalink fas fa-link"></a></div>
+        <p>clienthttp2session.request(headers[, options])</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_request_1-expand-content'>
+<p><p>For HTTP/2 Client <code>Http2Session</code> instances only, the <code>http2session.request()</code>
 creates and returns an <code>Http2Stream</code> instance that can be used to send an
 HTTP/2 request to the connected server.</p></p>
 <p><p>This method is only available if <code>http2session.type</code> is equal to
 <code>http2.constants.NGHTTP2_SESSION_CLIENT</code>.</p></p>
 <p><pre class="prettyprint"><code class="lang-js">const http2 = require(&#39;http2&#39;);
-const clientSession = http2.connect(&#39;<a href="https://localhost:1234&amp;#39">https://localhost:1234&amp;#39</a>;);
+const clientSession = http2.connect(&#39;<a href="https://localhost:1234&amp;#39" target="_blank">https://localhost:1234&amp;#39</a>;);
 const {
   HTTP2_HEADER_PATH,
   HTTP2_HEADER_STATUS
@@ -781,16 +1024,24 @@ they respectively default to:</p></p>
 <li><code>:method</code> = <code>&#39;GET&#39;</code></li>
 <li><code>:path</code> = <code>/</code></li>
 </ul>
-</section></section></section>
-       <div class="heading">
-          <h3>
-            <a name="class_Http2Stream" id="class_Http2Stream"></a>
-            <div class="permalink"><a href="#class_Http2Stream" class="permalink fas fa-link"></a></div>
-            <p>Class: Http2Stream</p>
 
-          </h1>
-        </div><section><p><ul></p>
-<p><li>Extends: {Duplex}</li>
+
+</div>
+</div><div class='expandable-header' id='class_Http2Stream-expand'>
+<div class="heading">
+    <h3>
+        <a name="class_Http2Stream" id="class_Http2Stream"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_Http2Stream-expand-icon"></i>
+        <div class="permalink"><a href="#class_Http2Stream" class="permalink fas fa-link"></a></div>
+        <p>Class: Http2Stream</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='class_Http2Stream-expand-content'>
+<p><ul></p>
+<p><li>Extends: {stream.Duplex}</li>
 </ul></p>
 <p>Each instance of the <code>Http2Stream</code> class represents a bidirectional HTTP/2
 communications stream over an <code>Http2Session</code> instance. Any single <code>Http2Session</code>
@@ -809,23 +1060,40 @@ the Server or Client side, respectively.</p>
 <p>All <code>Http2Stream</code> instances are <a href="stream.html#stream_class_stream_duplex"><code>Duplex</code></a> streams. The <code>Writable</code> side of the
 <code>Duplex</code> is used to send data to the connected peer, while the <code>Readable</code> side
 is used to receive data sent by the connected peer.</p>
-<section>
-       <div class="heading">
-          <h5>
-            <a name="module_http2stream_lifecycle" id="module_http2stream_lifecycle"></a>
-            <div class="permalink"><a href="#module_http2stream_lifecycle" class="permalink fas fa-link"></a></div>
-            <p>Http2Stream Lifecycle</p>
 
-          </h1>
-        </div><section>
-       <div class="heading">
-          <h6>
-            <a name="module_creation" id="module_creation"></a>
-            <div class="permalink"><a href="#module_creation" class="permalink fas fa-link"></a></div>
-            <p>Creation</p>
 
-          </h1>
-        </div><section><p>On the server side, instances of <a href="#http2_class_serverhttp2stream"><code>ServerHttp2Stream</code></a> are created either
+<div class="heading">
+<h4>
+  <a name="subgroup_class_Http2Stream_Modules" id="subgroup_class_Http2Stream_Modules"></a>
+  <div class="permalink"><a href="#subgroup_class_Http2Stream_Modules" class="permalink fas fa-link"></a></div>
+  <p>Modules</p>
+
+</h4>
+</div>
+
+
+
+<div class="heading">
+<h5>
+  <a name="module_http2stream_lifecycle" id="module_http2stream_lifecycle"></a>
+  <div class="permalink"><a href="#module_http2stream_lifecycle" class="permalink fas fa-link"></a></div>
+  <p>Http2Stream Lifecycle</p>
+
+</h5>
+</div>
+
+
+
+<div class="heading">
+<h6>
+  <a name="module_creation" id="module_creation"></a>
+  <div class="permalink"><a href="#module_creation" class="permalink fas fa-link"></a></div>
+  <p>Creation</p>
+
+</h6>
+</div>
+
+<p>On the server side, instances of <a href="#http2_class_serverhttp2stream"><code>ServerHttp2Stream</code></a> are created either
 when:</p>
 <ul>
 <li>A new HTTP/2 <code>HEADERS</code> frame with a previously unused stream ID is received;</li>
@@ -841,15 +1109,18 @@ emitted. User code should rarely, if ever, need to handle the <code>&#39;ready&#
 event directly. The ready status of an <code>Http2Stream</code> can be determined by
 checking the value of <code>http2stream.id</code>. If the value is <code>undefined</code>, the stream
 is not yet ready for use.</p>
-</section>
-       <div class="heading">
-          <h6>
-            <a name="module_destruction" id="module_destruction"></a>
-            <div class="permalink"><a href="#module_destruction" class="permalink fas fa-link"></a></div>
-            <p>Destruction</p>
 
-          </h1>
-        </div><section><p>All <a href="#http2_class_http2stream"><code>Http2Stream</code></a> instances are destroyed either when:</p>
+
+<div class="heading">
+<h6>
+  <a name="module_destruction" id="module_destruction"></a>
+  <div class="permalink"><a href="#module_destruction" class="permalink fas fa-link"></a></div>
+  <p>Destruction</p>
+
+</h6>
+</div>
+
+<p>All <a href="#http2_class_http2stream"><code>Http2Stream</code></a> instances are destroyed either when:</p>
 <ul>
 <li>An <code>RST_STREAM</code> frame for the stream is received by the connected peer.</li>
 <li>The <code>http2stream.close()</code> method is called.</li>
@@ -866,104 +1137,184 @@ with an <code>Error</code> passed as the first argument.</p>
 property will be <code>true</code> and the <code>http2stream.rstCode</code> property will specify the
 <code>RST_STREAM</code> error code. The <code>Http2Stream</code> instance is no longer usable once
 destroyed.</p>
-</section></section></section><section>
-       <div class="heading">
-          <h5>
-            <a name="property_aborted_1" id="property_aborted_1"></a>
-            <div class="permalink"><a href="#property_aborted_1" class="permalink fas fa-link"></a></div>
-            <p><code>aborted</code> Value: {boolean} </p>
 
-          </h1>
-        </div><section><p>Set to <code>true</code> if the <code>Http2Stream</code> instance was aborted abnormally. When set,
+
+<div class="heading">
+<h4>
+  <a name="subgroup_class_Http2Stream_Properties" id="subgroup_class_Http2Stream_Properties"></a>
+  <div class="permalink"><a href="#subgroup_class_Http2Stream_Properties" class="permalink fas fa-link"></a></div>
+  <p>Properties</p>
+
+</h4>
+</div>
+
+
+<div class='expandable-header' id='property_aborted_1-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_aborted_1" id="property_aborted_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_aborted_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_aborted_1" class="permalink fas fa-link"></a></div>
+        <p><code>aborted</code> Value: {boolean} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_aborted_1-expand-content'>
+<p>Set to <code>true</code> if the <code>Http2Stream</code> instance was aborted abnormally. When set,
 the <code>&#39;aborted&#39;</code> event will have been emitted.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_closed_1" id="property_closed_1"></a>
-            <div class="permalink"><a href="#property_closed_1" class="permalink fas fa-link"></a></div>
-            <p><code>closed</code> Value: {boolean} </p>
 
-          </h1>
-        </div><section><p>Set to <code>true</code> if the <code>Http2Stream</code> instance has been closed.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_destroyed_1" id="property_destroyed_1"></a>
-            <div class="permalink"><a href="#property_destroyed_1" class="permalink fas fa-link"></a></div>
-            <p><code>destroyed</code> Value: {boolean} </p>
 
-          </h1>
-        </div><section><p>Set to <code>true</code> if the <code>Http2Stream</code> instance has been destroyed and is no longer
+</div><div class='expandable-header' id='property_closed_1-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_closed_1" id="property_closed_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_closed_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_closed_1" class="permalink fas fa-link"></a></div>
+        <p><code>closed</code> Value: {boolean} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_closed_1-expand-content'>
+<p>Set to <code>true</code> if the <code>Http2Stream</code> instance has been closed.</p>
+
+
+</div><div class='expandable-header' id='property_destroyed_1-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_destroyed_1" id="property_destroyed_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_destroyed_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_destroyed_1" class="permalink fas fa-link"></a></div>
+        <p><code>destroyed</code> Value: {boolean} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_destroyed_1-expand-content'>
+<p>Set to <code>true</code> if the <code>Http2Stream</code> instance has been destroyed and is no longer
 usable.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_pending" id="property_pending"></a>
-            <div class="permalink"><a href="#property_pending" class="permalink fas fa-link"></a></div>
-            <p><code>pending</code> Value: {boolean} </p>
 
-          </h1>
-        </div><section><p>Set to <code>true</code> if the <code>Http2Stream</code> instance has not yet been assigned a
+
+</div><div class='expandable-header' id='property_pending-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_pending" id="property_pending"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_pending-expand-icon"></i>
+        <div class="permalink"><a href="#property_pending" class="permalink fas fa-link"></a></div>
+        <p><code>pending</code> Value: {boolean} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_pending-expand-content'>
+<p>Set to <code>true</code> if the <code>Http2Stream</code> instance has not yet been assigned a
 numeric stream identifier.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_rstCode" id="property_rstCode"></a>
-            <div class="permalink"><a href="#property_rstCode" class="permalink fas fa-link"></a></div>
-            <p><code>rstCode</code> Value: {number} </p>
 
-          </h1>
-        </div><section><p>Set to the <code>RST_STREAM</code> <a href="#error_codes">error code</a> reported when the <code>Http2Stream</code> is
+
+</div><div class='expandable-header' id='property_rstCode-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_rstCode" id="property_rstCode"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_rstCode-expand-icon"></i>
+        <div class="permalink"><a href="#property_rstCode" class="permalink fas fa-link"></a></div>
+        <p><code>rstCode</code> Value: {number} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_rstCode-expand-content'>
+<p>Set to the <code>RST_STREAM</code> <a href="#error_codes">error code</a> reported when the <code>Http2Stream</code> is
 destroyed after either receiving an <code>RST_STREAM</code> frame from the connected peer,
 calling <code>http2stream.close()</code>, or <code>http2stream.destroy()</code>. Will be
 <code>undefined</code> if the <code>Http2Stream</code> has not been closed.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_sentHeaders" id="property_sentHeaders"></a>
-            <div class="permalink"><a href="#property_sentHeaders" class="permalink fas fa-link"></a></div>
-            <p><code>sentHeaders</code> Value: {HTTP2 Headers Object} </p>
 
-          </h1>
-        </div><section><p>An object containing the outbound headers sent for this <code>Http2Stream</code>.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_sentInfoHeaders" id="property_sentInfoHeaders"></a>
-            <div class="permalink"><a href="#property_sentInfoHeaders" class="permalink fas fa-link"></a></div>
-            <p><code>sentInfoHeaders</code> Value: {HTTP2 Headers Object[]} </p>
 
-          </h1>
-        </div><section><p>An array of objects containing the outbound informational (additional) headers
+</div><div class='expandable-header' id='property_sentHeaders-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_sentHeaders" id="property_sentHeaders"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_sentHeaders-expand-icon"></i>
+        <div class="permalink"><a href="#property_sentHeaders" class="permalink fas fa-link"></a></div>
+        <p><code>sentHeaders</code> Value: {HTTP2 Headers Object} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_sentHeaders-expand-content'>
+<p>An object containing the outbound headers sent for this <code>Http2Stream</code>.</p>
+
+
+</div><div class='expandable-header' id='property_sentInfoHeaders-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_sentInfoHeaders" id="property_sentInfoHeaders"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_sentInfoHeaders-expand-icon"></i>
+        <div class="permalink"><a href="#property_sentInfoHeaders" class="permalink fas fa-link"></a></div>
+        <p><code>sentInfoHeaders</code> Value: {HTTP2 Headers Object[]} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_sentInfoHeaders-expand-content'>
+<p>An array of objects containing the outbound informational (additional) headers
 sent for this <code>Http2Stream</code>.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_sentTrailers" id="property_sentTrailers"></a>
-            <div class="permalink"><a href="#property_sentTrailers" class="permalink fas fa-link"></a></div>
-            <p><code>sentTrailers</code> Value: {HTTP2 Headers Object} </p>
 
-          </h1>
-        </div><section><p>An object containing the outbound trailers sent for this this <code>HttpStream</code>.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_session" id="property_session"></a>
-            <div class="permalink"><a href="#property_session" class="permalink fas fa-link"></a></div>
-            <p><code>session</code> Value: {Http2Session} </p>
 
-          </h1>
-        </div><section><p>A reference to the <code>Http2Session</code> instance that owns this <code>Http2Stream</code>. The
+</div><div class='expandable-header' id='property_sentTrailers-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_sentTrailers" id="property_sentTrailers"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_sentTrailers-expand-icon"></i>
+        <div class="permalink"><a href="#property_sentTrailers" class="permalink fas fa-link"></a></div>
+        <p><code>sentTrailers</code> Value: {HTTP2 Headers Object} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_sentTrailers-expand-content'>
+<p>An object containing the outbound trailers sent for this this <code>HttpStream</code>.</p>
+
+
+</div><div class='expandable-header' id='property_session-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_session" id="property_session"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_session-expand-icon"></i>
+        <div class="permalink"><a href="#property_session" class="permalink fas fa-link"></a></div>
+        <p><code>session</code> Value: {Http2Session} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_session-expand-content'>
+<p>A reference to the <code>Http2Session</code> instance that owns this <code>Http2Stream</code>. The
 value will be <code>undefined</code> after the <code>Http2Stream</code> instance is destroyed.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_state_1" id="property_state_1"></a>
-            <div class="permalink"><a href="#property_state_1" class="permalink fas fa-link"></a></div>
-            <p>http2stream.state</p>
 
-          </h1>
-        </div><section><p>Provides miscellaneous information about the current state of the
+
+</div><div class='expandable-header' id='property_state_1-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_state_1" id="property_state_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_state_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_state_1" class="permalink fas fa-link"></a></div>
+        <p>http2stream.state</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_state_1-expand-content'>
+<p>Provides miscellaneous information about the current state of the
 <code>Http2Stream</code>.</p>
 <ul>
 <li>Value: {Object}<ul>
@@ -982,34 +1333,66 @@ instances that depend on this <code>Http2Stream</code> as specified using
 </li>
 </ul>
 <p>A current state of this <code>Http2Stream</code>.</p>
-</section></section><section>
-       <div class="heading">
-          <h5>
-            <a name="method_close_5" id="method_close_5"></a>
-            <div class="permalink"><a href="#method_close_5" class="permalink fas fa-link"></a></div>
-            <p>http2stream.close(code[, callback])</p>
 
-          </h1>
-        </div><section><p>Closes the <code>Http2Stream</code> instance by sending an <code>RST_STREAM</code> frame to the
+
+</div>
+<div class="heading">
+<h4>
+  <a name="subgroup_class_Http2Stream_Methods" id="subgroup_class_Http2Stream_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_Http2Stream_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h4>
+</div>
+
+
+<div class='expandable-header' id='method_close_4-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_close_4" id="method_close_4"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_close_4-expand-icon"></i>
+        <div class="permalink"><a href="#method_close_4" class="permalink fas fa-link"></a></div>
+        <p>http2stream.close(code[, callback])</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_close_4-expand-content'>
+<p>Closes the <code>Http2Stream</code> instance by sending an <code>RST_STREAM</code> frame to the
 connected HTTP/2 peer.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_priority" id="method_priority"></a>
-            <div class="permalink"><a href="#method_priority" class="permalink fas fa-link"></a></div>
-            <p>http2stream.priority(options)</p>
 
-          </h1>
-        </div><section><p>Updates the priority for this <code>Http2Stream</code> instance.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_setTimeout_5" id="method_setTimeout_5"></a>
-            <div class="permalink"><a href="#method_setTimeout_5" class="permalink fas fa-link"></a></div>
-            <p>http2stream.setTimeout(msecs, callback)</p>
 
-          </h1>
-        </div><section><pre class="prettyprint"><code class="lang-js">const http2 = require(&#39;http2&#39;);
+</div><div class='expandable-header' id='method_priority-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_priority" id="method_priority"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_priority-expand-icon"></i>
+        <div class="permalink"><a href="#method_priority" class="permalink fas fa-link"></a></div>
+        <p>http2stream.priority(options)</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_priority-expand-content'>
+<p>Updates the priority for this <code>Http2Stream</code> instance.</p>
+
+
+</div><div class='expandable-header' id='method_setTimeout_5-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_setTimeout_5" id="method_setTimeout_5"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setTimeout_5-expand-icon"></i>
+        <div class="permalink"><a href="#method_setTimeout_5" class="permalink fas fa-link"></a></div>
+        <p>http2stream.setTimeout(msecs, callback)</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setTimeout_5-expand-content'>
+<pre class="prettyprint"><code class="lang-js">const http2 = require(&#39;http2&#39;);
 const client = http2.connect(&#39;http://example.org:8000&#39;);
 const { NGHTTP2_CANCEL } = http2.constants;
 const req = client.request({ &#39;:path&#39;: &#39;/&#39; });
@@ -1017,75 +1400,139 @@ const req = client.request({ &#39;:path&#39;: &#39;/&#39; });
 // Cancel the stream if there&#39;s no activity after 5 seconds
 req.setTimeout(5000, () =&gt; req.close(NGHTTP2_CANCEL));
 </code></pre>
-</section></section></section>
-       <div class="heading">
-          <h3>
-            <a name="class_ClientHttp2Stream" id="class_ClientHttp2Stream"></a>
-            <div class="permalink"><a href="#class_ClientHttp2Stream" class="permalink fas fa-link"></a></div>
-            <p>Class: ClientHttp2Stream</p>
 
-          </h1>
-        </div><section><p><ul></p>
+
+</div>
+</div><div class='expandable-header' id='class_ClientHttp2Stream-expand'>
+<div class="heading">
+    <h3>
+        <a name="class_ClientHttp2Stream" id="class_ClientHttp2Stream"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_ClientHttp2Stream-expand-icon"></i>
+        <div class="permalink"><a href="#class_ClientHttp2Stream" class="permalink fas fa-link"></a></div>
+        <p>Class: ClientHttp2Stream</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='class_ClientHttp2Stream-expand-content'>
+<p><ul></p>
 <p><li>Extends {Http2Stream}</li>
 </ul></p>
 <p>The <code>ClientHttp2Stream</code> class is an extension of <code>Http2Stream</code> that is
 used exclusively on HTTP/2 Clients. <code>Http2Stream</code> instances on the client
 provide events such as <code>&#39;response&#39;</code> and <code>&#39;push&#39;</code> that are only relevant on
 the client.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="class_ServerHttp2Stream" id="class_ServerHttp2Stream"></a>
-            <div class="permalink"><a href="#class_ServerHttp2Stream" class="permalink fas fa-link"></a></div>
-            <p>Class: ServerHttp2Stream</p>
 
-          </h1>
-        </div><section><p><ul></p>
+
+</div><div class='expandable-header' id='class_ServerHttp2Stream-expand'>
+<div class="heading">
+    <h3>
+        <a name="class_ServerHttp2Stream" id="class_ServerHttp2Stream"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_ServerHttp2Stream-expand-icon"></i>
+        <div class="permalink"><a href="#class_ServerHttp2Stream" class="permalink fas fa-link"></a></div>
+        <p>Class: ServerHttp2Stream</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='class_ServerHttp2Stream-expand-content'>
+<p><ul></p>
 <p><li>Extends: {Http2Stream}</li>
 </ul></p>
 <p>The <code>ServerHttp2Stream</code> class is an extension of <a href="#http2_class_http2stream"><code>Http2Stream</code></a> that is
 used exclusively on HTTP/2 Servers. <code>Http2Stream</code> instances on the server
 provide additional methods such as <code>http2stream.pushStream()</code> and
 <code>http2stream.respond()</code> that are only relevant on the server.</p>
-<section>
-       <div class="heading">
-          <h5>
-            <a name="property_headersSent_1" id="property_headersSent_1"></a>
-            <div class="permalink"><a href="#property_headersSent_1" class="permalink fas fa-link"></a></div>
-            <p><code>headersSent</code> Value: {boolean} </p>
 
-          </h1>
-        </div><section><p>Boolean (read-only). True if headers were sent, false otherwise.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_pushAllowed" id="property_pushAllowed"></a>
-            <div class="permalink"><a href="#property_pushAllowed" class="permalink fas fa-link"></a></div>
-            <p><code>pushAllowed</code> Value: {boolean} </p>
 
-          </h1>
-        </div><section><p>Read-only property mapped to the <code>SETTINGS_ENABLE_PUSH</code> flag of the remote
+<div class="heading">
+<h4>
+  <a name="subgroup_class_ServerHttp2Stream_Properties" id="subgroup_class_ServerHttp2Stream_Properties"></a>
+  <div class="permalink"><a href="#subgroup_class_ServerHttp2Stream_Properties" class="permalink fas fa-link"></a></div>
+  <p>Properties</p>
+
+</h4>
+</div>
+
+
+<div class='expandable-header' id='property_headersSent_1-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_headersSent_1" id="property_headersSent_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_headersSent_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_headersSent_1" class="permalink fas fa-link"></a></div>
+        <p><code>headersSent</code> Value: {boolean} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_headersSent_1-expand-content'>
+<p>Boolean (read-only). True if headers were sent, false otherwise.</p>
+
+
+</div><div class='expandable-header' id='property_pushAllowed-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_pushAllowed" id="property_pushAllowed"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_pushAllowed-expand-icon"></i>
+        <div class="permalink"><a href="#property_pushAllowed" class="permalink fas fa-link"></a></div>
+        <p><code>pushAllowed</code> Value: {boolean} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_pushAllowed-expand-content'>
+<p>Read-only property mapped to the <code>SETTINGS_ENABLE_PUSH</code> flag of the remote
 client&#39;s most recent <code>SETTINGS</code> frame. Will be <code>true</code> if the remote peer
 accepts push streams, <code>false</code> otherwise. Settings are the same for every
 <code>Http2Stream</code> in the same <code>Http2Session</code>.</p>
-</section></section><section>
-       <div class="heading">
-          <h5>
-            <a name="method_additionalHeaders" id="method_additionalHeaders"></a>
-            <div class="permalink"><a href="#method_additionalHeaders" class="permalink fas fa-link"></a></div>
-            <p>http2stream.additionalHeaders(headers)</p>
 
-          </h1>
-        </div><section><p>Sends an additional informational <code>HEADERS</code> frame to the connected HTTP/2 peer.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_pushStream" id="method_pushStream"></a>
-            <div class="permalink"><a href="#method_pushStream" class="permalink fas fa-link"></a></div>
-            <p>http2stream.pushStream(headers[, options], callback)</p>
 
-          </h1>
-        </div><section><p>Initiates a push stream. The callback is invoked with the new <code>Http2Stream</code>
+</div>
+<div class="heading">
+<h4>
+  <a name="subgroup_class_ServerHttp2Stream_Methods" id="subgroup_class_ServerHttp2Stream_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_ServerHttp2Stream_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h4>
+</div>
+
+
+<div class='expandable-header' id='method_additionalHeaders-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_additionalHeaders" id="method_additionalHeaders"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_additionalHeaders-expand-icon"></i>
+        <div class="permalink"><a href="#method_additionalHeaders" class="permalink fas fa-link"></a></div>
+        <p>http2stream.additionalHeaders(headers)</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_additionalHeaders-expand-content'>
+<p>Sends an additional informational <code>HEADERS</code> frame to the connected HTTP/2 peer.</p>
+
+
+</div><div class='expandable-header' id='method_pushStream-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_pushStream" id="method_pushStream"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_pushStream-expand-icon"></i>
+        <div class="permalink"><a href="#method_pushStream" class="permalink fas fa-link"></a></div>
+        <p>http2stream.pushStream(headers[, options], callback)</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_pushStream-expand-content'>
+<p>Initiates a push stream. The callback is invoked with the new <code>Http2Stream</code>
 instance created for the push stream passed as the second argument, or an
 <code>Error</code> passed as the first argument.</p>
 <pre class="prettyprint"><code class="lang-js">const http2 = require(&#39;http2&#39;);
@@ -1103,15 +1550,22 @@ server.on(&#39;stream&#39;, (stream) =&gt; {
 <p>Setting the weight of a push stream is not allowed in the <code>HEADERS</code> frame. Pass
 a <code>weight</code> value to <code>http2stream.priority</code> with the <code>silent</code> option set to
 <code>true</code> to enable server-side bandwidth balancing between concurrent streams.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_respond" id="method_respond"></a>
-            <div class="permalink"><a href="#method_respond" class="permalink fas fa-link"></a></div>
-            <p>http2stream.respond([headers[, options]])</p>
 
-          </h1>
-        </div><section><p><pre class="prettyprint"><code class="lang-js">const http2 = require(&#39;http2&#39;);
+
+</div><div class='expandable-header' id='method_respond-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_respond" id="method_respond"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_respond-expand-icon"></i>
+        <div class="permalink"><a href="#method_respond" class="permalink fas fa-link"></a></div>
+        <p>http2stream.respond([headers[, options]])</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_respond-expand-content'>
+<p><pre class="prettyprint"><code class="lang-js">const http2 = require(&#39;http2&#39;);
 const server = http2.createServer();
 server.on(&#39;stream&#39;, (stream) =&gt; {
   stream.respond({ &#39;:status&#39;: 200 });
@@ -1127,7 +1581,7 @@ const server = http2.createServer();
 server.on(&#39;stream&#39;, (stream) =&gt; {
   stream.respond({ &#39;:status&#39;: 200 }, {
     getTrailers(trailers) {
-      trailers[&#39;ABC&#39;] = &#39;some value to send&#39;;
+      trailers.ABC = &#39;some value to send&#39;;
     }
   });
   stream.end(&#39;some data&#39;);
@@ -1137,15 +1591,22 @@ server.on(&#39;stream&#39;, (stream) =&gt; {
 pseudo-header fields (e.g. <code>&#39;:status&#39;</code>, <code>&#39;:path&#39;</code>, etc). An <code>&#39;error&#39;</code> event
 will be emitted if the <code>getTrailers</code> callback attempts to set such header
 fields.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_respondWithFD" id="method_respondWithFD"></a>
-            <div class="permalink"><a href="#method_respondWithFD" class="permalink fas fa-link"></a></div>
-            <p>http2stream.respondWithFD(fd[, headers[, options]])</p>
 
-          </h1>
-        </div><section><p>Initiates a response whose data is read from the given file descriptor. No
+
+</div><div class='expandable-header' id='method_respondWithFD-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_respondWithFD" id="method_respondWithFD"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_respondWithFD-expand-icon"></i>
+        <div class="permalink"><a href="#method_respondWithFD" class="permalink fas fa-link"></a></div>
+        <p>http2stream.respondWithFD(fd[, headers[, options]])</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_respondWithFD-expand-content'>
+<p>Initiates a response whose data is read from the given file descriptor. No
 validation is performed on the given file descriptor. If an error occurs while
 attempting to read data using the file descriptor, the <code>Http2Stream</code> will be
 closed using an <code>RST_STREAM</code> frame using the standard <code>INTERNAL_ERROR</code> code.</p>
@@ -1154,10 +1615,10 @@ automatically.</p>
 <pre class="prettyprint"><code class="lang-js">const http2 = require(&#39;http2&#39;);
 const fs = require(&#39;fs&#39;);
 
-const fd = fs.openSync(&#39;/some/file&#39;, &#39;r&#39;);
-
 const server = http2.createServer();
 server.on(&#39;stream&#39;, (stream) =&gt; {
+  const fd = fs.openSync(&#39;/some/file&#39;, &#39;r&#39;);
+
   const stat = fs.fstatSync(fd);
   const headers = {
     &#39;content-length&#39;: stat.size,
@@ -1165,8 +1626,8 @@ server.on(&#39;stream&#39;, (stream) =&gt; {
     &#39;content-type&#39;: &#39;text/plain&#39;
   };
   stream.respondWithFD(fd, headers);
+  stream.on(&#39;close&#39;, () =&gt; fs.closeSync(fd));
 });
-server.on(&#39;close&#39;, () =&gt; fs.closeSync(fd));
 </code></pre>
 <p>The optional <code>options.statCheck</code> function may be specified to give user code
 an opportunity to set additional content headers based on the <code>fs.Stat</code> details
@@ -1176,6 +1637,11 @@ collect details on the provided file descriptor.</p>
 <p>The <code>offset</code> and <code>length</code> options may be used to limit the response to a
 specific range subset. This can be used, for instance, to support HTTP Range
 requests.</p>
+<p>The file descriptor is not closed when the stream is closed, so it will need
+to be closed manually once it is no longer needed.
+Note that using the same file descriptor concurrently for multiple streams
+is not supported and may result in data loss. Re-using a file descriptor
+after a stream has finished is supported.</p>
 <p>When set, the <code>options.getTrailers()</code> function is called immediately after
 queuing the last chunk of payload data to be sent. The callback is passed a
 single object (with a <code>null</code> prototype) that the listener may use to specify
@@ -1183,10 +1649,10 @@ the trailing header fields to send to the peer.</p>
 <pre class="prettyprint"><code class="lang-js">const http2 = require(&#39;http2&#39;);
 const fs = require(&#39;fs&#39;);
 
-const fd = fs.openSync(&#39;/some/file&#39;, &#39;r&#39;);
-
 const server = http2.createServer();
 server.on(&#39;stream&#39;, (stream) =&gt; {
+  const fd = fs.openSync(&#39;/some/file&#39;, &#39;r&#39;);
+
   const stat = fs.fstatSync(fd);
   const headers = {
     &#39;content-length&#39;: stat.size,
@@ -1195,25 +1661,33 @@ server.on(&#39;stream&#39;, (stream) =&gt; {
   };
   stream.respondWithFD(fd, headers, {
     getTrailers(trailers) {
-      trailers[&#39;ABC&#39;] = &#39;some value to send&#39;;
+      trailers.ABC = &#39;some value to send&#39;;
     }
   });
+
+  stream.on(&#39;close&#39;, () =&gt; fs.closeSync(fd));
 });
-server.on(&#39;close&#39;, () =&gt; fs.closeSync(fd));
 </code></pre>
 <p><em>Note</em>: The HTTP/1 specification forbids trailers from containing HTTP/2
 pseudo-header fields (e.g. <code>&#39;:status&#39;</code>, <code>&#39;:path&#39;</code>, etc). An <code>&#39;error&#39;</code> event
 will be emitted if the <code>getTrailers</code> callback attempts to set such header
 fields.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_respondWithFile" id="method_respondWithFile"></a>
-            <div class="permalink"><a href="#method_respondWithFile" class="permalink fas fa-link"></a></div>
-            <p>http2stream.respondWithFile(path[, headers[, options]])</p>
 
-          </h1>
-        </div><section><p>Sends a regular file as the response. The <code>path</code> must specify a regular file
+
+</div><div class='expandable-header' id='method_respondWithFile-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_respondWithFile" id="method_respondWithFile"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_respondWithFile-expand-icon"></i>
+        <div class="permalink"><a href="#method_respondWithFile" class="permalink fas fa-link"></a></div>
+        <p>http2stream.respondWithFile(path[, headers[, options]])</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_respondWithFile-expand-content'>
+<p>Sends a regular file as the response. The <code>path</code> must specify a regular file
 or an <code>&#39;error&#39;</code> event will be emitted on the <code>Http2Stream</code> object.</p>
 <p>When used, the <code>Http2Stream</code> object&#39;s Duplex interface will be closed
 automatically.</p>
@@ -1278,7 +1752,7 @@ the trailing header fields to send to the peer.</p>
 const server = http2.createServer();
 server.on(&#39;stream&#39;, (stream) =&gt; {
   function getTrailers(trailers) {
-    trailers[&#39;ABC&#39;] = &#39;some value to send&#39;;
+    trailers.ABC = &#39;some value to send&#39;;
   }
   stream.respondWithFile(&#39;/some/file&#39;,
                          { &#39;content-type&#39;: &#39;text/plain&#39; },
@@ -1289,49 +1763,84 @@ server.on(&#39;stream&#39;, (stream) =&gt; {
 pseudo-header fields (e.g. <code>&#39;:status&#39;</code>, <code>&#39;:path&#39;</code>, etc). An <code>&#39;error&#39;</code> event
 will be emitted if the <code>getTrailers</code> callback attempts to set such header
 fields.</p>
-</section></section></section>
-       <div class="heading">
-          <h3>
-            <a name="class_Http2Server" id="class_Http2Server"></a>
-            <div class="permalink"><a href="#class_Http2Server" class="permalink fas fa-link"></a></div>
-            <p>Class: Http2Server</p>
 
-          </h1>
-        </div><section><p><ul></p>
+
+</div>
+</div><div class='expandable-header' id='class_Http2Server-expand'>
+<div class="heading">
+    <h3>
+        <a name="class_Http2Server" id="class_Http2Server"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_Http2Server-expand-icon"></i>
+        <div class="permalink"><a href="#class_Http2Server" class="permalink fas fa-link"></a></div>
+        <p>Class: Http2Server</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='class_Http2Server-expand-content'>
+<p><ul></p>
 <p><li>Extends: {net.Server}</li>
 </ul></p>
-<p>In <code>Http2Server</code>, there is no <code>&#39;clientError&#39;</code> event as there is in
-HTTP1. However, there are <code>&#39;socketError&#39;</code>, <code>&#39;sessionError&#39;</code>,  and
-<code>&#39;streamError&#39;</code>, for errors emitted on the socket, <code>Http2Session</code>, or
-<code>Http2Stream</code>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="class_Http2SecureServer" id="class_Http2SecureServer"></a>
-            <div class="permalink"><a href="#class_Http2SecureServer" class="permalink fas fa-link"></a></div>
-            <p>Class: Http2SecureServer</p>
+<p>In <code>Http2Server</code>, there are no <code>&#39;clientError&#39;</code> events as there are in
+HTTP1. However, there are <code>&#39;sessionError&#39;</code>,  and <code>&#39;streamError&#39;</code> events for
+errors emitted on the socket, or from <code>Http2Session</code> or <code>Http2Stream</code> instances.</p>
 
-          </h1>
-        </div><section><ul>
+
+</div><div class='expandable-header' id='class_Http2SecureServer-expand'>
+<div class="heading">
+    <h3>
+        <a name="class_Http2SecureServer" id="class_Http2SecureServer"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_Http2SecureServer-expand-icon"></i>
+        <div class="permalink"><a href="#class_Http2SecureServer" class="permalink fas fa-link"></a></div>
+        <p>Class: Http2SecureServer</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='class_Http2SecureServer-expand-content'>
+<ul>
 <li>Extends: {tls.Server}</li>
 </ul>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="property_constants_2" id="property_constants_2"></a>
-            <div class="permalink"><a href="#property_constants_2" class="permalink fas fa-link"></a></div>
-            <p>http2.constants</p>
 
-          </h1>
-        </div><section><section>
-       <div class="heading">
-          <h5>
-            <a name="module_error_codes_for_rst_stream_and_goaway" id="module_error_codes_for_rst_stream_and_goaway"></a>
-            <div class="permalink"><a href="#module_error_codes_for_rst_stream_and_goaway" class="permalink fas fa-link"></a></div>
-            <p>Error Codes for RST_STREAM and GOAWAY</p>
 
-          </h1>
-        </div><section><p><a id="error_codes"></a></p>
+</div><div class='expandable-header' id='property_constants_2-expand'>
+<div class="heading">
+    <h3>
+        <a name="property_constants_2" id="property_constants_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_constants_2-expand-icon"></i>
+        <div class="permalink"><a href="#property_constants_2" class="permalink fas fa-link"></a></div>
+        <p>http2.constants</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='property_constants_2-expand-content'>
+
+
+<div class="heading">
+<h4>
+  <a name="subgroup_property_constants_2_Modules" id="subgroup_property_constants_2_Modules"></a>
+  <div class="permalink"><a href="#subgroup_property_constants_2_Modules" class="permalink fas fa-link"></a></div>
+  <p>Modules</p>
+
+</h4>
+</div>
+
+
+
+<div class="heading">
+<h5>
+  <a name="module_error_codes_for_rst_stream_and_goaway" id="module_error_codes_for_rst_stream_and_goaway"></a>
+  <div class="permalink"><a href="#module_error_codes_for_rst_stream_and_goaway" class="permalink fas fa-link"></a></div>
+  <p>Error Codes for RST_STREAM and GOAWAY</p>
+
+</h5>
+</div>
+
+<p><a id="error_codes"></a></p>
 <table>
 <thead>
 <tr>
@@ -1415,15 +1924,22 @@ HTTP1. However, there are <code>&#39;socketError&#39;</code>, <code>&#39;session
 </table>
 <p>The <code>&#39;timeout&#39;</code> event is emitted when there is no activity on the Server for
 a given number of milliseconds set using <code>http2server.setTimeout()</code>.</p>
-</section></section></section>
-       <div class="heading">
-          <h3>
-            <a name="property_selectPadding_" id="property_selectPadding_"></a>
-            <div class="permalink"><a href="#property_selectPadding_" class="permalink fas fa-link"></a></div>
-            <p>Using <code>options.selectPadding</code></p>
 
-          </h1>
-        </div><section><p>When <code>options.paddingStrategy</code> is equal to
+
+</div><div class='expandable-header' id='property_selectPadding_-expand'>
+<div class="heading">
+    <h3>
+        <a name="property_selectPadding_" id="property_selectPadding_"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_selectPadding_-expand-icon"></i>
+        <div class="permalink"><a href="#property_selectPadding_" class="permalink fas fa-link"></a></div>
+        <p>Using <code>options.selectPadding</code></p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='property_selectPadding_-expand-content'>
+<p>When <code>options.paddingStrategy</code> is equal to
 <code>http2.constants.PADDING_STRATEGY_CALLBACK</code>, the HTTP/2 implementation will
 consult the <code>options.selectPadding</code> callback function, if provided, to determine
 the specific amount of padding to use per HEADERS and DATA frame.</p>
@@ -1441,15 +1957,22 @@ const server = http2.createServer({
 <p><em>Note</em>: The <code>options.selectPadding</code> function is invoked once for <em>every</em>
 HEADERS and DATA frame. This has a definite noticeable impact on
 performance.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_createServer_1" id="method_createServer_1"></a>
-            <div class="permalink"><a href="#method_createServer_1" class="permalink fas fa-link"></a></div>
-            <p>http2.createServer(options[, onRequestHandler])</p>
 
-          </h1>
-        </div><section><p><p>Returns a <code>net.Server</code> instance that creates and manages <code>Http2Session</code>
+
+</div><div class='expandable-header' id='method_createServer_1-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_createServer_1" id="method_createServer_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createServer_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_createServer_1" class="permalink fas fa-link"></a></div>
+        <p>http2.createServer(options[, onRequestHandler])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createServer_1-expand-content'>
+<p><p>Returns a <code>net.Server</code> instance that creates and manages <code>Http2Session</code>
 instances.</p></p>
 <pre class="prettyprint"><code class="lang-js">const http2 = require(&#39;http2&#39;);
 
@@ -1466,15 +1989,22 @@ server.on(&#39;stream&#39;, (stream, headers) =&gt; {
 
 server.listen(80);
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_createSecureServer" id="method_createSecureServer"></a>
-            <div class="permalink"><a href="#method_createSecureServer" class="permalink fas fa-link"></a></div>
-            <p>http2.createSecureServer(options[, onRequestHandler])</p>
 
-          </h1>
-        </div><section><p><p>Returns a <code>tls.Server</code> instance that creates and manages <code>Http2Session</code>
+
+</div><div class='expandable-header' id='method_createSecureServer-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_createSecureServer" id="method_createSecureServer"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createSecureServer-expand-icon"></i>
+        <div class="permalink"><a href="#method_createSecureServer" class="permalink fas fa-link"></a></div>
+        <p>http2.createSecureServer(options[, onRequestHandler])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createSecureServer-expand-content'>
+<p><p>Returns a <code>tls.Server</code> instance that creates and manages <code>Http2Session</code>
 instances.</p></p>
 <pre class="prettyprint"><code class="lang-js">const http2 = require(&#39;http2&#39;);
 
@@ -1496,15 +2026,22 @@ server.on(&#39;stream&#39;, (stream, headers) =&gt; {
 
 server.listen(80);
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_connect" id="method_connect"></a>
-            <div class="permalink"><a href="#method_connect" class="permalink fas fa-link"></a></div>
-            <p>http2.connect(authority[, options][, listener])</p>
 
-          </h1>
-        </div><section><p><p>Returns a <code>ClientHttp2Session</code> instance.</p></p>
+
+</div><div class='expandable-header' id='method_connect-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_connect" id="method_connect"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_connect-expand-icon"></i>
+        <div class="permalink"><a href="#method_connect" class="permalink fas fa-link"></a></div>
+        <p>http2.connect(authority[, options][, listener])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_connect-expand-content'>
+<p><p>Returns a <code>ClientHttp2Session</code> instance.</p></p>
 <pre class="prettyprint"><code class="lang-js">const http2 = require(&#39;http2&#39;);
 const client = http2.connect(&#39;https://localhost:1234&#39;);
 
@@ -1512,26 +2049,40 @@ const client = http2.connect(&#39;https://localhost:1234&#39;);
 
 client.close();
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_getDefaultSettings" id="method_getDefaultSettings"></a>
-            <div class="permalink"><a href="#method_getDefaultSettings" class="permalink fas fa-link"></a></div>
-            <p>http2.getDefaultSettings()</p>
 
-          </h1>
-        </div><section><p>Returns an object containing the default settings for an <code>Http2Session</code>
+
+</div><div class='expandable-header' id='method_getDefaultSettings-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_getDefaultSettings" id="method_getDefaultSettings"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getDefaultSettings-expand-icon"></i>
+        <div class="permalink"><a href="#method_getDefaultSettings" class="permalink fas fa-link"></a></div>
+        <p>http2.getDefaultSettings()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getDefaultSettings-expand-content'>
+<p>Returns an object containing the default settings for an <code>Http2Session</code>
 instance. This method returns a new object instance every time it is called
 so instances returned may be safely modified for use.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_getPackedSettings" id="method_getPackedSettings"></a>
-            <div class="permalink"><a href="#method_getPackedSettings" class="permalink fas fa-link"></a></div>
-            <p>http2.getPackedSettings(settings)</p>
 
-          </h1>
-        </div><section><p><p>Returns a <code>Buffer</code> instance containing serialized representation of the given
+
+</div><div class='expandable-header' id='method_getPackedSettings-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_getPackedSettings" id="method_getPackedSettings"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getPackedSettings-expand-icon"></i>
+        <div class="permalink"><a href="#method_getPackedSettings" class="permalink fas fa-link"></a></div>
+        <p>http2.getPackedSettings(settings)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getPackedSettings-expand-content'>
+<p><p>Returns a <code>Buffer</code> instance containing serialized representation of the given
 HTTP/2 settings as specified in the <a href="https://tools.ietf.org/html/rfc7540">HTTP/2</a> specification. This is intended
 for use with the <code>HTTP2-Settings</code> header field.</p></p>
 <pre class="prettyprint"><code class="lang-js">const http2 = require(&#39;http2&#39;);
@@ -1541,25 +2092,36 @@ const packed = http2.getPackedSettings({ enablePush: false });
 console.log(packed.toString(&#39;base64&#39;));
 // Prints: AAIAAAAA
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_getUnpackedSettings" id="method_getUnpackedSettings"></a>
-            <div class="permalink"><a href="#method_getUnpackedSettings" class="permalink fas fa-link"></a></div>
-            <p>http2.getUnpackedSettings(buf)</p>
 
-          </h1>
-        </div><section><p>Returns a <a href="#http2_settings_object">HTTP2 Settings Object</a> containing the deserialized settings from
+
+</div><div class='expandable-header' id='method_getUnpackedSettings-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_getUnpackedSettings" id="method_getUnpackedSettings"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getUnpackedSettings-expand-icon"></i>
+        <div class="permalink"><a href="#method_getUnpackedSettings" class="permalink fas fa-link"></a></div>
+        <p>http2.getUnpackedSettings(buf)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getUnpackedSettings-expand-content'>
+<p>Returns a <a href="#http2_settings_object">HTTP2 Settings Object</a> containing the deserialized settings from
 the given <code>Buffer</code> as generated by <code>http2.getPackedSettings()</code>.</p>
-</section></section>
-       <div class="heading">
-          <h2>
-            <a name="module_compatibility_api" id="module_compatibility_api"></a>
-            <div class="permalink"><a href="#module_compatibility_api" class="permalink fas fa-link"></a></div>
-            <p>Compatibility API</p>
 
-          </h1>
-        </div><section><p>The Compatibility API has the goal of providing a similar developer experience
+
+</div>
+<div class="heading">
+<h2>
+  <a name="module_compatibility_api" id="module_compatibility_api"></a>
+  <div class="permalink"><a href="#module_compatibility_api" class="permalink fas fa-link"></a></div>
+  <p>Compatibility API</p>
+
+</h2>
+</div>
+
+<p>The Compatibility API has the goal of providing a similar developer experience
 of HTTP/1 when using HTTP/2, making it possible to develop applications
 that support both <a href="http.html">HTTP/1</a> and HTTP/2. This API targets only the
 <strong>public API</strong> of the <a href="http.html">HTTP/1</a>. However many modules use internal
@@ -1583,14 +2145,17 @@ Upgrading from non-tls HTTP/1 servers is not supported.</p>
 they do not hide the differences between the protocols. As an example,
 the status message for HTTP codes is ignored.</p>
 
-       <div class="heading">
-          <h3>
-            <a name="module_alpn_negotiation" id="module_alpn_negotiation"></a>
-            <div class="permalink"><a href="#module_alpn_negotiation" class="permalink fas fa-link"></a></div>
-            <p>ALPN negotiation</p>
 
-          </h1>
-        </div><section><p>ALPN negotiation allows supporting both <a href="https.html">HTTPS</a> and HTTP/2 over
+<div class="heading">
+<h3>
+  <a name="module_alpn_negotiation" id="module_alpn_negotiation"></a>
+  <div class="permalink"><a href="#module_alpn_negotiation" class="permalink fas fa-link"></a></div>
+  <p>ALPN negotiation</p>
+
+</h3>
+</div>
+
+<p>ALPN negotiation allows supporting both <a href="https.html">HTTPS</a> and HTTP/2 over
 the same socket. The <code>req</code> and <code>res</code> objects can be either HTTP/1 or
 HTTP/2, and an application <strong>must</strong> restrict itself to the public API of
 <a href="http.html">HTTP/1</a>, and detect if it is possible to use the more advanced
@@ -1620,29 +2185,52 @@ function onRequest(req, res) {
 </code></pre>
 <p>The <code>&#39;request&#39;</code> event works identically on both <a href="https.html">HTTPS</a> and
 HTTP/2.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="class_http2_Http2ServerRequest" id="class_http2_Http2ServerRequest"></a>
-            <div class="permalink"><a href="#class_http2_Http2ServerRequest" class="permalink fas fa-link"></a></div>
-            <p>Class: http2.Http2ServerRequest</p>
 
-          </h1>
-        </div><section><p>A <code>Http2ServerRequest</code> object is created by <a href="#http2_class_http2server"><code>http2.Server</code></a> or
+<div class='expandable-header' id='class_http2_Http2ServerRequest-expand'>
+<div class="heading">
+    <h3>
+        <a name="class_http2_Http2ServerRequest" id="class_http2_Http2ServerRequest"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_http2_Http2ServerRequest-expand-icon"></i>
+        <div class="permalink"><a href="#class_http2_Http2ServerRequest" class="permalink fas fa-link"></a></div>
+        <p>Class: http2.Http2ServerRequest</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='class_http2_Http2ServerRequest-expand-content'>
+<p>A <code>Http2ServerRequest</code> object is created by <a href="#http2_class_http2server"><code>http2.Server</code></a> or
 <a href="#http2_class_http2secureserver"><code>http2.SecureServer</code></a> and passed as the first argument to the
 <a href="#http2_event_request"><code>&#39;request&#39;</code></a> event. It may be used to access a request status, headers, and
 data.</p>
 <p>It implements the <a href="stream.html#stream_class_stream_readable">Readable Stream</a> interface, as well as the
 following additional events, methods, and properties.</p>
-<section>
-       <div class="heading">
-          <h5>
-            <a name="property_headers_1" id="property_headers_1"></a>
-            <div class="permalink"><a href="#property_headers_1" class="permalink fas fa-link"></a></div>
-            <p><code>headers</code> {Object} </p>
 
-          </h1>
-        </div><section><p><p>The request/response headers object.</p></p>
+
+<div class="heading">
+<h4>
+  <a name="subgroup_class_http2_Http2ServerRequest_Properties" id="subgroup_class_http2_Http2ServerRequest_Properties"></a>
+  <div class="permalink"><a href="#subgroup_class_http2_Http2ServerRequest_Properties" class="permalink fas fa-link"></a></div>
+  <p>Properties</p>
+
+</h4>
+</div>
+
+
+<div class='expandable-header' id='property_headers_1-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_headers_1" id="property_headers_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_headers_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_headers_1" class="permalink fas fa-link"></a></div>
+        <p><code>headers</code> {Object} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_headers_1-expand-content'>
+<p><p>The request/response headers object.</p></p>
 <p><p>Key-value pairs of header names and values. Header names are lower-cased.
 Example:</p></p>
 <pre class="prettyprint"><code class="lang-js">// Prints something like:
@@ -1662,38 +2250,59 @@ to occur:</p>
 <pre class="prettyprint"><code class="lang-js">removeAllHeaders(request.headers);
 assert(request.url);   // Fails because the :path header has been removed
 </code></pre>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_httpVersion_1" id="property_httpVersion_1"></a>
-            <div class="permalink"><a href="#property_httpVersion_1" class="permalink fas fa-link"></a></div>
-            <p><code>httpVersion</code> {string} </p>
 
-          </h1>
-        </div><section><p>In case of server request, the HTTP version sent by the client. In the case of
+
+</div><div class='expandable-header' id='property_httpVersion_1-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_httpVersion_1" id="property_httpVersion_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_httpVersion_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_httpVersion_1" class="permalink fas fa-link"></a></div>
+        <p><code>httpVersion</code> {string} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_httpVersion_1-expand-content'>
+<p>In case of server request, the HTTP version sent by the client. In the case of
 client response, the HTTP version of the connected-to server. Returns
 <code>&#39;2.0&#39;</code>.</p>
 <p>Also <code>message.httpVersionMajor</code> is the first integer and
 <code>message.httpVersionMinor</code> is the second.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_method_1" id="property_method_1"></a>
-            <div class="permalink"><a href="#property_method_1" class="permalink fas fa-link"></a></div>
-            <p><code>method</code> {string} </p>
 
-          </h1>
-        </div><section><p>The request method as a string. Read-only. Example:
+
+</div><div class='expandable-header' id='property_method_1-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_method_1" id="property_method_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_method_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_method_1" class="permalink fas fa-link"></a></div>
+        <p><code>method</code> {string} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_method_1-expand-content'>
+<p>The request method as a string. Read-only. Example:
 <code>&#39;GET&#39;</code>, <code>&#39;DELETE&#39;</code>.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_rawHeaders_1" id="property_rawHeaders_1"></a>
-            <div class="permalink"><a href="#property_rawHeaders_1" class="permalink fas fa-link"></a></div>
-            <p><code>rawHeaders</code> {Array} </p>
 
-          </h1>
-        </div><section><p><p>The raw request/response headers list exactly as they were received.</p></p>
+
+</div><div class='expandable-header' id='property_rawHeaders_1-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_rawHeaders_1" id="property_rawHeaders_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_rawHeaders_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_rawHeaders_1" class="permalink fas fa-link"></a></div>
+        <p><code>rawHeaders</code> {Array} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_rawHeaders_1-expand-content'>
+<p><p>The raw request/response headers list exactly as they were received.</p></p>
 <p><p>Note that the keys and values are in the same list.  It is <em>not</em> a
 list of tuples.  So, the even-numbered offsets are key values, and the
 odd-numbered offsets are the associated values.</p></p>
@@ -1710,25 +2319,39 @@ odd-numbered offsets are the associated values.</p></p>
 //   &#39;*/*&#39; ]
 console.log(request.rawHeaders);
 </code></pre>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_rawTrailers_1" id="property_rawTrailers_1"></a>
-            <div class="permalink"><a href="#property_rawTrailers_1" class="permalink fas fa-link"></a></div>
-            <p><code>rawTrailers</code> {Array} </p>
 
-          </h1>
-        </div><section><p>The raw request/response trailer keys and values exactly as they were
+
+</div><div class='expandable-header' id='property_rawTrailers_1-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_rawTrailers_1" id="property_rawTrailers_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_rawTrailers_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_rawTrailers_1" class="permalink fas fa-link"></a></div>
+        <p><code>rawTrailers</code> {Array} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_rawTrailers_1-expand-content'>
+<p>The raw request/response trailer keys and values exactly as they were
 received.  Only populated at the <code>&#39;end&#39;</code> event.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_socket_4" id="property_socket_4"></a>
-            <div class="permalink"><a href="#property_socket_4" class="permalink fas fa-link"></a></div>
-            <p><code>socket</code> {net.Socket|tls.TLSSocket} </p>
 
-          </h1>
-        </div><section><p>Returns a Proxy object that acts as a <code>net.Socket</code> (or <code>tls.TLSSocket</code>) but
+
+</div><div class='expandable-header' id='property_socket_4-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_socket_4" id="property_socket_4"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_socket_4-expand-icon"></i>
+        <div class="permalink"><a href="#property_socket_4" class="permalink fas fa-link"></a></div>
+        <p><code>socket</code> {net.Socket|tls.TLSSocket} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_socket_4-expand-content'>
+<p>Returns a Proxy object that acts as a <code>net.Socket</code> (or <code>tls.TLSSocket</code>) but
 applies getters, setters, and methods based on HTTP/2 logic.</p>
 <p><code>destroyed</code>, <code>readable</code>, and <code>writable</code> properties will be retrieved from and
 set on <code>request.stream</code>.</p>
@@ -1741,33 +2364,54 @@ more information.</p>
 <p>All other interactions will be routed directly to the socket. With TLS support,
 use <a href="tls.html#tls_tlssocket_getpeercertificate_detailed"><code>request.socket.getPeerCertificate()</code></a> to obtain the client&#39;s
 authentication details.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_stream" id="property_stream"></a>
-            <div class="permalink"><a href="#property_stream" class="permalink fas fa-link"></a></div>
-            <p><code>stream</code> {http2.Http2Stream} </p>
 
-          </h1>
-        </div><section><p>The <a href="#http2_class_http2stream"><code>Http2Stream</code></a> object backing the request.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_trailers_1" id="property_trailers_1"></a>
-            <div class="permalink"><a href="#property_trailers_1" class="permalink fas fa-link"></a></div>
-            <p><code>trailers</code> {Object} </p>
 
-          </h1>
-        </div><section><p>The request/response trailers object. Only populated at the <code>&#39;end&#39;</code> event.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_url_1" id="property_url_1"></a>
-            <div class="permalink"><a href="#property_url_1" class="permalink fas fa-link"></a></div>
-            <p><code>url</code> {string} </p>
+</div><div class='expandable-header' id='property_stream-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_stream" id="property_stream"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_stream-expand-icon"></i>
+        <div class="permalink"><a href="#property_stream" class="permalink fas fa-link"></a></div>
+        <p><code>stream</code> {http2.Http2Stream} </p>
 
-          </h1>
-        </div><section><p><p>Request URL string. This contains only the URL that is
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_stream-expand-content'>
+<p>The <a href="#http2_class_http2stream"><code>Http2Stream</code></a> object backing the request.</p>
+
+
+</div><div class='expandable-header' id='property_trailers_1-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_trailers_1" id="property_trailers_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_trailers_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_trailers_1" class="permalink fas fa-link"></a></div>
+        <p><code>trailers</code> {Object} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_trailers_1-expand-content'>
+<p>The request/response trailers object. Only populated at the <code>&#39;end&#39;</code> event.</p>
+
+
+</div><div class='expandable-header' id='property_url_1-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_url_1" id="property_url_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_url_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_url_1" class="permalink fas fa-link"></a></div>
+        <p><code>url</code> {string} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_url_1-expand-content'>
+<p><p>Request URL string. This contains only the URL that is
 present in the actual HTTP request. If the request is:</p></p>
 <pre class="prettyprint"><code class="lang-txt">GET /status?name=ryan HTTP/1.1\r\n
 Accept: text/plain\r\n
@@ -1815,27 +2459,52 @@ Url {
   path: &#39;/status?name=ryan&#39;,
   href: &#39;/status?name=ryan&#39; }
 </code></pre>
-</section></section><section>
-       <div class="heading">
-          <h5>
-            <a name="method_destroy_3" id="method_destroy_3"></a>
-            <div class="permalink"><a href="#method_destroy_3" class="permalink fas fa-link"></a></div>
-            <p>request.destroy([error])</p>
 
-          </h1>
-        </div><section><p>Calls <code>destroy()</code> on the <a href="#http2_class_http2stream"><code>Http2Stream</code></a> that received
+
+</div>
+<div class="heading">
+<h4>
+  <a name="subgroup_class_http2_Http2ServerRequest_Methods" id="subgroup_class_http2_Http2ServerRequest_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_http2_Http2ServerRequest_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h4>
+</div>
+
+
+<div class='expandable-header' id='method_destroy_3-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_destroy_3" id="method_destroy_3"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_destroy_3-expand-icon"></i>
+        <div class="permalink"><a href="#method_destroy_3" class="permalink fas fa-link"></a></div>
+        <p>request.destroy([error])</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_destroy_3-expand-content'>
+<p>Calls <code>destroy()</code> on the <a href="#http2_class_http2stream"><code>Http2Stream</code></a> that received
 the <a href="#http2_class_http2_http2serverrequest"><code>Http2ServerRequest</code></a>. If <code>error</code> is provided, an <code>&#39;error&#39;</code> event
 is emitted and <code>error</code> is passed as an argument to any listeners on the event.</p>
 <p>It does nothing if the stream was already destroyed.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_setTimeout_6" id="method_setTimeout_6"></a>
-            <div class="permalink"><a href="#method_setTimeout_6" class="permalink fas fa-link"></a></div>
-            <p>request.setTimeout(msecs, callback)</p>
 
-          </h1>
-        </div><section><p>Sets the <a href=""><code>Http2Stream</code></a>&#39;s timeout value to <code>msecs</code>.  If a callback is
+
+</div><div class='expandable-header' id='method_setTimeout_6-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_setTimeout_6" id="method_setTimeout_6"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setTimeout_6-expand-icon"></i>
+        <div class="permalink"><a href="#method_setTimeout_6" class="permalink fas fa-link"></a></div>
+        <p>request.setTimeout(msecs, callback)</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setTimeout_6-expand-content'>
+<p>Sets the <a href=""><code>Http2Stream</code></a>&#39;s timeout value to <code>msecs</code>.  If a callback is
 provided, then it is added as a listener on the <code>&#39;timeout&#39;</code> event on
 the response object.</p>
 <p>If no <code>&#39;timeout&#39;</code> listener is added to the request, the response, or
@@ -1843,67 +2512,120 @@ the server, then <a href=""><code>Http2Stream</code></a>s are destroyed when the
 handler is assigned to the request, the response, or the server&#39;s <code>&#39;timeout&#39;</code>
 events, timed out sockets must be handled explicitly.</p>
 <p>Returns <code>request</code>.</p>
-</section></section></section>
-       <div class="heading">
-          <h3>
-            <a name="class_http2_Http2ServerResponse" id="class_http2_Http2ServerResponse"></a>
-            <div class="permalink"><a href="#class_http2_Http2ServerResponse" class="permalink fas fa-link"></a></div>
-            <p>Class: http2.Http2ServerResponse</p>
 
-          </h1>
-        </div><section><p>This object is created internally by an HTTP server--not by the user. It is
+
+</div>
+</div><div class='expandable-header' id='class_http2_Http2ServerResponse-expand'>
+<div class="heading">
+    <h3>
+        <a name="class_http2_Http2ServerResponse" id="class_http2_Http2ServerResponse"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_http2_Http2ServerResponse-expand-icon"></i>
+        <div class="permalink"><a href="#class_http2_Http2ServerResponse" class="permalink fas fa-link"></a></div>
+        <p>Class: http2.Http2ServerResponse</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='class_http2_Http2ServerResponse-expand-content'>
+<p>This object is created internally by an HTTP server--not by the user. It is
 passed as the second parameter to the <a href="#http2_event_request"><code>&#39;request&#39;</code></a> event.</p>
 <p>The response implements, but does not inherit from, the <a href="stream.html#stream_writable_streams">Writable Stream</a>
 interface. This is an <a href="events.html"><code>EventEmitter</code></a> with the following events:</p>
-<section>
-       <div class="heading">
-          <h5>
-            <a name="property_connection_2" id="property_connection_2"></a>
-            <div class="permalink"><a href="#property_connection_2" class="permalink fas fa-link"></a></div>
-            <p><code>connection</code> {net.Socket|tls.TLSSocket} </p>
 
-          </h1>
-        </div><section><p>See <a href="#http2_response_socket"><code>response.socket</code></a>.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_finished_1" id="property_finished_1"></a>
-            <div class="permalink"><a href="#property_finished_1" class="permalink fas fa-link"></a></div>
-            <p><code>finished</code> {boolean} </p>
 
-          </h1>
-        </div><section><p>Boolean value that indicates whether the response has completed. Starts
+<div class="heading">
+<h4>
+  <a name="subgroup_class_http2_Http2ServerResponse_Properties" id="subgroup_class_http2_Http2ServerResponse_Properties"></a>
+  <div class="permalink"><a href="#subgroup_class_http2_Http2ServerResponse_Properties" class="permalink fas fa-link"></a></div>
+  <p>Properties</p>
+
+</h4>
+</div>
+
+
+<div class='expandable-header' id='property_connection_2-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_connection_2" id="property_connection_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_connection_2-expand-icon"></i>
+        <div class="permalink"><a href="#property_connection_2" class="permalink fas fa-link"></a></div>
+        <p><code>connection</code> {net.Socket|tls.TLSSocket} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_connection_2-expand-content'>
+<p>See <a href="#http2_response_socket"><code>response.socket</code></a>.</p>
+
+
+</div><div class='expandable-header' id='property_finished_1-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_finished_1" id="property_finished_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_finished_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_finished_1" class="permalink fas fa-link"></a></div>
+        <p><code>finished</code> {boolean} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_finished_1-expand-content'>
+<p>Boolean value that indicates whether the response has completed. Starts
 as <code>false</code>. After <a href="#http2_response_end_data_encoding_callback"><code>response.end()</code></a> executes, the value will be <code>true</code>.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_headersSent_2" id="property_headersSent_2"></a>
-            <div class="permalink"><a href="#property_headersSent_2" class="permalink fas fa-link"></a></div>
-            <p><code>headersSent</code> {boolean} </p>
 
-          </h1>
-        </div><section><p>Boolean (read-only). True if headers were sent, false otherwise.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_sendDate_1" id="property_sendDate_1"></a>
-            <div class="permalink"><a href="#property_sendDate_1" class="permalink fas fa-link"></a></div>
-            <p><code>sendDate</code> {boolean} </p>
 
-          </h1>
-        </div><section><p>When true, the Date header will be automatically generated and sent in
+</div><div class='expandable-header' id='property_headersSent_2-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_headersSent_2" id="property_headersSent_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_headersSent_2-expand-icon"></i>
+        <div class="permalink"><a href="#property_headersSent_2" class="permalink fas fa-link"></a></div>
+        <p><code>headersSent</code> {boolean} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_headersSent_2-expand-content'>
+<p>Boolean (read-only). True if headers were sent, false otherwise.</p>
+
+
+</div><div class='expandable-header' id='property_sendDate_1-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_sendDate_1" id="property_sendDate_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_sendDate_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_sendDate_1" class="permalink fas fa-link"></a></div>
+        <p><code>sendDate</code> {boolean} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_sendDate_1-expand-content'>
+<p>When true, the Date header will be automatically generated and sent in
 the response if it is not already present in the headers. Defaults to true.</p>
 <p>This should only be disabled for testing; HTTP requires the Date header
 in responses.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_socket_5" id="property_socket_5"></a>
-            <div class="permalink"><a href="#property_socket_5" class="permalink fas fa-link"></a></div>
-            <p><code>socket</code> {net.Socket|tls.TLSSocket} </p>
 
-          </h1>
-        </div><section><p><p>Returns a Proxy object that acts as a <code>net.Socket</code> (or <code>tls.TLSSocket</code>) but
+
+</div><div class='expandable-header' id='property_socket_5-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_socket_5" id="property_socket_5"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_socket_5-expand-icon"></i>
+        <div class="permalink"><a href="#property_socket_5" class="permalink fas fa-link"></a></div>
+        <p><code>socket</code> {net.Socket|tls.TLSSocket} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_socket_5-expand-content'>
+<p><p>Returns a Proxy object that acts as a <code>net.Socket</code> (or <code>tls.TLSSocket</code>) but
 applies getters, setters, and methods based on HTTP/2 logic.</p></p>
 <p><p><code>destroyed</code>, <code>readable</code>, and <code>writable</code> properties will be retrieved from and
 set on <code>response.stream</code>.</p></p>
@@ -1922,15 +2644,22 @@ const server = http2.createServer((req, res) =&gt; {
   res.end(`Your IP address is ${ip} and your source port is ${port}.`);
 }).listen(3000);
 </code></pre>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_statusCode_2" id="property_statusCode_2"></a>
-            <div class="permalink"><a href="#property_statusCode_2" class="permalink fas fa-link"></a></div>
-            <p><code>statusCode</code> {number} </p>
 
-          </h1>
-        </div><section><p>When using implicit headers (not calling <a href="#http2_response_writehead_statuscode_statusmessage_headers"><code>response.writeHead()</code></a> explicitly),
+
+</div><div class='expandable-header' id='property_statusCode_2-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_statusCode_2" id="property_statusCode_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_statusCode_2-expand-icon"></i>
+        <div class="permalink"><a href="#property_statusCode_2" class="permalink fas fa-link"></a></div>
+        <p><code>statusCode</code> {number} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_statusCode_2-expand-content'>
+<p>When using implicit headers (not calling <a href="#http2_response_writehead_statuscode_statusmessage_headers"><code>response.writeHead()</code></a> explicitly),
 this property controls the status code that will be sent to the client when
 the headers get flushed.</p>
 <p>Example:</p>
@@ -1938,74 +2667,127 @@ the headers get flushed.</p>
 </code></pre>
 <p>After response header was sent to the client, this property indicates the
 status code which was sent out.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_statusMessage_2" id="property_statusMessage_2"></a>
-            <div class="permalink"><a href="#property_statusMessage_2" class="permalink fas fa-link"></a></div>
-            <p><code>statusMessage</code> {string} </p>
 
-          </h1>
-        </div><section><p>Status message is not supported by HTTP/2 (RFC7540 8.1.2.4). It returns
+
+</div><div class='expandable-header' id='property_statusMessage_2-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_statusMessage_2" id="property_statusMessage_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_statusMessage_2-expand-icon"></i>
+        <div class="permalink"><a href="#property_statusMessage_2" class="permalink fas fa-link"></a></div>
+        <p><code>statusMessage</code> {string} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_statusMessage_2-expand-content'>
+<p>Status message is not supported by HTTP/2 (RFC7540 8.1.2.4). It returns
 an empty string.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="property_stream_1" id="property_stream_1"></a>
-            <div class="permalink"><a href="#property_stream_1" class="permalink fas fa-link"></a></div>
-            <p><code>stream</code> {http2.Http2Stream} </p>
 
-          </h1>
-        </div><section><p>The <a href="#http2_class_http2stream"><code>Http2Stream</code></a> object backing the response.</p>
-</section></section><section>
-       <div class="heading">
-          <h5>
-            <a name="method_addTrailers_1" id="method_addTrailers_1"></a>
-            <div class="permalink"><a href="#method_addTrailers_1" class="permalink fas fa-link"></a></div>
-            <p>response.addTrailers(headers)</p>
 
-          </h1>
-        </div><section><p>This method adds HTTP trailing headers (a header but at the end of the
+</div><div class='expandable-header' id='property_stream_1-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_stream_1" id="property_stream_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_stream_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_stream_1" class="permalink fas fa-link"></a></div>
+        <p><code>stream</code> {http2.Http2Stream} </p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_stream_1-expand-content'>
+<p>The <a href="#http2_class_http2stream"><code>Http2Stream</code></a> object backing the response.</p>
+
+
+</div>
+<div class="heading">
+<h4>
+  <a name="subgroup_class_http2_Http2ServerResponse_Methods" id="subgroup_class_http2_Http2ServerResponse_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_http2_Http2ServerResponse_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h4>
+</div>
+
+
+<div class='expandable-header' id='method_addTrailers_1-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_addTrailers_1" id="method_addTrailers_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_addTrailers_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_addTrailers_1" class="permalink fas fa-link"></a></div>
+        <p>response.addTrailers(headers)</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_addTrailers_1-expand-content'>
+<p>This method adds HTTP trailing headers (a header but at the end of the
 message) to the response.</p>
 <p>Attempting to set a header field name or value that contains invalid characters
 will result in a <a href="errors.html#errors_class_typeerror"><code>TypeError</code></a> being thrown.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_end_2" id="method_end_2"></a>
-            <div class="permalink"><a href="#method_end_2" class="permalink fas fa-link"></a></div>
-            <p>response.end([data][, encoding][, callback])</p>
 
-          </h1>
-        </div><section><p>This method signals to the server that all of the response headers and body
+
+</div><div class='expandable-header' id='method_end_2-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_end_2" id="method_end_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_end_2-expand-icon"></i>
+        <div class="permalink"><a href="#method_end_2" class="permalink fas fa-link"></a></div>
+        <p>response.end([data][, encoding][, callback])</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_end_2-expand-content'>
+<p>This method signals to the server that all of the response headers and body
 have been sent; that server should consider this message complete.
 The method, <code>response.end()</code>, MUST be called on each response.</p>
 <p>If <code>data</code> is specified, it is equivalent to calling
 <a href="http.html#http_response_write_chunk_encoding_callback"><code>response.write(data, encoding)</code></a> followed by <code>response.end(callback)</code>.</p>
 <p>If <code>callback</code> is specified, it will be called when the response stream
 is finished.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_getHeader_2" id="method_getHeader_2"></a>
-            <div class="permalink"><a href="#method_getHeader_2" class="permalink fas fa-link"></a></div>
-            <p>response.getHeader(name)</p>
 
-          </h1>
-        </div><section><p><p>Reads out a header that has already been queued but not sent to the client.
+
+</div><div class='expandable-header' id='method_getHeader_2-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_getHeader_2" id="method_getHeader_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getHeader_2-expand-icon"></i>
+        <div class="permalink"><a href="#method_getHeader_2" class="permalink fas fa-link"></a></div>
+        <p>response.getHeader(name)</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getHeader_2-expand-content'>
+<p><p>Reads out a header that has already been queued but not sent to the client.
 Note that the name is case insensitive.</p></p>
 <p><p>Example:</p></p>
 <pre class="prettyprint"><code class="lang-js">const contentType = response.getHeader(&#39;content-type&#39;);
 </code></pre>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_getHeaderNames_1" id="method_getHeaderNames_1"></a>
-            <div class="permalink"><a href="#method_getHeaderNames_1" class="permalink fas fa-link"></a></div>
-            <p>response.getHeaderNames()</p>
 
-          </h1>
-        </div><section><p><p>Returns an array containing the unique names of the current outgoing headers.
+
+</div><div class='expandable-header' id='method_getHeaderNames_1-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_getHeaderNames_1" id="method_getHeaderNames_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getHeaderNames_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_getHeaderNames_1" class="permalink fas fa-link"></a></div>
+        <p>response.getHeaderNames()</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getHeaderNames_1-expand-content'>
+<p><p>Returns an array containing the unique names of the current outgoing headers.
 All header names are lowercase.</p></p>
 <p><p>Example:</p></p>
 <pre class="prettyprint"><code class="lang-js">response.setHeader(&#39;Foo&#39;, &#39;bar&#39;);
@@ -2014,15 +2796,22 @@ response.setHeader(&#39;Set-Cookie&#39;, [&#39;foo=bar&#39;, &#39;bar=baz&#39;])
 const headerNames = response.getHeaderNames();
 // headerNames === [&#39;foo&#39;, &#39;set-cookie&#39;]
 </code></pre>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_getHeaders_1" id="method_getHeaders_1"></a>
-            <div class="permalink"><a href="#method_getHeaders_1" class="permalink fas fa-link"></a></div>
-            <p>response.getHeaders()</p>
 
-          </h1>
-        </div><section><p><p>Returns a shallow copy of the current outgoing headers. Since a shallow copy
+
+</div><div class='expandable-header' id='method_getHeaders_1-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_getHeaders_1" id="method_getHeaders_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getHeaders_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_getHeaders_1" class="permalink fas fa-link"></a></div>
+        <p>response.getHeaders()</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getHeaders_1-expand-content'>
+<p><p>Returns a shallow copy of the current outgoing headers. Since a shallow copy
 is used, array values may be mutated without additional calls to various
 header-related http module methods. The keys of the returned object are the
 header names and the values are the respective header values. All header names
@@ -2038,40 +2827,61 @@ response.setHeader(&#39;Set-Cookie&#39;, [&#39;foo=bar&#39;, &#39;bar=baz&#39;])
 const headers = response.getHeaders();
 // headers === { foo: &#39;bar&#39;, &#39;set-cookie&#39;: [&#39;foo=bar&#39;, &#39;bar=baz&#39;] }
 </code></pre>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_hasHeader_1" id="method_hasHeader_1"></a>
-            <div class="permalink"><a href="#method_hasHeader_1" class="permalink fas fa-link"></a></div>
-            <p>response.hasHeader(name)</p>
 
-          </h1>
-        </div><section><p><p>Returns <code>true</code> if the header identified by <code>name</code> is currently set in the
+
+</div><div class='expandable-header' id='method_hasHeader_1-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_hasHeader_1" id="method_hasHeader_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_hasHeader_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_hasHeader_1" class="permalink fas fa-link"></a></div>
+        <p>response.hasHeader(name)</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_hasHeader_1-expand-content'>
+<p><p>Returns <code>true</code> if the header identified by <code>name</code> is currently set in the
 outgoing headers. Note that the header name matching is case-insensitive.</p></p>
 <p><p>Example:</p></p>
 <pre class="prettyprint"><code class="lang-js">const hasContentType = response.hasHeader(&#39;content-type&#39;);
 </code></pre>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_removeHeader_2" id="method_removeHeader_2"></a>
-            <div class="permalink"><a href="#method_removeHeader_2" class="permalink fas fa-link"></a></div>
-            <p>response.removeHeader(name)</p>
 
-          </h1>
-        </div><section><p><p>Removes a header that has been queued for implicit sending.</p></p>
+
+</div><div class='expandable-header' id='method_removeHeader_2-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_removeHeader_2" id="method_removeHeader_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_removeHeader_2-expand-icon"></i>
+        <div class="permalink"><a href="#method_removeHeader_2" class="permalink fas fa-link"></a></div>
+        <p>response.removeHeader(name)</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_removeHeader_2-expand-content'>
+<p><p>Removes a header that has been queued for implicit sending.</p></p>
 <p><p>Example:</p></p>
 <pre class="prettyprint"><code class="lang-js">response.removeHeader(&#39;Content-Encoding&#39;);
 </code></pre>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_setHeader_2" id="method_setHeader_2"></a>
-            <div class="permalink"><a href="#method_setHeader_2" class="permalink fas fa-link"></a></div>
-            <p>response.setHeader(name, value)</p>
 
-          </h1>
-        </div><section><p><p>Sets a single header value for implicit headers.  If this header already exists
+
+</div><div class='expandable-header' id='method_setHeader_2-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_setHeader_2" id="method_setHeader_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setHeader_2-expand-icon"></i>
+        <div class="permalink"><a href="#method_setHeader_2" class="permalink fas fa-link"></a></div>
+        <p>response.setHeader(name, value)</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setHeader_2-expand-content'>
+<p><p>Sets a single header value for implicit headers.  If this header already exists
 in the to-be-sent headers, its value will be replaced.  Use an array of strings
 here to send multiple headers with the same name.</p></p>
 <p><p>Example:</p></p>
@@ -2093,15 +2903,22 @@ const server = http2.createServer((req, res) =&gt; {
   res.end(&#39;ok&#39;);
 });
 </code></pre>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_setTimeout_7" id="method_setTimeout_7"></a>
-            <div class="permalink"><a href="#method_setTimeout_7" class="permalink fas fa-link"></a></div>
-            <p>response.setTimeout(msecs[, callback])</p>
 
-          </h1>
-        </div><section><p>Sets the <a href=""><code>Http2Stream</code></a>&#39;s timeout value to <code>msecs</code>.  If a callback is
+
+</div><div class='expandable-header' id='method_setTimeout_7-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_setTimeout_7" id="method_setTimeout_7"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setTimeout_7-expand-icon"></i>
+        <div class="permalink"><a href="#method_setTimeout_7" class="permalink fas fa-link"></a></div>
+        <p>response.setTimeout(msecs[, callback])</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setTimeout_7-expand-content'>
+<p>Sets the <a href=""><code>Http2Stream</code></a>&#39;s timeout value to <code>msecs</code>.  If a callback is
 provided, then it is added as a listener on the <code>&#39;timeout&#39;</code> event on
 the response object.</p>
 <p>If no <code>&#39;timeout&#39;</code> listener is added to the request, the response, or
@@ -2109,15 +2926,22 @@ the server, then <a href=""><code>Http2Stream</code></a>s are destroyed when the
 handler is assigned to the request, the response, or the server&#39;s <code>&#39;timeout&#39;</code>
 events, timed out sockets must be handled explicitly.</p>
 <p>Returns <code>response</code>.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_write_5" id="method_write_5"></a>
-            <div class="permalink"><a href="#method_write_5" class="permalink fas fa-link"></a></div>
-            <p>response.write(chunk[, encoding][, callback])</p>
 
-          </h1>
-        </div><section><p>If this method is called and <a href="#http2_response_writehead_statuscode_statusmessage_headers"><code>response.writeHead()</code></a> has not been called,
+
+</div><div class='expandable-header' id='method_write_5-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_write_5" id="method_write_5"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_write_5-expand-icon"></i>
+        <div class="permalink"><a href="#method_write_5" class="permalink fas fa-link"></a></div>
+        <p>response.write(chunk[, encoding][, callback])</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_write_5-expand-content'>
+<p>If this method is called and <a href="#http2_response_writehead_statuscode_statusmessage_headers"><code>response.writeHead()</code></a> has not been called,
 it will switch to implicit header mode and flush the implicit headers.</p>
 <p>This sends a chunk of the response body. This method may
 be called multiple times to provide successive parts of the body.</p>
@@ -2138,26 +2962,40 @@ first chunk of the body.</p>
 <p>Returns <code>true</code> if the entire data was flushed successfully to the kernel
 buffer. Returns <code>false</code> if all or part of the data was queued in user memory.
 <code>&#39;drain&#39;</code> will be emitted when the buffer is free again.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_writeContinue_1" id="method_writeContinue_1"></a>
-            <div class="permalink"><a href="#method_writeContinue_1" class="permalink fas fa-link"></a></div>
-            <p>response.writeContinue()</p>
 
-          </h1>
-        </div><section><p>Sends a status <code>100 Continue</code> to the client, indicating that the request body
+
+</div><div class='expandable-header' id='method_writeContinue_1-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_writeContinue_1" id="method_writeContinue_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_writeContinue_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_writeContinue_1" class="permalink fas fa-link"></a></div>
+        <p>response.writeContinue()</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_writeContinue_1-expand-content'>
+<p>Sends a status <code>100 Continue</code> to the client, indicating that the request body
 should be sent. See the <a href="#http2_event_checkcontinue"><code>&#39;checkContinue&#39;</code></a> event on <code>Http2Server</code> and
 <code>Http2SecureServer</code>.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_writeHead_1" id="method_writeHead_1"></a>
-            <div class="permalink"><a href="#method_writeHead_1" class="permalink fas fa-link"></a></div>
-            <p>response.writeHead(statusCode[, statusMessage][, headers])</p>
 
-          </h1>
-        </div><section><p>Sends a response header to the request. The status code is a 3-digit HTTP
+
+</div><div class='expandable-header' id='method_writeHead_1-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_writeHead_1" id="method_writeHead_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_writeHead_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_writeHead_1" class="permalink fas fa-link"></a></div>
+        <p>response.writeHead(statusCode[, statusMessage][, headers])</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_writeHead_1-expand-content'>
+<p>Sends a response header to the request. The status code is a 3-digit HTTP
 status code, like <code>404</code>. The last argument, <code>headers</code>, are the response headers.</p>
 <p>For compatibility with <a href="http.html">HTTP/1</a>, a human-readable <code>statusMessage</code> may be
 passed as the second argument. However, because the <code>statusMessage</code> has no
@@ -2192,27 +3030,39 @@ const server = http2.createServer((req, res) =&gt; {
 </code></pre>
 <p>Attempting to set a header field name or value that contains invalid characters
 will result in a <a href="errors.html#errors_class_typeerror"><code>TypeError</code></a> being thrown.</p>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="method_createPushResponse" id="method_createPushResponse"></a>
-            <div class="permalink"><a href="#method_createPushResponse" class="permalink fas fa-link"></a></div>
-            <p>response.createPushResponse(headers, callback)</p>
 
-          </h1>
-        </div><section><p>Call <a href="#http2_http2stream_pushstream_headers_options_callback"><code>http2stream.pushStream()</code></a> with the given headers, and wraps the
+
+</div><div class='expandable-header' id='method_createPushResponse-expand'>
+<div class="heading">
+    <h5>
+        <a name="method_createPushResponse" id="method_createPushResponse"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createPushResponse-expand-icon"></i>
+        <div class="permalink"><a href="#method_createPushResponse" class="permalink fas fa-link"></a></div>
+        <p>response.createPushResponse(headers, callback)</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createPushResponse-expand-content'>
+<p>Call <a href="#http2_http2stream_pushstream_headers_options_callback"><code>http2stream.pushStream()</code></a> with the given headers, and wraps the
 given newly created <a href="#http2_class_http2stream"><code>Http2Stream</code></a> on <code>Http2ServerRespose</code>.</p>
 <p>The callback will be called with an error with code <code>ERR_HTTP2_STREAM_CLOSED</code>
 if the stream is closed.</p>
-</section></section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="module_collecting_http_2_performance_metrics" id="module_collecting_http_2_performance_metrics"></a>
-            <div class="permalink"><a href="#module_collecting_http_2_performance_metrics" class="permalink fas fa-link"></a></div>
-            <p>Collecting HTTP/2 Performance Metrics</p>
 
-          </h1>
-        </div><section><p><p>The <a href="perf_hooks.html">Performance Observer</a> API can be used to collect basic performance
+
+</div>
+</div>
+<div class="heading">
+<h2>
+  <a name="module_collecting_http_2_performance_metrics" id="module_collecting_http_2_performance_metrics"></a>
+  <div class="permalink"><a href="#module_collecting_http_2_performance_metrics" class="permalink fas fa-link"></a></div>
+  <p>Collecting HTTP/2 Performance Metrics</p>
+
+</h2>
+</div>
+
+<p><p>The <a href="perf_hooks.html">Performance Observer</a> API can be used to collect basic performance
 metrics for each <code>Http2Session</code> and <code>Http2Stream</code> instance.</p></p>
 <p><pre class="prettyprint"><code class="lang-js">const { PerformanceObserver } = require(&#39;perf_hooks&#39;);</p>
 <p>const obs = new PerformanceObserver((items) =&gt; {
@@ -2266,7 +3116,8 @@ the <code>Http2Session</code>.</li></p>
 </ul>
 <!-- [end-include:http2.md] -->
 <!-- [start-include:https.md] --></p>
-</section>
+
+
 
   <div class="footer">
     <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>

@@ -1,1 +1,0 @@
-define([], function() { return {"children":[{"id":"toc_property_bytesRead_2","target":"module_zlib.html#property_bytesRead_2","text":"`bytesRead` {number} ","icon":false}],"ancestry":["toc_module_zlib","toc_class_zlib_Zlib","toc_subgroup_zlib_Zlib_Properties"]}; });

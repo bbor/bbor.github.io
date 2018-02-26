@@ -1,1 +1,1 @@
-define([], function() { return {"children":[{"id":"toc_subgroup_Hmac_Methods","target":"module_crypto.html#subgroup_Hmac_Methods","text":"Hmac.Methods","icon":false,"autoexpand":true,"children":true}],"ancestry":["toc_module_crypto","toc_class_Hmac"]}; });
+define([], function() { return {"children":[{"id":"toc_subgroup_class_Hmac_Methods","target":"module_crypto.html#subgroup_class_Hmac_Methods","text":"Methods","icon":false,"autoexpand":true,"children":true}],"ancestry":["toc_module_crypto","toc_class_Hmac"]}; });

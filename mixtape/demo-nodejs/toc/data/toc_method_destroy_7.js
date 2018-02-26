@@ -1,1 +1,1 @@
-define([], function() { return {"children":[],"ancestry":["toc_module_stream","toc_misc_API_for_Stream_Consumers","toc_misc_duplex_and_transform_streams","toc_class_stream_Transform","toc_subgroup_stream_Transform_Methods","toc_method_destroy_7"]}; });
+define([], function() { return {"children":[],"ancestry":["toc_module_stream","toc_misc_API_for_Stream_Consumers","toc_misc_duplex_and_transform_streams","toc_class_stream_Transform","toc_subgroup_class_stream_Transform_Methods","toc_method_destroy_7"]}; });

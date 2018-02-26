@@ -1,1 +1,1 @@
-define([], function() { return {"children":[],"ancestry":["toc_class_Error_1","toc_subgroup_Error_Methods","toc_method_captureStackTrace_1"]}; });
+define([], function() { return {"children":[],"ancestry":["toc_class_Error_1","toc_subgroup_class_Error_1_Methods","toc_method_captureStackTrace_1"]}; });

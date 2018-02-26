@@ -1,1 +1,0 @@
-define([], function() { return {"children":[{"id":"toc_method_cancel","target":"module_dns.html#method_cancel","text":"resolver.cancel()","icon":false}],"ancestry":["toc_module_dns","toc_property_Resolver","toc_subgroup_Resolver_Methods"]}; });

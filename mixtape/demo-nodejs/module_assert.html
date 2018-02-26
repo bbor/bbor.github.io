@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>mixtape page for assert</title>
+    <title>Assert</title>
     <script data-main="js/setup" src="js/require.js"></script>
     <link rel="stylesheet" href="fonts/fonts.css" />
     <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
@@ -13,9 +13,9 @@
   <body>
 
   <div id="control-panel">
-    <div id="control-strip-h">
-      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
-      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    <div id="control-strip-m">
+      <div id="control-strip-m-find"><div id="m-find"></div></div>
+      <div id="control-strip-m-toc"><div id="m-toc"></div></div>
     </div>
     <div id="controls">
       <div id="control-find">
@@ -26,32 +26,37 @@
       </div>
     </div>
   </div>
-  <div id="control-strip-v">
-    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
-    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  <div id="control-strip-w">
+    <div id="control-strip-w-find"></div>
+    <div id="control-strip-w-toc"></div>
   </div>
 
   <div id="content">
 
   
-       <div class="heading">
-          <h1>
-            <a name="module_assert" id="module_assert"></a>
-            <div class="permalink"><a href="#module_assert" class="permalink fas fa-link"></a></div>
-            <p>Assert</p>
+<div class="heading">
+<h1>
+  <a name="module_assert" id="module_assert"></a>
+  <div class="permalink"><a href="#module_assert" class="permalink fas fa-link"></a></div>
+  <p>Assert</p>
 
-          </h1>
-        </div><p>The <code>assert</code> module provides a simple set of assertion tests that can be used to
+</h1>
+</div>
+
+<p>The <code>assert</code> module provides a simple set of assertion tests that can be used to
 test invariants.</p>
 
-       <div class="heading">
-          <h2>
-            <a name="module_caveats" id="module_caveats"></a>
-            <div class="permalink"><a href="#module_caveats" class="permalink fas fa-link"></a></div>
-            <p>Caveats</p>
 
-          </h1>
-        </div><section><p><p>For the following cases, consider using ES2015 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is"><code>Object.is()</code></a>,
+<div class="heading">
+<h2>
+  <a name="module_caveats" id="module_caveats"></a>
+  <div class="permalink"><a href="#module_caveats" class="permalink fas fa-link"></a></div>
+  <p>Caveats</p>
+
+</h2>
+</div>
+
+<p><p>For the following cases, consider using ES2015 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is"><code>Object.is()</code></a>,
 which uses the <a href="https://tc39.github.io/ecma262/#sec-samevaluezero">SameValueZero</a> comparison.</p></p>
 <p><pre class="prettyprint"><code class="lang-js">const a = 0;
 const b = -a;
@@ -72,29 +77,42 @@ assert(Object.is(str1 / 1, str2 / 1));
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness">MDN&#39;s guide on equality comparisons and sameness</a>.</p>
 <!-- [end-include:assert.md] -->
 <!-- [start-include:async_hooks.md] --></p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_assert" id="method_assert"></a>
-            <div class="permalink"><a href="#method_assert" class="permalink fas fa-link"></a></div>
-            <p>assert(value[, message])</p>
 
-          </h1>
-        </div><section><p>An alias of <a href="#assert_assert_ok_value_message"><code>assert.ok()</code></a>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_deepEqual" id="method_deepEqual"></a>
-            <div class="permalink"><a href="#method_deepEqual" class="permalink fas fa-link"></a></div>
-            <p>assert.deepEqual(actual, expected[, message])</p>
+<div class='expandable-header' id='method_assert-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_assert" id="method_assert"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_assert-expand-icon"></i>
+        <div class="permalink"><a href="#method_assert" class="permalink fas fa-link"></a></div>
+        <p>assert(value[, message])</p>
 
-          </h1>
-        </div><section><p>Tests for deep equality between the <code>actual</code> and <code>expected</code> parameters.
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_assert-expand-content'>
+<p>An alias of <a href="#assert_assert_ok_value_message"><code>assert.ok()</code></a>.</p>
+
+
+</div><div class='expandable-header' id='method_deepEqual-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_deepEqual" id="method_deepEqual"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_deepEqual-expand-icon"></i>
+        <div class="permalink"><a href="#method_deepEqual" class="permalink fas fa-link"></a></div>
+        <p>assert.deepEqual(actual, expected[, message])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_deepEqual-expand-content'>
+<p>Tests for deep equality between the <code>actual</code> and <code>expected</code> parameters.
 Primitive values are compared with the <a href="https://tc39.github.io/ecma262/#sec-abstract-equality-comparison">Abstract Equality Comparison</a>
 ( <code>==</code> ).</p>
 <p>Only <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties">enumerable &quot;own&quot; properties</a> are considered. The
 <a href="#assert_assert_deepequal_actual_expected_message"><code>assert.deepEqual()</code></a> implementation does not test the
-<a href="https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots"><code>[[Prototype]]</code></a> of objects or enumerable own <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Symbol"><code>Symbol</code></a>
+<a href="https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots"><code>[[Prototype]]</code></a> of objects or enumerable own <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol"><code>Symbol</code></a>
 properties. For such checks, consider using <a href="assert.html#assert_assert_deepstrictequal_actual_expected_message"><code>assert.deepStrictEqual()</code></a>
 instead. <a href="#assert_assert_deepequal_actual_expected_message"><code>assert.deepEqual()</code></a> can have potentially surprising results. The
 following example does not throw an <code>AssertionError</code> because the properties on
@@ -102,7 +120,7 @@ the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regul
 <pre class="prettyprint"><code class="lang-js">// WARNING: This does not throw an AssertionError!
 assert.deepEqual(/a/gi, new Date());
 </code></pre>
-<p>An exception is made for <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map"><code>Map</code></a> and <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Set"><code>Set</code></a>. Maps and Sets have their
+<p>An exception is made for <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map"><code>Map</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set"><code>Set</code></a>. Maps and Sets have their
 contained items compared too, as expected.</p>
 <p>&quot;Deep&quot; equality means that the enumerable &quot;own&quot; properties of child objects
 are evaluated also:</p>
@@ -144,15 +162,22 @@ property set equal to the value of the <code>message</code> parameter. If the <c
 parameter is undefined, a default error message is assigned. If the <code>message</code>
 parameter is an instance of an <code>Error</code> then it will be thrown instead of the
 <code>AssertionError</code>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_deepStrictEqual" id="method_deepStrictEqual"></a>
-            <div class="permalink"><a href="#method_deepStrictEqual" class="permalink fas fa-link"></a></div>
-            <p>assert.deepStrictEqual(actual, expected[, message])</p>
 
-          </h1>
-        </div><section><p>Identical to <a href="#assert_assert_deepequal_actual_expected_message"><code>assert.deepEqual()</code></a> with the following exceptions:</p>
+
+</div><div class='expandable-header' id='method_deepStrictEqual-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_deepStrictEqual" id="method_deepStrictEqual"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_deepStrictEqual-expand-icon"></i>
+        <div class="permalink"><a href="#method_deepStrictEqual" class="permalink fas fa-link"></a></div>
+        <p>assert.deepStrictEqual(actual, expected[, message])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_deepStrictEqual-expand-content'>
+<p>Identical to <a href="#assert_assert_deepequal_actual_expected_message"><code>assert.deepEqual()</code></a> with the following exceptions:</p>
 <ol>
 <li>Primitive values besides <code>NaN</code> are compared using the <a href="https://tc39.github.io/ecma262/#sec-strict-equality-comparison">Strict Equality
 Comparison</a> ( <code>===</code> ). Set and Map values, Map keys and <code>NaN</code> are compared
@@ -163,7 +188,7 @@ the <a href="https://tc39.github.io/ecma262/#sec-strict-equality-comparison">Str
 <li><a href="https://tc39.github.io/ecma262/#sec-object.prototype.tostring">Type tags</a> of objects should be the same.</li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript">Object wrappers</a> are compared both as objects and unwrapped values.</li>
 <li><code>0</code> and <code>-0</code> are not considered equal.</li>
-<li>Enumerable own <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Symbol"><code>Symbol</code></a> properties are compared as well.</li>
+<li>Enumerable own <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol"><code>Symbol</code></a> properties are compared as well.</li>
 </ol>
 <pre class="prettyprint"><code class="lang-js">const assert = require(&#39;assert&#39;);
 
@@ -218,15 +243,22 @@ property set equal to the value of the <code>message</code> parameter. If the <c
 parameter is undefined, a default error message is assigned. If the <code>message</code>
 parameter is an instance of an <code>Error</code> then it will be thrown instead of the
 <code>AssertionError</code>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_doesNotThrow" id="method_doesNotThrow"></a>
-            <div class="permalink"><a href="#method_doesNotThrow" class="permalink fas fa-link"></a></div>
-            <p>assert.doesNotThrow(block[, error][, message])</p>
 
-          </h1>
-        </div><section><p><p>Asserts that the function <code>block</code> does not throw an error. See
+
+</div><div class='expandable-header' id='method_doesNotThrow-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_doesNotThrow" id="method_doesNotThrow"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_doesNotThrow-expand-icon"></i>
+        <div class="permalink"><a href="#method_doesNotThrow" class="permalink fas fa-link"></a></div>
+        <p>assert.doesNotThrow(block[, error][, message])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_doesNotThrow-expand-content'>
+<p><p>Asserts that the function <code>block</code> does not throw an error. See
 <a href="#assert_assert_throws_block_error_message"><code>assert.throws()</code></a> for more details.</p></p>
 <p><p>When <code>assert.doesNotThrow()</code> is called, it will immediately call the <code>block</code>
 function.</p></p>
@@ -264,15 +296,22 @@ message:</p>
 );
 // Throws: AssertionError: Got unwanted exception (TypeError). Whoops
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_equal" id="method_equal"></a>
-            <div class="permalink"><a href="#method_equal" class="permalink fas fa-link"></a></div>
-            <p>assert.equal(actual, expected[, message])</p>
 
-          </h1>
-        </div><section><p>Tests shallow, coercive equality between the <code>actual</code> and <code>expected</code> parameters
+
+</div><div class='expandable-header' id='method_equal-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_equal" id="method_equal"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_equal-expand-icon"></i>
+        <div class="permalink"><a href="#method_equal" class="permalink fas fa-link"></a></div>
+        <p>assert.equal(actual, expected[, message])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_equal-expand-content'>
+<p>Tests shallow, coercive equality between the <code>actual</code> and <code>expected</code> parameters
 using the <a href="https://tc39.github.io/ecma262/#sec-abstract-equality-comparison">Abstract Equality Comparison</a> ( <code>==</code> ).</p>
 <pre class="prettyprint"><code class="lang-js">const assert = require(&#39;assert&#39;);
 
@@ -291,15 +330,22 @@ property set equal to the value of the <code>message</code> parameter. If the <c
 parameter is undefined, a default error message is assigned. If the <code>message</code>
 parameter is an instance of an <code>Error</code> then it will be thrown instead of the
 <code>AssertionError</code>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_fail" id="method_fail"></a>
-            <div class="permalink"><a href="#method_fail" class="permalink fas fa-link"></a></div>
-            <p>assert.fail([message])</p>
 
-          </h1>
-        </div><section><p><p>Throws an <code>AssertionError</code>. If <code>message</code> is falsy, the error message is set as
+
+</div><div class='expandable-header' id='method_fail-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_fail" id="method_fail"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_fail-expand-icon"></i>
+        <div class="permalink"><a href="#method_fail" class="permalink fas fa-link"></a></div>
+        <p>assert.fail([message])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_fail-expand-content'>
+<p><p>Throws an <code>AssertionError</code>. If <code>message</code> is falsy, the error message is set as
 the values of <code>actual</code> and <code>expected</code> separated by the provided <code>operator</code>. If
 the <code>message</code> parameter is an instance of an <code>Error</code> then it will be thrown
 instead of the <code>AssertionError</code>. If just the two <code>actual</code> and <code>expected</code>
@@ -344,15 +390,22 @@ suppressFrame();
 //     at ContextifyScript.Script.runInThisContext (vm.js:44:33)
 //     ...
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_fail_1" id="method_fail_1"></a>
-            <div class="permalink"><a href="#method_fail_1" class="permalink fas fa-link"></a></div>
-            <p>assert.fail(actual, expected[, message[, operator[, stackStartFunction]]])</p>
 
-          </h1>
-        </div><section><p><p>Throws an <code>AssertionError</code>. If <code>message</code> is falsy, the error message is set as
+
+</div><div class='expandable-header' id='method_fail_1-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_fail_1" id="method_fail_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_fail_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_fail_1" class="permalink fas fa-link"></a></div>
+        <p>assert.fail(actual, expected[, message[, operator[, stackStartFunction]]])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_fail_1-expand-content'>
+<p><p>Throws an <code>AssertionError</code>. If <code>message</code> is falsy, the error message is set as
 the values of <code>actual</code> and <code>expected</code> separated by the provided <code>operator</code>. If
 the <code>message</code> parameter is an instance of an <code>Error</code> then it will be thrown
 instead of the <code>AssertionError</code>. If just the two <code>actual</code> and <code>expected</code>
@@ -397,15 +450,22 @@ suppressFrame();
 //     at ContextifyScript.Script.runInThisContext (vm.js:44:33)
 //     ...
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_ifError" id="method_ifError"></a>
-            <div class="permalink"><a href="#method_ifError" class="permalink fas fa-link"></a></div>
-            <p>assert.ifError(value)</p>
 
-          </h1>
-        </div><section><p><p>Throws <code>value</code> if <code>value</code> is truthy. This is useful when testing the <code>error</code>
+
+</div><div class='expandable-header' id='method_ifError-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_ifError" id="method_ifError"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_ifError-expand-icon"></i>
+        <div class="permalink"><a href="#method_ifError" class="permalink fas fa-link"></a></div>
+        <p>assert.ifError(value)</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_ifError-expand-content'>
+<p><p>Throws <code>value</code> if <code>value</code> is truthy. This is useful when testing the <code>error</code>
 argument in callbacks.</p></p>
 <pre class="prettyprint"><code class="lang-js">const assert = require(&#39;assert&#39;);
 
@@ -420,15 +480,22 @@ assert.ifError(&#39;error&#39;);
 assert.ifError(new Error());
 // Throws Error
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_notDeepEqual" id="method_notDeepEqual"></a>
-            <div class="permalink"><a href="#method_notDeepEqual" class="permalink fas fa-link"></a></div>
-            <p>assert.notDeepEqual(actual, expected[, message])</p>
 
-          </h1>
-        </div><section><p>Tests for any deep inequality. Opposite of <a href="#assert_assert_deepequal_actual_expected_message"><code>assert.deepEqual()</code></a>.</p>
+
+</div><div class='expandable-header' id='method_notDeepEqual-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_notDeepEqual" id="method_notDeepEqual"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_notDeepEqual-expand-icon"></i>
+        <div class="permalink"><a href="#method_notDeepEqual" class="permalink fas fa-link"></a></div>
+        <p>assert.notDeepEqual(actual, expected[, message])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_notDeepEqual-expand-content'>
+<p>Tests for any deep inequality. Opposite of <a href="#assert_assert_deepequal_actual_expected_message"><code>assert.deepEqual()</code></a>.</p>
 <pre class="prettyprint"><code class="lang-js">const assert = require(&#39;assert&#39;);
 
 const obj1 = {
@@ -465,15 +532,22 @@ property set equal to the value of the <code>message</code> parameter. If the <c
 parameter is undefined, a default error message is assigned. If the <code>message</code>
 parameter is an instance of an <code>Error</code> then it will be thrown instead of the
 <code>AssertionError</code>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_notDeepStrictEqual" id="method_notDeepStrictEqual"></a>
-            <div class="permalink"><a href="#method_notDeepStrictEqual" class="permalink fas fa-link"></a></div>
-            <p>assert.notDeepStrictEqual(actual, expected[, message])</p>
 
-          </h1>
-        </div><section><p>Tests for deep strict inequality. Opposite of <a href="assert.html#assert_assert_deepstrictequal_actual_expected_message"><code>assert.deepStrictEqual()</code></a>.</p>
+
+</div><div class='expandable-header' id='method_notDeepStrictEqual-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_notDeepStrictEqual" id="method_notDeepStrictEqual"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_notDeepStrictEqual-expand-icon"></i>
+        <div class="permalink"><a href="#method_notDeepStrictEqual" class="permalink fas fa-link"></a></div>
+        <p>assert.notDeepStrictEqual(actual, expected[, message])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_notDeepStrictEqual-expand-content'>
+<p>Tests for deep strict inequality. Opposite of <a href="assert.html#assert_assert_deepstrictequal_actual_expected_message"><code>assert.deepStrictEqual()</code></a>.</p>
 <pre class="prettyprint"><code class="lang-js">const assert = require(&#39;assert&#39;);
 
 assert.notDeepEqual({ a: 1 }, { a: &#39;1&#39; });
@@ -487,15 +561,22 @@ a <code>message</code> property set equal to the value of the <code>message</cod
 <code>message</code> parameter is undefined, a default error message is assigned. If the
 <code>message</code> parameter is an instance of an <code>Error</code> then it will be thrown instead
 of the <code>AssertionError</code>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_notEqual" id="method_notEqual"></a>
-            <div class="permalink"><a href="#method_notEqual" class="permalink fas fa-link"></a></div>
-            <p>assert.notEqual(actual, expected[, message])</p>
 
-          </h1>
-        </div><section><p>Tests shallow, coercive inequality with the <a href="https://tc39.github.io/ecma262/#sec-abstract-equality-comparison">Abstract Equality Comparison</a>
+
+</div><div class='expandable-header' id='method_notEqual-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_notEqual" id="method_notEqual"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_notEqual-expand-icon"></i>
+        <div class="permalink"><a href="#method_notEqual" class="permalink fas fa-link"></a></div>
+        <p>assert.notEqual(actual, expected[, message])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_notEqual-expand-content'>
+<p>Tests shallow, coercive inequality with the <a href="https://tc39.github.io/ecma262/#sec-abstract-equality-comparison">Abstract Equality Comparison</a>
 ( <code>!=</code> ).</p>
 <pre class="prettyprint"><code class="lang-js">const assert = require(&#39;assert&#39;);
 
@@ -513,15 +594,22 @@ property set equal to the value of the <code>message</code> parameter. If the <c
 parameter is undefined, a default error message is assigned. If the <code>message</code>
 parameter is an instance of an <code>Error</code> then it will be thrown instead of the
 <code>AssertionError</code>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_notStrictEqual" id="method_notStrictEqual"></a>
-            <div class="permalink"><a href="#method_notStrictEqual" class="permalink fas fa-link"></a></div>
-            <p>assert.notStrictEqual(actual, expected[, message])</p>
 
-          </h1>
-        </div><section><p>Tests strict inequality as determined by the <a href="https://tc39.github.io/ecma262/#sec-strict-equality-comparison">Strict Equality Comparison</a>
+
+</div><div class='expandable-header' id='method_notStrictEqual-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_notStrictEqual" id="method_notStrictEqual"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_notStrictEqual-expand-icon"></i>
+        <div class="permalink"><a href="#method_notStrictEqual" class="permalink fas fa-link"></a></div>
+        <p>assert.notStrictEqual(actual, expected[, message])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_notStrictEqual-expand-content'>
+<p>Tests strict inequality as determined by the <a href="https://tc39.github.io/ecma262/#sec-strict-equality-comparison">Strict Equality Comparison</a>
 ( <code>!==</code> ).</p>
 <pre class="prettyprint"><code class="lang-js">const assert = require(&#39;assert&#39;);
 
@@ -539,15 +627,22 @@ assert.notStrictEqual(1, &#39;1&#39;);
 <code>message</code> parameter is undefined, a default error message is assigned. If the
 <code>message</code> parameter is an instance of an <code>Error</code> then it will be thrown instead
 of the <code>AssertionError</code>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_ok" id="method_ok"></a>
-            <div class="permalink"><a href="#method_ok" class="permalink fas fa-link"></a></div>
-            <p>assert.ok(value[, message])</p>
 
-          </h1>
-        </div><section><p><p>Tests if <code>value</code> is truthy. It is equivalent to
+
+</div><div class='expandable-header' id='method_ok-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_ok" id="method_ok"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_ok-expand-icon"></i>
+        <div class="permalink"><a href="#method_ok" class="permalink fas fa-link"></a></div>
+        <p>assert.ok(value[, message])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_ok-expand-content'>
+<p><p>Tests if <code>value</code> is truthy. It is equivalent to
 <code>assert.equal(!!value, true, message)</code>.</p></p>
 <p><p>If <code>value</code> is not truthy, an <code>AssertionError</code> is thrown with a <code>message</code>
 property set equal to the value of the <code>message</code> parameter. If the <code>message</code>
@@ -567,15 +662,22 @@ assert.ok(0);
 assert.ok(false, &#39;it\&#39;s false&#39;);
 // throws &quot;AssertionError: it&#39;s false&quot;
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_strictEqual" id="method_strictEqual"></a>
-            <div class="permalink"><a href="#method_strictEqual" class="permalink fas fa-link"></a></div>
-            <p>assert.strictEqual(actual, expected[, message])</p>
 
-          </h1>
-        </div><section><p>Tests strict equality as determined by the <a href="https://tc39.github.io/ecma262/#sec-strict-equality-comparison">Strict Equality Comparison</a>
+
+</div><div class='expandable-header' id='method_strictEqual-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_strictEqual" id="method_strictEqual"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_strictEqual-expand-icon"></i>
+        <div class="permalink"><a href="#method_strictEqual" class="permalink fas fa-link"></a></div>
+        <p>assert.strictEqual(actual, expected[, message])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_strictEqual-expand-content'>
+<p>Tests strict equality as determined by the <a href="https://tc39.github.io/ecma262/#sec-strict-equality-comparison">Strict Equality Comparison</a>
 ( <code>===</code> ).</p>
 <pre class="prettyprint"><code class="lang-js">const assert = require(&#39;assert&#39;);
 
@@ -593,15 +695,22 @@ assert.strictEqual(1, &#39;1&#39;);
 <code>message</code> parameter is undefined, a default error message is assigned. If the
 <code>message</code> parameter is an instance of an <code>Error</code> then it will be thrown instead
 of the <code>AssertionError</code>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_throws" id="method_throws"></a>
-            <div class="permalink"><a href="#method_throws" class="permalink fas fa-link"></a></div>
-            <p>assert.throws(block[, error][, message])</p>
 
-          </h1>
-        </div><section><p><p>Expects the function <code>block</code> to throw an error.</p></p>
+
+</div><div class='expandable-header' id='method_throws-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_throws" id="method_throws"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_throws-expand-icon"></i>
+        <div class="permalink"><a href="#method_throws" class="permalink fas fa-link"></a></div>
+        <p>assert.throws(block[, error][, message])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_throws-expand-content'>
+<p><p>Expects the function <code>block</code> to throw an error.</p></p>
 <p><p>If specified, <code>error</code> can be a constructor, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions"><code>RegExp</code></a>, or validation
 function.</p></p>
 <p><p>If specified, <code>message</code> will be the message provided by the <code>AssertionError</code> if
@@ -645,7 +754,9 @@ assert.throws(myFunction, &#39;missing foo&#39;, &#39;did not throw with expecte
 // Do this instead.
 assert.throws(myFunction, /missing foo/, &#39;did not throw with expected message&#39;);
 </code></pre>
-</section>
+
+
+</div>
 
   <div class="footer">
     <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>

@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_method_close","target":"module_fs.html#method_close","text":"watcher.close()","icon":false}],"ancestry":["toc_module_fs","toc_class_fs_FSWatcher","toc_subgroup_class_fs_FSWatcher_Methods"]}; });

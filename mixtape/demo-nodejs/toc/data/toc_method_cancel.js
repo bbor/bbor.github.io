@@ -1,1 +1,1 @@
-define([], function() { return {"children":[],"ancestry":["toc_module_dns","toc_property_Resolver","toc_subgroup_Resolver_Methods","toc_method_cancel"]}; });
+define([], function() { return {"children":[],"ancestry":["toc_module_dns","toc_property_Resolver","toc_subgroup_property_Resolver_Methods","toc_method_cancel"]}; });

@@ -1,1 +1,1 @@
-define([], function() { return {"children":[{"id":"toc_subgroup_Interface_Methods","target":"module_readline.html#subgroup_Interface_Methods","text":"Interface.Methods","icon":false,"autoexpand":true,"children":true}],"ancestry":["toc_module_readline","toc_class_Interface"]}; });
+define([], function() { return {"children":[{"id":"toc_subgroup_class_Interface_Methods","target":"module_readline.html#subgroup_class_Interface_Methods","text":"Methods","icon":false,"autoexpand":true,"children":true}],"ancestry":["toc_module_readline","toc_class_Interface"]}; });

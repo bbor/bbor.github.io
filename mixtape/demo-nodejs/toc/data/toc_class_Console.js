@@ -1,1 +1,1 @@
-define([], function() { return {"children":[{"id":"toc_subgroup_Console_Methods","target":"module_console.html#subgroup_Console_Methods","text":"Console.Methods","icon":false,"autoexpand":true,"children":true}],"ancestry":["toc_module_console","toc_class_Console"]}; });
+define([], function() { return {"children":[{"id":"toc_subgroup_class_Console_Methods","target":"module_console.html#subgroup_class_Console_Methods","text":"Methods","icon":false,"autoexpand":true,"children":true}],"ancestry":["toc_module_console","toc_class_Console"]}; });

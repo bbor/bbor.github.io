@@ -1,1 +1,1 @@
-define([], function() { return {"children":[{"id":"toc_subgroup_Resolver_Methods","target":"module_dns.html#subgroup_Resolver_Methods","text":"Resolver.Methods","icon":false,"autoexpand":true,"children":true}],"ancestry":["toc_module_dns","toc_property_Resolver"]}; });
+define([], function() { return {"children":[{"id":"toc_subgroup_property_Resolver_Methods","target":"module_dns.html#subgroup_property_Resolver_Methods","text":"Methods","icon":false,"autoexpand":true,"children":true}],"ancestry":["toc_module_dns","toc_property_Resolver"]}; });

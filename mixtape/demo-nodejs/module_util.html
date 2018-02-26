@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>mixtape page for util</title>
+    <title>Util</title>
     <script data-main="js/setup" src="js/require.js"></script>
     <link rel="stylesheet" href="fonts/fonts.css" />
     <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
@@ -13,9 +13,9 @@
   <body>
 
   <div id="control-panel">
-    <div id="control-strip-h">
-      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
-      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    <div id="control-strip-m">
+      <div id="control-strip-m-find"><div id="m-find"></div></div>
+      <div id="control-strip-m-toc"><div id="m-toc"></div></div>
     </div>
     <div id="controls">
       <div id="control-find">
@@ -26,75 +26,107 @@
       </div>
     </div>
   </div>
-  <div id="control-strip-v">
-    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
-    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  <div id="control-strip-w">
+    <div id="control-strip-w-find"></div>
+    <div id="control-strip-w-toc"></div>
   </div>
 
   <div id="content">
 
   
-       <div class="heading">
-          <h1>
-            <a name="module_util" id="module_util"></a>
-            <div class="permalink"><a href="#module_util" class="permalink fas fa-link"></a></div>
-            <p>Util</p>
+<div class="heading">
+<h1>
+  <a name="module_util" id="module_util"></a>
+  <div class="permalink"><a href="#module_util" class="permalink fas fa-link"></a></div>
+  <p>Util</p>
 
-          </h1>
-        </div><p><p>The <code>util</code> module is primarily designed to support the needs of Node.js&#39; own
+</h1>
+</div>
+
+<p><p>The <code>util</code> module is primarily designed to support the needs of Node.js&#39; own
 internal APIs. However, many of the utilities are useful for application and
 module developers as well. It can be accessed using:</p></p>
 <pre class="prettyprint"><code class="lang-js">const util = require(&#39;util&#39;);
 </code></pre>
 
-       <div class="heading">
-          <h2>
-            <a name="module_deprecated_apis_2" id="module_deprecated_apis_2"></a>
-            <div class="permalink"><a href="#module_deprecated_apis_2" class="permalink fas fa-link"></a></div>
-            <p>Deprecated APIs</p>
 
-          </h1>
-        </div><section><p>The following APIs have been deprecated and should no longer be used. Existing
+<div class="heading">
+<h2>
+  <a name="module_deprecated_apis_2" id="module_deprecated_apis_2"></a>
+  <div class="permalink"><a href="#module_deprecated_apis_2" class="permalink fas fa-link"></a></div>
+  <p>Deprecated APIs</p>
+
+</h2>
+</div>
+
+<p>The following APIs have been deprecated and should no longer be used. Existing
 applications and modules should be updated to find alternative approaches.</p>
 
-       <div class="heading">
-          <h3>
-            <a name="method___extend_1" id="method___extend_1"></a>
-            <div class="permalink"><a href="#method___extend_1" class="permalink fas fa-link"></a></div>
-            <p>util._extend(target, source)</p>
+<div class='expandable-header' id='method___extend_1-expand'>
+<div class="heading">
+    <h3>
+        <a name="method___extend_1" id="method___extend_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method___extend_1-expand-icon"></i>
+        <div class="permalink"><a href="#method___extend_1" class="permalink fas fa-link"></a></div>
+        <p>util._extend(target, source)</p>
 
-          </h1>
-        </div><section><p>The <code>util._extend()</code> method was never intended to be used outside of internal
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method___extend_1-expand-content'>
+<p>The <code>util._extend()</code> method was never intended to be used outside of internal
 Node.js modules. The community found and used it anyway.</p>
 <p>It is deprecated and should not be used in new code. JavaScript comes with very
-similar built-in functionality through <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign"><code>Object.assign()</code></a>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_debug_2" id="method_debug_2"></a>
-            <div class="permalink"><a href="#method_debug_2" class="permalink fas fa-link"></a></div>
-            <p>util.debug(string)</p>
+similar built-in functionality through <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign"><code>Object.assign()</code></a>.</p>
 
-          </h1>
-        </div><section><p>Deprecated predecessor of <code>console.error</code>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_error_2" id="method_error_2"></a>
-            <div class="permalink"><a href="#method_error_2" class="permalink fas fa-link"></a></div>
-            <p>util.error([...strings])</p>
 
-          </h1>
-        </div><section><p>Deprecated predecessor of <code>console.error</code>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isArray_1" id="method_isArray_1"></a>
-            <div class="permalink"><a href="#method_isArray_1" class="permalink fas fa-link"></a></div>
-            <p>util.isArray(object)</p>
+</div><div class='expandable-header' id='method_debug_2-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_debug_2" id="method_debug_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_debug_2-expand-icon"></i>
+        <div class="permalink"><a href="#method_debug_2" class="permalink fas fa-link"></a></div>
+        <p>util.debug(string)</p>
 
-          </h1>
-        </div><section><p><p>Internal alias for <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray"><code>Array.isArray</code></a>.</p></p>
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_debug_2-expand-content'>
+<p>Deprecated predecessor of <code>console.error</code>.</p>
+
+
+</div><div class='expandable-header' id='method_error_2-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_error_2" id="method_error_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_error_2-expand-icon"></i>
+        <div class="permalink"><a href="#method_error_2" class="permalink fas fa-link"></a></div>
+        <p>util.error([...strings])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_error_2-expand-content'>
+<p>Deprecated predecessor of <code>console.error</code>.</p>
+
+
+</div><div class='expandable-header' id='method_isArray_1-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isArray_1" id="method_isArray_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isArray_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_isArray_1" class="permalink fas fa-link"></a></div>
+        <p>util.isArray(object)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isArray_1-expand-content'>
+<p><p>Internal alias for <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray"><code>Array.isArray</code></a>.</p></p>
 <p><p>Returns <code>true</code> if the given <code>object</code> is an <code>Array</code>. Otherwise, returns <code>false</code>.</p></p>
 <pre class="prettyprint"><code class="lang-js">const util = require(&#39;util&#39;);
 
@@ -105,15 +137,22 @@ util.isArray(new Array());
 util.isArray({});
 // Returns: false
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isBoolean_1" id="method_isBoolean_1"></a>
-            <div class="permalink"><a href="#method_isBoolean_1" class="permalink fas fa-link"></a></div>
-            <p>util.isBoolean(object)</p>
 
-          </h1>
-        </div><section><p><p>Returns <code>true</code> if the given <code>object</code> is a <code>Boolean</code>. Otherwise, returns <code>false</code>.</p></p>
+
+</div><div class='expandable-header' id='method_isBoolean_1-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isBoolean_1" id="method_isBoolean_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isBoolean_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_isBoolean_1" class="permalink fas fa-link"></a></div>
+        <p>util.isBoolean(object)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isBoolean_1-expand-content'>
+<p><p>Returns <code>true</code> if the given <code>object</code> is a <code>Boolean</code>. Otherwise, returns <code>false</code>.</p></p>
 <pre class="prettyprint"><code class="lang-js">const util = require(&#39;util&#39;);
 
 util.isBoolean(1);
@@ -123,15 +162,22 @@ util.isBoolean(0);
 util.isBoolean(false);
 // Returns: true
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isBuffer_1" id="method_isBuffer_1"></a>
-            <div class="permalink"><a href="#method_isBuffer_1" class="permalink fas fa-link"></a></div>
-            <p>util.isBuffer(object)</p>
 
-          </h1>
-        </div><section><p><p>Returns <code>true</code> if the given <code>object</code> is a <code>Buffer</code>. Otherwise, returns <code>false</code>.</p></p>
+
+</div><div class='expandable-header' id='method_isBuffer_1-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isBuffer_1" id="method_isBuffer_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isBuffer_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_isBuffer_1" class="permalink fas fa-link"></a></div>
+        <p>util.isBuffer(object)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isBuffer_1-expand-content'>
+<p><p>Returns <code>true</code> if the given <code>object</code> is a <code>Buffer</code>. Otherwise, returns <code>false</code>.</p></p>
 <pre class="prettyprint"><code class="lang-js">const util = require(&#39;util&#39;);
 
 util.isBuffer({ length: 0 });
@@ -141,15 +187,22 @@ util.isBuffer([]);
 util.isBuffer(Buffer.from(&#39;hello world&#39;));
 // Returns: true
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isDate_1" id="method_isDate_1"></a>
-            <div class="permalink"><a href="#method_isDate_1" class="permalink fas fa-link"></a></div>
-            <p>util.isDate(object)</p>
 
-          </h1>
-        </div><section><p><p>Returns <code>true</code> if the given <code>object</code> is a <code>Date</code>. Otherwise, returns <code>false</code>.</p></p>
+
+</div><div class='expandable-header' id='method_isDate_1-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isDate_1" id="method_isDate_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isDate_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_isDate_1" class="permalink fas fa-link"></a></div>
+        <p>util.isDate(object)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isDate_1-expand-content'>
+<p><p>Returns <code>true</code> if the given <code>object</code> is a <code>Date</code>. Otherwise, returns <code>false</code>.</p></p>
 <pre class="prettyprint"><code class="lang-js">const util = require(&#39;util&#39;);
 
 util.isDate(new Date());
@@ -159,15 +212,22 @@ util.isDate(Date());
 util.isDate({});
 // Returns: false
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isError_1" id="method_isError_1"></a>
-            <div class="permalink"><a href="#method_isError_1" class="permalink fas fa-link"></a></div>
-            <p>util.isError(object)</p>
 
-          </h1>
-        </div><section><p><p>Returns <code>true</code> if the given <code>object</code> is an <a href="errors.html#errors_class_error"><code>Error</code></a>. Otherwise, returns
+
+</div><div class='expandable-header' id='method_isError_1-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isError_1" id="method_isError_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isError_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_isError_1" class="permalink fas fa-link"></a></div>
+        <p>util.isError(object)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isError_1-expand-content'>
+<p><p>Returns <code>true</code> if the given <code>object</code> is an <a href="errors.html#errors_class_error"><code>Error</code></a>. Otherwise, returns
 <code>false</code>.</p></p>
 <pre class="prettyprint"><code class="lang-js">const util = require(&#39;util&#39;);
 
@@ -190,15 +250,22 @@ obj[Symbol.toStringTag] = &#39;Error&#39;;
 util.isError(obj);
 // Returns: true
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isFunction_1" id="method_isFunction_1"></a>
-            <div class="permalink"><a href="#method_isFunction_1" class="permalink fas fa-link"></a></div>
-            <p>util.isFunction(object)</p>
 
-          </h1>
-        </div><section><p><p>Returns <code>true</code> if the given <code>object</code> is a <code>Function</code>. Otherwise, returns
+
+</div><div class='expandable-header' id='method_isFunction_1-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isFunction_1" id="method_isFunction_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isFunction_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_isFunction_1" class="permalink fas fa-link"></a></div>
+        <p>util.isFunction(object)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isFunction_1-expand-content'>
+<p><p>Returns <code>true</code> if the given <code>object</code> is a <code>Function</code>. Otherwise, returns
 <code>false</code>.</p></p>
 <pre class="prettyprint"><code class="lang-js">const util = require(&#39;util&#39;);
 
@@ -212,15 +279,22 @@ util.isFunction(Foo);
 util.isFunction(Bar);
 // Returns: true
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isNull_1" id="method_isNull_1"></a>
-            <div class="permalink"><a href="#method_isNull_1" class="permalink fas fa-link"></a></div>
-            <p>util.isNull(object)</p>
 
-          </h1>
-        </div><section><p><p>Returns <code>true</code> if the given <code>object</code> is strictly <code>null</code>. Otherwise, returns
+
+</div><div class='expandable-header' id='method_isNull_1-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isNull_1" id="method_isNull_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isNull_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_isNull_1" class="permalink fas fa-link"></a></div>
+        <p>util.isNull(object)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isNull_1-expand-content'>
+<p><p>Returns <code>true</code> if the given <code>object</code> is strictly <code>null</code>. Otherwise, returns
 <code>false</code>.</p></p>
 <pre class="prettyprint"><code class="lang-js">const util = require(&#39;util&#39;);
 
@@ -231,15 +305,22 @@ util.isNull(undefined);
 util.isNull(null);
 // Returns: true
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isNullOrUndefined_1" id="method_isNullOrUndefined_1"></a>
-            <div class="permalink"><a href="#method_isNullOrUndefined_1" class="permalink fas fa-link"></a></div>
-            <p>util.isNullOrUndefined(object)</p>
 
-          </h1>
-        </div><section><p><p>Returns <code>true</code> if the given <code>object</code> is <code>null</code> or <code>undefined</code>. Otherwise,
+
+</div><div class='expandable-header' id='method_isNullOrUndefined_1-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isNullOrUndefined_1" id="method_isNullOrUndefined_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isNullOrUndefined_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_isNullOrUndefined_1" class="permalink fas fa-link"></a></div>
+        <p>util.isNullOrUndefined(object)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isNullOrUndefined_1-expand-content'>
+<p><p>Returns <code>true</code> if the given <code>object</code> is <code>null</code> or <code>undefined</code>. Otherwise,
 returns <code>false</code>.</p></p>
 <pre class="prettyprint"><code class="lang-js">const util = require(&#39;util&#39;);
 
@@ -250,15 +331,22 @@ util.isNullOrUndefined(undefined);
 util.isNullOrUndefined(null);
 // Returns: true
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isNumber_1" id="method_isNumber_1"></a>
-            <div class="permalink"><a href="#method_isNumber_1" class="permalink fas fa-link"></a></div>
-            <p>util.isNumber(object)</p>
 
-          </h1>
-        </div><section><p><p>Returns <code>true</code> if the given <code>object</code> is a <code>Number</code>. Otherwise, returns <code>false</code>.</p></p>
+
+</div><div class='expandable-header' id='method_isNumber_1-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isNumber_1" id="method_isNumber_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isNumber_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_isNumber_1" class="permalink fas fa-link"></a></div>
+        <p>util.isNumber(object)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isNumber_1-expand-content'>
+<p><p>Returns <code>true</code> if the given <code>object</code> is a <code>Number</code>. Otherwise, returns <code>false</code>.</p></p>
 <pre class="prettyprint"><code class="lang-js">const util = require(&#39;util&#39;);
 
 util.isNumber(false);
@@ -270,15 +358,22 @@ util.isNumber(0);
 util.isNumber(NaN);
 // Returns: true
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isObject_1" id="method_isObject_1"></a>
-            <div class="permalink"><a href="#method_isObject_1" class="permalink fas fa-link"></a></div>
-            <p>util.isObject(object)</p>
 
-          </h1>
-        </div><section><p><p>Returns <code>true</code> if the given <code>object</code> is strictly an <code>Object</code> <strong>and</strong> not a
+
+</div><div class='expandable-header' id='method_isObject_1-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isObject_1" id="method_isObject_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isObject_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_isObject_1" class="permalink fas fa-link"></a></div>
+        <p>util.isObject(object)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isObject_1-expand-content'>
+<p><p>Returns <code>true</code> if the given <code>object</code> is strictly an <code>Object</code> <strong>and</strong> not a
 <code>Function</code>. Otherwise, returns <code>false</code>.</p></p>
 <pre class="prettyprint"><code class="lang-js">const util = require(&#39;util&#39;);
 
@@ -291,15 +386,22 @@ util.isObject({});
 util.isObject(() =&gt; {});
 // Returns: false
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isPrimitive_1" id="method_isPrimitive_1"></a>
-            <div class="permalink"><a href="#method_isPrimitive_1" class="permalink fas fa-link"></a></div>
-            <p>util.isPrimitive(object)</p>
 
-          </h1>
-        </div><section><p><p>Returns <code>true</code> if the given <code>object</code> is a primitive type. Otherwise, returns
+
+</div><div class='expandable-header' id='method_isPrimitive_1-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isPrimitive_1" id="method_isPrimitive_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isPrimitive_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_isPrimitive_1" class="permalink fas fa-link"></a></div>
+        <p>util.isPrimitive(object)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isPrimitive_1-expand-content'>
+<p><p>Returns <code>true</code> if the given <code>object</code> is a primitive type. Otherwise, returns
 <code>false</code>.</p></p>
 <pre class="prettyprint"><code class="lang-js">const util = require(&#39;util&#39;);
 
@@ -322,15 +424,22 @@ util.isPrimitive(/^$/);
 util.isPrimitive(new Date());
 // Returns: false
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isRegExp_1" id="method_isRegExp_1"></a>
-            <div class="permalink"><a href="#method_isRegExp_1" class="permalink fas fa-link"></a></div>
-            <p>util.isRegExp(object)</p>
 
-          </h1>
-        </div><section><p><p>Returns <code>true</code> if the given <code>object</code> is a <code>RegExp</code>. Otherwise, returns <code>false</code>.</p></p>
+
+</div><div class='expandable-header' id='method_isRegExp_1-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isRegExp_1" id="method_isRegExp_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isRegExp_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_isRegExp_1" class="permalink fas fa-link"></a></div>
+        <p>util.isRegExp(object)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isRegExp_1-expand-content'>
+<p><p>Returns <code>true</code> if the given <code>object</code> is a <code>RegExp</code>. Otherwise, returns <code>false</code>.</p></p>
 <pre class="prettyprint"><code class="lang-js">const util = require(&#39;util&#39;);
 
 util.isRegExp(/some regexp/);
@@ -340,15 +449,22 @@ util.isRegExp(new RegExp(&#39;another regexp&#39;));
 util.isRegExp({});
 // Returns: false
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isString_1" id="method_isString_1"></a>
-            <div class="permalink"><a href="#method_isString_1" class="permalink fas fa-link"></a></div>
-            <p>util.isString(object)</p>
 
-          </h1>
-        </div><section><p><p>Returns <code>true</code> if the given <code>object</code> is a <code>string</code>. Otherwise, returns <code>false</code>.</p></p>
+
+</div><div class='expandable-header' id='method_isString_1-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isString_1" id="method_isString_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isString_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_isString_1" class="permalink fas fa-link"></a></div>
+        <p>util.isString(object)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isString_1-expand-content'>
+<p><p>Returns <code>true</code> if the given <code>object</code> is a <code>string</code>. Otherwise, returns <code>false</code>.</p></p>
 <pre class="prettyprint"><code class="lang-js">const util = require(&#39;util&#39;);
 
 util.isString(&#39;&#39;);
@@ -360,15 +476,22 @@ util.isString(String(&#39;foo&#39;));
 util.isString(5);
 // Returns: false
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isSymbol_1" id="method_isSymbol_1"></a>
-            <div class="permalink"><a href="#method_isSymbol_1" class="permalink fas fa-link"></a></div>
-            <p>util.isSymbol(object)</p>
 
-          </h1>
-        </div><section><p><p>Returns <code>true</code> if the given <code>object</code> is a <code>Symbol</code>. Otherwise, returns <code>false</code>.</p></p>
+
+</div><div class='expandable-header' id='method_isSymbol_1-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isSymbol_1" id="method_isSymbol_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isSymbol_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_isSymbol_1" class="permalink fas fa-link"></a></div>
+        <p>util.isSymbol(object)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isSymbol_1-expand-content'>
+<p><p>Returns <code>true</code> if the given <code>object</code> is a <code>Symbol</code>. Otherwise, returns <code>false</code>.</p></p>
 <pre class="prettyprint"><code class="lang-js">const util = require(&#39;util&#39;);
 
 util.isSymbol(5);
@@ -378,15 +501,22 @@ util.isSymbol(&#39;foo&#39;);
 util.isSymbol(Symbol(&#39;foo&#39;));
 // Returns: true
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isUndefined_1" id="method_isUndefined_1"></a>
-            <div class="permalink"><a href="#method_isUndefined_1" class="permalink fas fa-link"></a></div>
-            <p>util.isUndefined(object)</p>
 
-          </h1>
-        </div><section><p><p>Returns <code>true</code> if the given <code>object</code> is <code>undefined</code>. Otherwise, returns <code>false</code>.</p></p>
+
+</div><div class='expandable-header' id='method_isUndefined_1-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isUndefined_1" id="method_isUndefined_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isUndefined_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_isUndefined_1" class="permalink fas fa-link"></a></div>
+        <p>util.isUndefined(object)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isUndefined_1-expand-content'>
+<p><p>Returns <code>true</code> if the given <code>object</code> is <code>undefined</code>. Otherwise, returns <code>false</code>.</p></p>
 <pre class="prettyprint"><code class="lang-js">const util = require(&#39;util&#39;);
 
 const foo = undefined;
@@ -397,49 +527,77 @@ util.isUndefined(foo);
 util.isUndefined(null);
 // Returns: false
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_log_2" id="method_log_2"></a>
-            <div class="permalink"><a href="#method_log_2" class="permalink fas fa-link"></a></div>
-            <p>util.log(string)</p>
 
-          </h1>
-        </div><section><p><p>The <code>util.log()</code> method prints the given <code>string</code> to <code>stdout</code> with an included
+
+</div><div class='expandable-header' id='method_log_2-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_log_2" id="method_log_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_log_2-expand-icon"></i>
+        <div class="permalink"><a href="#method_log_2" class="permalink fas fa-link"></a></div>
+        <p>util.log(string)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_log_2-expand-content'>
+<p><p>The <code>util.log()</code> method prints the given <code>string</code> to <code>stdout</code> with an included
 timestamp.</p></p>
 <pre class="prettyprint"><code class="lang-js">const util = require(&#39;util&#39;);
 
 util.log(&#39;Timestamped message.&#39;);
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_print_1" id="method_print_1"></a>
-            <div class="permalink"><a href="#method_print_1" class="permalink fas fa-link"></a></div>
-            <p>util.print([...strings])</p>
 
-          </h1>
-        </div><section><p>Deprecated predecessor of <code>console.log</code>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_puts_1" id="method_puts_1"></a>
-            <div class="permalink"><a href="#method_puts_1" class="permalink fas fa-link"></a></div>
-            <p>util.puts([...strings])</p>
 
-          </h1>
-        </div><section><p><p>Deprecated predecessor of <code>console.log</code>.</p>
+</div><div class='expandable-header' id='method_print_1-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_print_1" id="method_print_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_print_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_print_1" class="permalink fas fa-link"></a></div>
+        <p>util.print([...strings])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_print_1-expand-content'>
+<p>Deprecated predecessor of <code>console.log</code>.</p>
+
+
+</div><div class='expandable-header' id='method_puts_1-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_puts_1" id="method_puts_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_puts_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_puts_1" class="permalink fas fa-link"></a></div>
+        <p>util.puts([...strings])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_puts_1-expand-content'>
+<p><p>Deprecated predecessor of <code>console.log</code>.</p>
 <!-- [end-include:util.md] -->
 <!-- [start-include:v8.md] --></p>
-</section></section>
-       <div class="heading">
-          <h2>
-            <a name="class_util_TextDecoder" id="class_util_TextDecoder"></a>
-            <div class="permalink"><a href="#class_util_TextDecoder" class="permalink fas fa-link"></a></div>
-            <p>Class: util.TextDecoder</p>
 
-          </h1>
-        </div><section><p><p>An implementation of the <a href="https://encoding.spec.whatwg.org/">WHATWG Encoding Standard</a> <code>TextDecoder</code> API.</p></p>
+
+</div><div class='expandable-header' id='class_util_TextDecoder-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_util_TextDecoder" id="class_util_TextDecoder"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_util_TextDecoder-expand-icon"></i>
+        <div class="permalink"><a href="#class_util_TextDecoder" class="permalink fas fa-link"></a></div>
+        <p>Class: util.TextDecoder</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_util_TextDecoder-expand-content'>
+<p><p>An implementation of the <a href="https://encoding.spec.whatwg.org/">WHATWG Encoding Standard</a> <code>TextDecoder</code> API.</p></p>
 <pre class="prettyprint"><code class="lang-js">const decoder = new TextDecoder(&#39;shift_jis&#39;);
 let string = &#39;&#39;;
 let buffer;
@@ -448,15 +606,29 @@ while (buffer = getNextChunkSomehow()) {
 }
 string += decoder.decode(); // end-of-stream
 </code></pre>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="module_whatwg_supported_encodings" id="module_whatwg_supported_encodings"></a>
-            <div class="permalink"><a href="#module_whatwg_supported_encodings" class="permalink fas fa-link"></a></div>
-            <p>WHATWG Supported Encodings</p>
 
-          </h1>
-        </div><section><p>Per the <a href="https://encoding.spec.whatwg.org/">WHATWG Encoding Standard</a>, the encodings supported by the
+
+<div class="heading">
+<h3>
+  <a name="subgroup_class_util_TextDecoder_Modules" id="subgroup_class_util_TextDecoder_Modules"></a>
+  <div class="permalink"><a href="#subgroup_class_util_TextDecoder_Modules" class="permalink fas fa-link"></a></div>
+  <p>Modules</p>
+
+</h3>
+</div>
+
+
+
+<div class="heading">
+<h4>
+  <a name="module_whatwg_supported_encodings" id="module_whatwg_supported_encodings"></a>
+  <div class="permalink"><a href="#module_whatwg_supported_encodings" class="permalink fas fa-link"></a></div>
+  <p>WHATWG Supported Encodings</p>
+
+</h4>
+</div>
+
+<p>Per the <a href="https://encoding.spec.whatwg.org/">WHATWG Encoding Standard</a>, the encodings supported by the
 <code>TextDecoder</code> API are outlined in the tables below. For each encoding,
 one or more aliases may be used.</p>
 <p>Different Node.js build configurations support different sets of encodings.
@@ -464,14 +636,17 @@ While a very basic set of encodings is supported even on Node.js builds without
 ICU enabled, support for some encodings is provided only when Node.js is built
 with ICU and using the full ICU data (see <a href="intl.html">Internationalization</a>).</p>
 
-       <div class="heading">
-          <h5>
-            <a name="module_encodings_supported_without_icu" id="module_encodings_supported_without_icu"></a>
-            <div class="permalink"><a href="#module_encodings_supported_without_icu" class="permalink fas fa-link"></a></div>
-            <p>Encodings Supported Without ICU</p>
 
-          </h1>
-        </div><section><table>
+<div class="heading">
+<h5>
+  <a name="module_encodings_supported_without_icu" id="module_encodings_supported_without_icu"></a>
+  <div class="permalink"><a href="#module_encodings_supported_without_icu" class="permalink fas fa-link"></a></div>
+  <p>Encodings Supported Without ICU</p>
+
+</h5>
+</div>
+
+<table>
 <thead>
 <tr>
 <th>Encoding</th>
@@ -489,15 +664,18 @@ with ICU and using the full ICU data (see <a href="intl.html">Internationalizati
 </tr>
 </tbody>
 </table>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="module_encodings_supported_by_default__with_icu_" id="module_encodings_supported_by_default__with_icu_"></a>
-            <div class="permalink"><a href="#module_encodings_supported_by_default__with_icu_" class="permalink fas fa-link"></a></div>
-            <p>Encodings Supported by Default (With ICU)</p>
 
-          </h1>
-        </div><section><table>
+
+<div class="heading">
+<h5>
+  <a name="module_encodings_supported_by_default__with_icu_" id="module_encodings_supported_by_default__with_icu_"></a>
+  <div class="permalink"><a href="#module_encodings_supported_by_default__with_icu_" class="permalink fas fa-link"></a></div>
+  <p>Encodings Supported by Default (With ICU)</p>
+
+</h5>
+</div>
+
+<table>
 <thead>
 <tr>
 <th>Encoding</th>
@@ -518,15 +696,18 @@ with ICU and using the full ICU data (see <a href="intl.html">Internationalizati
 </tr>
 </tbody>
 </table>
-</section>
-       <div class="heading">
-          <h5>
-            <a name="module_encodings_requiring_full_icu_data" id="module_encodings_requiring_full_icu_data"></a>
-            <div class="permalink"><a href="#module_encodings_requiring_full_icu_data" class="permalink fas fa-link"></a></div>
-            <p>Encodings Requiring Full ICU Data</p>
 
-          </h1>
-        </div><section><p><table></p>
+
+<div class="heading">
+<h5>
+  <a name="module_encodings_requiring_full_icu_data" id="module_encodings_requiring_full_icu_data"></a>
+  <div class="permalink"><a href="#module_encodings_requiring_full_icu_data" class="permalink fas fa-link"></a></div>
+  <p>Encodings Requiring Full ICU Data</p>
+
+</h5>
+</div>
+
+<p><table></p>
 <p><thead></p>
 <p><tr></p>
 <p><th>Encoding</th></p>
@@ -674,89 +855,189 @@ with ICU and using the full ICU data (see <a href="intl.html">Internationalizati
 </table></p>
 <p><em>Note</em>: The <code>&#39;iso-8859-16&#39;</code> encoding listed in the <a href="https://encoding.spec.whatwg.org/">WHATWG Encoding Standard</a>
 is not supported.</p>
-</section></section></section><section>
-       <div class="heading">
-          <h4>
-            <a name="property_encoding" id="property_encoding"></a>
-            <div class="permalink"><a href="#property_encoding" class="permalink fas fa-link"></a></div>
-            <p><code>encoding</code> {string} </p>
 
-          </h1>
-        </div><section><p>The encoding supported by the <code>TextDecoder</code> instance.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_fatal" id="property_fatal"></a>
-            <div class="permalink"><a href="#property_fatal" class="permalink fas fa-link"></a></div>
-            <p><code>fatal</code> {boolean} </p>
 
-          </h1>
-        </div><section><p>The value will be <code>true</code> if decoding errors result in a <code>TypeError</code> being
+<div class="heading">
+<h3>
+  <a name="subgroup_class_util_TextDecoder_Properties" id="subgroup_class_util_TextDecoder_Properties"></a>
+  <div class="permalink"><a href="#subgroup_class_util_TextDecoder_Properties" class="permalink fas fa-link"></a></div>
+  <p>Properties</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='property_encoding-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_encoding" id="property_encoding"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_encoding-expand-icon"></i>
+        <div class="permalink"><a href="#property_encoding" class="permalink fas fa-link"></a></div>
+        <p><code>encoding</code> {string} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_encoding-expand-content'>
+<p>The encoding supported by the <code>TextDecoder</code> instance.</p>
+
+
+</div><div class='expandable-header' id='property_fatal-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_fatal" id="property_fatal"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_fatal-expand-icon"></i>
+        <div class="permalink"><a href="#property_fatal" class="permalink fas fa-link"></a></div>
+        <p><code>fatal</code> {boolean} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_fatal-expand-content'>
+<p>The value will be <code>true</code> if decoding errors result in a <code>TypeError</code> being
 thrown.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_ignoreBOM" id="property_ignoreBOM"></a>
-            <div class="permalink"><a href="#property_ignoreBOM" class="permalink fas fa-link"></a></div>
-            <p><code>ignoreBOM</code> {boolean} </p>
 
-          </h1>
-        </div><section><p>The value will be <code>true</code> if the decoding result will include the byte order
+
+</div><div class='expandable-header' id='property_ignoreBOM-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_ignoreBOM" id="property_ignoreBOM"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_ignoreBOM-expand-icon"></i>
+        <div class="permalink"><a href="#property_ignoreBOM" class="permalink fas fa-link"></a></div>
+        <p><code>ignoreBOM</code> {boolean} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_ignoreBOM-expand-content'>
+<p>The value will be <code>true</code> if the decoding result will include the byte order
 mark.</p>
-</section></section><section>
-       <div class="heading">
-          <h4>
-            <a name="method_decode_1" id="method_decode_1"></a>
-            <div class="permalink"><a href="#method_decode_1" class="permalink fas fa-link"></a></div>
-            <p>textDecoder.decode([input[, options]])</p>
 
-          </h1>
-        </div><section><p>Decodes the <code>input</code> and returns a string. If <code>options.stream</code> is <code>true</code>, any
+
+</div>
+<div class="heading">
+<h3>
+  <a name="subgroup_class_util_TextDecoder_Methods" id="subgroup_class_util_TextDecoder_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_util_TextDecoder_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_decode_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_decode_1" id="method_decode_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_decode_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_decode_1" class="permalink fas fa-link"></a></div>
+        <p>textDecoder.decode([input[, options]])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_decode_1-expand-content'>
+<p>Decodes the <code>input</code> and returns a string. If <code>options.stream</code> is <code>true</code>, any
 incomplete byte sequences occurring at the end of the <code>input</code> are buffered
 internally and emitted after the next call to <code>textDecoder.decode()</code>.</p>
 <p>If <code>textDecoder.fatal</code> is <code>true</code>, decoding errors that occur will result in a
 <code>TypeError</code> being thrown.</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="class_util_TextEncoder" id="class_util_TextEncoder"></a>
-            <div class="permalink"><a href="#class_util_TextEncoder" class="permalink fas fa-link"></a></div>
-            <p>Class: util.TextEncoder</p>
 
-          </h1>
-        </div><section><p><p>An implementation of the <a href="https://encoding.spec.whatwg.org/">WHATWG Encoding Standard</a> <code>TextEncoder</code> API. All
+
+</div>
+</div><div class='expandable-header' id='class_util_TextEncoder-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_util_TextEncoder" id="class_util_TextEncoder"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_util_TextEncoder-expand-icon"></i>
+        <div class="permalink"><a href="#class_util_TextEncoder" class="permalink fas fa-link"></a></div>
+        <p>Class: util.TextEncoder</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_util_TextEncoder-expand-content'>
+<p><p>An implementation of the <a href="https://encoding.spec.whatwg.org/">WHATWG Encoding Standard</a> <code>TextEncoder</code> API. All
 instances of <code>TextEncoder</code> only support UTF-8 encoding.</p></p>
 <pre class="prettyprint"><code class="lang-js">const encoder = new TextEncoder();
 const uint8array = encoder.encode(&#39;this is some data&#39;);
 </code></pre>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="property_encoding_1" id="property_encoding_1"></a>
-            <div class="permalink"><a href="#property_encoding_1" class="permalink fas fa-link"></a></div>
-            <p><code>encoding</code> {string} </p>
 
-          </h1>
-        </div><section><p>The encoding supported by the <code>TextEncoder</code> instance. Always set to <code>&#39;utf-8&#39;</code>.</p>
-</section></section><section>
-       <div class="heading">
-          <h4>
-            <a name="method_encode_1" id="method_encode_1"></a>
-            <div class="permalink"><a href="#method_encode_1" class="permalink fas fa-link"></a></div>
-            <p>textEncoder.encode([input])</p>
 
-          </h1>
-        </div><section><p>UTF-8 encodes the <code>input</code> string and returns a <code>Uint8Array</code> containing the
+<div class="heading">
+<h3>
+  <a name="subgroup_class_util_TextEncoder_Properties" id="subgroup_class_util_TextEncoder_Properties"></a>
+  <div class="permalink"><a href="#subgroup_class_util_TextEncoder_Properties" class="permalink fas fa-link"></a></div>
+  <p>Properties</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='property_encoding_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_encoding_1" id="property_encoding_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_encoding_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_encoding_1" class="permalink fas fa-link"></a></div>
+        <p><code>encoding</code> {string} </p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_encoding_1-expand-content'>
+<p>The encoding supported by the <code>TextEncoder</code> instance. Always set to <code>&#39;utf-8&#39;</code>.</p>
+
+
+</div>
+<div class="heading">
+<h3>
+  <a name="subgroup_class_util_TextEncoder_Methods" id="subgroup_class_util_TextEncoder_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_util_TextEncoder_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_encode_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_encode_1" id="method_encode_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_encode_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_encode_1" class="permalink fas fa-link"></a></div>
+        <p>textEncoder.encode([input])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_encode_1-expand-content'>
+<p>UTF-8 encodes the <code>input</code> string and returns a <code>Uint8Array</code> containing the
 encoded bytes.</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="method_callbackify" id="method_callbackify"></a>
-            <div class="permalink"><a href="#method_callbackify" class="permalink fas fa-link"></a></div>
-            <p>util.callbackify(original)</p>
 
-          </h1>
-        </div><section><p><p>Takes an <code>async</code> function (or a function that returns a Promise) and returns a
+
+</div>
+</div><div class='expandable-header' id='method_callbackify-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_callbackify" id="method_callbackify"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_callbackify-expand-icon"></i>
+        <div class="permalink"><a href="#method_callbackify" class="permalink fas fa-link"></a></div>
+        <p>util.callbackify(original)</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_callbackify-expand-content'>
+<p><p>Takes an <code>async</code> function (or a function that returns a Promise) and returns a
 function following the error-first callback style, i.e. taking
 a <code>(err, value) =&gt; ...</code> callback as the last argument. In the callback, the
 first argument will be the rejection reason (or <code>null</code> if the Promise
@@ -798,15 +1079,22 @@ callbackFunction((err, ret) =&gt; {
 </code></pre>
 </li>
 </ul>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_debuglog" id="method_debuglog"></a>
-            <div class="permalink"><a href="#method_debuglog" class="permalink fas fa-link"></a></div>
-            <p>util.debuglog(section)</p>
 
-          </h1>
-        </div><section><p>The <code>util.debuglog()</code> method is used to create a function that conditionally
+
+</div><div class='expandable-header' id='method_debuglog-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_debuglog" id="method_debuglog"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_debuglog-expand-icon"></i>
+        <div class="permalink"><a href="#method_debuglog" class="permalink fas fa-link"></a></div>
+        <p>util.debuglog(section)</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_debuglog-expand-content'>
+<p>The <code>util.debuglog()</code> method is used to create a function that conditionally
 writes debug messages to <code>stderr</code> based on the existence of the <code>NODE_DEBUG</code>
 environment variable.  If the <code>section</code> name appears within the value of that
 environment variable, then the returned function operates similar to
@@ -834,15 +1122,22 @@ debuglog(&#39;hi there, it\&#39;s foo-bar [%d]&#39;, 2333);
 </code></pre>
 <p>Multiple comma-separated <code>section</code> names may be specified in the <code>NODE_DEBUG</code>
 environment variable. For example: <code>NODE_DEBUG=fs,net,tls</code>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_deprecate" id="method_deprecate"></a>
-            <div class="permalink"><a href="#method_deprecate" class="permalink fas fa-link"></a></div>
-            <p>util.deprecate(function, string)</p>
 
-          </h1>
-        </div><section><p>The <code>util.deprecate()</code> method wraps the given <code>function</code> or class in such a way that
+
+</div><div class='expandable-header' id='method_deprecate-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_deprecate" id="method_deprecate"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_deprecate-expand-icon"></i>
+        <div class="permalink"><a href="#method_deprecate" class="permalink fas fa-link"></a></div>
+        <p>util.deprecate(function, string)</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_deprecate-expand-content'>
+<p>The <code>util.deprecate()</code> method wraps the given <code>function</code> or class in such a way that
 it is marked as deprecated.</p>
 <!-- eslint-disable prefer-rest-params -->
 <pre class="prettyprint"><code class="lang-js">const util = require(&#39;util&#39;);
@@ -869,15 +1164,22 @@ thrown when the deprecated function is called.</p>
 <p>The <code>--throw-deprecation</code> command line flag and <code>process.throwDeprecation</code>
 property take precedence over <code>--trace-deprecation</code> and
 <code>process.traceDeprecation</code>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_format_3" id="method_format_3"></a>
-            <div class="permalink"><a href="#method_format_3" class="permalink fas fa-link"></a></div>
-            <p>util.format(format[, ...args])</p>
 
-          </h1>
-        </div><section><p><p>The <code>util.format()</code> method returns a formatted string using the first argument
+
+</div><div class='expandable-header' id='method_format_3-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_format_3" id="method_format_3"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_format_3-expand-icon"></i>
+        <div class="permalink"><a href="#method_format_3" class="permalink fas fa-link"></a></div>
+        <p>util.format(format[, ...args])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_format_3-expand-content'>
+<p><p>The <code>util.format()</code> method returns a formatted string using the first argument
 as a <code>printf</code>-like format.</p></p>
 <p><p>The first argument is a string containing zero or more <em>placeholder</em> tokens.
 Each placeholder token is replaced with the converted value from the
@@ -920,22 +1222,29 @@ Each argument is converted to a string using <code>util.inspect()</code>.</p>
 without any formatting.</p>
 <pre class="prettyprint"><code class="lang-js">util.format(&#39;%% %s&#39;); // &#39;%% %s&#39;
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_inherits" id="method_inherits"></a>
-            <div class="permalink"><a href="#method_inherits" class="permalink fas fa-link"></a></div>
-            <p>util.inherits(constructor, superConstructor)</p>
 
-          </h1>
-        </div><section><p><p><em>Note</em>: Usage of <code>util.inherits()</code> is discouraged. Please use the ES6 <code>class</code>
+
+</div><div class='expandable-header' id='method_inherits-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_inherits" id="method_inherits"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_inherits-expand-icon"></i>
+        <div class="permalink"><a href="#method_inherits" class="permalink fas fa-link"></a></div>
+        <p>util.inherits(constructor, superConstructor)</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_inherits-expand-content'>
+<p><p><em>Note</em>: Usage of <code>util.inherits()</code> is discouraged. Please use the ES6 <code>class</code>
 and <code>extends</code> keywords to get language level inheritance support. Also note
 that the two styles are <a href="https://github.com/nodejs/node/issues/4179">semantically incompatible</a>.</p></p>
 <p><ul></p>
 <p><li><code>constructor</code> {Function}</li></p>
 <p><li><code>superConstructor</code> {Function}</li>
 </ul></p>
-<p><p>Inherit the prototype methods from one <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/constructor">constructor</a> into another.  The
+<p><p>Inherit the prototype methods from one <a href="https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Object/constructor">constructor</a> into another.  The
 prototype of <code>constructor</code> will be set to a new object created from
 <code>superConstructor</code>.</p></p>
 <p><p>As an additional convenience, <code>superConstructor</code> will be accessible
@@ -979,15 +1288,22 @@ stream.on(&#39;data&#39;, (data) =&gt; {
 });
 stream.write(&#39;With ES6&#39;);
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_inspect_1" id="method_inspect_1"></a>
-            <div class="permalink"><a href="#method_inspect_1" class="permalink fas fa-link"></a></div>
-            <p>util.inspect(object[, options])</p>
 
-          </h1>
-        </div><section><p>The <code>util.inspect()</code> method returns a string representation of <code>object</code> that is
+
+</div><div class='expandable-header' id='method_inspect_1-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_inspect_1" id="method_inspect_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_inspect_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_inspect_1" class="permalink fas fa-link"></a></div>
+        <p>util.inspect(object[, options])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_inspect_1-expand-content'>
+<p>The <code>util.inspect()</code> method returns a string representation of <code>object</code> that is
 primarily useful for debugging. Additional <code>options</code> may be passed that alter
 certain aspects of the formatted string.</p>
 <p>The following example inspects all properties of the <code>util</code> object:</p>
@@ -998,15 +1314,29 @@ console.log(util.inspect(util, { showHidden: true, depth: null }));
 <p>Values may supply their own custom <code>inspect(depth, opts)</code> functions, when
 called these receive the current <code>depth</code> in the recursive inspection, as well as
 the options object passed to <code>util.inspect()</code>.</p>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="misc_Customizing__util_inspect__colors" id="misc_Customizing__util_inspect__colors"></a>
-            <div class="permalink"><a href="#misc_Customizing__util_inspect__colors" class="permalink fas fa-link"></a></div>
-            <p>Customizing <code>util.inspect</code> colors</p>
 
-          </h1>
-        </div><section><p>Color output (if enabled) of <code>util.inspect</code> is customizable globally
+
+<div class="heading">
+<h3>
+  <a name="subgroup_method_inspect_1_Pages" id="subgroup_method_inspect_1_Pages"></a>
+  <div class="permalink"><a href="#subgroup_method_inspect_1_Pages" class="permalink fas fa-link"></a></div>
+  <p>Pages</p>
+
+</h3>
+</div>
+
+
+
+<div class="heading">
+<h4>
+  <a name="misc_Customizing__util_inspect__colors" id="misc_Customizing__util_inspect__colors"></a>
+  <div class="permalink"><a href="#misc_Customizing__util_inspect__colors" class="permalink fas fa-link"></a></div>
+  <p>Customizing <code>util.inspect</code> colors</p>
+
+</h4>
+</div>
+
+<p>Color output (if enabled) of <code>util.inspect</code> is customizable globally
 via the <code>util.inspect.styles</code> and <code>util.inspect.colors</code> properties.</p>
 <p><code>util.inspect.styles</code> is a map associating a style name to a color from
 <code>util.inspect.colors</code>.</p>
@@ -1027,15 +1357,18 @@ via the <code>util.inspect.styles</code> and <code>util.inspect.colors</code> pr
 <code>underline</code> and <code>inverse</code> codes.</p>
 <p>Color styling uses ANSI control codes that may not be supported on all
 terminals.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="misc_Custom_inspection_functions_on_Objects" id="misc_Custom_inspection_functions_on_Objects"></a>
-            <div class="permalink"><a href="#misc_Custom_inspection_functions_on_Objects" class="permalink fas fa-link"></a></div>
-            <p>Custom inspection functions on Objects</p>
 
-          </h1>
-        </div><section><p><p>Objects may also define their own <code><a href="depth, opts">util.inspect.custom</a></code>
+
+<div class="heading">
+<h4>
+  <a name="misc_Custom_inspection_functions_on_Objects" id="misc_Custom_inspection_functions_on_Objects"></a>
+  <div class="permalink"><a href="#misc_Custom_inspection_functions_on_Objects" class="permalink fas fa-link"></a></div>
+  <p>Custom inspection functions on Objects</p>
+
+</h4>
+</div>
+
+<p><p>Objects may also define their own <code><a href="depth, opts">util.inspect.custom</a></code>
 (or the equivalent but deprecated <code>inspect(depth, opts)</code>) function that
 <code>util.inspect()</code> will invoke and use the result of when inspecting the object:</p></p>
 <pre class="prettyprint"><code class="lang-js">const util = require(&#39;util&#39;);
@@ -1080,25 +1413,42 @@ obj[util.inspect.custom] = (depth) =&gt; {
 util.inspect(obj);
 // Returns: &quot;{ bar: &#39;baz&#39; }&quot;
 </code></pre>
-</section></section><section>
-       <div class="heading">
-          <h4>
-            <a name="module_util_inspect_custom" id="module_util_inspect_custom"></a>
-            <div class="permalink"><a href="#module_util_inspect_custom" class="permalink fas fa-link"></a></div>
-            <p>util.inspect.custom</p>
 
-          </h1>
-        </div><section><p>A Symbol that can be used to declare custom inspect functions, see
+
+<div class="heading">
+<h3>
+  <a name="subgroup_method_inspect_1_Modules" id="subgroup_method_inspect_1_Modules"></a>
+  <div class="permalink"><a href="#subgroup_method_inspect_1_Modules" class="permalink fas fa-link"></a></div>
+  <p>Modules</p>
+
+</h3>
+</div>
+
+
+
+<div class="heading">
+<h4>
+  <a name="module_util_inspect_custom" id="module_util_inspect_custom"></a>
+  <div class="permalink"><a href="#module_util_inspect_custom" class="permalink fas fa-link"></a></div>
+  <p>util.inspect.custom</p>
+
+</h4>
+</div>
+
+<p>A Symbol that can be used to declare custom inspect functions, see
 <a href="#util_custom_inspection_functions_on_objects">Custom inspection functions on Objects</a>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_util_inspect_defaultoptions" id="module_util_inspect_defaultoptions"></a>
-            <div class="permalink"><a href="#module_util_inspect_defaultoptions" class="permalink fas fa-link"></a></div>
-            <p>util.inspect.defaultOptions</p>
 
-          </h1>
-        </div><section><p><p>The <code>defaultOptions</code> value allows customization of the default options used by
+
+<div class="heading">
+<h4>
+  <a name="module_util_inspect_defaultoptions" id="module_util_inspect_defaultoptions"></a>
+  <div class="permalink"><a href="#module_util_inspect_defaultoptions" class="permalink fas fa-link"></a></div>
+  <p>util.inspect.defaultOptions</p>
+
+</h4>
+</div>
+
+<p><p>The <code>defaultOptions</code> value allows customization of the default options used by
 <code>util.inspect</code>. This is useful for functions like <code>console.log</code> or
 <code>util.format</code> which implicitly call into <code>util.inspect</code>. It shall be set to an
 object containing one or more valid <a href="#util_util_inspect_object_options"><code>util.inspect()</code></a> options. Setting
@@ -1110,27 +1460,41 @@ console.log(arr); // logs the truncated array
 util.inspect.defaultOptions.maxArrayLength = null;
 console.log(arr); // logs the full array
 </code></pre>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="method_isDeepStrictEqual" id="method_isDeepStrictEqual"></a>
-            <div class="permalink"><a href="#method_isDeepStrictEqual" class="permalink fas fa-link"></a></div>
-            <p>util.isDeepStrictEqual(val1, val2)</p>
 
-          </h1>
-        </div><section><p>Returns <code>true</code> if there is deep strict equality between <code>val</code> and <code>val2</code>.
+
+</div><div class='expandable-header' id='method_isDeepStrictEqual-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_isDeepStrictEqual" id="method_isDeepStrictEqual"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isDeepStrictEqual-expand-icon"></i>
+        <div class="permalink"><a href="#method_isDeepStrictEqual" class="permalink fas fa-link"></a></div>
+        <p>util.isDeepStrictEqual(val1, val2)</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isDeepStrictEqual-expand-content'>
+<p>Returns <code>true</code> if there is deep strict equality between <code>val</code> and <code>val2</code>.
 Otherwise, returns <code>false</code>.</p>
 <p>See <a href="assert.html#assert_assert_deepstrictequal_actual_expected_message"><code>assert.deepStrictEqual()</code></a> for more information about deep strict
 equality.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_promisify" id="method_promisify"></a>
-            <div class="permalink"><a href="#method_promisify" class="permalink fas fa-link"></a></div>
-            <p>util.promisify(original)</p>
 
-          </h1>
-        </div><section><p>Takes a function following the common error-first callback style, i.e. taking
+
+</div><div class='expandable-header' id='method_promisify-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_promisify" id="method_promisify"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_promisify-expand-icon"></i>
+        <div class="permalink"><a href="#method_promisify" class="permalink fas fa-link"></a></div>
+        <p>util.promisify(original)</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_promisify-expand-content'>
+<p>Takes a function following the common error-first callback style, i.e. taking
 a <code>(err, value) =&gt; ...</code> callback as the last argument, and returns a version
 that returns promises.</p>
 <p>For example:</p>
@@ -1162,15 +1526,29 @@ final argument in all cases. If <code>original</code> is not a function, <code>p
 will throw an error. If <code>original</code> is a function but its last argument is not
 an error-first callback, it will still be passed an error-first
 callback as its last argument.</p>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="module_custom_promisified_functions" id="module_custom_promisified_functions"></a>
-            <div class="permalink"><a href="#module_custom_promisified_functions" class="permalink fas fa-link"></a></div>
-            <p>Custom promisified functions</p>
 
-          </h1>
-        </div><section><p>Using the <code>util.promisify.custom</code> symbol one can override the return value of
+
+<div class="heading">
+<h3>
+  <a name="subgroup_method_promisify_Modules" id="subgroup_method_promisify_Modules"></a>
+  <div class="permalink"><a href="#subgroup_method_promisify_Modules" class="permalink fas fa-link"></a></div>
+  <p>Modules</p>
+
+</h3>
+</div>
+
+
+
+<div class="heading">
+<h4>
+  <a name="module_custom_promisified_functions" id="module_custom_promisified_functions"></a>
+  <div class="permalink"><a href="#module_custom_promisified_functions" class="permalink fas fa-link"></a></div>
+  <p>Custom promisified functions</p>
+
+</h4>
+</div>
+
+<p>Using the <code>util.promisify.custom</code> symbol one can override the return value of
 <a href="#util_util_promisify_original"><code>util.promisify()</code></a>:</p>
 <pre class="prettyprint"><code class="lang-js">const util = require(&#39;util&#39;);
 
@@ -1197,20 +1575,25 @@ standard format of taking an error-first callback as the last argument.</p>
 </code></pre>
 <p>If <code>promisify.custom</code> is defined but is not a function, <code>promisify()</code> will
 throw an error.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="module_util_promisify_custom" id="module_util_promisify_custom"></a>
-            <div class="permalink"><a href="#module_util_promisify_custom" class="permalink fas fa-link"></a></div>
-            <p>util.promisify.custom</p>
 
-          </h1>
-        </div><section><p><ul></p>
+
+<div class="heading">
+<h4>
+  <a name="module_util_promisify_custom" id="module_util_promisify_custom"></a>
+  <div class="permalink"><a href="#module_util_promisify_custom" class="permalink fas fa-link"></a></div>
+  <p>util.promisify.custom</p>
+
+</h4>
+</div>
+
+<p><ul></p>
 <p><li>{symbol}</li>
 </ul></p>
 <p>A Symbol that can be used to declare custom promisified variants of functions,
 see <a href="#util_custom_promisified_functions">Custom promisified functions</a>.</p>
-</section></section></section>
+
+
+</div>
 
   <div class="footer">
     <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>

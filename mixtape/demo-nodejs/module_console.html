@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>mixtape page for console</title>
+    <title>Console</title>
     <script data-main="js/setup" src="js/require.js"></script>
     <link rel="stylesheet" href="fonts/fonts.css" />
     <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
@@ -13,9 +13,9 @@
   <body>
 
   <div id="control-panel">
-    <div id="control-strip-h">
-      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
-      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    <div id="control-strip-m">
+      <div id="control-strip-m-find"><div id="m-find"></div></div>
+      <div id="control-strip-m-toc"><div id="m-toc"></div></div>
     </div>
     <div id="controls">
       <div id="control-find">
@@ -26,22 +26,24 @@
       </div>
     </div>
   </div>
-  <div id="control-strip-v">
-    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
-    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  <div id="control-strip-w">
+    <div id="control-strip-w-find"></div>
+    <div id="control-strip-w-toc"></div>
   </div>
 
   <div id="content">
 
   
-       <div class="heading">
-          <h1>
-            <a name="module_console" id="module_console"></a>
-            <div class="permalink"><a href="#module_console" class="permalink fas fa-link"></a></div>
-            <p>Console</p>
+<div class="heading">
+<h1>
+  <a name="module_console" id="module_console"></a>
+  <div class="permalink"><a href="#module_console" class="permalink fas fa-link"></a></div>
+  <p>Console</p>
 
-          </h1>
-        </div><p><p>The <code>console</code> module provides a simple debugging console that is similar to the
+</h1>
+</div>
+
+<p><p>The <code>console</code> module provides a simple debugging console that is similar to the
 JavaScript console mechanism provided by web browsers.</p></p>
 <p><p>The module exports two specific components:</p></p>
 <p><ul></p>
@@ -84,35 +86,51 @@ myConsole.warn(`Danger ${name}! Danger!`);
 // Prints: Danger Will Robinson! Danger!, to err
 </code></pre>
 
-       <div class="heading">
-          <h2>
-            <a name="module_inspector_only_methods" id="module_inspector_only_methods"></a>
-            <div class="permalink"><a href="#module_inspector_only_methods" class="permalink fas fa-link"></a></div>
-            <p>Inspector only methods</p>
 
-          </h1>
-        </div><section><p>The following methods are exposed by the V8 engine in the general API but do
+<div class="heading">
+<h2>
+  <a name="module_inspector_only_methods" id="module_inspector_only_methods"></a>
+  <div class="permalink"><a href="#module_inspector_only_methods" class="permalink fas fa-link"></a></div>
+  <p>Inspector only methods</p>
+
+</h2>
+</div>
+
+<p>The following methods are exposed by the V8 engine in the general API but do
 not display anything unless used in conjunction with the <a href="debugger.html">inspector</a>
 (<code>--inspect</code> flag).</p>
 
-       <div class="heading">
-          <h3>
-            <a name="method_markTimeline" id="method_markTimeline"></a>
-            <div class="permalink"><a href="#method_markTimeline" class="permalink fas fa-link"></a></div>
-            <p>console.markTimeline(label)</p>
+<div class='expandable-header' id='method_markTimeline-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_markTimeline" id="method_markTimeline"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_markTimeline-expand-icon"></i>
+        <div class="permalink"><a href="#method_markTimeline" class="permalink fas fa-link"></a></div>
+        <p>console.markTimeline(label)</p>
 
-          </h1>
-        </div><section><p>This method does not display anything unless used in the inspector. The
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_markTimeline-expand-content'>
+<p>This method does not display anything unless used in the inspector. The
 <code>console.markTimeline()</code> method is the deprecated form of <a href="#console_console_timestamp_label"><code>console.timeStamp()</code></a>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_profile" id="method_profile"></a>
-            <div class="permalink"><a href="#method_profile" class="permalink fas fa-link"></a></div>
-            <p>console.profile([label])</p>
 
-          </h1>
-        </div><section><p><p>This method does not display anything unless used in the inspector. The
+
+</div><div class='expandable-header' id='method_profile-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_profile" id="method_profile"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_profile-expand-icon"></i>
+        <div class="permalink"><a href="#method_profile" class="permalink fas fa-link"></a></div>
+        <p>console.profile([label])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_profile-expand-content'>
+<p><p>This method does not display anything unless used in the inspector. The
 <code>console.profile()</code> method starts a JavaScript CPU profile with an optional
 label until <a href="#console_console_profileend"><code>console.profileEnd()</code></a> is called. The profile is then added to
 the <strong>Profile</strong> panel of the inspector.</p></p>
@@ -121,85 +139,144 @@ the <strong>Profile</strong> panel of the inspector.</p></p>
 console.profileEnd();
 // Adds the profile &#39;MyLabel&#39; to the Profiles panel of the inspector.
 </code></pre>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_profileEnd" id="method_profileEnd"></a>
-            <div class="permalink"><a href="#method_profileEnd" class="permalink fas fa-link"></a></div>
-            <p>console.profileEnd()</p>
 
-          </h1>
-        </div><section><p>This method does not display anything unless used in the inspector. Stops the
+
+</div><div class='expandable-header' id='method_profileEnd-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_profileEnd" id="method_profileEnd"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_profileEnd-expand-icon"></i>
+        <div class="permalink"><a href="#method_profileEnd" class="permalink fas fa-link"></a></div>
+        <p>console.profileEnd()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_profileEnd-expand-content'>
+<p>This method does not display anything unless used in the inspector. Stops the
 current JavaScript CPU profiling session if one has been started and prints
 the report to the <strong>Profiles</strong> panel of the inspector. See
 <a href="#console_console_profile_label"><code>console.profile()</code></a> for an example.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_table" id="method_table"></a>
-            <div class="permalink"><a href="#method_table" class="permalink fas fa-link"></a></div>
-            <p>console.table(array[, columns])</p>
 
-          </h1>
-        </div><section><p>This method does not display anything unless used in the inspector. Prints to
+
+</div><div class='expandable-header' id='method_table-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_table" id="method_table"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_table-expand-icon"></i>
+        <div class="permalink"><a href="#method_table" class="permalink fas fa-link"></a></div>
+        <p>console.table(array[, columns])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_table-expand-content'>
+<p>This method does not display anything unless used in the inspector. Prints to
 <code>stdout</code> the array <code>array</code> formatted as a table.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_timeStamp" id="method_timeStamp"></a>
-            <div class="permalink"><a href="#method_timeStamp" class="permalink fas fa-link"></a></div>
-            <p>console.timeStamp([label])</p>
 
-          </h1>
-        </div><section><p>This method does not display anything unless used in the inspector. The
+
+</div><div class='expandable-header' id='method_timeStamp-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_timeStamp" id="method_timeStamp"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_timeStamp-expand-icon"></i>
+        <div class="permalink"><a href="#method_timeStamp" class="permalink fas fa-link"></a></div>
+        <p>console.timeStamp([label])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_timeStamp-expand-content'>
+<p>This method does not display anything unless used in the inspector. The
 <code>console.timeStamp()</code> method adds an event with the label <code>label</code> to the
 <strong>Timeline</strong> panel of the inspector.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_timeline" id="method_timeline"></a>
-            <div class="permalink"><a href="#method_timeline" class="permalink fas fa-link"></a></div>
-            <p>console.timeline([label])</p>
 
-          </h1>
-        </div><section><p>This method does not display anything unless used in the inspector. The
+
+</div><div class='expandable-header' id='method_timeline-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_timeline" id="method_timeline"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_timeline-expand-icon"></i>
+        <div class="permalink"><a href="#method_timeline" class="permalink fas fa-link"></a></div>
+        <p>console.timeline([label])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_timeline-expand-content'>
+<p>This method does not display anything unless used in the inspector. The
 <code>console.timeline()</code> method is the deprecated form of <a href="#console_console_time_label"><code>console.time()</code></a>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_timelineEnd" id="method_timelineEnd"></a>
-            <div class="permalink"><a href="#method_timelineEnd" class="permalink fas fa-link"></a></div>
-            <p>console.timelineEnd([label])</p>
 
-          </h1>
-        </div><section><p><p>This method does not display anything unless used in the inspector. The
+
+</div><div class='expandable-header' id='method_timelineEnd-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_timelineEnd" id="method_timelineEnd"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_timelineEnd-expand-icon"></i>
+        <div class="permalink"><a href="#method_timelineEnd" class="permalink fas fa-link"></a></div>
+        <p>console.timelineEnd([label])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_timelineEnd-expand-content'>
+<p><p>This method does not display anything unless used in the inspector. The
 <code>console.timelineEnd()</code> method is the deprecated form of <a href="#console_console_timeend_label"><code>console.timeEnd()</code></a>.</p>
 <!-- [end-include:console.md] -->
 <!-- [start-include:crypto.md] --></p>
-</section></section>
-       <div class="heading">
-          <h2>
-            <a name="class_Console" id="class_Console"></a>
-            <div class="permalink"><a href="#class_Console" class="permalink fas fa-link"></a></div>
-            <p>Class: Console</p>
 
-          </h1>
-        </div><section><p><p>The <code>Console</code> class can be used to create a simple logger with configurable
+
+</div><div class='expandable-header' id='class_Console-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_Console" id="class_Console"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_Console-expand-icon"></i>
+        <div class="permalink"><a href="#class_Console" class="permalink fas fa-link"></a></div>
+        <p>Class: Console</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_Console-expand-content'>
+<p><p>The <code>Console</code> class can be used to create a simple logger with configurable
 output streams and can be accessed using either <code>require(&#39;console&#39;).Console</code>
 or <code>console.Console</code> (or their destructured counterparts):</p></p>
 <pre class="prettyprint"><code class="lang-js">const { Console } = require(&#39;console&#39;);
 </code></pre>
 <pre class="prettyprint"><code class="lang-js">const { Console } = console;
 </code></pre>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="method_assert_1" id="method_assert_1"></a>
-            <div class="permalink"><a href="#method_assert_1" class="permalink fas fa-link"></a></div>
-            <p>console.assert(value[, message][, ...args])</p>
 
-          </h1>
-        </div><section><p><p>A simple assertion test that verifies whether <code>value</code> is truthy. If it is not,
+
+<div class="heading">
+<h3>
+  <a name="subgroup_class_Console_Methods" id="subgroup_class_Console_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_Console_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_assert_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_assert_1" id="method_assert_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_assert_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_assert_1" class="permalink fas fa-link"></a></div>
+        <p>console.assert(value[, message][, ...args])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_assert_1-expand-content'>
+<p><p>A simple assertion test that verifies whether <code>value</code> is truthy. If it is not,
 an <code>AssertionError</code> is thrown. If provided, the error <code>message</code> is formatted
 using <a href="util.html#util_util_format_format_args"><code>util.format()</code></a> and used as the error message.</p></p>
 <pre class="prettyprint"><code class="lang-js">console.assert(true, &#39;does nothing&#39;);
@@ -244,30 +321,44 @@ module.exports = myConsole;
 console.assert(false, &#39;this message will print, but no error thrown&#39;);
 console.log(&#39;this will also print&#39;);
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_clear" id="method_clear"></a>
-            <div class="permalink"><a href="#method_clear" class="permalink fas fa-link"></a></div>
-            <p>console.clear()</p>
 
-          </h1>
-        </div><section><p>When <code>stdout</code> is a TTY, calling <code>console.clear()</code> will attempt to clear the
+
+</div><div class='expandable-header' id='method_clear-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_clear" id="method_clear"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_clear-expand-icon"></i>
+        <div class="permalink"><a href="#method_clear" class="permalink fas fa-link"></a></div>
+        <p>console.clear()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_clear-expand-content'>
+<p>When <code>stdout</code> is a TTY, calling <code>console.clear()</code> will attempt to clear the
 TTY. When <code>stdout</code> is not a TTY, this method does nothing.</p>
 <p><em>Note</em>: The specific operation of <code>console.clear()</code> can vary across operating
 systems and terminal types. For most Linux operating systems, <code>console.clear()</code>
 operates similarly to the <code>clear</code> shell command. On Windows, <code>console.clear()</code>
 will clear only the output in the current terminal viewport for the Node.js
 binary.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_count" id="method_count"></a>
-            <div class="permalink"><a href="#method_count" class="permalink fas fa-link"></a></div>
-            <p>console.count([label])</p>
 
-          </h1>
-        </div><section><p><p>Maintains an internal counter specific to <code>label</code> and outputs to <code>stdout</code> the
+
+</div><div class='expandable-header' id='method_count-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_count" id="method_count"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_count-expand-icon"></i>
+        <div class="permalink"><a href="#method_count" class="permalink fas fa-link"></a></div>
+        <p>console.count([label])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_count-expand-content'>
+<p><p>Maintains an internal counter specific to <code>label</code> and outputs to <code>stdout</code> the
 number of times <code>console.count()</code> has been called with the given <code>label</code>.</p>
 <!-- eslint-skip --></p>
 <pre class="prettyprint"><code class="lang-js">&gt; console.count()
@@ -290,15 +381,22 @@ default: 3
 undefined
 &gt;
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_countReset" id="method_countReset"></a>
-            <div class="permalink"><a href="#method_countReset" class="permalink fas fa-link"></a></div>
-            <p>console.countReset([label=&#39;default&#39;])</p>
 
-          </h1>
-        </div><section><p><p>Resets the internal counter specific to <code>label</code>.</p>
+
+</div><div class='expandable-header' id='method_countReset-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_countReset" id="method_countReset"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_countReset-expand-icon"></i>
+        <div class="permalink"><a href="#method_countReset" class="permalink fas fa-link"></a></div>
+        <p>console.countReset([label=&#39;default&#39;])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_countReset-expand-content'>
+<p><p>Resets the internal counter specific to <code>label</code>.</p>
 <!-- eslint-skip --></p>
 <pre class="prettyprint"><code class="lang-js">&gt; console.count(&#39;abc&#39;);
 abc: 1
@@ -310,24 +408,38 @@ abc: 1
 undefined
 &gt;
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_debug" id="method_debug"></a>
-            <div class="permalink"><a href="#method_debug" class="permalink fas fa-link"></a></div>
-            <p>console.debug(data[, ...args])</p>
 
-          </h1>
-        </div><section><p>The <code>console.debug()</code> function is an alias for <a href="console.html#console_console_log_data_args"><code>console.log()</code></a>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_dir" id="method_dir"></a>
-            <div class="permalink"><a href="#method_dir" class="permalink fas fa-link"></a></div>
-            <p>console.dir(obj[, options])</p>
 
-          </h1>
-        </div><section><p><p>Uses <a href="#util_util_inspect_object_options"><code>util.inspect()</code></a> on <code>obj</code> and prints the resulting string to <code>stdout</code>.
+</div><div class='expandable-header' id='method_debug-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_debug" id="method_debug"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_debug-expand-icon"></i>
+        <div class="permalink"><a href="#method_debug" class="permalink fas fa-link"></a></div>
+        <p>console.debug(data[, ...args])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_debug-expand-content'>
+<p>The <code>console.debug()</code> function is an alias for <a href="console.html#console_console_log_data_args"><code>console.log()</code></a>.</p>
+
+
+</div><div class='expandable-header' id='method_dir-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_dir" id="method_dir"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_dir-expand-icon"></i>
+        <div class="permalink"><a href="#method_dir" class="permalink fas fa-link"></a></div>
+        <p>console.dir(obj[, options])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_dir-expand-content'>
+<p><p>Uses <a href="#util_util_inspect_object_options"><code>util.inspect()</code></a> on <code>obj</code> and prints the resulting string to <code>stdout</code>.
 This function bypasses any custom <code>inspect()</code> function defined on <code>obj</code>. An
 optional <code>options</code> object may be passed to alter certain aspects of the
 formatted string:</p></p>
@@ -344,25 +456,39 @@ Defaults to <code>false</code>. Colors are customizable; see
 <a href="util.html#util_customizing_util_inspect_colors">customizing <code>util.inspect()</code> colors</a>.</p>
 </li>
 </ul>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_dirxml" id="method_dirxml"></a>
-            <div class="permalink"><a href="#method_dirxml" class="permalink fas fa-link"></a></div>
-            <p>console.dirxml(...data)</p>
 
-          </h1>
-        </div><section><p>This method calls <code>console.log()</code> passing it the arguments received.
+
+</div><div class='expandable-header' id='method_dirxml-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_dirxml" id="method_dirxml"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_dirxml-expand-icon"></i>
+        <div class="permalink"><a href="#method_dirxml" class="permalink fas fa-link"></a></div>
+        <p>console.dirxml(...data)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_dirxml-expand-content'>
+<p>This method calls <code>console.log()</code> passing it the arguments received.
 Please note that this method does not produce any XML formatting.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_error" id="method_error"></a>
-            <div class="permalink"><a href="#method_error" class="permalink fas fa-link"></a></div>
-            <p>console.error([data][, ...args])</p>
 
-          </h1>
-        </div><section><p>Prints to <code>stderr</code> with newline. Multiple arguments can be passed, with the
+
+</div><div class='expandable-header' id='method_error-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_error" id="method_error"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_error-expand-icon"></i>
+        <div class="permalink"><a href="#method_error" class="permalink fas fa-link"></a></div>
+        <p>console.error([data][, ...args])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_error-expand-content'>
+<p>Prints to <code>stderr</code> with newline. Multiple arguments can be passed, with the
 first used as the primary message and all additional used as substitution
 values similar to printf(3) (the arguments are all passed to
 <a href="util.html#util_util_format_format_args"><code>util.format()</code></a>).</p>
@@ -375,53 +501,88 @@ console.error(&#39;error&#39;, code);
 <p>If formatting elements (e.g. <code>%d</code>) are not found in the first string then
 <a href="#util_util_inspect_object_options"><code>util.inspect()</code></a> is called on each argument and the resulting string
 values are concatenated. See <a href="util.html#util_util_format_format_args"><code>util.format()</code></a> for more information.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_group" id="method_group"></a>
-            <div class="permalink"><a href="#method_group" class="permalink fas fa-link"></a></div>
-            <p>console.group([...label])</p>
 
-          </h1>
-        </div><section><p>Increases indentation of subsequent lines by two spaces.</p>
+
+</div><div class='expandable-header' id='method_group-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_group" id="method_group"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_group-expand-icon"></i>
+        <div class="permalink"><a href="#method_group" class="permalink fas fa-link"></a></div>
+        <p>console.group([...label])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_group-expand-content'>
+<p>Increases indentation of subsequent lines by two spaces.</p>
 <p>If one or more <code>label</code>s are provided, those are printed first without the
 additional indentation.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_groupCollapsed" id="method_groupCollapsed"></a>
-            <div class="permalink"><a href="#method_groupCollapsed" class="permalink fas fa-link"></a></div>
-            <p>console.groupCollapsed()</p>
 
-          </h1>
-        </div><section><p>An alias for <a href="#console_console_group_label"><code>console.group()</code></a>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_groupEnd" id="method_groupEnd"></a>
-            <div class="permalink"><a href="#method_groupEnd" class="permalink fas fa-link"></a></div>
-            <p>console.groupEnd()</p>
 
-          </h1>
-        </div><section><p>Decreases indentation of subsequent lines by two spaces.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_info" id="method_info"></a>
-            <div class="permalink"><a href="#method_info" class="permalink fas fa-link"></a></div>
-            <p>console.info([data][, ...args])</p>
+</div><div class='expandable-header' id='method_groupCollapsed-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_groupCollapsed" id="method_groupCollapsed"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_groupCollapsed-expand-icon"></i>
+        <div class="permalink"><a href="#method_groupCollapsed" class="permalink fas fa-link"></a></div>
+        <p>console.groupCollapsed()</p>
 
-          </h1>
-        </div><section><p>The <code>console.info()</code> function is an alias for <a href="console.html#console_console_log_data_args"><code>console.log()</code></a>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_log" id="method_log"></a>
-            <div class="permalink"><a href="#method_log" class="permalink fas fa-link"></a></div>
-            <p>console.log([data][, ...args])</p>
+    </h4>
+</div>
 
-          </h1>
-        </div><section><p>Prints to <code>stdout</code> with newline. Multiple arguments can be passed, with the
+</div>
+<div class='expandable-content' id='method_groupCollapsed-expand-content'>
+<p>An alias for <a href="#console_console_group_label"><code>console.group()</code></a>.</p>
+
+
+</div><div class='expandable-header' id='method_groupEnd-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_groupEnd" id="method_groupEnd"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_groupEnd-expand-icon"></i>
+        <div class="permalink"><a href="#method_groupEnd" class="permalink fas fa-link"></a></div>
+        <p>console.groupEnd()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_groupEnd-expand-content'>
+<p>Decreases indentation of subsequent lines by two spaces.</p>
+
+
+</div><div class='expandable-header' id='method_info-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_info" id="method_info"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_info-expand-icon"></i>
+        <div class="permalink"><a href="#method_info" class="permalink fas fa-link"></a></div>
+        <p>console.info([data][, ...args])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_info-expand-content'>
+<p>The <code>console.info()</code> function is an alias for <a href="console.html#console_console_log_data_args"><code>console.log()</code></a>.</p>
+
+
+</div><div class='expandable-header' id='method_log-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_log" id="method_log"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_log-expand-icon"></i>
+        <div class="permalink"><a href="#method_log" class="permalink fas fa-link"></a></div>
+        <p>console.log([data][, ...args])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_log-expand-content'>
+<p>Prints to <code>stdout</code> with newline. Multiple arguments can be passed, with the
 first used as the primary message and all additional used as substitution
 values similar to printf(3) (the arguments are all passed to
 <a href="util.html#util_util_format_format_args"><code>util.format()</code></a>).</p>
@@ -432,42 +593,63 @@ console.log(&#39;count:&#39;, count);
 // Prints: count: 5, to stdout
 </code></pre>
 <p>See <a href="util.html#util_util_format_format_args"><code>util.format()</code></a> for more information.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_time" id="method_time"></a>
-            <div class="permalink"><a href="#method_time" class="permalink fas fa-link"></a></div>
-            <p>console.time(label)</p>
 
-          </h1>
-        </div><section><p>Starts a timer that can be used to compute the duration of an operation. Timers
+
+</div><div class='expandable-header' id='method_time-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_time" id="method_time"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_time-expand-icon"></i>
+        <div class="permalink"><a href="#method_time" class="permalink fas fa-link"></a></div>
+        <p>console.time(label)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_time-expand-content'>
+<p>Starts a timer that can be used to compute the duration of an operation. Timers
 are identified by a unique <code>label</code>. Use the same <code>label</code> when calling
 <a href="#console_console_timeend_label"><code>console.timeEnd()</code></a> to stop the timer and output the elapsed time in
 milliseconds to <code>stdout</code>. Timer durations are accurate to the sub-millisecond.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_timeEnd" id="method_timeEnd"></a>
-            <div class="permalink"><a href="#method_timeEnd" class="permalink fas fa-link"></a></div>
-            <p>console.timeEnd(label)</p>
 
-          </h1>
-        </div><section><p><p>Stops a timer that was previously started by calling <a href="#console_console_time_label"><code>console.time()</code></a> and
+
+</div><div class='expandable-header' id='method_timeEnd-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_timeEnd" id="method_timeEnd"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_timeEnd-expand-icon"></i>
+        <div class="permalink"><a href="#method_timeEnd" class="permalink fas fa-link"></a></div>
+        <p>console.timeEnd(label)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_timeEnd-expand-content'>
+<p><p>Stops a timer that was previously started by calling <a href="#console_console_time_label"><code>console.time()</code></a> and
 prints the result to <code>stdout</code>:</p></p>
 <pre class="prettyprint"><code class="lang-js">console.time(&#39;100-elements&#39;);
 for (let i = 0; i &lt; 100; i++) {}
 console.timeEnd(&#39;100-elements&#39;);
 // prints 100-elements: 225.438ms
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_trace" id="method_trace"></a>
-            <div class="permalink"><a href="#method_trace" class="permalink fas fa-link"></a></div>
-            <p>console.trace([message][, ...args])</p>
 
-          </h1>
-        </div><section><p><p>Prints to <code>stderr</code> the string <code>&#39;Trace :&#39;</code>, followed by the <a href="util.html#util_util_format_format_args"><code>util.format()</code></a>
+
+</div><div class='expandable-header' id='method_trace-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_trace" id="method_trace"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_trace-expand-icon"></i>
+        <div class="permalink"><a href="#method_trace" class="permalink fas fa-link"></a></div>
+        <p>console.trace([message][, ...args])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_trace-expand-content'>
+<p><p>Prints to <code>stderr</code> the string <code>&#39;Trace :&#39;</code>, followed by the <a href="util.html#util_util_format_format_args"><code>util.format()</code></a>
 formatted message and stack trace to the current position in the code.</p></p>
 <pre class="prettyprint"><code class="lang-js">console.trace(&#39;Show me&#39;);
 // Prints: (stack trace will vary based on where trace is called)
@@ -483,16 +665,26 @@ formatted message and stack trace to the current position in the code.</p></p>
 //    at REPLServer.Interface._line (readline.js:549:8)
 //    at REPLServer.Interface._ttyWrite (readline.js:826:14)
 </code></pre>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_warn" id="method_warn"></a>
-            <div class="permalink"><a href="#method_warn" class="permalink fas fa-link"></a></div>
-            <p>console.warn([data][, ...args])</p>
 
-          </h1>
-        </div><section><p>The <code>console.warn()</code> function is an alias for <a href="console.html#console_console_error_data_args"><code>console.error()</code></a>.</p>
-</section></section></section>
+
+</div><div class='expandable-header' id='method_warn-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_warn" id="method_warn"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_warn-expand-icon"></i>
+        <div class="permalink"><a href="#method_warn" class="permalink fas fa-link"></a></div>
+        <p>console.warn([data][, ...args])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_warn-expand-content'>
+<p>The <code>console.warn()</code> function is an alias for <a href="console.html#console_console_error_data_args"><code>console.error()</code></a>.</p>
+
+
+</div>
+</div>
 
   <div class="footer">
     <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>

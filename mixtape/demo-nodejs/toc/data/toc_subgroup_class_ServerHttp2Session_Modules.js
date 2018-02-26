@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_module_specifying_alternative_services","target":"module_http2.html#module_specifying_alternative_services","text":"Specifying alternative services","icon":false}],"ancestry":["toc_module_http2","toc_module_core_api","toc_class_ServerHttp2Session","toc_subgroup_class_ServerHttp2Session_Modules"]}; });

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>mixtape page for inspector</title>
+    <title>Inspector</title>
     <script data-main="js/setup" src="js/require.js"></script>
     <link rel="stylesheet" href="fonts/fonts.css" />
     <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
@@ -13,9 +13,9 @@
   <body>
 
   <div id="control-panel">
-    <div id="control-strip-h">
-      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
-      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    <div id="control-strip-m">
+      <div id="control-strip-m-find"><div id="m-find"></div></div>
+      <div id="control-strip-m-toc"><div id="m-toc"></div></div>
     </div>
     <div id="controls">
       <div id="control-find">
@@ -26,67 +26,106 @@
       </div>
     </div>
   </div>
-  <div id="control-strip-v">
-    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
-    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  <div id="control-strip-w">
+    <div id="control-strip-w-find"></div>
+    <div id="control-strip-w-toc"></div>
   </div>
 
   <div id="content">
 
   
-       <div class="heading">
-          <h1>
-            <a name="module_inspector" id="module_inspector"></a>
-            <div class="permalink"><a href="#module_inspector" class="permalink fas fa-link"></a></div>
-            <p>Inspector</p>
+<div class="heading">
+<h1>
+  <a name="module_inspector" id="module_inspector"></a>
+  <div class="permalink"><a href="#module_inspector" class="permalink fas fa-link"></a></div>
+  <p>Inspector</p>
 
-          </h1>
-        </div><p><p>The <code>inspector</code> module provides an API for interacting with the V8 inspector.</p></p>
+</h1>
+</div>
+
+<p><p>The <code>inspector</code> module provides an API for interacting with the V8 inspector.</p></p>
 <p><p>It can be accessed using:</p></p>
 <pre class="prettyprint"><code class="lang-js">const inspector = require(&#39;inspector&#39;);
 </code></pre>
 
-       <div class="heading">
-          <h2>
-            <a name="class_inspector_Session" id="class_inspector_Session"></a>
-            <div class="permalink"><a href="#class_inspector_Session" class="permalink fas fa-link"></a></div>
-            <p>Class: inspector.Session</p>
+<div class='expandable-header' id='class_inspector_Session-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_inspector_Session" id="class_inspector_Session"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_inspector_Session-expand-icon"></i>
+        <div class="permalink"><a href="#class_inspector_Session" class="permalink fas fa-link"></a></div>
+        <p>Class: inspector.Session</p>
 
-          </h1>
-        </div><section><p>The <code>inspector.Session</code> is used for dispatching messages to the V8 inspector
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_inspector_Session-expand-content'>
+<p>The <code>inspector.Session</code> is used for dispatching messages to the V8 inspector
 back-end and receiving message responses and notifications.</p>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="method_Session" id="method_Session"></a>
-            <div class="permalink"><a href="#method_Session" class="permalink fas fa-link"></a></div>
-            <p>Constructor: new inspector.Session()</p>
 
-          </h1>
-        </div><section><p>Create a new instance of the <code>inspector.Session</code> class. The inspector session
+
+<div class="heading">
+<h3>
+  <a name="subgroup_class_inspector_Session_Methods" id="subgroup_class_inspector_Session_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_inspector_Session_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_Session-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_Session" id="method_Session"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_Session-expand-icon"></i>
+        <div class="permalink"><a href="#method_Session" class="permalink fas fa-link"></a></div>
+        <p>Constructor: new inspector.Session()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_Session-expand-content'>
+<p>Create a new instance of the <code>inspector.Session</code> class. The inspector session
 needs to be connected through <a href="#inspector_session_connect"><code>session.connect()</code></a> before the messages
 can be dispatched to the inspector backend.</p>
 <p><code>inspector.Session</code> is an <a href="events.html"><code>EventEmitter</code></a> with the following events:</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_connect_1" id="method_connect_1"></a>
-            <div class="permalink"><a href="#method_connect_1" class="permalink fas fa-link"></a></div>
-            <p>session.connect()</p>
 
-          </h1>
-        </div><section><p>Connects a session to the inspector back-end. An exception will be thrown
+
+</div><div class='expandable-header' id='method_connect_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_connect_1" id="method_connect_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_connect_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_connect_1" class="permalink fas fa-link"></a></div>
+        <p>session.connect()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_connect_1-expand-content'>
+<p>Connects a session to the inspector back-end. An exception will be thrown
 if there is already a connected session established either through the API or by
 a front-end connected to the Inspector WebSocket port.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_post" id="method_post"></a>
-            <div class="permalink"><a href="#method_post" class="permalink fas fa-link"></a></div>
-            <p>session.post(method[, params][, callback])</p>
 
-          </h1>
-        </div><section><p>Posts a message to the inspector back-end. <code>callback</code> will be notified when
+
+</div><div class='expandable-header' id='method_post-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_post" id="method_post"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_post-expand-icon"></i>
+        <div class="permalink"><a href="#method_post" class="permalink fas fa-link"></a></div>
+        <p>session.post(method[, params][, callback])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_post-expand-content'>
+<p>Posts a message to the inspector back-end. <code>callback</code> will be notified when
 a response is received. <code>callback</code> is a function that accepts two optional
 arguments - error and message-specific result.</p>
 <pre class="prettyprint"><code class="lang-js">session.post(&#39;Runtime.evaluate&#39;, { expression: &#39;2 + 2&#39; },
@@ -99,52 +138,94 @@ arguments - error and message-specific result.</p>
 by V8. Chrome DevTools Protocol domain provides an interface for interacting
 with one of the runtime agents used to inspect the application state and listen
 to the run-time events.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_disconnect_4" id="method_disconnect_4"></a>
-            <div class="permalink"><a href="#method_disconnect_4" class="permalink fas fa-link"></a></div>
-            <p>session.disconnect()</p>
 
-          </h1>
-        </div><section><p><p>Immediately close the session. All pending message callbacks will be called
+
+</div><div class='expandable-header' id='method_disconnect_4-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_disconnect_4" id="method_disconnect_4"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_disconnect_4-expand-icon"></i>
+        <div class="permalink"><a href="#method_disconnect_4" class="permalink fas fa-link"></a></div>
+        <p>session.disconnect()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_disconnect_4-expand-content'>
+<p><p>Immediately close the session. All pending message callbacks will be called
 with an error. <a href="#inspector_session_connect"><code>session.connect()</code></a> will need to be called to be able to send
 messages again. Reconnected session will lose all inspector state, such as
 enabled agents or configured breakpoints.</p>
 <!-- [end-include:inspector.md] -->
 <!-- [start-include:intl.md] --></p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="method_open_1" id="method_open_1"></a>
-            <div class="permalink"><a href="#method_open_1" class="permalink fas fa-link"></a></div>
-            <p>inspector.open([port[, host[, wait]]])</p>
 
-          </h1>
-        </div><section><p>Activate inspector on host and port. Equivalent to <code>node
+
+</div>
+</div><div class='expandable-header' id='method_open_1-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_open_1" id="method_open_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_open_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_open_1" class="permalink fas fa-link"></a></div>
+        <p>inspector.open([port[, host[, wait]]])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_open_1-expand-content'>
+<p>Activate inspector on host and port. Equivalent to <code>node
 --inspect=[[host:]port]</code>, but can be done programmatically after node has
 started.</p>
 <p>If wait is <code>true</code>, will block until a client has connected to the inspect port
 and flow control has been passed to the debugger client.</p>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="method_close_7" id="method_close_7"></a>
-            <div class="permalink"><a href="#method_close_7" class="permalink fas fa-link"></a></div>
-            <p>inspector.close()</p>
 
-          </h1>
-        </div><section><p>Deactivate the inspector. Blocks until there are no active connections.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_url" id="method_url"></a>
-            <div class="permalink"><a href="#method_url" class="permalink fas fa-link"></a></div>
-            <p>inspector.url()</p>
 
-          </h1>
-        </div><section><p>Return the URL of the active inspector, or <code>undefined</code> if there is none.</p>
-</section></section></section>
+<div class="heading">
+<h3>
+  <a name="subgroup_method_open_1_Methods" id="subgroup_method_open_1_Methods"></a>
+  <div class="permalink"><a href="#subgroup_method_open_1_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_close_6-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_close_6" id="method_close_6"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_close_6-expand-icon"></i>
+        <div class="permalink"><a href="#method_close_6" class="permalink fas fa-link"></a></div>
+        <p>inspector.close()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_close_6-expand-content'>
+<p>Deactivate the inspector. Blocks until there are no active connections.</p>
+
+
+</div><div class='expandable-header' id='method_url-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_url" id="method_url"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_url-expand-icon"></i>
+        <div class="permalink"><a href="#method_url" class="permalink fas fa-link"></a></div>
+        <p>inspector.url()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_url-expand-content'>
+<p>Return the URL of the active inspector, or <code>undefined</code> if there is none.</p>
+
+
+</div>
+</div>
 
   <div class="footer">
     <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>

@@ -1,1 +1,1 @@
-define([], function() { return {"children":[{"id":"toc_subgroup_Hash_Methods","target":"module_crypto.html#subgroup_Hash_Methods","text":"Hash.Methods","icon":false,"autoexpand":true,"children":true}],"ancestry":["toc_module_crypto","toc_class_Hash"]}; });
+define([], function() { return {"children":[{"id":"toc_subgroup_class_Hash_Methods","target":"module_crypto.html#subgroup_class_Hash_Methods","text":"Methods","icon":false,"autoexpand":true,"children":true}],"ancestry":["toc_module_crypto","toc_class_Hash"]}; });

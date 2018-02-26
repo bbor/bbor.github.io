@@ -1,1 +1,1 @@
-define([], function() { return {"children":[],"ancestry":["toc_module_net","toc_method_connect_6","toc_subgroup_connect_Methods","toc_method_connect_4"]}; });
+define([], function() { return {"children":[],"ancestry":["toc_module_net","toc_class_net_Socket","toc_subgroup_class_net_Socket_Methods","toc_method_connect_2","toc_subgroup_method_connect_2_Methods","toc_method_connect_4"]}; });

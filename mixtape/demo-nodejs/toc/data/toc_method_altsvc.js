@@ -1,1 +1,1 @@
-define([], function() { return {"children":[],"ancestry":["toc_module_http2","toc_module_core_api","toc_class_ServerHttp2Session","toc_subgroup_ServerHttp2Session_Methods","toc_method_altsvc"]}; });
+define([], function() { return {"children":[],"ancestry":["toc_module_http2","toc_module_core_api","toc_class_ServerHttp2Session","toc_subgroup_class_ServerHttp2Session_Methods","toc_method_altsvc"]}; });

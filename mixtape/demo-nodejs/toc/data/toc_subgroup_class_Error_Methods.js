@@ -1,0 +1,1 @@
+define([], function() { return {"children":[{"id":"toc_method_captureStackTrace","target":"misc_Errors.html#method_captureStackTrace","text":"Error.captureStackTrace(targetObject[, constructorOpt])","icon":false}],"ancestry":["toc_misc_Errors","toc_class_Error","toc_subgroup_class_Error_Methods"]}; });

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>mixtape page for module</title>
+    <title>Modules</title>
     <script data-main="js/setup" src="js/require.js"></script>
     <link rel="stylesheet" href="fonts/fonts.css" />
     <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
@@ -13,9 +13,9 @@
   <body>
 
   <div id="control-panel">
-    <div id="control-strip-h">
-      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
-      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    <div id="control-strip-m">
+      <div id="control-strip-m-find"><div id="m-find"></div></div>
+      <div id="control-strip-m-toc"><div id="m-toc"></div></div>
     </div>
     <div id="controls">
       <div id="control-find">
@@ -26,22 +26,24 @@
       </div>
     </div>
   </div>
-  <div id="control-strip-v">
-    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
-    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  <div id="control-strip-w">
+    <div id="control-strip-w-find"></div>
+    <div id="control-strip-w-toc"></div>
   </div>
 
   <div id="content">
 
   
-       <div class="heading">
-          <h1>
-            <a name="module_module" id="module_module"></a>
-            <div class="permalink"><a href="#module_module" class="permalink fas fa-link"></a></div>
-            <p>module</p>
+<div class="heading">
+<h1>
+  <a name="module_module" id="module_module"></a>
+  <div class="permalink"><a href="#module_module" class="permalink fas fa-link"></a></div>
+  <p>Modules</p>
 
-          </h1>
-        </div><p>In the Node.js module system, each file is treated as a separate module. For
+</h1>
+</div>
+
+<p>In the Node.js module system, each file is treated as a separate module. For
 example, consider a file named <code>foo.js</code>:</p>
 <pre class="prettyprint"><code class="lang-js">const circle = require(&#39;./circle.js&#39;);
 console.log(<code>The area of a circle of radius 4 is ${circle.area(4)}</code>);
@@ -82,14 +84,17 @@ module.exports = class Square {
 </code></pre>
 <p>The module system is implemented in the <code>require(&#39;module&#39;)</code> module.</p>
 
-       <div class="heading">
-          <h2>
-            <a name="misc_Accessing_the_main_module" id="misc_Accessing_the_main_module"></a>
-            <div class="permalink"><a href="#misc_Accessing_the_main_module" class="permalink fas fa-link"></a></div>
-            <p>Accessing the main module</p>
 
-          </h1>
-        </div><section><p>When a file is run directly from Node.js, <code>require.main</code> is set to its
+<div class="heading">
+<h2>
+  <a name="misc_Accessing_the_main_module" id="misc_Accessing_the_main_module"></a>
+  <div class="permalink"><a href="#misc_Accessing_the_main_module" class="permalink fas fa-link"></a></div>
+  <p>Accessing the main module</p>
+
+</h2>
+</div>
+
+<p>When a file is run directly from Node.js, <code>require.main</code> is set to its
 <code>module</code>. That means that it is possible to determine whether a file has been
 run directly by testing <code>require.main === module</code>.</p>
 <p>For a file <code>foo.js</code>, this will be <code>true</code> if run via <code>node foo.js</code>, but
@@ -97,15 +102,18 @@ run directly by testing <code>require.main === module</code>.</p>
 <p>Because <code>module</code> provides a <code>filename</code> property (normally equivalent to
 <code>__filename</code>), the entry point of the current application can be obtained
 by checking <code>require.main.filename</code>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="misc_Addenda__Package_Manager_Tips" id="misc_Addenda__Package_Manager_Tips"></a>
-            <div class="permalink"><a href="#misc_Addenda__Package_Manager_Tips" class="permalink fas fa-link"></a></div>
-            <p>Addenda: Package Manager Tips</p>
 
-          </h1>
-        </div><section><p>The semantics of Node.js&#39;s <code>require()</code> function were designed to be general
+
+<div class="heading">
+<h2>
+  <a name="misc_Addenda__Package_Manager_Tips" id="misc_Addenda__Package_Manager_Tips"></a>
+  <div class="permalink"><a href="#misc_Addenda__Package_Manager_Tips" class="permalink fas fa-link"></a></div>
+  <p>Addenda: Package Manager Tips</p>
+
+</h2>
+</div>
+
+<p>The semantics of Node.js&#39;s <code>require()</code> function were designed to be general
 enough to support a number of reasonable directory structures. Package manager
 programs such as <code>dpkg</code>, <code>rpm</code>, and <code>npm</code> will hopefully find it possible to
 build native packages from Node.js modules without modification.</p>
@@ -147,15 +155,18 @@ also add the <code>/usr/lib/node_modules</code> folder to the <code>$NODE_PATH</
 variable.  Since the module lookups using <code>node_modules</code> folders are all
 relative, and based on the real path of the files making the calls to
 <code>require()</code>, the packages themselves can be anywhere.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="misc_All_Together___" id="misc_All_Together___"></a>
-            <div class="permalink"><a href="#misc_All_Together___" class="permalink fas fa-link"></a></div>
-            <p>All Together...</p>
 
-          </h1>
-        </div><section><p><p>To get the exact filename that will be loaded when <code>require()</code> is called, use
+
+<div class="heading">
+<h2>
+  <a name="misc_All_Together___" id="misc_All_Together___"></a>
+  <div class="permalink"><a href="#misc_All_Together___" class="permalink fas fa-link"></a></div>
+  <p>All Together...</p>
+
+</h2>
+</div>
+
+<p><p>To get the exact filename that will be loaded when <code>require()</code> is called, use
 the <code>require.resolve()</code> function.</p></p>
 <p><p>Putting together all of the above, here is the high-level algorithm
 in pseudocode of what <code>require.resolve()</code> does:</p></p>
@@ -207,15 +218,18 @@ NODE_MODULES_PATHS(START)
    d. let I = I - 1
 5. return DIRS
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="misc_Caching" id="misc_Caching"></a>
-            <div class="permalink"><a href="#misc_Caching" class="permalink fas fa-link"></a></div>
-            <p>Caching</p>
 
-          </h1>
-        </div><section><p>Modules are cached after the first time they are loaded.  This means
+
+<div class="heading">
+<h2>
+  <a name="misc_Caching" id="misc_Caching"></a>
+  <div class="permalink"><a href="#misc_Caching" class="permalink fas fa-link"></a></div>
+  <p>Caching</p>
+
+</h2>
+</div>
+
+<p>Modules are cached after the first time they are loaded.  This means
 (among other things) that every call to <code>require(&#39;foo&#39;)</code> will get
 exactly the same object returned, if it would resolve to the same file.</p>
 <p>Multiple calls to <code>require(&#39;foo&#39;)</code> may not cause the module code to be
@@ -225,14 +239,17 @@ dependencies to be loaded even when they would cause cycles.</p>
 <p>To have a module execute code multiple times, export a function, and call
 that function.</p>
 
-       <div class="heading">
-          <h3>
-            <a name="misc_Module_Caching_Caveats" id="misc_Module_Caching_Caveats"></a>
-            <div class="permalink"><a href="#misc_Module_Caching_Caveats" class="permalink fas fa-link"></a></div>
-            <p>Module Caching Caveats</p>
 
-          </h1>
-        </div><section><p>Modules are cached based on their resolved filename.  Since modules may
+<div class="heading">
+<h3>
+  <a name="misc_Module_Caching_Caveats" id="misc_Module_Caching_Caveats"></a>
+  <div class="permalink"><a href="#misc_Module_Caching_Caveats" class="permalink fas fa-link"></a></div>
+  <p>Module Caching Caveats</p>
+
+</h3>
+</div>
+
+<p>Modules are cached based on their resolved filename.  Since modules may
 resolve to a different filename based on the location of the calling
 module (loading from <code>node_modules</code> folders), it is not a <em>guarantee</em>
 that <code>require(&#39;foo&#39;)</code> will always return the exact same object, if it
@@ -242,30 +259,36 @@ resolved filenames can point to the same file, but the cache will still treat
 them as different modules and will reload the file multiple times. For example,
 <code>require(&#39;./foo&#39;)</code> and <code>require(&#39;./FOO&#39;)</code> return two different objects,
 irrespective of whether or not <code>./foo</code> and <code>./FOO</code> are the same file.</p>
-</section></section>
-       <div class="heading">
-          <h2>
-            <a name="misc_Core_Modules" id="misc_Core_Modules"></a>
-            <div class="permalink"><a href="#misc_Core_Modules" class="permalink fas fa-link"></a></div>
-            <p>Core Modules</p>
 
-          </h1>
-        </div><section><p>Node.js has several modules compiled into the binary.  These modules are
+
+<div class="heading">
+<h2>
+  <a name="misc_Core_Modules" id="misc_Core_Modules"></a>
+  <div class="permalink"><a href="#misc_Core_Modules" class="permalink fas fa-link"></a></div>
+  <p>Core Modules</p>
+
+</h2>
+</div>
+
+<p>Node.js has several modules compiled into the binary.  These modules are
 described in greater detail elsewhere in this documentation.</p>
 <p>The core modules are defined within Node.js&#39;s source and are located in the
 <code>lib/</code> folder.</p>
 <p>Core modules are always preferentially loaded if their identifier is
 passed to <code>require()</code>.  For instance, <code>require(&#39;http&#39;)</code> will always
 return the built in HTTP module, even if there is a file by that name.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="misc_Cycles" id="misc_Cycles"></a>
-            <div class="permalink"><a href="#misc_Cycles" class="permalink fas fa-link"></a></div>
-            <p>Cycles</p>
 
-          </h1>
-        </div><section><p>When there are circular <code>require()</code> calls, a module might not have finished
+
+<div class="heading">
+<h2>
+  <a name="misc_Cycles" id="misc_Cycles"></a>
+  <div class="permalink"><a href="#misc_Cycles" class="permalink fas fa-link"></a></div>
+  <p>Cycles</p>
+
+</h2>
+</div>
+
+<p>When there are circular <code>require()</code> calls, a module might not have finished
 executing when it is returned.</p>
 <p>Consider this situation:</p>
 <p><code>a.js</code>:</p>
@@ -309,15 +332,18 @@ in main, a.done=true, b.done=true
 </code></pre>
 <p>Careful planning is required to allow cyclic module dependencies to work
 correctly within an application.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="misc_File_Modules" id="misc_File_Modules"></a>
-            <div class="permalink"><a href="#misc_File_Modules" class="permalink fas fa-link"></a></div>
-            <p>File Modules</p>
 
-          </h1>
-        </div><section><p>If the exact filename is not found, then Node.js will attempt to load the
+
+<div class="heading">
+<h2>
+  <a name="misc_File_Modules" id="misc_File_Modules"></a>
+  <div class="permalink"><a href="#misc_File_Modules" class="permalink fas fa-link"></a></div>
+  <p>File Modules</p>
+
+</h2>
+</div>
+
+<p>If the exact filename is not found, then Node.js will attempt to load the
 required filename with the added extensions: <code>.js</code>, <code>.json</code>, and finally
 <code>.node</code>.</p>
 <p><code>.js</code> files are interpreted as JavaScript text files, and <code>.json</code> files are
@@ -333,15 +359,18 @@ example, <code>require(&#39;/home/marco/foo.js&#39;)</code> will load the file a
 either be a core module or is loaded from a <code>node_modules</code> folder.</p>
 <p>If the given path does not exist, <code>require()</code> will throw an <a href="errors.html#errors_class_error"><code>Error</code></a> with its
 <code>code</code> property set to <code>&#39;MODULE_NOT_FOUND&#39;</code>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="misc_Folders_as_Modules" id="misc_Folders_as_Modules"></a>
-            <div class="permalink"><a href="#misc_Folders_as_Modules" class="permalink fas fa-link"></a></div>
-            <p>Folders as Modules</p>
 
-          </h1>
-        </div><section><p><p>It is convenient to organize programs and libraries into self-contained
+
+<div class="heading">
+<h2>
+  <a name="misc_Folders_as_Modules" id="misc_Folders_as_Modules"></a>
+  <div class="permalink"><a href="#misc_Folders_as_Modules" class="permalink fas fa-link"></a></div>
+  <p>Folders as Modules</p>
+
+</h2>
+</div>
+
+<p><p>It is convenient to organize programs and libraries into self-contained
 directories, and then provide a single entry point to that library.
 There are three ways in which a folder may be passed to <code>require()</code> as
 an argument.</p></p>
@@ -368,15 +397,18 @@ example, then <code>require(&#39;./some-library&#39;)</code> would attempt to lo
 <li><code>./some-library/index.js</code></li>
 <li><code>./some-library/index.node</code></li>
 </ul>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="misc_Loading_from__node_modules__Folders" id="misc_Loading_from__node_modules__Folders"></a>
-            <div class="permalink"><a href="#misc_Loading_from__node_modules__Folders" class="permalink fas fa-link"></a></div>
-            <p>Loading from <code>node_modules</code> Folders</p>
 
-          </h1>
-        </div><section><p>If the module identifier passed to <code>require()</code> is not a
+
+<div class="heading">
+<h2>
+  <a name="misc_Loading_from__node_modules__Folders" id="misc_Loading_from__node_modules__Folders"></a>
+  <div class="permalink"><a href="#misc_Loading_from__node_modules__Folders" class="permalink fas fa-link"></a></div>
+  <p>Loading from <code>node_modules</code> Folders</p>
+
+</h2>
+</div>
+
+<p>If the module identifier passed to <code>require()</code> is not a
 <a href="#modules_core_modules">core</a> module, and does not begin with <code>&#39;/&#39;</code>, <code>&#39;../&#39;</code>, or
 <code>&#39;./&#39;</code>, then Node.js starts at the parent directory of the current module, and
 adds <code>/node_modules</code>, and attempts to load the module from that location. Node
@@ -399,15 +431,18 @@ module by including a path suffix after the module name. For instance
 <code>require(&#39;example-module/path/to/file&#39;)</code> would resolve <code>path/to/file</code>
 relative to where <code>example-module</code> is located. The suffixed path follows the
 same module resolution semantics.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="misc_Loading_from_the_global_folders" id="misc_Loading_from_the_global_folders"></a>
-            <div class="permalink"><a href="#misc_Loading_from_the_global_folders" class="permalink fas fa-link"></a></div>
-            <p>Loading from the global folders</p>
 
-          </h1>
-        </div><section><p>If the <code>NODE_PATH</code> environment variable is set to a colon-delimited list
+
+<div class="heading">
+<h2>
+  <a name="misc_Loading_from_the_global_folders" id="misc_Loading_from_the_global_folders"></a>
+  <div class="permalink"><a href="#misc_Loading_from_the_global_folders" class="permalink fas fa-link"></a></div>
+  <p>Loading from the global folders</p>
+
+</h2>
+</div>
+
+<p>If the <code>NODE_PATH</code> environment variable is set to a colon-delimited list
 of absolute paths, then Node.js will search those paths for modules if they
 are not found elsewhere.</p>
 <p><em>Note</em>: On Windows, <code>NODE_PATH</code> is delimited by semicolons instead of colons.</p>
@@ -430,15 +465,18 @@ configured <code>node_prefix</code>.</p>
 <p>These are mostly for historic reasons.</p>
 <p><em>Note</em>: It is strongly encouraged to place dependencies in the local
 <code>node_modules</code> folder. These will be loaded faster, and more reliably.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="misc_The_module_wrapper" id="misc_The_module_wrapper"></a>
-            <div class="permalink"><a href="#misc_The_module_wrapper" class="permalink fas fa-link"></a></div>
-            <p>The module wrapper</p>
 
-          </h1>
-        </div><section><p><p>Before a module&#39;s code is executed, Node.js will wrap it with a function
+
+<div class="heading">
+<h2>
+  <a name="misc_The_module_wrapper" id="misc_The_module_wrapper"></a>
+  <div class="permalink"><a href="#misc_The_module_wrapper" class="permalink fas fa-link"></a></div>
+  <p>The module wrapper</p>
+
+</h2>
+</div>
+
+<p><p>Before a module&#39;s code is executed, Node.js will wrap it with a function
 wrapper that looks like the following:</p></p>
 <p><pre class="prettyprint"><code class="lang-js">(function(exports, require, module, <strong>filename, </strong>dirname) {
 // Module code actually lives in here
@@ -457,37 +495,49 @@ module&#39;s absolute filename and directory path.</li>
 </ul>
 </li>
 </ul>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="module_the_module_scope" id="module_the_module_scope"></a>
-            <div class="permalink"><a href="#module_the_module_scope" class="permalink fas fa-link"></a></div>
-            <p>The module scope</p>
 
-          </h1>
-        </div><section></section>
-       <div class="heading">
-          <h2>
-            <a name="module_the__module__object" id="module_the__module__object"></a>
-            <div class="permalink"><a href="#module_the__module__object" class="permalink fas fa-link"></a></div>
-            <p>The <code>Module</code> Object</p>
 
-          </h1>
-        </div><section><p><ul></p>
+<div class="heading">
+<h2>
+  <a name="module_the_module_scope" id="module_the_module_scope"></a>
+  <div class="permalink"><a href="#module_the_module_scope" class="permalink fas fa-link"></a></div>
+  <p>The module scope</p>
+
+</h2>
+</div>
+
+
+
+<div class="heading">
+<h2>
+  <a name="module_the__module__object" id="module_the__module__object"></a>
+  <div class="permalink"><a href="#module_the__module__object" class="permalink fas fa-link"></a></div>
+  <p>The <code>Module</code> Object</p>
+
+</h2>
+</div>
+
+<p><ul></p>
 <p><li>{Object}</li>
 </ul></p>
 <p>Provides general utility methods when interacting with instances of
 <code>Module</code> -- the <code>module</code> variable often seen in file modules. Accessed
 via <code>require(&#39;module&#39;)</code>.</p>
 
-       <div class="heading">
-          <h3>
-            <a name="property_builtinModules" id="property_builtinModules"></a>
-            <div class="permalink"><a href="#property_builtinModules" class="permalink fas fa-link"></a></div>
-            <p><code>builtinModules</code> {string[]} </p>
+<div class='expandable-header' id='property_builtinModules-expand'>
+<div class="heading">
+    <h3>
+        <a name="property_builtinModules" id="property_builtinModules"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_builtinModules-expand-icon"></i>
+        <div class="permalink"><a href="#property_builtinModules" class="permalink fas fa-link"></a></div>
+        <p><code>builtinModules</code> {string[]} </p>
 
-          </h1>
-        </div><section><p><p>A list of the names of all modules provided by Node.js. Can be used to verify
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='property_builtinModules-expand-content'>
+<p><p>A list of the names of all modules provided by Node.js. Can be used to verify
 if a module is maintained by a third party or not.</p></p>
 <p><p>Note that <code>module</code> in this context isn&#39;t the same object that&#39;s provided
 by the <a href="#modules_the_module_wrapper">module wrapper</a>. To access it, require the <code>Module</code> module:</p></p>
@@ -495,7 +545,9 @@ by the <a href="#modules_the_module_wrapper">module wrapper</a>. To access it, r
 </code></pre>
 <!-- [end-include:modules.md] -->
 <!-- [start-include:net.md] --></p>
-</section></section>
+
+
+</div>
 
   <div class="footer">
     <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>

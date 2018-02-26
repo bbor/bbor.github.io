@@ -1,1 +1,1 @@
-define([], function() { return {"children":[],"ancestry":["toc_module_crypto","toc_class_Certificate","toc_subgroup_Certificate_Modules","toc_module_legacy_api","toc_method_Certificate"]}; });
+define([], function() { return {"children":[],"ancestry":["toc_module_crypto","toc_class_Certificate","toc_subgroup_class_Certificate_Modules","toc_module_legacy_api","toc_method_Certificate"]}; });

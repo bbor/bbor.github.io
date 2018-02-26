@@ -1,1 +1,1 @@
-define([], function() { return {"children":[],"ancestry":["toc_module_http2","toc_module_core_api","toc_class_Http2Stream","toc_subgroup_Http2Stream_Methods","toc_method_close_5"]}; });
+define([], function() { return {"children":[],"ancestry":["toc_module_https","toc_class_https_Server","toc_subgroup_class_https_Server_Methods","toc_method_close_5"]}; });

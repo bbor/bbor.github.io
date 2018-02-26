@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>mixtape page for deprecated_apis</title>
+    <title>Deprecated APIs</title>
     <script data-main="js/setup" src="js/require.js"></script>
     <link rel="stylesheet" href="fonts/fonts.css" />
     <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
@@ -13,9 +13,9 @@
   <body>
 
   <div id="control-panel">
-    <div id="control-strip-h">
-      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
-      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    <div id="control-strip-m">
+      <div id="control-strip-m-find"><div id="m-find"></div></div>
+      <div id="control-strip-m-toc"><div id="m-toc"></div></div>
     </div>
     <div id="controls">
       <div id="control-find">
@@ -26,22 +26,24 @@
       </div>
     </div>
   </div>
-  <div id="control-strip-v">
-    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
-    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  <div id="control-strip-w">
+    <div id="control-strip-w-find"></div>
+    <div id="control-strip-w-toc"></div>
   </div>
 
   <div id="content">
 
   
-       <div class="heading">
-          <h1>
-            <a name="module_deprecated_apis" id="module_deprecated_apis"></a>
-            <div class="permalink"><a href="#module_deprecated_apis" class="permalink fas fa-link"></a></div>
-            <p>Deprecated APIs</p>
+<div class="heading">
+<h1>
+  <a name="module_deprecated_apis" id="module_deprecated_apis"></a>
+  <div class="permalink"><a href="#module_deprecated_apis" class="permalink fas fa-link"></a></div>
+  <p>Deprecated APIs</p>
 
-          </h1>
-        </div><p>Node.js may deprecate APIs when either: (a) use of the API is considered to be
+</h1>
+</div>
+
+<p>Node.js may deprecate APIs when either: (a) use of the API is considered to be
 unsafe, (b) an improved alternative API has been made available, or (c)
 breaking changes to the API are expected in a future major release.</p>
 <p>Node.js utilizes three kinds of Deprecations:</p>
@@ -59,70 +61,88 @@ cause an error to be thrown.</p>
 <p>An End-of-Life deprecation is used to identify code that either has been
 removed or will soon be removed from Node.js.</p>
 
-       <div class="heading">
-          <h2>
-            <a name="module_un_deprecation" id="module_un_deprecation"></a>
-            <div class="permalink"><a href="#module_un_deprecation" class="permalink fas fa-link"></a></div>
-            <p>Un-deprecation</p>
 
-          </h1>
-        </div><section><p>From time-to-time the deprecation of an API may be reversed. Such action may
+<div class="heading">
+<h2>
+  <a name="module_un_deprecation" id="module_un_deprecation"></a>
+  <div class="permalink"><a href="#module_un_deprecation" class="permalink fas fa-link"></a></div>
+  <p>Un-deprecation</p>
+
+</h2>
+</div>
+
+<p>From time-to-time the deprecation of an API may be reversed. Such action may
 happen in either a semver-minor or semver-major release. In such situations,
 this document will be updated with information relevant to the decision.
 <em>However, the deprecation identifier will not be modified</em>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="module_list_of_deprecated_apis" id="module_list_of_deprecated_apis"></a>
-            <div class="permalink"><a href="#module_list_of_deprecated_apis" class="permalink fas fa-link"></a></div>
-            <p>List of Deprecated APIs</p>
 
-          </h1>
-        </div><section><p><a id="DEP0001"></a></p>
 
-       <div class="heading">
-          <h3>
-            <a name="module_dep0001__http_outgoingmessage_prototype_flush" id="module_dep0001__http_outgoingmessage_prototype_flush"></a>
-            <div class="permalink"><a href="#module_dep0001__http_outgoingmessage_prototype_flush" class="permalink fas fa-link"></a></div>
-            <p>DEP0001: http.OutgoingMessage.prototype.flush</p>
+<div class="heading">
+<h2>
+  <a name="module_list_of_deprecated_apis" id="module_list_of_deprecated_apis"></a>
+  <div class="permalink"><a href="#module_list_of_deprecated_apis" class="permalink fas fa-link"></a></div>
+  <p>List of Deprecated APIs</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+</h2>
+</div>
+
+<p><a id="DEP0001"></a></p>
+
+
+<div class="heading">
+<h3>
+  <a name="module_dep0001__http_outgoingmessage_prototype_flush" id="module_dep0001__http_outgoingmessage_prototype_flush"></a>
+  <div class="permalink"><a href="#module_dep0001__http_outgoingmessage_prototype_flush" class="permalink fas fa-link"></a></div>
+  <p>DEP0001: http.OutgoingMessage.prototype.flush</p>
+
+</h3>
+</div>
+
+<p>Type: Runtime</p>
 <p>The <code>OutgoingMessage.prototype.flush()</code> method is deprecated. Use
 <code>OutgoingMessage.prototype.flushHeaders()</code> instead.</p>
 <p><a id="DEP0002"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0002__require____linklist__" id="module_dep0002__require____linklist__"></a>
-            <div class="permalink"><a href="#module_dep0002__require____linklist__" class="permalink fas fa-link"></a></div>
-            <p>DEP0002: require(&#39;_linklist&#39;)</p>
 
-          </h1>
-        </div><section><p>Type: End-of-Life</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0002__require____linklist__" id="module_dep0002__require____linklist__"></a>
+  <div class="permalink"><a href="#module_dep0002__require____linklist__" class="permalink fas fa-link"></a></div>
+  <p>DEP0002: require(&#39;_linklist&#39;)</p>
+
+</h3>
+</div>
+
+<p>Type: End-of-Life</p>
 <p>The <code>_linklist</code> module is deprecated. Please use a userland alternative.</p>
 <p><a id="DEP0003"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0004__cryptostream_prototype_readystate" id="module_dep0004__cryptostream_prototype_readystate"></a>
-            <div class="permalink"><a href="#module_dep0004__cryptostream_prototype_readystate" class="permalink fas fa-link"></a></div>
-            <p>DEP0004: CryptoStream.prototype.readyState</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0004__cryptostream_prototype_readystate" id="module_dep0004__cryptostream_prototype_readystate"></a>
+  <div class="permalink"><a href="#module_dep0004__cryptostream_prototype_readystate" class="permalink fas fa-link"></a></div>
+  <p>DEP0004: CryptoStream.prototype.readyState</p>
+
+</h3>
+</div>
+
+<p>Type: Documentation-only</p>
 <p>The <code>CryptoStream.prototype.readyState</code> property is deprecated and should not
 be used.</p>
 <p><a id="DEP0005"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0005__buffer___constructor" id="module_dep0005__buffer___constructor"></a>
-            <div class="permalink"><a href="#module_dep0005__buffer___constructor" class="permalink fas fa-link"></a></div>
-            <p>DEP0005: Buffer() constructor</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0005__buffer___constructor" id="module_dep0005__buffer___constructor"></a>
+  <div class="permalink"><a href="#module_dep0005__buffer___constructor" class="permalink fas fa-link"></a></div>
+  <p>DEP0005: Buffer() constructor</p>
+
+</h3>
+</div>
+
+<p>Type: Documentation-only</p>
 <p>The <code>Buffer()</code> function and <code>new Buffer()</code> constructor are deprecated due to
 API usability issues that can potentially lead to accidental security issues.</p>
 <p>As an alternative, use of the following methods of constructing <code>Buffer</code> objects
@@ -142,15 +162,18 @@ that wraps the given <code>arrayBuffer</code>.</li>
 <code>string</code>.</li>
 </ul>
 <p><a id="DEP0006"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0007__replace_cluster_worker_suicide_with_worker_exitedafterdisconnect" id="module_dep0007__replace_cluster_worker_suicide_with_worker_exitedafterdisconnect"></a>
-            <div class="permalink"><a href="#module_dep0007__replace_cluster_worker_suicide_with_worker_exitedafterdisconnect" class="permalink fas fa-link"></a></div>
-            <p>DEP0007: Replace cluster worker.suicide with worker.exitedAfterDisconnect</p>
 
-          </h1>
-        </div><section><p>Type: End-of-Life</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0007__replace_cluster_worker_suicide_with_worker_exitedafterdisconnect" id="module_dep0007__replace_cluster_worker_suicide_with_worker_exitedafterdisconnect"></a>
+  <div class="permalink"><a href="#module_dep0007__replace_cluster_worker_suicide_with_worker_exitedafterdisconnect" class="permalink fas fa-link"></a></div>
+  <p>DEP0007: Replace cluster worker.suicide with worker.exitedAfterDisconnect</p>
+
+</h3>
+</div>
+
+<p>Type: End-of-Life</p>
 <p>In an earlier version of the Node.js <code>cluster</code>, a boolean property with the name
 <code>suicide</code> was added to the <code>Worker</code> object. The intent of this property was to
 provide an indication of how and why the <code>Worker</code> instance exited. In Node.js
@@ -158,213 +181,264 @@ provide an indication of how and why the <code>Worker</code> instance exited. In
 <a href="cluster.html#cluster_worker_exitedafterdisconnect"><code>worker.exitedAfterDisconnect</code></a> property. The old property name did not
 precisely describe the actual semantics and was unnecessarily emotion-laden.</p>
 <p><a id="DEP0008"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0008__require__constants__" id="module_dep0008__require__constants__"></a>
-            <div class="permalink"><a href="#module_dep0008__require__constants__" class="permalink fas fa-link"></a></div>
-            <p>DEP0008: require(&#39;constants&#39;)</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0008__require__constants__" id="module_dep0008__require__constants__"></a>
+  <div class="permalink"><a href="#module_dep0008__require__constants__" class="permalink fas fa-link"></a></div>
+  <p>DEP0008: require(&#39;constants&#39;)</p>
+
+</h3>
+</div>
+
+<p>Type: Documentation-only</p>
 <p>The <code>constants</code> module has been deprecated. When requiring access to constants
 relevant to specific Node.js builtin modules, developers should instead refer
 to the <code>constants</code> property exposed by the relevant module. For instance,
 <code>require(&#39;fs&#39;).constants</code> and <code>require(&#39;os&#39;).constants</code>.</p>
 <p><a id="DEP0009"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0009__crypto_pbkdf2_without_digest" id="module_dep0009__crypto_pbkdf2_without_digest"></a>
-            <div class="permalink"><a href="#module_dep0009__crypto_pbkdf2_without_digest" class="permalink fas fa-link"></a></div>
-            <p>DEP0009: crypto.pbkdf2 without digest</p>
 
-          </h1>
-        </div><section><p>Type: End-of-life</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0009__crypto_pbkdf2_without_digest" id="module_dep0009__crypto_pbkdf2_without_digest"></a>
+  <div class="permalink"><a href="#module_dep0009__crypto_pbkdf2_without_digest" class="permalink fas fa-link"></a></div>
+  <p>DEP0009: crypto.pbkdf2 without digest</p>
+
+</h3>
+</div>
+
+<p>Type: End-of-life</p>
 <p>Use of the <a href="crypto.html#crypto_crypto_pbkdf2_password_salt_iterations_keylen_digest_callback"><code>crypto.pbkdf2()</code></a> API without specifying a digest was deprecated
 in Node.js 6.0 because the method defaulted to using the non-recommended
 <code>&#39;SHA1&#39;</code> digest. Previously, a deprecation warning was printed. Starting in
 Node.js 8.0.0, calling <code>crypto.pbkdf2()</code> or <code>crypto.pbkdf2Sync()</code> with an
 undefined <code>digest</code> will throw a <code>TypeError</code>.</p>
 <p><a id="DEP0010"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0013__fs_asynchronous_function_without_callback" id="module_dep0013__fs_asynchronous_function_without_callback"></a>
-            <div class="permalink"><a href="#module_dep0013__fs_asynchronous_function_without_callback" class="permalink fas fa-link"></a></div>
-            <p>DEP0013: fs asynchronous function without callback</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0013__fs_asynchronous_function_without_callback" id="module_dep0013__fs_asynchronous_function_without_callback"></a>
+  <div class="permalink"><a href="#module_dep0013__fs_asynchronous_function_without_callback" class="permalink fas fa-link"></a></div>
+  <p>DEP0013: fs asynchronous function without callback</p>
+
+</h3>
+</div>
+
+<p>Type: Runtime</p>
 <p>Calling an asynchronous function without a callback is deprecated.</p>
 <p><a id="DEP0014"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0014__fs_read_legacy_string_interface" id="module_dep0014__fs_read_legacy_string_interface"></a>
-            <div class="permalink"><a href="#module_dep0014__fs_read_legacy_string_interface" class="permalink fas fa-link"></a></div>
-            <p>DEP0014: fs.read legacy String interface</p>
 
-          </h1>
-        </div><section><p>Type: End-of-Life</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0014__fs_read_legacy_string_interface" id="module_dep0014__fs_read_legacy_string_interface"></a>
+  <div class="permalink"><a href="#module_dep0014__fs_read_legacy_string_interface" class="permalink fas fa-link"></a></div>
+  <p>DEP0014: fs.read legacy String interface</p>
+
+</h3>
+</div>
+
+<p>Type: End-of-Life</p>
 <p>The <a href="#fs_fs_read_fd_buffer_offset_length_position_callback"><code>fs.read()</code></a> legacy String interface is deprecated. Use the Buffer API as
 mentioned in the documentation instead.</p>
 <p><a id="DEP0015"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0015__fs_readsync_legacy_string_interface" id="module_dep0015__fs_readsync_legacy_string_interface"></a>
-            <div class="permalink"><a href="#module_dep0015__fs_readsync_legacy_string_interface" class="permalink fas fa-link"></a></div>
-            <p>DEP0015: fs.readSync legacy String interface</p>
 
-          </h1>
-        </div><section><p>Type: End-of-Life</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0015__fs_readsync_legacy_string_interface" id="module_dep0015__fs_readsync_legacy_string_interface"></a>
+  <div class="permalink"><a href="#module_dep0015__fs_readsync_legacy_string_interface" class="permalink fas fa-link"></a></div>
+  <p>DEP0015: fs.readSync legacy String interface</p>
+
+</h3>
+</div>
+
+<p>Type: End-of-Life</p>
 <p>The <a href="fs.html#fs_fs_readsync_fd_buffer_offset_length_position"><code>fs.readSync()</code></a> legacy String interface is deprecated. Use the Buffer
 API as mentioned in the documentation instead.</p>
 <p><a id="DEP0016"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0016__global_root" id="module_dep0016__global_root"></a>
-            <div class="permalink"><a href="#module_dep0016__global_root" class="permalink fas fa-link"></a></div>
-            <p>DEP0016: GLOBAL/root</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0016__global_root" id="module_dep0016__global_root"></a>
+  <div class="permalink"><a href="#module_dep0016__global_root" class="permalink fas fa-link"></a></div>
+  <p>DEP0016: GLOBAL/root</p>
+
+</h3>
+</div>
+
+<p>Type: Runtime</p>
 <p>The <code>GLOBAL</code> and <code>root</code> aliases for the <code>global</code> property have been deprecated
 and should no longer be used.</p>
 <p><a id="DEP0017"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0018__unhandled_promise_rejections" id="module_dep0018__unhandled_promise_rejections"></a>
-            <div class="permalink"><a href="#module_dep0018__unhandled_promise_rejections" class="permalink fas fa-link"></a></div>
-            <p>DEP0018: Unhandled promise rejections</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0018__unhandled_promise_rejections" id="module_dep0018__unhandled_promise_rejections"></a>
+  <div class="permalink"><a href="#module_dep0018__unhandled_promise_rejections" class="permalink fas fa-link"></a></div>
+  <p>DEP0018: Unhandled promise rejections</p>
+
+</h3>
+</div>
+
+<p>Type: Runtime</p>
 <p>Unhandled promise rejections are deprecated. In the future, promise rejections
 that are not handled will terminate the Node.js process with a non-zero exit
 code.</p>
 <p><a id="DEP0019"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0019__require______resolved_outside_directory" id="module_dep0019__require______resolved_outside_directory"></a>
-            <div class="permalink"><a href="#module_dep0019__require______resolved_outside_directory" class="permalink fas fa-link"></a></div>
-            <p>DEP0019: require(&#39;.&#39;) resolved outside directory</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0019__require______resolved_outside_directory" id="module_dep0019__require______resolved_outside_directory"></a>
+  <div class="permalink"><a href="#module_dep0019__require______resolved_outside_directory" class="permalink fas fa-link"></a></div>
+  <p>DEP0019: require(&#39;.&#39;) resolved outside directory</p>
+
+</h3>
+</div>
+
+<p>Type: Runtime</p>
 <p>In certain cases, <code>require(&#39;.&#39;)</code> may resolve outside the package directory.
 This behavior is deprecated and will be removed in a future major Node.js
 release.</p>
 <p><a id="DEP0020"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0024__replserver_prototype_converttocontext__" id="module_dep0024__replserver_prototype_converttocontext__"></a>
-            <div class="permalink"><a href="#module_dep0024__replserver_prototype_converttocontext__" class="permalink fas fa-link"></a></div>
-            <p>DEP0024: REPLServer.prototype.convertToContext()</p>
 
-          </h1>
-        </div><section><p>Type: End-of-Life</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0024__replserver_prototype_converttocontext__" id="module_dep0024__replserver_prototype_converttocontext__"></a>
+  <div class="permalink"><a href="#module_dep0024__replserver_prototype_converttocontext__" class="permalink fas fa-link"></a></div>
+  <p>DEP0024: REPLServer.prototype.convertToContext()</p>
+
+</h3>
+</div>
+
+<p>Type: End-of-Life</p>
 <p>The <code>REPLServer.prototype.convertToContext()</code> API is deprecated and should
 not be used.</p>
 <p><a id="DEP0025"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0025__require__sys__" id="module_dep0025__require__sys__"></a>
-            <div class="permalink"><a href="#module_dep0025__require__sys__" class="permalink fas fa-link"></a></div>
-            <p>DEP0025: require(&#39;sys&#39;)</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0025__require__sys__" id="module_dep0025__require__sys__"></a>
+  <div class="permalink"><a href="#module_dep0025__require__sys__" class="permalink fas fa-link"></a></div>
+  <p>DEP0025: require(&#39;sys&#39;)</p>
+
+</h3>
+</div>
+
+<p>Type: Runtime</p>
 <p>The <code>sys</code> module is deprecated. Please use the <a href="util.html"><code>util</code></a> module instead.</p>
 <p><a id="DEP0026"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0030__slowbuffer" id="module_dep0030__slowbuffer"></a>
-            <div class="permalink"><a href="#module_dep0030__slowbuffer" class="permalink fas fa-link"></a></div>
-            <p>DEP0030: SlowBuffer</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0030__slowbuffer" id="module_dep0030__slowbuffer"></a>
+  <div class="permalink"><a href="#module_dep0030__slowbuffer" class="permalink fas fa-link"></a></div>
+  <p>DEP0030: SlowBuffer</p>
+
+</h3>
+</div>
+
+<p>Type: Documentation-only</p>
 <p>The <a href="buffer.html#buffer_class_slowbuffer"><code>SlowBuffer</code></a> class has been deprecated. Please use
 <a href="buffer.html#buffer_class_method_buffer_allocunsafeslow_size"><code>Buffer.allocUnsafeSlow(size)</code></a> instead.</p>
 <p><a id="DEP0031"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0032__domain_module" id="module_dep0032__domain_module"></a>
-            <div class="permalink"><a href="#module_dep0032__domain_module" class="permalink fas fa-link"></a></div>
-            <p>DEP0032: domain module</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0032__domain_module" id="module_dep0032__domain_module"></a>
+  <div class="permalink"><a href="#module_dep0032__domain_module" class="permalink fas fa-link"></a></div>
+  <p>DEP0032: domain module</p>
+
+</h3>
+</div>
+
+<p>Type: Documentation-only</p>
 <p>The <a href="domain.html"><code>domain</code></a> module is deprecated and should not be used.</p>
 <p><a id="DEP0033"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0040__punycode_module" id="module_dep0040__punycode_module"></a>
-            <div class="permalink"><a href="#module_dep0040__punycode_module" class="permalink fas fa-link"></a></div>
-            <p>DEP0040: punycode module</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0040__punycode_module" id="module_dep0040__punycode_module"></a>
+  <div class="permalink"><a href="#module_dep0040__punycode_module" class="permalink fas fa-link"></a></div>
+  <p>DEP0040: punycode module</p>
+
+</h3>
+</div>
+
+<p>Type: Documentation-only</p>
 <p>The <a href="punycode.html"><code>punycode</code></a> module has been deprecated. Please use a userland alternative
 instead.</p>
 <p><a id="DEP0041"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0041__node__repl__history__file_environment_variable" id="module_dep0041__node__repl__history__file_environment_variable"></a>
-            <div class="permalink"><a href="#module_dep0041__node__repl__history__file_environment_variable" class="permalink fas fa-link"></a></div>
-            <p>DEP0041: NODE_REPL_HISTORY_FILE environment variable</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0041__node__repl__history__file_environment_variable" id="module_dep0041__node__repl__history__file_environment_variable"></a>
+  <div class="permalink"><a href="#module_dep0041__node__repl__history__file_environment_variable" class="permalink fas fa-link"></a></div>
+  <p>DEP0041: NODE_REPL_HISTORY_FILE environment variable</p>
+
+</h3>
+</div>
+
+<p>Type: Documentation-only</p>
 <p>The <code>NODE_REPL_HISTORY_FILE</code> environment variable has been deprecated.</p>
 <p><a id="DEP0042"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0062__node___debug" id="module_dep0062__node___debug"></a>
-            <div class="permalink"><a href="#module_dep0062__node___debug" class="permalink fas fa-link"></a></div>
-            <p>DEP0062: node --debug</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0062__node___debug" id="module_dep0062__node___debug"></a>
+  <div class="permalink"><a href="#module_dep0062__node___debug" class="permalink fas fa-link"></a></div>
+  <p>DEP0062: node --debug</p>
+
+</h3>
+</div>
+
+<p>Type: Runtime</p>
 <p><code>--debug</code> activates the legacy V8 debugger interface, which has been removed as
 of V8 5.8. It is replaced by Inspector which is activated with <code>--inspect</code>
 instead.</p>
 <p><a id="DEP0063"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0063__serverresponse_prototype_writeheader__" id="module_dep0063__serverresponse_prototype_writeheader__"></a>
-            <div class="permalink"><a href="#module_dep0063__serverresponse_prototype_writeheader__" class="permalink fas fa-link"></a></div>
-            <p>DEP0063: ServerResponse.prototype.writeHeader()</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0063__serverresponse_prototype_writeheader__" id="module_dep0063__serverresponse_prototype_writeheader__"></a>
+  <div class="permalink"><a href="#module_dep0063__serverresponse_prototype_writeheader__" class="permalink fas fa-link"></a></div>
+  <p>DEP0063: ServerResponse.prototype.writeHeader()</p>
+
+</h3>
+</div>
+
+<p>Type: Documentation-only</p>
 <p>The <code>http</code> module <code>ServerResponse.prototype.writeHeader()</code> API has been
 deprecated. Please use <code>ServerResponse.prototype.writeHead()</code> instead.</p>
 <p><em>Note</em>: The <code>ServerResponse.prototype.writeHeader()</code> method was never
 documented as an officially supported API.</p>
 <p><a id="DEP0064"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0065__repl_repl_mode_magic_and_node_repl_mode_magic" id="module_dep0065__repl_repl_mode_magic_and_node_repl_mode_magic"></a>
-            <div class="permalink"><a href="#module_dep0065__repl_repl_mode_magic_and_node_repl_mode_magic" class="permalink fas fa-link"></a></div>
-            <p>DEP0065: repl.REPL_MODE_MAGIC and NODE_REPL_MODE=magic</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0065__repl_repl_mode_magic_and_node_repl_mode_magic" id="module_dep0065__repl_repl_mode_magic_and_node_repl_mode_magic"></a>
+  <div class="permalink"><a href="#module_dep0065__repl_repl_mode_magic_and_node_repl_mode_magic" class="permalink fas fa-link"></a></div>
+  <p>DEP0065: repl.REPL_MODE_MAGIC and NODE_REPL_MODE=magic</p>
+
+</h3>
+</div>
+
+<p>Type: Documentation-only</p>
 <p>The <code>repl</code> module&#39;s <code>REPL_MODE_MAGIC</code> constant, used for <code>replMode</code> option, has
 been deprecated. Its behavior has been functionally identical to that of
 <code>REPL_MODE_SLOPPY</code> since Node.js v6.0.0, when V8 5.0 was imported. Please use
@@ -373,15 +447,18 @@ been deprecated. Its behavior has been functionally identical to that of
 <code>replMode</code> of an interactive <code>node</code> session. Its default value, <code>magic</code>, is
 similarly deprecated in favor of <code>sloppy</code>.</p>
 <p><a id="DEP0066"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0066__outgoingmessage___headers__outgoingmessage___headernames" id="module_dep0066__outgoingmessage___headers__outgoingmessage___headernames"></a>
-            <div class="permalink"><a href="#module_dep0066__outgoingmessage___headers__outgoingmessage___headernames" class="permalink fas fa-link"></a></div>
-            <p>DEP0066: outgoingMessage._headers, outgoingMessage._headerNames</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0066__outgoingmessage___headers__outgoingmessage___headernames" id="module_dep0066__outgoingmessage___headers__outgoingmessage___headernames"></a>
+  <div class="permalink"><a href="#module_dep0066__outgoingmessage___headers__outgoingmessage___headernames" class="permalink fas fa-link"></a></div>
+  <p>DEP0066: outgoingMessage._headers, outgoingMessage._headerNames</p>
+
+</h3>
+</div>
+
+<p>Type: Documentation-only</p>
 <p>The <code>http</code> module <code>outgoingMessage._headers</code> and <code>outgoingMessage._headerNames</code>
 properties have been deprecated. Please instead use one of the public methods
 (e.g. <code>outgoingMessage.getHeader()</code>, <code>outgoingMessage.getHeaders()</code>,
@@ -391,692 +468,1083 @@ with outgoing headers.</p>
 <p><em>Note</em>: <code>outgoingMessage._headers</code> and <code>outgoingMessage._headerNames</code> were
 never documented as officially supported properties.</p>
 <p><a id="DEP0067"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0067__outgoingmessage_prototype___renderheaders" id="module_dep0067__outgoingmessage_prototype___renderheaders"></a>
-            <div class="permalink"><a href="#module_dep0067__outgoingmessage_prototype___renderheaders" class="permalink fas fa-link"></a></div>
-            <p>DEP0067: OutgoingMessage.prototype._renderHeaders</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0067__outgoingmessage_prototype___renderheaders" id="module_dep0067__outgoingmessage_prototype___renderheaders"></a>
+  <div class="permalink"><a href="#module_dep0067__outgoingmessage_prototype___renderheaders" class="permalink fas fa-link"></a></div>
+  <p>DEP0067: OutgoingMessage.prototype._renderHeaders</p>
+
+</h3>
+</div>
+
+<p>Type: Documentation-only</p>
 <p>The <code>http</code> module <code>OutgoingMessage.prototype._renderHeaders()</code> API has been
 deprecated.</p>
 <p><em>Note</em>: <code>OutgoingMessage.prototype._renderHeaders</code> was never documented as
 an officially supported API.</p>
 <p><a id="DEP0068"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0068__node_debug" id="module_dep0068__node_debug"></a>
-            <div class="permalink"><a href="#module_dep0068__node_debug" class="permalink fas fa-link"></a></div>
-            <p>DEP0068: node debug</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0068__node_debug" id="module_dep0068__node_debug"></a>
+  <div class="permalink"><a href="#module_dep0068__node_debug" class="permalink fas fa-link"></a></div>
+  <p>DEP0068: node debug</p>
+
+</h3>
+</div>
+
+<p>Type: Runtime</p>
 <p><code>node debug</code> corresponds to the legacy CLI debugger which has been replaced with
 a V8-inspector based CLI debugger available through <code>node inspect</code>.</p>
 <p><a id="DEP0069"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0072__async_hooks_asyncresource_triggerid__" id="module_dep0072__async_hooks_asyncresource_triggerid__"></a>
-            <div class="permalink"><a href="#module_dep0072__async_hooks_asyncresource_triggerid__" class="permalink fas fa-link"></a></div>
-            <p>DEP0072: async_hooks.AsyncResource.triggerId()</p>
 
-          </h1>
-        </div><section><p>Type: End-of-Life</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0072__async_hooks_asyncresource_triggerid__" id="module_dep0072__async_hooks_asyncresource_triggerid__"></a>
+  <div class="permalink"><a href="#module_dep0072__async_hooks_asyncresource_triggerid__" class="permalink fas fa-link"></a></div>
+  <p>DEP0072: async_hooks.AsyncResource.triggerId()</p>
+
+</h3>
+</div>
+
+<p>Type: End-of-Life</p>
 <p><code>async_hooks.AsyncResource.triggerId()</code> was renamed to
 <code>async_hooks.AsyncResource.triggerAsyncId()</code> for clarity.</p>
 <p><em>Note</em>: change was made while <code>async_hooks</code> was an experimental API.</p>
 <p><a id="DEP0073"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0081__fs_truncate___using_a_file_descriptor" id="module_dep0081__fs_truncate___using_a_file_descriptor"></a>
-            <div class="permalink"><a href="#module_dep0081__fs_truncate___using_a_file_descriptor" class="permalink fas fa-link"></a></div>
-            <p>DEP0081: fs.truncate() using a file descriptor</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0081__fs_truncate___using_a_file_descriptor" id="module_dep0081__fs_truncate___using_a_file_descriptor"></a>
+  <div class="permalink"><a href="#module_dep0081__fs_truncate___using_a_file_descriptor" class="permalink fas fa-link"></a></div>
+  <p>DEP0081: fs.truncate() using a file descriptor</p>
+
+</h3>
+</div>
+
+<p>Type: Runtime</p>
 <p><code>fs.truncate()</code> <code>fs.truncateSync()</code> usage with a file descriptor has been
 deprecated. Please use <code>fs.ftruncate()</code> or <code>fs.ftruncateSync()</code> to work with
 file descriptors.</p>
 <p><a id="DEP0082"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0082__replserver_prototype_memory__" id="module_dep0082__replserver_prototype_memory__"></a>
-            <div class="permalink"><a href="#module_dep0082__replserver_prototype_memory__" class="permalink fas fa-link"></a></div>
-            <p>DEP0082: REPLServer.prototype.memory()</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0082__replserver_prototype_memory__" id="module_dep0082__replserver_prototype_memory__"></a>
+  <div class="permalink"><a href="#module_dep0082__replserver_prototype_memory__" class="permalink fas fa-link"></a></div>
+  <p>DEP0082: REPLServer.prototype.memory()</p>
+
+</h3>
+</div>
+
+<p>Type: Runtime</p>
 <p><code>REPLServer.prototype.memory()</code> is a function only necessary for the
 internal mechanics of the <code>REPLServer</code> itself, and is therefore not
 necessary in user space.</p>
 <p><a id="DEP0083"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0083__disabling_ecdh_by_setting_ecdhcurve_to_false" id="module_dep0083__disabling_ecdh_by_setting_ecdhcurve_to_false"></a>
-            <div class="permalink"><a href="#module_dep0083__disabling_ecdh_by_setting_ecdhcurve_to_false" class="permalink fas fa-link"></a></div>
-            <p>DEP0083: Disabling ECDH by setting ecdhCurve to false</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0083__disabling_ecdh_by_setting_ecdhcurve_to_false" id="module_dep0083__disabling_ecdh_by_setting_ecdhcurve_to_false"></a>
+  <div class="permalink"><a href="#module_dep0083__disabling_ecdh_by_setting_ecdhcurve_to_false" class="permalink fas fa-link"></a></div>
+  <p>DEP0083: Disabling ECDH by setting ecdhCurve to false</p>
+
+</h3>
+</div>
+
+<p>Type: Runtime</p>
 <p>The <code>ecdhCurve</code> option to <code>tls.createSecureContext()</code> and <code>tls.TLSSocket</code> could
 be set to <code>false</code> to disable ECDH entirely on the server only. This mode is
 deprecated in preparation for migrating to OpenSSL 1.1.0 and consistency with
 the client. Use the <code>ciphers</code> parameter instead.</p>
 <p><a id="DEP0085"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0085__asynchooks_sensitive_api" id="module_dep0085__asynchooks_sensitive_api"></a>
-            <div class="permalink"><a href="#module_dep0085__asynchooks_sensitive_api" class="permalink fas fa-link"></a></div>
-            <p>DEP0085: AsyncHooks Sensitive API</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+<div class="heading">
+<h3>
+  <a name="module_dep0085__asynchooks_sensitive_api" id="module_dep0085__asynchooks_sensitive_api"></a>
+  <div class="permalink"><a href="#module_dep0085__asynchooks_sensitive_api" class="permalink fas fa-link"></a></div>
+  <p>DEP0085: AsyncHooks Sensitive API</p>
+
+</h3>
+</div>
+
+<p>Type: Runtime</p>
 <p>The AsyncHooks Sensitive API was never documented and had various of minor
 issues, see <a href="https://github.com/nodejs/node/issues/15572">https://github.com/nodejs/node/issues/15572</a>. Use the <code>AsyncResource</code>
 API instead.</p>
 <p><a id="DEP0086"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="module_dep0086__remove_runinasyncidscope" id="module_dep0086__remove_runinasyncidscope"></a>
-            <div class="permalink"><a href="#module_dep0086__remove_runinasyncidscope" class="permalink fas fa-link"></a></div>
-            <p>DEP0086: Remove runInAsyncIdScope</p>
 
-          </h1>
-        </div><section><p><p>Type: Runtime</p></p>
-<p><p><code>runInAsyncIdScope</code> doesn&#39;t emit the <code>before</code> or <code>after</code> event and can thus
+
+<div class="heading">
+<h3>
+  <a name="module_dep0086__remove_runinasyncidscope" id="module_dep0086__remove_runinasyncidscope"></a>
+  <div class="permalink"><a href="#module_dep0086__remove_runinasyncidscope" class="permalink fas fa-link"></a></div>
+  <p>DEP0086: Remove runInAsyncIdScope</p>
+
+</h3>
+</div>
+
+<p>Type: Runtime</p>
+<p><code>runInAsyncIdScope</code> doesn&#39;t emit the <code>before</code> or <code>after</code> event and can thus
 cause a lot of issues. See <a href="https://github.com/nodejs/node/issues/14328">https://github.com/nodejs/node/issues/14328</a> for more
 details.</p>
+<p><a id="DEP0098"></a></p>
+
+
+<div class="heading">
+<h3>
+  <a name="module_dep0098__asynchooks_embedder_asyncresource_emit_before_after__apis" id="module_dep0098__asynchooks_embedder_asyncresource_emit_before_after__apis"></a>
+  <div class="permalink"><a href="#module_dep0098__asynchooks_embedder_asyncresource_emit_before_after__apis" class="permalink fas fa-link"></a></div>
+  <p>DEP0098: AsyncHooks Embedder AsyncResource.emit{Before,After} APIs</p>
+
+</h3>
+</div>
+
+<p><p>Type: Runtime</p></p>
+<p><p>The embedded API provided by AsyncHooks exposes emit{Before,After} methods
+which are very easy to use incorrectly which can lead to unrecoverable errors.</p></p>
+<p><p>Use <a href="async_hooks.html#async_hooks_asyncresource_runinasyncscope_fn_thisarg_args"><code>asyncResource.runInAsyncScope()</code></a> API instead which provides a much
+safer, and more convenient, alternative. See
+<a href="https://github.com/nodejs/node/pull/18513">https://github.com/nodejs/node/pull/18513</a> for more details.</p>
 <!-- [end-include:deprecations.md] -->
 <!-- [start-include:dns.md] --></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="property_buffer_1" id="property_buffer_1"></a>
-            <div class="permalink"><a href="#property_buffer_1" class="permalink fas fa-link"></a></div>
-            <p>DEP0003: _writableState.buffer</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+<div class='expandable-header' id='property_buffer_1-expand'>
+<div class="heading">
+    <h3>
+        <a name="property_buffer_1" id="property_buffer_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_buffer_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_buffer_1" class="permalink fas fa-link"></a></div>
+        <p>DEP0003: _writableState.buffer</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='property_buffer_1-expand-content'>
+<p>Type: Runtime</p>
 <p>The <code>_writableState.buffer</code> property is deprecated. Use the
 <code>_writableState.getBuffer()</code> method instead.</p>
 <p><a id="DEP0004"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="property_customFds" id="property_customFds"></a>
-            <div class="permalink"><a href="#property_customFds" class="permalink fas fa-link"></a></div>
-            <p>DEP0006: child_process options.customFds</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+</div><div class='expandable-header' id='property_customFds-expand'>
+<div class="heading">
+    <h3>
+        <a name="property_customFds" id="property_customFds"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_customFds-expand-icon"></i>
+        <div class="permalink"><a href="#property_customFds" class="permalink fas fa-link"></a></div>
+        <p>DEP0006: child_process options.customFds</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='property_customFds-expand-content'>
+<p>Type: Runtime</p>
 <p>Within the <a href="child_process.html"><code>child_process</code></a> module&#39;s <code>spawn()</code>, <code>fork()</code>, and <code>exec()</code>
 methods, the <code>options.customFds</code> option is deprecated. The <code>options.stdio</code>
 option should be used instead.</p>
 <p><a id="DEP0007"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="property_createCredentials" id="property_createCredentials"></a>
-            <div class="permalink"><a href="#property_createCredentials" class="permalink fas fa-link"></a></div>
-            <p>DEP0010: crypto.createCredentials</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+</div><div class='expandable-header' id='property_createCredentials-expand'>
+<div class="heading">
+    <h3>
+        <a name="property_createCredentials" id="property_createCredentials"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_createCredentials-expand-icon"></i>
+        <div class="permalink"><a href="#property_createCredentials" class="permalink fas fa-link"></a></div>
+        <p>DEP0010: crypto.createCredentials</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='property_createCredentials-expand-content'>
+<p>Type: Runtime</p>
 <p>The <a href="crypto.html#crypto_crypto_createcredentials_details"><code>crypto.createCredentials()</code></a> API is deprecated. Please use
 <a href="#tls_tls_createsecurecontext_options"><code>tls.createSecureContext()</code></a> instead.</p>
 <p><a id="DEP0011"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="property_Credentials" id="property_Credentials"></a>
-            <div class="permalink"><a href="#property_Credentials" class="permalink fas fa-link"></a></div>
-            <p>DEP0011: crypto.Credentials</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+</div><div class='expandable-header' id='property_Credentials-expand'>
+<div class="heading">
+    <h3>
+        <a name="property_Credentials" id="property_Credentials"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_Credentials-expand-icon"></i>
+        <div class="permalink"><a href="#property_Credentials" class="permalink fas fa-link"></a></div>
+        <p>DEP0011: crypto.Credentials</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='property_Credentials-expand-content'>
+<p>Type: Runtime</p>
 <p>The <code>crypto.Credentials</code> class is deprecated. Please use <a href="tls.html#tls_tls_createsecurecontext_options"><code>tls.SecureContext</code></a>
 instead.</p>
 <p><a id="DEP0012"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="property_dispose" id="property_dispose"></a>
-            <div class="permalink"><a href="#property_dispose" class="permalink fas fa-link"></a></div>
-            <p>DEP0012: Domain.dispose</p>
 
-          </h1>
-        </div><section><p>Type: End-of-Life</p>
+
+</div><div class='expandable-header' id='property_dispose-expand'>
+<div class="heading">
+    <h3>
+        <a name="property_dispose" id="property_dispose"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_dispose-expand-icon"></i>
+        <div class="permalink"><a href="#property_dispose" class="permalink fas fa-link"></a></div>
+        <p>DEP0012: Domain.dispose</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='property_dispose-expand-content'>
+<p>Type: End-of-Life</p>
 <p><code>Domain.dispose()</code> is removed. Recover from failed I/O actions
 explicitly via error event handlers set on the domain instead.</p>
 <p><a id="DEP0013"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="property_v8BreakIterator" id="property_v8BreakIterator"></a>
-            <div class="permalink"><a href="#property_v8BreakIterator" class="permalink fas fa-link"></a></div>
-            <p>DEP0017: Intl.v8BreakIterator</p>
 
-          </h1>
-        </div><section><p>Type: End-of-Life</p>
+
+</div><div class='expandable-header' id='property_v8BreakIterator-expand'>
+<div class="heading">
+    <h3>
+        <a name="property_v8BreakIterator" id="property_v8BreakIterator"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_v8BreakIterator-expand-icon"></i>
+        <div class="permalink"><a href="#property_v8BreakIterator" class="permalink fas fa-link"></a></div>
+        <p>DEP0017: Intl.v8BreakIterator</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='property_v8BreakIterator-expand-content'>
+<p>Type: End-of-Life</p>
 <p><code>Intl.v8BreakIterator</code> was a non-standard extension and has been removed.
 See <a href="https://github.com/tc39/proposal-intl-segmenter"><code>Intl.Segmenter</code></a>.</p>
 <p><a id="DEP0018"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="property_connections" id="property_connections"></a>
-            <div class="permalink"><a href="#property_connections" class="permalink fas fa-link"></a></div>
-            <p>DEP0020: Server.connections</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+</div><div class='expandable-header' id='property_connections-expand'>
+<div class="heading">
+    <h3>
+        <a name="property_connections" id="property_connections"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_connections-expand-icon"></i>
+        <div class="permalink"><a href="#property_connections" class="permalink fas fa-link"></a></div>
+        <p>DEP0020: Server.connections</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='property_connections-expand-content'>
+<p>Type: Runtime</p>
 <p>The <a href="net.html#net_server_connections"><code>Server.connections</code></a> property is deprecated. Please use the
 <a href="net.html#net_server_getconnections_callback"><code>Server.getConnections()</code></a> method instead.</p>
 <p><a id="DEP0021"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="property_listenFD" id="property_listenFD"></a>
-            <div class="permalink"><a href="#property_listenFD" class="permalink fas fa-link"></a></div>
-            <p>DEP0021: Server.listenFD</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+</div><div class='expandable-header' id='property_listenFD-expand'>
+<div class="heading">
+    <h3>
+        <a name="property_listenFD" id="property_listenFD"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_listenFD-expand-icon"></i>
+        <div class="permalink"><a href="#property_listenFD" class="permalink fas fa-link"></a></div>
+        <p>DEP0021: Server.listenFD</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='property_listenFD-expand-content'>
+<p>Type: Runtime</p>
 <p>The <code>Server.listenFD()</code> method is deprecated. Please use
 <a href="net.html#net_server_listen_handle_backlog_callback"><code>Server.listen({fd: &lt;number&gt;})</code></a> instead.</p>
 <p><a id="DEP0022"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="property_extensions" id="property_extensions"></a>
-            <div class="permalink"><a href="#property_extensions" class="permalink fas fa-link"></a></div>
-            <p>DEP0039: require.extensions</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='property_extensions-expand'>
+<div class="heading">
+    <h3>
+        <a name="property_extensions" id="property_extensions"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_extensions-expand-icon"></i>
+        <div class="permalink"><a href="#property_extensions" class="permalink fas fa-link"></a></div>
+        <p>DEP0039: require.extensions</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='property_extensions-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="modules.html#modules_require_extensions"><code>require.extensions</code></a> property has been deprecated.</p>
 <p><a id="DEP0040"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="property_CryptoStream" id="property_CryptoStream"></a>
-            <div class="permalink"><a href="#property_CryptoStream" class="permalink fas fa-link"></a></div>
-            <p>DEP0042: tls.CryptoStream</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='property_CryptoStream-expand'>
+<div class="heading">
+    <h3>
+        <a name="property_CryptoStream" id="property_CryptoStream"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_CryptoStream-expand-icon"></i>
+        <div class="permalink"><a href="#property_CryptoStream" class="permalink fas fa-link"></a></div>
+        <p>DEP0042: tls.CryptoStream</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='property_CryptoStream-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="tls.html#tls_class_cryptostream"><code>tls.CryptoStream</code></a> class has been deprecated. Please use
 <a href="#tls_class_tls_tlssocket"><code>tls.TLSSocket</code></a> instead.</p>
 <p><a id="DEP0043"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="property_SecurePair" id="property_SecurePair"></a>
-            <div class="permalink"><a href="#property_SecurePair" class="permalink fas fa-link"></a></div>
-            <p>DEP0043: tls.SecurePair</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='property_SecurePair-expand'>
+<div class="heading">
+    <h3>
+        <a name="property_SecurePair" id="property_SecurePair"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_SecurePair-expand-icon"></i>
+        <div class="permalink"><a href="#property_SecurePair" class="permalink fas fa-link"></a></div>
+        <p>DEP0043: tls.SecurePair</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='property_SecurePair-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="tls.html#tls_class_securepair"><code>tls.SecurePair</code></a> class has been deprecated. Please use
 <a href="#tls_class_tls_tlssocket"><code>tls.TLSSocket</code></a> instead.</p>
 <p><a id="DEP0044"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="property_SyncWriteStream" id="property_SyncWriteStream"></a>
-            <div class="permalink"><a href="#property_SyncWriteStream" class="permalink fas fa-link"></a></div>
-            <p>DEP0061: fs.SyncWriteStream</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+</div><div class='expandable-header' id='property_SyncWriteStream-expand'>
+<div class="heading">
+    <h3>
+        <a name="property_SyncWriteStream" id="property_SyncWriteStream"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_SyncWriteStream-expand-icon"></i>
+        <div class="permalink"><a href="#property_SyncWriteStream" class="permalink fas fa-link"></a></div>
+        <p>DEP0061: fs.SyncWriteStream</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='property_SyncWriteStream-expand-content'>
+<p>Type: Runtime</p>
 <p>The <code>fs.SyncWriteStream</code> class was never intended to be a publicly accessible
 API. No alternative API is available. Please use a userland alternative.</p>
 <p><a id="DEP0062"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="property_Server" id="property_Server"></a>
-            <div class="permalink"><a href="#property_Server" class="permalink fas fa-link"></a></div>
-            <p>DEP0073: Several internal properties of net.Server</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+</div><div class='expandable-header' id='property_Server-expand'>
+<div class="heading">
+    <h3>
+        <a name="property_Server" id="property_Server"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_Server-expand-icon"></i>
+        <div class="permalink"><a href="#property_Server" class="permalink fas fa-link"></a></div>
+        <p>DEP0073: Several internal properties of net.Server</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='property_Server-expand-content'>
+<p>Type: Runtime</p>
 <p>Accessing several internal, undocumented properties of <code>net.Server</code> instances
 with inappropriate names has been deprecated.</p>
 <p><em>Note</em>: As the original API was undocumented and not generally useful for
 non-internal code, no replacement API is provided.</p>
 <p><a id="DEP0074"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="property_bufferedCommand" id="property_bufferedCommand"></a>
-            <div class="permalink"><a href="#property_bufferedCommand" class="permalink fas fa-link"></a></div>
-            <p>DEP0074: REPLServer.bufferedCommand</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+</div><div class='expandable-header' id='property_bufferedCommand-expand'>
+<div class="heading">
+    <h3>
+        <a name="property_bufferedCommand" id="property_bufferedCommand"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_bufferedCommand-expand-icon"></i>
+        <div class="permalink"><a href="#property_bufferedCommand" class="permalink fas fa-link"></a></div>
+        <p>DEP0074: REPLServer.bufferedCommand</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='property_bufferedCommand-expand-content'>
+<p>Type: Runtime</p>
 <p>The <code>REPLServer.bufferedCommand</code> property was deprecated in favor of
 <a href="repl.html#repl_replserver_clearbufferedcommand"><code>REPLServer.clearBufferedCommand()</code></a>.</p>
 <p><a id="DEP0075"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_tmpDir" id="method_tmpDir"></a>
-            <div class="permalink"><a href="#method_tmpDir" class="permalink fas fa-link"></a></div>
-            <p>DEP0022: os.tmpDir()</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+</div><div class='expandable-header' id='method_tmpDir-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_tmpDir" id="method_tmpDir"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_tmpDir-expand-icon"></i>
+        <div class="permalink"><a href="#method_tmpDir" class="permalink fas fa-link"></a></div>
+        <p>DEP0022: os.tmpDir()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_tmpDir-expand-content'>
+<p>Type: Runtime</p>
 <p>The <code>os.tmpDir()</code> API is deprecated. Please use <a href="os.html#os_os_tmpdir"><code>os.tmpdir()</code></a> instead.</p>
 <p><a id="DEP0023"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_getNetworkInterfaces" id="method_getNetworkInterfaces"></a>
-            <div class="permalink"><a href="#method_getNetworkInterfaces" class="permalink fas fa-link"></a></div>
-            <p>DEP0023: os.getNetworkInterfaces()</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+</div><div class='expandable-header' id='method_getNetworkInterfaces-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_getNetworkInterfaces" id="method_getNetworkInterfaces"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getNetworkInterfaces-expand-icon"></i>
+        <div class="permalink"><a href="#method_getNetworkInterfaces" class="permalink fas fa-link"></a></div>
+        <p>DEP0023: os.getNetworkInterfaces()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getNetworkInterfaces-expand-content'>
+<p>Type: Runtime</p>
 <p>The <code>os.getNetworkInterfaces()</code> method is deprecated. Please use the
 <a href="os.html#os_os_networkinterfaces"><code>os.networkInterfaces</code></a> property instead.</p>
 <p><a id="DEP0024"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_print" id="method_print"></a>
-            <div class="permalink"><a href="#method_print" class="permalink fas fa-link"></a></div>
-            <p>DEP0026: util.print()</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+</div><div class='expandable-header' id='method_print-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_print" id="method_print"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_print-expand-icon"></i>
+        <div class="permalink"><a href="#method_print" class="permalink fas fa-link"></a></div>
+        <p>DEP0026: util.print()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_print-expand-content'>
+<p>Type: Runtime</p>
 <p>The <a href="util.html#util_util_print_strings"><code>util.print()</code></a> API is deprecated. Please use <a href="console.html#console_console_log_data_args"><code>console.log()</code></a>
 instead.</p>
 <p><a id="DEP0027"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_puts" id="method_puts"></a>
-            <div class="permalink"><a href="#method_puts" class="permalink fas fa-link"></a></div>
-            <p>DEP0027: util.puts()</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+</div><div class='expandable-header' id='method_puts-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_puts" id="method_puts"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_puts-expand-icon"></i>
+        <div class="permalink"><a href="#method_puts" class="permalink fas fa-link"></a></div>
+        <p>DEP0027: util.puts()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_puts-expand-content'>
+<p>Type: Runtime</p>
 <p>The <a href="util.html#util_util_puts_strings"><code>util.puts()</code></a> API is deprecated. Please use <a href="console.html#console_console_log_data_args"><code>console.log()</code></a> instead.</p>
 <p><a id="DEP0028"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_debug_1" id="method_debug_1"></a>
-            <div class="permalink"><a href="#method_debug_1" class="permalink fas fa-link"></a></div>
-            <p>DEP0028: util.debug()</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+</div><div class='expandable-header' id='method_debug_1-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_debug_1" id="method_debug_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_debug_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_debug_1" class="permalink fas fa-link"></a></div>
+        <p>DEP0028: util.debug()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_debug_1-expand-content'>
+<p>Type: Runtime</p>
 <p>The <a href="util.html#util_util_debug_string"><code>util.debug()</code></a> API is deprecated. Please use <a href="console.html#console_console_error_data_args"><code>console.error()</code></a>
 instead.</p>
 <p><a id="DEP0029"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_error_1" id="method_error_1"></a>
-            <div class="permalink"><a href="#method_error_1" class="permalink fas fa-link"></a></div>
-            <p>DEP0029: util.error()</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+</div><div class='expandable-header' id='method_error_1-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_error_1" id="method_error_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_error_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_error_1" class="permalink fas fa-link"></a></div>
+        <p>DEP0029: util.error()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_error_1-expand-content'>
+<p>Type: Runtime</p>
 <p>The <a href="util.html#util_util_error_strings"><code>util.error()</code></a> API is deprecated. Please use <a href="console.html#console_console_error_data_args"><code>console.error()</code></a>
 instead.</p>
 <p><a id="DEP0030"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_setPublicKey_2" id="method_setPublicKey_2"></a>
-            <div class="permalink"><a href="#method_setPublicKey_2" class="permalink fas fa-link"></a></div>
-            <p>DEP0031: ecdh.setPublicKey()</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method_setPublicKey_2-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_setPublicKey_2" id="method_setPublicKey_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setPublicKey_2-expand-icon"></i>
+        <div class="permalink"><a href="#method_setPublicKey_2" class="permalink fas fa-link"></a></div>
+        <p>DEP0031: ecdh.setPublicKey()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setPublicKey_2-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="crypto.html#crypto_ecdh_setpublickey_publickey_encoding"><code>ecdh.setPublicKey()</code></a> method is now deprecated as its inclusion in the
 API is not useful.</p>
 <p><a id="DEP0032"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_listenerCount" id="method_listenerCount"></a>
-            <div class="permalink"><a href="#method_listenerCount" class="permalink fas fa-link"></a></div>
-            <p>DEP0033: EventEmitter.listenerCount()</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method_listenerCount-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_listenerCount" id="method_listenerCount"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_listenerCount-expand-icon"></i>
+        <div class="permalink"><a href="#method_listenerCount" class="permalink fas fa-link"></a></div>
+        <p>DEP0033: EventEmitter.listenerCount()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_listenerCount-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="events.html#events_eventemitter_listenercount_emitter_eventname"><code>EventEmitter.listenerCount(emitter, eventName)</code></a> API has been
 deprecated. Please use <a href="events.html#events_emitter_listenercount_eventname"><code>emitter.listenerCount(eventName)</code></a> instead.</p>
 <p><a id="DEP0034"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_exists" id="method_exists"></a>
-            <div class="permalink"><a href="#method_exists" class="permalink fas fa-link"></a></div>
-            <p>DEP0034: fs.exists(path, callback)</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method_exists-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_exists" id="method_exists"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_exists-expand-icon"></i>
+        <div class="permalink"><a href="#method_exists" class="permalink fas fa-link"></a></div>
+        <p>DEP0034: fs.exists(path, callback)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_exists-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="fs.html#fs_fs_exists_path_callback"><code>fs.exists(path, callback)</code></a> API has been deprecated. Please use
 <a href="#fs_fs_stat_path_callback"><code>fs.stat()</code></a> or <a href="#fs_fs_access_path_mode_callback"><code>fs.access()</code></a> instead.</p>
 <p><a id="DEP0035"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_lchmod" id="method_lchmod"></a>
-            <div class="permalink"><a href="#method_lchmod" class="permalink fas fa-link"></a></div>
-            <p>DEP0035: fs.lchmod(path, mode, callback)</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method_lchmod-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_lchmod" id="method_lchmod"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_lchmod-expand-icon"></i>
+        <div class="permalink"><a href="#method_lchmod" class="permalink fas fa-link"></a></div>
+        <p>DEP0035: fs.lchmod(path, mode, callback)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_lchmod-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="fs.html#fs_fs_lchmod_path_mode_callback"><code>fs.lchmod(path, mode, callback)</code></a> API has been deprecated.</p>
 <p><a id="DEP0036"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_lchmodSync" id="method_lchmodSync"></a>
-            <div class="permalink"><a href="#method_lchmodSync" class="permalink fas fa-link"></a></div>
-            <p>DEP0036: fs.lchmodSync(path, mode)</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method_lchmodSync-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_lchmodSync" id="method_lchmodSync"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_lchmodSync-expand-icon"></i>
+        <div class="permalink"><a href="#method_lchmodSync" class="permalink fas fa-link"></a></div>
+        <p>DEP0036: fs.lchmodSync(path, mode)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_lchmodSync-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="fs.html#fs_fs_lchmodsync_path_mode"><code>fs.lchmodSync(path, mode)</code></a> API has been deprecated.</p>
 <p><a id="DEP0037"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_lchown" id="method_lchown"></a>
-            <div class="permalink"><a href="#method_lchown" class="permalink fas fa-link"></a></div>
-            <p>DEP0037: fs.lchown(path, uid, gid, callback)</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method_lchown-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_lchown" id="method_lchown"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_lchown-expand-icon"></i>
+        <div class="permalink"><a href="#method_lchown" class="permalink fas fa-link"></a></div>
+        <p>DEP0037: fs.lchown(path, uid, gid, callback)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_lchown-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="fs.html#fs_fs_lchown_path_uid_gid_callback"><code>fs.lchown(path, uid, gid, callback)</code></a> API has been deprecated.</p>
 <p><a id="DEP0038"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_lchownSync" id="method_lchownSync"></a>
-            <div class="permalink"><a href="#method_lchownSync" class="permalink fas fa-link"></a></div>
-            <p>DEP0038: fs.lchownSync(path, uid, gid)</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method_lchownSync-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_lchownSync" id="method_lchownSync"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_lchownSync-expand-icon"></i>
+        <div class="permalink"><a href="#method_lchownSync" class="permalink fas fa-link"></a></div>
+        <p>DEP0038: fs.lchownSync(path, uid, gid)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_lchownSync-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="fs.html#fs_fs_lchownsync_path_uid_gid"><code>fs.lchownSync(path, uid, gid)</code></a> API has been deprecated.</p>
 <p><a id="DEP0039"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isArray" id="method_isArray"></a>
-            <div class="permalink"><a href="#method_isArray" class="permalink fas fa-link"></a></div>
-            <p>DEP0044: util.isArray()</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method_isArray-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isArray" id="method_isArray"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isArray-expand-icon"></i>
+        <div class="permalink"><a href="#method_isArray" class="permalink fas fa-link"></a></div>
+        <p>DEP0044: util.isArray()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isArray-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="util.html#util_util_isarray_object"><code>util.isArray()</code></a> API has been deprecated. Please use <code>Array.isArray()</code>
 instead.</p>
 <p><a id="DEP0045"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isBoolean" id="method_isBoolean"></a>
-            <div class="permalink"><a href="#method_isBoolean" class="permalink fas fa-link"></a></div>
-            <p>DEP0045: util.isBoolean()</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method_isBoolean-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isBoolean" id="method_isBoolean"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isBoolean-expand-icon"></i>
+        <div class="permalink"><a href="#method_isBoolean" class="permalink fas fa-link"></a></div>
+        <p>DEP0045: util.isBoolean()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isBoolean-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="util.html#util_util_isboolean_object"><code>util.isBoolean()</code></a> API has been deprecated.</p>
 <p><a id="DEP0046"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isBuffer" id="method_isBuffer"></a>
-            <div class="permalink"><a href="#method_isBuffer" class="permalink fas fa-link"></a></div>
-            <p>DEP0046: util.isBuffer()</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method_isBuffer-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isBuffer" id="method_isBuffer"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isBuffer-expand-icon"></i>
+        <div class="permalink"><a href="#method_isBuffer" class="permalink fas fa-link"></a></div>
+        <p>DEP0046: util.isBuffer()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isBuffer-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="util.html#util_util_isbuffer_object"><code>util.isBuffer()</code></a> API has been deprecated. Please use
 <a href="buffer.html#buffer_class_method_buffer_isbuffer_obj"><code>Buffer.isBuffer()</code></a> instead.</p>
 <p><a id="DEP0047"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isDate" id="method_isDate"></a>
-            <div class="permalink"><a href="#method_isDate" class="permalink fas fa-link"></a></div>
-            <p>DEP0047: util.isDate()</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method_isDate-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isDate" id="method_isDate"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isDate-expand-icon"></i>
+        <div class="permalink"><a href="#method_isDate" class="permalink fas fa-link"></a></div>
+        <p>DEP0047: util.isDate()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isDate-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="util.html#util_util_isdate_object"><code>util.isDate()</code></a> API has been deprecated.</p>
 <p><a id="DEP0048"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isError" id="method_isError"></a>
-            <div class="permalink"><a href="#method_isError" class="permalink fas fa-link"></a></div>
-            <p>DEP0048: util.isError()</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method_isError-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isError" id="method_isError"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isError-expand-icon"></i>
+        <div class="permalink"><a href="#method_isError" class="permalink fas fa-link"></a></div>
+        <p>DEP0048: util.isError()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isError-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="util.html#util_util_iserror_object"><code>util.isError()</code></a> API has been deprecated.</p>
 <p><a id="DEP0049"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isFunction" id="method_isFunction"></a>
-            <div class="permalink"><a href="#method_isFunction" class="permalink fas fa-link"></a></div>
-            <p>DEP0049: util.isFunction()</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method_isFunction-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isFunction" id="method_isFunction"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isFunction-expand-icon"></i>
+        <div class="permalink"><a href="#method_isFunction" class="permalink fas fa-link"></a></div>
+        <p>DEP0049: util.isFunction()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isFunction-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="util.html#util_util_isfunction_object"><code>util.isFunction()</code></a> API has been deprecated.</p>
 <p><a id="DEP0050"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isNull" id="method_isNull"></a>
-            <div class="permalink"><a href="#method_isNull" class="permalink fas fa-link"></a></div>
-            <p>DEP0050: util.isNull()</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method_isNull-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isNull" id="method_isNull"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isNull-expand-icon"></i>
+        <div class="permalink"><a href="#method_isNull" class="permalink fas fa-link"></a></div>
+        <p>DEP0050: util.isNull()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isNull-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="util.html#util_util_isnull_object"><code>util.isNull()</code></a> API has been deprecated.</p>
 <p><a id="DEP0051"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isNullOrUndefined" id="method_isNullOrUndefined"></a>
-            <div class="permalink"><a href="#method_isNullOrUndefined" class="permalink fas fa-link"></a></div>
-            <p>DEP0051: util.isNullOrUndefined()</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method_isNullOrUndefined-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isNullOrUndefined" id="method_isNullOrUndefined"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isNullOrUndefined-expand-icon"></i>
+        <div class="permalink"><a href="#method_isNullOrUndefined" class="permalink fas fa-link"></a></div>
+        <p>DEP0051: util.isNullOrUndefined()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isNullOrUndefined-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="util.html#util_util_isnullorundefined_object"><code>util.isNullOrUndefined()</code></a> API has been deprecated.</p>
 <p><a id="DEP0052"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isNumber" id="method_isNumber"></a>
-            <div class="permalink"><a href="#method_isNumber" class="permalink fas fa-link"></a></div>
-            <p>DEP0052: util.isNumber()</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method_isNumber-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isNumber" id="method_isNumber"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isNumber-expand-icon"></i>
+        <div class="permalink"><a href="#method_isNumber" class="permalink fas fa-link"></a></div>
+        <p>DEP0052: util.isNumber()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isNumber-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="util.html#util_util_isnumber_object"><code>util.isNumber()</code></a> API has been deprecated.</p>
 <p><a id="DEP0053"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isObject" id="method_isObject"></a>
-            <div class="permalink"><a href="#method_isObject" class="permalink fas fa-link"></a></div>
-            <p>DEP0053 util.isObject()</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method_isObject-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isObject" id="method_isObject"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isObject-expand-icon"></i>
+        <div class="permalink"><a href="#method_isObject" class="permalink fas fa-link"></a></div>
+        <p>DEP0053 util.isObject()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isObject-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="util.html#util_util_isobject_object"><code>util.isObject()</code></a> API has been deprecated.</p>
 <p><a id="DEP0054"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isPrimitive" id="method_isPrimitive"></a>
-            <div class="permalink"><a href="#method_isPrimitive" class="permalink fas fa-link"></a></div>
-            <p>DEP0054: util.isPrimitive()</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method_isPrimitive-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isPrimitive" id="method_isPrimitive"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isPrimitive-expand-icon"></i>
+        <div class="permalink"><a href="#method_isPrimitive" class="permalink fas fa-link"></a></div>
+        <p>DEP0054: util.isPrimitive()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isPrimitive-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="util.html#util_util_isprimitive_object"><code>util.isPrimitive()</code></a> API has been deprecated.</p>
 <p><a id="DEP0055"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isRegExp" id="method_isRegExp"></a>
-            <div class="permalink"><a href="#method_isRegExp" class="permalink fas fa-link"></a></div>
-            <p>DEP0055: util.isRegExp()</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method_isRegExp-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isRegExp" id="method_isRegExp"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isRegExp-expand-icon"></i>
+        <div class="permalink"><a href="#method_isRegExp" class="permalink fas fa-link"></a></div>
+        <p>DEP0055: util.isRegExp()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isRegExp-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="util.html#util_util_isregexp_object"><code>util.isRegExp()</code></a> API has been deprecated.</p>
 <p><a id="DEP0056"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isString" id="method_isString"></a>
-            <div class="permalink"><a href="#method_isString" class="permalink fas fa-link"></a></div>
-            <p>DEP0056: util.isString()</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method_isString-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isString" id="method_isString"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isString-expand-icon"></i>
+        <div class="permalink"><a href="#method_isString" class="permalink fas fa-link"></a></div>
+        <p>DEP0056: util.isString()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isString-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="util.html#util_util_isstring_object"><code>util.isString()</code></a> API has been deprecated.</p>
 <p><a id="DEP0057"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isSymbol" id="method_isSymbol"></a>
-            <div class="permalink"><a href="#method_isSymbol" class="permalink fas fa-link"></a></div>
-            <p>DEP0057: util.isSymbol()</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method_isSymbol-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isSymbol" id="method_isSymbol"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isSymbol-expand-icon"></i>
+        <div class="permalink"><a href="#method_isSymbol" class="permalink fas fa-link"></a></div>
+        <p>DEP0057: util.isSymbol()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isSymbol-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="util.html#util_util_issymbol_object"><code>util.isSymbol()</code></a> API has been deprecated.</p>
 <p><a id="DEP0058"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_isUndefined" id="method_isUndefined"></a>
-            <div class="permalink"><a href="#method_isUndefined" class="permalink fas fa-link"></a></div>
-            <p>DEP0058: util.isUndefined()</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method_isUndefined-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_isUndefined" id="method_isUndefined"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_isUndefined-expand-icon"></i>
+        <div class="permalink"><a href="#method_isUndefined" class="permalink fas fa-link"></a></div>
+        <p>DEP0058: util.isUndefined()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_isUndefined-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="util.html#util_util_isundefined_object"><code>util.isUndefined()</code></a> API has been deprecated.</p>
 <p><a id="DEP0059"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_log_1" id="method_log_1"></a>
-            <div class="permalink"><a href="#method_log_1" class="permalink fas fa-link"></a></div>
-            <p>DEP0059: util.log()</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method_log_1-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_log_1" id="method_log_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_log_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_log_1" class="permalink fas fa-link"></a></div>
+        <p>DEP0059: util.log()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_log_1-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="util.html#util_util_log_string"><code>util.log()</code></a> API has been deprecated.</p>
 <p><a id="DEP0060"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method___extend" id="method___extend"></a>
-            <div class="permalink"><a href="#method___extend" class="permalink fas fa-link"></a></div>
-            <p>DEP0060: util._extend()</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method___extend-expand'>
+<div class="heading">
+    <h3>
+        <a name="method___extend" id="method___extend"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method___extend-expand-icon"></i>
+        <div class="permalink"><a href="#method___extend" class="permalink fas fa-link"></a></div>
+        <p>DEP0060: util._extend()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method___extend-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The <a href="util.html#util_util_extend_target_source"><code>util._extend()</code></a> API has been deprecated.</p>
 <p><a id="DEP0061"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_createSecurePair" id="method_createSecurePair"></a>
-            <div class="permalink"><a href="#method_createSecurePair" class="permalink fas fa-link"></a></div>
-            <p>DEP0064: tls.createSecurePair()</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+</div><div class='expandable-header' id='method_createSecurePair-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_createSecurePair" id="method_createSecurePair"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createSecurePair-expand-icon"></i>
+        <div class="permalink"><a href="#method_createSecurePair" class="permalink fas fa-link"></a></div>
+        <p>DEP0064: tls.createSecurePair()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createSecurePair-expand-content'>
+<p>Type: Runtime</p>
 <p>The <code>tls.createSecurePair()</code> API was deprecated in documentation in Node.js
 0.11.3. Users should use <code>tls.Socket</code> instead.</p>
 <p><a id="DEP0065"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_runInDebugContext" id="method_runInDebugContext"></a>
-            <div class="permalink"><a href="#method_runInDebugContext" class="permalink fas fa-link"></a></div>
-            <p>DEP0069: vm.runInDebugContext(string)</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+</div><div class='expandable-header' id='method_runInDebugContext-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_runInDebugContext" id="method_runInDebugContext"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_runInDebugContext-expand-icon"></i>
+        <div class="permalink"><a href="#method_runInDebugContext" class="permalink fas fa-link"></a></div>
+        <p>DEP0069: vm.runInDebugContext(string)</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_runInDebugContext-expand-content'>
+<p>Type: Runtime</p>
 <p>The DebugContext will be removed in V8 soon and will not be available in Node
 10+.</p>
 <p><em>Note</em>: DebugContext was an experimental API.</p>
 <p><a id="DEP0070"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_currentId" id="method_currentId"></a>
-            <div class="permalink"><a href="#method_currentId" class="permalink fas fa-link"></a></div>
-            <p>DEP0070: async_hooks.currentId()</p>
 
-          </h1>
-        </div><section><p>Type: End-of-Life</p>
+
+</div><div class='expandable-header' id='method_currentId-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_currentId" id="method_currentId"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_currentId-expand-icon"></i>
+        <div class="permalink"><a href="#method_currentId" class="permalink fas fa-link"></a></div>
+        <p>DEP0070: async_hooks.currentId()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_currentId-expand-content'>
+<p>Type: End-of-Life</p>
 <p><code>async_hooks.currentId()</code> was renamed to <code>async_hooks.executionAsyncId()</code> for
 clarity.</p>
 <p><em>Note</em>: change was made while <code>async_hooks</code> was an experimental API.</p>
 <p><a id="DEP0071"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_triggerId" id="method_triggerId"></a>
-            <div class="permalink"><a href="#method_triggerId" class="permalink fas fa-link"></a></div>
-            <p>DEP0071: async_hooks.triggerId()</p>
 
-          </h1>
-        </div><section><p>Type: End-of-Life</p>
+
+</div><div class='expandable-header' id='method_triggerId-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_triggerId" id="method_triggerId"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_triggerId-expand-icon"></i>
+        <div class="permalink"><a href="#method_triggerId" class="permalink fas fa-link"></a></div>
+        <p>DEP0071: async_hooks.triggerId()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_triggerId-expand-content'>
+<p>Type: End-of-Life</p>
 <p><code>async_hooks.triggerId()</code> was renamed to <code>async_hooks.triggerAsyncId()</code> for
 clarity.</p>
 <p><em>Note</em>: change was made while <code>async_hooks</code> was an experimental API.</p>
 <p><a id="DEP0072"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_parseREPLKeyword" id="method_parseREPLKeyword"></a>
-            <div class="permalink"><a href="#method_parseREPLKeyword" class="permalink fas fa-link"></a></div>
-            <p>DEP0075: REPLServer.parseREPLKeyword()</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+</div><div class='expandable-header' id='method_parseREPLKeyword-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_parseREPLKeyword" id="method_parseREPLKeyword"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_parseREPLKeyword-expand-icon"></i>
+        <div class="permalink"><a href="#method_parseREPLKeyword" class="permalink fas fa-link"></a></div>
+        <p>DEP0075: REPLServer.parseREPLKeyword()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_parseREPLKeyword-expand-content'>
+<p>Type: Runtime</p>
 <p><code>REPLServer.parseREPLKeyword()</code> was removed from userland visibility.</p>
 <p><a id="DEP0076"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_parseCertString" id="method_parseCertString"></a>
-            <div class="permalink"><a href="#method_parseCertString" class="permalink fas fa-link"></a></div>
-            <p>DEP0076: tls.parseCertString()</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+</div><div class='expandable-header' id='method_parseCertString-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_parseCertString" id="method_parseCertString"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_parseCertString-expand-icon"></i>
+        <div class="permalink"><a href="#method_parseCertString" class="permalink fas fa-link"></a></div>
+        <p>DEP0076: tls.parseCertString()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_parseCertString-expand-content'>
+<p>Type: Runtime</p>
 <p><code>tls.parseCertString()</code> is a trivial parsing helper that was made public by
 mistake. This function can usually be replaced with:</p>
 <pre class="prettyprint"><code class="lang-js">const querystring = require(&#39;querystring&#39;);
@@ -1090,57 +1558,87 @@ difference is that <code>querystring.parse()</code> does url decoding:</p>
 { &#39;%E5%A5%BD&#39;: &#39;1&#39; }
 </code></pre>
 <p><a id="DEP0077"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method___debug" id="method___debug"></a>
-            <div class="permalink"><a href="#method___debug" class="permalink fas fa-link"></a></div>
-            <p>DEP0077: Module._debug()</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+</div><div class='expandable-header' id='method___debug-expand'>
+<div class="heading">
+    <h3>
+        <a name="method___debug" id="method___debug"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method___debug-expand-icon"></i>
+        <div class="permalink"><a href="#method___debug" class="permalink fas fa-link"></a></div>
+        <p>DEP0077: Module._debug()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method___debug-expand-content'>
+<p>Type: Runtime</p>
 <p><code>Module._debug()</code> has been deprecated.</p>
 <p><em>Note</em>: <code>Module._debug()</code> was never documented as an officially supported API.</p>
 <p><a id="DEP0078"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_turnOffEditorMode" id="method_turnOffEditorMode"></a>
-            <div class="permalink"><a href="#method_turnOffEditorMode" class="permalink fas fa-link"></a></div>
-            <p>DEP0078: REPLServer.turnOffEditorMode()</p>
 
-          </h1>
-        </div><section><p>Type: Runtime</p>
+
+</div><div class='expandable-header' id='method_turnOffEditorMode-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_turnOffEditorMode" id="method_turnOffEditorMode"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_turnOffEditorMode-expand-icon"></i>
+        <div class="permalink"><a href="#method_turnOffEditorMode" class="permalink fas fa-link"></a></div>
+        <p>DEP0078: REPLServer.turnOffEditorMode()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_turnOffEditorMode-expand-content'>
+<p>Type: Runtime</p>
 <p><code>REPLServer.turnOffEditorMode()</code> was removed from userland visibility.</p>
 <p><a id="DEP0079"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_inspect" id="method_inspect"></a>
-            <div class="permalink"><a href="#method_inspect" class="permalink fas fa-link"></a></div>
-            <p>DEP0079: Custom inspection function on Objects via .inspect()</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method_inspect-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_inspect" id="method_inspect"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_inspect-expand-icon"></i>
+        <div class="permalink"><a href="#method_inspect" class="permalink fas fa-link"></a></div>
+        <p>DEP0079: Custom inspection function on Objects via .inspect()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_inspect-expand-content'>
+<p>Type: Documentation-only</p>
 <p>Using a property named <code>inspect</code> on an object to specify a custom inspection
 function for <a href="#util_util_inspect_object_options"><code>util.inspect()</code></a> is deprecated. Use <a href="util.html#util_util_inspect_custom"><code>util.inspect.custom</code></a>
 instead. For backwards compatibility with Node.js prior to version 6.4.0, both
 may be specified.</p>
 <p><a id="DEP0080"></a></p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method___makeLong" id="method___makeLong"></a>
-            <div class="permalink"><a href="#method___makeLong" class="permalink fas fa-link"></a></div>
-            <p>DEP0080: path._makeLong()</p>
 
-          </h1>
-        </div><section><p>Type: Documentation-only</p>
+
+</div><div class='expandable-header' id='method___makeLong-expand'>
+<div class="heading">
+    <h3>
+        <a name="method___makeLong" id="method___makeLong"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method___makeLong-expand-icon"></i>
+        <div class="permalink"><a href="#method___makeLong" class="permalink fas fa-link"></a></div>
+        <p>DEP0080: path._makeLong()</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method___makeLong-expand-content'>
+<p>Type: Documentation-only</p>
 <p>The internal <code>path._makeLong()</code> was not intended for public use. However,
 userland modules have found it useful. The internal API has been deprecated
 and replaced with an identical, public <code>path.toNamespacedPath()</code> method.</p>
 <p><a id="DEP0081"></a></p>
-</section></section>
+
+
+</div>
 
   <div class="footer">
     <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>mixtape page for tls_(ssl)</title>
+    <title>TLS (SSL)</title>
     <script data-main="js/setup" src="js/require.js"></script>
     <link rel="stylesheet" href="fonts/fonts.css" />
     <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
@@ -13,9 +13,9 @@
   <body>
 
   <div id="control-panel">
-    <div id="control-strip-h">
-      <div id="control-strip-h-find"><i class="fas fa-crosshairs"></i></div>
-      <div id="control-strip-h-toc"><i class="fas fa-bars"></i></div>
+    <div id="control-strip-m">
+      <div id="control-strip-m-find"><div id="m-find"></div></div>
+      <div id="control-strip-m-toc"><div id="m-toc"></div></div>
     </div>
     <div id="controls">
       <div id="control-find">
@@ -26,35 +26,40 @@
       </div>
     </div>
   </div>
-  <div id="control-strip-v">
-    <div id="control-strip-v-find"><i class="fas fa-crosshairs"></i></div>
-    <div id="control-strip-v-toc"><i class="fas fa-bars"></i></div>
+  <div id="control-strip-w">
+    <div id="control-strip-w-find"></div>
+    <div id="control-strip-w-toc"></div>
   </div>
 
   <div id="content">
 
   
-       <div class="heading">
-          <h1>
-            <a name="module_tls__ssl_" id="module_tls__ssl_"></a>
-            <div class="permalink"><a href="#module_tls__ssl_" class="permalink fas fa-link"></a></div>
-            <p>TLS (SSL)</p>
+<div class="heading">
+<h1>
+  <a name="module_tls__ssl_" id="module_tls__ssl_"></a>
+  <div class="permalink"><a href="#module_tls__ssl_" class="permalink fas fa-link"></a></div>
+  <p>TLS (SSL)</p>
 
-          </h1>
-        </div><p><p>The <code>tls</code> module provides an implementation of the Transport Layer Security
+</h1>
+</div>
+
+<p><p>The <code>tls</code> module provides an implementation of the Transport Layer Security
 (TLS) and Secure Socket Layer (SSL) protocols that is built on top of OpenSSL.
 The module can be accessed using:</p></p>
 <pre class="prettyprint"><code class="lang-js">const tls = require(&#39;tls&#39;);
 </code></pre>
 
-       <div class="heading">
-          <h2>
-            <a name="module_tls_ssl_concepts" id="module_tls_ssl_concepts"></a>
-            <div class="permalink"><a href="#module_tls_ssl_concepts" class="permalink fas fa-link"></a></div>
-            <p>TLS/SSL Concepts</p>
 
-          </h1>
-        </div><section><p><p>The TLS/SSL is a public/private key infrastructure (PKI). For most common
+<div class="heading">
+<h2>
+  <a name="module_tls_ssl_concepts" id="module_tls_ssl_concepts"></a>
+  <div class="permalink"><a href="#module_tls_ssl_concepts" class="permalink fas fa-link"></a></div>
+  <p>TLS/SSL Concepts</p>
+
+</h2>
+</div>
+
+<p><p>The TLS/SSL is a public/private key infrastructure (PKI). For most common
 cases, each client and server must have a <em>private key</em>.</p></p>
 <p><p>Private keys can be generated in multiple ways. The example below illustrates
 use of the OpenSSL command-line interface to generate a 2048-bit RSA private
@@ -90,14 +95,17 @@ is illustrated in the example below:</p></p>
  a single file, e.g. <code>cat ca1-cert.pem ca2-cert.pem &gt; ca-cert.pem</code></li>
 </ul>
 
-       <div class="heading">
-          <h3>
-            <a name="misc_Perfect_Forward_Secrecy" id="misc_Perfect_Forward_Secrecy"></a>
-            <div class="permalink"><a href="#misc_Perfect_Forward_Secrecy" class="permalink fas fa-link"></a></div>
-            <p>Perfect Forward Secrecy</p>
 
-          </h1>
-        </div><section><p>The term &quot;<a href="https://en.wikipedia.org/wiki/Perfect_forward_secrecy">Forward Secrecy</a>&quot; or &quot;Perfect Forward Secrecy&quot; describes a feature of
+<div class="heading">
+<h3>
+  <a name="misc_Perfect_Forward_Secrecy" id="misc_Perfect_Forward_Secrecy"></a>
+  <div class="permalink"><a href="#misc_Perfect_Forward_Secrecy" class="permalink fas fa-link"></a></div>
+  <p>Perfect Forward Secrecy</p>
+
+</h3>
+</div>
+
+<p>The term &quot;<a href="https://en.wikipedia.org/wiki/Perfect_forward_secrecy">Forward Secrecy</a>&quot; or &quot;Perfect Forward Secrecy&quot; describes a feature of
 key-agreement (i.e., key-exchange) methods. That is, the server and client keys
 are used to negotiate new temporary keys that are used specifically and only for
 the current communication session. Practically, this means that even if the
@@ -126,15 +134,18 @@ the OpenSSL command-line interface to generate such parameters:</p>
 not required and a default ECDHE curve will be used. The <code>ecdhCurve</code> property
 can be used when creating a TLS Server to specify the list of names of supported
 curves to use, see <a href="#tls_tls_createserver_options_secureconnectionlistener"><code>tls.createServer()</code></a> for more info.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="misc_ALPN__NPN__and_SNI" id="misc_ALPN__NPN__and_SNI"></a>
-            <div class="permalink"><a href="#misc_ALPN__NPN__and_SNI" class="permalink fas fa-link"></a></div>
-            <p>ALPN, NPN, and SNI</p>
 
-          </h1>
-        </div><section><p>ALPN (Application-Layer Protocol Negotiation Extension), NPN (Next
+
+<div class="heading">
+<h3>
+  <a name="misc_ALPN__NPN__and_SNI" id="misc_ALPN__NPN__and_SNI"></a>
+  <div class="permalink"><a href="#misc_ALPN__NPN__and_SNI" class="permalink fas fa-link"></a></div>
+  <p>ALPN, NPN, and SNI</p>
+
+</h3>
+</div>
+
+<p>ALPN (Application-Layer Protocol Negotiation Extension), NPN (Next
 Protocol Negotiation) and, SNI (Server Name Indication) are TLS
 handshake extensions:</p>
 <ul>
@@ -145,15 +156,18 @@ SSL certificates.</li>
 </ul>
 <p><em>Note</em>: Use of ALPN is recommended over NPN. The NPN extension has never been
 formally defined or documented and generally not recommended for use.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="misc_Client_initiated_renegotiation_attack_mitigation" id="misc_Client_initiated_renegotiation_attack_mitigation"></a>
-            <div class="permalink"><a href="#misc_Client_initiated_renegotiation_attack_mitigation" class="permalink fas fa-link"></a></div>
-            <p>Client-initiated renegotiation attack mitigation</p>
 
-          </h1>
-        </div><section><p>The TLS protocol allows clients to renegotiate certain aspects of the TLS
+
+<div class="heading">
+<h3>
+  <a name="misc_Client_initiated_renegotiation_attack_mitigation" id="misc_Client_initiated_renegotiation_attack_mitigation"></a>
+  <div class="permalink"><a href="#misc_Client_initiated_renegotiation_attack_mitigation" class="permalink fas fa-link"></a></div>
+  <p>Client-initiated renegotiation attack mitigation</p>
+
+</h3>
+</div>
+
+<p>The TLS protocol allows clients to renegotiate certain aspects of the TLS
 session. Unfortunately, session renegotiation requires a disproportionate amount
 of server-side resources, making it a potential vector for denial-of-service
 attacks.</p>
@@ -171,15 +185,18 @@ understanding of the implications and risks.</p>
 <p>To test the renegotiation limits on a server, connect to it using the OpenSSL
 command-line client (<code>openssl s_client -connect address:port</code>) then input
 <code>R&lt;CR&gt;</code> (i.e., the letter <code>R</code> followed by a carriage return) multiple times.</p>
-</section></section>
-       <div class="heading">
-          <h2>
-            <a name="module_modifying_the_default_tls_cipher_suite" id="module_modifying_the_default_tls_cipher_suite"></a>
-            <div class="permalink"><a href="#module_modifying_the_default_tls_cipher_suite" class="permalink fas fa-link"></a></div>
-            <p>Modifying the Default TLS Cipher suite</p>
 
-          </h1>
-        </div><section><p>Node.js is built with a default suite of enabled and disabled TLS ciphers.
+
+<div class="heading">
+<h2>
+  <a name="module_modifying_the_default_tls_cipher_suite" id="module_modifying_the_default_tls_cipher_suite"></a>
+  <div class="permalink"><a href="#module_modifying_the_default_tls_cipher_suite" class="permalink fas fa-link"></a></div>
+  <p>Modifying the Default TLS Cipher suite</p>
+
+</h2>
+</div>
+
+<p>Node.js is built with a default suite of enabled and disabled TLS ciphers.
 Currently, the default cipher suite is:</p>
 <pre class="prettyprint"><code class="lang-txt">ECDHE-RSA-AES128-GCM-SHA256:
 ECDHE-ECDSA-AES128-GCM-SHA256:
@@ -228,53 +245,94 @@ attacks affecting larger AES key sizes</a>.</p>
 the default configuration. If these clients <em>must</em> be supported, the
 <a href="https://wiki.mozilla.org/Security/Server_Side_TLS">TLS recommendations</a> may offer a compatible cipher suite. For more details
 on the format, see the <a href="https://www.openssl.org/docs/man1.0.2/apps/ciphers.html#CIPHER-LIST-FORMAT">OpenSSL cipher list format documentation</a>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="module_deprecated_apis_1" id="module_deprecated_apis_1"></a>
-            <div class="permalink"><a href="#module_deprecated_apis_1" class="permalink fas fa-link"></a></div>
-            <p>Deprecated APIs</p>
 
-          </h1>
-        </div><section>
-       <div class="heading">
-          <h3>
-            <a name="class_CryptoStream" id="class_CryptoStream"></a>
-            <div class="permalink"><a href="#class_CryptoStream" class="permalink fas fa-link"></a></div>
-            <p>Class: CryptoStream</p>
 
-          </h1>
-        </div><section><p>The <code>tls.CryptoStream</code> class represents a stream of encrypted data. This class
+<div class="heading">
+<h2>
+  <a name="module_deprecated_apis_1" id="module_deprecated_apis_1"></a>
+  <div class="permalink"><a href="#module_deprecated_apis_1" class="permalink fas fa-link"></a></div>
+  <p>Deprecated APIs</p>
+
+</h2>
+</div>
+
+
+<div class='expandable-header' id='class_CryptoStream-expand'>
+<div class="heading">
+    <h3>
+        <a name="class_CryptoStream" id="class_CryptoStream"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_CryptoStream-expand-icon"></i>
+        <div class="permalink"><a href="#class_CryptoStream" class="permalink fas fa-link"></a></div>
+        <p>Class: CryptoStream</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='class_CryptoStream-expand-content'>
+<p>The <code>tls.CryptoStream</code> class represents a stream of encrypted data. This class
 has been deprecated and should no longer be used.</p>
-<section>
-       <div class="heading">
-          <h5>
-            <a name="property_bytesWritten_2" id="property_bytesWritten_2"></a>
-            <div class="permalink"><a href="#property_bytesWritten_2" class="permalink fas fa-link"></a></div>
-            <p>cryptoStream.bytesWritten</p>
 
-          </h1>
-        </div><section><p>The <code>cryptoStream.bytesWritten</code> property returns the total number of bytes
+
+<div class="heading">
+<h4>
+  <a name="subgroup_class_CryptoStream_Properties" id="subgroup_class_CryptoStream_Properties"></a>
+  <div class="permalink"><a href="#subgroup_class_CryptoStream_Properties" class="permalink fas fa-link"></a></div>
+  <p>Properties</p>
+
+</h4>
+</div>
+
+
+<div class='expandable-header' id='property_bytesWritten_2-expand'>
+<div class="heading">
+    <h5>
+        <a name="property_bytesWritten_2" id="property_bytesWritten_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_bytesWritten_2-expand-icon"></i>
+        <div class="permalink"><a href="#property_bytesWritten_2" class="permalink fas fa-link"></a></div>
+        <p>cryptoStream.bytesWritten</p>
+
+    </h5>
+</div>
+
+</div>
+<div class='expandable-content' id='property_bytesWritten_2-expand-content'>
+<p>The <code>cryptoStream.bytesWritten</code> property returns the total number of bytes
 written to the underlying socket <em>including</em> the bytes required for the
 implementation of the TLS protocol.</p>
-</section></section></section>
-       <div class="heading">
-          <h3>
-            <a name="class_SecurePair" id="class_SecurePair"></a>
-            <div class="permalink"><a href="#class_SecurePair" class="permalink fas fa-link"></a></div>
-            <p>Class: SecurePair</p>
 
-          </h1>
-        </div><section><p>Returned by <a href="#tls_tls_createsecurepair_context_isserver_requestcert_rejectunauthorized_options"><code>tls.createSecurePair()</code></a>.</p>
-</section>
-       <div class="heading">
-          <h3>
-            <a name="method_createSecurePair_1" id="method_createSecurePair_1"></a>
-            <div class="permalink"><a href="#method_createSecurePair_1" class="permalink fas fa-link"></a></div>
-            <p>tls.createSecurePair([context][, isServer][, requestCert][, rejectUnauthorized][, options])</p>
 
-          </h1>
-        </div><section><p><p>Creates a new secure pair object with two streams, one of which reads and writes
+</div>
+</div><div class='expandable-header' id='class_SecurePair-expand'>
+<div class="heading">
+    <h3>
+        <a name="class_SecurePair" id="class_SecurePair"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_SecurePair-expand-icon"></i>
+        <div class="permalink"><a href="#class_SecurePair" class="permalink fas fa-link"></a></div>
+        <p>Class: SecurePair</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='class_SecurePair-expand-content'>
+<p>Returned by <a href="#tls_tls_createsecurepair_context_isserver_requestcert_rejectunauthorized_options"><code>tls.createSecurePair()</code></a>.</p>
+
+
+</div><div class='expandable-header' id='method_createSecurePair_1-expand'>
+<div class="heading">
+    <h3>
+        <a name="method_createSecurePair_1" id="method_createSecurePair_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createSecurePair_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_createSecurePair_1" class="permalink fas fa-link"></a></div>
+        <p>tls.createSecurePair([context][, isServer][, requestCert][, rejectUnauthorized][, options])</p>
+
+    </h3>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createSecurePair_1-expand-content'>
+<p><p>Creates a new secure pair object with two streams, one of which reads and writes
 the encrypted data and the other of which reads and writes the cleartext data.
 Generally, the encrypted stream is piped to/from an incoming encrypted data
 stream and the cleartext one is used as a replacement for the initial encrypted
@@ -294,251 +352,455 @@ socket.pipe(pair.encrypted);
 <p><p>where <code>secure_socket</code> has the same API as <code>pair.cleartext</code>.</p>
 <!-- [end-include:tls.md] -->
 <!-- [start-include:tracing.md] --></p>
-</section></section>
-       <div class="heading">
-          <h2>
-            <a name="class_tls_Server" id="class_tls_Server"></a>
-            <div class="permalink"><a href="#class_tls_Server" class="permalink fas fa-link"></a></div>
-            <p>Class: tls.Server</p>
 
-          </h1>
-        </div><section><p>The <code>tls.Server</code> class is a subclass of <code>net.Server</code> that accepts encrypted
+
+</div><div class='expandable-header' id='class_tls_Server-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_tls_Server" id="class_tls_Server"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_tls_Server-expand-icon"></i>
+        <div class="permalink"><a href="#class_tls_Server" class="permalink fas fa-link"></a></div>
+        <p>Class: tls.Server</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_tls_Server-expand-content'>
+<p>The <code>tls.Server</code> class is a subclass of <code>net.Server</code> that accepts encrypted
 connections using TLS or SSL.</p>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="property_connections_2" id="property_connections_2"></a>
-            <div class="permalink"><a href="#property_connections_2" class="permalink fas fa-link"></a></div>
-            <p>server.connections</p>
 
-          </h1>
-        </div><section><p>Returns the current number of concurrent connections on the server.</p>
-</section></section><section>
-       <div class="heading">
-          <h4>
-            <a name="method_addContext" id="method_addContext"></a>
-            <div class="permalink"><a href="#method_addContext" class="permalink fas fa-link"></a></div>
-            <p>server.addContext(hostname, context)</p>
 
-          </h1>
-        </div><section><p>The <code>server.addContext()</code> method adds a secure context that will be used if
+<div class="heading">
+<h3>
+  <a name="subgroup_class_tls_Server_Properties" id="subgroup_class_tls_Server_Properties"></a>
+  <div class="permalink"><a href="#subgroup_class_tls_Server_Properties" class="permalink fas fa-link"></a></div>
+  <p>Properties</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='property_connections_2-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_connections_2" id="property_connections_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_connections_2-expand-icon"></i>
+        <div class="permalink"><a href="#property_connections_2" class="permalink fas fa-link"></a></div>
+        <p>server.connections</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_connections_2-expand-content'>
+<p>Returns the current number of concurrent connections on the server.</p>
+
+
+</div>
+<div class="heading">
+<h3>
+  <a name="subgroup_class_tls_Server_Methods" id="subgroup_class_tls_Server_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_tls_Server_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_addContext-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_addContext" id="method_addContext"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_addContext-expand-icon"></i>
+        <div class="permalink"><a href="#method_addContext" class="permalink fas fa-link"></a></div>
+        <p>server.addContext(hostname, context)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_addContext-expand-content'>
+<p>The <code>server.addContext()</code> method adds a secure context that will be used if
 the client request&#39;s SNI hostname matches the supplied <code>hostname</code> (or wildcard).</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_address_2" id="method_address_2"></a>
-            <div class="permalink"><a href="#method_address_2" class="permalink fas fa-link"></a></div>
-            <p>server.address()</p>
 
-          </h1>
-        </div><section><p>Returns the bound address, the address family name, and port of the
+
+</div><div class='expandable-header' id='method_address_2-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_address_2" id="method_address_2"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_address_2-expand-icon"></i>
+        <div class="permalink"><a href="#method_address_2" class="permalink fas fa-link"></a></div>
+        <p>server.address()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_address_2-expand-content'>
+<p>Returns the bound address, the address family name, and port of the
 server as reported by the operating system.  See <a href="net.html#net_server_address"><code>net.Server.address()</code></a> for
 more information.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_close_10" id="method_close_10"></a>
-            <div class="permalink"><a href="#method_close_10" class="permalink fas fa-link"></a></div>
-            <p>server.close([callback])</p>
 
-          </h1>
-        </div><section><p>The <code>server.close()</code> method stops the server from accepting new connections.</p>
+
+</div><div class='expandable-header' id='method_close_9-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_close_9" id="method_close_9"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_close_9-expand-icon"></i>
+        <div class="permalink"><a href="#method_close_9" class="permalink fas fa-link"></a></div>
+        <p>server.close([callback])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_close_9-expand-content'>
+<p>The <code>server.close()</code> method stops the server from accepting new connections.</p>
 <p>This function operates asynchronously. The <code>&#39;close&#39;</code> event will be emitted
 when the server has no more open connections.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_getTicketKeys" id="method_getTicketKeys"></a>
-            <div class="permalink"><a href="#method_getTicketKeys" class="permalink fas fa-link"></a></div>
-            <p>server.getTicketKeys()</p>
 
-          </h1>
-        </div><section><p>Returns a <code>Buffer</code> instance holding the keys currently used for
+
+</div><div class='expandable-header' id='method_getTicketKeys-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_getTicketKeys" id="method_getTicketKeys"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getTicketKeys-expand-icon"></i>
+        <div class="permalink"><a href="#method_getTicketKeys" class="permalink fas fa-link"></a></div>
+        <p>server.getTicketKeys()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getTicketKeys-expand-content'>
+<p>Returns a <code>Buffer</code> instance holding the keys currently used for
 encryption/decryption of the <a href="https://www.ietf.org/rfc/rfc5077.txt">TLS Session Tickets</a></p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_listen_7" id="method_listen_7"></a>
-            <div class="permalink"><a href="#method_listen_7" class="permalink fas fa-link"></a></div>
-            <p>server.listen()</p>
 
-          </h1>
-        </div><section><p>Starts the server listening for encrypted connections.
+
+</div><div class='expandable-header' id='method_listen_7-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_listen_7" id="method_listen_7"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_listen_7-expand-icon"></i>
+        <div class="permalink"><a href="#method_listen_7" class="permalink fas fa-link"></a></div>
+        <p>server.listen()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_listen_7-expand-content'>
+<p>Starts the server listening for encrypted connections.
 This method is identical to <a href="net.html#net_server_listen"><code>server.listen()</code></a> from <a href="net.html#net_class_net_server"><code>net.Server</code></a>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_setTicketKeys" id="method_setTicketKeys"></a>
-            <div class="permalink"><a href="#method_setTicketKeys" class="permalink fas fa-link"></a></div>
-            <p>server.setTicketKeys(keys)</p>
 
-          </h1>
-        </div><section><p>Updates the keys for encryption/decryption of the <a href="https://www.ietf.org/rfc/rfc5077.txt">TLS Session Tickets</a>.</p>
+
+</div><div class='expandable-header' id='method_setTicketKeys-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_setTicketKeys" id="method_setTicketKeys"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setTicketKeys-expand-icon"></i>
+        <div class="permalink"><a href="#method_setTicketKeys" class="permalink fas fa-link"></a></div>
+        <p>server.setTicketKeys(keys)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setTicketKeys-expand-content'>
+<p>Updates the keys for encryption/decryption of the <a href="https://www.ietf.org/rfc/rfc5077.txt">TLS Session Tickets</a>.</p>
 <p><em>Note</em>: The key&#39;s <code>Buffer</code> should be 48 bytes long. See <code>ticketKeys</code> option in
 <a href="#tls_tls_createserver_options_secureconnectionlistener">tls.createServer</a> for
 more information on how it is used.</p>
 <p><em>Note</em>: Changes to the ticket keys are effective only for future server
 connections. Existing or currently pending server connections will use the
 previous keys.</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="class_tls_TLSSocket" id="class_tls_TLSSocket"></a>
-            <div class="permalink"><a href="#class_tls_TLSSocket" class="permalink fas fa-link"></a></div>
-            <p>Class: tls.TLSSocket</p>
 
-          </h1>
-        </div><section><p>The <code>tls.TLSSocket</code> is a subclass of <a href="net.html#net_class_net_socket"><code>net.Socket</code></a> that performs transparent
+
+</div>
+</div><div class='expandable-header' id='class_tls_TLSSocket-expand'>
+<div class="heading">
+    <h2>
+        <a name="class_tls_TLSSocket" id="class_tls_TLSSocket"></a>
+        <i class='expandable-icon fas fa-caret-right' id="class_tls_TLSSocket-expand-icon"></i>
+        <div class="permalink"><a href="#class_tls_TLSSocket" class="permalink fas fa-link"></a></div>
+        <p>Class: tls.TLSSocket</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='class_tls_TLSSocket-expand-content'>
+<p>The <code>tls.TLSSocket</code> is a subclass of <a href="net.html#net_class_net_socket"><code>net.Socket</code></a> that performs transparent
 encryption of written data and all required TLS negotiation.</p>
 <p>Instances of <code>tls.TLSSocket</code> implement the duplex <a href="stream.html#stream_stream">Stream</a> interface.</p>
 <p><em>Note</em>: Methods that return TLS connection metadata (e.g.
 <a href="#tls_tlssocket_getpeercertificate_detailed"><code>tls.TLSSocket.getPeerCertificate()</code></a> will only return data while the
 connection is open.</p>
-<section>
-       <div class="heading">
-          <h4>
-            <a name="property_authorizationError" id="property_authorizationError"></a>
-            <div class="permalink"><a href="#property_authorizationError" class="permalink fas fa-link"></a></div>
-            <p>tlsSocket.authorizationError</p>
 
-          </h1>
-        </div><section><p>Returns the reason why the peer&#39;s certificate was not been verified. This
+
+<div class="heading">
+<h3>
+  <a name="subgroup_class_tls_TLSSocket_Properties" id="subgroup_class_tls_TLSSocket_Properties"></a>
+  <div class="permalink"><a href="#subgroup_class_tls_TLSSocket_Properties" class="permalink fas fa-link"></a></div>
+  <p>Properties</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='property_authorizationError-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_authorizationError" id="property_authorizationError"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_authorizationError-expand-icon"></i>
+        <div class="permalink"><a href="#property_authorizationError" class="permalink fas fa-link"></a></div>
+        <p>tlsSocket.authorizationError</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_authorizationError-expand-content'>
+<p>Returns the reason why the peer&#39;s certificate was not been verified. This
 property is set only when <code>tlsSocket.authorized === false</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_authorized" id="property_authorized"></a>
-            <div class="permalink"><a href="#property_authorized" class="permalink fas fa-link"></a></div>
-            <p>tlsSocket.authorized</p>
 
-          </h1>
-        </div><section><p>Returns <code>true</code> if the peer certificate was signed by one of the CAs specified
+
+</div><div class='expandable-header' id='property_authorized-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_authorized" id="property_authorized"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_authorized-expand-icon"></i>
+        <div class="permalink"><a href="#property_authorized" class="permalink fas fa-link"></a></div>
+        <p>tlsSocket.authorized</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_authorized-expand-content'>
+<p>Returns <code>true</code> if the peer certificate was signed by one of the CAs specified
 when creating the <code>tls.TLSSocket</code> instance, otherwise <code>false</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_encrypted_1" id="property_encrypted_1"></a>
-            <div class="permalink"><a href="#property_encrypted_1" class="permalink fas fa-link"></a></div>
-            <p>tlsSocket.encrypted</p>
 
-          </h1>
-        </div><section><p>Always returns <code>true</code>. This may be used to distinguish TLS sockets from regular
+
+</div><div class='expandable-header' id='property_encrypted_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_encrypted_1" id="property_encrypted_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_encrypted_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_encrypted_1" class="permalink fas fa-link"></a></div>
+        <p>tlsSocket.encrypted</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_encrypted_1-expand-content'>
+<p>Always returns <code>true</code>. This may be used to distinguish TLS sockets from regular
 <code>net.Socket</code> instances.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_localAddress_1" id="property_localAddress_1"></a>
-            <div class="permalink"><a href="#property_localAddress_1" class="permalink fas fa-link"></a></div>
-            <p>tlsSocket.localAddress</p>
 
-          </h1>
-        </div><section><p>Returns the string representation of the local IP address.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_localPort_1" id="property_localPort_1"></a>
-            <div class="permalink"><a href="#property_localPort_1" class="permalink fas fa-link"></a></div>
-            <p>tlsSocket.localPort</p>
 
-          </h1>
-        </div><section><p>Returns the numeric representation of the local port.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_remoteAddress_1" id="property_remoteAddress_1"></a>
-            <div class="permalink"><a href="#property_remoteAddress_1" class="permalink fas fa-link"></a></div>
-            <p>tlsSocket.remoteAddress</p>
+</div><div class='expandable-header' id='property_localAddress_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_localAddress_1" id="property_localAddress_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_localAddress_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_localAddress_1" class="permalink fas fa-link"></a></div>
+        <p>tlsSocket.localAddress</p>
 
-          </h1>
-        </div><section><p>Returns the string representation of the remote IP address. For example,
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_localAddress_1-expand-content'>
+<p>Returns the string representation of the local IP address.</p>
+
+
+</div><div class='expandable-header' id='property_localPort_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_localPort_1" id="property_localPort_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_localPort_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_localPort_1" class="permalink fas fa-link"></a></div>
+        <p>tlsSocket.localPort</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_localPort_1-expand-content'>
+<p>Returns the numeric representation of the local port.</p>
+
+
+</div><div class='expandable-header' id='property_remoteAddress_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_remoteAddress_1" id="property_remoteAddress_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_remoteAddress_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_remoteAddress_1" class="permalink fas fa-link"></a></div>
+        <p>tlsSocket.remoteAddress</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_remoteAddress_1-expand-content'>
+<p>Returns the string representation of the remote IP address. For example,
 <code>&#39;74.125.127.100&#39;</code> or <code>&#39;2001:4860:a005::68&#39;</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_remoteFamily_1" id="property_remoteFamily_1"></a>
-            <div class="permalink"><a href="#property_remoteFamily_1" class="permalink fas fa-link"></a></div>
-            <p>tlsSocket.remoteFamily</p>
 
-          </h1>
-        </div><section><p>Returns the string representation of the remote IP family. <code>&#39;IPv4&#39;</code> or <code>&#39;IPv6&#39;</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="property_remotePort_1" id="property_remotePort_1"></a>
-            <div class="permalink"><a href="#property_remotePort_1" class="permalink fas fa-link"></a></div>
-            <p>tlsSocket.remotePort</p>
 
-          </h1>
-        </div><section><p>Returns the numeric representation of the remote port. For example, <code>443</code>.</p>
-</section></section><section>
-       <div class="heading">
-          <h4>
-            <a name="method_TLSSocket" id="method_TLSSocket"></a>
-            <div class="permalink"><a href="#method_TLSSocket" class="permalink fas fa-link"></a></div>
-            <p>new tls.TLSSocket(socket[, options])</p>
+</div><div class='expandable-header' id='property_remoteFamily_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_remoteFamily_1" id="property_remoteFamily_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_remoteFamily_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_remoteFamily_1" class="permalink fas fa-link"></a></div>
+        <p>tlsSocket.remoteFamily</p>
 
-          </h1>
-        </div><section><p>Construct a new <code>tls.TLSSocket</code> object from an existing TCP socket.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_address_3" id="method_address_3"></a>
-            <div class="permalink"><a href="#method_address_3" class="permalink fas fa-link"></a></div>
-            <p>tlsSocket.address()</p>
+    </h4>
+</div>
 
-          </h1>
-        </div><section><p>Returns the bound address, the address family name, and port of the
+</div>
+<div class='expandable-content' id='property_remoteFamily_1-expand-content'>
+<p>Returns the string representation of the remote IP family. <code>&#39;IPv4&#39;</code> or <code>&#39;IPv6&#39;</code>.</p>
+
+
+</div><div class='expandable-header' id='property_remotePort_1-expand'>
+<div class="heading">
+    <h4>
+        <a name="property_remotePort_1" id="property_remotePort_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_remotePort_1-expand-icon"></i>
+        <div class="permalink"><a href="#property_remotePort_1" class="permalink fas fa-link"></a></div>
+        <p>tlsSocket.remotePort</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='property_remotePort_1-expand-content'>
+<p>Returns the numeric representation of the remote port. For example, <code>443</code>.</p>
+
+
+</div>
+<div class="heading">
+<h3>
+  <a name="subgroup_class_tls_TLSSocket_Methods" id="subgroup_class_tls_TLSSocket_Methods"></a>
+  <div class="permalink"><a href="#subgroup_class_tls_TLSSocket_Methods" class="permalink fas fa-link"></a></div>
+  <p>Methods</p>
+
+</h3>
+</div>
+
+
+<div class='expandable-header' id='method_TLSSocket-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_TLSSocket" id="method_TLSSocket"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_TLSSocket-expand-icon"></i>
+        <div class="permalink"><a href="#method_TLSSocket" class="permalink fas fa-link"></a></div>
+        <p>new tls.TLSSocket(socket[, options])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_TLSSocket-expand-content'>
+<p>Construct a new <code>tls.TLSSocket</code> object from an existing TCP socket.</p>
+
+
+</div><div class='expandable-header' id='method_address_3-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_address_3" id="method_address_3"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_address_3-expand-icon"></i>
+        <div class="permalink"><a href="#method_address_3" class="permalink fas fa-link"></a></div>
+        <p>tlsSocket.address()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_address_3-expand-content'>
+<p>Returns the bound address, the address family name, and port of the
 underlying socket as reported by the operating system. Returns an
 object with three properties, e.g.
 <code>{ port: 12346, family: &#39;IPv4&#39;, address: &#39;127.0.0.1&#39; }</code></p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_disableRenegotiation" id="method_disableRenegotiation"></a>
-            <div class="permalink"><a href="#method_disableRenegotiation" class="permalink fas fa-link"></a></div>
-            <p>tlsSocket.disableRenegotiation()</p>
 
-          </h1>
-        </div><section><p>Disables TLS renegotiation for this <code>TLSSocket</code> instance. Once called, attempts
+
+</div><div class='expandable-header' id='method_disableRenegotiation-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_disableRenegotiation" id="method_disableRenegotiation"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_disableRenegotiation-expand-icon"></i>
+        <div class="permalink"><a href="#method_disableRenegotiation" class="permalink fas fa-link"></a></div>
+        <p>tlsSocket.disableRenegotiation()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_disableRenegotiation-expand-content'>
+<p>Disables TLS renegotiation for this <code>TLSSocket</code> instance. Once called, attempts
 to renegotiate will trigger an <code>&#39;error&#39;</code> event on the <code>TLSSocket</code>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_getCipher" id="method_getCipher"></a>
-            <div class="permalink"><a href="#method_getCipher" class="permalink fas fa-link"></a></div>
-            <p>tlsSocket.getCipher()</p>
 
-          </h1>
-        </div><section><p>Returns an object representing the cipher name. The <code>version</code> key is a legacy
+
+</div><div class='expandable-header' id='method_getCipher-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_getCipher" id="method_getCipher"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getCipher-expand-icon"></i>
+        <div class="permalink"><a href="#method_getCipher" class="permalink fas fa-link"></a></div>
+        <p>tlsSocket.getCipher()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getCipher-expand-content'>
+<p>Returns an object representing the cipher name. The <code>version</code> key is a legacy
 field which always contains the value <code>&#39;TLSv1/SSLv3&#39;</code>.</p>
 <p>For example: <code>{ name: &#39;AES256-SHA&#39;, version: &#39;TLSv1/SSLv3&#39; }</code></p>
 <p>See <code>SSL_CIPHER_get_name()</code> in
 <a href="https://www.openssl.org/docs/man1.0.2/ssl/SSL_CIPHER_get_name.html">https://www.openssl.org/docs/man1.0.2/ssl/SSL_CIPHER_get_name.html</a> for more
 information.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_getEphemeralKeyInfo" id="method_getEphemeralKeyInfo"></a>
-            <div class="permalink"><a href="#method_getEphemeralKeyInfo" class="permalink fas fa-link"></a></div>
-            <p>tlsSocket.getEphemeralKeyInfo()</p>
 
-          </h1>
-        </div><section><p>Returns an object representing the type, name, and size of parameter of
+
+</div><div class='expandable-header' id='method_getEphemeralKeyInfo-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_getEphemeralKeyInfo" id="method_getEphemeralKeyInfo"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getEphemeralKeyInfo-expand-icon"></i>
+        <div class="permalink"><a href="#method_getEphemeralKeyInfo" class="permalink fas fa-link"></a></div>
+        <p>tlsSocket.getEphemeralKeyInfo()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getEphemeralKeyInfo-expand-content'>
+<p>Returns an object representing the type, name, and size of parameter of
 an ephemeral key exchange in <a href="#tls_perfect_forward_secrecy">Perfect Forward Secrecy</a> on a client
 connection. It returns an empty object when the key exchange is not
 ephemeral. As this is only supported on a client socket; <code>null</code> is returned
 if called on a server socket. The supported types are <code>&#39;DH&#39;</code> and <code>&#39;ECDH&#39;</code>. The
 <code>name</code> property is available only when type is &#39;ECDH&#39;.</p>
 <p>For Example: <code>{ type: &#39;ECDH&#39;, name: &#39;prime256v1&#39;, size: 256 }</code></p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_getPeerCertificate" id="method_getPeerCertificate"></a>
-            <div class="permalink"><a href="#method_getPeerCertificate" class="permalink fas fa-link"></a></div>
-            <p>tlsSocket.getPeerCertificate([detailed])</p>
 
-          </h1>
-        </div><section><p>Returns an object representing the peer&#39;s certificate. The returned object has
+
+</div><div class='expandable-header' id='method_getPeerCertificate-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_getPeerCertificate" id="method_getPeerCertificate"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getPeerCertificate-expand-icon"></i>
+        <div class="permalink"><a href="#method_getPeerCertificate" class="permalink fas fa-link"></a></div>
+        <p>tlsSocket.getPeerCertificate([detailed])</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getPeerCertificate-expand-content'>
+<p>Returns an object representing the peer&#39;s certificate. The returned object has
 some properties corresponding to the fields of the certificate.</p>
 <p>If the full certificate chain was requested, each certificate will include a
 <code>issuerCertificate</code> property containing an object representing its issuer&#39;s
@@ -567,15 +829,22 @@ certificate.</p>
   serialNumber: &#39;B9B0D332A1AA5635&#39; }
 </code></pre>
 <p>If the peer does not provide a certificate, an empty object will be returned.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_getProtocol" id="method_getProtocol"></a>
-            <div class="permalink"><a href="#method_getProtocol" class="permalink fas fa-link"></a></div>
-            <p>tlsSocket.getProtocol()</p>
 
-          </h1>
-        </div><section><p>Returns a string containing the negotiated SSL/TLS protocol version of the
+
+</div><div class='expandable-header' id='method_getProtocol-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_getProtocol" id="method_getProtocol"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getProtocol-expand-icon"></i>
+        <div class="permalink"><a href="#method_getProtocol" class="permalink fas fa-link"></a></div>
+        <p>tlsSocket.getProtocol()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getProtocol-expand-content'>
+<p>Returns a string containing the negotiated SSL/TLS protocol version of the
 current connection. The value <code>&#39;unknown&#39;</code> will be returned for connected
 sockets that have not completed the handshaking process. The value <code>null</code> will
 be returned for server sockets or disconnected client sockets.</p>
@@ -589,52 +858,80 @@ be returned for server sockets or disconnected client sockets.</p>
 </ul>
 <p>See <a href="https://www.openssl.org/docs/man1.0.2/ssl/SSL_get_version.html">https://www.openssl.org/docs/man1.0.2/ssl/SSL_get_version.html</a> for more
 information.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_getSession" id="method_getSession"></a>
-            <div class="permalink"><a href="#method_getSession" class="permalink fas fa-link"></a></div>
-            <p>tlsSocket.getSession()</p>
 
-          </h1>
-        </div><section><p>Returns the ASN.1 encoded TLS session or <code>undefined</code> if no session was
+
+</div><div class='expandable-header' id='method_getSession-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_getSession" id="method_getSession"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getSession-expand-icon"></i>
+        <div class="permalink"><a href="#method_getSession" class="permalink fas fa-link"></a></div>
+        <p>tlsSocket.getSession()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getSession-expand-content'>
+<p>Returns the ASN.1 encoded TLS session or <code>undefined</code> if no session was
 negotiated. Can be used to speed up handshake establishment when reconnecting
 to the server.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_getTLSTicket" id="method_getTLSTicket"></a>
-            <div class="permalink"><a href="#method_getTLSTicket" class="permalink fas fa-link"></a></div>
-            <p>tlsSocket.getTLSTicket()</p>
 
-          </h1>
-        </div><section><p>Returns the TLS session ticket or <code>undefined</code> if no session was negotiated.</p>
+
+</div><div class='expandable-header' id='method_getTLSTicket-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_getTLSTicket" id="method_getTLSTicket"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getTLSTicket-expand-icon"></i>
+        <div class="permalink"><a href="#method_getTLSTicket" class="permalink fas fa-link"></a></div>
+        <p>tlsSocket.getTLSTicket()</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getTLSTicket-expand-content'>
+<p>Returns the TLS session ticket or <code>undefined</code> if no session was negotiated.</p>
 <p><em>Note</em>: This only works with client TLS sockets. Useful only for debugging,
 for session reuse provide <code>session</code> option to <a href="#tls_tls_connect_options_callback"><code>tls.connect()</code></a>.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_renegotiate" id="method_renegotiate"></a>
-            <div class="permalink"><a href="#method_renegotiate" class="permalink fas fa-link"></a></div>
-            <p>tlsSocket.renegotiate(options, callback)</p>
 
-          </h1>
-        </div><section><p>The <code>tlsSocket.renegotiate()</code> method initiates a TLS renegotiation process.
+
+</div><div class='expandable-header' id='method_renegotiate-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_renegotiate" id="method_renegotiate"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_renegotiate-expand-icon"></i>
+        <div class="permalink"><a href="#method_renegotiate" class="permalink fas fa-link"></a></div>
+        <p>tlsSocket.renegotiate(options, callback)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_renegotiate-expand-content'>
+<p>The <code>tlsSocket.renegotiate()</code> method initiates a TLS renegotiation process.
 Upon completion, the <code>callback</code> function will be passed a single argument
 that is either an <code>Error</code> (if the request failed) or <code>null</code>.</p>
 <p><em>Note</em>: This method can be used to request a peer&#39;s certificate after the
 secure connection has been established.</p>
 <p><em>Note</em>: When running as the server, the socket will be destroyed with an error
 after <code>handshakeTimeout</code> timeout.</p>
-</section>
-       <div class="heading">
-          <h4>
-            <a name="method_setMaxSendFragment" id="method_setMaxSendFragment"></a>
-            <div class="permalink"><a href="#method_setMaxSendFragment" class="permalink fas fa-link"></a></div>
-            <p>tlsSocket.setMaxSendFragment(size)</p>
 
-          </h1>
-        </div><section><p>The <code>tlsSocket.setMaxSendFragment()</code> method sets the maximum TLS fragment size.
+
+</div><div class='expandable-header' id='method_setMaxSendFragment-expand'>
+<div class="heading">
+    <h4>
+        <a name="method_setMaxSendFragment" id="method_setMaxSendFragment"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_setMaxSendFragment-expand-icon"></i>
+        <div class="permalink"><a href="#method_setMaxSendFragment" class="permalink fas fa-link"></a></div>
+        <p>tlsSocket.setMaxSendFragment(size)</p>
+
+    </h4>
+</div>
+
+</div>
+<div class='expandable-content' id='method_setMaxSendFragment-expand-content'>
+<p>The <code>tlsSocket.setMaxSendFragment()</code> method sets the maximum TLS fragment size.
 Returns <code>true</code> if setting the limit succeeded; <code>false</code> otherwise.</p>
 <p>Smaller fragment sizes decrease the buffering latency on the client: larger
 fragments are buffered by the TLS layer until the entire fragment is received
@@ -642,26 +939,41 @@ and its integrity is verified; large fragments can span multiple roundtrips
 and their processing can be delayed due to packet loss or reordering. However,
 smaller fragments add extra TLS framing bytes and CPU overhead, which may
 decrease overall server throughput.</p>
-</section></section></section>
-       <div class="heading">
-          <h2>
-            <a name="property_DEFAULT_ECDH_CURVE" id="property_DEFAULT_ECDH_CURVE"></a>
-            <div class="permalink"><a href="#property_DEFAULT_ECDH_CURVE" class="permalink fas fa-link"></a></div>
-            <p>tls.DEFAULT_ECDH_CURVE</p>
 
-          </h1>
-        </div><section><p>The default curve name to use for ECDH key agreement in a tls server. The
+
+</div>
+</div><div class='expandable-header' id='property_DEFAULT_ECDH_CURVE-expand'>
+<div class="heading">
+    <h2>
+        <a name="property_DEFAULT_ECDH_CURVE" id="property_DEFAULT_ECDH_CURVE"></a>
+        <i class='expandable-icon fas fa-caret-right' id="property_DEFAULT_ECDH_CURVE-expand-icon"></i>
+        <div class="permalink"><a href="#property_DEFAULT_ECDH_CURVE" class="permalink fas fa-link"></a></div>
+        <p>tls.DEFAULT_ECDH_CURVE</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='property_DEFAULT_ECDH_CURVE-expand-content'>
+<p>The default curve name to use for ECDH key agreement in a tls server. The
 default value is <code>&#39;prime256v1&#39;</code> (NIST P-256). Consult <a href="https://www.rfc-editor.org/rfc/rfc4492.txt">RFC 4492</a> and
 <a href="http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf">FIPS.186-4</a> for more details.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_checkServerIdentity" id="method_checkServerIdentity"></a>
-            <div class="permalink"><a href="#method_checkServerIdentity" class="permalink fas fa-link"></a></div>
-            <p>tls.checkServerIdentity(host, cert)</p>
 
-          </h1>
-        </div><section><p><p>Verifies the certificate <code>cert</code> is issued to host <code>host</code>.</p></p>
+
+</div><div class='expandable-header' id='method_checkServerIdentity-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_checkServerIdentity" id="method_checkServerIdentity"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_checkServerIdentity-expand-icon"></i>
+        <div class="permalink"><a href="#method_checkServerIdentity" class="permalink fas fa-link"></a></div>
+        <p>tls.checkServerIdentity(host, cert)</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_checkServerIdentity-expand-content'>
+<p><p>Verifies the certificate <code>cert</code> is issued to host <code>host</code>.</p></p>
 <p><p>Returns {Error} object, populating it with the reason, host, and cert on
 failure. On success, returns {undefined}.</p></p>
 <p><p><em>Note</em>: This function can be overwritten by providing alternative function
@@ -694,15 +1006,22 @@ being issued by trusted CA (<code>options.ca</code>).</p></p>
   serialNumber: &#39;66593D57F20CBC573E433381B5FEC280&#39;,
   raw: &lt;Buffer ....&gt; }
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_connect_10" id="method_connect_10"></a>
-            <div class="permalink"><a href="#method_connect_10" class="permalink fas fa-link"></a></div>
-            <p>tls.connect(options[, callback])</p>
 
-          </h1>
-        </div><section><p><p>The <code>callback</code> function, if specified, will be added as a listener for the
+
+</div><div class='expandable-header' id='method_connect_10-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_connect_10" id="method_connect_10"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_connect_10-expand-icon"></i>
+        <div class="permalink"><a href="#method_connect_10" class="permalink fas fa-link"></a></div>
+        <p>tls.connect(options[, callback])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_connect_10-expand-content'>
+<p><p>The <code>callback</code> function, if specified, will be added as a listener for the
 <a href="#tls_event_secureconnect"><code>&#39;secureConnect&#39;</code></a> event.</p></p>
 <p><p><code>tls.connect()</code> returns a <a href="#tls_class_tls_tlssocket"><code>tls.TLSSocket</code></a> object.</p></p>
 <p><p>The following implements a simple &quot;echo server&quot; example:</p></p>
@@ -754,39 +1073,60 @@ socket.on(&#39;end&#39;, () =&gt; {
   server.close();
 });
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_connect_11" id="method_connect_11"></a>
-            <div class="permalink"><a href="#method_connect_11" class="permalink fas fa-link"></a></div>
-            <p>tls.connect(path[, options][, callback])</p>
 
-          </h1>
-        </div><section><p>Same as <a href="#tls_tls_connect_options_callback"><code>tls.connect()</code></a> except that <code>path</code> can be provided
+
+</div><div class='expandable-header' id='method_connect_11-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_connect_11" id="method_connect_11"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_connect_11-expand-icon"></i>
+        <div class="permalink"><a href="#method_connect_11" class="permalink fas fa-link"></a></div>
+        <p>tls.connect(path[, options][, callback])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_connect_11-expand-content'>
+<p>Same as <a href="#tls_tls_connect_options_callback"><code>tls.connect()</code></a> except that <code>path</code> can be provided
 as an argument instead of an option.</p>
 <p><em>Note</em>: A path option, if specified, will take precedence over the path
 argument.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_connect_12" id="method_connect_12"></a>
-            <div class="permalink"><a href="#method_connect_12" class="permalink fas fa-link"></a></div>
-            <p>tls.connect(port[, host][, options][, callback])</p>
 
-          </h1>
-        </div><section><p>Same as <a href="#tls_tls_connect_options_callback"><code>tls.connect()</code></a> except that <code>port</code> and <code>host</code> can be provided
+
+</div><div class='expandable-header' id='method_connect_12-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_connect_12" id="method_connect_12"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_connect_12-expand-icon"></i>
+        <div class="permalink"><a href="#method_connect_12" class="permalink fas fa-link"></a></div>
+        <p>tls.connect(port[, host][, options][, callback])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_connect_12-expand-content'>
+<p>Same as <a href="#tls_tls_connect_options_callback"><code>tls.connect()</code></a> except that <code>port</code> and <code>host</code> can be provided
 as arguments instead of options.</p>
 <p><em>Note</em>: A port or host option, if specified, will take precedence over any
 port or host argument.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_createSecureContext" id="method_createSecureContext"></a>
-            <div class="permalink"><a href="#method_createSecureContext" class="permalink fas fa-link"></a></div>
-            <p>tls.createSecureContext(options)</p>
 
-          </h1>
-        </div><section><p><em>Note</em>:</p>
+
+</div><div class='expandable-header' id='method_createSecureContext-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_createSecureContext" id="method_createSecureContext"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createSecureContext-expand-icon"></i>
+        <div class="permalink"><a href="#method_createSecureContext" class="permalink fas fa-link"></a></div>
+        <p>tls.createSecureContext(options)</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createSecureContext-expand-content'>
+<p><em>Note</em>:</p>
 <ul>
 <li><p><a href="#tls_tls_createserver_options_secureconnectionlistener"><code>tls.createServer()</code></a> sets the default value of the
 <code>honorCipherOrder</code> option to <code>true</code>, other APIs that create secure contexts
@@ -803,15 +1143,22 @@ option, other APIs that create secure contexts have no default value.</p>
 <p>If the &#39;ca&#39; option is not given, then Node.js will use the default
 publicly trusted list of CAs as given in
 <a href="https://hg.mozilla.org/mozilla-central/raw-file/tip/security/nss/lib/ckfw/builtins/certdata.txt">https://hg.mozilla.org/mozilla-central/raw-file/tip/security/nss/lib/ckfw/builtins/certdata.txt</a>.</p>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_createServer_4" id="method_createServer_4"></a>
-            <div class="permalink"><a href="#method_createServer_4" class="permalink fas fa-link"></a></div>
-            <p>tls.createServer([options][, secureConnectionListener])</p>
 
-          </h1>
-        </div><section><p><p>Creates a new <a href="#tls_class_tls_server">tls.Server</a>.  The <code>secureConnectionListener</code>, if provided, is
+
+</div><div class='expandable-header' id='method_createServer_4-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_createServer_4" id="method_createServer_4"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_createServer_4-expand-icon"></i>
+        <div class="permalink"><a href="#method_createServer_4" class="permalink fas fa-link"></a></div>
+        <p>tls.createServer([options][, secureConnectionListener])</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_createServer_4-expand-content'>
+<p><p>Creates a new <a href="#tls_class_tls_server">tls.Server</a>.  The <code>secureConnectionListener</code>, if provided, is
 automatically set as a listener for the <a href="#tls_event_secureconnection"><code>&#39;secureConnection&#39;</code></a> event.</p></p>
 <p><p><em>Note</em>: The <code>ticketKeys</code> options is automatically shared between <code>cluster</code>
 module workers.</p></p>
@@ -867,19 +1214,28 @@ server.listen(8000, () =&gt; {
 <p>This server can be tested by connecting to it using <code>openssl s_client</code>:</p>
 <pre class="prettyprint"><code class="lang-sh">openssl s_client -connect 127.0.0.1:8000
 </code></pre>
-</section>
-       <div class="heading">
-          <h2>
-            <a name="method_getCiphers_1" id="method_getCiphers_1"></a>
-            <div class="permalink"><a href="#method_getCiphers_1" class="permalink fas fa-link"></a></div>
-            <p>tls.getCiphers()</p>
 
-          </h1>
-        </div><section><p><p>Returns an array with the names of the supported SSL ciphers.</p></p>
+
+</div><div class='expandable-header' id='method_getCiphers_1-expand'>
+<div class="heading">
+    <h2>
+        <a name="method_getCiphers_1" id="method_getCiphers_1"></a>
+        <i class='expandable-icon fas fa-caret-right' id="method_getCiphers_1-expand-icon"></i>
+        <div class="permalink"><a href="#method_getCiphers_1" class="permalink fas fa-link"></a></div>
+        <p>tls.getCiphers()</p>
+
+    </h2>
+</div>
+
+</div>
+<div class='expandable-content' id='method_getCiphers_1-expand-content'>
+<p><p>Returns an array with the names of the supported SSL ciphers.</p></p>
 <p><p>For example:</p></p>
 <pre class="prettyprint"><code class="lang-js">console.log(tls.getCiphers()); // [&#39;AES128-SHA&#39;, &#39;AES256-SHA&#39;, ...]
 </code></pre>
-</section>
+
+
+</div>
 
   <div class="footer">
     <p>Some footer text. Optional. Copyright &copy; whenever by your bidness.</p>

@@ -1,1 +1,1 @@
-define([], function() { return {"children":[{"id":"toc_subgroup_Timeout_Methods","target":"module_timers.html#subgroup_Timeout_Methods","text":"Timeout.Methods","icon":false,"autoexpand":true,"children":true}],"ancestry":["toc_module_timers","toc_class_Timeout"]}; });
+define([], function() { return {"children":[{"id":"toc_subgroup_class_Timeout_Methods","target":"module_timers.html#subgroup_class_Timeout_Methods","text":"Methods","icon":false,"autoexpand":true,"children":true}],"ancestry":["toc_module_timers","toc_class_Timeout"]}; });
